@@ -21,9 +21,8 @@ function ColdBeans.recursive_load(path)
 	end
 end
 
-
-
-ColdBeans.recursive_load("Content")
+ColdBeans.recursive_load("Content") 
+-- more folders can be loaded by simply duplicating this 
 
 -- Credits!
 
