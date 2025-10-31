@@ -28,5 +28,5 @@ Week 8 - Jimbobill
 # The Twist!
 
 Every team will have a 2nd chance to work on the mod but with less time!    
-After week 8 the order will reverse and restart from the last team
+After week 8 the order will restart from the first team
 

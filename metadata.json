@@ -1,0 +1,16 @@
+{
+	"id": "ColdBeans",
+	"name": "Cold Beans",
+	"display_name": "Cold Beans",
+	"author": ["Cold Beans Participants"],
+	"description": "Coldest Beans Ever!",
+	"prefix": "hpot",
+	"main_file": "main.lua",
+	"priority": -99999999,
+	"badge_colour": "caebed",
+	"badge_text_colour": "678d8f",
+	"version": "1.0.0",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-1016c)"
+	]
+}

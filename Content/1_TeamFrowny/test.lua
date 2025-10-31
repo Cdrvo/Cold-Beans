@@ -1,0 +1,3 @@
+SMODS.Joker{
+    key = "e",
+}
