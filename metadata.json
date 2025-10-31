@@ -4,7 +4,7 @@
 	"display_name": "Cold Beans",
 	"author": ["Cold Beans Participants"],
 	"description": "Coldest Beans Ever!",
-	"prefix": "hpot",
+	"prefix": "cbean",
 	"main_file": "main.lua",
 	"priority": -99999999,
 	"badge_colour": "caebed",

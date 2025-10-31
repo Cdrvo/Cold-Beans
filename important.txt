@@ -2,3 +2,15 @@ please use your assigned folders to add your content!
 
 main file has a automatic file loading systemt to load anything inside of the Content folder so you don't need to add it manually
 
+SMODS.Joker{   <- Example joker code for credits
+    key = "e",
+    beans_credits = {
+        idea = "Revo",
+        code = "Revo",
+        team = "Name Team",
+        art = "Revo"
+    }
+}
+
+^
+| will display credits under the joker
