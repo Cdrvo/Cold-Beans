@@ -1,2 +1,4 @@
-# Cold-Beans
-an event inspired by Hot Potato to give a chance to people who couldn't join it
+# Cold Beans
+Coming straight from a parallel dimension! 
+This mod utilizes the concept Hot Potato and twists it to 
+propose a brand new expirience 
