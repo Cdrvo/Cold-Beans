@@ -1,4 +1,4 @@
-please use your assigned folders to add your content!
+please use your assigned folders to add your content! (Assets & Content)
 
 main file has a automatic file loading system to load anything inside of the Content folder so you don't need to add it manually
 
@@ -13,4 +13,4 @@ SMODS.Joker{   <- Example joker code for credits
 }
 
 ^
-| will display credits under the joker
+| will display credits under the joker (like cryptid's)
