@@ -130,7 +130,6 @@ function Colonparen.get_new_blind(type)
 		end
 	else
 		for k, v in pairs(G[P_STRING]) do
-			print(k, v)
 			eligible_bosses[k] = SMODS.add_to_pool(v)
 			if (not G.GAME.bosses_used[k]) then
 				G.GAME.bosses_used[k] = 0
