@@ -1,4 +1,0 @@
-Colonparen.TeenyBlind{
-    key = "teeny",
-    
-}

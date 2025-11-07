@@ -7,6 +7,7 @@ Colonparen = {}
 
 function ColdBeans.recursive_load(path)
 	local files = NFS.getDirectoryItems(ColdBeans.path .. path)
+	table.sort(files)
 	for _, item in ipairs(files) do
 		if string.sub(item, -4) == ".lua" then
 			print("ColdBeans: Loading " .. item:gsub("%d+_", ""))

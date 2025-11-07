@@ -338,3 +338,12 @@ position = "at"
 payload = '''local skipped, skip_to = G.GAME.blind_on_deck or 'Teeny', 
       G.GAME.blind_on_deck == 'Teeny' and 'Small' or G.GAME.blind_on_deck == 'Small' and 'Big' or G.GAME.blind_on_deck == 'Big' and 'Boss' or G.GAME.blind_on_deck == 'Boss' and 'CEO' or 'CEO''''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''config = G.P_BLINDS[G.GAME.round_resets.blind_choices[type]],'''
+position = "at"
+payload = '''config = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices[type]),'''
+match_indent = true
+

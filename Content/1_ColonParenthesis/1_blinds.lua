@@ -83,7 +83,6 @@ end
 G.P_TEENY_BLINDS.bl_ox = G.P_BLINDS.bl_ox
 G.P_SMALL_BLINDS.bl_small = G.P_BLINDS.bl_small
 G.P_BIG_BLINDS.bl_big = G.P_BLINDS.bl_big
-G.P_CEO_BLINDS.bl_goad = G.P_BLINDS.bl_goad
 Colonparen.BossBlind = SMODS.Blind;
 
 local old_get_new_boss = get_new_boss;
@@ -122,7 +121,7 @@ function Colonparen.get_new_blind(type)
 				then
 					eligible_bosses[k] = res and true or nil
 				end
-			elseif not v.boss.showdown and (v.boss.min <= math.max(1, G.GAME.round_resets.ante) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+			elseif not v.boss.showdown and (((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante))) and ((not v.boss.max) or ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2))) then
 				eligible_bosses[k] = res and true or nil
 			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 				eligible_bosses[k] = res and true or nil
@@ -152,6 +151,9 @@ function Colonparen.get_new_blind(type)
 	min_use = min_use or 0
     for k, v in pairs(eligible_bosses) do
         if eligible_bosses[k] then
+			if eligible_bosses[k] == true then
+				eligible_bosses[k] = 0
+			end
             if eligible_bosses[k] > min_use then 
                 eligible_bosses[k] = nil
             end
@@ -182,12 +184,14 @@ function get_blind_main_colour(blind) --either in the form of the blind key for 
 	if blind == 'Forced' then
 		local bl = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices[blind])
 		P_BLIND = bl
-	elseif blind == 'Boss' or blind == 'Teeny' or blind == 'CEO' or blind == 'Small' or blind == 'Big' then
+	elseif (blind == 'Boss') or (blind == 'Teeny') or (blind == 'CEO') or (blind == 'Small') or (blind == 'Big') then
 		G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {}
 		if G.GAME.round_resets.blind_states[blind] == 'Defeated' or G.GAME.round_resets.blind_states[blind] == 'Skipped' then disabled = true end
-		blind = G.GAME.round_resets.blind_choices[blind]
 		local P_BLIND_TABLE = G['P_' .. blind:upper() .. '_BLINDS'] or {}
+		blind = G.GAME.round_resets.blind_choices[blind]
 		P_BLIND = P_BLIND_TABLE[blind] or G.P_BLINDS[blind]
+	else
+		P_BLIND = Colonparen.get_blind_by_key(blind)
 	end
 	return (disabled or not P_BLIND) and G.C.BLACK or
 	P_BLIND.boss_colour or

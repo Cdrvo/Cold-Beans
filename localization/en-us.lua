@@ -1,7 +1,15 @@
 return {
     descriptions = {
         Back={},
-        Blind={},
+        Blind={
+            bl_cbean_colon_treasure = {
+                name = "The Treasure",
+                text = {
+                    "When {C:money}${} is earned increase",
+                    "Blind size by {X:purple} X0.2 {} base"
+                }
+            }
+        },
         Edition={},
         Enhanced={},
         Joker={},
