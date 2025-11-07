@@ -1,3 +1,4 @@
+--[[
 Colonparen.GreekBlind{
     key = "lowercase_alpha",
     name = "The Alpha",
@@ -13,3 +14,4 @@ Colonparen.GreekBlind{
     mult = 1,
     boss_colour = HEX("000000")
 }
+]]
