@@ -347,3 +347,13 @@ position = "at"
 payload = '''config = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices[type]),'''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''G.FUNCS.draw_from_hand_to_discard()
+if G.GAME.blind:get_type() == 'Boss' then'''
+position = "at"
+payload = '''G.FUNCS.draw_from_hand_to_discard()
+if G.GAME.blind:get_type() == 'CEO' then'''
+match_indent = true
+
