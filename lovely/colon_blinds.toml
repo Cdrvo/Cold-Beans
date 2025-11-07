@@ -191,8 +191,11 @@ match_indent = true
 target = "functions/UI_definitions.lua"
 pattern = '''elseif type == 'Big' then'''
 position = "before"
-payload = '''elseif (type == 'Teeny') or (type == 'Boss') then
-	extras = create_UIBox_blind_tag(type, run_info)'''
+payload = '''elseif (type == 'Teeny') then
+	extras = create_UIBox_blind_tag(type, run_info)
+elseif (type == 'Boss') then
+
+'''
 match_indent = true
 
 [[patches]]
@@ -239,7 +242,6 @@ target = "functions/button_callbacks.lua"
 pattern = '''G.GAME.round_resets.blind_tags.Big = get_next_tag_key()'''
 position = "after"
 payload = '''
-G.GAME.round_resets.blind_tags.Boss = get_next_tag_key()
 G.GAME.round_resets.blind_tags.Teeny = get_next_tag_key()
 '''
 match_indent = true
@@ -355,5 +357,16 @@ if G.GAME.blind:get_type() == 'Boss' then'''
 position = "at"
 payload = '''G.FUNCS.draw_from_hand_to_discard()
 if G.GAME.blind:get_type() == 'CEO' then'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''if G.GAME.blind:get_type() == 'Boss' then
+                    local _handname, _played, _order = 'High Card', -1, 100'''
+position = "at"
+payload = '''if true then
+    Colonparen.callUpdateBlindVariables()
+    local _handname, _played, _order = 'High Card', -1, 100'''
 match_indent = true
 

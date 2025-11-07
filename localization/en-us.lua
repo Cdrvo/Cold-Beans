@@ -8,6 +8,23 @@ return {
                     "When {C:money}${} is earned increase",
                     "Blind size by {X:purple} X0.2 {} base"
                 }
+            },
+            bl_cbean_colon_gate = {
+                name = "The Gate",
+                text = {
+                    "Bigger blind size"
+                }
+            },
+            bl_cbean_colon_sheet = {
+                name = "The Sheet",
+                text = {
+                    "Debuff all held in hand #1#s", -- [most held in hand rank]
+                    "Debuff all played #2#s" -- [most played rank]
+                }
+            },
+            bl_cbean_colon_wee = {
+                name = "Wee Blind",
+                text = {}
             }
         },
         Edition={},

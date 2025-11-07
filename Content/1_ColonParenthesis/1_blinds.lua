@@ -80,7 +80,6 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
         end
     }
 end
-G.P_TEENY_BLINDS.bl_ox = G.P_BLINDS.bl_ox
 G.P_SMALL_BLINDS.bl_small = G.P_BLINDS.bl_small
 G.P_BIG_BLINDS.bl_big = G.P_BLINDS.bl_big
 Colonparen.BossBlind = SMODS.Blind;
@@ -187,9 +186,7 @@ function get_blind_main_colour(blind) --either in the form of the blind key for 
 	elseif (blind == 'Boss') or (blind == 'Teeny') or (blind == 'CEO') or (blind == 'Small') or (blind == 'Big') then
 		G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {}
 		if G.GAME.round_resets.blind_states[blind] == 'Defeated' or G.GAME.round_resets.blind_states[blind] == 'Skipped' then disabled = true end
-		local P_BLIND_TABLE = G['P_' .. blind:upper() .. '_BLINDS'] or {}
-		blind = G.GAME.round_resets.blind_choices[blind]
-		P_BLIND = P_BLIND_TABLE[blind] or G.P_BLINDS[blind]
+		P_BLIND = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices[blind])
 	else
 		P_BLIND = Colonparen.get_blind_by_key(blind)
 	end
@@ -255,3 +252,15 @@ SMODS.Consumable:take_ownership('c_entr_new', {
         return not G.GAME.round_resets.force_blind and G.blind_select
 	end,
 })
+
+
+local update_callbacks = {}
+function Colonparen.UpdateBlindVariables(callback)
+	update_callbacks[#update_callbacks+1] = callback;
+end
+
+function Colonparen.callUpdateBlindVariables()
+	for i, func in ipairs(update_callbacks) do
+		func()
+	end
+end

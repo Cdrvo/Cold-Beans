@@ -19,3 +19,12 @@ Colonparen.CEOBlind{
     mult = 3,
 	boss_colour = HEX("2b62a7")
 }
+
+Colonparen.CEOBlind{
+    key = "colon_gate",
+    pos = { x = 0, y = 1 },
+	boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 5,
+	boss_colour = HEX("a91061")
+}
