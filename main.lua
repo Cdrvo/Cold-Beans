@@ -3,6 +3,7 @@
 
 ColdBeans = SMODS.current_mod
 
+Colonparen = {}
 
 function ColdBeans.recursive_load(path)
 	local files = NFS.getDirectoryItems(ColdBeans.path .. path)
