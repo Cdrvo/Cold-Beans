@@ -4,7 +4,20 @@ return {
         Blind={},
         Edition={},
         Enhanced={},
-        Joker={},
+        Joker={
+            j_cbean_colon_soph = {
+                name = "Sophron",
+                text = {"{c:attention}Retrigger{} each played card", "for each card to the left of it"},
+            },
+            j_cbean_colon_plato = {
+                name = "Plato",
+                text = {"All CEO Blinds are replaced by a random Lowercase Greek Blind"},
+            },
+            j_cbean_colon_aris = {
+                name = "Aristotle",
+                text = {"Open 1 Blessing Pack when a CEO Blind is defeated", "When a Blessing is obtained from a Booster Pack, create 1 Taa Marbuta"}, -- Might require to be split somewhere
+            },
+        },
         Other={},
         Planet={},
         Spectral={},
