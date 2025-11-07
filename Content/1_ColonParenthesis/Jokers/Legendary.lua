@@ -3,6 +3,7 @@
 -- Plato
 -- Aistotle
 
+-- Sophron
 SMODS.Joker {
     key = "colon_soph",
 
@@ -27,6 +28,7 @@ SMODS.Joker {
     end
 }
 
+-- plato
 SMODS.Joker {
     key = "colon_plato",
 
@@ -49,6 +51,7 @@ SMODS.Joker {
     end
 }
 
+-- aristotle
 SMODS.Joker {
     key = "colon_aris",
 
