@@ -1,17 +1,8 @@
---[[
 Colonparen.GreekBlind{
-    key = "lowercase_alpha",
+    key = "alpha",
     name = "The Alpha",
-    atlas = "colon_GreekLowercaseBlind",
     mult = 1,
-    boss_colour = HEX("000000")
+    boss_colour = HEX("000000"),
+    lower = {},
+    upper = {}
 }
-
-Colonparen.GreekBlind{
-    key = "uppercase_alpha",
-    name = "The Alpha",
-    atlas = "colon_GreekUppercaseBlind",
-    mult = 1,
-    boss_colour = HEX("000000")
-}
-]]
