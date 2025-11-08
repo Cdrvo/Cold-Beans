@@ -52,6 +52,16 @@ return {
                     "create 1 {C:spectral}Taa Marbuta{}"
                 },
             },
+            j_cbean_colon_modernity = {
+                name = "Modernity",
+                text = {
+                    "This Joker gains {C:white,X:mult}X#1#{} Mult",
+                    "when {C:attention}Blind{} is skipped",
+                    "This Joker loses {C:white,X:mult}X#2#{} Mult",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
+                },
+            },
             j_cbean_colon_rna = {
                 name = "RNA",
                 text = {

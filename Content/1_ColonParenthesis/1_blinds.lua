@@ -244,6 +244,93 @@ function Colonparen.prescribe_blinds(config, override)
 	end
 end
 
+G.P_LOWER_GREEK_BLINDS = {}
+G.P_UPPER_GREEK_BLINDS = {}
+Colonparen.LowerGreekBlind = SMODS.Blind:extend {
+	get_obj = function(self, key) return G.P_LOWER_GREEK_BLINDS[key] end,
+	register = function(self)
+		self.name = self.name or self.key
+		self.colonparen_blindtype = 'Greek';
+
+		SMODS.Blind.super.register(self)
+	end,
+	inject = function(self, i)
+		-- no pools to query length of, so we assign order manually
+		if not self.taken_ownership then
+			self.order = 30 + i
+		end
+		G.P_LOWER_GREEK_BLINDS[self.key] = self
+	end
+}
+Colonparen.UpperGreekBlind = SMODS.Blind:extend {
+	get_obj = function(self, key) return G.P_UPPER_GREEK_BLINDS[key] end,
+	register = function(self)
+		self.name = self.name or self.key
+		self.colonparen_blindtype = 'Greek';
+
+		SMODS.Blind.super.register(self)
+	end,
+	inject = function(self, i)
+		-- no pools to query length of, so we assign order manually
+		if not self.taken_ownership then
+			self.order = 30 + i
+		end
+		G.P_UPPER_GREEK_BLINDS[self.key] = self
+	end
+}
+Colonparen.GreekBlinds = {}
+Colonparen.GreekBlind = function (config)
+	--[[[
+	Colonparen.GreekBlind{
+		key = "whatever",
+		lower = { whateber blind def },
+		upper = { whatever blind def }
+	}
+	]]
+
+	local key = config.key;
+	local name = config.name;
+	local mult = config.mult;
+	local pos = config.pos;
+	local boss_colour = config.boss_colour;
+	config.lower.key = config.lower.key or "lower_" .. key;
+	config.lower.name = config.lower.name or name;
+	config.lower.mult = config.lower.mult or mult;
+	config.lower.pos = config.lower.pos or pos;
+	config.lower.atlas = config.lower.atlas or "colon_GreekLowercaseBlind";
+	config.lower.boss_colour = config.lower.boss_colour or boss_colour;
+	
+	local lowercase = Colonparen.LowerGreekBlind(config.lower)
+	config.upper.key = config.upper.key or "upper_" .. key;
+	config.upper.name = config.upper.name or name;
+	config.upper.mult = config.upper.mult or mult;
+	config.upper.pos = config.upper.pos or pos;
+	config.upper.atlas = config.upper.atlas or "colon_GreekUppercaseBlind";
+	config.upper.boss_colour = config.upper.boss_colour or boss_colour;
+	
+	local uppercase = Colonparen.UpperGreekBlind(config.upper)
+	SMODS.modify_key(config, SMODS.current_mod and SMODS.current_mod.prefix, true)
+	Colonparen.GreekBlinds[config.key] = {
+		key = config.key,
+		lowercase = lowercase,
+		uppercase = uppercase
+	}
+end
+
+function Colonparen.spawnGreekBlind(key)
+	if not Colonparen.GreekBlinds[key] then
+		error("Greek blind does not exist: " .. key)
+	end
+	local greek = Colonparen.GreekBlinds[key]
+	Colonparen.prescribe_blinds{
+		Boss = greek.lowercase.key,
+		CEO = greek.uppercase.key,
+	}
+end
+function Colonparen.canSpawnGreekBlind()
+	return Colonparen.are_blinds_prescribed_at("Boss", "CEO")
+end
+
 SMODS.Consumable:take_ownership('c_entr_new', {
 	use = function(self, card, area, copier)
         Colonparen.set_upcoming_blind('bl_entr_red')
