@@ -1,11 +1,12 @@
--- Legendaries include
+-- Legendaries include:
 -- Sophron
 -- Plato
--- Aistotle
+-- Aristotle
 
 -- Sophron
 SMODS.Joker {
     key = "colon_soph",
+    name = "Sophron",
 
     rarity = 4,
     price = 13,
@@ -20,40 +21,56 @@ SMODS.Joker {
                 end
             end
             print(times)
-            if times < 1 then return end
+            if times < 1 then
+                return
+            end
             return {
                 repetitions = times
             }
         end
     end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        code = "bitterdoes",
+    }
 }
 
--- plato
+-- Plato
 SMODS.Joker {
     key = "colon_plato",
+    name = "Plato",
 
     rarity = 4,
     price = 13,
     blueprint_compat = true,
 
     loc_vars = function()
-        return {vars = {
-            colours = {
-                HEX("87a365"), -- colour text formatted with {V:1}
-            },
-        }}
+        return {
+            vars = {
+                colours = {
+                    HEX("87a365"), -- colour text formatted with {V:1}
+                },
+            }
+        }
     end,
 
     calculate = function(self,card,context)
         if context.individual then
             
         end
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        code = "bitterdoes",
+    }
 }
 
--- aristotle
+-- Aristotle
 SMODS.Joker {
     key = "colon_aris",
+    name = "Aristotle",
 
     rarity = 4,
     price = 13,
@@ -63,5 +80,10 @@ SMODS.Joker {
         if context.individual then
             
         end
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        code = "bitterdoes",
+    }
 }
