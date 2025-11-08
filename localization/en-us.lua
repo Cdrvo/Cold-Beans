@@ -12,7 +12,7 @@ return {
             bl_cbean_colon_gate = {
                 name = "The Gate",
                 text = {
-                    "Bigger blind size"
+                    "Moderately larger blind size"
                 }
             },
             bl_cbean_colon_sheet = {
