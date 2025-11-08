@@ -98,25 +98,26 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "colon_biggershot",
-
-    config = {extra = {
-        max = 199.7,
-        quips = {
-            "N-NOWS YOUR CHANCE!",
-            "[[BIG SHOT!]]",
-            "HOOCHI MAMA!",
-            "[[Hyperlink Blocked]]",
-            "A DEAL'S A DEAL!!!",
-            "1997!",
-            "Smells like KROMER",
-            "BUY [KeyGen]",
-            "PERFECT FOR [City Livin']",
-            "KRIS.",
-            "LET ME SAY [Thanks]"
+    key = "colon_bigshot",
+    name = "Big Shot",
+    config = {
+        extra = {
+            max = 199.7,
+            quips = {
+                "N-NOWS YOUR CHANCE!",
+                "[[BIG SHOT!]]",
+                "HOOCHI MAMA!",
+                "[[Hyperlink Blocked]]",
+                "A DEAL'S A DEAL!!!",
+                "1997!",
+                "Smells like KROMER",
+                "BUY [KeyGen]",
+                "PERFECT FOR [City Livin']",
+                "KRIS.",
+                "LET ME SAY [Thanks]"
+            }
         }
-    }},
-
+    },
     cost = 8,
     rarity = 3,
     blueprint_compat = true,
@@ -127,7 +128,6 @@ SMODS.Joker {
             }
         }
     end,
-
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and G.GAME.blind.loc_name == "Big Blind" then
             return {
@@ -138,8 +138,8 @@ SMODS.Joker {
         end
     end,
     beans_credits = {
-        idea = "George",
-        code = "Bitter",
+        idea = "George The Rat",
+        code = "bitterdoes",
         team = ":(",
     }
 }

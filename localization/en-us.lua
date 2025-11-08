@@ -5,14 +5,14 @@ return {
             bl_cbean_colon_treasure = {
                 name = "The Treasure",
                 text = {
-                    "When {C:money}${} is earned increase",
-                    "Blind size by {X:purple} X0.2 {} base"
+                    "When {C:money}${} is earned, increase",
+                    "blind size by {X:purple} X0.2 {} base"
                 }
             },
             bl_cbean_colon_gate = {
                 name = "The Gate",
                 text = {
-                    "Moderately larger blind size"
+                    "Moderately large blind"
                 }
             },
             bl_cbean_colon_sheet = {
@@ -34,7 +34,6 @@ return {
                 text = {}
             }
         },
-        Edition = {},
         Enhanced = {},
         Joker = {
             j_cbean_colon_chalk = {
@@ -101,7 +100,7 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
                 },
             },
-            j_cbean_colon_biggershot = {
+            j_cbean_colon_big_shot = {
                 name = "Big Shot",
                 text = {
                     "When a {C:attention}Big Blind{} is defeated,",
