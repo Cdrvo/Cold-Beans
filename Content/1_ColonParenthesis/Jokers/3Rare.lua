@@ -96,3 +96,50 @@ SMODS.Joker {
         code = "Glitchkat10",
     }
 }
+
+SMODS.Joker {
+    key = "colon_biggershot",
+
+    config = {extra = {
+        max = 199.7,
+        quips = {
+            "N-NOWS YOUR CHANCE!",
+            "[[BIG SHOT!]]",
+            "HOOCHI MAMA!",
+            "[[Hyperlink Blocked]]",
+            "A DEAL'S A DEAL!!!",
+            "1997!",
+            "Smells like KROMER",
+            "BUY [KeyGen]",
+            "PERFECT FOR [City Livin']",
+            "KRIS.",
+            "LET ME SAY [Thanks]"
+        }
+    }},
+
+    cost = 8,
+    rarity = 3,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.max,
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and G.GAME.blind.loc_name == "Big Blind" then
+            return {
+                message = card.ability.extra.quips[math.random(1, #card.ability.extra.quips)],
+                dollars = math.random(-card.ability.extra.max, card.ability.extra.max),
+                remove_default_message = true,
+            }
+        end
+    end,
+    beans_credits = {
+        idea = "George",
+        code = "Bitter",
+        team = ":(",
+    }
+}

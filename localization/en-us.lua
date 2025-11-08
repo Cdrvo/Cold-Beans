@@ -101,6 +101,13 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
                 },
             },
+            j_cbean_colon_biggershot = {
+                name = "Big Shot",
+                text = {
+                    "When a {C:attention}Big Blind{} is defeated,",
+                    "earn between {C:money}$-199.7{} and {C:money}$199.7",
+                },
+            },
         },
         Other = {},
         Planet = {},
