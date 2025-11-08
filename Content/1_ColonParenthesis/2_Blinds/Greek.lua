@@ -54,6 +54,11 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.repetition and context.cardarea == (G.play or G.hand) then
+                return {
+                    repetitions = self.config.retriggers,
+                }
+            end
         end
     }
 }
