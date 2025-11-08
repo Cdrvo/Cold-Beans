@@ -25,7 +25,7 @@ SMODS.Joker {
                 repetitions = times
             }
         end
-    end
+    end,
 }
 
 -- plato
