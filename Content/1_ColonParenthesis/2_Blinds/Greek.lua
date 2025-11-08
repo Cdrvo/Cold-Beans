@@ -1,4 +1,3 @@
---[[
 Colonparen.GreekBlind{
     key = "alpha",
     name = "The Alpha",
@@ -90,4 +89,3 @@ Colonparen.GreekBlind{
         end
     }
 }
-]]
