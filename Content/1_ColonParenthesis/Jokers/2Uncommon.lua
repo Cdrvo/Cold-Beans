@@ -2,6 +2,7 @@
 -- RNA 
 SMODS.Joker {
     key = "colon_rna",
+    name = "RNA",
     pronouns = "it_its",
 
     rarity = 2,
@@ -58,6 +59,7 @@ SMODS.Joker {
 -- Sproinky 
 SMODS.Joker {
     key = "colon_sproinky",
+    name = "Sproinky",
     pronouns = "it_its",
 
     rarity = 2,
