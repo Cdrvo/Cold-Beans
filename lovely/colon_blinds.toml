@@ -462,6 +462,26 @@ end
 '''
 match_indent = true
 
+[[patches]] # Teeny music           DOESNT WORK RNNN
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = '''(G.GAME.blind and G.GAME.blind.boss and 'music5') or'''
+position = "after"
+payload = '''
+(G.GAME.blind and G.GAME.blind.config.blind and G.GAME.blind.config.blind.colonparen_blindtype == "Teeny" and 'cbean_TeenyMusic') or
+'''
+match_indent = true
+
+[[patches]] # CEO music
+[patches.pattern]
+target = 'functions/misc_functions.lua' 
+pattern = '''(G.GAME.blind and G.GAME.blind.boss and 'music5') or'''
+position = "after"
+payload = '''
+(G.GAME.blind and G.GAME.blind.config.blind and G.GAME.blind.config.blind.colonparen_blindtype == "CEO" and 'cbean_CeoMusic') or
+'''
+match_indent = true
+
 [[patches]]
 [patches.pattern]
 target = 'functions/button_callbacks.lua'
@@ -473,4 +493,3 @@ pattern = '''if G.GAME.round_resets.blind_states.Boss == 'Defeated' then
 position = "at"
 payload = ''''''
 match_indent = true
-

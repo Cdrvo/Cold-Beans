@@ -33,3 +33,24 @@ SMODS.Atlas({
 	py = 34,
 	frames = 21,
 })
+
+-- Sounds also yes this is same file fuck you
+
+SMODS.Sound {
+	key = "TeenyMusic",
+	path = "1_ColonParenthesis/teeny.ogg"
+}
+
+SMODS.Sound {
+	key = "CeoMusic",
+	path = "1_ColonParenthesis/ceo.ogg"
+}
+
+SMODS.Sound {
+	key = "low_greekMusic",
+	path = "1_ColonParenthesis/lowercasegreek.ogg"
+}
+SMODS.Sound {
+	key = "upper_greekMusic",
+	path = "1_ColonParenthesis/uppercasegreek.ogg"
+}
