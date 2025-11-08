@@ -466,7 +466,7 @@ match_indent = true
 [patches.pattern]
 target = 'functions/misc_functions.lua'
 pattern = '''(G.GAME.blind and G.GAME.blind.boss and 'music5') or'''
-position = "after"
+position = "before"
 payload = '''
 (G.GAME.blind and G.GAME.blind.config.blind and G.GAME.blind.config.blind.colonparen_blindtype == "Teeny" and 'cbean_TeenyMusic') or
 '''
@@ -476,7 +476,7 @@ match_indent = true
 [patches.pattern]
 target = 'functions/misc_functions.lua' 
 pattern = '''(G.GAME.blind and G.GAME.blind.boss and 'music5') or'''
-position = "after"
+position = "before"
 payload = '''
 (G.GAME.blind and G.GAME.blind.config.blind and G.GAME.blind.config.blind.colonparen_blindtype == "CEO" and 'cbean_CeoMusic') or
 '''
