@@ -45,15 +45,36 @@ Colonparen.GreekBlind{
     -- boss_colour = HEX("000000"),
     -- pos = { x = 0, y = 0 },
     lower = {
-        set_blind = function(self, card, from_blind)
-        end,
+        config = {
+            retriggers = 2
+        },
         calculate = function(self, blind, context)
+            if context.repetition and context.cardarea == G.play then
+                return {
+                    repetitions = self.config.retriggers
+                }
+            end
         end
     },
     upper = {
-        set_blind = function(self, card, from_blind)
-        end,
+        config = {
+            retriggers = 3
+        },
         calculate = function(self, blind, context)
+            if context.repetition and context.cardarea == G.play then
+                return {
+                    repetitions = self.config.retriggers,
+                    extra = {
+                        func = function()
+                            if context.repetition and context.cardarea == G.hand then
+                                return {
+                                    repetitions = self.config.retriggers
+                                }
+                            end
+                        end
+                    }
+                }
+            end
         end
     }
 }

@@ -22,6 +22,13 @@ return {
                     "Debuff all played #2#s" -- [most played rank]
                 }
             },
+            bl_cbean_colon_gamma = {
+                name = "The Gamma",
+                text = {
+                    "Retrigger all played cards 2 additional times",
+                    "Retrigger all played and held in hand cards 3 additional times"
+                }
+            },
             bl_cbean_colon_wee = {
                 name = "Wee Blind",
                 text = {}
