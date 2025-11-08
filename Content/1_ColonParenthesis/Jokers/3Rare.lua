@@ -73,7 +73,7 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-        if context.setting_blind and context.cardarea == G.jokers then
+        if context.setting_blind and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.count = card.ability.extra.count + 1 -- all that just for the plus 1
             if card.ability.extra.count >= card.ability.extra.requirement then
                 card.ability.extra.count = 0
