@@ -47,7 +47,12 @@ SMODS.Joker {
                 end
             }
         end
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        code = "bitterdoes",
+    }
 }
 
 -- Sproinky 
@@ -58,6 +63,9 @@ SMODS.Joker {
     rarity = 2,
     price = 8,
     blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    end,
 
     calculate = function(self, card, context)
         if context.before then
@@ -69,19 +77,19 @@ SMODS.Joker {
             return {
                 func = function()
                     for _, other_card in pairs(G.play.cards) do
-                        print('wawa ', SMODS.has_enhancement(other_card, 'm_steel'), not scored[other_card])
                         if not scored[other_card] then 
-                            other_card:set_ability('m_steel', nil, true)
-                            print("wawa")
-                        elseif SMODS.has_enhancement(other_card, 'm_steel') then
-                            print(SMODS.has_enhancement(other_card, 'm_steel'))
-                            -- debuff or smth idk
+                            other_card:set_ability("m_steel", nil, true)
+                        elseif SMODS.has_enhancement(other_card, "m_steel") then
                             SMODS.debuff_card(other_card, true, "Sproinky")
-                            -- Oh yea, does a backflip
                         end
                     end
                 end
             }
         end
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        code = "bitterdoes",
+    }
 }

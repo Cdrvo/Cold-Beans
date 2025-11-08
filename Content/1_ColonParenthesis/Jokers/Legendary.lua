@@ -45,7 +45,7 @@ SMODS.Joker {
     price = 13,
     blueprint_compat = true,
 
-    loc_vars = function()
+    loc_vars = function(self, info_queue, card)
         return {
             vars = {
                 colours = {
