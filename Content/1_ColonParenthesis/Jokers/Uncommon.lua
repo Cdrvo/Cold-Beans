@@ -49,3 +49,39 @@ SMODS.Joker {
         end
     end
 }
+
+-- Sproinky 
+SMODS.Joker {
+    key = "colon_sproinky",
+    pronouns = "it_its",
+
+    rarity = 2,
+    price = 8,
+    blueprint_compat = true,
+
+    calculate = function(self, card, context)
+        if context.before then
+            local scored = {}
+            for _, c in pairs(context.scoring_hand) do
+                scored[c] = true
+            end
+
+            return {
+                func = function()
+                    for _, other_card in pairs(G.play.cards) do
+                        print('wawa ', SMODS.has_enhancement(other_card, 'm_steel'), not scored[other_card])
+                        if not scored[other_card] then 
+                            other_card:set_ability('m_steel', nil, true)
+                            print("wawa")
+                        elseif SMODS.has_enhancement(other_card, 'm_steel') then
+                            print(SMODS.has_enhancement(other_card, 'm_steel'))
+                            -- debuff or smth idk
+                            SMODS.debuff_card(other_card, true, "Sproinky")
+                            -- Oh yea, does a backflip
+                        end
+                    end
+                end
+            }
+        end
+    end
+}
