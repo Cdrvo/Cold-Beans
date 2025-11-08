@@ -30,6 +30,15 @@ return {
         Edition = {},
         Enhanced = {},
         Joker = {
+            j_cbean_colon_chalk = {
+                name = "Chalk",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "Permanently increase winning",
+                    "{C:attention}Ante{} by {C:attention}+#2#{} when obtained",
+                    "{C:inactive}\"Chalk is aid\"",
+                }
+            },
             j_cbean_colon_soph = {
                 name = "Sophron",
                 text = {
