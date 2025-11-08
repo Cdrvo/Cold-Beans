@@ -1,14 +1,11 @@
-
 -- RNA 
 SMODS.Joker {
     key = "colon_rna",
     name = "RNA",
     pronouns = "it_its",
-
     rarity = 2,
     price = 6,
     blueprint_compat = true,
-
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint then
             local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
@@ -28,7 +25,6 @@ SMODS.Joker {
             table.insert(G.playing_cards, card_copied)
             G.hand:emplace(card_copied)
             card_copied.states.visible = nil
-
             G.E_MANAGER:add_event(Event({
                 func = function()
                     card_copied:start_materialize()
