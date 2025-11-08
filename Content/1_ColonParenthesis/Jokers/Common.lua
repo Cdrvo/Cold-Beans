@@ -29,5 +29,10 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         G.GAME.win_ante = G.GAME.win_ante + card.ability.extra.winning_ante_mod     
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "George The Rat",
+        code = "Glitchkat10",
+    }
 }

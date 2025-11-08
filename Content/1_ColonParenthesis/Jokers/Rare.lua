@@ -40,5 +40,10 @@ SMODS.Joker {
                 xmult = card.ability.extra.xmult
             }
         end
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        code = "Glitchkat10",
+    }
 }
