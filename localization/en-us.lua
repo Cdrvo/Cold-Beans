@@ -42,7 +42,14 @@ return {
                     "{C:white,X:mult}X#1#{} Mult",
                     "Permanently increase winning",
                     "{C:attention}Ante{} by {C:attention}+#2#{} when obtained",
-                    "{C:inactive}\"Chalk is aid\"",
+                    '{C:inactive}"Chalk is aid"',
+                }
+            },
+            j_cbean_colon_pibble = {
+                name = "Pebble",
+                text = {
+                    "{C:blue}Small Blinds{} are replaced with {C:attention}Teeny Blinds{}",
+                    "{C:money}Big Blinds{} are replaced with {C:blue}Small Blinds{}",
                 }
             },
             j_cbean_colon_soph = {

@@ -40,7 +40,6 @@ SMODS.Joker {
 -- bebble
 SMODS.Joker {
     key = "colon_pibble",
-    name = "Pibble",
     cost = 5,
     rarity = 1,
     blueprint_compat = false,
@@ -48,15 +47,35 @@ SMODS.Joker {
         if from_debuff then
             return
         end
-        for _,blind in pairs(G.GAME.round_resets.blind_choices) do
-            if blind == "bl_small" then
-                Colonparen.changeblind("Small", "Small", "bl_small")
+            local small, big = false, false
+            for _,blind in pairs(G.GAME.round_resets.blind_choices) do
+                print(blind)
+                if blind == "bl_small" and not small then
+                    print("small iterated")
+                    Colonparen.changeblind("Small", "small", "bl_cbean_colon_wee")
+                    small = true
+                elseif blind == "bl_big" and not big then
+                    print("big iterated")
+                    Colonparen.changeblind("Big", "big", "bl_small")
+                    big = true
+                end
             end
-        end
     end,
     calculate = function(self, card, context)
-        if context.ante_change then
-            print(G.GAME.round_resets.blind_choices)
+        if context.ante_change or context.ending_shop then
+            local small, big = false, false
+            for _,blind in pairs(G.GAME.round_resets.blind_choices) do
+                print(blind)
+                if blind == "bl_small" and not small then
+                    print("small iterated")
+                    Colonparen.changeblind("Small", "small", "bl_cbean_colon_wee")
+                    small = true
+                elseif blind == "bl_big" and not big then
+                    print("big iterated")
+                    Colonparen.changeblind("Big", "big", "bl_small")
+                    big = true
+                end
+            end
         end
     end,
     beans_credits = {

@@ -1,7 +1,8 @@
 -- vvv Taken from Button_callbacks.lua 2878
 
-Colonparen.changeblind = function(blindType, before, after) -- blindType | A string containing the type of blind, before | the blind to be changed, after | the blind to be changed into
-    if not G.blind_select_opts[before] then
+Colonparen.changeblind = function(blindType, before, after) -- blindType | A string containing the type of blind, before | the blind name to be changed, after | the blind key to be changed into
+    if not G.blind_select_opts[before] and G.GAME.round_resets.blind_choices[before] then
+        print("before ", G.blind_select_opts)
         error("Could not update blind, as its not in current blinds", 1)
         return
     end
@@ -16,43 +17,63 @@ Colonparen.changeblind = function(blindType, before, after) -- blindType | A str
             return true
         end
     }))
+    print("going down")
 
-    -- Change Blind 
-    local par = G.blind_select_opts[before].parent
-    G.GAME.round_resets.blind_choices[before] = after
-    G.GAME.round_resets.blind_choices.Teeny = Colonparen.get_new_blind('Teeny')
-    G.GAME.round_resets.blind_choices.Small = Colonparen.get_new_blind('Small')
-    G.GAME.round_resets.blind_choices.Big = Colonparen.get_new_blind('Big')
-    G.GAME.round_resets.blind_choices.CEO = Colonparen.get_new_blind('CEO')
+    G.CONTROLLER.locks.boss_reroll = true -- f.. caw.. f
 
-    -- bring that shit back
-    G.blind_select_opts.boss:remove()
-    G.blind_select_opts.boss = UIBox{
-        T = {
-            par.T.x, 0, 0, 0
-        },
-        definition = {
-            n = G.UIT.ROOT,
-            config = {
-                align = "cm",
-                colour = G.C.CLEAR
-            },
-            nodes = {
-                UIBox_dyn_container({ create_UIBox_blind_choice(blindType) }, false, get_blind_main_colour(blindType), mix_colours(G.C.BLACK, get_blind_main_colour(blindType), 0.8))
-            },
-        },
-        config = {
-            align = "bmi",
-            offset = {
-                x = 0,
-                y = G.ROOM.T.y + 9
-            },
-            major = par,
-            xy_bond = 'Weak'
-        }
-    }
-    par.config.object = G.blind_select_opts.boss
-    par.config.object:recalculate()
-    G.blind_select_opts.boss.parent = par
-    G.blind_select_opts.boss.alignment.offset.y = 0
+    -- print(G.blind_select_opts[before] or G.blind_select_opts[before])
+    G.E_MANAGER:add_event(Event({
+        func = function ()
+            -- Change Blind 
+            local par = G.blind_select_opts[before].parent
+            if not G.GAME.round_resets.blind_choices[blindType] then
+                print("FUCK you, for FUCKING, FUCKING thinking of FUKCING using FUCKIONG the FUCKING [[lower]] FUCKING case, you FUCKING idiot FUCKING FUCK")
+                print("oh does this work tho? ", G.GAME.round_resets.blind_choices[blindType])
+                print(G.GAME.round_resets.blind_choices[blindType], G.GAME.round_resets.blind_choices[before], G.GAME.round_resets.blind_choices[after])
+                return true
+            end
+            G.GAME.round_resets.blind_choices[blindType] = after -- OHHH SO FUCK ME!!! IT HAS TO BE CAPTIALLLLL DUUUUUUUUUUH
+            print(before, " is now ", after)
+
+            -- bring that shit back
+            G.blind_select_opts[before]:remove() -- Doesnt seem to be required, but I may just be dumb and it might just make it available to use
+            G.blind_select_opts[before] = UIBox{
+                T = {
+                    par.T.x, 0, 0, 0
+                },
+                definition = {
+                    n = G.UIT.ROOT,
+                    config = {
+                        align = "cm",
+                        colour = G.C.CLEAR -- Border Color
+                    },
+                    nodes = {
+                        UIBox_dyn_container({create_UIBox_blind_choice(blindType --[[AGAIN FUCK ME FOR HAVING NO CAPITAL RAAAAAH]])}, false, get_blind_main_colour(before), mix_colours(G.C.BLACK, get_blind_main_colour(before), 0.8) --[[ Mix colours is for bosses duh]])
+                    },
+                },
+                config = {
+                    align = "bmi",
+                    offset = {
+                        x = 0,
+                        y = G.ROOM.T.y + 9
+                    },
+                    major = par,
+                    xy_bond = 'Weak'
+                }
+            }
+            par.config.object = G.blind_select_opts[before] -- Is required to come up
+            par.config.object:recalculate() -- Doesnt Seem to be required, could also be used like :remove()
+            G.blind_select_opts[before].parent = par -- make it parented to the right thingy mabob
+            G.blind_select_opts[before].alignment.offset.y = 0
+            print("now going up")
+
+            G.E_MANAGER:add_event(Event({blocking = false, trigger = 'after', delay = 0.5,func = function() -- I mean its boss_reroll but like close enough
+                G.CONTROLLER.locks.boss_reroll = nil
+                return true
+            end}))
+            
+            save_run()
+            return true
+        end
+    }))
 end
