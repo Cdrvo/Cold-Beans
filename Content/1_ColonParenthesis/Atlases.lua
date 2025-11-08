@@ -38,12 +38,14 @@ SMODS.Atlas({
 
 SMODS.Sound {
 	key = "TeenyMusic",
-	path = "1_ColonParenthesis/teeny.ogg"
+	path = "1_ColonParenthesis/teeny.ogg",
+	select_music_track = function() return G.GAME.blind.config.blind.colonparen_blindtype == "Teeny" end
 }
 
 SMODS.Sound {
 	key = "CeoMusic",
-	path = "1_ColonParenthesis/ceo.ogg"
+	path = "1_ColonParenthesis/ceo.ogg",
+	select_music_track = function() return G.GAME.blind.config.blind.colonparen_blindtype == "CEO" end
 }
 
 SMODS.Sound {
