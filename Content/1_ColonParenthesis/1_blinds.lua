@@ -322,7 +322,7 @@ Colonparen.GreekBlind = function (config)
 	config.upper.name = config.upper.name or name;
 	config.upper.mult = config.upper.mult or mult;
 	config.upper.pos = config.upper.pos or pos;
-	config.upper.atlas = config.upper.atlas or "colon_GreekUppercaseBlind";
+	config.upper.atlas = config.upper.atlas or "colon_UppercaseGreekBlind";
 	config.upper.boss_colour = config.upper.boss_colour or boss_colour;
 	local uppercase = Colonparen.UpperGreekBlind(config.upper)
 
@@ -374,13 +374,16 @@ local old_collection_pool = SMODS.collection_pool
 function SMODS.collection_pool(item, ...)
 	if item == G.P_BLINDS then
 		local stuff = {}
-		for i, blind in ipairs(Colonparen.SpecialBlinds) do
+		for i, blind in pairs(Colonparen.SpecialBlinds) do
 			stuff[#stuff+1] = blind
 		end
-		for i, blind in pairs(G.P_BLINDS) do
+		for i, blind in pairs(item) do
 			stuff[#stuff+1] = blind
 		end
-		return old_collection_pool(stuff, ...)
+		local tabl = old_collection_pool(stuff, ...)
+		table.sort(tabl, function(a,b) return a.order < b.order end)
+		return tabl
 	end
 	return old_collection_pool(item, ...)
 end
+

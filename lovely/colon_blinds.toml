@@ -398,5 +398,67 @@ position = "before"
 payload = ''''''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''G.PROFILES[G.SETTINGS.profile].all_unlocked = true'''
+position = "after"
+payload = '''
+for k, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
+    if not v.demo and not v.wip then 
+        v.alerted = true
+        v.discovered = true
+        v.unlocked = true
+    end
+end
+'''
+match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = 'blind.lua'
+pattern = '''for k, v in pairs(G.P_BLINDS) do
+    if v and v.name and v.name == blindTable.name then
+        blindTable.config_blind = k
+    end
+end'''
+position = "after"
+payload = '''
+for k, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
+    if v and v.name and v.name == blindTable.name then
+        blindTable.config_blind = k
+    end
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''G.ARGS.save_progress.PROFILE = G.PROFILES[G.SETTINGS.profile]'''
+position = "after"
+payload = '''
+for k, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
+    G.ARGS.save_progress.UDA[k] = (v.unlocked and 'u' or '')..(v.discovered and 'd' or '')..(v.alerted and 'a' or '')
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = '''for _, v in pairs(G.P_BLINDS) do'''
+position = "before"
+payload = '''
+for _, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
+    if not v.no_collection then 
+        G.DISCOVER_TALLIES.total.of = G.DISCOVER_TALLIES.total.of+1
+        G.DISCOVER_TALLIES.blinds.of = G.DISCOVER_TALLIES.blinds.of+1
+        if v.discovered then 
+            G.DISCOVER_TALLIES.blinds.tally = G.DISCOVER_TALLIES.blinds.tally+1
+            G.DISCOVER_TALLIES.total.tally = G.DISCOVER_TALLIES.total.tally+1
+        end
+  end
+end
+'''
+match_indent = true
 
