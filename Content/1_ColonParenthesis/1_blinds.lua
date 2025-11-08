@@ -300,15 +300,15 @@ Colonparen.GreekBlind = function (config)
 	config.lower.atlas = config.lower.atlas or "colon_GreekLowercaseBlind";
 	config.lower.boss_colour = config.lower.boss_colour or boss_colour;
 	
-	local lowercase = Colonparen.LowerGreekBlind(config)
+	local lowercase = Colonparen.LowerGreekBlind(config.lower)
 	config.upper.key = config.upper.key or "upper_" .. key;
 	config.upper.name = config.upper.name or name;
 	config.upper.mult = config.upper.mult or mult;
 	config.upper.pos = config.upper.pos or pos;
 	config.upper.atlas = config.upper.atlas or "colon_GreekUppercaseBlind";
 	config.upper.boss_colour = config.upper.boss_colour or boss_colour;
-
-	local uppercase = Colonparen.UpperGreekBlind(config)
+	
+	local uppercase = Colonparen.UpperGreekBlind(config.upper)
 	SMODS.modify_key(config, SMODS.current_mod and SMODS.current_mod.prefix, true)
 	Colonparen.GreekBlinds[config.key] = {
 		key = config.key,
