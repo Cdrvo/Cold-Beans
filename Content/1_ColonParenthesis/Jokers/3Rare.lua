@@ -47,3 +47,45 @@ SMODS.Joker {
         code = "Glitchkat10",
     }
 }
+
+SMODS.Joker {
+    key = "colon_packing",
+
+    config = {extra = {
+        xmult = 3.877084,
+        gain = 3.877084,
+        requirement = 11,
+        count = 0,
+    }},
+
+    cost = 8,
+    rarity = 3,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult,
+                card.ability.extra.gain,
+                card.ability.extra.requirement,
+                card.ability.extra.count,
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.setting_blind and context.cardarea == G.jokers then
+            card.ability.extra.count = card.ability.extra.count + 1 -- all that just for the plus 1
+            if card.ability.extra.count >= card.ability.extra.requirement then
+                card.ability.extra.count = 0
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.gain -- :(
+                return { message = "Mult Up!" }
+            else
+                return { message = "Blind Up!" } -- blind up???
+            end
+        elseif context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
+}

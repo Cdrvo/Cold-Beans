@@ -93,6 +93,13 @@ return {
                     "{C:red,E:2}permanently {C:red}debuffed"
                 },
             },
+            j_cbean_colon_packing = {
+                name = "Square Packing",
+                text = {
+                    "Gains {X:mult,C:white}X3.877084{} Mult every {C:attention}11 Blinds{} selected",
+                    "{C:inactive}(Currently {X:mult,C:white}x#1#{C:inactive}, on blind #4#)",
+                },
+            },
         },
         Other = {},
         Planet = {},
