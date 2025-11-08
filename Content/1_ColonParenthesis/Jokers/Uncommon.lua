@@ -2,6 +2,7 @@
 -- RNA 
 SMODS.Joker {
     key = "colon_rna",
+    pronouns = "it_its",
 
     rarity = 2,
     price = 6,
@@ -17,8 +18,9 @@ SMODS.Joker {
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
             local card_copied = SMODS.create_card({
                 set = 'Playing Card',
-                rank = context.full_hand[1].base.nominal,
+                rank = context.full_hand[1].base.id,
                 suit = context.full_hand[1].base.suit,
+                no_edition = true
             })
             card_copied:add_to_deck()
             G.deck.config.card_limit = G.deck.config.card_limit + 1
@@ -33,7 +35,7 @@ SMODS.Joker {
                 end
             }))
             return {
-                message = localize('k_copied_ex'),
+                message = "Copied!",
                 colour = G.C.CHIPS,
                 func = function() -- This is for timing purposes, it runs after the message
                     G.E_MANAGER:add_event(Event({

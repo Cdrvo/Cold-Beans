@@ -59,7 +59,7 @@ return {
                     "Open 1 {C:dark_edition}Blessing{} {C:attention}Pack{} when a {C:attention}CEO Blind{} is defeated",
                     "When a {C:dark_edition}Blessing{} is obtained from a {C:attention}Booster Pack{},",
                     "create 1 {C:spectral}Taa Marbuta{}"
-                }, -- Might require to be split somewhere
+                },
             },
             j_cbean_colon_modernity = {
                 name = "Modernity",
@@ -74,11 +74,9 @@ return {
             j_cbean_colon_rna = {
                 name = "RNA",
                 text = {
-                    "If {C:attention}first hand{} of round has only {C:attention}1",
-                    "add a permanent copy to deck and draw to {C:attention}hand{}",
-                    "{C:inactive}Copy will not have any editions or seals"
-                },
-                -- Might require to be split somewhere
+                "If {C:attention}first hand{} of round has only {C:attention}1", 
+                "add a permanent copy to deck and draw to {C:attention}hand{}", 
+                "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})"},
             },
         },
         Other = {},

@@ -369,4 +369,24 @@ payload = '''if true then
     Colonparen.callUpdateBlindVariables()
     local _handname, _played, _order = 'High Card', -1, 100'''
 match_indent = true
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''else
+                G.GAME.round_resets.blind_states.Boss = 'Current'
+                blhash = 'L'
+            end'''
+position = "at"
+payload = '''elseif Colonparen.get_blind_type(G.GAME.round_resets.blind) == 'Boss' then
+                G.GAME.round_resets.blind_states.Boss = 'Current'
+                blhash = 'L'
+            elseif Colonparen.get_blind_type(G.GAME.round_resets.blind) == 'CEO' then
+                G.GAME.round_resets.blind_states.CEO = 'Current'
+                blhash = 'C'
+            elseif Colonparen.get_blind_type(G.GAME.round_resets.blind) == 'Teeny' then
+                G.GAME.round_resets.blind_states.Teeny = 'Current'
+                blhash = 'T'
+            end'''
+match_indent = true
+
 

@@ -13,7 +13,7 @@ end
 function reset_blinds()
     G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Teeny = 'Select', Small = 'Upcoming', Big = 'Upcoming', Boss = 'Upcoming', CEO = 'Upcoming'}
     if G.GAME.round_resets.blind_states.CEO == 'Defeated' then
-        G.GAME.round_resets.blind_states.Teeny = 'Upcoming'
+        G.GAME.round_resets.blind_states.Teeny = 'Select'
         G.GAME.round_resets.blind_states.Small = 'Upcoming'
         G.GAME.round_resets.blind_states.Big = 'Upcoming'
         G.GAME.round_resets.blind_states.Boss = 'Upcoming'
@@ -43,6 +43,20 @@ end
 
 function Blind:true_type()
 	return self.colonparen_blindtype
+end
+
+function Colonparen.get_blind_type(blind)
+	local colonparen_blindtype = (blind or {}).colonparen_blindtype;
+	if colonparen_blindtype == nil then
+		if blind.name == "Small Blind" then
+			colonparen_blindtype = 'Small'
+		elseif blind.name == "Big Blind" then 
+			colonparen_blindtype = 'Big'
+		elseif blind.name and blind.name ~= '' then
+			colonparen_blindtype = 'Boss'
+		end
+	end
+	return colonparen_blindtype
 end
 
 local set_blind = Blind.set_blind
