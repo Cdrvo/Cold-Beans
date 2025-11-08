@@ -107,7 +107,7 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
                 },
             },
-            j_cbean_colon_big_shot = {
+            j_cbean_colon_bigshot = {
                 name = "Big Shot",
                 text = {
                     "When a {C:attention}Big Blind{} is defeated,",
