@@ -84,6 +84,7 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
             self.name = self.name or self.key
 			self.colonparen_blindtype = name;
             SMODS.Blind.super.register(self)
+			Colonparen.SpecialBlinds[self.key .. "_" .. name] = self;
         end,
         inject = function(self, i)
             -- no pools to query length of, so we assign order manually
@@ -267,6 +268,7 @@ Colonparen.LowerGreekBlind = SMODS.Blind:extend {
 		self.colonparen_blindtype = 'Greek';
 
 		SMODS.Blind.super.register(self)
+		Colonparen.SpecialBlinds[self.key .. "_Lower_Greek"] = self;
 	end,
 	inject = function(self, i)
 		-- no pools to query length of, so we assign order manually
@@ -283,6 +285,7 @@ Colonparen.UpperGreekBlind = SMODS.Blind:extend {
 		self.colonparen_blindtype = 'Greek';
 
 		SMODS.Blind.super.register(self)
+		Colonparen.SpecialBlinds[self.key .. "_Upper_Greek"] = self;
 	end,
 	inject = function(self, i)
 		-- no pools to query length of, so we assign order manually
@@ -341,6 +344,7 @@ function Colonparen.spawnGreekBlind(key)
 		CEO = greek.uppercase.key,
 	}
 end
+
 function Colonparen.canSpawnGreekBlind()
 	return Colonparen.are_blinds_prescribed_at("Boss", "CEO")
 end
@@ -364,4 +368,19 @@ function Colonparen.callUpdateBlindVariables()
 	for i, func in ipairs(update_callbacks) do
 		func()
 	end
+end
+
+local old_collection_pool = SMODS.collection_pool
+function SMODS.collection_pool(item, ...)
+	if item == G.P_BLINDS then
+		local stuff = {}
+		for i, blind in ipairs(Colonparen.SpecialBlinds) do
+			stuff[#stuff+1] = blind
+		end
+		for i, blind in pairs(G.P_BLINDS) do
+			stuff[#stuff+1] = blind
+		end
+		return old_collection_pool(stuff, ...)
+	end
+	return old_collection_pool(item, ...)
 end

@@ -369,6 +369,7 @@ payload = '''if true then
     Colonparen.callUpdateBlindVariables()
     local _handname, _played, _order = 'High Card', -1, 100'''
 match_indent = true
+
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
@@ -388,5 +389,14 @@ payload = '''elseif Colonparen.get_blind_type(G.GAME.round_resets.blind) == 'Bos
                 blhash = 'T'
             end'''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''SMODS.Blind.super.register(self)'''
+position = "before"
+payload = ''''''
+match_indent = true
+
 
 
