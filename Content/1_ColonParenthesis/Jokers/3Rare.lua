@@ -30,7 +30,7 @@ SMODS.Joker {
             }
         end
         if context.setting_blind and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.select_xmult_mod
+            card.ability.extra.xmult = math.max(card.ability.extra.xmult - card.ability.extra.select_xmult_mod, 1)
             return {
                 message = "X" .. card.ability.extra.xmult .. " Mult"
             }
@@ -50,42 +50,49 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "colon_packing",
-
-    config = {extra = {
-        xmult = 3.877084,
-        gain = 3.877084,
-        requirement = 11,
-        count = 0,
-    }},
-
+    name = "Square Packing",
+    config = {
+        extra = {
+            xmult_mod = 3.877084,
+            requirement = 11,
+            current = 0,
+            xmult = 1,
+        }
+    },
     cost = 8,
     rarity = 3,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.xmult,
-                card.ability.extra.gain,
+                card.ability.extra.xmult_mod,
                 card.ability.extra.requirement,
-                card.ability.extra.count,
+                card.ability.extra.current,
+                card.ability.extra.xmult,
             }
         }
     end,
-
     calculate = function(self, card, context)
-        if context.setting_blind and context.cardarea == G.jokers and not context.blueprint then
-            card.ability.extra.count = card.ability.extra.count + 1 -- all that just for the plus 1
-            if card.ability.extra.count >= card.ability.extra.requirement then
-                card.ability.extra.count = 0
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.gain -- :(
-                return { message = "Mult Up!" }
-            else
-                return { message = "Blind Up!" } -- blind up???
+        if context.setting_blind and not context.blueprint then
+            card.ability.extra.current = card.ability.extra.current + 1
+            if card.ability.extra.current >= card.ability.extra.requirement then
+                card.ability.extra.current = 0
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                return {
+                    message = "X" .. card.ability.extra.xmult .. " Mult",
+                    colour = G.C.MULT
+                }
             end
-        elseif context.joker_main then
+        end
+        if context.joker_main then
             return {
                 xmult = card.ability.extra.xmult
             }
         end
-    end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Glitchkat10",
+        code = "Glitchkat10",
+    }
 }

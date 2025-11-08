@@ -96,8 +96,9 @@ return {
             j_cbean_colon_packing = {
                 name = "Square Packing",
                 text = {
-                    "Gains {X:mult,C:white}X3.877084{} Mult every {C:attention}11 Blinds{} selected",
-                    "{C:inactive}(Currently {X:mult,C:white}x#1#{C:inactive}, on blind #4#)",
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "every {C:attention}#2# {C:inactive}[#3#]{C:attention} Blinds{} selected",
+                    "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
                 },
             },
         },
