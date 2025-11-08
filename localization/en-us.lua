@@ -81,16 +81,16 @@ return {
             j_cbean_colon_rna = {
                 name = "RNA",
                 text = {
-                "If {C:attention}first hand{} of round has only {C:attention}1", 
-                "add a permanent copy to deck and draw to {C:attention}hand{}", 
-                "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})"},
+                    "If {C:attention}first hand{} of round has only {C:attention}1", 
+                    "add a permanent copy to deck and draw to {C:attention}hand{}", 
+                    "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})"},
             },
             j_cbean_colon_sproinky = {
                 name = "Sproinky",
                 text = {
-                "When a played card is unscored, it becomes {C:attention}steel", 
-                "If a {C:attention}steel card{} is scored,",
-                "it is {E:2}permanently {C:inactive}debuffed", 
+                    "Played and unscoring cards become {C:attention}Steel",
+                    "Played {C:attention}Steel Cards{} become",
+                    "{C:red,E:2}permanently {C:red}debuffed"
                 },
             },
         },

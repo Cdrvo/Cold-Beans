@@ -17,7 +17,13 @@ Colonparen.CEOBlind{
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 3,
-	boss_colour = HEX("2b62a7")
+	boss_colour = HEX("2b62a7"),
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        art = "George The Rat",
+        code = "jamirror",
+    }
 }
 
 Colonparen.CEOBlind{
@@ -26,5 +32,11 @@ Colonparen.CEOBlind{
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 5,
-	boss_colour = HEX("a91061")
+	boss_colour = HEX("a91061"),
+    beans_credits = {
+        team = ":( Team",
+        idea = "Unknown",
+        art = "George The Rat",
+        code = "jamirror",
+    }
 }
