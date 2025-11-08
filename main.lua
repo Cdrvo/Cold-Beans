@@ -3,6 +3,29 @@
 
 ColdBeans = SMODS.current_mod
 
+-- defining this here because it would be quite silly for this to not be a global api
+local on_calculate_cbs = {}
+ColdBeans.OnCalculate = function (cb)
+	on_calculate_cbs[#on_calculate_cbs+1] = cb
+end
+
+ColdBeans.calculate = function (mod, context)
+    local haspost = false;
+    local results = {}
+    for i, cb in ipairs(on_calculate_cbs) do
+        local result, post = cb(mod, context)
+        if result then
+            results[#results+1] = result;
+        end
+        if post then
+            haspost = true
+        end
+    end
+    if #results == 0 then return nil, haspost end
+    if #results == 1 then return results[1], haspost end
+    return SMODS.merge_effects(unpack(results)), haspost
+end
+
 Colonparen = {
 	SpecialBlinds = {}
 }

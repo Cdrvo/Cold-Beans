@@ -115,7 +115,10 @@ return {
         blind_states = {},
         challenge_names = {},
         collabs = {},
-        dictionary = {},
+        dictionary = {
+            cbean_colon_sheet_held = "(Most held rank)",
+            cbean_colon_sheet_played = "(Most played rank)",
+        },
         high_scores = {},
         labels = {},
         poker_hand_descriptions = {},

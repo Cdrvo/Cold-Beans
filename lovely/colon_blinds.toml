@@ -457,8 +457,20 @@ for _, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
             G.DISCOVER_TALLIES.blinds.tally = G.DISCOVER_TALLIES.blinds.tally+1
             G.DISCOVER_TALLIES.total.tally = G.DISCOVER_TALLIES.total.tally+1
         end
-  end
+    end
 end
 '''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''if G.GAME.round_resets.blind_states.Boss == 'Defeated' then 
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_tags.Small = get_next_tag_key()
+        G.GAME.round_resets.blind_tags.Big = get_next_tag_key()
+      end'''
+position = "at"
+payload = ''''''
 match_indent = true
 
