@@ -1,5 +1,5 @@
 Colonparen.GreekBlind{
-    key = "alpha",
+    key = "colon_alpha",
     name = "The Alpha",
     mult = 1,
     -- boss_colour = HEX("000000"),
@@ -19,7 +19,7 @@ Colonparen.GreekBlind{
 }
 
 Colonparen.GreekBlind{
-    key = "beta",
+    key = "colon_beta",
     name = "The Beta",
     mult = 1,
     -- boss_colour = HEX("000000"),
@@ -39,7 +39,7 @@ Colonparen.GreekBlind{
 }
 
 Colonparen.GreekBlind{
-    key = "gamma",
+    key = "colon_gamma",
     name = "The Gamma",
     mult = 1,
     -- boss_colour = HEX("000000"),
@@ -59,7 +59,7 @@ Colonparen.GreekBlind{
 }
 
 Colonparen.GreekBlind{
-    key = "delta",
+    key = "colon_delta",
     name = "The Delta",
     mult = 1,
     -- boss_colour = HEX("000000"),

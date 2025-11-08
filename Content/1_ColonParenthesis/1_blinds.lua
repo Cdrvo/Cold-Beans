@@ -182,7 +182,7 @@ function Colonparen.get_blind_by_key(key)
 	if key == 'bl_small' then return G.P_BLINDS.bl_small, 'Small' end
 	if key == 'bl_big' then return G.P_BLINDS.bl_big, 'Big' end
 	if G.P_BLINDS[key] then return G.P_BLINDS[key], 'Boss' end
-	for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
+	for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO', 'LOWER_GREEK', 'UPPER_GREEK'}) do
 		local P_STRING = 'P_' ..  (name:upper()) .. '_BLINDS'
 		if G[P_STRING][key] then
 			return G[P_STRING][key], name
@@ -311,18 +311,18 @@ Colonparen.GreekBlind = function (config)
 	config.lower.name = config.lower.name or name;
 	config.lower.mult = config.lower.mult or mult;
 	config.lower.pos = config.lower.pos or pos;
-	config.lower.atlas = config.lower.atlas or "colon_GreekLowercaseBlind";
+	config.lower.atlas = config.lower.atlas or "colon_LowercaseGreekBlind";
 	config.lower.boss_colour = config.lower.boss_colour or boss_colour;
-	
 	local lowercase = Colonparen.LowerGreekBlind(config.lower)
+
 	config.upper.key = config.upper.key or "upper_" .. key;
 	config.upper.name = config.upper.name or name;
 	config.upper.mult = config.upper.mult or mult;
 	config.upper.pos = config.upper.pos or pos;
 	config.upper.atlas = config.upper.atlas or "colon_GreekUppercaseBlind";
 	config.upper.boss_colour = config.upper.boss_colour or boss_colour;
-	
 	local uppercase = Colonparen.UpperGreekBlind(config.upper)
+
 	SMODS.modify_key(config, SMODS.current_mod and SMODS.current_mod.prefix, true)
 	Colonparen.GreekBlinds[config.key] = {
 		key = config.key,
