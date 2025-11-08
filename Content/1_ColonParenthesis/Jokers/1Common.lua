@@ -36,3 +36,32 @@ SMODS.Joker {
         code = "Glitchkat10",
     }
 }
+
+-- bebble
+SMODS.Joker {
+    key = "colon_pibble",
+    name = "Pibble",
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = false,
+    add_to_deck = function(self, card, from_debuff)
+        if from_debuff then
+            return
+        end
+        for _,blind in pairs(G.GAME.round_resets.blind_choices) do
+            if blind == "bl_small" then
+                Colonparen.changeblind("Small", "Small", "bl_small")
+            end
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.ante_change then
+            print(G.GAME.round_resets.blind_choices)
+        end
+    end,
+    beans_credits = {
+        idea = "idk",
+        code = "Bitter",
+        team = ":(",
+    }
+}
