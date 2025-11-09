@@ -130,7 +130,7 @@ function Colonparen.calculateReplacedBlind(blind, slot, with)
 			blind_object = blind_object,
 			cbean_colon_set_blind = true,
 			blind_slot = slot,
-			blind_type = Colonparen.get_blind_type(blind_object),
+			blind_type = Colonparen.get_blind_type(blind_object)
 		}) or {}
 		return result.blind or blind;
 	end
@@ -141,7 +141,7 @@ function Colonparen.calculateReplacedBlind(blind, slot, with)
 			blind_object = blind_object,
 			cbean_colon_set_blind = true,
 			blind_slot = slot,
-			blind_type = Colonparen.get_blind_type(blind_object),
+			blind_type = Colonparen.get_blind_type(blind_object)
 		}) or {}
 		return result.blind or blind
 	else
@@ -456,4 +456,12 @@ SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, f
 		}
 	end
 	return calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+end
+
+local is_getter_context = SMODS.is_getter_context;
+function SMODS.is_getter_context(context)
+	if context.cbean_colon_set_blind then
+		return "cbean_colon_set_blind"
+	end
+	return is_getter_context(context)
 end

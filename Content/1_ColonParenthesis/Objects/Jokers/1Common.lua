@@ -49,15 +49,16 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
+        print(context.trigger_obj)
         if context.cbean_colon_set_blind then
             if context.blind == "bl_small" then
                 return {
-                    blind = "bl_cbean_colon_wee"
+                    blind = Colonparen.get_new_blind('Teeny')
                 }
             end
             if context.blind == "bl_big" then
                 return {
-                    blind = "bl_small"
+                    blind = Colonparen.get_new_blind('Small')
                 }
             end
         end
