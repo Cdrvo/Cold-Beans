@@ -27,6 +27,14 @@ function reset_blinds()
 			G.GAME.colonparen_prescribed_blinds = nil -- make sure carry over doesn't happen (since if its set it must be from a previous call to reset_blinds
 		end
 
+		G.GAME.colon_blind_variables = {
+			Boss = {},
+			Teeny = {},
+			Small = {},
+			Big = {},
+			CEO = {},
+			Forced = {}
+		}
 		G.GAME.round_resets.blind_choices.Boss = Colonparen.get_new_blind('Boss')
 		G.GAME.round_resets.blind_choices.Teeny = Colonparen.get_new_blind('Teeny')
 		G.GAME.round_resets.blind_choices.Small = Colonparen.get_new_blind('Small')
@@ -61,6 +69,21 @@ end
 
 local set_blind = Blind.set_blind
 function Blind:set_blind(blind, reset, silent)
+	if not reset then
+		G.GAME.colon_blind_variables = G.GAME.colon_blind_variables or {
+			Boss = {},
+			Teeny = {},
+			Small = {},
+			Big = {},
+			CEO = {},
+			Forced = {}
+		}
+		if not G.GAME.colon_blind_variables[G.GAME.blind_on_deck or 'Teeny'] then
+			G.GAME.colon_blind_variables[G.GAME.blind_on_deck or 'Teeny'] = {}
+		end
+		Colonparen.blind_variables = G.GAME.colon_blind_variables[G.GAME.blind_on_deck or 'Teeny']
+	end
+
 	if not reset then
 		self.colonparen_blindtype = (blind or {}).colonparen_blindtype;
 		if self.colonparen_blindtype == nil then

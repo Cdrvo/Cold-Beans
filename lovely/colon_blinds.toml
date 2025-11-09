@@ -497,4 +497,24 @@ pattern = '''G.GAME.blind_on_deck = 'Small''''
 position = "at"
 payload = '''G.GAME.blind_on_deck = 'Teeny''''
 match_indent = true
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''G.GAME.orbital_choices = G.GAME.orbital_choices or {}'''
+position = "before"
+payload = '''
+if blind_choice.config.colon_blind_variables then
+    if not G.GAME.colon_blind_variables[type] then
+        G.GAME.colon_blind_variables[type] = {}
+    end
+    for key, eval in pairs(blind_choice.config.colon_blind_variables) do
+        if not G.GAME.colon_blind_variables[type][key] then
+            G.GAME.colon_blind_variables[type][key] = eval()
+        end
+    end
+end
+Colonparen.blind_variables = G.GAME.colon_blind_variables[type]
+'''
+match_indent = true
+
 

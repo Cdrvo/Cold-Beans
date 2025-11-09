@@ -18,16 +18,7 @@ return {
             bl_cbean_colon_sheet = {
                 name = "The Sheet",
                 text = {
-                    "Debuff the most held in hand rank this run",
-                    "Debuff the most played rank this run"
-                }
-            },
-            bl_cbean_colon_sheet_play = {
-                name = "The Sheet",
-                text = {
-                    "Debuff the most held in hand rank this run",
-                    "Debuff the most played rank this run",
-                    "(Currently held #1#s and played #2#s)",
+                    "Debuff held #1#s and played #2#s"
                 }
             },
             bl_cbean_colon_gamma = {
@@ -278,7 +269,10 @@ return {
         blind_states = {},
         challenge_names = {},
         collabs = {},
-        dictionary = {},
+        dictionary = {
+            sheet_most_held = "(Most held rank)",
+            sheet_most_played = "(Most played rank)",
+        },
         high_scores = {},
         labels = {},
         poker_hand_descriptions = {},

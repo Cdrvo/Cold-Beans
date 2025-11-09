@@ -86,3 +86,8 @@ Colonparen.changeBlind = function(blindType, after) -- blindType | A string cont
         end
     }))
 end
+
+
+function Colonparen.get_blind_variable(name, cb)
+    
+end

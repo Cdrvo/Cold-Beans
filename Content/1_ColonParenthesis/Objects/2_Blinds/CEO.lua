@@ -115,28 +115,37 @@ Colonparen.CEOBlind{
 	atlas = "colon_CEOBlind",
     mult = 3,
 	boss_colour = HEX("1e5c51"),
+    colon_blind_variables = {
+        most_held = function () return G.GAME.colonparen_most_held_rank or 'Ace' end,
+        most_played = function() return G.GAME.colonparen_most_played_rank or '2' end,
+    },
     loc_vars = function (self)
-        if G.GAME.blind.name == "Colon-The Sheet" then
-            return {
-                key = self.key .. '_play',
-                vars = {
-                    localize(G.GAME.colonparen_most_held_rank or 'Ace', 'ranks'),
-                    localize(G.GAME.colonparen_most_played_rank or '2', 'ranks'),
-                }
+        return {
+            vars = {
+                localize(Colonparen.blind_variables.most_held, 'ranks'),
+                localize(Colonparen.blind_variables.most_played, 'ranks'),
             }
-        end
+        }
+    end,
+    collection_loc_vars = function (self)
+        return {
+            vars = {
+                localize('sheet_most_held'),
+                localize('sheet_most_played'),
+            }
+        }
     end,
     calculate = function (self, blind, context)
         if context.debuff_card 
         and context.debuff_card.base then
             if context.debuff_card.area == G.play then
-                if context.debuff_card.base.value == (G.GAME.colonparen_most_played_rank or '2') then
+                if context.debuff_card.base.value == Colonparen.blind_variables.most_played then
                     return {
                         debuff = true
                     }
                 end
             else
-                if context.debuff_card.base.value == (G.GAME.colonparen_most_held_rank or 'Ace') then
+                if context.debuff_card.base.value == Colonparen.blind_variables.most_held then
                     return {
                         debuff = true
                     }
