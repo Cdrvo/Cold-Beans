@@ -55,8 +55,6 @@ SMODS.Joker {
 -- Sproinky 
 SMODS.Joker {
     key = "colon_sproinky",
-    name = "Sproinky",
-    pronouns = "it_its",
 
     rarity = 2,
     price = 8,
@@ -90,4 +88,53 @@ SMODS.Joker {
         idea = "Unknown",
         code = "bitterdoes",
     }
+}
+
+-- mu cube
+SMODS.Joker {
+    key = "colon_mucube",
+
+    config = {extra = {xmult1 = 4, xmult2 = 6,req1 = 4, count1 = 0, req2 = 6, count2 = 0}},
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult1,
+                card.ability.extra.xmult2,
+                card.ability.extra.req1,
+                card.ability.extra.count1,
+                card.ability.extra.req2,
+                card.ability.extra.count2,
+            }
+        }
+    end,
+
+    rarity = 2,
+    price = 6,
+    blueprint_compat = true,
+
+    calculate = function(self, card, context) -- Kinda want it to shake when its ready
+        if context.individual and context.cardarea == G.play then
+            if context.other_card.base.id == 4 then
+                card.ability.extra.count1 = card.ability.extra.count1 + 1
+                if card.ability.extra.count1 >= card.ability.extra.req1 then
+                    card.ability.extra.count1 = 0
+                    return {
+                        xmult = card.ability.extra.xmult1
+                    }
+                else
+                return {message = "fweh"}
+                end
+            elseif context.other_card.base.id == 6 then
+                card.ability.extra.count2 = card.ability.extra.count2 + 1
+                if card.ability.extra.count2 >= card.ability.extra.req2 then
+                    card.ability.extra.count2 = 0
+                    return {
+                        xmult = card.ability.extra.xmult2
+                    }
+                else
+                return {message = "sex"}
+                end
+            end
+        end 
+    end
 }

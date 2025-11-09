@@ -50,7 +50,9 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "colon_packing",
-    name = "Square Packing",
+    atlas = "colon_JokerAtlas",
+    pos = {x=1, y=0},
+
     config = {
         extra = {
             xmult_mod = 3.877084,

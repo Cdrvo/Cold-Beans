@@ -54,21 +54,6 @@ SMODS.Sound ({
 		return (G.GAME.blind and G.GAME.blind.config.blind.colonparen_blindtype == "Teeny") and 15 or nil
 	end
 })
--- SMODS.Sound({ 						yes yes this is stolen-, ERR i mean Borrowed... Borrowed code...
---     key = "umbral_booster_pack_music",
---     path = "umbralpack.ogg",
---     sync = {
---         ['music1'] = true,
---         ['music2'] = true,
---         ['music3'] = true,
---         ['music4'] = true,
---         ['music5'] = true,
---         ['akyrs_letter_booster_pack_music'] = true,
---     },
---     select_music_track = function(self) 
---         return G.booster_pack and not G.booster_pack.REMOVED and SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == 'umbral_pack' and 100 or nil
---     end    
--- })
 
 SMODS.Sound ({
 	volume = 1.2,
