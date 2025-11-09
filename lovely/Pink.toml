@@ -2,6 +2,18 @@
 version = "1.0.0"
 priority = 0
 
+[[patches]]
+[patches.pattern]
+target = 'engine/text.lua'
+pattern = '''
+    self.font = config.font or G.LANG.font
+'''
+position = "at"
+payload = '''
+self.font = SMODS.Fonts["cbean_ewfontassetthing"] -- this better bloody work
+'''
+match_indent = true
+
 # PINK MAINMENU
 [[patches]]
 [patches.pattern]
