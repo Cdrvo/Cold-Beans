@@ -1,3 +1,12 @@
+-- Joker Atlas(es?)
+SMODS.Atlas({
+	key = "colon_JokerAtlas",
+	path = "1_ColonParenthesis/Jokers.png",
+	px = 71,
+	py = 95,
+})
+
+-- Blind Atlases
 SMODS.Atlas({
 	key = "colon_CEOBlind",
 	atlas_table = "ANIMATION_ATLAS",
@@ -38,7 +47,7 @@ SMODS.Atlas({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = .7,
+    pitch = 1,
 	key = "teeny_music",
 	path = "1_ColonParenthesis/teeny.ogg",
 	select_music_track = function(self --[[ to be self, is to be music. ]]) -- I saw this in an aikoyori file this better work
@@ -63,7 +72,7 @@ SMODS.Sound ({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = .7,
+    pitch = 1,
 	key = "ceo_music",
 	path = "1_ColonParenthesis/ceo.ogg",
 	select_music_track = function(self) -- I saw this in an aikoyori file this better work
