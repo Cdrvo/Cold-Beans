@@ -18,8 +18,16 @@ return {
             bl_cbean_colon_sheet = {
                 name = "The Sheet",
                 text = {
-                    "Debuff all held in hand #1#s", -- [most held in hand rank]
-                    "Debuff all played #2#s" -- [most played rank]
+                    "Debuff the most held in hand rank this run",
+                    "Debuff the most played rank this run"
+                }
+            },
+            bl_cbean_colon_sheet_play = {
+                name = "The Sheet",
+                text = {
+                    "Debuff the most held in hand rank this run",
+                    "Debuff the most played rank this run",
+                    "(Currently held #1#s and played #2#s)",
                 }
             },
             bl_cbean_colon_gamma = {
@@ -111,7 +119,7 @@ return {
                 name = "Big Shot",
                 text = {
                     "When a {C:attention}Big Blind{} is defeated,",
-                    "earn between {C:money}$-199.7{} and {C:money}$199.7",
+                    "earn between {C:money}$#1#{} and {C:money}$#2#", -- (-19.97) and (19.97)
                 },
             },
         },
@@ -129,10 +137,7 @@ return {
         blind_states = {},
         challenge_names = {},
         collabs = {},
-        dictionary = {
-            cbean_colon_sheet_held = "(Most held rank)",
-            cbean_colon_sheet_played = "(Most played rank)",
-        },
+        dictionary = {},
         high_scores = {},
         labels = {},
         poker_hand_descriptions = {},

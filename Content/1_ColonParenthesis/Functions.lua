@@ -1,6 +1,18 @@
+Colonparen.recalculateBlinds = function ()
+	for type_, blind in pairs(G.GAME.round_resets.blind_choices or {}) do
+        if blind then
+            local newblind = Colonparen.calculateReplacedBlind(blind, type_)
+            if newblind ~= blind then
+                Colonparen.changeBlind(type_, newblind)
+            end
+        end
+    end
+end
+
 -- vvv Taken from Button_callbacks.lua 2878
 
-Colonparen.changeblind = function(blindType, before, after) -- blindType | A string containing the type of blind, before | the blind name to be changed, after | the blind key to be changed into
+Colonparen.changeBlind = function(blindType, after) -- blindType | A string containing the type of blind, before | the blind name to be changed, after | the blind key to be changed into
+    local before = blindType:lower()
     if not G.blind_select_opts[before] and G.GAME.round_resets.blind_choices[before] then
         print("before ", G.blind_select_opts)
         error("Could not update blind, as its not in current blinds", 1)
@@ -17,7 +29,6 @@ Colonparen.changeblind = function(blindType, before, after) -- blindType | A str
             return true
         end
     }))
-    print("going down")
 
     G.CONTROLLER.locks.boss_reroll = true -- f.. caw.. f
 
@@ -33,7 +44,6 @@ Colonparen.changeblind = function(blindType, before, after) -- blindType | A str
                 return true
             end
             G.GAME.round_resets.blind_choices[blindType] = after -- OHHH SO FUCK ME!!! IT HAS TO BE CAPTIALLLLL DUUUUUUUUUUH
-            print(before, " is now ", after)
 
             -- bring that shit back
             G.blind_select_opts[before]:remove() -- Doesnt seem to be required, but I may just be dumb and it might just make it available to use
@@ -65,7 +75,6 @@ Colonparen.changeblind = function(blindType, before, after) -- blindType | A str
             par.config.object:recalculate() -- Doesnt Seem to be required, could also be used like :remove()
             G.blind_select_opts[before].parent = par -- make it parented to the right thingy mabob
             G.blind_select_opts[before].alignment.offset.y = 0
-            print("now going up")
 
             G.E_MANAGER:add_event(Event({blocking = false, trigger = 'after', delay = 0.5,func = function() -- I mean its boss_reroll but like close enough
                 G.CONTROLLER.locks.boss_reroll = nil
