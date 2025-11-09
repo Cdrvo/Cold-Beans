@@ -1,3 +1,12 @@
+-- Joker Atlas(es?)
+SMODS.Atlas({
+	key = "colon_JokerAtlas",
+	path = "1_ColonParenthesis/Jokers.png",
+	px = 71,
+	py = 95,
+})
+
+-- Blind Atlases
 SMODS.Atlas({
 	key = "colon_CEOBlind",
 	atlas_table = "ANIMATION_ATLAS",
@@ -38,7 +47,7 @@ SMODS.Atlas({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = .7,
+    pitch = 1,
 	key = "teeny_music",
 	path = "1_ColonParenthesis/teeny.ogg",
 	select_music_track = function(self --[[ to be self, is to be music. ]]) -- I saw this in an aikoyori file this better work
@@ -63,7 +72,7 @@ SMODS.Sound ({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = .7,
+    pitch = 1,
 	key = "ceo_music",
 	path = "1_ColonParenthesis/ceo.ogg",
 	select_music_track = function(self) -- I saw this in an aikoyori file this better work
@@ -78,4 +87,15 @@ SMODS.Sound {
 SMODS.Sound {
 	key = "upper_greekMusic",
 	path = "1_ColonParenthesis/uppercasegreek.ogg"
+}
+
+SMODS.Font {
+	key = 'ewfontassetthing',
+	path = 'enchantfiont.ttf',
+	render_scale = 200,         -- Base size in pixels (default: 200)
+	TEXT_HEIGHT_SCALE = 0.83,   -- Line spacing (default: 0.83)
+	TEXT_OFFSET = {x = 0, y = 0}, -- Alignment tweak (default: {0,0})
+	FONTSCALE = 0.1,           	 -- Scale multiplier (default: 0.1)
+	squish = 1,                 -- Horizontal stretch (default: 1)
+	DESCSCALE = 1               -- Description scale (default: 1)
 }

@@ -118,6 +118,13 @@ return {
             j_cbean_colon_bigshot = {
                 name = "Big Shot",
                 text = {
+                    "Played 4s give X#1# mult every #3# [#4#] times they are scored",
+                    "Played 6s give X#2# mult every #5# [#6#] times they are scored",
+                },
+            },
+            j_cbean_colon_mucube = {
+                name = "Mu Cube",
+                text = {
                     "When a {C:attention}Big Blind{} is defeated,",
                     "earn between {C:money}$#1#{} and {C:money}$#2#", -- (-19.97) and (19.97)
                 },
