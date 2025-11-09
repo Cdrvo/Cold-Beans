@@ -54,12 +54,21 @@ SMODS.Joker {
             }
         }
     end,
-
-    calculate = function(self,card,context)
-        if context.individual then
-            
+    add_to_deck = function (self, card, from_debuff)
+        if not from_debuff then
+            Colonparen.recalculateBlinds() -- this WILL NOT WORK if you spawn it from collection
         end
     end,
+    calculate = function(self, card, context)
+        if context.cbean_colon_set_blind then
+            if context.blind_type == "CEO" then
+                return {
+                    blind = Colonparen.get_new_blind('Lower_Greek')
+                }
+            end
+        end
+    end,
+
     beans_credits = {
         team = ":( Team",
         idea = "Unknown",

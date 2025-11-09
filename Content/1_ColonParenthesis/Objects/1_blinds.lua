@@ -42,7 +42,7 @@ function Blind:get_type()
 end
 
 function Blind:true_type()
-	return self.colonparen_blindtype
+	return Colonparen.get_blind_type(self)
 end
 
 function Colonparen.get_blind_type(blind)
@@ -101,10 +101,13 @@ Colonparen.BossBlind = SMODS.Blind;
 
 function Colonparen.calculateReplacedBlind(blind, slot)
 	if G.deck then
+		local blind_object = Colonparen.get_blind_by_key(blind);
 		local result = SMODS.calculate_context({
 			blind = blind,
+			blind_object = blind_object,
 			cbean_colon_set_blind = true,
-			blind_slot = slot
+			blind_slot = slot,
+			blind_type = Colonparen.get_blind_type(blind_object),
 		}) or {}
 		return result.blind or blind
 	else
