@@ -42,6 +42,7 @@ Colonparen.CEOBlind{
 }
 
 ColdBeans.OnCalculate(function (self, context)
+    local either_changed = false;
     if context.before and (#context.scoring_hand > 0) then
         if not G.GAME.colonparen_most_played_ranks then
             G.GAME.colonparen_most_played_ranks = {}
@@ -59,6 +60,9 @@ ColdBeans.OnCalculate(function (self, context)
                 min_use = use;
                 chosen = rank
             end
+        end
+        if G.GAME.colonparen_most_played_rank ~= chosen then
+            either_changed = true
         end
         G.GAME.colonparen_most_played_rank = chosen
     end
@@ -80,52 +84,62 @@ ColdBeans.OnCalculate(function (self, context)
                 chosen = rank
             end
         end
+        if G.GAME.colonparen_most_held_rank ~= chosen then
+            either_changed = true
+        end
         G.GAME.colonparen_most_held_rank = chosen
+    end
+    if either_changed then
+        if G.GAME.blind and G.GAME.blind.name == "Colon-The Sheet" then
+            G.GAME.blind:set_text()
+        end
     end
 end)
 
+local calculate_context = SMODS.calculate_context;
+function SMODS.calculate_context(context, return_table, no_resolve)
+    if (G and G.GAME and G.GAME.blind and G.GAME.blind.name == "Colon-The Sheet")
+        and context.before then
+            for i, card in ipairs(G.play.cards) do
+                SMODS.recalc_debuff(card)
+            end
+    end
+    return calculate_context(context, return_table, no_resolve)
+end
+
 Colonparen.CEOBlind{
     key = "colon_sheet",
+    name = "Colon-The Sheet",
     pos = { x = 0, y = 2 },
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 3,
 	boss_colour = HEX("1e5c51"),
     loc_vars = function (self)
-        return {
-            vars = {
-                localize(G.GAME.colonparen_most_held_rank or 'Ace', 'ranks'),
-                localize(G.GAME.colonparen_most_played_rank or '2', 'ranks'),
+        if G.GAME.blind.name == "Colon-The Sheet" then
+            return {
+                key = self.key .. '_play',
+                vars = {
+                    localize(G.GAME.colonparen_most_held_rank or 'Ace', 'ranks'),
+                    localize(G.GAME.colonparen_most_played_rank or '2', 'ranks'),
+                }
             }
-        }
-    end,
-    collection_loc_vars = function (self)
-        return {
-            vars = {
-                localize('cbean_colon_sheet_held'),
-                localize('cbean_colon_sheet_played'),
-            }
-        }
+        end
     end,
     calculate = function (self, blind, context)
         if context.debuff_card 
         and context.debuff_card.base then
-            if context.debuff_card.base.value == (G.GAME.colonparen_most_held_rank or 'Ace') then
-                for i, card in ipairs(G.hand.cards) do
-                    if context.debuff_card == card then
-                        return {
-                            debuff = true
-                        }
-                    end
+            if context.debuff_card.area == G.play then
+                if context.debuff_card.base.value == (G.GAME.colonparen_most_played_rank or '2') then
+                    return {
+                        debuff = true
+                    }
                 end
-            end
-            if context.debuff_card.base.value == (G.GAME.colonparen_most_played_rank or '2') then
-                for i, card in ipairs((G.play or {}).cards or {}) do
-                    if context.debuff_card == card then
-                        return {
-                            debuff = true
-                        }
-                    end
+            else
+                if context.debuff_card.base.value == (G.GAME.colonparen_most_held_rank or 'Ace') then
+                    return {
+                        debuff = true
+                    }
                 end
             end
         end

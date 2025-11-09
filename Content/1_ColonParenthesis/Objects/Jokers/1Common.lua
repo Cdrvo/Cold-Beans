@@ -43,38 +43,22 @@ SMODS.Joker {
     cost = 5,
     rarity = 1,
     blueprint_compat = false,
-    add_to_deck = function(self, card, from_debuff)
-        if from_debuff then
-            return
+    add_to_deck = function (self, card, from_debuff)
+        if not from_debuff then
+            Colonparen.recalculateBlinds() -- this WILL NOT WORK if you spawn it from collection
         end
-            local small, big = false, false
-            for _,blind in pairs(G.GAME.round_resets.blind_choices) do
-                print(blind)
-                if blind == "bl_small" and not small then
-                    print("small iterated")
-                    Colonparen.changeblind("Small", "small", "bl_cbean_colon_wee")
-                    small = true
-                elseif blind == "bl_big" and not big then
-                    print("big iterated")
-                    Colonparen.changeblind("Big", "big", "bl_small")
-                    big = true
-                end
-            end
     end,
     calculate = function(self, card, context)
-        if context.ante_change or context.ending_shop then
-            local small, big = false, false
-            for _,blind in pairs(G.GAME.round_resets.blind_choices) do
-                print(blind)
-                if blind == "bl_small" and not small then
-                    print("small iterated")
-                    Colonparen.changeblind("Small", "small", "bl_cbean_colon_wee")
-                    small = true
-                elseif blind == "bl_big" and not big then
-                    print("big iterated")
-                    Colonparen.changeblind("Big", "big", "bl_small")
-                    big = true
-                end
+        if context.cbean_colon_set_blind then
+            if context.blind == "bl_small" then
+                return {
+                    blind = "bl_cbean_colon_wee"
+                }
+            end
+            if context.blind == "bl_big" then
+                return {
+                    blind = "bl_small"
+                }
             end
         end
     end,

@@ -104,7 +104,8 @@ SMODS.Joker {
     name = "Big Shot",
     config = {
         extra = {
-            max = 199.7,
+            max = 19.97,
+            min = -19.97,
             quips = {
                 "N-NOWS YOUR CHANCE!",
                 "[[BIG SHOT!]]",
@@ -126,6 +127,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
+                card.ability.extra.min,
                 card.ability.extra.max,
             }
         }
@@ -134,7 +136,7 @@ SMODS.Joker {
         if context.end_of_round and context.main_eval and G.GAME.blind.loc_name == "Big Blind" then
             return {
                 message = card.ability.extra.quips[math.random(1, #card.ability.extra.quips)],
-                dollars = math.random(-card.ability.extra.max, card.ability.extra.max),
+                dollars = math.random(card.ability.extra.min, card.ability.extra.max),
                 remove_default_message = true,
             }
         end

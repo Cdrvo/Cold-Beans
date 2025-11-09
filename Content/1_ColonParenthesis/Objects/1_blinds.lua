@@ -99,13 +99,26 @@ G.P_SMALL_BLINDS.bl_small = G.P_BLINDS.bl_small
 G.P_BIG_BLINDS.bl_big = G.P_BLINDS.bl_big
 Colonparen.BossBlind = SMODS.Blind;
 
+function Colonparen.calculateReplacedBlind(blind, slot)
+	if G.deck then
+		local result = SMODS.calculate_context({
+			blind = blind,
+			cbean_colon_set_blind = true,
+			blind_slot = slot
+		}) or {}
+		return result.blind or blind
+	else
+		return blind
+	end
+end
+
 local old_get_new_boss = get_new_boss;
 function get_new_boss(...)
 	if G.GAME.colonparen_prescribed_blinds 
 		and G.GAME.colonparen_prescribed_blinds.Boss then
-			return G.GAME.colonparen_prescribed_blinds.Boss
+			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds.Boss, "Boss")
 	end
-	return old_get_new_boss(...);
+	return Colonparen.calculateReplacedBlind(old_get_new_boss(...), "Boss")
 end
 
 function Colonparen.get_new_blind(type)
@@ -114,7 +127,7 @@ function Colonparen.get_new_blind(type)
 	end
 	if G.GAME.colonparen_prescribed_blinds 
 		and G.GAME.colonparen_prescribed_blinds[type] then
-			return G.GAME.colonparen_prescribed_blinds[type]
+			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds[type], type)
 	end
 	local P_STRING = 'P_' ..  (type:upper()) .. '_BLINDS'
 	local eligible_bosses = {}
@@ -175,8 +188,7 @@ function Colonparen.get_new_blind(type)
     end
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
-    
-    return boss
+	return Colonparen.calculateReplacedBlind(boss, type)
 end
 
 function Colonparen.get_blind_by_key(key)
@@ -387,3 +399,22 @@ function SMODS.collection_pool(item, ...)
 	return old_collection_pool(item, ...)
 end
 
+SMODS.other_calculation_keys[#SMODS.other_calculation_keys+1] = 'blind';
+SMODS.silent_calculation.blind = true
+local update_context_flags = SMODS.update_context_flags;
+function SMODS.update_context_flags(context, flags)
+	update_context_flags(context, flags)
+	if flags.blind then
+		context.blind = flags.blind
+	end
+end
+
+local calculate_individual_effect = SMODS.calculate_individual_effect;
+SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
+	if key == 'blind' then
+		return {
+			blind = amount
+		}
+	end
+	return calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+end
