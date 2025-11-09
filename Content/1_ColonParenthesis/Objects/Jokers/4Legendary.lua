@@ -59,7 +59,7 @@ SMODS.Joker {
     end,
     add_to_deck = function (self, card, from_debuff)
         if not from_debuff then
-            Colonparen.recalculateBlinds() -- this WILL NOT WORK if you spawn it from collection
+            Colonparen.recalculateBlinds(card)
         end
     end,
     calculate = function(self, card, context)
@@ -75,7 +75,7 @@ SMODS.Joker {
     beans_credits = {
         team = ":( Team",
         idea = "Unknown",
-        code = "bitterdoes",
+        code = "jamirror",
     }
 }
 

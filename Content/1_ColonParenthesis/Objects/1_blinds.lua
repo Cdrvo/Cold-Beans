@@ -122,7 +122,18 @@ G.P_SMALL_BLINDS.bl_small = G.P_BLINDS.bl_small
 G.P_BIG_BLINDS.bl_big = G.P_BLINDS.bl_big
 Colonparen.BossBlind = SMODS.Blind;
 
-function Colonparen.calculateReplacedBlind(blind, slot)
+function Colonparen.calculateReplacedBlind(blind, slot, with)
+	if with and with.config and with.config.center and with.config.center.calculate then
+		local blind_object = Colonparen.get_blind_by_key(blind);
+		local result = with.config.center:calculate(card, {
+			blind = blind,
+			blind_object = blind_object,
+			cbean_colon_set_blind = true,
+			blind_slot = slot,
+			blind_type = Colonparen.get_blind_type(blind_object),
+		}) or {}
+		return result.blind or blind;
+	end
 	if G.deck then
 		local blind_object = Colonparen.get_blind_by_key(blind);
 		local result = SMODS.calculate_context({
@@ -432,6 +443,8 @@ function SMODS.update_context_flags(context, flags)
 	update_context_flags(context, flags)
 	if flags.blind then
 		context.blind = flags.blind
+		context.blind_object = Colonparen.get_blind_by_key(context.blind);
+		context.blind_type = Colonparen.get_blind_type(context.blind_object)
 	end
 end
 

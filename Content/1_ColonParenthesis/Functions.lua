@@ -1,7 +1,7 @@
-Colonparen.recalculateBlinds = function ()
+Colonparen.recalculateBlinds = function (with)
 	for type_, blind in pairs(G.GAME.round_resets.blind_choices or {}) do
         if blind then
-            local newblind = Colonparen.calculateReplacedBlind(blind, type_)
+            local newblind = Colonparen.calculateReplacedBlind(blind, type_, with)
             if newblind ~= blind then
                 Colonparen.changeBlind(type_, newblind)
             end
@@ -89,5 +89,5 @@ end
 
 
 function Colonparen.get_blind_variable(name, cb)
-    
+
 end
