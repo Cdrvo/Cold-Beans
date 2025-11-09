@@ -74,8 +74,8 @@ return {
             j_cbean_colon_minnesang = { -- Minnesang | Common | Bitter | tbd
                 name = "Minnesang",
                 text = {
-                    "{C:red}+2{} discards each round,",
-                    "{C:money}-1{} dollar per round"
+                    "{C:red}#1#{} discards each round,",
+                    "{C:money}#2#{} dollar per round"
                 }
             },
             j_cbean_colon_trouvere = { -- Trouvère | Common | Bitter | tbd
@@ -148,7 +148,7 @@ return {
                 }
             },
 
-                    -- UNCOMMON 4/6
+                    -- UNCOMMON 5/6
 
             j_cbean_colon_careerladder = { -- Career Ladder | Uncommon | ??? | tbd
                 name = "Career Ladder",

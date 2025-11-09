@@ -1,9 +1,64 @@
+
+SMODS.Joker {
+    key = "colon_minnesang",
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+
+    config = {
+        extra = {
+            discards = 2,
+            dollars = -1
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discards,
+                card.ability.extra.dollars
+            }
+        }
+    end,
+
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            return {
+                dollars = card.ability.extra.dollars,
+                func = function()
+                    G.E_MANAGER.add_event(Event({
+                        trigger = "ease",
+                        delay = 1,
+                        ref_table = G.GAME,
+                        ref_value = "chips",-- someone make this discards I gtg school
+                        ease_to = G.GAME.chips + card.ability.extra.discards,
+                    }))
+                end,
+            }
+        end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Bitter",
+        code = "Bitter",
+    }
+}
+            -- j_cbean_colon_minnesang = { -- Minnesang | Common | Bitter | tbd
+            --     name = "Minnesang",
+            --     text = {
+            --         "{C:red}+2{} discards each round,",
+            --         "{C:money}-1{} dollar per round"
+            --     }
+            -- },
+
+-- misc
 SMODS.Joker {
     key = "colon_chalk",
     name = "Chalk",
     config = {
         extra = {
-            xmult = 1,
+            xmult = 3,
             winning_ante_mod = 2
         }
     },
