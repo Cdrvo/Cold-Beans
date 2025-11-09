@@ -143,7 +143,46 @@ SMODS.Joker {
     end,
     beans_credits = {
         idea = "George The Rat",
-        code = "bitterdoes",
+        code = "Bitter",
+        team = ":(",
+    }
+}
+
+-- Spectaro
+SMODS.Joker {
+    key = "colon_spectaro",
+
+    rarity = 3,
+    price = 10,
+    blueprint_compat = true,
+
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint and (G.GAME.blind_on_deck == "Teeny" or "CEO" or "Ceo" )then
+            local eval = function() return G.GAME.current_round.discards_used == 0 and (G.GAME.blind_on_deck == "Teeny" or "CEO" or "Ceo") and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+        if context.end_of_round and context.cardarea == G.jokers and (G.GAME.blind_on_deck == "Teeny" or "CEO" or "Ceo")--[[can NOT be fucked checking which one]] and G.GAME.current_round.discards_used == 0 then
+        print("hey please go change spectaro so they check for room in consumable spot") -- ^^^
+            return {
+                message = "MAGIC!",
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            -- I hate nested stuff
+                            card:juice_up()
+                            SMODS.add_card({
+                                set = "Spectral"
+                            })
+                            return true
+                        end
+                    }))
+                end
+            }
+        end
+    end,
+    beans_credits = {
+        idea = "uuuh i dunno :(",
+        code = "Bitter",
         team = ":(",
     }
 }

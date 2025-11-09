@@ -20,7 +20,6 @@ SMODS.Joker {
                     times = i-1
                 end
             end
-            print(times)
             if times < 1 then
                 return
             end
@@ -40,6 +39,10 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_plato",
     name = "Plato",
+    
+    atlas = "colon_JokerAtlas",
+    pos = {x=0, y=1},
+	soul_pos = {x=1, y=1},
 
     rarity = 4,
     price = 13,

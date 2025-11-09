@@ -24,8 +24,8 @@ pattern = '''
 '''
 position = "at"
 payload = '''
-            {name = 'colour_1', ref_table = G.C, ref_value = 'VOUCHER'},
-            {name = 'colour_2', ref_table = G.C, ref_value = 'VOUCHER'},
+            {name = 'colour_1', ref_table = G.C.SECONDARY_SET, ref_value = 'Spectral'},
+            {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE'},
 '''
 match_indent = true
 
@@ -39,7 +39,7 @@ pattern = '''
 '''
 position = "at"
 payload = ''' 
-                    {name = 'colour_1', ref_table = G.C, ref_value = 'VOUCHER'},
-                    {name = 'colour_2', ref_table = G.C, ref_value = 'VOUCHER'},
+                    {name = 'colour_1', ref_table = G.C.UI, ref_value = 'TEXT_INACTIVE'},
+                    {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE'},
 '''
 match_indent = true
