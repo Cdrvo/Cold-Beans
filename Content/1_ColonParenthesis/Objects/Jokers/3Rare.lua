@@ -98,9 +98,8 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "colon_packing",
-    atlas = "colon_JokerAtlas",
-    pos = { x = 1, y = 0 },
+    key = "colon_square_packing",
+    name = "Square Packing",
     config = {
         extra = {
             xmult_mod = 3.877084,
@@ -109,6 +108,9 @@ SMODS.Joker {
             xmult = 1,
         }
     },
+    atlas = "colon_JokerAtlas",
+    pos = { x = 1, y = 0 },
+    pixel_size = { h = 71 },
     cost = 8,
     rarity = 3,
     blueprint_compat = true,
@@ -149,6 +151,7 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "colon_spectaro",
+    name = "Spectaro",
     rarity = 3,
     cost = 10,
     blueprint_compat = true,

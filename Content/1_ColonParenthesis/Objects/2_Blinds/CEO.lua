@@ -12,7 +12,7 @@ end
 
 Colonparen.CEOBlind{
     key = "colon_treasure",
-    name = "cbean-colon-treasure",
+    name = "The Treasure",
     pos = { x = 0, y = 0 },
 	boss = {},
 	atlas = "colon_CEOBlind",
@@ -94,61 +94,7 @@ end
 
 Colonparen.CEOBlind{
     key = "colon_sheet",
-    name = "Colon-The Sheet",
-    pos = { x = 0, y = 2 },
-	boss = {},
-	atlas = "colon_CEOBlind",
-    mult = 3,
-	boss_colour = HEX("1e5c51"),
-    colon_blind_variables = {
-        most_held = function () return G.GAME.colonparen_most_held_rank or 'Ace' end,
-        most_played = function() return G.GAME.colonparen_most_played_rank or '2' end,
-    },
-    loc_vars = function (self)
-        return {
-            vars = {
-                localize(Colonparen.blind_variables.most_held, 'ranks'),
-                localize(Colonparen.blind_variables.most_played, 'ranks'),
-            }
-        }
-    end,
-    collection_loc_vars = function (self)
-        return {
-            vars = {
-                localize('sheet_most_held'),
-                localize('sheet_most_played'),
-            }
-        }
-    end,
-    calculate = function (self, blind, context)
-        if context.debuff_card 
-        and context.debuff_card.base then
-            if context.debuff_card.area == G.play then
-                if context.debuff_card.base.value == Colonparen.blind_variables.most_played then
-                    return {
-                        debuff = true
-                    }
-                end
-            else
-                if context.debuff_card.base.value == Colonparen.blind_variables.most_held then
-                    return {
-                        debuff = true
-                    }
-                end
-            end
-        end
-    end,
-    beans_credits = {
-        team = ":(",
-        idea = "George The Rat",
-        art = "George The Rat",
-        code = "jamirror",
-    }
-}
-
-Colonparen.CEOBlind{
-    key = "colon_sheet",
-    name = "Colon-The Sheet",
+    name = "The Sheet",
     pos = { x = 0, y = 2 },
 	boss = {},
 	atlas = "colon_CEOBlind",
@@ -202,32 +148,30 @@ Colonparen.CEOBlind{
 
 Colonparen.CEOBlind{
     key = "colon_stamp",
+    name = "The Stamp",
     pos = { x = 0, y = 16 },
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 5,
 	boss_colour = HEX("a13535"),
-    beans_credits = {
-        team = ":(",
-        idea = "George The Rat",
-        art = "George The Rat",
-        code = "jamirror",
-    },
     calculate = function (self, blind, context)
-        if context.debuff_card 
-        and context.debuff_card 
-        and context.debuff_card.seal then
+        if context.debuff_card and context.debuff_card.base and context.debuff_card.base.seal then
             return {
                 debuff = true
             }
         end
     end,
-
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "jamirror",
+    }
 }
 
 Colonparen.CEOBlind{
     key = "colon_salesman",
-    name = 'Colon-The Salesman',
+    name = "The Salesman",
     pos = { x = 0, y = 17 },
 	boss = {},
 	atlas = "colon_CEOBlind",
@@ -237,6 +181,6 @@ Colonparen.CEOBlind{
         team = ":(",
         idea = "George The Rat",
         art = "George The Rat",
-        code = "jamirror",
+        code = "",
     }
 }

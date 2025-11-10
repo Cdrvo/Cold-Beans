@@ -15,6 +15,11 @@ Colonparen.GreekBlind{
         end,
         calculate = function(self, blind, context)
         end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        code = "",
     }
 }
 
@@ -35,6 +40,11 @@ Colonparen.GreekBlind{
         end,
         calculate = function(self, blind, context)
         end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        code = "",
     }
 }
 
@@ -85,5 +95,10 @@ Colonparen.GreekBlind{
         end,
         calculate = function(self, blind, context)
         end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        code = "",
     }
 }

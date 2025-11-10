@@ -1,6 +1,51 @@
 -- Career Ladder
 
 SMODS.Joker {
+    key = "colon_minnesang",
+    name = "Minnesang",
+    config = {
+        extra = {
+            discards = 2,
+            dollars = 2
+        }
+    },
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discards,
+                card.ability.extra.dollars
+            }
+        }
+    end,
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = false,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+        ease_discard(card.ability.extra.discards)
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            return {
+                dollars = -card.ability.extra.dollars,
+                colour = G.C.RED
+            }
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+        ease_discard(-card.ability.extra.discards)
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "bitter",
+        code = "Glitchkat10",
+    }
+}
+
+SMODS.Joker {
     key = "colon_mu_cube",
     name = "Mu Cube",
     config = {
@@ -26,7 +71,7 @@ SMODS.Joker {
         }
     end,
     rarity = 2,
-    price = 6,
+    cost = 6,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
@@ -61,7 +106,7 @@ SMODS.Joker {
     name = "RNA",
     pronouns = "it_its",
     rarity = 2,
-    price = 6,
+    cost = 5,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint then
@@ -114,7 +159,7 @@ SMODS.Joker {
     key = "colon_sproinky",
     name = "Sproinky",
     rarity = 2,
-    price = 8,
+    cost = 8,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
@@ -142,5 +187,46 @@ SMODS.Joker {
         team = ":(",
         idea = "George The Rat",
         code = "bitter",
+    }
+}
+
+SMODS.Joker {
+    key = "colon_trouvere",
+    name = "Trouvere",
+    config = {
+        extra = {
+            hands = 2,
+            discards = 1
+        }
+    },
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.hands,
+                card.ability.extra.discards
+            }
+        }
+    end,
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = false,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+        ease_hands_played(card.ability.extra.hands)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+        ease_discard(-card.ability.extra.discards)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+        ease_hands_played(-card.ability.extra.hands)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+        ease_discard(card.ability.extra.discards)
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "bitter",
+        code = "Glitchkat10",
     }
 }

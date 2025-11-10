@@ -5,14 +5,14 @@ return {
     descriptions = {
         Back = {},
         Blind = {
-            bl_cbean_colon_treasure = {
+            bl_cbean_colon_treasure = { -- George The Rat | N/A | N/A
                 name = "The Treasure",
                 text = {
                     "When {C:money}${} is earned, increase",
                     "blind size by {X:purple} X0.2 {} base"
                 }
             },
-            bl_cbean_colon_gate = {
+            bl_cbean_colon_gate = { -- George The Rat | N/A | N/A
                 name = "The Gate",
                 text = {
                     "Moderately large blind"
@@ -36,13 +36,13 @@ return {
                     "Next shop and Blind select screen are skipped"
                 }
             },
-            bl_cbean_colon_gamma = {
-                name = "The Gamma",
-                text = {
-                    "Retrigger all played cards 2 additional times",
-                    "Retrigger all played and held in hand cards 3 additional times"
-                }
-            },
+            -- bl_cbean_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
+            --     name = "The Gamma",
+            --     text = {
+            --         "Retrigger all played cards 2 additional times",
+            --         "Retrigger all played and held in hand cards 3 additional times"
+            --     }
+            -- },
             bl_cbean_colon_wee = {
                 name = "Wee Blind",
                 text = {}
@@ -100,11 +100,13 @@ return {
                     "{C:green}1 in 8{} chance to instead lose {C:red}$8"
                 }
             },
-            j_cbean_colon_loan_shark = { -- George The Rat | N/A | N/A
+            j_cbean_colon_loan_shark = { -- George The Rat | George The Rat | Glitchkat10
                 name = "Loan Shark",
                 text = {
-                    "Lose {C:money$5{} when defeating a {s:0.9,C:chips}Teeny{}, {C:blue}Small{}, or {C:attention}Big Blind",
-                    "Gain {C:money}$15{} when defeating a {C:attention}Boss{} or {E:1,C:money}CEO{C:money} Blind",
+                    "Lose {C:money}$#1#{} when {s:0.9,C:chips}Teeny{}, {C:blue}Small{},",
+                    "or {C:attention}Big Blind{} is selected",
+                    "Earn {C:money}$#2#{} when {C:attention}Boss{}",
+                    "or {E:1,C:money}CEO Blind{} is selected"
                 }
             },
             j_cbean_colon_lumberjack = { -- George The Rat | N/A | N/A
@@ -113,13 +115,6 @@ return {
                     "All {C:attention}held in hand{} jacks are destroyed",
                     "Gains {C:mult}+4{} mult when a jack is destroyed",
                     "{C:inactive}(Currently {C:mult}+0{C:inactive} mult)"
-                }
-            },
-            j_cbean_colon_minnesang = { -- bitter | N/A | N/A
-                name = "Minnesang",
-                text = {
-                    "{C:red}#1#{} discards each round,",
-                    "{C:money}#2#{} dollar per round"
                 }
             },
             j_cbean_colon_orchestra = { -- bitter | N/A | N/A
@@ -154,6 +149,13 @@ return {
                     "All {E:1,C:attention}Showdown Boss Blinds{} are replaced by {C:attention}Boss Blinds",
                     "All {E:1,C:money,s:1.1}Showdown CEO Blinds{} are replaced by {E:1,C:money}CEO Blinds",
                 },
+            },
+            j_cbean_colon_minnesang = { -- bitter | N/A | Glitchkat10
+                name = "Minnesang",
+                text = {
+                    "{C:red}+#1#{} discards each round,",
+                    "Lose {C:money}$#2#{} at end of round"
+                }
             },
             j_cbean_colon_mu_cube = { --George The Rat | N/A | bitter
                 name = "Mu Cube",
@@ -190,8 +192,8 @@ return {
             j_cbean_colon_trouvere = { -- bitter | N/A | bitter
                 name = "Trouvère",
                 text = {
-                    "{C:blue}+2{} hands each round,",
-                    "{C:red}-1{} discards per round"
+                    "{C:blue}+#1#{} hands per round,",
+                    "{C:red}-#2#{} discards each round"
                 }
             },
 
@@ -217,11 +219,12 @@ return {
             j_cbean_colon_spectaro = { -- George The Rat | N/A | bitter
                 name = "Spectaro",
                 text = {
-                    "Creates a {C:spectral}Spectral{} card when {s:0.9,C:chips}Teeny Blind{}",
-                    "or {E:1,C:money}CEO{} Blind is defeated without discarding",
+                    "Create a {C:spectral}Spectral{} card when",
+                    "{s:0.9,C:chips}Teeny Blind{} or {E:1,C:money}CEO Blind{} is",
+                    "defeated without discarding",
                 },
             },
-            j_cbean_colon_packing = { -- Glitchkat10 | George The Rat | Glitchkat10
+            j_cbean_colon_square_packing = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Square Packing",
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
@@ -256,8 +259,8 @@ return {
             j_cbean_colon_aristotle = { -- Glitchkat10 | N/A | N/A
                 name = "Aristotle",
                 text = {
-                    "Open 1 {C:dark_edition}Blessing{} {C:attention}Pack{} when a {E:1, C:money}CEO Blind{} is defeated",
-                    "When a {C:dark_edition}Blessing{} is obtained from a {C:attention}Booster Pack{},",
+                    "Open a {C:attention}Blessing Pack{} when {C:money,E:1}CEO Blind{} is defeated",
+                    "When a Blessing is obtained from a {C:attention}Booster Pack{},",
                     "create 1 {C:spectral}Taa Marbuta"
                 },
             },

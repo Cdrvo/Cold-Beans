@@ -47,54 +47,50 @@ SMODS.Joker {
 
 -- Lead
 
--- Loan Shark
-
--- Lumberjack
-
 SMODS.Joker {
-    key = "colon_minnesang",
-    name = "Minnesang",
-    -- atlas = "",
-    -- pos = { x = 0, y = 0 },
+    key = "colon_loan_shark",
+    name = "Loan Shark",
     config = {
         extra = {
-            discards = 2,
-            dollars = -1
+            dollars1 = 5,
+            dollars2 = 15
         }
     },
+    atlas = "colon_JokerAtlas",
+    pos = { x = 0, y = 0 },
+    cost = 6,
+    rarity = 1,
+    blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.discards,
-                card.ability.extra.dollars
+                card.ability.extra.dollars1,
+                card.ability.extra.dollars2
             }
         }
     end,
-    cost = 5,
-    rarity = 1,
-    blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.setting_blind and (context.blind == "bl_cold_colon_teeny" or context.blind == "bl_small" or context.blind == "bl_big") then
             return {
-                dollars = card.ability.extra.dollars,
-                func = function()
-                    G.E_MANAGER.add_event(Event({
-                        trigger = "ease",
-                        delay = 1,
-                        ref_table = G.GAME,
-                        ref_value = "chips",-- someone make this discards I gtg school
-                        ease_to = G.GAME.chips + card.ability.extra.discards,
-                    }))
-                end,
+                dollars = -card.ability.extra.dollars1,
+                colour = G.C.RED
+            }
+        end
+        if context.setting_blind and (context.blind == "bl_boss" or context.blind == "bl_cold_colon_ceo") then
+            return {
+                dollars = card.ability.extra.dollars2
             }
         end
     end,
     beans_credits = {
         team = ":(",
-        idea = "bitter",
-        code = "bitter",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Glitchkat10",
     }
 }
+
+-- Lumberjack
 
 SMODS.Joker {
     key = "colon_pebble",
