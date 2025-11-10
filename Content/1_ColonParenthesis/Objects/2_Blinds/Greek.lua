@@ -63,7 +63,7 @@ Colonparen.GreekBlind{
     },
     beans_credits = {
         team = ":(",
-        idea = "Unknown",
+        idea = "Glitchkat10",
         code = "Glitchkat10",
     }
 }
