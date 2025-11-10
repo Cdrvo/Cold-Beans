@@ -4,6 +4,7 @@
 
 -- Boulder
 
+-- Chalk
 SMODS.Joker {
     key = "colon_chalk",
     name = "Chalk",
@@ -125,3 +126,86 @@ SMODS.Joker {
 }
 
 -- Top Rope
+
+-- Not Top Rope
+SMODS.Joker {
+    key = "colon_minnesang",
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+
+    config = {
+        extra = {
+            discards = 2,
+            dollars = -1
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discards,
+                card.ability.extra.dollars
+            }
+        }
+    end,
+
+    cost = 6,
+    rarity = 1,
+    blueprint_compat = false,
+    add_to_deck = function(self, card, from_debuff) -- stolen from vremeade
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            return {
+                dollars = card.ability.extra.dollars,
+            }
+        end
+    end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "Bitter",
+        code = "Bitter",
+    }
+}
+SMODS.Joker {
+    key = "colon_trouvere",
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+
+    config = {
+        extra = {
+            hands = 2, -- add
+            discards = 1 -- take
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.hands,
+                card.ability.extra.discards
+            }
+        }
+    end,
+
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = false,
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+    end,
+
+    beans_credits = {
+        team = ":( Team",
+        idea = "Bitter",
+        code = "Bitter",
+    }
+}
