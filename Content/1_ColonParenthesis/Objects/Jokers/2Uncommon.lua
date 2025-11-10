@@ -9,7 +9,7 @@ SMODS.Joker {
             dollars = 2
         }
     },
-    -- atlas = "",
+    -- atlas = "colon_JokerAtlas",
     -- pos = { x = 0, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {
@@ -199,7 +199,7 @@ SMODS.Joker {
             discards = 1
         }
     },
-    -- atlas = "",
+    -- atlas = "colon_JokerAtlas",
     -- pos = { x = 0, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {
@@ -228,5 +228,56 @@ SMODS.Joker {
         team = ":(",
         idea = "bitter",
         code = "Glitchkat10",
+    }
+}
+
+SMODS.Joker {
+    key = "colon_orchestra",
+    name = "Orchestra",
+    config = {
+        extra = {
+            hands = 2,
+            discards = 2,
+            hand_size = 2 
+        }
+    },
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+    rarity = 2,
+    cost = 12,
+    blueprint_compat = false,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.hands,
+                card.ability.extra.discards,
+                card.ability.extra.hand_size,
+            }
+        }
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+        ease_hands_played(card.ability.extra.hands)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+        ease_discard(card.ability.extra.discards)
+        G.hand:change_size(card.ability.extra.hand_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+        G.hand:change_size(-card.ability.extra.hand_size)
+    end,
+	in_pool = function()
+		for i = 1, #G.jokers.cards do
+			if G.jokers.cards[i].config.center.key == "j_troubadour" and G.jokers.cards[i].config.center.key == "j_cold_colon_minnesang" and G.jokers.cards[i].config.center.key == "j_cold_colon_trouvere" then
+				return true
+			end
+		end
+		return false
+	end,
+    beans_credits = {
+        team = ":( Team",
+        idea = "bitter",
+        code = { "bitter", "Glitchkat10" },
     }
 }

@@ -117,14 +117,6 @@ return {
                     "{C:inactive}(Currently {C:mult}+0{C:inactive} mult)"
                 }
             },
-            j_cbean_colon_orchestra = { -- bitter | N/A | N/A
-                name = "Orchestra",
-                text = {
-                    "{C:blue}+2{} hands per round",
-                    "{C:red}+2{} discards each round",
-                    "{C:attention}+2{} hand size"
-                }
-            },
             j_cbean_colon_pebble = { -- George The Rat | N/A | jamirror and bitter
                 name = "Pebble",
                 text = {
@@ -165,6 +157,14 @@ return {
                     "Played {C:attention}6s{} give {X:mult,C:white}X#4#{} Mult every",
                     "{C:attention}#5#{} {C:inactive}[#6#]{} times they are scored"
                 },
+            },
+            j_cbean_colon_orchestra = { -- bitter | N/A | bitter and Glitchkat10
+                name = "Orchestra",
+                text = {
+                    "{C:blue}+#1#{} hands per round",
+                    "{C:red}+#2#{} discards each round",
+                    "{C:attention}+#3#{} hand size"
+                }
             },
             j_cbean_colon_rna = { -- bitter and George The Rat | N/A | bitter
                 name = "RNA",
