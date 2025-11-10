@@ -149,7 +149,7 @@ SMODS.Joker {
     end,
 
     cost = 6,
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = false,
     add_to_deck = function(self, card, from_debuff) -- stolen from vremeade
         G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
@@ -201,6 +201,52 @@ SMODS.Joker {
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
         G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+    end,
+
+    beans_credits = {
+        team = ":( Team",
+        idea = "Bitter",
+        code = "Bitter",
+    }
+}
+
+SMODS.Joker {
+    key = "colon_somethign eles i just gotta go",
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+
+    config = {
+        extra = {
+            hands = 2,
+            discards = 2,
+            h_size = 2 
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.h_count,
+                card.ability.extra.h_size,
+                card.ability.extra.discards
+            }
+        }
+    end,
+
+    cost = 12,
+    blueprint_compat = false,
+    pools = {
+        ["Joker"] = false
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.h_count + card.ability.extra.h_count
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+        G.hand:change_size(card.ability.extra.h_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+        G.hand:change_size(-card.ability.extra.h_size)
     end,
 
     beans_credits = {
