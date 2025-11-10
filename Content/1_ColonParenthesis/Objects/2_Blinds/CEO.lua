@@ -1,7 +1,7 @@
 local old_ease_dollars = ease_dollars;
 function ease_dollars(...)
     local stuff = old_ease_dollars(...)
-    if G.GAME and G.GAME.blind and G.GAME.blind.name == "cbean-colon-treasure" then
+    if G.GAME and G.GAME.blind and G.GAME.blind.name == "The Treasure" then
         G.GAME.blind.mult = G.GAME.blind.mult + 0.2;
         G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
@@ -75,7 +75,7 @@ ColdBeans.OnCalculate(function (self, context)
         G.GAME.colonparen_most_held_rank = chosen
     end
     if either_changed then
-        if G.GAME.blind and G.GAME.blind.name == "Colon-The Sheet" then
+        if G.GAME.blind and G.GAME.blind.name == "The Sheet" then
             G.GAME.blind:set_text()
         end
     end
@@ -83,7 +83,7 @@ end)
 
 local calculate_context = SMODS.calculate_context;
 function SMODS.calculate_context(context, return_table, no_resolve)
-    if (G and G.GAME and G.GAME.blind and G.GAME.blind.name == "Colon-The Sheet")
+    if (G and G.GAME and G.GAME.blind and G.GAME.blind.name == "The Sheet")
         and context.before then
             for i, card in ipairs(G.play.cards) do
                 SMODS.recalc_debuff(card)
@@ -181,6 +181,6 @@ Colonparen.CEOBlind{
         team = ":(",
         idea = "George The Rat",
         art = "George The Rat",
-        code = "",
+        code = "jamirror",
     }
 }
