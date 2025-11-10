@@ -21,6 +21,18 @@ return {
                     "Debuff held #1#s and played #2#s"
                 }
             },
+            bl_cbean_colon_stamp = {
+                name = "The Stamp",
+                text = {
+                    "Debuff all Sealed cards"
+                }
+            },
+            bl_cbean_colon_salesman = {
+                name = "The Salesman",
+                text = {
+                    "Next shop and Blind select screen are skipped"
+                }
+            },
             bl_cbean_colon_gamma = {
                 name = "The Gamma",
                 text = {

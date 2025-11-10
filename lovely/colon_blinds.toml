@@ -516,5 +516,44 @@ end
 Colonparen.blind_variables = G.GAME.colon_blind_variables[type]
 '''
 match_indent = true
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''if G.GAME.round_resets.blind_states.Boss == 'Defeated' then'''
+position = "at"
+payload = '''if G.GAME.round_resets.blind_states.CEO == 'Defeated' then'''
+match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''G.deck:hard_set_T()
+        delay(0.3)
+        G.E_MANAGER:add_event(Event({'''
+position = "at"
+payload = '''G.deck:hard_set_T()
+        delay(0.3)
+        if G.GAME.round_resets.blind_choices[G.GAME.blind_on_deck] == 'bl_cbean_colon_salesman' then
+            G.COLON_SALESMAN_TOGGLE = true
+        end
+        G.E_MANAGER:add_event(Event({'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''G.STATE = G.STATES.SHOP
+G.GAME.shop_free = nil
+G.GAME.shop_d6ed = nil
+G.STATE_COMPLETE = false'''
+position = "at"
+payload = '''
+if not G.COLON_SALESMAN_TOGGLE then
+    G.STATE = G.STATES.SHOP
+    G.GAME.shop_free = nil
+    G.GAME.shop_d6ed = nil
+    G.STATE_COMPLETE = false
+end
+G.COLON_SALESMAN_TOGGLE = nil
+'''
+match_indent = true
 
