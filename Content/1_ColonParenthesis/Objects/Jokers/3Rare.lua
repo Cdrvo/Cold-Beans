@@ -1,4 +1,53 @@
 SMODS.Joker {
+    key = "colon_big_shot",
+    name = "Big Shot",
+    config = {
+        extra = {
+            max = 199.7,
+            min = -199.7,
+            quips = {
+                "N-NOWS YOUR CHANCE!",
+                "[[BIG SHOT!]]",
+                "HOOCHI MAMA!",
+                "[[Hyperlink Blocked]]",
+                "A DEAL'S A DEAL!!!",
+                "1997!",
+                "Smells like KROMER",
+                "BUY [KeyGen]",
+                "PERFECT FOR [City Livin']",
+                "KRIS.",
+                "LET ME SAY [Thanks]"
+            }
+        }
+    },
+    cost = 8,
+    rarity = 3,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.min,
+                card.ability.extra.max,
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and G.GAME.blind.loc_name == "Big Blind" then
+            return {
+                message = card.ability.extra.quips[math.random(1, #card.ability.extra.quips)],
+                dollars = math.random(card.ability.extra.min, card.ability.extra.max),
+                remove_default_message = true,
+            }
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        code = "bitter",
+    }
+}
+
+SMODS.Joker {
     key = "colon_modernity",
     name = "Modernity",
     config = {
@@ -42,8 +91,8 @@ SMODS.Joker {
         end
     end,
     beans_credits = {
-        team = ":( Team",
-        idea = "Unknown",
+        team = ":(",
+        idea = "George The Rat",
         code = "Glitchkat10",
     }
 }
@@ -51,8 +100,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_packing",
     atlas = "colon_JokerAtlas",
-    pos = {x=1, y=0},
-
+    pos = { x = 1, y = 0 },
     config = {
         extra = {
             xmult_mod = 3.877084,
@@ -93,76 +141,23 @@ SMODS.Joker {
         end
     end,
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "Glitchkat10",
         code = "Glitchkat10",
     }
 }
 
 SMODS.Joker {
-    key = "colon_bigshot",
-    name = "Big Shot",
-    config = {
-        extra = {
-            max = 19.97,
-            min = -19.97,
-            quips = {
-                "N-NOWS YOUR CHANCE!",
-                "[[BIG SHOT!]]",
-                "HOOCHI MAMA!",
-                "[[Hyperlink Blocked]]",
-                "A DEAL'S A DEAL!!!",
-                "1997!",
-                "Smells like KROMER",
-                "BUY [KeyGen]",
-                "PERFECT FOR [City Livin']",
-                "KRIS.",
-                "LET ME SAY [Thanks]"
-            }
-        }
-    },
-    cost = 8,
-    rarity = 3,
-    blueprint_compat = true,
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.min,
-                card.ability.extra.max,
-            }
-        }
-    end,
-    calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval and G.GAME.blind.loc_name == "Big Blind" then
-            return {
-                message = card.ability.extra.quips[math.random(1, #card.ability.extra.quips)],
-                dollars = math.random(card.ability.extra.min, card.ability.extra.max),
-                remove_default_message = true,
-            }
-        end
-    end,
-    beans_credits = {
-        idea = "George The Rat",
-        code = "Bitter",
-        team = ":(",
-    }
-}
-
--- Spectaro
-SMODS.Joker {
     key = "colon_spectaro",
-
     rarity = 3,
-    price = 10,
+    cost = 10,
     blueprint_compat = true,
-
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint and (G.GAME.blind_on_deck == "Teeny" or "CEO" or "Ceo" )then
             local eval = function() return G.GAME.current_round.discards_used == 0 and (G.GAME.blind_on_deck == "Teeny" or "CEO" or "Ceo") and not G.RESET_JIGGLES end
             juice_card_until(card, eval, true)
         end
         if context.end_of_round and context.cardarea == G.jokers and (G.GAME.blind_on_deck == "Teeny" or "CEO" or "Ceo")--[[can NOT be fucked checking which one]] and G.GAME.current_round.discards_used == 0 then
-        print("hey please go change spectaro so they check for room in consumable spot") -- ^^^
             return {
                 message = "MAGIC!",
                 func = function()
@@ -181,8 +176,8 @@ SMODS.Joker {
         end
     end,
     beans_credits = {
-        idea = "uuuh i dunno :(",
-        code = "Bitter",
+        idea = "George The Rat",
+        code = "bitter",
         team = ":(",
     }
 }

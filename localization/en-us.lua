@@ -1,3 +1,6 @@
+-- Sorted by rarity and filtered alphabetically
+-- Information goes: Suggestor | Art | Coder
+
 return {
     descriptions = {
         Back = {},
@@ -46,123 +49,105 @@ return {
             }
         },
         Enhanced = {},
-        Joker = { -- you guys better sort by Rarity, additional category then alphabetical
+        Joker = {
 
-                    -- COMMON 14/13
+            -- Common
 
-            -- climbing ones
-            j_cbean_colon_autobelay = { -- Auto Belay | Common | ??George| n/a
-                name = "Auto Belay",
+            j_cbean_colon_all_in = { -- George The Rat | N/A | N/A
+                name = "All In",
                 text = {
-                    "Gains {C:mult}+2{} Mult when a {C:attention}card{} is discarded",
-                    "but has a {C:green}1 in 7{} chance to {C:attention}reset",
-                    "{C:inactive}(Currently {C:mult}+0{C:inactive} Mult)",
+                    "When entering an {C:attention}Ante{}, all {C:attention}Blinds{} are",
+                    "either {s:0.9,C:chips}Teeny Blinds{} or {E:1,C:money}CEO Blinds"
                 }
             },
-            j_cbean_colon_boulder = { -- Boulder | Common | George | tbd
+            j_cbean_colon_auto_belay = { -- George The Rat | N/A | N/A
+                name = "Auto Belay",
+                text = {
+                    "Gains {C:mult}+2{} Mult when a {C:attention}card{} is discarded,",
+                    "has a {C:green}1 in 7{} chance to {C:attention}reset when triggered",
+                    "{C:inactive}(Currently {C:mult}+0{C:inactive} Mult)"
+                }
+            },
+            j_cbean_colon_boulder = { -- George The Rat | N/A | N/A
                 name = "Boulder",
                 text = {
                     "Gains {C:white,X:mult}X0.1{} Mult when {C:money}money{} is spent",
-                    "but has a {C:green}1 in 5{} chance to {C:attention}reset",
-                    "{C:inactive}(Currently {C:white,X:mult}X1{C:inactive} Mult)",
+                    "has a {C:green}1 in 5{} chance to {C:attention}reset when triggered",
+                    "{C:inactive}(Currently {C:white,X:mult}X1{C:inactive} Mult)"
                 }
             },
-            j_cbean_colon_lead = { -- Lead | Common | George | tbd
-                name = "Lead",
-                text = {
-                    "Earn {C:money}$0{} at the {C:attention}end of round",
-                    "Gain {C:money}$1{} per hand played, {C:green}1 in 8{} chance to instead lose 8", -- this line may be too long....
-                }
-            },
-            j_cbean_colon_topRope = { -- Boulder | Common | George | tbd
-                name = "Top Rope",
-                text = {
-                    "Gain {C:chips}+15{} Chips when {C:attention}playing card{} scored at the {C:attention}end of round", -- attention-slop
-                    "{C:green}1 in 2{} chance to instead decrease by {C:chips}-30{} Chips", -- this line may be too long....
-                }
-            },
-
-            -- Troubadour Inspired
-            j_cbean_colon_minnesang = { -- Minnesang | Common | Bitter | tbd
-                name = "Minnesang",
-                text = {
-                    "{C:red}#1#{} discards each round,",
-                    "{C:money}#2#{} dollar per round"
-                }
-            },
-            j_cbean_colon_trouvere = { -- Trouvère | Common | Bitter | tbd
-                name = "Trouvère", -- name might be fucked with font
-                text = {
-                    "{C:blue}+2{} hands each round,",
-                    "{C:red}-1{} discards per round"
-                }
-            },                                                                                      --   vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-            j_cbean_colon_orchestra = { -- Orchestra | Common | Bitter | tbd                             JUST AN IDEA!!! would be a mix of all 33
-                name = "Orchestra", -- name might be fucked with font                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                text = {
-                    "{C:blue}+2{} hands each round,",
-                    "{C:blue}+2{} discards each round,",        -- could be 1 or 2 idk
-                    "{C:blue}+2{} hand size each round,",
-                }
-            },
-
-            -- misc
-            j_cbean_colon_allin = { -- All in | Common | ?? | tbd
-                name = "All In",
-                text = {
-                    "When entering an {C:attention}ante{} all blinds are",
-                    "either all {s:0.9,C:chips}teeny blinds{} or all {E:1,C:money}CEO blinds",
-                }
-            },
-            j_cbean_colon_chalk = { -- Chalk | Common | ?? | ??
+            j_cbean_colon_chalk = { -- George The Rat | N/A | Glitchkat10
                 name = "Chalk",
                 text = {
                     "{C:white,X:mult}X#1#{} Mult",
                     "Permanently increase winning",
                     "{C:attention}Ante{} by {C:attention}+#2#{} when obtained",
-                    '{C:inactive}"Chalk is aid"',
+                    "{C:inactive}\"Chalk is aid\""
                 }
             },
-            j_cbean_colon_f180 = { -- Full 180 | Common | ?? | tbd
+            j_cbean_colon_full_180 = { -- Glitchkat10 | N/A | N/A
                 name = "Full 180",
                 text = {
                     "Blind order in current {C:attention}Ante{} is {C:dark_edition,E:1}randomized",
-                    "{C:attention}Bases{} are kept in the same order", -- What is a "Base"
+                    "{C:attention}Blind requirement{} is kept in the same order"
                 }
             },
-            j_cbean_colon_lawOrder = { -- Law And Order | Common | ?? | tbd
-                name = "Law And Order",
+            j_cbean_colon_lead = { -- George The Rat | N/A | N/A
+                name = "Lead",
                 text = {
-                    "{C:attention}Triple Blind requirement{} of {s:0.9,C:chips}Teeny Blinds",
-                    "{C:attention}Halve Blind requirement{} of {E:1,C:money}CEO Blinds",
+                    "Earn {C:money}$0{} at the {C:attention}end of round",
+                    "Payout increases by {C:money}$1{} when hand is played,",
+                    "{C:green}1 in 8{} chance to instead lose {C:red}$8"
                 }
             },
-            j_cbean_colon_loanshark = { -- Loan Shark | Common | ?? | tbd
+            j_cbean_colon_loan_shark = { -- George The Rat | N/A | N/A
                 name = "Loan Shark",
                 text = {
                     "Lose {C:money$5{} when defeating a {s:0.9,C:chips}Teeny{}, {C:blue}Small{}, or {C:attention}Big Blind",
                     "Gain {C:money}$15{} when defeating a {C:attention}Boss{} or {E:1,C:money}CEO{C:money} Blind",
                 }
             },
-            j_cbean_colon_lumberjack = { -- Lumber Jack | Common | ?? | tbd
-                name = "Lumber Jack", -- canio but you gotta hit the road
+            j_cbean_colon_lumberjack = { -- George The Rat | N/A | N/A
+                name = "Lumberjack",
                 text = {
                     "All {C:attention}held in hand{} jacks are destroyed",
                     "Gains {C:mult}+4{} mult when a jack is destroyed",
                     "{C:inactive}(Currently {C:mult}+0{C:inactive} mult)"
                 }
             },
-            j_cbean_colon_pibble = { -- Pebble | Common | ?? | bitter/Jam?
+            j_cbean_colon_minnesang = { -- bitter | N/A | N/A
+                name = "Minnesang",
+                text = {
+                    "{C:red}#1#{} discards each round,",
+                    "{C:money}#2#{} dollar per round"
+                }
+            },
+            j_cbean_colon_orchestra = { -- bitter | N/A | N/A
+                name = "Orchestra",
+                text = {
+                    "{C:blue}+2{} hands per round",
+                    "{C:red}+2{} discards each round",
+                    "{C:attention}+2{} hand size"
+                }
+            },
+            j_cbean_colon_pebble = { -- George The Rat | N/A | jamirror and bitter
                 name = "Pebble",
                 text = {
                     "{C:blue}Small Blinds{} are replaced with {s:0.9,C:chips}Teeny Blinds",
                     "{C:money}Big Blinds{} are replaced with {C:blue}Small Blinds",
                 }
             },
+            j_cbean_colon_top_rope = { -- George The Rat | N/A | bitter
+                name = "Top Rope",
+                text = {
+                    "Gain {C:chips}+15{} Chips when {C:attention}playing card{} scored at the end of round",
+                    "{C:green}1 in 2{} chance to instead decrease by {C:chips}-30{} Chips",
+                }
+            },
 
-                    -- UNCOMMON 5/6
+            -- Uncommon
 
-            j_cbean_colon_careerladder = { -- Career Ladder | Uncommon | ??? | tbd
+            j_cbean_colon_career_ladder = { -- Glitchkat10 | N/A | N/A
                 name = "Career Ladder",
                 text = {
                     "All {C:attention}Boss Blinds{} are replaced by {E:1,C:money}CEO Blinds",
@@ -170,47 +155,56 @@ return {
                     "All {E:1,C:money,s:1.1}Showdown CEO Blinds{} are replaced by {E:1,C:money}CEO Blinds",
                 },
             },
-            j_cbean_colon_mucube = { -- mu cube | Uncommon | ??? | BitterDoes
+            j_cbean_colon_mu_cube = { --George The Rat | N/A | bitter
                 name = "Mu Cube",
                 text = {
-                    "Scored 4s give {X:mult,C:white}X#1#{} mult every {C:attention}#3#",
-                    "Scored {}4s give {X:mult,C:white}X#2#{} mult every {C:attention}#5#",
-                    "{C:inactive}(Currently {C:attention}#4#{C:inactive}/#3# and {C:attention}#6#{C:inactive}/#5#)",
+                    "Played {C:attention}4s{} give {X:mult,C:white}X#1#{} Mult every",
+                    "{C:attention}#2#{} {C:inactive}[#3#]{} times they are scored",
+                    "Played {C:attention}6s{} give {X:mult,C:white}X#4#{} Mult every",
+                    "{C:attention}#5#{} {C:inactive}[#6#]{} times they are scored"
                 },
             },
-            j_cbean_colon_rna = { -- RNA | Uncommon | Bitter | Bitter
+            j_cbean_colon_rna = { -- bitter and George The Rat | N/A | bitter
                 name = "RNA",
                 text = {
                     "If {C:attention}first hand{} of round has only {C:attention}1", 
                     "add a permanent copy to deck and draw to {C:attention}hand", 
                     "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})"},
             },
-            j_cbean_colon_hedgehog = { -- Shadow | Uncommon | ??? | BitterDoes
+            j_cbean_colon_shadow = { -- Glitchkat10 | N/A | N/A
                 name = "Shadow",
                 text = {
                     "When a {C:attention}Booster Pack{} is bought from the shop",
-                    "create its {C:attention}corresponding{} Tag",
+                    "create its {C:attention}corresponding Tag",
+                    "{C:inactive}(if applicable)"
                 },
             },
-            j_cbean_colon_sproinky = { -- Sproinky | Uncommon | ??? | BitterDoes
+            j_cbean_colon_sproinky = { -- George The Rat | N/A | bitter
                 name = "Sproinky",
                 text = {
-                    "{C:attention}Played and unscoring cards{} become Steel",
+                    "Played and unscoring cards become {C:attention}Steel",
                     "Played {C:attention}Steel Cards{} become",
                     "{C:red,E:2}permanently {C:red}debuffed"
                 },
             },
+            j_cbean_colon_trouvere = { -- bitter | N/A | bitter
+                name = "Trouvère",
+                text = {
+                    "{C:blue}+2{} hands each round,",
+                    "{C:red}-1{} discards per round"
+                }
+            },
 
-                    -- RARE 5/4
+            -- Rare
 
-            j_cbean_colon_bigshot = { -- Big Shot | Rare | George | BitterDoes
+            j_cbean_colon_big_shot = { -- George The Rat | N/A | bitter
                 name = "Big Shot",
                 text = {
                     "When a {C:attention}Big Blind{} is defeated,",
-                    "earn between {C:money}$-199.7{} and {C:money}$199.7",
+                    "earn between {C:money}$#1#{} and {C:money}$#2#",
                 },
             },
-            j_cbean_colon_modernity = { -- Modernity | Rare | glitch | jam
+            j_cbean_colon_modernity = { -- George The Rat | N/A | Glitchkat10
                 name = "Modernity",
                 text = {
                     "This Joker gains {C:white,X:mult}X#1#{} Mult",
@@ -220,14 +214,14 @@ return {
                     "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
                 },
             },
-            j_cbean_colon_spectaro = { -- Spectaro | Rare | ?? | Bitter
+            j_cbean_colon_spectaro = { -- George The Rat | N/A | bitter
                 name = "Spectaro",
                 text = {
-                    "Creates a {C:spectral}spectral{} card on beating",
-                    "{s:0.9,C:chips}Teeny{} or {E:1,C:money}CEO{} Blind {C:attention}without discarding",
+                    "Creates a {C:spectral}Spectral{} card when {s:0.9,C:chips}Teeny Blind{}",
+                    "or {E:1,C:money}CEO{} Blind is defeated without discarding",
                 },
             },
-            j_cbean_colon_packing = { -- Square Packing | Rare | ??? | jam or glitch idk
+            j_cbean_colon_packing = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Square Packing",
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
@@ -235,35 +229,44 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
                 },
             },
-            j_cbean_colon_jester = { -- Square Packing | Rare | ??? | jam or glitch idk
+            j_cbean_colon_jester = { -- bitter | N/A | N/A
                 name = "Jester",
                 text = {
                     "Each {C:attention}Ace{} held in hand gives {C:white,X:mult}X1.5{} Mult",
                 },
             },
 
-                    -- LEGENDARIES 3/3
+            -- Legendary
 
-            j_cbean_colon_soph = { -- Sophron | Legendary | Bitter | Bitter
+            j_cbean_colon_sophron = { -- bitter | N/A | bitter
                 name = "Sophron",
                 text = {
-                    "{C:attention}Retrigger{} each played card",                        -- redo colors
-                    "for each card to the left of it"
+                    "Retrigger all cards",
+                    "played for each card",
+                    "to the {C:attention}left of them"
                 },
             },
-            j_cbean_colon_plato = { -- Plato | Legendary | glitch | tbd
+            j_cbean_colon_plato = { -- Glitchkat10 | N/A | N/A
                 name = "Plato",
                 text = {
                     "All {E:1,C:money}CEO Blinds{} are replaced by ",
                     "a random {V:1}Lowercase Greek Blind"
                 },
             },
-            j_cbean_colon_aris = { -- Aristotle | legendary | glitch | tbd
+            j_cbean_colon_aristotle = { -- Glitchkat10 | N/A | N/A
                 name = "Aristotle",
                 text = {
                     "Open 1 {C:dark_edition}Blessing{} {C:attention}Pack{} when a {E:1, C:money}CEO Blind{} is defeated",
                     "When a {C:dark_edition}Blessing{} is obtained from a {C:attention}Booster Pack{},",
                     "create 1 {C:spectral}Taa Marbuta"
+                },
+            },
+            j_cbean_colon_aristoxenus = { -- Glitchkat10 | N/A | N/A
+                name = "Aristoxenus",
+                text = {
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "when a {C:attention}new music track{} plays",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 },
             },
         },
@@ -295,10 +298,10 @@ return {
         suits_singular = {},
         tutorial = {},
         v_dictionary = {
-            coldbean_art = { "Art: #1#" },
-            coldbean_code = { "Code: #1#" },
             coldbean_team = { "Team: #1#" },
-            coldbean_idea = {"Idea: #1#"}
+            coldbean_idea = { "Idea: #1#" },
+            coldbean_art = { "Art: #1#" },
+            coldbean_code = { "Code: #1#" }
         },
         v_text = {},
     },

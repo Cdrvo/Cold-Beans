@@ -1,17 +1,9 @@
--- Legendaries include:
--- Sophron
--- Plato
--- Aristotle
-
--- Sophron
 SMODS.Joker {
-    key = "colon_soph",
+    key = "colon_sophron",
     name = "Sophron",
-
     rarity = 4,
-    price = 13,
+    cost = 20,
     blueprint_compat = true,
-
     calculate = function(self,card,context)
         if context.repetition and context.cardarea == G.play and not context.end_of_round then
             local times = 0
@@ -29,25 +21,21 @@ SMODS.Joker {
         end
     end,
     beans_credits = {
-        team = ":( Team",
-        idea = "Unknown",
-        code = "bitterdoes",
+        team = ":(",
+        idea = "bitter",
+        code = "bitter",
     }
 }
 
--- Plato
 SMODS.Joker {
     key = "colon_plato",
     name = "Plato",
-    
     atlas = "colon_JokerAtlas",
-    pos = {x=0, y=1},
-	soul_pos = {x=1, y=1},
-
+    pos = { x = 0, y = 1 },
+    soul_pos = { x = 1, y = 1 },
     rarity = 4,
-    price = 13,
+    cost = 20,
     blueprint_compat = true,
-
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -66,36 +54,59 @@ SMODS.Joker {
         if context.cbean_colon_set_blind then
             if context.blind_type == "CEO" then
                 return {
-                    blind = Colonparen.get_new_blind('Lower_Greek')
+                    blind = Colonparen.get_new_blind("Lower_Greek")
                 }
             end
         end
     end,
-
     beans_credits = {
-        team = ":( Team",
-        idea = "Unknown",
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
         code = "jamirror",
     }
 }
 
--- Aristotle
 SMODS.Joker {
-    key = "colon_aris",
+    key = "colon_aristotle",
     name = "Aristotle",
-
     rarity = 4,
-    price = 13,
+    cost = 20,
     blueprint_compat = true,
-
-    calculate = function(self,card,context)
-        if context.individual then
-            
-        end
+    calculate = function(self, card, context)
     end,
     beans_credits = {
-        team = ":( Team",
-        idea = "Unknown",
-        code = "bitterdoes",
+        team = ":(",
+        idea = "Glitchkat10",
+        code = "N/A",
+    }
+}
+
+SMODS.Joker {
+    key = "colon_aristoxenus",
+    name = "Aristoxenus",
+    config = {
+        extra = {
+            xmult_mod = 0.1,
+            xmult = 1
+        }
+    },
+    rarity = 4,
+    cost = 20,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult_mod,
+                card.ability.extra.xmult
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        code = "N/A",
     }
 }

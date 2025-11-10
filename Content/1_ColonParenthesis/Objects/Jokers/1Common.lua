@@ -1,58 +1,9 @@
+-- All In
 
-SMODS.Joker {
-    key = "colon_minnesang",
-    -- atlas = "",
-    -- pos = { x = 0, y = 0 },
+-- Auto Belay
 
-    config = {
-        extra = {
-            discards = 2,
-            dollars = -1
-        }
-    },
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.discards,
-                card.ability.extra.dollars
-            }
-        }
-    end,
+-- Boulder
 
-    cost = 5,
-    rarity = 1,
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-        if context.setting_blind then
-            return {
-                dollars = card.ability.extra.dollars,
-                func = function()
-                    G.E_MANAGER.add_event(Event({
-                        trigger = "ease",
-                        delay = 1,
-                        ref_table = G.GAME,
-                        ref_value = "chips",-- someone make this discards I gtg school
-                        ease_to = G.GAME.chips + card.ability.extra.discards,
-                    }))
-                end,
-            }
-        end
-    end,
-    beans_credits = {
-        team = ":( Team",
-        idea = "Bitter",
-        code = "Bitter",
-    }
-}
-            -- j_cbean_colon_minnesang = { -- Minnesang | Common | Bitter | tbd
-            --     name = "Minnesang",
-            --     text = {
-            --         "{C:red}+2{} discards each round,",
-            --         "{C:money}-1{} dollar per round"
-            --     }
-            -- },
-
--- misc
 SMODS.Joker {
     key = "colon_chalk",
     name = "Chalk",
@@ -86,15 +37,68 @@ SMODS.Joker {
         G.GAME.win_ante = G.GAME.win_ante + card.ability.extra.winning_ante_mod     
     end,
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "George The Rat",
         code = "Glitchkat10",
     }
 }
 
--- bebble
+-- Full 180
+
+-- Lead
+
+-- Loan Shark
+
+-- Lumberjack
+
 SMODS.Joker {
-    key = "colon_pibble",
+    key = "colon_minnesang",
+    name = "Minnesang",
+    -- atlas = "",
+    -- pos = { x = 0, y = 0 },
+    config = {
+        extra = {
+            discards = 2,
+            dollars = -1
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discards,
+                card.ability.extra.dollars
+            }
+        }
+    end,
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            return {
+                dollars = card.ability.extra.dollars,
+                func = function()
+                    G.E_MANAGER.add_event(Event({
+                        trigger = "ease",
+                        delay = 1,
+                        ref_table = G.GAME,
+                        ref_value = "chips",-- someone make this discards I gtg school
+                        ease_to = G.GAME.chips + card.ability.extra.discards,
+                    }))
+                end,
+            }
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "bitter",
+        code = "bitter",
+    }
+}
+
+SMODS.Joker {
+    key = "colon_pebble",
+    name = "Pebble",
     cost = 5,
     rarity = 1,
     blueprint_compat = false,
@@ -104,23 +108,24 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        print(context.trigger_obj)
         if context.cbean_colon_set_blind then
             if context.blind == "bl_small" then
                 return {
-                    blind = Colonparen.get_new_blind('Teeny')
+                    blind = Colonparen.get_new_blind("Teeny")
                 }
             end
             if context.blind == "bl_big" then
                 return {
-                    blind = Colonparen.get_new_blind('Small')
+                    blind = Colonparen.get_new_blind("Small")
                 }
             end
         end
     end,
     beans_credits = {
-        idea = "Unknown",
-        code = "jamirror",
         team = ":(",
+        idea = "George The Rat",
+        code = { "jamirror", "bitter" },
     }
 }
+
+-- Top Rope

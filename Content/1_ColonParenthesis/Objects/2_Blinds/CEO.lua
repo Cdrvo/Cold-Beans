@@ -19,7 +19,7 @@ Colonparen.CEOBlind{
     mult = 3,
 	boss_colour = HEX("2b62a7"),
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "Unknown",
         art = "George The Rat",
         code = "jamirror",
@@ -139,7 +139,7 @@ Colonparen.CEOBlind{
         end
     end,
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "Unknown",
         art = "George The Rat",
         code = "jamirror",
@@ -193,7 +193,7 @@ Colonparen.CEOBlind{
         end
     end,
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "Unknown",
         art = "George The Rat",
         code = "jamirror",
@@ -208,7 +208,7 @@ Colonparen.CEOBlind{
     mult = 5,
 	boss_colour = HEX("a13535"),
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "George The Rat",
         art = "George The Rat",
         code = "jamirror",
@@ -234,7 +234,7 @@ Colonparen.CEOBlind{
     mult = 5,
 	boss_colour = HEX("741543"),
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "George The Rat",
         art = "George The Rat",
         code = "jamirror",

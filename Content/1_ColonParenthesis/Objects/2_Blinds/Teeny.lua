@@ -5,7 +5,7 @@ Colonparen.TeenyBlind{
     mult = 0.5,
 	boss_colour = HEX("f58610"),
     beans_credits = {
-        team = ":( Team",
+        team = ":(",
         idea = "Unknown",
         art = "George The Rat",
         code = "jamirror",
