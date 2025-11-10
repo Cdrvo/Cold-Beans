@@ -1,5 +1,4 @@
-
-<img width="1468" height="452" alt="image" src="https://github.com/user-attachments/assets/b7062cd1-0e9b-4c9f-85fa-3913f0459a8e" />
+<img width="939" height="300" alt="aeaeae" src="https://github.com/user-attachments/assets/ec21b91e-0754-4196-b485-afa99c573812" />
 
 # Cold Beans
 
