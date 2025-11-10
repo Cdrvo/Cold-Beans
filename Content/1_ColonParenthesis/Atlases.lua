@@ -47,7 +47,7 @@ SMODS.Atlas({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 1,
+    pitch = 0.7,
 	key = "teeny_music",
 	path = "1_ColonParenthesis/teeny.ogg",
 	select_music_track = function(self --[[ to be self, is to be music. ]]) -- I saw this in an aikoyori file this better work
@@ -57,10 +57,10 @@ SMODS.Sound ({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 1,
+    pitch = 0.7,
 	key = "ceo_music",
 	path = "1_ColonParenthesis/ceo.ogg",
-	select_music_track = function(self) -- I saw this in an aikoyori file this better work
+	select_music_track = function(self) -- I saw this in an aikoyori file this better work (arc note it does)
 		return (G.GAME.blind and G.GAME.blind.config.blind.colonparen_blindtype == "CEO") and 16 or nil
 	end
 })
