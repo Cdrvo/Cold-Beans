@@ -95,5 +95,5 @@ SMODS.ConsumableType({
     secondary_colour = { 0.574, 0.424, 0.256, 1 },
     collection_rows = { 5, 5 },
     shop_rate = 0,
-    default = "c_cold_colon_taa_marbuta"
+    default = "c_cbean_colon_taa_marbuta"
 })

@@ -21,29 +21,142 @@ return {
             bl_cbean_colon_sheet = {
                 name = "The Sheet",
                 text = {
-                    "Debuff held #1#s and played #2#s"
+                    "Debuff held #1#s",
+                    "and played #2#s"
                 }
             },
             bl_cbean_colon_stamp = {
                 name = "The Stamp",
                 text = {
-                    "Debuff all Sealed cards"
+                    "Debuff all cards with a seal"
                 }
             },
             bl_cbean_colon_salesman = {
                 name = "The Salesman",
                 text = {
-                    "Next shop and Blind select screen are skipped"
+                    "Next shop and blind select screen are skipped"
                 }
             },
-            -- bl_cbean_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
-            --     name = "The Gamma",
-            --     text = {
-            --         "Retrigger all played cards 2 additional times",
-            --         "Retrigger all played and held in hand cards 3 additional times"
-            --     }
-            -- },
-            bl_cbean_colon_wee = {
+            bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
+                name = "Alpha",
+                text = {
+                    "Lucky cards' probabilities",
+                    "are tripled",
+                }
+            },
+            bl_cbean_upper_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
+                name = "Alpha",
+                text = {
+                    "Played lucky cards are guaranteed",
+                    "to successfully trigger at least one",
+                    "of their probability effects when scored"
+                }
+            },
+            bl_cbean_lower_colon_beta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Beta",
+                text = {
+                    "Scale all Jokers when",
+                    "Blind is selected"
+                }
+            },
+            bl_cbean_upper_colon_beta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Beta",
+                text = {
+                    "Scale all Jokers when",
+                    "hand is played"
+                }
+            },
+            bl_cbean_lower_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Gamma",
+                text = {
+                    "Retrigger all played",
+                    "cards 2 times",
+                }
+            },
+            bl_cbean_upper_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Gamma",
+                text = {
+                    "Retrigger all played",
+                    "and held in hand",
+                    "cards 3 times",
+                }
+            },
+            bl_cbean_lower_colon_delta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Delta",
+                text = {
+                    "Retrigger all on",
+                    "discard effects"
+                }
+            },
+            bl_cbean_upper_colon_delta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Delta",
+                text = {
+                    "Retrigger all card",
+                    "discarded effects"
+                }
+            },
+            bl_cbean_lower_colon_epsilon = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Epsilon",
+                text = {
+                    "All discarded cards",
+                    "are destroyed"
+                }
+            },
+            bl_cbean_upper_colon_epsilon = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Epsilon",
+                text = {
+                    "Duplicate all played cards",
+                    "and add them to your hand",
+                    "on first hand of round"
+                }
+            },
+            bl_cbean_lower_colon_zeta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Zeta",
+                text = {
+                    "Played Glass cards",
+                    "permanently gain X0.25 Mult",
+                    "when scored"
+                }
+            },
+            bl_cbean_upper_colon_zeta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Zeta",
+                text = {
+                    "Played Glass cards permanently",
+                    "gain +1 denominator to their",
+                    "probability effects when scored"
+                }
+            },
+            bl_cbean_lower_colon_eta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Eta",
+                text = {
+                    "Apply a random Enhancement,",
+                    "Edition, or Seal to",
+                    "played face cards"
+                }
+            },
+            bl_cbean_upper_colon_eta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Eta",
+                text = {
+                    "Apply a random Enhancement,",
+                    "Edition, and Seal to",
+                    "played face cards"
+                }
+            },
+            bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Kappa",
+                text = {
+                    "Permanently gain",
+                    "+1 hand size"
+                }
+            },
+            bl_cbean_upper_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Kappa",
+                text = {
+                    "Permanently gain +1 hand",
+                    "and +1 hand size"
+                }
+            },
+            bl_cbean_colon_wee = { -- George The Rat | N/A | N/A
                 name = "Wee Blind",
                 text = {}
             },

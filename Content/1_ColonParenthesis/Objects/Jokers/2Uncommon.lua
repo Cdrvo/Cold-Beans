@@ -269,7 +269,7 @@ SMODS.Joker {
     end,
 	in_pool = function()
 		for i = 1, #G.jokers.cards do
-			if G.jokers.cards[i].config.center.key == "j_troubadour" and G.jokers.cards[i].config.center.key == "j_cold_colon_minnesang" and G.jokers.cards[i].config.center.key == "j_cold_colon_trouvere" then
+			if G.jokers.cards[i].config.center.key == "j_troubadour" and G.jokers.cards[i].config.center.key == "j_cbean_colon_minnesang" and G.jokers.cards[i].config.center.key == "j_cbean_colon_trouvere" then
 				return true
 			end
 		end
