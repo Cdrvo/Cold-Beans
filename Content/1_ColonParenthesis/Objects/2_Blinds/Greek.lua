@@ -468,6 +468,42 @@ Colonparen.GreekBlind{
         team = ":(",
         idea = "Glitchkat10",
         art = "George The Rat",
+        code = "Glitchkat10",
+    }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_xi",
+    name = "Xi",
+    mult = 1,
+    boss_colour = HEX("6ccede"),
+    pos = { x = 0, y = 13 },
+    lower = {
+    },
+    upper = {
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "",
+    }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_omicron",
+    name = "Omicron",
+    mult = 1,
+    boss_colour = HEX("6cbfde"),
+    pos = { x = 0, y = 14 },
+    lower = {
+    },
+    upper = {
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }

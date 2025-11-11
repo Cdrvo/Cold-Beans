@@ -237,14 +237,14 @@ return {
                     "X0.5 Mult when scored"
                 }
             },
-            bl_cbean_lower_colon_xi = { -- Glitchkat10 | George The Rat | Glitchkat10
+            bl_cbean_lower_colon_xi = { -- Glitchkat10 | George The Rat | N/A
                 name = "Xi",
                 text = {
                     "Upgrade level of",
                     "played poker hands"
                 }
             },
-            bl_cbean_upper_colon_xi = { -- Glitchkat10 | George The Rat | Glitchkat10
+            bl_cbean_upper_colon_xi = { -- Glitchkat10 | George The Rat | N/A
                 name = "Xi",
                 text = {
                     "Upgrade level of most",
@@ -252,12 +252,22 @@ return {
                     "when hand is played"
                 }
             },
-            bl_cbean_lower_colon_omicron = { -- Glitchkat10 | George The Rat | Glitchkat10
+            bl_cbean_lower_colon_omicron = { -- Glitchkat10 | George The Rat | N/A
                 name = "Omicron",
                 text = {
-                    "If played hand contains",
-                    "a Straight, each card gains",
-                    "X0.5 Mult when scored"
+                    "Played modified cards",
+                    "gain +5 Mult when scored"
+                }
+            },
+            bl_cbean_upper_colon_omicron = { -- Glitchkat10 | George The Rat | N/A
+                name = "Omicron",
+                text = {
+                    "Played Enhanced cards gain",
+                    "+30 Chips when scored,",
+                    "played cards with an Edition gain",
+                    "+10 Mult when scored, and",
+                    "played cards with a Seal gain",
+                    "X0.2 Mult when scored"
                 }
             },
             bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
