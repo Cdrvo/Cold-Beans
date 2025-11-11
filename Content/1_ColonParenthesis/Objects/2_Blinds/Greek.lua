@@ -204,8 +204,6 @@ Colonparen.GreekBlind{
     boss_colour = HEX("adde6c"),
     pos = { x = 0, y = 6 },
     lower = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.before then
                 for _, scored_card in ipairs(context.scoring_hand) do
@@ -251,8 +249,6 @@ Colonparen.GreekBlind{
         end
     },
     upper = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.before then
                 local enhanced_cards = 0
