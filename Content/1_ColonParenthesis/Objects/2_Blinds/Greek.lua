@@ -507,3 +507,39 @@ Colonparen.GreekBlind{
         code = "",
     }
 }
+
+Colonparen.GreekBlind{
+    key = "colon_pi",
+    name = "Pi",
+    mult = 1,
+    boss_colour = HEX("6cabde"),
+    pos = { x = 0, y = 15 },
+    lower = {
+    },
+    upper = {
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "",
+    }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_rho",
+    name = "Rho",
+    mult = 1,
+    boss_colour = HEX("6c97de"),
+    pos = { x = 0, y = 16 },
+    lower = {
+    },
+    upper = {
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "",
+    }
+}

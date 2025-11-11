@@ -81,24 +81,31 @@ ColdBeans.OnCalculate(function (self, context)
     end
 end)
 
+Colonparen.CEOBlind{
+    key = "colon_gate",
+    name = "The Gate",
+    pos = { x = 0, y = 1 },
+	boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 5,
+	boss_colour = HEX("ce249c"),
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Glitchkat10",
+    }
+}
+
 local calculate_context = SMODS.calculate_context;
 function SMODS.calculate_context(context, return_table, no_resolve)
-    if (G and G.GAME and G.GAME.blind and (G.GAME.blind.name == "The Sheet" or G.GAME.blind.name == "The Stamp"))
+    if (G.GAME and G.GAME.blind and (G.GAME.blind.name == "The Sheet" or G.GAME.blind.name == "The Stamp"))
         and context.before then
             for i, card in ipairs(G.play.cards) do
                 SMODS.recalc_debuff(card)
             end
     end
     return calculate_context(context, return_table, no_resolve)
-end
-
-local set_seal = Card.set_seal;
-function Card.set_seal(self, ...)
-    local ret = set_seal(self, ...)
-    if G.GAME.blind.name == "The Stamp" then
-        SMODS.recalc_debuff(self)
-    end
-    return ret
 end
 
 Colonparen.CEOBlind{
@@ -155,13 +162,22 @@ Colonparen.CEOBlind{
     }
 }
 
+local set_seal = Card.set_seal;
+function Card.set_seal(self, ...)
+    local ret = set_seal(self, ...)
+    if G.GAME and G.GAME.blind and G.GAME.blind.name == "The Stamp" then
+        SMODS.recalc_debuff(self)
+    end
+    return ret
+end
+
 Colonparen.CEOBlind{
     key = "colon_stamp",
     name = "The Stamp",
     pos = { x = 0, y = 16 },
 	boss = {},
 	atlas = "colon_CEOBlind",
-    mult = 5,
+    mult = 3,
 	boss_colour = HEX("da9a81"),
     calculate = function (self, blind, context)
         if context.debuff_card and context.debuff_card.seal then
@@ -184,7 +200,7 @@ Colonparen.CEOBlind{
     pos = { x = 0, y = 17 },
 	boss = {},
 	atlas = "colon_CEOBlind",
-    mult = 5,
+    mult = 3,
 	boss_colour = HEX("741543"),
     beans_credits = {
         team = ":(",

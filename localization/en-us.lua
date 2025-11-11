@@ -5,34 +5,35 @@ return {
     descriptions = {
         Back = {},
         Blind = {
-            bl_cbean_colon_treasure = { -- George The Rat | N/A | N/A
+            bl_cbean_colon_treasure = { -- George The Rat | George The Rat | N/A
                 name = "The Treasure",
                 text = {
                     "When {C:money}${} is earned, increase",
                     "blind size by {X:purple} X0.2 {} base"
                 }
             },
-            bl_cbean_colon_gate = { -- George The Rat | N/A | N/A
+            bl_cbean_colon_gate = { -- George The Rat | George The Rat | Glitchkat10
                 name = "The Gate",
                 text = {
-                    "Moderately large blind"
+                    "Moderately",
+                    "large blind"
                 }
             },
-            bl_cbean_colon_sheet = {
+            bl_cbean_colon_sheet = { -- George The Rat | George The Rat | jamirror
                 name = "The Sheet",
                 text = {
                     "Debuff held #1#s",
                     "and played #2#s"
                 }
             },
-            bl_cbean_colon_stamp = {
+            bl_cbean_colon_stamp = { -- George The Rat | George The Rat | jamirror
                 name = "The Stamp",
                 text = {
                     "Debuff all cards",
                     "with a seal"
                 }
             },
-            bl_cbean_colon_salesman = {
+            bl_cbean_colon_salesman = { -- George The Rat | George The Rat | jamirror
                 name = "The Salesman",
                 text = {
                     "Next shop and blind",
@@ -193,16 +194,16 @@ return {
             bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
                 name = "Lambda",
                 text = {
-                    "Redeem 2 random Tier 1 Vouchers",
-                    "when Blind is selected"
+                    "Redeem 2 random",
+                    "Tier 1 Vouchers",
                 }
             },
             bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
                 name = "Lambda",
                 text = {
-                    "Redeem 2 random Tier 2 Vouchers",
-                    "and their corresponding Tier 1s",
-                    "when Blind is selected"
+                    "Redeem 2 random Tier 2",
+                    "Vouchers and their",
+                    "corresponding Tier 1s",
                 }
             },
             bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | N/A
@@ -268,6 +269,38 @@ return {
                     "+10 Mult when scored, and",
                     "played cards with a Seal gain",
                     "X0.2 Mult when scored"
+                }
+            },
+            bl_cbean_lower_colon_pi = { -- Glitchkat10 | George The Rat | N/A
+                name = "Pi",
+                text = {
+                    "First scored card's",
+                    "suit is transferred",
+                    "to all scored cards"
+                }
+            },
+            bl_cbean_upper_colon_pi = { -- Glitchkat10 | George The Rat | N/A
+                name = "Pi",
+                text = {
+                    "First scored card's",
+                    "rank is transferred",
+                    "to all scored cards"
+                }
+            },
+            bl_cbean_lower_colon_rho = { -- Glitchkat10 | George The Rat | N/A
+                name = "Rho",
+                text = {
+                    "If played poker hand",
+                    "is most played, upgrade",
+                    "level of all poker hands"
+                }
+            },
+            bl_cbean_upper_colon_rho = { -- Glitchkat10 | George The Rat | N/A
+                name = "Rho",
+                text = {
+                    "Upgrade level of most played",
+                    "poker hand by number",
+                    "of times it's been played"
                 }
             },
             bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
