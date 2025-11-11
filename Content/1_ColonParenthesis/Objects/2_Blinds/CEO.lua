@@ -83,13 +83,22 @@ end)
 
 local calculate_context = SMODS.calculate_context;
 function SMODS.calculate_context(context, return_table, no_resolve)
-    if (G and G.GAME and G.GAME.blind and G.GAME.blind.name == "The Sheet")
+    if (G and G.GAME and G.GAME.blind and (G.GAME.blind.name == "The Sheet" or G.GAME.blind.name == "The Stamp"))
         and context.before then
             for i, card in ipairs(G.play.cards) do
                 SMODS.recalc_debuff(card)
             end
     end
     return calculate_context(context, return_table, no_resolve)
+end
+
+local set_seal = Card.set_seal;
+function Card.set_seal(self, ...)
+    local ret = set_seal(self, ...)
+    if G.GAME.blind.name == "The Stamp" then
+        SMODS.recalc_debuff(self)
+    end
+    return ret
 end
 
 Colonparen.CEOBlind{
@@ -155,7 +164,7 @@ Colonparen.CEOBlind{
     mult = 5,
 	boss_colour = HEX("da9a81"),
     calculate = function (self, blind, context)
-        if context.debuff_card and context.debuff_card.base and context.debuff_card.base.seal then
+        if context.debuff_card and context.debuff_card.seal then
             return {
                 debuff = true
             }
