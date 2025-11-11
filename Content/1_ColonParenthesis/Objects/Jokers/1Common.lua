@@ -10,7 +10,7 @@ SMODS.Joker {
     name = "Chalk",
     config = {
         extra = {
-            xmult = 3,
+            xmult = 5,
             winning_ante_mod = 2
         }
     },

@@ -156,7 +156,43 @@ return {
                     "and +1 hand size"
                 }
             },
-            bl_cbean_colon_wee = { -- George The Rat | N/A | N/A
+            bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
+                name = "Lambda",
+                text = {
+                    "Redeem 2 random Tier 1 Vouchers when Blind is selected"
+                }
+            },
+            bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
+                name = "Lambda",
+                text = {
+                    "Redeem 2 random Tier 2 Vouchers and their corresponding Tier 1s when Blind is selected"
+                }
+            },
+            bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | N/A
+                name = "Mu",
+                text = {
+                    "If played hand contains 3 or more scoring cards of the same rank, each scoring card gains +10 Mult"
+                }
+            },
+            bl_cbean_upper_colon_mu = { -- Glitchkat10 | George The Rat | N/A
+                name = "Mu",
+                text = {
+                    "If played hand contains 3 or more scoring cards of the same rank, each scoring card gains X1 Mult"
+                }
+            },
+            bl_cbean_lower_colon_nu = { -- Glitchkat10 | George The Rat | N/A
+                name = "Nu",
+                text = {
+                    "If played hand contains a Flush, each card gains +50 Chips when scored"
+                }
+            },
+            bl_cbean_upper_colon_nu = { -- Glitchkat10 | George The Rat | N/A
+                name = "Nu",
+                text = {
+                    "If played hand contains a Flush, each card gains X0.5 Mult when scored"
+                }
+            },
+            bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
                 name = "Wee Blind",
                 text = {}
             },

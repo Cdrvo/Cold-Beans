@@ -19,6 +19,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -44,6 +45,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -81,6 +83,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "Glitchkat10",
     }
 }
@@ -106,6 +109,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -168,6 +172,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -193,6 +198,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -291,6 +297,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -316,6 +323,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -341,6 +349,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }
@@ -370,6 +379,7 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "Glitchkat10",
     }
 }
@@ -378,7 +388,7 @@ Colonparen.GreekBlind{
     key = "colon_lambda",
     name = "Lambda",
     mult = 1,
-    boss_colour = HEX("6cde99"),
+    boss_colour = HEX("6cdea3"),
     pos = { x = 0, y = 10 },
     lower = {
         set_blind = function(self, card, from_blind)
@@ -391,6 +401,65 @@ Colonparen.GreekBlind{
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "",
+    }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_mu",
+    name = "Mu",
+    mult = 1,
+    boss_colour = HEX("6cdec6"),
+    pos = { x = 0, y = 11 },
+    lower = {
+        set_blind = function(self, card, from_blind)
+        end,
+    },
+    upper = {
+        set_blind = function(self, card, from_blind)
+        end,
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "",
+    }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_nu",
+    name = "Nu",
+    mult = 1,
+    boss_colour = HEX("6cddde"),
+    pos = { x = 0, y = 12 },
+    lower = {
+        calculate = function(self, blind, context)
+            if next(context.poker_hands["Flush"]) and context.individual and context.cardarea == G.play then
+                context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + self.config.chips
+                return {
+                    message = localize("k_upgrade_ex"),
+                    colour = G.C.CHIPS
+                }
+            end
+        end,
+    },
+    upper = {
+        calculate = function(self, blind, context)
+            if next(context.poker_hands["Flush"]) and context.individual and context.cardarea == G.play then
+                context.other_card.ability.perma_x_mult = (context.other_card.ability.perma_x_mult or 1) + self.config.xmult
+                return {
+                    message = localize("k_upgrade_ex"),
+                    colour = G.C.MULT,
+                }
+            end
+        end,
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
         code = "",
     }
 }

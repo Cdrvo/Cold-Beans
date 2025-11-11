@@ -224,3 +224,61 @@ Colonparen.TeenyBlind{
         code = "Glitchkat10",
     }
 }
+
+-- Colonparen.TeenyBlind{
+--     key = "colon_sleepy",
+--     name = "Sleepy Blind",
+--     config = {
+--         odds = 2
+--     },
+--     atlas = "colon_TeenyBlind",
+--     pos = { x = 0, y = 8 },
+--     mult = 0.75,
+-- 	boss_colour = HEX("817ea7"),
+--     loc_vars = function(self, info_queue, card)
+--         local numerator, denominator = SMODS.get_probability_vars(card, 1, self.config.odds, "bl_cbeans_colon_sleepy")
+--         return {
+--             vars = {
+--                 numerator,
+--                 denominator
+--             }
+--         }
+--     end,
+--     collection_loc_vars = function(self, info_queue, card)
+--         local numerator, denominator = SMODS.get_probability_vars(card, 1, self.config.odds, "bl_cbeans_colon_sleepy")
+--         return {
+--             vars = {
+--                 numerator,
+--                 denominator
+--             }
+--         }
+--     end,
+--     set_blind = function(self, reset, silent)
+--         if true then
+--             G.E_MANAGER:add_event(Event({
+--                 trigger = "after",
+--                 delay = 1,
+--                 func = function()
+--                     G.E_MANAGER:add_event(Event({
+--                         trigger = "after",
+--                         delay = 1,
+--                         func = function()
+--                             G.GAME.chips = G.GAME.blind.chips
+--                             G.STATE = G.STATES.HAND_PLAYED
+--                             G.STATE_COMPLETE = true
+--                             end_round()
+--                             return true
+--                         end
+--                     }))
+--                     return true
+--                 end
+--             }))
+--         end
+--     end,
+--     beans_credits = {
+--         team = ":(",
+--         idea = "Glitchkat10",
+--         art = "George The Rat",
+--         code = "Glitchkat10",
+--     }
+-- }
