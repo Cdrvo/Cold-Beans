@@ -71,13 +71,13 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.setting_blind and (context.blind == "bl_cold_colon_teeny" or context.blind == "bl_small" or context.blind == "bl_big") then
+        if context.setting_blind and (context.blind == "bl_cbean_colon_teeny" or context.blind == "bl_small" or context.blind == "bl_big") then
             return {
                 dollars = -card.ability.extra.dollars1,
                 colour = G.C.RED
             }
         end
-        if context.setting_blind and (context.blind == "bl_boss" or context.blind == "bl_cold_colon_ceo") then
+        if context.setting_blind and (context.blind == "bl_boss" or context.blind == "bl_cbean_colon_ceo") then
             return {
                 dollars = card.ability.extra.dollars2
             }
