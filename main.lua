@@ -2,6 +2,16 @@
 -- read important.txt !!
 
 ColdBeans = SMODS.current_mod
+G.compat = { -- So like add mods you want to crossmod with or mods such as joker display for compatability
+	["JokerDisplay"] = SMODS.find_mod("VanillaRemade") -- I mean vremade 
+}
+
+-- Check through wanted mods
+for i, mod in pairs(WantedMods) do 
+	if mod ~= nil then
+		table.insert(G.compat, mod)
+	end
+end
 
 -- defining this here because it would be quite silly for this to not be a global api
 local on_calculate_cbs = {}
@@ -9,7 +19,32 @@ ColdBeans.OnCalculate = function (cb)
 	on_calculate_cbs[#on_calculate_cbs+1] = cb
 end
 
-ColdBeans.calculate = function (mod, context)
+local function GetJokers()
+	local jokers = {}
+	for i, card in pairs(G.jokers.cards) do
+		if card.config.center.key then
+			jokers[card.config.center.key] = card
+		end
+	end
+
+	return jokers -- to find joker in owned jokers do jokers["key of joker"]
+end
+
+ColdBeans.calculate = function(mod, context)
+	if context.card_added and context.cardarea == G.jokers then
+		local jokers = GetJokers()
+		local troub, minne, trouv = jokers["j_troubadour"], jokers["j_cbean_colon_minnesang"], jokers["j_cbean_colon_trouvere"]
+		print(jokers)
+		if troub and minne and trouv then
+			troub:remove()
+			minne:remove()
+			trouv:remove()
+			-- how to not copy paste, but keep in 3 lines so i look smart
+
+			SMODS.add_card({key = "j_cbean_colon_orchestra"})
+		end
+	end
+	-- dunno this, but I'm needing this after
     local haspost = false;
     local results = {}
     for i, cb in ipairs(on_calculate_cbs) do
