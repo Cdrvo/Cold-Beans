@@ -267,14 +267,15 @@ SMODS.Joker {
         G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
         G.hand:change_size(-card.ability.extra.hand_size)
     end,
-	in_pool = function()
-		for i = 1, #G.jokers.cards do
-			if G.jokers.cards[i].config.center.key == "j_troubadour" and G.jokers.cards[i].config.center.key == "j_cbean_colon_minnesang" and G.jokers.cards[i].config.center.key == "j_cbean_colon_trouvere" then
-				return true
-			end
-		end
-		return false
-	end,
+	-- in_pool = function() -- not what I meaqn, you get all of them, then they combine into one
+	-- 	for i = 1, #G.jokers.cards do
+	-- 		if G.jokers.cards[i].config.center.key == "j_troubadour" and G.jokers.cards[i].config.center.key == "j_cbean_colon_minnesang" and G.jokers.cards[i].config.center.key == "j_cbean_colon_trouvere" then
+    --      -- this wouldnt work right, thats if you have a joker that has 3 keys
+	-- 			return true
+	-- 		end
+	-- 	end
+	-- 	return false
+	-- end,
     beans_credits = {
         team = ":( Team",
         idea = "bitter",

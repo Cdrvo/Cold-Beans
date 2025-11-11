@@ -509,7 +509,7 @@ return {
             j_cbean_colon_jester = { -- bitter | N/A | N/A
                 name = "Jester",
                 text = {
-                    "Each {C:attention}Ace{} held in hand gives {C:white,X:mult}X1.5{} Mult",
+                    "Each {C:attention}Ace{} held in hand gives", "{C:mult}+#1#{} Mult and {C:white,X:mult}X#2#{} Mult",
                 },
             },
 
