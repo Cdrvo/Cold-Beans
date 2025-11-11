@@ -209,3 +209,38 @@ Colonparen.CEOBlind{
         code = "jamirror",
     }
 }
+
+Colonparen.CEOBlind{
+    key = "colon_button",
+    name = "The Button",
+    pos = { x = 0, y = 21 },
+	boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 8,
+	boss_colour = HEX("547e7a"),
+    set_blind = function(self, blind)
+        ease_hands_played(5)
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Glitchkat10",
+    }
+}
+
+Colonparen.CEOBlind{
+    key = "colon_hole",
+    name = "The Hole",
+    pos = { x = 0, y = 22 },
+	boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 0,
+	boss_colour = HEX("1e2b2d"), -- background color of blind collection screen
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Glitchkat10",
+    }
+}

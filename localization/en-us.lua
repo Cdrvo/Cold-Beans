@@ -40,6 +40,18 @@ return {
                     "select screen is skipped"
                 }
             },
+            bl_cbean_colon_button = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "The Button",
+                text = {
+                    "+5 hands"
+                }
+            },
+            bl_cbean_colon_hole = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "The Hole",
+                text = {
+                    "..."
+                }
+            },
             bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
                 name = "Alpha",
                 text = {
