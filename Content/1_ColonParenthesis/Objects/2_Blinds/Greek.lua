@@ -207,12 +207,89 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.before then
+                for _, scored_card in ipairs(context.scoring_hand) do
+                    if scored_card:is_face() then
+                        local effect_choice = pseudorandom("bl_cbean_lower_colon_eta_effect_choice", 1, 3)
+                        if effect_choice == 1 then
+                            local enhancement_pool = {}
+                            for _, enhancement in pairs(G.P_CENTER_POOLS.Enhanced) do
+                                if enhancement.key ~= 'm_stone' then
+                                    table.insert(enhancement_pool, enhancement)
+                                end
+                            end
+                            if #enhancement_pool > 0 then
+                                local random_enhancement = pseudorandom_element(enhancement_pool, "bl_cbean_lower_colon_eta_enhancement")
+                                scored_card:set_ability(random_enhancement)
+                            end
+                        elseif effect_choice == 2 then
+                            local edition_pool = {}
+                            for _, ed in pairs(G.P_CENTER_POOLS["Edition"]) do
+                                if ed.key and ed.key ~= "base" then
+                                    table.insert(edition_pool, ed.key)
+                                end
+                            end
+                            if #edition_pool > 0 then
+                                local edition = pseudorandom_element(edition_pool, "bl_cbean_lower_colon_eta_edition")
+                                scored_card:set_edition(edition, true)
+                            end
+                        else
+                            local random_seal = SMODS.poll_seal({ mod = 10, guaranteed = true, seed = pseudoseed("bl_cbean_lower_colon_eta_seal") })
+                            if random_seal then
+                                scored_card:set_seal(random_seal, true)
+                            end
+                        end
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                scored_card:juice_up()
+                                return true
+                            end
+                        }))
+                    end
+                end
+            end
         end
     },
     upper = {
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.before then
+                local enhanced_cards = 0
+                for _, scored_card in ipairs(context.scoring_hand) do
+                    if scored_card:is_face() then
+                        local enhancement_pool = {}
+                        for _, enhancement in pairs(G.P_CENTER_POOLS.Enhanced) do
+                            if enhancement.key ~= 'm_stone' then
+                                table.insert(enhancement_pool, enhancement)
+                            end
+                        end
+                        if #enhancement_pool > 0 then
+                            local random_enhancement = pseudorandom_element(enhancement_pool, "bl_cbean_upper_colon_eta_enhancement")
+                            scored_card:set_ability(random_enhancement)
+                        end
+                        local edition_pool = {}
+                        for _, ed in pairs(G.P_CENTER_POOLS["Edition"]) do
+                            table.insert(edition_pool, ed.key)
+                        end
+                        if #edition_pool > 0 then
+                            local edition = pseudorandom_element(edition_pool, "bl_cbean_upper_colon_eta_edition")
+                            scored_card:set_edition(edition, true)
+                        end
+                        local random_seal = SMODS.poll_seal({ mod = 10, guaranteed = true })
+                        if random_seal then
+                            scored_card:set_seal(random_seal, true)
+                        end
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                scored_card:juice_up()
+                                return true
+                            end
+                        }))
+                        enhanced_cards = enhanced_cards + 1
+                    end
+                end
+            end
         end
     },
     beans_credits = {

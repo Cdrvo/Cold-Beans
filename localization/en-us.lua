@@ -130,16 +130,16 @@ return {
                 name = "Eta",
                 text = {
                     "Apply a random Enhancement,",
-                    "Edition, or Seal to",
-                    "played face cards"
+                    "Edition, or Seal to played",
+                    "face cards when scored"
                 }
             },
             bl_cbean_upper_colon_eta = { -- Glitchkat10 | George The Rat | N/A
                 name = "Eta",
                 text = {
                     "Apply a random Enhancement,",
-                    "Edition, and Seal to",
-                    "played face cards"
+                    "Edition, and Seal to played",
+                    "face cards when scored"
                 }
             },
             bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
