@@ -126,7 +126,7 @@ return {
                     "probability effects when scored"
                 }
             },
-            bl_cbean_lower_colon_eta = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_eta = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Eta",
                 text = {
                     "Apply a random Enhancement,",
@@ -134,7 +134,7 @@ return {
                     "face cards when scored"
                 }
             },
-            bl_cbean_upper_colon_eta = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_eta = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Eta",
                 text = {
                     "Apply a random Enhancement,",
@@ -160,44 +160,51 @@ return {
                 name = "Wee Blind",
                 text = {}
             },
-            bl_cbean_colon_handsy = {
+            bl_cbean_colon_handsy = { -- George The Rat | George The Rat | jamirror
                 name = "Handsy Blind",
                 text = {
-                    "+1 Hand"
+                    "+1 hand"
                 }
             },
-            bl_cbean_colon_clumsy = {
+            bl_cbean_colon_clumsy = { -- George The Rat | George The Rat | jamirror
                 name = "Clumsy Blind",
                 text = {
-                    "+1 Discard"
+                    "+1 discard"
                 }
             },
-            bl_cbean_colon_charitable = {
+            bl_cbean_colon_charitable = { -- George The Rat | George The Rat | jamirror
                 name = "Charitable Blind",
                 text = {
                     "Interest is doubled"
                 }
             },
-            bl_cbean_colon_jolly = {
+            bl_cbean_colon_jolly = { -- George The Rat | George The Rat | jamirror
                 name = "Jolly Blind",
                 text = {
-                    "If played hand contains a pair,",
-                    "add an enhanced card to hand"
+                    "If played hand contains a Pair,",
+                    "add an Enhanced card to hand"
                 }
             },
-            bl_cbean_colon_cutesy = {
+            bl_cbean_colon_cutesy = { -- George The Rat | George The Rat | jamirror
                 name = "Cutesy Blind",
                 text = {
-                    "If played hand contains a flush,",
-                    "make 2 cards held in hand wild"
+                    "If played hand contains a Flush,",
+                    "make 2 cards held in hand Wild"
                 }
             },
-            bl_cbean_colon_pretty = {
+            bl_cbean_colon_pretty = { -- George The Rat | George The Rat | jamirror
                 name = "Pretty Blind",
                 text = {
-                    "If played hand contains a straight,",
-                    "create negative planets of most played",
+                    "If played hand contains a Straight,",
+                    "create Negative Planets of most played",
                     "hand and least played hand"
+                }
+            },
+            bl_cbean_colon_thirsty = { -- George The Rat | George The Rat | Glitchkat10
+                name = "Thirsty Blind",
+                text = {
+                    "Played cards earn",
+                    "$#1# when scored"
                 }
             },
         },

@@ -185,3 +185,42 @@ Colonparen.TeenyBlind{
         end
     end
 }
+
+Colonparen.TeenyBlind{
+    key = "colon_thirsty",
+    name = "Thirsty Blind",
+    config = {
+        dollars = 1
+    },
+    atlas = "colon_TeenyBlind",
+    pos = { x = 0, y = 7 },
+    mult = 0.75,
+	boss_colour = HEX("817ea7"),
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                self.config.dollars
+            }
+        }
+    end,
+    collection_loc_vars = function (self)
+        return {
+            vars = {
+                self.config.dollars
+            }
+        }
+    end,
+    calculate = function (self, blind, context)
+        if context.individual and context.cardarea == G.play then
+            return {
+                dollars = self.config.dollars
+            }
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "Glitchkat10",
+    }
+}
