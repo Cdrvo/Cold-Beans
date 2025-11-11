@@ -357,19 +357,21 @@ Colonparen.GreekBlind{
 Colonparen.GreekBlind{
     key = "colon_kappa",
     name = "Kappa",
-    config = {
-        hand_size = 1,
-        hands = 1
-    },
     mult = 1,
     boss_colour = HEX("6cde99"),
     pos = { x = 0, y = 9 },
     lower = {
+        config = {
+            hand_size = 1
+        },
         set_blind = function(self, card, from_blind)
             G.hand:change_size(self.config.hand_size)
         end,
     },
     upper = {
+        config = {
+            hands = 1
+        },
         set_blind = function(self, card, from_blind)
             G.GAME.round_resets.hands = G.GAME.round_resets.hands + self.config.hands
             ease_hands_played(self.config.hands)
@@ -435,8 +437,11 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6cddde"),
     pos = { x = 0, y = 12 },
     lower = {
+        config = {
+            chips = 50
+        },
         calculate = function(self, blind, context)
-            if next(context.poker_hands["Flush"]) and context.individual and context.cardarea == G.play then
+            if context.cardarea == G.play and context.individual and next(context.poker_hands["Flush"]) then
                 context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + self.config.chips
                 return {
                     message = localize("k_upgrade_ex"),
@@ -446,8 +451,11 @@ Colonparen.GreekBlind{
         end,
     },
     upper = {
+        config = {
+            xmult = 0.5
+        },
         calculate = function(self, blind, context)
-            if next(context.poker_hands["Flush"]) and context.individual and context.cardarea == G.play then
+            if context.cardarea == G.play and context.individual and next(context.poker_hands["Flush"]) then
                 context.other_card.ability.perma_x_mult = (context.other_card.ability.perma_x_mult or 1) + self.config.xmult
                 return {
                     message = localize("k_upgrade_ex"),

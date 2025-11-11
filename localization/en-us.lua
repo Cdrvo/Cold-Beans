@@ -28,13 +28,15 @@ return {
             bl_cbean_colon_stamp = {
                 name = "The Stamp",
                 text = {
-                    "Debuff all cards with a seal"
+                    "Debuff all cards",
+                    "with a seal"
                 }
             },
             bl_cbean_colon_salesman = {
                 name = "The Salesman",
                 text = {
-                    "Next shop and blind select screen are skipped"
+                    "Next shop and blind",
+                    "select screen is skipped"
                 }
             },
             bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
@@ -55,8 +57,7 @@ return {
             bl_cbean_lower_colon_beta = { -- Glitchkat10 | George The Rat | N/A
                 name = "Beta",
                 text = {
-                    "Scale all Jokers when",
-                    "Blind is selected"
+                    "Scale all Jokers"
                 }
             },
             bl_cbean_upper_colon_beta = { -- Glitchkat10 | George The Rat | N/A
@@ -142,6 +143,39 @@ return {
                     "face cards when scored"
                 }
             },
+            bl_cbean_lower_colon_theta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Theta",
+                text = {
+                    "Earn $10 per X0.1",
+                    "Blind requirement",
+                    "scored at end of round"
+                }
+            },
+            bl_cbean_upper_colon_theta = { -- Glitchkat10 | George The Rat | N/A
+                name = "Theta",
+                text = {
+                    "-1 Ante per X10",
+                    "Blind requirement",
+                    "scored at end of round"
+                }
+            },
+            bl_cbean_lower_colon_iota = { -- Glitchkat10 | George The Rat | N/A
+                name = "Iota",
+                text = {
+                    "Redeem 1 random Voucher,",
+                    "create 1 random Joker, and",
+                    "create 1 random consumable"
+                }
+            },
+            bl_cbean_upper_colon_iota = { -- Glitchkat10 | George The Rat | N/A
+                name = "Iota",
+                text = {
+                    "Redeem 2 random Vouchers,",
+                    "create 2 random Negative Jokers,",
+                    "and create 2 random Negative",
+                    "consumables when hand is played"
+                }
+            },
             bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Kappa",
                 text = {
@@ -159,37 +193,71 @@ return {
             bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
                 name = "Lambda",
                 text = {
-                    "Redeem 2 random Tier 1 Vouchers when Blind is selected"
+                    "Redeem 2 random Tier 1 Vouchers",
+                    "when Blind is selected"
                 }
             },
             bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
                 name = "Lambda",
                 text = {
-                    "Redeem 2 random Tier 2 Vouchers and their corresponding Tier 1s when Blind is selected"
+                    "Redeem 2 random Tier 2 Vouchers",
+                    "and their corresponding Tier 1s",
+                    "when Blind is selected"
                 }
             },
             bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | N/A
                 name = "Mu",
                 text = {
-                    "If played hand contains 3 or more scoring cards of the same rank, each scoring card gains +10 Mult"
+                    "If played hand contains 3 or more",
+                    "scoring cards of the same rank,",
+                    "each scoring card gains +10 Mult",
                 }
             },
             bl_cbean_upper_colon_mu = { -- Glitchkat10 | George The Rat | N/A
                 name = "Mu",
                 text = {
-                    "If played hand contains 3 or more scoring cards of the same rank, each scoring card gains X1 Mult"
+                    "If played hand contains 3 or more",
+                    "scoring cards of the same rank,",
+                    "each scoring card gains X1 Mult"
                 }
             },
-            bl_cbean_lower_colon_nu = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_nu = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Nu",
                 text = {
-                    "If played hand contains a Flush, each card gains +50 Chips when scored"
+                    "If played hand contains",
+                    "a Flush, each card gains",
+                    "+50 Chips when scored"
                 }
             },
-            bl_cbean_upper_colon_nu = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_nu = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "Nu",
                 text = {
-                    "If played hand contains a Flush, each card gains X0.5 Mult when scored"
+                    "If played hand contains",
+                    "a Flush, each card gains",
+                    "X0.5 Mult when scored"
+                }
+            },
+            bl_cbean_lower_colon_xi = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Xi",
+                text = {
+                    "Upgrade level of",
+                    "played poker hands"
+                }
+            },
+            bl_cbean_upper_colon_xi = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Xi",
+                text = {
+                    "Upgrade level of most",
+                    "played poker hand 2 times",
+                    "when hand is played"
+                }
+            },
+            bl_cbean_lower_colon_omicron = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "Omicron",
+                text = {
+                    "If played hand contains",
+                    "a Straight, each card gains",
+                    "X0.5 Mult when scored"
                 }
             },
             bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror

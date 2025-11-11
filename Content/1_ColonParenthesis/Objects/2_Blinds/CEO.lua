@@ -17,7 +17,7 @@ Colonparen.CEOBlind{
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 3,
-	boss_colour = HEX("2b62a7"),
+	boss_colour = HEX("628fc6"),
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
@@ -99,7 +99,7 @@ Colonparen.CEOBlind{
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 3,
-	boss_colour = HEX("1e5c51"),
+	boss_colour = HEX("459373"),
     colon_blind_variables = {
         most_held = function () return G.GAME.colonparen_most_held_rank or 'Ace' end,
         most_played = function() return G.GAME.colonparen_most_played_rank or '2' end,
@@ -153,7 +153,7 @@ Colonparen.CEOBlind{
 	boss = {},
 	atlas = "colon_CEOBlind",
     mult = 5,
-	boss_colour = HEX("a13535"),
+	boss_colour = HEX("da9a81"),
     calculate = function (self, blind, context)
         if context.debuff_card and context.debuff_card.base and context.debuff_card.base.seal then
             return {
