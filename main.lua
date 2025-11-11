@@ -6,13 +6,6 @@ G.compat = { -- So like add mods you want to crossmod with or mods such as joker
 	["JokerDisplay"] = SMODS.find_mod("VanillaRemade") -- I mean vremade 
 }
 
--- Check through wanted mods
-for i, mod in pairs(WantedMods) do 
-	if mod ~= nil then
-		table.insert(G.compat, mod)
-	end
-end
-
 -- defining this here because it would be quite silly for this to not be a global api
 local on_calculate_cbs = {}
 ColdBeans.OnCalculate = function (cb)
