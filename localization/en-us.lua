@@ -46,7 +46,47 @@ return {
             bl_cbean_colon_wee = {
                 name = "Wee Blind",
                 text = {}
-            }
+            },
+            bl_cbean_colon_handsy = {
+                name = "Handsy Blind",
+                text = {
+                    "+1 Hand"
+                }
+            },
+            bl_cbean_colon_clumsy = {
+                name = "Clumsy Blind",
+                text = {
+                    "+1 Discard"
+                }
+            },
+            bl_cbean_colon_charitable = {
+                name = "Charitable Blind",
+                text = {
+                    "Interest is doubled"
+                }
+            },
+            bl_cbean_colon_jolly = {
+                name = "Jolly Blind",
+                text = {
+                    "If played hand contains a pair,",
+                    "add an enhanced card to hand"
+                }
+            },
+            bl_cbean_colon_cutesy = {
+                name = "Cutesy Blind",
+                text = {
+                    "If played hand contains a flush,",
+                    "make 2 cards held in hand wild"
+                }
+            },
+            bl_cbean_colon_pretty = {
+                name = "Pretty Blind",
+                text = {
+                    "If played hand contains a straight,",
+                    "create negative planets of most played",
+                    "hand and least played hand"
+                }
+            },
         },
         Enhanced = {},
         Joker = {
