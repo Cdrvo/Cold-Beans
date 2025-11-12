@@ -404,13 +404,6 @@ return {
                     "{C:inactive}\"Chalk is aid\""
                 }
             },
-            j_cbean_colon_full_180 = { -- Glitchkat10 | N/A | N/A
-                name = "Full 180",
-                text = {
-                    "Blind order in current {C:attention}Ante{} is {C:dark_edition,E:1}randomized",
-                    "{C:attention}Blind requirement{} is kept in the same order"
-                }
-            },
             j_cbean_colon_lead = { -- George The Rat | N/A | N/A
                 name = "Lead",
                 text = {
@@ -428,7 +421,7 @@ return {
                     "or {E:1,C:money}CEO Blind{} is selected"
                 }
             },
-            j_cbean_colon_lumberjack = { -- George The Rat | N/A | N/A
+            j_cbean_colon_lumberjack = { -- George The Rat | George The Rat | N/A
                 name = "Lumberjack",
                 text = {
                     "All {C:attention}held in hand{} jacks are destroyed",

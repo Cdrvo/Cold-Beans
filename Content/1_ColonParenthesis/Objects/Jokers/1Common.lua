@@ -43,8 +43,6 @@ SMODS.Joker {
     }
 }
 
--- Full 180
-
 -- Lead
 
 SMODS.Joker {
