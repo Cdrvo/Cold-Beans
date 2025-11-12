@@ -2,9 +2,6 @@
 -- read important.txt !!
 
 ColdBeans = SMODS.current_mod
-G.compat = { -- So like add mods you want to crossmod with or mods such as joker display for compatability
-	["JokerDisplay"] = SMODS.find_mod("VanillaRemade") -- someone change this and also make JokerDisplay.lua actually work, i keep starting stuff far too late, its 11:42 and i got a preformance tmr
-}
 
 -- defining this here because it would be quite silly for this to not be a global api
 local on_calculate_cbs = {}
