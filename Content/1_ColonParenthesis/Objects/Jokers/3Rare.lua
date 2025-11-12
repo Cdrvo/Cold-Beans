@@ -31,6 +31,35 @@ SMODS.Joker {
             }
         }
     end,
+
+    joker_display_def = function(JokerDisplay)
+        return {
+            text = { -- Almost a direct rip from misprint lololo
+            { text = "+", colour = G.C.MONEY },
+            {
+                dynatext = {
+                    string = (
+                        function()
+                            local r_dollar = {}
+                            for i = G.P_CENTERS["j_cbean_colon_big_shot"].config.extra.min, G.P_CENTERS["j_cbean_colon_big_shot"].config.extra.max do
+                                r_dollar[#r_dollar + 1] = tostring(i)
+                            end
+                            return r_dollar
+                        end
+                    )(),
+                    colours = { G.C.MONEY },
+                    pop_in_rate = 999999,
+                    silent = true,
+                    random_element = true,
+                    pop_delay = 0.5,
+                    scale = 0.4,
+                    min_cycle_time = 0
+                }
+            }
+        }
+        }
+    end,
+
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and G.GAME.blind.loc_name == "Big Blind" then
             return {
@@ -194,6 +223,40 @@ SMODS.Joker {
     config = { extra = { mult = 7, xmult = 1.4 } },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.mult, card.ability.extra.xmult }}
+    end,
+
+    joker_display_def = function(JokerDisplay)
+        return {
+            text = { -- Modified version of baron
+                {
+                    border_nodes = {
+                        { text = "+" },
+                        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+                    },
+                    text_config = { colour = G.C.MULT },
+                },
+                {text = ""}, -- spacing (I saw this in cryptid once)
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            },
+            calc_function = function(card)
+                local playing_hand = next(G.play.cards)
+                local count = 0
+                for _, playing_card in ipairs(G.hand.cards) do
+                    if playing_hand or not playing_card.highlighted then
+                        if not (playing_card.facing == 'back') and not playing_card.debuff and playing_card:get_id() and playing_card:get_id() == 14 then
+                            count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+                        end
+                    end
+                end
+                card.joker_display_values.mult = card.ability.extra.mult * count
+                card.joker_display_values.xmult = card.ability.extra.xmult ^ count -- I have no fucking idea what im doing 🙏
+            end
+        }
     end,
 
     calculate = function(self, card, context)
