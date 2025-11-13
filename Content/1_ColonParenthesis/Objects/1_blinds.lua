@@ -244,7 +244,7 @@ function Colonparen.get_new_blind(type)
 				then
 					eligible_bosses[k] = res and true or nil
 				end
-			elseif not v.boss.showdown and (v.boss.min <= math.max(1, G.GAME.round_resets.ante) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+			elseif not v.boss.showdown and ((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
 				eligible_bosses[k] = res and true or nil
 			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 				eligible_bosses[k] = res and true or nil
