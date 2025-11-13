@@ -72,8 +72,8 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "colon_aristotle",
-    name = "Aristotle",
+    key = "colon_hippocrates",
+    name = "Hippocrates",
     atlas = "colon_JokerAtlas",
     pos = { x = 2, y = 1 },
     soul_pos = { x = 3, y = 1 },
@@ -120,49 +120,3 @@ SMODS.Joker {
         code = "N/A",
     }
 }
-
--- SMODS.Joker {
---     key = "colon_hippo",
---     config = {
---         extra = {
---             handsize = 0,
---             playing_cards = {}
---         }
---     },
---     atlas = "colon_JokerAtlas",
---     pos = { x = 0, y = 1 },
---     soul_pos = { x = 1, y = 1 },
---     rarity = 4,
---     cost = 20,
---     blueprint_compat = true,
---     loc_vars = function(self, info_queue, card)
---         return {
---             vars = {
---                 card.ability.extra.handsize,
---             }
---         }
---     end,
-
---     add_to_deck = function (self, card)
---         card.ability.extra.playing_cards = G.playing_cards
---     end,
---     calculate = function(self, card, context)
---         local handsize = card.ability.extra.handsize
---         if context.playing_card_added then
---             handsize = handsize + 1
---             print("yay!!!")
---             print(G.playing_card)
---             card.ability.extra.playing_cards = G.playing_cards
---         else
---             if card.ability.extra.playing_cards == G.playing_cards then return end
---             handsize = handsize - 1
---             print("Fuck you")
---             card.ability.extra.playing_cards = G.playing_cards
---         end
---     end,
---     beans_credits = {
---         team = ":(",
---         idea = "Glitchkat10",
---         code = "bitter",
---     }
--- }
