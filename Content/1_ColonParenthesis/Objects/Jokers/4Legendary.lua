@@ -72,7 +72,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "colon_hippocrates",
+    key = "colon_aristotle",
     name = "Hippocrates",
     atlas = "colon_JokerAtlas",
     pos = { x = 2, y = 1 },
