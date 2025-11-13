@@ -104,6 +104,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_rna",
     name = "RNA",
+	atlas = "colon_JokerAtlas",
+    pos = { x = 7, y = 0 },
     pronouns = "it_its",
     rarity = 2,
     cost = 5,
