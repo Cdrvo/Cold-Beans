@@ -180,7 +180,9 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "colon_spectaro",
-    name = "Spectaro",
+     name = "Spectaro",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 6, y = 0 },
     rarity = 3,
     cost = 10,
     blueprint_compat = true,
