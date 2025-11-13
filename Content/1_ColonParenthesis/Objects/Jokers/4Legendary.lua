@@ -4,6 +4,7 @@ SMODS.Joker {
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
+
     calculate = function(self,card,context)
         if context.repetition and context.cardarea == G.play and not context.end_of_round then
             local times = 0
@@ -110,3 +111,46 @@ SMODS.Joker {
         code = "N/A",
     }
 }
+
+-- SMODS.Joker {
+--     key = "colon_hippo",
+--     config = {
+--         extra = {
+--             handsize = 0,
+--             playing_cards = {}
+--         }
+--     },
+--     rarity = 4,
+--     cost = 20,
+--     blueprint_compat = true,
+--     loc_vars = function(self, info_queue, card)
+--         return {
+--             vars = {
+--                 card.ability.extra.handsize,
+--             }
+--         }
+--     end,
+
+--     add_to_deck = function (self, card)
+--         card.ability.extra.playing_cards = G.playing_cards
+--     end,
+--     calculate = function(self, card, context)
+--         local handsize = card.ability.extra.handsize
+--         if context.playing_card_added then
+--             handsize = handsize + 1
+--             print("yay!!!")
+--             print(G.playing_card)
+--             card.ability.extra.playing_cards = G.playing_cards
+--         else
+--             if card.ability.extra.playing_cards == G.playing_cards then return end
+--             handsize = handsize - 1
+--             print("Fuck you")
+--             card.ability.extra.playing_cards = G.playing_cards
+--         end
+--     end,
+--     beans_credits = {
+--         team = ":(",
+--         idea = "Glitchkat10",
+--         code = "bitter",
+--     }
+-- }
