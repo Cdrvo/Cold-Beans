@@ -183,23 +183,42 @@ Colonparen.GreekBlind{
     mult = 1,
     boss_colour = HEX("bcde6c"),
     pos = { x = 0, y = 5 },
+    discovered = true,
     lower = {
+        config = {
+            xmult = 0.5
+        },
+
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.before then
+                for i, card in pairs(G.play.cards) do -- I cant fuckn test if i cant tell if they exist
+                    if card.config.center_key == "m_glass" then
+                        card.ability.Xmult = card.ability.Xmult + 0.5 -- wont update text??
+                    end
+                end
+            end
         end
     },
     upper = {
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.before then
+                for i, card in pairs(G.play.cards) do
+                    if card.config.center_key == "m_glass" then
+                        card.ability.extra = card.ability.extra + 1
+                    end
+                end
+            end
         end
     },
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
         art = "George The Rat",
-        code = "",
+        code = "Bitter",
     }
 }
 
