@@ -81,6 +81,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_modernity",
     name = "Modernity",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 3, y = 2 },
     config = {
         extra = {
             skip_xmult_mod = 1,
@@ -281,5 +283,6 @@ SMODS.Joker {
         end
     end,
 }
+
 
 
