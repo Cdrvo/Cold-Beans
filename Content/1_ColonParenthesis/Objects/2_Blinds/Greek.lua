@@ -498,14 +498,39 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6ccede"),
     pos = { x = 0, y = 13 },
     lower = {
+        calculate = function(self, blind, context)
+            if context.before then
+                return {
+                    level_up = true
+                }
+            end
+        end
     },
     upper = {
+        calculate = function(self, blind, context)
+            if context.before then
+                local most_played_hand = nil
+                local max_played = 0
+                for hand_name, hand_data in pairs(G.GAME.hands) do
+                    if hand_data.visible and (not most_played_hand or (hand_data.played or 0) > max_played) then
+                        most_played_hand = hand_name
+                        max_played = hand_data.played or 0
+                    end
+                end
+                if most_played_hand then
+                    return {
+                        level_up = true,
+                        level_up_hand = most_played_hand
+                    }
+                end
+            end
+        end
     },
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
         art = "George The Rat",
-        code = "",
+        code = "Glitchkat10",
     }
 }
 
