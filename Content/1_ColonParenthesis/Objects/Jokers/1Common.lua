@@ -7,17 +7,17 @@
 SMODS.Joker {
     key = "colon_chalk",
     name = "Chalk",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 2, y = 2 },
     config = {
         extra = {
             xmult = 5,
             winning_ante_mod = 2
         }
     },
-    -- pos = { x = 0, y = 0 },
     cost = 5,
     rarity = 1,
     blueprint_compat = true,
-    -- atlas = "",
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
