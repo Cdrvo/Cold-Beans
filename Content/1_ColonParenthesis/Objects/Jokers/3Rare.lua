@@ -1,6 +1,8 @@
 SMODS.Joker {
     key = "colon_big_shot",
     name = "Big Shot",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 2, y = 0 },
     config = {
         extra = {
             max = 199.7,
@@ -277,3 +279,4 @@ SMODS.Joker {
         end
     end,
 }
+
