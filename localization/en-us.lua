@@ -600,6 +600,16 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 },
             },
+            j_cbean_colon_hippo = { -- George | N/A | Bitter
+                name = "Hippocrates",
+                text = {
+                    "{C:attention}+1{} hand size when a {C:attention}playing card",
+                    "is selected from a {C:attention}Standard Pack",
+                    "{C:attention}-1{} hand size if a card's rank or suit is {C:attention}altered",
+                    "{s:0.9}Playing cards cannot be destroyed",
+                    "{C:inactive}(Currently {C:attention}+0 {C:inactive}hand size)",
+                },
+            },
         },
         Other = {},
         Planet = {},
