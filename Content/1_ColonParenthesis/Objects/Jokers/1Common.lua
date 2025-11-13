@@ -8,7 +8,7 @@ SMODS.Joker {
     key = "colon_chalk",
     name = "Chalk",
     atlas = "colon_JokerAtlas",
-    pos = { x = 2, y = 2 },
+    pos = { x = 3, y = 2 },
     config = {
         extra = {
             xmult = 5,
