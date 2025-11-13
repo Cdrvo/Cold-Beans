@@ -9,8 +9,8 @@ SMODS.Joker {
             dollars = 2
         }
     },
-    -- atlas = "colon_JokerAtlas",
-    -- pos = { x = 0, y = 0 },
+    atlas = "colon_JokerAtlas",
+    pos = { x = 4, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -104,6 +104,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_rna",
     name = "RNA",
+	atlas = "colon_JokerAtlas",
+    pos = { x = 7, y = 0 },
     pronouns = "it_its",
     rarity = 2,
     cost = 5,
@@ -158,6 +160,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_sproinky",
     name = "Sproinky",
+	atlas = "colon_JokerAtlas",
+    pos = { x = 8, y = 0 },
     rarity = 2,
     cost = 8,
     blueprint_compat = true,
@@ -199,8 +203,8 @@ SMODS.Joker {
             discards = 1
         }
     },
-    -- atlas = "colon_JokerAtlas",
-    -- pos = { x = 0, y = 0 },
+    atlas = "colon_JokerAtlas",
+    pos = { x = 3, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

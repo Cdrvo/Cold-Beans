@@ -1,6 +1,8 @@
 SMODS.Joker {
     key = "colon_big_shot",
     name = "Big Shot",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 2, y = 0 },
     config = {
         extra = {
             max = 199.7,
@@ -79,6 +81,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_modernity",
     name = "Modernity",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 2, y = 2 },
     config = {
         extra = {
             skip_xmult_mod = 1,
@@ -180,7 +184,9 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "colon_spectaro",
-    name = "Spectaro",
+     name = "Spectaro",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 6, y = 0 },
     rarity = 3,
     cost = 10,
     blueprint_compat = true,
@@ -217,6 +223,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_jester",
     blueprint_compat = true,
+    atlas = "colon_JokerAtlas",
+    pos = { x = 8, y = 1 },
     rarity = 3,
     cost = 9,
 
@@ -275,3 +283,7 @@ SMODS.Joker {
         end
     end,
 }
+
+
+
+

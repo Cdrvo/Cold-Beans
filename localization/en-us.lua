@@ -585,7 +585,7 @@ return {
                 },
             },
             j_cbean_colon_aristotle = { -- Glitchkat10 | N/A | N/A
-                name = "Aristotle",
+                name = "Hippocrates",
                 text = {
                     "Open a {C:attention}Blessing Pack{} when {C:money,E:1}CEO Blind{} is defeated",
                     "When a Blessing is obtained from a {C:attention}Booster Pack{},",
