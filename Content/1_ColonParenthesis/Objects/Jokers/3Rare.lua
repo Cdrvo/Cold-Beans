@@ -221,6 +221,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_jester",
     blueprint_compat = true,
+    atlas = "colon_JokerAtlas",
+    pos = { x = 8, y = 1 },
     rarity = 3,
     cost = 9,
 
@@ -279,4 +281,5 @@ SMODS.Joker {
         end
     end,
 }
+
 
