@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = "colon_sophron",
     name = "Sophron",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 4, y = 1 },
+    soul_pos = { x = 5, y = 1 },
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
@@ -71,6 +74,9 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_aristotle",
     name = "Aristotle",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 2, y = 1 },
+    soul_pos = { x = 3, y = 1 },
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
@@ -86,6 +92,9 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_aristoxenus",
     name = "Aristoxenus",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 6, y = 1 },
+    soul_pos = { x = 7, y = 1 },
     config = {
         extra = {
             xmult_mod = 0.1,
@@ -120,6 +129,9 @@ SMODS.Joker {
 --             playing_cards = {}
 --         }
 --     },
+--     atlas = "colon_JokerAtlas",
+--     pos = { x = 0, y = 1 },
+--     soul_pos = { x = 1, y = 1 },
 --     rarity = 4,
 --     cost = 20,
 --     blueprint_compat = true,
