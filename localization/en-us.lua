@@ -315,6 +315,22 @@ return {
                     "of times it's been played"
                 }
             },
+            bl_cbean_lower_colon_chi = { -- Glitchkat10 | George The Rat | N/A
+                name = "Chi",
+                text = {
+                    "When Blind is selected,",
+                    "create 1 random {C:dark_edition}Negative{} {C:blue}Common{C:attention} Joker{}",
+                    "and 1 random {C:dark_edition}Negative{} {C:green}Uncommon{C:attention} Joker{}",
+                }
+            },
+            bl_cbean_upper_colon_chi = { -- Glitchkat10 | George The Rat | N/A
+                name = "Chi",
+                text = {
+                    "When Blind is selected,",
+                    "create 1 random {C:dark_edition}Negative{} {C:green}Uncommon{C:attention} Joker{}",
+                    "and 1 random {C:dark_edition}Negative{} {C:red}Rare{C:attention} Joker{}",
+                }
+            },
             bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
                 name = "Wee Blind",
                 text = {}

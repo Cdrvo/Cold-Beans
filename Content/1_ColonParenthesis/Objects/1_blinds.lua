@@ -226,37 +226,14 @@ function Colonparen.get_new_blind(type)
 	end
 	local P_STRING = 'P_' ..  (type:upper()) .. '_BLINDS'
 	local eligible_bosses = {}
-	if (type == "CEO") then
-		for k, v in pairs(G[P_STRING]) do
-			local res, options = SMODS.add_to_pool(v)
-			options = options or {}
-			if not v.boss then
-			
-			elseif options.ignore_showdown_check then
-				eligible_bosses[k] = res and true or nil
-			elseif v.in_pool and type(v.in_pool) == 'function' then
-				if
-					(
-						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
-						(v.boss.showdown or false)
-					)
-				then
-					eligible_bosses[k] = res and true or nil
-				end
-			elseif not v.boss.showdown and (((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante))) and ((not v.boss.max) or ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2))) then
-				eligible_bosses[k] = res and true or nil
-			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
-				eligible_bosses[k] = res and true or nil
-			end
-		end
-	else
-		for k, v in pairs(G[P_STRING]) do
-			eligible_bosses[k] = SMODS.add_to_pool(v)
-			if (not G.GAME.bosses_used[k]) then
-				G.GAME.bosses_used[k] = 0
-			end
+
+	for k, v in pairs(G[P_STRING]) do
+		eligible_bosses[k] = SMODS.add_to_pool(v)
+		if (not G.GAME.bosses_used[k]) then
+			G.GAME.bosses_used[k] = 0
 		end
 	end
+	
     for k, v in pairs(G.GAME.banned_keys) do
         if eligible_bosses[k] then eligible_bosses[k] = nil end
     end

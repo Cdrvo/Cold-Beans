@@ -562,3 +562,42 @@ Colonparen.GreekBlind{
         code = "",
     }
 }
+
+
+Colonparen.GreekBlind{
+    key = "colon_chi",
+    name = "Chi",
+    mult = 1,
+    boss_colour = HEX("C26CDE"),
+    pos = { x = 0, y = 21 },
+    lower = {
+        set_blind = function(self, card, from_blind)
+            local card1 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Common", edition = "e_negative"})
+            local card2 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Uncommon", edition = "e_negative"})
+            card1:add_to_deck()
+            G.jokers:emplace(card1)
+            card1:start_materialize()
+            card2:add_to_deck()
+            G.jokers:emplace(card2)
+            card2:start_materialize()
+        end,
+    },
+    upper = {
+        set_blind = function(self, card, from_blind)
+            local card1 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Uncommon", edition = "e_negative"})
+            local card2 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Rare", edition = "e_negative"})
+            card1:add_to_deck()
+            G.jokers:emplace(card1)
+            card1:start_materialize()
+            card2:add_to_deck()
+            G.jokers:emplace(card2)
+            card2:start_materialize()
+        end,
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "SMG9000",
+    }
+}
