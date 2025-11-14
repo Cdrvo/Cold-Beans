@@ -40,6 +40,12 @@ return {
                     "select screen is skipped"
                 }
             },
+            bl_cbean_colon_assassination = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "The Assassination",
+                text = {
+                    "Destroy leftmost Joker"
+                }
+            },
             bl_cbean_colon_button = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "The Button",
                 text = {

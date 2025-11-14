@@ -179,7 +179,7 @@ Colonparen.CEOBlind{
 	atlas = "colon_CEOBlind",
     mult = 3,
 	boss_colour = HEX("da9a81"),
-    calculate = function (self, blind, context)
+    calculate = function(self, blind, context)
         if context.debuff_card and context.debuff_card.seal then
             return {
                 debuff = true
@@ -191,6 +191,40 @@ Colonparen.CEOBlind{
         idea = "George The Rat",
         art = "George The Rat",
         code = "jamirror",
+    }
+}
+
+Colonparen.CEOBlind{
+    key = "colon_assassination",
+    name = "The Assassination",
+    pos = { x = 0, y = 14 },
+    boss = { min = 1 },
+	atlas = "colon_CEOBlind",
+    mult = 1,
+	boss_colour = HEX("70558a"),
+    set_blind = function(self, blind, from_debuff)
+        local target_joker = nil
+        for i, joker in ipairs(G.jokers.cards) do
+            if joker ~= card and not SMODS.is_eternal(joker) and not joker.getting_sliced then
+                target_joker = joker
+                break
+            end
+        end
+        if target_joker then
+            target_joker.getting_sliced = true
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    target_joker:start_dissolve({ G.C.RED }, nil, 1.6)
+                    return true
+                end
+            }))
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Glitchkat10",
     }
 }
 

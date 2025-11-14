@@ -3,6 +3,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 0 },
 	atlas = "colon_TeenyBlind",
     mult = 0.5,
+    dollars = 2,
 	boss_colour = HEX("f58610"),
     beans_credits = {
         team = ":(",
@@ -17,6 +18,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 1 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("009cfd"),
     beans_credits = {
         team = ":(",
@@ -39,6 +41,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 2 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("658e7f"),
     beans_credits = {
         team = ":(",
@@ -61,6 +64,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 3 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("94e5c4"),
     beans_credits = {
         team = ":(",
@@ -82,6 +86,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 4 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("3e276b"),
     beans_credits = {
         team = ":(",
@@ -103,6 +108,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 5 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("e7aac7"),
     beans_credits = {
         team = ":(",
@@ -136,6 +142,7 @@ Colonparen.TeenyBlind{
     pos = { x = 0, y = 6 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("f03c61"),
     beans_credits = {
         team = ":(",
@@ -195,6 +202,7 @@ Colonparen.TeenyBlind{
     atlas = "colon_TeenyBlind",
     pos = { x = 0, y = 7 },
     mult = 0.75,
+    dollars = 2,
 	boss_colour = HEX("817ea7"),
     loc_vars = function(self, info_queue, card)
         return {
