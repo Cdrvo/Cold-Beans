@@ -58,6 +58,13 @@ return {
                     "..."
                 }
             },
+            bl_cbean_colon_compass = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Compass",
+                text = {
+                    "{X:purple}+X1{} base when",
+                    "a hand is played"
+                }
+            },
             bl_cbean_colon_island = { -- Glitchkat10 | George The Rat | Bitter
                 name = "The Island",
                 text = {

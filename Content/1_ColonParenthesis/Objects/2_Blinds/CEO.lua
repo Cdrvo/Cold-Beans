@@ -228,7 +228,7 @@ Colonparen.CEOBlind{
     }
 }
 
-Colonparen.CEOBlind{
+Colonparen.CEOBlind{ -- calc is in a patch or smth idk
     key = "colon_salesman",
     name = "The Salesman",
     pos = { x = 0, y = 17 },
@@ -279,12 +279,30 @@ Colonparen.CEOBlind{
     }
 }
 
+
+Colonparen.CEOBlind {
+    key = "colon_compass",
+    name = "The Compass",
+    pos = { x = 0, y = 25 },
+    boss = { min = 4 },
+    atlas = "colon_CEOBlind",
+    mult = 3,
+    boss_colour = HEX("72364E"),
+    calculate = function(self, blind, context)
+        if context.before then
+            -- Noooooo, you cant just do that. Shut up nerd, Ill do that and copy it anyway (about the copied line from the thing at the top)
+            blind.mult = blind.mult + 1;
+            blind.chips = get_blind_amount(G.GAME.round_resets.ante)*blind.mult*G.GAME.starting_params.ante_scaling
+            blind.chip_text = number_format(blind.chips)
+            blind:juice_up()
+        end
+    end,
+}
 Colonparen.CEOBlind {
     key = "colon_island",
     name = "The Island",
     pos = { x = 0, y = 26 },
     boss = { min = 4 },
-    vars = { todebuff = {} },
     atlas = "colon_CEOBlind",
     mult = 0.3,
     boss_colour = HEX("72364E"),
@@ -306,7 +324,7 @@ Colonparen.CEOBlind {
             print(_card.label)
 
             if _card then
-                
+
                 for _, v in pairs(G.jokers.cards) do    
                     print(_card.label)
                     if v ~= _card then 
