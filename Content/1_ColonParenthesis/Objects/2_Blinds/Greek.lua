@@ -1,3 +1,5 @@
+-- OI! PRETTY MUCH ALL OF THESE ARE UNFINISHED. DW ABOUT IT BECAUSE THE SECOND RUNAROUND EXISTS FOR A REASON - jamirror ( and the rest of Team :( )
+
 Colonparen.GreekBlind{
     key = "colon_alpha",
     name = "Alpha",
