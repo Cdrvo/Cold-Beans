@@ -58,6 +58,8 @@ SMODS.Joker {
             count6 = 0
         }
     },
+	atlas = "colon_JokerAtlas",
+    pos = { x = 5, y = 2 },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
