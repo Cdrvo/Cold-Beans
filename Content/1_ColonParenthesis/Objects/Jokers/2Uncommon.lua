@@ -121,7 +121,8 @@ SMODS.Joker {
                 set = "Playing Card",
                 rank = context.full_hand[1].base.value,
                 suit = context.full_hand[1].base.suit,
-                no_edition = true
+                no_edition = true,
+                enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, "rnacoolyesyes").key
             })
             card_copied:add_to_deck()
             G.deck.config.card_limit = G.deck.config.card_limit + 1

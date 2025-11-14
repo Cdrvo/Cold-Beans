@@ -504,7 +504,7 @@ return {
                 name = "RNA",
                 text = {
                     "If {C:attention}first hand{} of round has only {C:attention}1", 
-                    "add a permanent copy to deck and draw to {C:attention}hand", 
+                    "add a permanent copy with a random enhancement", "to deck and draw to {C:attention}hand", 
                     "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})"},
             },
             j_cbean_colon_shadow = { -- Glitchkat10 | N/A | N/A
