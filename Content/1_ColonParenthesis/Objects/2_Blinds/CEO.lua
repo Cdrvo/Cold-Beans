@@ -284,35 +284,45 @@ Colonparen.CEOBlind {
     name = "The Island",
     pos = { x = 0, y = 26 },
     boss = { min = 4 },
+    vars = { todebuff = {} },
     atlas = "colon_CEOBlind",
     mult = 0.3,
-    boss_colour = HEX("FFFFFF"),            -- someone do ts
+    boss_colour = HEX("72364E"),
     calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_card and context.debuff_card.area == G.jokers then
-                if context.debuff_card.ability.crimson_heart_chosen then
-                    return {
-                        debuff = true
-                    }
+        if blind.disabled then print("desabled") return end
+
+        if context.debuff_card and context.debuff_card.area == G.jokers then
+            if context.debuff_card.ability.island_debuffed then
+                print(context.debuff_card.key, " to be debuffed")
+                return {
+                    debuff = true
+                }
+            end
+        end
+        print(context.hand_drawn and true or false)
+        if context.hand_drawn and G.jokers.cards[2] then
+
+            local _card = pseudorandom_element(G.jokers.cards, 'CEO_islandSafeJoker')
+            print(_card.label)
+
+            if _card then
+                
+                for _, v in pairs(G.jokers.cards) do    
+                    print(_card.label)
+                    if v ~= _card then 
+                        print("Continuing on")
+                        print("Debuffing smth idk")
+                        v.ability.island_debuffed = true
+                        v:juice_up()
+                        SMODS.recalc_debuff(v) 
+                    else
+                        print("stopping")
+                    end 
                 end
+
+                blind:wiggle()
             end
-            if context.press_play and G.jokers.cards[1] then
-                blind.triggered = true
-                blind.prepped = true
-            end
-            if context.hand_drawn then
-                if G.jokers.cards[2] then
-                    local _card = pseudorandom_element(G.jokers.cards, 'colon_ceoblindthingy')
-                    local todebuff = {}
-                    for i, other_card in pairs(G.jokers.cards) do
-                        if other_card ~= _card then
-                            todebuff[other_card] = true
-                        else
-                            todebuff[other_card] = false
-                        end
-                    end
-                end
-            end
+
         end
         if context.hand_drawn then
             blind.prepped = nil
@@ -320,12 +330,12 @@ Colonparen.CEOBlind {
     end,
     disable = function(self)
         for _, joker in ipairs(G.jokers.cards) do
-            joker.ability.crimson_heart_chosen = nil
+            joker.ability.island_debuffed = nil
         end
     end,
     defeat = function(self)
         for _, joker in ipairs(G.jokers.cards) do
-            joker.ability.crimson_heart_chosen = nil
+            joker.ability.island_debuffed = nil
         end
     end
 }
