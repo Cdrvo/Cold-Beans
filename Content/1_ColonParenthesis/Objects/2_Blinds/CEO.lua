@@ -244,6 +244,45 @@ Colonparen.CEOBlind{ -- calc is in a patch or smth idk
     }
 }
 
+Colonparen.CEOBlind {
+    key = "colon_factory",
+    name = "The Factory",
+    pos = { x = 0, y = 13 }, -- no idea if this is the right one
+    boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 3,
+	boss_colour = HEX("47585B"),
+    calculate = function(self, blind, context)
+        if context.hand_drawn then
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            local card = SMODS.create_card({
+                set = "Playing Card",
+                enhancement = "m_stone"
+            })
+            card:add_to_deck()
+            G.deck.config.card_limit = G.deck.config.card_limit + 1
+            table.insert(G.playing_cards, card)
+            G.hand:emplace(card)
+            card.states.visible = nil
+
+            SMODS.debuff_card(card, true, "wawafactorymadeCEO")
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card:start_materialize()
+                    blind:juice_up()
+                    return true
+                end
+            }))
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
+}
+
 Colonparen.CEOBlind{
     key = "colon_promise",
     name = "The Promise",

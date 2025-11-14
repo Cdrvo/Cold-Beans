@@ -46,12 +46,19 @@ return {
                     "Destroy leftmost Joker"
                 }
             },
+            bl_cbean_colon_factory = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Factory",
+                text = {
+                    "When a hand is drawn permanently add",
+                    "a debuffed stone card to deck",
+                }
+            },
             bl_cbean_colon_promise = { -- Glitchkat10 | George The Rat | Bitter
                 name = "The Promise",
                 text = {
                     "If blind is defeated in 1 hand",
                     "add polychrome to a random joker",
-                    "else, remove all non-Negative editions" -- I changed ante to round if changed change code
+                    "else, remove all non-Negative editions"
                 }
             },
             bl_cbean_colon_seed = { -- Glitchkat10 | George The Rat | Bitter
