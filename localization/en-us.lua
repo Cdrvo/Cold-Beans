@@ -58,6 +58,20 @@ return {
                     "..."
                 }
             },
+            bl_cbean_colon_curse = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Curse",
+                text = {
+                    "Next 3 fought blinds have",
+                    "X0.5 additional Base"
+                }
+            },
+            bl_cbean_colon_pot = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Pot",
+                text = {
+                    "Played cards with 2 or more",
+                    "modifications lose all when scored"
+                }
+            },
             bl_cbean_colon_compass = { -- Glitchkat10 | George The Rat | Bitter
                 name = "The Compass",
                 text = {

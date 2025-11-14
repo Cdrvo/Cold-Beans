@@ -279,15 +279,72 @@ Colonparen.CEOBlind{
     }
 }
 
+Colonparen.CEOBlind {
+    key = "colon_curse",
+    name = "The Curse",
+    pos = { x = 0, y = 23 },
+    boss = { min = 2 },
+    atlas = "colon_CEOBlind",
+    mult = 3,
+    boss_colour = HEX("5933BB"),
+    defeat = function(self)
+        G.BlindCurse = 3
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
+}
+
+Colonparen.CEOBlind{
+    key = "colon_pot",
+    name = "The Pot",
+    pos = { x = 0, y = 24 },
+    boss = { min = 2 },
+	atlas = "colon_CEOBlind",
+    mult = 3,
+	boss_colour = HEX("8B6248"), -- background color of blind collection screen
+    calculate = function(self, blind, context)
+        if context.before then
+            local ohGodSomethingChanged = false
+            
+            for _, card in pairs(G.play.cards) do
+                local count = 0
+                local v_mods = {enhanced = SMODS.get_enhancements(card), edition = card.edition, seal = card.seal}
+                for _, mod in pairs(v_mods) do
+                    if mod then
+                        count = count + 1
+                    end
+                end
+
+                if count >= 2 then
+                    card:set_ability('c_base')
+                    card:set_seal(nil)
+                    card:set_edition(nil)
+                end 
+            end
+
+            if ohGodSomethingChanged then blind:juice_up() end
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
+}
 
 Colonparen.CEOBlind {
     key = "colon_compass",
     name = "The Compass",
     pos = { x = 0, y = 25 },
-    boss = { min = 4 },
+    boss = {},
     atlas = "colon_CEOBlind",
     mult = 3,
-    boss_colour = HEX("72364E"),
+    boss_colour = HEX("425AA7"),
     calculate = function(self, blind, context)
         if context.before then
             -- Noooooo, you cant just do that. Shut up nerd, Ill do that and copy it anyway (about the copied line from the thing at the top)
@@ -297,7 +354,14 @@ Colonparen.CEOBlind {
             blind:juice_up()
         end
     end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
 }
+
 Colonparen.CEOBlind {
     key = "colon_island",
     name = "The Island",
@@ -307,34 +371,26 @@ Colonparen.CEOBlind {
     mult = 0.3,
     boss_colour = HEX("72364E"),
     calculate = function(self, blind, context)
-        if blind.disabled then print("desabled") return end
+        if blind.disabled then return end
 
         if context.debuff_card and context.debuff_card.area == G.jokers then
             if context.debuff_card.ability.island_debuffed then
-                print(context.debuff_card.key, " to be debuffed")
                 return {
                     debuff = true
                 }
             end
         end
-        print(context.hand_drawn and true or false)
         if context.hand_drawn and G.jokers.cards[2] then
 
             local _card = pseudorandom_element(G.jokers.cards, 'CEO_islandSafeJoker')
-            print(_card.label)
 
             if _card then
 
                 for _, v in pairs(G.jokers.cards) do    
-                    print(_card.label)
                     if v ~= _card then 
-                        print("Continuing on")
-                        print("Debuffing smth idk")
                         v.ability.island_debuffed = true
                         v:juice_up()
                         SMODS.recalc_debuff(v) 
-                    else
-                        print("stopping")
                     end 
                 end
 
@@ -355,5 +411,11 @@ Colonparen.CEOBlind {
         for _, joker in ipairs(G.jokers.cards) do
             joker.ability.island_debuffed = nil
         end
-    end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
 }

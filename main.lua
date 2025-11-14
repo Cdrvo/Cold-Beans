@@ -33,6 +33,17 @@ ColdBeans.calculate = function(mod, context)
 
 			SMODS.add_card({key = "j_cbean_colon_orchestra"})
 		end
+	elseif context.first_hand_drawn then
+		local count = G.BlindCurse or 0
+		print(count)
+		if count > 0 then
+			G.BlindCurse = G.BlindCurse - 1
+			local blind = G.GAME.blind
+
+            blind.mult = blind.mult + 0.5;
+            blind.chips = get_blind_amount(G.GAME.round_resets.ante)*blind.mult*G.GAME.starting_params.ante_scaling
+            blind.chip_text = number_format(blind.chips)
+		end
 	end
 	-- dunno this, but I'm needing this after
     local haspost = false;
