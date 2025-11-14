@@ -120,3 +120,45 @@ SMODS.Joker {
         code = "N/A",
     }
 }
+
+
+
+
+
+
+SMODS.Joker {
+    key = "coldbean",
+    name = "Cold Bean",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 0, y = 8 },
+
+    config = {
+        extra = {
+            xmult = 80085 -- b00bz
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult
+            }
+        }
+    end,
+
+    rarity = 4,
+    cost = 199.99,
+    blueprint_compat = true,
+    in_pool = function()
+        return false
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+    beans_credits = {
+        team = "yo mama",
+    }
+}

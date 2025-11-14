@@ -58,6 +58,12 @@ return {
                     "..."
                 }
             },
+            bl_cbean_colon_island = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Island",
+                text = {
+                    "All but 1 Joker is debuffed"
+                }
+            },
             bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
                 name = "Alpha",
                 text = {
@@ -614,6 +620,18 @@ return {
                     "{C:attention}-1{} hand size if a card's rank or suit is {C:attention}altered",
                     "{s:0.9}Playing cards cannot be destroyed",
                     "{C:inactive}(Currently {C:attention}+0 {C:inactive}hand size)",
+                },
+            },
+
+
+
+
+            
+            j_cbean_coldbean = { -- George | N/A | Bitter
+                name = "Cold Bean",
+                text = {
+                    "{E:1,C:attention}you werent meant to see this....", 
+                    "({X:mult,C:white}X#1#{} Mult)",
                 },
             },
         },

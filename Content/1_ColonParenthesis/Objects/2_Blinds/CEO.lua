@@ -278,3 +278,54 @@ Colonparen.CEOBlind{
         code = "Glitchkat10",
     }
 }
+
+Colonparen.CEOBlind {
+    key = "colon_island",
+    name = "The Island",
+    pos = { x = 0, y = 26 },
+    boss = { min = 4 },
+    atlas = "colon_CEOBlind",
+    mult = 0.3,
+    boss_colour = HEX("FFFFFF"),            -- someone do ts
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.debuff_card and context.debuff_card.area == G.jokers then
+                if context.debuff_card.ability.crimson_heart_chosen then
+                    return {
+                        debuff = true
+                    }
+                end
+            end
+            if context.press_play and G.jokers.cards[1] then
+                blind.triggered = true
+                blind.prepped = true
+            end
+            if context.hand_drawn then
+                if G.jokers.cards[2] then
+                    local _card = pseudorandom_element(G.jokers.cards, 'colon_ceoblindthingy')
+                    local todebuff = {}
+                    for i, other_card in pairs(G.jokers.cards) do
+                        if other_card ~= _card then
+                            todebuff[other_card] = true
+                        else
+                            todebuff[other_card] = false
+                        end
+                    end
+                end
+            end
+        end
+        if context.hand_drawn then
+            blind.prepped = nil
+        end
+    end,
+    disable = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            joker.ability.crimson_heart_chosen = nil
+        end
+    end,
+    defeat = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            joker.ability.crimson_heart_chosen = nil
+        end
+    end
+}
