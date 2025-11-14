@@ -9,8 +9,8 @@ SMODS.Joker {
             dollars = 2
         }
     },
-    -- atlas = "colon_JokerAtlas",
-    -- pos = { x = 0, y = 0 },
+    atlas = "colon_JokerAtlas",
+    pos = { x = 4, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -104,6 +104,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_rna",
     name = "RNA",
+	atlas = "colon_JokerAtlas",
+    pos = { x = 7, y = 0 },
     pronouns = "it_its",
     rarity = 2,
     cost = 5,
@@ -117,7 +119,7 @@ SMODS.Joker {
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
             local card_copied = SMODS.create_card({
                 set = "Playing Card",
-                rank = context.full_hand[1].base.id,
+                rank = context.full_hand[1].base.value,
                 suit = context.full_hand[1].base.suit,
                 no_edition = true
             })
@@ -158,6 +160,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_sproinky",
     name = "Sproinky",
+	atlas = "colon_JokerAtlas",
+    pos = { x = 8, y = 0 },
     rarity = 2,
     cost = 8,
     blueprint_compat = true,
@@ -199,8 +203,8 @@ SMODS.Joker {
             discards = 1
         }
     },
-    -- atlas = "colon_JokerAtlas",
-    -- pos = { x = 0, y = 0 },
+    atlas = "colon_JokerAtlas",
+    pos = { x = 3, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -231,54 +235,47 @@ SMODS.Joker {
     }
 }
 
-SMODS.Joker {
-    key = "colon_orchestra",
-    name = "Orchestra",
-    config = {
-        extra = {
-            hands = 2,
-            discards = 2,
-            hand_size = 2 
-        }
-    },
-    -- atlas = "",
-    -- pos = { x = 0, y = 0 },
-    rarity = 2,
-    cost = 12,
-    blueprint_compat = false,
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.hands,
-                card.ability.extra.discards,
-                card.ability.extra.hand_size,
-            }
-        }
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-        ease_hands_played(card.ability.extra.hands)
-        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
-        ease_discard(card.ability.extra.discards)
-        G.hand:change_size(card.ability.extra.hand_size)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
-        G.hand:change_size(-card.ability.extra.hand_size)
-    end,
-	-- in_pool = function() -- not what I meaqn, you get all of them, then they combine into one
-	-- 	for i = 1, #G.jokers.cards do
-	-- 		if G.jokers.cards[i].config.center.key == "j_troubadour" and G.jokers.cards[i].config.center.key == "j_cbean_colon_minnesang" and G.jokers.cards[i].config.center.key == "j_cbean_colon_trouvere" then
-    --      -- this wouldnt work right, thats if you have a joker that has 3 keys
-	-- 			return true
-	-- 		end
-	-- 	end
-	-- 	return false
-	-- end,
-    beans_credits = {
-        team = ":( Team",
-        idea = "bitter",
-        code = { "bitter", "Glitchkat10" },
-    }
-}
+-- Scrapped vvv
+
+-- SMODS.Joker {
+--     key = "colon_orchestra",
+--     name = "Orchestra",
+--     config = {
+--         extra = {
+--             hands = 2,
+--             discards = 2,
+--             hand_size = 2 
+--         }
+--     },
+--     -- atlas = "",
+--     -- pos = { x = 0, y = 0 },
+--     rarity = 2,
+--     cost = 12,
+--     blueprint_compat = false,
+--     loc_vars = function(self, info_queue, card)
+--         return {
+--             vars = {
+--                 card.ability.extra.hands,
+--                 card.ability.extra.discards,
+--                 card.ability.extra.hand_size,
+--             }
+--         }
+--     end,
+--     add_to_deck = function(self, card, from_debuff)
+--         G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+--         ease_hands_played(card.ability.extra.hands)
+--         G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+--         ease_discard(card.ability.extra.discards)
+--         G.hand:change_size(card.ability.extra.hand_size)
+--     end,
+--     remove_from_deck = function(self, card, from_debuff)
+--         G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+--         G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
+--         G.hand:change_size(-card.ability.extra.hand_size)
+--     end,
+--     beans_credits = {
+--         team = ":( Team",
+--         idea = "bitter",
+--         code = { "bitter", "Glitchkat10" },
+--     }
+-- }

@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = "colon_sophron",
     name = "Sophron",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 4, y = 1 },
+    soul_pos = { x = 5, y = 1 },
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
@@ -70,7 +73,10 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "colon_aristotle",
-    name = "Aristotle",
+    name = "Hippocrates",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 2, y = 1 },
+    soul_pos = { x = 3, y = 1 },
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
@@ -86,6 +92,9 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_aristoxenus",
     name = "Aristoxenus",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 6, y = 1 },
+    soul_pos = { x = 7, y = 1 },
     config = {
         extra = {
             xmult_mod = 0.1,
@@ -111,46 +120,3 @@ SMODS.Joker {
         code = "N/A",
     }
 }
-
--- SMODS.Joker {
---     key = "colon_hippo",
---     config = {
---         extra = {
---             handsize = 0,
---             playing_cards = {}
---         }
---     },
---     rarity = 4,
---     cost = 20,
---     blueprint_compat = true,
---     loc_vars = function(self, info_queue, card)
---         return {
---             vars = {
---                 card.ability.extra.handsize,
---             }
---         }
---     end,
-
---     add_to_deck = function (self, card)
---         card.ability.extra.playing_cards = G.playing_cards
---     end,
---     calculate = function(self, card, context)
---         local handsize = card.ability.extra.handsize
---         if context.playing_card_added then
---             handsize = handsize + 1
---             print("yay!!!")
---             print(G.playing_card)
---             card.ability.extra.playing_cards = G.playing_cards
---         else
---             if card.ability.extra.playing_cards == G.playing_cards then return end
---             handsize = handsize - 1
---             print("Fuck you")
---             card.ability.extra.playing_cards = G.playing_cards
---         end
---     end,
---     beans_credits = {
---         team = ":(",
---         idea = "Glitchkat10",
---         code = "bitter",
---     }
--- }

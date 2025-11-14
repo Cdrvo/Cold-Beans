@@ -47,7 +47,7 @@ SMODS.Atlas({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 0.7,
+    pitch = 0.71805851185,
 	key = "teeny_music",
 	path = "1_ColonParenthesis/teeny.ogg",
 	select_music_track = function(self)
@@ -57,7 +57,7 @@ SMODS.Sound ({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 0.7,
+    pitch = 0.71805851185,
 	key = "ceo_music",
 	path = "1_ColonParenthesis/ceo.ogg",
 	select_music_track = function(self)
