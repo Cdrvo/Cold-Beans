@@ -46,11 +46,19 @@ return {
                     "Destroy leftmost Joker"
                 }
             },
+            bl_cbean_colon_promise = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Promise",
+                text = {
+                    "If blind is defeated in 1 hand",
+                    "add polychrome to a random joker",
+                    "else, remove all non-Negative editions" -- I changed ante to round if changed change code
+                }
+            },
             bl_cbean_colon_seed = { -- Glitchkat10 | George The Rat | Bitter
                 name = "The Seed",
                 text = {
-                    "+X0.05 Base when",
-                    "a card is scored this round"                                                -- I changed ante to round if changed change code
+                    "+X0.05 Base for every",
+                    "card scored this round"                                                -- I changed ante to round if changed change code
                 }
             },
             bl_cbean_colon_pipeline = { -- Glitchkat10 | George The Rat | Glitchkat10

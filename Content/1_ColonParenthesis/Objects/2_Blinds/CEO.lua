@@ -245,6 +245,40 @@ Colonparen.CEOBlind{ -- calc is in a patch or smth idk
 }
 
 Colonparen.CEOBlind{
+    key = "colon_promise",
+    name = "The Promise",
+    pos = { x = 0, y = 12 }, -- no idea if this is the right one
+    boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 2,
+	boss_colour = HEX("97D6E8"),
+    calculate = function(self, blind, context)
+        if context.end_of_round and context.main_eval then
+            if G.GAME.current_round.hands_played == 1 then
+                print(G.GAME.current_round.hands_played)
+                local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+
+                local eligible_card = pseudorandom_element(editionless_jokers, 'cbean_promiseCEO')
+                eligible_card:set_edition('e_polychrome', true)
+            else
+                for _, joker in pairs(G.jokers.cards) do
+                    if joker.edition and joker.edition.key ~= "e_negative" then
+                        -- joker:set_ability('c_base')          -- This will make the joker no longer a joker, and instead a card that only has an edition
+                        joker:set_edition(nil)
+                    end
+                end
+            end
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
+}
+
+Colonparen.CEOBlind{
     key = "colon_seed",
     name = "The Seed",
     pos = { x = 0, y = 15 },
