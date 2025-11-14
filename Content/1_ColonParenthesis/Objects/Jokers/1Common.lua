@@ -1,8 +1,3 @@
--- All In
-
--- Auto Belay
-
--- Boulder
 
 SMODS.Joker {
     key = "colon_chalk",
@@ -93,6 +88,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_pebble",
     name = "Pebble",
+    atlas = "colon_JokerAtlas",
+    pos = { x = 4, y = 2 },
     cost = 5,
     rarity = 1,
     blueprint_compat = false,
