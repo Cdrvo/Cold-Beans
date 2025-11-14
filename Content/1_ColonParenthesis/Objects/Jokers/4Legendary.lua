@@ -131,6 +131,7 @@ SMODS.Joker {
     name = "Cold Bean",
     atlas = "colon_JokerAtlas",
     pos = { x = 0, y = 8 },
+    discovered = true,
 
     config = {
         extra = {

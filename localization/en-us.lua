@@ -627,7 +627,7 @@ return {
 
 
             
-            j_cbean_coldbean = { -- George | N/A | Bitter
+            j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
                 text = {
                     "{E:1,C:attention}you werent meant to see this....", 

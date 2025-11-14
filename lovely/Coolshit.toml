@@ -1,0 +1,60 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+
+# MAINMENU
+
+    # ace replace? might remove ltr
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)'''
+position = "at"
+payload = ''' 
+local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.empty, G.P_CENTERS['j_cbean_coldbean'])
+'''
+match_indent = true
+
+    # colours
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+            {name = 'colour_1', ref_table = G.C, ref_value = 'RED'},
+            {name = 'colour_2', ref_table = G.C, ref_value = 'BLUE'},
+'''
+position = "at"
+payload = '''
+            {name = 'colour_1', ref_table = G.C.SECONDARY_SET, ref_value = 'Spectral'},
+            {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE'},
+'''
+match_indent = true
+
+# INTRO
+
+    # jimbo replace
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])'''
+position = "at"
+payload = '''
+SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_cbean_coldbean'])
+'''
+
+    # colours
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+                    {name = 'colour_1', ref_table = G.C, ref_value = 'BLUE'},
+                    {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE'},
+'''
+position = "at"
+payload = ''' 
+                    {name = 'colour_1', ref_table = G.C.UI, ref_value = 'TEXT_INACTIVE'},
+                    {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE'},
+'''
+match_indent = true
