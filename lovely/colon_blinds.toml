@@ -474,6 +474,22 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
+target = 'blind.lua'
+pattern = '''self.config.blind = G.P_BLINDS[blindTable.config_blind] or {}'''
+position = "at"
+payload = '''self.config.blind = G.P_BLINDS[blindTable.config_blind] or ((Colonparen or {}).SpecialBlinds or {})[blindTable.config_blind] or {}'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'blind.lua'
+pattern = 'if G.P_BLINDS[blindTable.config_blind] then'
+position = 'at'
+match_indent = true
+payload = '''if G.P_BLINDS[blindTable.config_blind] or ((Colonparen or {}).SpecialBlinds or {})[blindTable.config_blind] then'''
+
+[[patches]]
+[patches.pattern]
 target = 'game.lua'
 pattern = '''G.ARGS.save_progress.PROFILE = G.PROFILES[G.SETTINGS.profile]'''
 position = "after"
