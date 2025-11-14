@@ -245,6 +245,30 @@ Colonparen.CEOBlind{ -- calc is in a patch or smth idk
 }
 
 Colonparen.CEOBlind{
+    key = "colon_seed",
+    name = "The Seed",
+    pos = { x = 0, y = 15 },
+    boss = {},
+	atlas = "colon_CEOBlind",
+    mult = 3,
+	boss_colour = HEX("B3FF5F"),
+    calculate = function(self, blind, context)
+        if context.individual and context.cardarea == G.play then
+            G.GAME.blind.mult = G.GAME.blind.mult + 0.5;
+            G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling -- I sure hope the game doesnt hate this
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            G.GAME.blind:juice_up()
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
+}
+
+Colonparen.CEOBlind{
     key = "colon_pipeline",
     name = "The Pipeline",
     pos = { x = 0, y = 20 },
@@ -255,7 +279,7 @@ Colonparen.CEOBlind{
     calculate = function(self, blind, context)
         if context.before then
             blind.wawa_xmult = 1.2
-        elseif context.other_joker and context.cardarea == G.Jokers then
+        elseif context.other_joker then
             local save = blind.wawa_xmult
             blind.wawa_xmult = blind.wawa_xmult - 0.1
             return {

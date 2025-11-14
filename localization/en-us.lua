@@ -46,10 +46,17 @@ return {
                     "Destroy leftmost Joker"
                 }
             },
+            bl_cbean_colon_seed = { -- Glitchkat10 | George The Rat | Bitter
+                name = "The Seed",
+                text = {
+                    "+X0.05 Base when",
+                    "a card is scored this round"                                                -- I changed ante to round if changed change code
+                }
+            },
             bl_cbean_colon_pipeline = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "The Pipeline",
                 text = {
-                    "All jokers give 1.2X mult but...", -- what a jd nightmare
+                    "All jokers give 1.2X mult but...", -- what a jd nightmare, actually take from baseball card
                     "X0.1 mult less than the last"
                 }
             },
