@@ -46,6 +46,13 @@ return {
                     "Destroy leftmost Joker"
                 }
             },
+            bl_cbean_colon_pipeline = { -- Glitchkat10 | George The Rat | Glitchkat10
+                name = "The Pipeline",
+                text = {
+                    "All jokers give 1.2X mult but...", -- what a jd nightmare
+                    "X0.1 mult less than the last"
+                }
+            },
             bl_cbean_colon_button = { -- Glitchkat10 | George The Rat | Glitchkat10
                 name = "The Button",
                 text = {

@@ -245,6 +245,33 @@ Colonparen.CEOBlind{ -- calc is in a patch or smth idk
 }
 
 Colonparen.CEOBlind{
+    key = "colon_pipeline",
+    name = "The Pipeline",
+    pos = { x = 0, y = 20 },
+    boss = { min = 2 },
+	atlas = "colon_CEOBlind",
+    mult = 3,
+	boss_colour = HEX("CC730F"),
+    calculate = function(self, blind, context)
+        if context.before then
+            blind.wawa_xmult = 1.2
+        elseif context.other_joker and context.cardarea == G.Jokers then
+            local save = blind.wawa_xmult
+            blind.wawa_xmult = blind.wawa_xmult - 0.1
+            return {
+                xmult = save
+            }
+        end
+    end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "Bitter",
+    }
+}
+
+Colonparen.CEOBlind{
     key = "colon_button",
     name = "The Button",
     pos = { x = 0, y = 21 },
