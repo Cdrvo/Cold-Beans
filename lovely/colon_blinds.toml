@@ -433,6 +433,30 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
+target = 'game.lua'
+pattern = '''table.sort(self.P_LOCKED, function (a, b) return not a.order or not b.order or a.order < b.order end)'''
+position = "after"
+payload = '''
+G.CBEAN_COLON_LOADED_SAVE = copy_table(meta);
+for k, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
+    if not v.demo and not v.wip then 
+        if TESTHELPER_unlocks then v.discovered = true; v.alerted = true  end --REMOVE THIS
+        if not v.discovered and meta.discovered[k] then 
+            v.discovered = true
+        end
+        if v.discovered and meta.alerted[k] then 
+            v.alerted = true
+        elseif v.discovered then
+            v.alerted = false
+        end
+    end
+end
+'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
 target = 'blind.lua'
 pattern = '''for k, v in pairs(G.P_BLINDS) do
     if v and v.name and v.name == blindTable.name then

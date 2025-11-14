@@ -165,7 +165,7 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
             self.name = self.name or self.key
 			self.colonparen_blindtype = name;
             SMODS.Blind.super.register(self)
-			Colonparen.SpecialBlinds[self.key .. "_" .. name] = self;
+			Colonparen.SpecialBlinds[self.key] = self;
         end,
         inject = function(self, i)
             -- no pools to query length of, so we assign order manually
@@ -173,6 +173,22 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
                 self.order = 30 + i
             end
             G[P_STRING][self.key] = self
+			if G.CBEAN_COLON_LOADED_SAVE then
+				local meta = G.CBEAN_COLON_LOADED_SAVE;
+				local v = self;
+				local k = self.key;
+				if not v.demo and not v.wip then 
+					if TESTHELPER_unlocks then v.discovered = true; v.alerted = true  end --REMOVE THIS
+					if not v.discovered and meta.discovered[k] then 
+						v.discovered = true
+					end
+					if v.discovered and meta.alerted[k] then 
+						v.alerted = true
+					elseif v.discovered then
+						v.alerted = false
+					end
+				end
+			end
         end
     }
 end
@@ -377,7 +393,7 @@ Colonparen.LowerGreekBlind = SMODS.Blind:extend {
 		self.colonparen_blindtype = 'Greek';
 
 		SMODS.Blind.super.register(self)
-		Colonparen.SpecialBlinds[self.key .. "_Lower_Greek"] = self;
+		Colonparen.SpecialBlinds[self.key] = self;
 	end,
 	inject = function(self, i)
 		-- no pools to query length of, so we assign order manually
@@ -385,6 +401,22 @@ Colonparen.LowerGreekBlind = SMODS.Blind:extend {
 			self.order = 30 + i
 		end
 		G.P_LOWER_GREEK_BLINDS[self.key] = self
+		if G.CBEAN_COLON_LOADED_SAVE then
+			local meta = G.CBEAN_COLON_LOADED_SAVE;
+			local v = self;
+			local k = self.key;
+			if not v.demo and not v.wip then 
+				if TESTHELPER_unlocks then v.discovered = true; v.alerted = true  end --REMOVE THIS
+				if not v.discovered and meta.discovered[k] then 
+					v.discovered = true
+				end
+				if v.discovered and meta.alerted[k] then 
+					v.alerted = true
+				elseif v.discovered then
+					v.alerted = false
+				end
+			end
+		end
 	end
 }
 Colonparen.UpperGreekBlind = SMODS.Blind:extend {
@@ -394,7 +426,7 @@ Colonparen.UpperGreekBlind = SMODS.Blind:extend {
 		self.colonparen_blindtype = 'Greek';
 
 		SMODS.Blind.super.register(self)
-		Colonparen.SpecialBlinds[self.key .. "_Upper_Greek"] = self;
+		Colonparen.SpecialBlinds[self.key] = self;
 	end,
 	inject = function(self, i)
 		-- no pools to query length of, so we assign order manually
@@ -402,6 +434,22 @@ Colonparen.UpperGreekBlind = SMODS.Blind:extend {
 			self.order = 30 + i
 		end
 		G.P_UPPER_GREEK_BLINDS[self.key] = self
+		if G.CBEAN_COLON_LOADED_SAVE then
+			local meta = G.CBEAN_COLON_LOADED_SAVE;
+			local v = self;
+			local k = self.key;
+			if not v.demo and not v.wip then 
+				if TESTHELPER_unlocks then v.discovered = true; v.alerted = true  end --REMOVE THIS
+				if not v.discovered and meta.discovered[k] then 
+					v.discovered = true
+				end
+				if v.discovered and meta.alerted[k] then 
+					v.alerted = true
+				elseif v.discovered then
+					v.alerted = false
+				end
+			end
+		end
 	end
 }
 Colonparen.GreekBlinds = {}
