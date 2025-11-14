@@ -104,7 +104,11 @@ function reset_blinds()
 end
 
 function Blind:get_type()
-	return G.GAME.blind_on_deck
+	local final = true
+	for k,v in pairs(G.GAME.round_resets.blind_states) do
+		if v == "Upcoming" then final = false break end
+	end
+	return G.GAME.blind_on_deck, final
 end
 
 function Blind:true_type()

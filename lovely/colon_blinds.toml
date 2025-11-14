@@ -103,6 +103,25 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind:get_type() == 'Boss' then
+    game_won = true
+    G.GAME.won = true
+end
+'''
+position = "after"
+payload = '''
+if G.GAME.round_resets.ante == G.GAME.win_ante then --Minty: This stomps the normal check ☹️ but not anything patched into it 🙂
+    local _,final = G.GAME.blind:get_type()
+    game_won = final
+    G.GAME.won = final
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
 target = "functions/UI_definitions.lua"
 pattern = '''G.blind_select_opts.small = G.GAME.round_resets.blind_states['Small'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Small')},false,get_blind_main_colour('Small'))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil'''
 position = "before"
