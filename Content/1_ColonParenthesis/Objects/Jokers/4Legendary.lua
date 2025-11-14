@@ -152,6 +152,7 @@ SMODS.Joker {
     in_pool = function()
         return false
     end,
+    no_collection = true,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
