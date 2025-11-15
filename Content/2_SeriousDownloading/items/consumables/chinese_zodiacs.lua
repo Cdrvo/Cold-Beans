@@ -108,6 +108,7 @@ SMODS.Consumable {
     key = 'sdown_rat',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Rat',
         text = {
@@ -147,6 +148,7 @@ SMODS.Consumable {
     key = 'sdown_ox',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Ox',
         text = {
@@ -186,6 +188,7 @@ SMODS.Consumable {
     key = 'sdown_tiger',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Tiger',
         text = {
@@ -225,6 +228,7 @@ SMODS.Consumable {
     key = 'sdown_rabbit',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Rabbit',
         text = {
@@ -264,6 +268,7 @@ SMODS.Consumable {
     key = 'sdown_dragon',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Dragon',
         text = {
@@ -303,6 +308,7 @@ SMODS.Consumable {
     key = 'sdown_snake',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Snake',
         text = {
@@ -342,6 +348,7 @@ SMODS.Consumable {
     key = 'sdown_horse',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Horse',
         text = {
@@ -381,6 +388,7 @@ SMODS.Consumable {
     key = 'sdown_goat',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Goat',
         text = {
@@ -420,6 +428,7 @@ SMODS.Consumable {
     key = 'sdown_monkey',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Monkey',
         text = {
@@ -459,6 +468,7 @@ SMODS.Consumable {
     key = 'sdown_rooster',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Rooster',
         text = {
@@ -498,6 +508,7 @@ SMODS.Consumable {
     key = 'sdown_dog',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Dog',
         text = {
@@ -537,6 +548,7 @@ SMODS.Consumable {
     key = 'sdown_pig',
     set = 'sdown_czodiac',
     atlas = 'colon_JokerAtlas',
+    cost = 2,
     loc_txt = {
         name = 'The Pig',
         text = {
