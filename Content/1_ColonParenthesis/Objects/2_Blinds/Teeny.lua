@@ -61,11 +61,11 @@ Colonparen.TeenyBlind{
 
 Colonparen.TeenyBlind{
     key = "colon_charitable",
+    boss = {min = 2},
     pos = { x = 0, y = 3 },
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
     dollars = 2,
-    boss = {min = 2},
 	boss_colour = HEX("94e5c4"),
     beans_credits = {
         team = ":(",

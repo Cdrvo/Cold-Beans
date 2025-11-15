@@ -252,7 +252,7 @@ function Colonparen.get_new_blind(type)
 			local res, options = SMODS.add_to_pool(v)
 			options = options or {}
 			if not v.boss then
-			
+
 			elseif options.ignore_showdown_check then
 				eligible_bosses[k] = res and true or nil
 			elseif v.in_pool and type(v.in_pool) == 'function' then
@@ -268,6 +268,15 @@ function Colonparen.get_new_blind(type)
 				eligible_bosses[k] = res and true or nil
 			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 				eligible_bosses[k] = res and true or nil
+			end
+		end
+	elseif type == 'Teeny' then
+		for k, v in pairs(G[P_STRING]) do
+			if not v.boss or not v.boss.min or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) then
+				eligible_bosses[k] = SMODS.add_to_pool(v)
+				if (not G.GAME.bosses_used[k]) then
+					G.GAME.bosses_used[k] = 0
+				end
 			end
 		end
 	else

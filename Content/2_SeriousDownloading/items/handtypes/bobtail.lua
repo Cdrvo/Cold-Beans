@@ -20,7 +20,7 @@ SMODS.PokerHandPart {
             end
         end
         if next(bobtails) == nil then return {} end
-        return { bobtails }
+        return bobtails
     end
 }
 
@@ -40,8 +40,6 @@ SMODS.PokerHand{
         { "S_5", false },
     },
     evaluate = function(parts, hand)
-        --TODO: none of the cards in the hand are scoring???? dont know why this is happening but need to fix asap
-        --Also Crashes on teeny blinds????
         return parts.cbean_sdown_bobtail
     end
 }
