@@ -705,8 +705,15 @@ return {
         },
         high_scores = {},
         labels = {},
-        poker_hand_descriptions = {},
-        poker_hands = {},
+        poker_hand_descriptions = {
+            ["cbean_sdown_bobtail"] = {
+                "4 cards in a row (consecutive ranks) with",
+                "all cards sharing the same suit",
+            }
+        },
+        poker_hands = {
+            ["cbean_sdown_bobtail"] = "Bobtail" -- Athebyne | N/A | Athebyne
+        },
         quips = {},
         ranks = {},
         suits_plural = {},
