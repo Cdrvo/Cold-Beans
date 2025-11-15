@@ -14,7 +14,7 @@ SMODS.PokerHandPart {
                 for i,_ in pairs(straight) do
                     if straight[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = straight[i] end
                 end
-                if flush_count >= (SMODS.four_fingers('flush') - 1) then
+                if flush_count >= (#straight) then
                     table.insert(bobtails, t)
                 end
             end
@@ -40,6 +40,7 @@ SMODS.PokerHand{
         { "S_5", false },
     },
     evaluate = function(parts, hand)
+        --TODO: none of the cards in the hand are scoring???? dont know why this is happening but need to fix asap
         return next(parts.cbean_sdown_bobtail) and parts.cbean_sdown_bobtail or {}
     end
 }
