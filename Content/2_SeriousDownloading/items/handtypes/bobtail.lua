@@ -41,6 +41,7 @@ SMODS.PokerHand{
     },
     evaluate = function(parts, hand)
         --TODO: none of the cards in the hand are scoring???? dont know why this is happening but need to fix asap
-        return next(parts.cbean_sdown_bobtail) and parts.cbean_sdown_bobtail or {}
+        --Also Crashes on teeny blinds????
+        return parts.cbean_sdown_bobtail
     end
 }

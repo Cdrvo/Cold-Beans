@@ -65,6 +65,7 @@ Colonparen.TeenyBlind{
 	atlas = "colon_TeenyBlind",
     mult = 0.75,
     dollars = 2,
+    boss = {min = 2},
 	boss_colour = HEX("94e5c4"),
     beans_credits = {
         team = ":(",

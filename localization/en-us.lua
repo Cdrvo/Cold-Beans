@@ -706,12 +706,22 @@ return {
         high_scores = {},
         labels = {},
         poker_hand_descriptions = {
+            ["cbean_sdown_antistraight"] = {
+                "5 cards, with no two cards having the same",
+                "or consecutive ranks",
+            },
+            ["cbean_sdown_antistraight_flush"] = {
+                "5 cards, all sharing the same suit, with no two cards",
+                "having the same or consecutive ranks",
+            },
             ["cbean_sdown_bobtail"] = {
                 "4 cards in a row (consecutive ranks) with",
                 "all cards sharing the same suit",
             }
         },
         poker_hands = {
+            ["cbean_sdown_antistraight"] = "Gay", -- Athebyne | N/A | Athebyne
+            ["cbean_sdown_antistraight_flush"] = "Gay Flush", -- Athebyne | N/A | Athebyne
             ["cbean_sdown_bobtail"] = "Bobtail" -- Athebyne | N/A | Athebyne
         },
         quips = {},
