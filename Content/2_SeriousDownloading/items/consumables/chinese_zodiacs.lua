@@ -1,3 +1,10 @@
+SMODS.Atlas({
+    key = "czodiac_atlas",
+    path = "2_SeriousDownloading/CZodiacs.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.ConsumableType {
     key = 'sdown_czodiac',
     default = 'c_cbean_sdown_dragon',
@@ -21,6 +28,7 @@ SMODS.ConsumableType {
     },
 }
 
+-- uh how does this work again
 SMODS.UndiscoveredSprite {
     key = 'sdown_czodiac',
     atlas = 'Consumables',
@@ -107,7 +115,7 @@ end
 SMODS.Consumable {
     key = 'sdown_rat',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Rat',
@@ -122,7 +130,7 @@ SMODS.Consumable {
         rank2 = '2',
         rank3 = '3'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 1, y = 2},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -147,7 +155,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_ox',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Ox',
@@ -162,7 +170,7 @@ SMODS.Consumable {
         rank2 = '3',
         rank3 = '4'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 2, y = 0},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -187,7 +195,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_tiger',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Tiger',
@@ -202,7 +210,7 @@ SMODS.Consumable {
         rank2 = '4',
         rank3 = '5'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 0, y = 0},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -227,7 +235,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_rabbit',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Rabbit',
@@ -242,7 +250,7 @@ SMODS.Consumable {
         rank2 = '5',
         rank3 = '6'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 0, y = 2},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -267,7 +275,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_dragon',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Dragon',
@@ -282,7 +290,7 @@ SMODS.Consumable {
         rank2 = '6',
         rank3 = '7'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 0, y = 1},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -307,7 +315,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_snake',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Snake',
@@ -322,7 +330,7 @@ SMODS.Consumable {
         rank2 = '7',
         rank3 = '8'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 3, y = 1},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -347,7 +355,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_horse',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Horse',
@@ -362,7 +370,7 @@ SMODS.Consumable {
         rank2 = '8',
         rank3 = '9'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 3, y = 2},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -387,7 +395,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_goat',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Goat',
@@ -402,7 +410,7 @@ SMODS.Consumable {
         rank2 = '9',
         rank3 = '10'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 2, y = 2},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -427,7 +435,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_monkey',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Monkey',
@@ -442,7 +450,7 @@ SMODS.Consumable {
         rank2 = '10',
         rank3 = 'Jack'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 3, y = 0},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -467,7 +475,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_rooster',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Rooster',
@@ -507,7 +515,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_dog',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Dog',
@@ -522,7 +530,7 @@ SMODS.Consumable {
         rank2 = 'Queen',
         rank3 = 'King'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 2, y = 1},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -547,7 +555,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'sdown_pig',
     set = 'sdown_czodiac',
-    atlas = 'colon_JokerAtlas',
+    atlas = 'czodiac_atlas',
     cost = 2,
     loc_txt = {
         name = 'The Pig',
@@ -562,7 +570,7 @@ SMODS.Consumable {
         rank2 = 'King',
         rank3 = 'Ace'
     },
-    pos = { x = 1, y = 0},
+    pos = { x = 1, y = 1},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
