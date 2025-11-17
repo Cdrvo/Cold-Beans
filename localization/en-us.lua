@@ -734,7 +734,9 @@ return {
         achievement_descriptions = {},
         achievement_names = {},
         blind_states = {},
-        challenge_names = {},
+        challenge_names = {
+            c_cbean_sdown_inexcusable = "Inexcusable"
+        },
         collabs = {},
         dictionary = {
             sheet_most_held = "(Most held rank)",
@@ -772,6 +774,12 @@ return {
             coldbean_art = { "Art: #1#" },
             coldbean_code = { "Code: #1#" }
         },
-        v_text = {},
+        v_text = {
+            --TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
+            --be that modifiable if nobody else uses this. In which case who cares tbh.
+            ch_c_cbean_sdown_all_blinds_are={
+                "{C:attention}All Blinds{} are {C:attention}The Folly",
+            }
+        },
     },
 }

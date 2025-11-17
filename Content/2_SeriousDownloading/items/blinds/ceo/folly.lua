@@ -6,12 +6,10 @@ Colonparen.CEOBlind {
     atlas = "colon_CEOBlind",
     mult = 1,
     boss_colour = HEX("5933BB"),
-    calculate = function(self, blind, context)
-        if context.modify_ante and context.ante_end and not blind.disabled then
-            if G.GAME.chips > G.GAME.blind.chips then
-                if not G.GAME.BlindFolly then G.GAME.BlindFolly = 0 end
-                G.GAME.BlindFolly = G.GAME.BlindFolly + (G.GAME.chips - G.GAME.blind.chips) end
-        end
+    defeat = function(self)
+        if G.GAME.chips > G.GAME.blind.chips then
+            if not G.GAME.BlindFolly then G.GAME.BlindFolly = 0 end
+            G.GAME.BlindFolly = G.GAME.BlindFolly + (G.GAME.chips - G.GAME.blind.chips) end
     end,
     beans_credits = {
         team = "SeriousDownloading",

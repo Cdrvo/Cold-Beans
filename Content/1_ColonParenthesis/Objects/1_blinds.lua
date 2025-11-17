@@ -229,6 +229,9 @@ end
 
 local old_get_new_boss = get_new_boss;
 function get_new_boss(...)
+	if G.GAME.modifiers.cbean_sdown_all_blinds_are then
+		return G.GAME.modifiers.cbean_sdown_all_blinds_are
+	end
 	if G.GAME.colonparen_prescribed_blinds 
 		and G.GAME.colonparen_prescribed_blinds.Boss then
 			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds.Boss, "Boss")
@@ -239,12 +242,16 @@ end
 --why did you use Type as a variable what are you doing
 local type_ = type
 function Colonparen.get_new_blind(type)
-	if type == "Boss" then
-		return get_new_boss()
+	--Okay, this seems super redundant but I can't seem to work out how to get the modifier to already prescribe blinds?
+	if G.GAME.modifiers.cbean_sdown_all_blinds_are then
+		return G.GAME.modifiers.cbean_sdown_all_blinds_are
 	end
 	if G.GAME.colonparen_prescribed_blinds 
 		and G.GAME.colonparen_prescribed_blinds[type] then
 			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds[type], type)
+	end
+	if type == "Boss" then
+		return get_new_boss()
 	end
 	local P_STRING = 'P_' ..  (type:upper()) .. '_BLINDS'
 	local eligible_bosses = {}

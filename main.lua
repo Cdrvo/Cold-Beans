@@ -24,7 +24,6 @@ ColdBeans.calculate = function(mod, context)
 	if context.card_added and context.cardarea == G.jokers then
 		local jokers = GetJokers()
 		local troub, minne, trouv = jokers["j_troubadour"], jokers["j_cbean_colon_minnesang"], jokers["j_cbean_colon_trouvere"]
-		print(jokers)
 		if troub and minne and trouv then
 			troub:remove()
 			minne:remove()
@@ -38,7 +37,6 @@ ColdBeans.calculate = function(mod, context)
 		local count = G.GAME.BlindCurse or 0
 		local folly = G.GAME.BlindFolly or 0
 		local blind = G.GAME.blind
-		print(count)
 		if count > 0 then
 			G.GAME.BlindCurse = G.BlindCurse - 1
             blind.mult = blind.mult + 0.5;
