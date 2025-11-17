@@ -114,6 +114,43 @@ return {
                     "All but 1 Joker is debuffed"
                 }
             },
+            bl_cbean_sdown_folly = { -- Athebyne | N/A | Athebyne
+                name = "The Folly",
+                text = {
+                    "If score exceeds requirements,",
+                    "permanently add excess score",
+                    "to all future blind requirements"
+                }
+            },
+            bl_cbean_sdown_outgrowth = {
+                name = "The Outgrowth",
+                text = {
+                    "Must play exactly 1 unscoring card",
+                    "{C:inactive}Splash-like effects still count as unscoring"
+                }
+            },
+            bl_cbean_sdown_rebellion = {
+                name = "The Rebellion",
+                text = {
+                    "Cards held in hand subtract",
+                    "their chip value from Chips",
+                }
+            },
+            bl_cbean_sdown_regression = {
+                name = "The Regression",
+                text = {
+                    "Played #1#s become #2#s and",
+                    "played #3#s become #4#s"
+                }
+            },
+            bl_cbean_sdown_sinker = {
+                name = "The Sinker",
+                text = {
+                    "Shuffle all joker cards",
+                    "then debuff Leftmost Joker",
+                    "Jokers can not be reordered"
+                }
+            },
             bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
                 name = "Alpha",
                 text = {

@@ -75,7 +75,7 @@ ColdBeans.OnCalculate(function (self, context)
         G.GAME.colonparen_most_held_rank = chosen
     end
     if either_changed then
-        if G.GAME.blind and G.GAME.blind.name == "The Sheet" then
+        if G.GAME.blind and (G.GAME.blind.name == "The Sheet" or G.GAME.blind.name == "The Regression") then
             G.GAME.blind:set_text()
         end
     end
@@ -116,7 +116,7 @@ Colonparen.CEOBlind{
 	atlas = "colon_CEOBlind",
     mult = 3,
 	boss_colour = HEX("459373"),
-    colon_blind_variables = {
+    config = {
         most_held = function () return G.GAME.colonparen_most_held_rank or 'Ace' end,
         most_played = function() return G.GAME.colonparen_most_played_rank or '2' end,
     },
@@ -412,7 +412,7 @@ Colonparen.CEOBlind {
     mult = 3,
     boss_colour = HEX("5933BB"),
     defeat = function(self)
-        G.BlindCurse = 3
+        G.GAME.BlindCurse = 3
     end,
     beans_credits = {
         team = ":(",

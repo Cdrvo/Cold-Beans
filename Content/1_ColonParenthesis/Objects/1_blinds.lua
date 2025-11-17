@@ -236,6 +236,8 @@ function get_new_boss(...)
 	return Colonparen.calculateReplacedBlind(old_get_new_boss(...), "Boss")
 end
 
+--why did you use Type as a variable what are you doing
+local type_ = type
 function Colonparen.get_new_blind(type)
 	if type == "Boss" then
 		return get_new_boss()
@@ -255,12 +257,12 @@ function Colonparen.get_new_blind(type)
 
 			elseif options.ignore_showdown_check then
 				eligible_bosses[k] = res and true or nil
-			elseif v.in_pool and type(v.in_pool) == 'function' then
+			elseif v.in_pool and type_(v.in_pool) == 'function' then
 				if
 					(
 						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
 						(v.boss.showdown or false)
-					)
+					) and v:in_pool()
 				then
 					eligible_bosses[k] = res and true or nil
 				end
