@@ -58,10 +58,12 @@ Colonparen.CEOBlind {
             end
         end
     end,
+    --if this ends up being rightmost after everything i do just change the text and make it always have been rightmost all along idk
     recalc_debuff = function(self, card, from_blind)
         if G.GAME.blind.disabled then return false end
-        if G.jokers then
-            if G.jokers.cards[1] == card then return true end
+        if card.area == G.jokers and #G.jokers > 0 and card == G.jokers[#G.jokers] then
+            SMODS.debuff_card(card, true, 'the_sinker')
+            return true
         end
         return false
     end,

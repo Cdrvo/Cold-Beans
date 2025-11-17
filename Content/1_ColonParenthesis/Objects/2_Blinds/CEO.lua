@@ -99,6 +99,70 @@ Colonparen.CEOBlind{
 
 local calculate_context = SMODS.calculate_context;
 function SMODS.calculate_context(context, return_table, no_resolve)
+    --get most common and least common ranks and suit in deck at the start of each ante. Note: does not work on ante 1 because smods doesnt have a context for that
+    if (G.GAME and context.ante_end) then
+        local common_suit, common_rank, uncommon_suit, uncommon_rank = nil, nil, nil, nil
+        local temp_suit_val, temp_rank_val = 0, 0
+        local suit_table1, suit_table2, rank_table1, rank_table2 = {}, {}, {}, {}
+        for k, v in pairs(G.playing_cards) do
+            if not SMODS.has_no_suit(v) then suit_table1[v.base.suit] = (suit_table1[v.base.suit] or 0) + 1 end
+            if not SMODS.has_no_rank(v) then rank_table1[v.base.value] = (rank_table1[v.base.value] or 0) + 1 end
+        end
+        for suit, count in pairs(suit_table1) do
+            table.insert(suit_table2, {suit = suit, count = count})
+        end
+        for rank, count in pairs(rank_table1) do
+            table.insert(rank_table2, {rank = rank, count = count})
+        end
+        table.sort(suit_table2, function(a, b) return a.count > b.count end)
+        table.sort(rank_table2, function(a, b) return a.count > b.count end)
+        --if your deck is entirely rankless or suitless cards, give Default Values
+        --Otherwise, if there is an equal amount of every rank/suit, pick values at random
+        if not next(rank_table2) then
+            G.GAME.regression_most_rank = 'King'
+            G.GAME.regression_least_rank = '2'
+        elseif rank_table2[1].rank == rank_table2[#rank_table2].rank then
+            if #rank_table2 == 1 then --if your entire deck is one rank, turn it into something new :)
+                G.GAME.regression_most_rank = rank_table2[1].rank
+                G.GAME.regression_least_rank = rank_table2[1].rank
+                while G.GAME.regression_least_rank == rank_table2[1].rank do
+                    G.GAME.regression_least_rank = pseudorandom_element(SMODS.Ranks, pseudoseed('seed')).rank
+                end
+            else
+                local rank_random1 = pseudorandom_element(rank_table2, pseudoseed('seed')).rank
+                G.GAME.regression_most_rank = rank_random1
+                G.GAME.regression_least_rank = rank_random1
+                while G.GAME.regression_least_rank == rank_random1 do
+                    G.GAME.regression_least_rank = pseudorandom_element(rank_table2, pseudoseed('seed')).rank
+                end
+            end
+        else
+            G.GAME.regression_most_rank = rank_table2[1].rank
+            G.GAME.regression_least_rank = rank_table2[#rank_table2].rank
+        end
+        if not next(suit_table2) then
+            G.GAME.regression_most_suit = 'Spades'
+            G.GAME.regression_least_suit = 'Diamonds'
+        elseif suit_table2[1].suit == suit_table2[#suit_table2].suit then
+            if #suit_table2 == 1 then --if your entire deck is one suit, turn it into something new :)
+                G.GAME.regression_most_suit = suit_table2[1].suit
+                G.GAME.regression_least_suit = suit_table2[1].suit
+                while G.GAME.regression_least_suit == suit_table2[1].suit do
+                    G.GAME.regression_least_suit = pseudorandom_element(SMODS.Suits, pseudoseed('seed')).suit
+                end
+            else
+                local suit_random1 = pseudorandom_element(suit_table2, pseudoseed('seed')).suit
+                G.GAME.regression_most_suit = suit_random1
+                G.GAME.regression_least_suit = suit_random1
+                while G.GAME.regression_least_suit == suit_random1 do
+                    G.GAME.regression_least_suit = pseudorandom_element(suit_table2, pseudoseed('seed')).suit
+                end
+            end
+        else
+            G.GAME.regression_most_suit = suit_table2[1].suit
+            G.GAME.regression_least_suit = suit_table2[#suit_table2].suit
+        end
+    end
     if (G.GAME and G.GAME.blind and (G.GAME.blind.name == "The Sheet" or G.GAME.blind.name == "The Stamp"))
         and context.before then
             for i, card in ipairs(G.play.cards) do

@@ -7,7 +7,7 @@ Colonparen.TeenyBlind{
         y = 0,
     },
     ]]
-    mult = 0.5,
+    mult = 0.75,
     dollars = 2,
     boss_colour = HEX("658e7f"),
     beans_credits = {
@@ -18,6 +18,7 @@ Colonparen.TeenyBlind{
     },
     calculate = function (self, blind, context)
         if context.discard and G.GAME.current_round.discards_used <= 0 and context.other_card:is_face() then
+            blind:wiggle()
             assert(SMODS.change_base(context.other_card, nil, "Queen"))
         end
     end

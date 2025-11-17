@@ -114,7 +114,7 @@ return {
                     "All but 1 Joker is debuffed"
                 }
             },
-            bl_cbean_sdown_folly = { -- Athebyne | N/A | Athebyne
+            bl_cbean_sdown_folly = { -- Athebyne | TBA | Athebyne
                 name = "The Folly",
                 text = {
                     "If score exceeds requirements,",
@@ -122,32 +122,32 @@ return {
                     "to all future blind requirements"
                 }
             },
-            bl_cbean_sdown_outgrowth = {
+            bl_cbean_sdown_outgrowth = { -- Athebyne | TBA | TBA
                 name = "The Outgrowth",
                 text = {
                     "Must play exactly 1 unscoring card",
                     "{C:inactive}Splash-like effects still count as unscoring"
                 }
             },
-            bl_cbean_sdown_rebellion = {
+            bl_cbean_sdown_rebellion = { -- Athebyne | TBA | TBA
                 name = "The Rebellion",
                 text = {
                     "Cards held in hand subtract",
                     "their chip value from Chips",
                 }
             },
-            bl_cbean_sdown_regression = {
+            bl_cbean_sdown_regression = { -- Athebyne | TBA | TBA
                 name = "The Regression",
                 text = {
                     "Played #1#s become #2#s and",
-                    "played #3#s become #4#s"
+                    "played #3# become #4#"
                 }
             },
-            bl_cbean_sdown_sinker = {
+            bl_cbean_sdown_sinker = { -- Athebyne | TBA | TBA
                 name = "The Sinker",
                 text = {
                     "Shuffle all joker cards",
-                    "then debuff Leftmost Joker",
+                    "then disable the Leftmost Joker",
                     "Jokers can not be reordered"
                 }
             },
@@ -484,8 +484,9 @@ return {
             bl_cbean_sdown_chaffed = { --Athebyne | TBA | wingedcatgirl
                 name = "Chaffed Blind",
                 text = {
-                    "First card in first",
-                    "discard is destroyed"
+                    "Leftmost card in first",
+                    "discard is destroyed",
+                    "{C:inactive}(Drag to rearrange)"
                 }
             },
             bl_cbean_sdown_estrogen = { --Athebyne | TBA | wingedcatgirl
@@ -755,6 +756,10 @@ return {
         dictionary = {
             sheet_most_held = "(Most held rank)",
             sheet_most_played = "(Most played rank)",
+            regression_most_rank = "(Most common rank)",
+            regression_least_rank = "(Least common rank)",
+            regression_most_suit = "(Most common suit)s",
+            regression_least_suit = "(Least common suit)s"
         },
         high_scores = {},
         labels = {},
