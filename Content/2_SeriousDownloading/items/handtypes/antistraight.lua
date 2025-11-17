@@ -3,7 +3,7 @@ SMODS.PokerHandPart {
     func = function(hand)
         --eject early if hand is too small
         if #hand < 5 then return {} end
-        if next(get_X_same(2, hand)) then return {} end
+        if next(get_X_same(2, hand, true)) then return {} end
         if next(get_straight(hand, 2)) then return {} end
         return {hand}
     end
