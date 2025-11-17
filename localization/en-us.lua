@@ -488,6 +488,13 @@ return {
                     "discard is destroyed"
                 }
             },
+            bl_cbean_sdown_estrogen = { --Athebyne | TBA | wingedcatgirl
+                name = "Estrogen",
+                text = {
+                    "Discarded face cards",
+                    "become Queens"
+                }
+            },
         },
         Enhanced = {},
         Joker = {
