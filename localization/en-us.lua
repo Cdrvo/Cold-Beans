@@ -481,6 +481,13 @@ return {
                     "$#1# when scored"
                 }
             },
+            bl_cbean_sdown_chaffed = { --Athebyne | TBA | wingedcatgirl
+                name = "Chaffed Blind",
+                text = {
+                    "First card in first",
+                    "discard is destroyed"
+                }
+            },
         },
         Enhanced = {},
         Joker = {
