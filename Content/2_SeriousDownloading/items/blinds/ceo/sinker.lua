@@ -61,7 +61,7 @@ Colonparen.CEOBlind {
     recalc_debuff = function(self, card, from_blind)
         if G.GAME.blind.disabled then return false end
         if G.jokers then
-            if G.jokers.cards[i] == card then return true end
+            if G.jokers.cards[1] == card then return true end
         end
         return false
     end,
