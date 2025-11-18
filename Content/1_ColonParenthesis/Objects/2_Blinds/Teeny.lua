@@ -74,13 +74,14 @@ Colonparen.TeenyBlind{
         code = "jamirror",
     }
 }
-local evaluate_round = G.FUNCS.evaluate_round;
+--TODO: hey so this applies to every single blind. could we like. not though
+--[[ local evaluate_round = G.FUNCS.evaluate_round;
 G.FUNCS.evaluate_round = function()
     local old_interest = G.GAME.interest_amount;
     G.GAME.interest_amount = G.GAME.interest_amount * 2
     evaluate_round()
     G.GAME.interest_amount = G.GAME.interest_amount - old_interest -- i wrote it this way because if some bozo is modifying G.GAME.interest_amount in that function it doesn't do weird shit this way
-end
+end ]]--
 
 Colonparen.TeenyBlind{
     key = "colon_jolly",

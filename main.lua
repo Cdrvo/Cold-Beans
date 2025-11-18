@@ -38,7 +38,7 @@ ColdBeans.calculate = function(mod, context)
 		local folly = G.GAME.BlindFolly or 0
 		local blind = G.GAME.blind
 		if count > 0 then
-			G.GAME.BlindCurse = G.BlindCurse - 1
+			G.GAME.BlindCurse = G.GAME.BlindCurse - 1
             blind.mult = blind.mult + 0.5;
 		end
 		blind.chips = get_blind_amount(G.GAME.round_resets.ante)*blind.mult*G.GAME.starting_params.ante_scaling + folly
