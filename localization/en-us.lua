@@ -451,7 +451,7 @@ return {
             bl_cbean_colon_charitable = { -- George The Rat | George The Rat | jamirror
                 name = "Charitable Blind",
                 text = {
-                    "Interest is doubled"
+                    "+100% interest"
                 }
             },
             bl_cbean_colon_jolly = { -- George The Rat | George The Rat | jamirror
