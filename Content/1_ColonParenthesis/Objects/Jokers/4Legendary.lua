@@ -71,6 +71,8 @@ SMODS.Joker {
     }
 }
 
+--Commented out because it doesn't do anything. Team :( go finish this in lap 2
+--[[
 SMODS.Joker {
     key = "colon_aristotle",
     name = "Hippocrates",
@@ -87,7 +89,7 @@ SMODS.Joker {
         idea = "Glitchkat10",
         code = "N/A",
     }
-}
+}]]--
 
 SMODS.Joker {
     key = "colon_aristoxenus",
