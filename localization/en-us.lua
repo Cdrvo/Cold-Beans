@@ -123,10 +123,10 @@ return {
                 }
             },
             bl_cbean_sdown_outgrowth = { -- Athebyne | TBA | TBA
-                name = "The Outgrowth",
+                name = "The Outcrop",
                 text = {
                     "Must play exactly 1 unscoring card",
-                    "{C:inactive}Splash-like effects still count as unscoring"
+                    "{C:inactive}(Splash-like effects still count as unscoring)"
                 }
             },
             bl_cbean_sdown_rebellion = { -- Athebyne | TBA | TBA

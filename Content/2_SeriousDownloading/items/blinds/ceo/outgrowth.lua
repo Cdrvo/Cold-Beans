@@ -1,6 +1,6 @@
 Colonparen.CEOBlind {
     key = "sdown_outgrowth",
-    name = "The Outgrowth",
+    name = "The Outcrop",
     pos = { x = 0, y = 22 },
     boss = { min = 1 },
     atlas = "colon_CEOBlind",
