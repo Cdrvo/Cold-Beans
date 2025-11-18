@@ -432,7 +432,9 @@ return {
             },
             bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
                 name = "Wee Blind",
-                text = {}
+                text = {
+                    "Very small Blind"
+                }
             },
             bl_cbean_colon_handsy = { -- George The Rat | George The Rat | jamirror
                 name = "Handsy Blind",
@@ -759,10 +761,13 @@ return {
             regression_most_rank = "(Most common rank)",
             regression_least_rank = "(Least common rank)",
             regression_most_suit = "(Most common suit)s",
-            regression_least_suit = "(Least common suit)s"
+            regression_least_suit = "(Least common suit)s",
+            sdown_czodiac_add = "+1 Zodiac"
         },
         high_scores = {},
-        labels = {},
+        labels = {
+            cbean_sdown_lunar_seal = "Lunar Seal"
+        },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
                 "5 cards, with no two cards having the same",
