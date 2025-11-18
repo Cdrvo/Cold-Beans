@@ -347,6 +347,8 @@ Colonparen.CEOBlind {
     }
 }
 
+--Note for probably team :( on round two: get ceo blind in_pools to work and give this an in_pool req of having a joker
+--with an edition. if you dont have any editions then this blind is literally only beneficial
 Colonparen.CEOBlind{
     key = "colon_promise",
     name = "The Promise",
