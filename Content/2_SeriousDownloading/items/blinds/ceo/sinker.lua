@@ -56,16 +56,10 @@ Colonparen.CEOBlind {
                     }))
                 end
             end
+            if #G.jokers.cards > 0 then
+                SMODS.debuff_card(G.jokers.cards[1], true, 'the_sinker')
+            end
         end
-    end,
-    --if this ends up being rightmost after everything i do just change the text and make it always have been rightmost all along idk
-    recalc_debuff = function(self, card, from_blind)
-        if G.GAME.blind.disabled then return false end
-        if card.area == G.jokers and #G.jokers > 0 and card == G.jokers[#G.jokers] then
-            SMODS.debuff_card(card, true, 'the_sinker')
-            return true
-        end
-        return false
     end,
     beans_credits = {
         team = "SeriousDownloading",
@@ -74,3 +68,14 @@ Colonparen.CEOBlind {
         code = "Athebyne",
     }
 }
+
+--Ty Paperback!
+local move_ref = Moveable.drag
+function Moveable.drag(self, offset)
+    if self.is and type(self.is) == "function" and self:is(Card) and self.ability.set == 'Joker' then
+        if G and G.GAME and G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == 'bl_cbean_sdown_sinker' then
+            return
+        end
+    end
+    return move_ref(self, offset)
+end
