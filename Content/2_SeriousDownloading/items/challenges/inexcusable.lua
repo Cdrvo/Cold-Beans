@@ -8,5 +8,9 @@ SMODS.Challenge {
     restrictions = {banned_cards = {
         {id = "j_chicot"},
         {id = "j_luchador"},
-    }, banned_other = {}}
+        {id = "v_directors_cut"},
+        {id = "v_retcon"},
+    }, banned_tags = {
+        {id = "tag_boss"}
+    }}
 }
