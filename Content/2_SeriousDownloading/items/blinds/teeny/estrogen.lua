@@ -17,7 +17,7 @@ Colonparen.TeenyBlind{
         code = "mys. minty",
     },
     calculate = function (self, blind, context)
-        if context.discard and G.GAME.current_round.discards_used <= 0 and context.other_card:is_face() then
+        if context.discard and context.other_card:is_face() then
             blind:wiggle()
             assert(SMODS.change_base(context.other_card, nil, "Queen"))
         end
