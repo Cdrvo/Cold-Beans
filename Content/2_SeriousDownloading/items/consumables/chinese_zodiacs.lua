@@ -51,49 +51,27 @@ function CZodiacUse(card, rank1, rank2, rank3)
     end
     delay(0.2)
 
-    --This is stupid
-    local rightmost,middle,leftmost
-    if(G.hand.highlighted[1].T.x > G.hand.highlighted[2].T.x) then
-        if(G.hand.highlighted[1].T.x > G.hand.highlighted[3].T.x) then
-            rightmost = G.hand.highlighted[1]
-            if(G.hand.highlighted[2].T.x > G.hand.highlighted[3].T.x) then
-                middle = G.hand.highlighted[2]
-                leftmost = G.hand.highlighted[3]
-            else
-                middle = G.hand.highlighted[3]
-                leftmost = G.hand.highlighted[2]
-            end
-        else
-            rightmost = G.hand.highlighted[3]
-            middle = G.hand.highlighted[1]
-            leftmost = G.hand.highlighted[2]
+    local highlighted_table = {}
+    table.insert(highlighted_table, {card = G.hand.highlighted[1], placement = G.hand.highlighted[1].T.x})
+    table.insert(highlighted_table, {card = G.hand.highlighted[2], placement = G.hand.highlighted[2].T.x})
+    table.insert(highlighted_table, {card = G.hand.highlighted[3], placement = G.hand.highlighted[3].T.x})
+    table.sort(highlighted_table, function(a, b) return a.placement < b.placement end)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+            SMODS.change_base(highlighted_table[1].card, nil, rank1)
+            SMODS.change_base(highlighted_table[2].card, nil, rank2)
+            SMODS.change_base(highlighted_table[3].card, nil, rank3)
+            return true
         end
-    else
-        if(G.hand.highlighted[2].T.x > G.hand.highlighted[3].T.x) then
-            rightmost = G.hand.highlighted[2]
-            if(G.hand.highlighted[1].T.x > G.hand.highlighted[3].T.x) then
-                middle = G.hand.highlighted[1]
-                leftmost = G.hand.highlighted[3]
-            else
-                middle = G.hand.highlighted[3]
-                leftmost = G.hand.highlighted[1]
-            end
-        else
-            rightmost = G.hand.highlighted[3]
-            middle = G.hand.highlighted[2]
-            leftmost = G.hand.highlighted[1]
-        end
-    end
-
+    }))
     for i = 1, #G.hand.highlighted do
         local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.15,
             func = function()
-                SMODS.change_base(leftmost, nil, rank1)
-                SMODS.change_base(middle, nil, rank2)
-                SMODS.change_base(rightmost, nil, rank3)
                 G.hand.highlighted[i]:flip()
                 play_sound('tarot2', percent, 0.6)
                 G.hand.highlighted[i]:juice_up(0.3, 0.3)

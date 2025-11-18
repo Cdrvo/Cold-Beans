@@ -739,7 +739,56 @@ return {
                 },
             },
         },
-        Other = {},
+        Other = {
+            p_cbean_czodiac_normal1 = {
+                name = "Zodiac Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_czodiac_normal2 = {
+                name = "Zodiac Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_czodiac_jumbo1 = {
+                name = "Jumbo Zodiac Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_czodiac_jumbo2 = {
+                name = "Jumbo Zodiac Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_czodiac_mega1 = {
+                name = "Mega Zodiac Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_czodiac_mega2 = {
+                name = "Mega Zodiac Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "be used immediately"
+                }
+            }
+        },
         Planet = {
             c_cbean_sdown_gay_planet = {
                 name = "Unnamed Gay Planet"
@@ -772,7 +821,8 @@ return {
             regression_least_rank = "(Least common rank)",
             regression_most_suit = "(Most common suit)s",
             regression_least_suit = "(Least common suit)s",
-            sdown_czodiac_add = "+1 Zodiac"
+            sdown_czodiac_add = "+1 Zodiac",
+            k_cbean_sdown_czodiacpack = "Zodiac Pack"
         },
         high_scores = {},
         labels = {
