@@ -740,7 +740,17 @@ return {
             },
         },
         Other = {},
-        Planet = {},
+        Planet = {
+            c_cbean_sdown_gay_planet = {
+                name = "Unnamed Gay Planet"
+            },
+            c_cbean_sdown_gayflush_planet = {
+                name = "Unnamed Gay Flush Planet"
+            },
+            c_cbean_sdown_bobtail_planet = {
+                name = "Unnamed Bobtail Planet"
+            }
+        },
         Spectral = {},
         Stake = {},
         Tag = {},
