@@ -1,9 +1,3 @@
-SMODS.Atlas({
-    key = "blessing_atlas",
-    path = "2_SeriousDownloading/Blessings.png",
-    px = 71,
-    py = 95,
-})
 
 SMODS.ConsumableType {
     key = 'sdown_blessing',

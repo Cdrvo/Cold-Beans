@@ -1,9 +1,3 @@
-SMODS.Atlas({
-    key = "sdown_other_atlas",
-    path = "2_SeriousDownloading/other_consumables.png",
-    px = 71,
-    py = 95,
-})
 
 
 SMODS.Consumable {

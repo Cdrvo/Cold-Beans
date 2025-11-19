@@ -1,9 +1,4 @@
-SMODS.Atlas({
-    key = "sdown_seal_atlas",
-    path = "2_SeriousDownloading/seals.png",
-    px = 71,
-    py = 95,
-})
+
 
 SMODS.Seal {
     key = 'sdown_lunar',

@@ -1,9 +1,4 @@
-SMODS.Atlas({
-    key = "czodiac_atlas",
-    path = "2_SeriousDownloading/CZodiacs.png",
-    px = 71,
-    py = 95,
-})
+
 
 SMODS.ConsumableType {
     key = 'sdown_czodiac',
