@@ -96,7 +96,7 @@ SMODS.Consumable {
         times_left = 3,
         should_tick_down = false,
     },
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     beans_credits = {
         team = "SeriousDownloading",
         idea = "",

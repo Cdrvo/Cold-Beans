@@ -10,7 +10,7 @@ SMODS.Booster {
     cost = 4,
     atlas = "sdown_other_atlas",
     weight = 1,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_czodiac",
     create_card = function(self, card, i)
@@ -37,7 +37,7 @@ SMODS.Booster {
     cost = 4,
     atlas = "sdown_other_atlas",
     weight = 1,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_czodiac",
     create_card = function(self, card, i)
@@ -64,7 +64,7 @@ SMODS.Booster {
     cost = 6,
     atlas = "sdown_other_atlas",
     weight = 1,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_czodiac",
     create_card = function(self, card, i)
@@ -91,7 +91,7 @@ SMODS.Booster {
     cost = 6,
     atlas = "sdown_other_atlas",
     weight = 1,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_czodiac",
     create_card = function(self, card, i)
@@ -118,7 +118,7 @@ SMODS.Booster {
     cost = 8,
     atlas = "sdown_other_atlas",
     weight = 0.75,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_czodiac",
     create_card = function(self, card, i)
@@ -145,7 +145,7 @@ SMODS.Booster {
     cost = 8,
     atlas = "sdown_other_atlas",
     weight = 0.75,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_czodiac",
     create_card = function(self, card, i)

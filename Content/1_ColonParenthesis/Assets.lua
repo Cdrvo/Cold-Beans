@@ -89,11 +89,12 @@ SMODS.Font {
 
 -- object types because fuck you again again
 
-SMODS.ConsumableType({
+--commented out by Athebyne of team SeriousDownloading so it doesn't show up in the collection
+--[[ SMODS.ConsumableType({
     key = "Blessing",
     primary_colour = { 0.765, 0.565, 0.341, 1 },
     secondary_colour = { 0.574, 0.424, 0.256, 1 },
     collection_rows = { 5, 5 },
     shop_rate = 0,
     default = "c_cbean_colon_taa_marbuta"
-})
+}) ]]--

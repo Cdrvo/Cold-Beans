@@ -2,7 +2,7 @@
 SMODS.Tag {
     key = 'hongbao',
     atlas = 'sdown_other_atlas',
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     discovered = false,
     loc_vars = function(self, info_queue)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_czodiac_mega1
