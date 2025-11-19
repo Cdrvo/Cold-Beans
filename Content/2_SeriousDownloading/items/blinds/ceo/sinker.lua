@@ -51,15 +51,26 @@ Colonparen.CEOBlind {
                                 end
                             }))
                             delay(0.5)
+                            G.E_MANAGER:add_event(Event({
+                                func = function ()
+                                    if #G.jokers.cards > 0 then
+                                        SMODS.debuff_card(G.jokers.cards[1], true, 'the_sinker')
+                                    end
+                                    return true
+                                end
+                            }))
                             return true
                         end
                     }))
                 end
             end
-            if #G.jokers.cards > 0 then
-                SMODS.debuff_card(G.jokers.cards[1], true, 'the_sinker')
-            end
         end
+    end,
+    defeat = function (self)
+        SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+    end,
+    disable = function (self)
+        SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
     end,
     beans_credits = {
         team = "SeriousDownloading",
