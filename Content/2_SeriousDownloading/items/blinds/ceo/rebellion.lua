@@ -17,7 +17,6 @@ Colonparen.CEOBlind {
                         SMODS.calculate_effect({message = '-'..playing_card:get_chip_bonus(),colour = G.C.CHIPS }, playing_card)
                         hand_chips = mod_chips(hand_chips - playing_card:get_chip_bonus())
                         --i am losing my mind why is update_hand_text like this
-                        mod_chips(hand_chips - playing_card:get_chip_bonus())
                         if hand_chips < 0 then
                             local neg_chips = hand_chips * -1
                             update_hand_text({ sound = 'chips2', modded = true }, { chips = '-​'..tostring(neg_chips)})
