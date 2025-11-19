@@ -67,10 +67,14 @@ Colonparen.CEOBlind {
         end
     end,
     defeat = function (self)
-        SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+        if #G.jokers.cards > 0 then
+            SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+        end
     end,
     disable = function (self)
-        SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+        if #G.jokers.cards > 0 then
+            SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+        end
     end,
     beans_credits = {
         team = "SeriousDownloading",
