@@ -9,7 +9,6 @@ Colonparen.CEOBlind {
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.modify_hand and #G.hand.cards~=0 then
-                local score_deficit = 0
                 for _, playing_card in ipairs(G.hand.cards) do
                     if(playing_card:get_chip_bonus() > 0) then
                         blind.triggered = true
