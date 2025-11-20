@@ -282,8 +282,9 @@ SMODS.Consumable {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:get_id() == SMODS.Ranks[card.ability.extra.rank].id then
-            if SMODS.pseudorandom_probability(card, "cbsd_demeter_chance", 1, card.ability.extra.odds) then
             card.ability.extra.should_tick_down = true
+            if SMODS.pseudorandom_probability(card, "cbsd_demeter_chance", 1, card.ability.extra.odds) then
+                card.ability.extra.success = true
                 G.E_MANAGER:add_event(Event({
                     func = function ()
                         SMODS.add_card({
@@ -301,6 +302,10 @@ SMODS.Consumable {
         if context.after and card.ability.extra.should_tick_down then
             card.ability.extra.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if not card.ability.extra.success then
+                SMODS.calculate_effect({message = (localize("K_nope_ex")) }, card)
+            end
+            card.ability.extra.success = nil
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 return
