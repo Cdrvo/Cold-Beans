@@ -232,7 +232,7 @@ SMODS.Consumable {
     set_ability = function (self, card, initial, delay_sprites)
         local cards = {}
         local rank = "Ace"
-        for k, v in ipairs(G.playing_cards) do
+        for k, v in ipairs(G.playing_cards or {}) do
             if not SMODS.has_no_rank(v) then
                 cards[#cards+1] = v
             end
