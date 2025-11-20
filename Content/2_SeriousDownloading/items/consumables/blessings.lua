@@ -214,12 +214,13 @@ SMODS.Consumable {
             "played {C:attention}#4#{} to create a",
             "consumable card when scored",
             "{C:inactive}({C:attention}#1#{C:inactive} hands left)",
-            "{C:red}NOT YET IMPLEMENTED{}"
         }
     },
     config = {
         times_left = 3,
-        odds = 4
+        odds = 4,
+        should_tick_down = false,
+        rank = "Ace"
     },
     pos = { x = 3, y = 0 },
     beans_credits = {
@@ -228,15 +229,37 @@ SMODS.Consumable {
         art = "",
         code = "",
     },
-    loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.odds, 'cbean_sdown_demeter')
-        return { vars = { card.ability.times_left, numerator, denominator, localize('demeter_random_rank') } }
+    set_ability = function (self, card, initial, delay_sprites)
+        local cards = {}
+        local rank = "Ace"
+        for k, v in ipairs(G.playing_cards) do
+            if not SMODS.has_no_rank(v) then
+                cards[#cards+1] = v
+            end
+        end
+        if next(cards) then
+            rank = pseudorandom_element(cards, "cbsd_demeter_init").base.value
+        end
+        card.ability.consumeable.rank = rank
     end,
-    collection_loc_vars = function (self)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.odds, 'cbean_sdown_demeter')
+    loc_vars = function(self, info_queue, card)
+        local rank = localize(card.ability.consumeable.rank or "Ace", "ranks")
+        if G.your_collection then
+            for k, v in pairs(G.your_collection) do
+                if card.area == v then
+                    rank = localize('demeter_random_rank')
+                    break
+                end
+            end
+        end
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.consumeable.odds, 'cbean_sdown_demeter')
+        return { vars = { card.ability.consumeable.times_left, numerator, denominator, rank } }
+    end,
+    collection_loc_vars = function (self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.consumeable.odds, 'cbean_sdown_demeter')
         return {
             vars = {
-                card.ability.times_left,
+                card.ability.consumeable.times_left,
                 numerator,
                 denominator,
                 localize('demeter_random_rank')
@@ -244,7 +267,33 @@ SMODS.Consumable {
         }
     end,
     calculate = function(self, card, context)
+        if context.individual and context.other_card:get_id() == SMODS.Ranks[card.ability.consumeable.rank].id then
+            if SMODS.pseudorandom_probability(card, "cbsd_demeter_chance", 1, card.ability.consumeable.odds) then
+            card.ability.consumeable.should_tick_down = true
+                G.E_MANAGER:add_event(Event({
+                    func = function ()
+                        SMODS.add_card({
+                            set = "Consumeables",
+                            area = G.consumeables,
+                            key_append = "cbsd_demeter_card"
+                        })
+                        card:juice_up()
+                        return true
+                    end
+                }))
+            end
+        end
 
+        if context.after and card.ability.consumeable.should_tick_down then
+            card.ability.consumeable.should_tick_down = false
+            card.ability.consumeable.times_left = card.ability.consumeable.times_left - 1
+            if card.ability.consumeable.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                return
+            else
+                SMODS.calculate_effect({message = (card.ability.consumeable.times_left).."/3" }, card)
+            end
+        end
     end,
     use = function(self, card, area, copier)
         return nil
