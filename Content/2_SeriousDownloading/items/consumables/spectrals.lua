@@ -16,7 +16,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "candycane",
         code = "Athebyne",
     },
     config = { extra = { seal = 'cbean_sdown_lunar' }, max_highlighted = 1 },

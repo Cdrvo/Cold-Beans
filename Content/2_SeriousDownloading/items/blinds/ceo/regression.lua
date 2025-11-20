@@ -65,7 +65,7 @@ Colonparen.CEOBlind {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "TBA",
         code = "Athebyne",
     }
 }

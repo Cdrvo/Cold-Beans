@@ -14,7 +14,12 @@ SMODS.Tag {
             "{C:attention}Mega Zodiac Pack"
         }
     },
-
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
             tag:yep('+', G.C.GREEN, function()

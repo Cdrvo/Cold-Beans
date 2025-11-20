@@ -6,6 +6,12 @@ SMODS.Booster {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     group_key = "k_cbean_sdown_czodiacpack",
     cost = 4,
     atlas = "sdown_other_atlas",
@@ -33,6 +39,12 @@ SMODS.Booster {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     group_key = "k_cbean_sdown_czodiacpack",
     cost = 4,
     atlas = "sdown_other_atlas",
@@ -60,6 +72,12 @@ SMODS.Booster {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     group_key = "k_cbean_sdown_czodiacpack",
     cost = 6,
     atlas = "sdown_other_atlas",
@@ -87,6 +105,12 @@ SMODS.Booster {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     group_key = "k_cbean_sdown_czodiacpack",
     cost = 6,
     atlas = "sdown_other_atlas",
@@ -114,6 +138,12 @@ SMODS.Booster {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     group_key = "k_cbean_sdown_czodiacpack",
     cost = 8,
     atlas = "sdown_other_atlas",
@@ -141,6 +171,12 @@ SMODS.Booster {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     group_key = "k_cbean_sdown_czodiacpack",
     cost = 8,
     atlas = "sdown_other_atlas",

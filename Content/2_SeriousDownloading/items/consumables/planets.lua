@@ -4,6 +4,12 @@ SMODS.Consumable {
     atlas = 'sdown_other_atlas',
     config = { hand_type = 'cbean_sdown_antistraight', softlock = true },
     pos = { x = 1, y = 0 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     generate_ui = 0,
     process_loc_text = function(self)
         local target_text = G.localization.descriptions[self.set]['c_mercury'].text
@@ -19,6 +25,12 @@ SMODS.Consumable {
     atlas = 'sdown_other_atlas',
     config = { hand_type = 'cbean_sdown_antistraight_flush', softlock = true },
     pos = { x = 1, y = 0 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     generate_ui = 0,
     process_loc_text = function(self)
         local target_text = G.localization.descriptions[self.set]['c_mercury'].text
@@ -36,6 +48,12 @@ SMODS.Consumable {
     atlas = 'sdown_other_atlas',
     config = { hand_type = 'cbean_sdown_bobtail', softlock = true },
     pos = { x = 1, y = 0 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "Athebyne",
+        art = "TBA",
+        code = "Athebyne",
+    },
     generate_ui = 0,
     process_loc_text = function(self)
         local target_text = G.localization.descriptions[self.set]['c_mercury'].text
