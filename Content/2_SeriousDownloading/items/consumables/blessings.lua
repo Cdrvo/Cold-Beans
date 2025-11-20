@@ -168,8 +168,11 @@ SMODS.Consumable {
             for i = 1, #context.scoring_hand do
                 if card.ability.times_left > 0 then
                     local card_copied = copy_card(context.scoring_hand[i], nil, nil, G.playing_card)
-                    G.deck:emplace(card_copied)
                     card_copied:add_to_deck()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    table.insert(G.playing_cards, card_copied)
+                    G.deck:emplace(card_copied)
+                    card_copied.states.visible = nil
                     card.ability.times_left = card.ability.times_left - 1
                     SMODS.calculate_effect({message = localize('k_copied_ex'),colour = G.C.CHIPS }, context.scoring_hand[i])
                     G.E_MANAGER:add_event(Event({
