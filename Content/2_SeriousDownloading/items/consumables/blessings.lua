@@ -53,7 +53,7 @@ SMODS.Consumable {
     end,
 
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and 
+        if context.repetition and context.cardarea == G.play and
             ((not context.other_card:is_face()) and context.other_card:get_id() ~= 14) then
             card.should_tick_down = true
             return {
@@ -112,7 +112,7 @@ SMODS.Consumable {
     end,
 
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and 
+        if context.repetition and context.cardarea == G.play and
             (context.other_card:is_face() or context.other_card:get_id() == 14) then
             card.should_tick_down = true
             return {
@@ -172,12 +172,19 @@ SMODS.Consumable {
         if context.before then
             for i = 1, #context.scoring_hand do
                 if card.ability.extra.times_left > 0 then
+                    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                     local card_copied = copy_card(context.scoring_hand[i], nil, nil, G.playing_card)
                     card_copied:add_to_deck()
                     G.deck.config.card_limit = G.deck.config.card_limit + 1
                     table.insert(G.playing_cards, card_copied)
                     G.deck:emplace(card_copied)
                     card_copied.states.visible = nil
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            card_copied:start_materialize()
+                            return true
+                        end
+                    }))
                     card.ability.extra.times_left = card.ability.extra.times_left - 1
                     SMODS.calculate_effect({message = localize('k_copied_ex'),colour = G.C.CHIPS }, context.scoring_hand[i])
                     G.E_MANAGER:add_event(Event({
@@ -247,10 +254,10 @@ SMODS.Consumable {
         if next(cards) then
             rank = pseudorandom_element(cards, "cbsd_demeter_init").base.value
         end
-        card.ability.extra.consumeable.rank = rank
+        card.ability.extra.rank = rank
     end,
     loc_vars = function(self, info_queue, card)
-        local rank = localize(card.ability.extra.consumeable.rank or "Ace", "ranks")
+        local rank = localize(card.ability.extra.rank or "Ace", "ranks")
         if G.your_collection then
             for k, v in pairs(G.your_collection) do
                 if card.area == v then
@@ -259,14 +266,14 @@ SMODS.Consumable {
                 end
             end
         end
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.consumeable.odds, 'cbean_sdown_demeter')
-        return { vars = { card.ability.extra.consumeable.times_left, numerator, denominator, rank } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cbean_sdown_demeter')
+        return { vars = { card.ability.extra.times_left, numerator, denominator, rank } }
     end,
     collection_loc_vars = function (self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.consumeable.odds, 'cbean_sdown_demeter')
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cbean_sdown_demeter')
         return {
             vars = {
-                card.ability.extra.consumeable.times_left,
+                card.ability.extra.times_left,
                 numerator,
                 denominator,
                 localize('demeter_random_rank')
@@ -274,9 +281,9 @@ SMODS.Consumable {
         }
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and context.other_card:get_id() == SMODS.Ranks[card.ability.extra.consumeable.rank].id then
-            if SMODS.pseudorandom_probability(card, "cbsd_demeter_chance", 1, card.ability.extra.consumeable.odds) then
-            card.ability.extra.consumeable.should_tick_down = true
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == SMODS.Ranks[card.ability.extra.rank].id then
+            if SMODS.pseudorandom_probability(card, "cbsd_demeter_chance", 1, card.ability.extra.odds) then
+            card.ability.extra.should_tick_down = true
                 G.E_MANAGER:add_event(Event({
                     func = function ()
                         SMODS.add_card({
@@ -291,14 +298,14 @@ SMODS.Consumable {
             end
         end
 
-        if context.after and card.ability.extra.consumeable.should_tick_down then
-            card.ability.extra.consumeable.should_tick_down = false
-            card.ability.extra.consumeable.times_left = card.ability.extra.consumeable.times_left - 1
-            if card.ability.extra.consumeable.times_left <= 0 then
+        if context.after and card.ability.extra.should_tick_down then
+            card.ability.extra.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 return
             else
-                SMODS.calculate_effect({message = (card.ability.extra.consumeable.times_left).."/3" }, card)
+                SMODS.calculate_effect({message = (card.ability.extra.times_left).."/3" }, card)
             end
         end
     end,
