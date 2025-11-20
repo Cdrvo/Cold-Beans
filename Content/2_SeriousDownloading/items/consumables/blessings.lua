@@ -212,8 +212,6 @@ SMODS.Consumable {
     end
 }
 
---TODO: i'm not touching that somebody else whos better at me can do the on-spawn randomness lock in ive had enough
---nightmares from The Regression
 SMODS.Consumable {
     key = 'sdown_demeter',
     set = 'sdown_blessing',
@@ -303,7 +301,7 @@ SMODS.Consumable {
             card.ability.extra.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if not card.ability.extra.success then
-                SMODS.calculate_effect({message = (localize("K_nope_ex")) }, card)
+                SMODS.calculate_effect({message = (localize("k_nope_ex")) }, card)
             end
             card.ability.extra.success = nil
             if card.ability.extra.times_left <= 0 then
@@ -314,6 +312,444 @@ SMODS.Consumable {
             end
         end
     end,
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_poseidon',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Poseidon',
+        text = {
+            "Played cards with {C:clubs}#3#{} suit",
+            "permanently gain {C:red}+#2#{} Mult",
+            "when scored",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+            mult = 2,
+            suit = 'Clubs'
+        }
+    },
+    pos = { x = 0, y = 1 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left, card.ability.extra.mult, localize(card.ability.extra.suit, 'suits_singular') } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if(context.other_card:is_suit(card.ability.extra.suit)) then
+            card.should_tick_down = true
+            context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + card.ability.extra.mult
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.RED
+                }
+            end
+        end
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_hermes',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Hermes',
+        text = {
+            "Gain {C:money}+$#2#{} per",
+            "unused {C:blue}hand{}",
+            "at end of round",
+            "{C:inactive}({C:attention}#1#{C:inactive} rounds left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+            dollars = 2
+        }
+    },
+    pos = { x = 1, y = 1 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left, card.ability.extra.dollars } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_hades',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Hades',
+        text = {
+            "If {C:attention}poker hand{} contains",
+            "at least {C:attention}4{} different suits, {C:attention}first two{}",
+            "scored cards become {C:attention}Wild{}",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+        }
+    },
+    pos = { x = 2, y = 1 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_helios',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Helios',
+        text = {
+            "If {C:attention}poker hand{} contains",
+            "at least {C:attention}4{} different suits, {C:attention}first two{}",
+            "scored cards become {C:attention}Wild{}",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+        }
+    },
+    pos = { x = 3, y = 1 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "kars",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+--I'll do this one later, calculating how many suits are in a hand seems non-trivial actually
+SMODS.Consumable {
+    key = 'sdown_dionysus',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Dionysus',
+        text = {
+            "If {C:attention}poker hand{} contains",
+            "at least {C:attention}4{} different suits, {C:attention}first two{}",
+            "scored cards become {C:attention}Wild{}",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+        }
+    },
+    pos = { x = 0, y = 2 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_nyx',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Nyx',
+        text = {
+            "If {C:attention}poker hand{} contains",
+            "at least {C:attention}4{} different suits, {C:attention}first two{}",
+            "scored cards become {C:attention}Wild{}",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+        }
+    },
+    pos = { x = 1, y = 2 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_hera',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Hera',
+        text = {
+            "If {C:attention}poker hand{} contains",
+            "at least {C:attention}4{} different suits, {C:attention}first two{}",
+            "scored cards become {C:attention}Wild{}",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+        }
+    },
+    pos = { x = 2, y = 2 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
+    use = function(self, card, area, copier)
+        return nil
+    end,
+    can_use = function(self, card)
+        return false
+    end
+}
+
+SMODS.Consumable {
+    key = 'sdown_zeus',
+    set = 'sdown_blessing',
+    atlas = 'blessing_atlas',
+    cost = 3,
+    loc_txt = {
+        name = 'The Blessing of Zeus',
+        text = {
+            "If {C:attention}poker hand{} contains",
+            "at least {C:attention}4{} different suits, {C:attention}first two{}",
+            "scored cards become {C:attention}Wild{}",
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+        }
+    },
+    config = {
+        extra = {
+            times_left = 3,
+            should_tick_down = false,
+        }
+    },
+    pos = { x = 3, y = 2 },
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "kars",
+        art = "",
+        code = "athebyne",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.times_left } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.after and card.should_tick_down then
+            card.should_tick_down = false
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+            else
+                return {
+                    message = (card.ability.extra.times_left).."/3"
+                }
+            end
+        end
+    end,
+
     use = function(self, card, area, copier)
         return nil
     end,
