@@ -42,8 +42,8 @@ SMODS.Consumable {
     pos = { x = 0, y = 0 },
     beans_credits = {
         team = "SeriousDownloading",
-        idea = "",
-        art = "",
+        idea = "kars",
+        art = "Slipstream",
         code = "notmario",
     },
     loc_vars = function(self, info_queue, card)
@@ -99,8 +99,8 @@ SMODS.Consumable {
     pos = { x = 1, y = 0 },
     beans_credits = {
         team = "SeriousDownloading",
-        idea = "",
-        art = "",
+        idea = "kars",
+        art = "Slipstream",
         code = "notmario",
     },
     loc_vars = function(self, info_queue, card)
@@ -155,14 +155,13 @@ SMODS.Consumable {
     pos = { x = 2, y = 0 },
     beans_credits = {
         team = "SeriousDownloading",
-        idea = "",
+        idea = "kars",
         art = "",
-        code = "",
+        code = "Athebyne",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.times_left } }
     end,
---TODO: actually get the cards inside of the deck instead of just kinda floating there :man_in_business_suit_levitating:
     calculate = function(self, card, context)
         if context.before then
             for i = 1, #context.scoring_hand do
@@ -225,9 +224,9 @@ SMODS.Consumable {
     pos = { x = 3, y = 0 },
     beans_credits = {
         team = "SeriousDownloading",
-        idea = "",
-        art = "",
-        code = "",
+        idea = "kars",
+        art = "Slipstream",
+        code = "mys. minty",
     },
     set_ability = function (self, card, initial, delay_sprites)
         local cards = {}
