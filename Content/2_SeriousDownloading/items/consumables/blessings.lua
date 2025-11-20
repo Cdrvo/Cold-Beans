@@ -65,6 +65,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -124,6 +125,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -150,7 +152,8 @@ SMODS.Consumable {
         text = {
             "Add permanent copies",
             "of scored cards to deck",
-            "{C:inactive}({C:attention}#1#{C:inactive} cards left)"
+            "{C:inactive}({C:attention}#1#{C:inactive} cards left)",
+            "{C:inactive}(Drag to rearrange)"
         }
     },
     config = {
@@ -196,6 +199,7 @@ SMODS.Consumable {
                 end
                 if card.ability.extra.times_left <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
                     return
                 else
                     SMODS.calculate_effect({message = (card.ability.extra.times_left).."/5" }, card)
@@ -306,6 +310,7 @@ SMODS.Consumable {
             card.ability.extra.success = nil
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
                 return
             else
                 SMODS.calculate_effect({message = (card.ability.extra.times_left).."/3" }, card)
@@ -369,6 +374,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -385,6 +391,7 @@ SMODS.Consumable {
     end
 }
 
+--Gonna save this for later because adding a line to the cashout screen seems nontrivial?
 SMODS.Consumable {
     key = 'sdown_hermes',
     set = 'sdown_blessing',
@@ -393,7 +400,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Hermes',
         text = {
-            "Gain {C:money}+$#2#{} per",
+            "Gain {C:money}$#2#{} per",
             "unused {C:blue}hand{}",
             "at end of round",
             "{C:inactive}({C:attention}#1#{C:inactive} rounds left)"
@@ -401,9 +408,9 @@ SMODS.Consumable {
     },
     config = {
         extra = {
-            times_left = 3,
+            times_left = 2,
             should_tick_down = false,
-            dollars = 2
+            dollars = 3
         }
     },
     pos = { x = 1, y = 1 },
@@ -411,18 +418,24 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "",
-        code = "athebyne",
+        code = "",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left, card.ability.extra.dollars } }
     end,
 
     calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+            if card.ability.extra.times_left > 0 then
+
+            end
+        end
         if context.after and card.should_tick_down then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -447,15 +460,14 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Hades',
         text = {
-            "If {C:attention}poker hand{} contains",
-            "at least {C:attention}4{} different suits, {C:attention}first two{}",
-            "scored cards become {C:attention}Wild{}",
-            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+            "Destroy scored cards",
+            "{C:inactive}({C:attention}#1#{C:inactive} cards left)",
+            "{C:inactive}(Drag to rearrange)"
         }
     },
     config = {
         extra = {
-            times_left = 3,
+            times_left = 5,
             should_tick_down = false,
         }
     },
@@ -464,22 +476,26 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "",
-        code = "athebyne",
+        code = "Athebyne",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
     end,
 
     calculate = function(self, card, context)
-        if context.after and card.should_tick_down then
-            card.should_tick_down = false
-            card.ability.extra.times_left = card.ability.extra.times_left - 1
-            if card.ability.extra.times_left <= 0 then
-                SMODS.destroy_cards(card, nil, nil, true)
-            else
-                return {
-                    message = (card.ability.extra.times_left).."/3"
-                }
+        if context.after then
+            for i = 1, #context.scoring_hand do
+                if card.ability.extra.times_left > 0 then
+                    SMODS.destroy_cards(context.scoring_hand[i])
+                    card.ability.extra.times_left = card.ability.extra.times_left - 1
+                end
+                if card.ability.extra.times_left <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
+                    return
+                else
+                    SMODS.calculate_effect({message = (card.ability.extra.times_left).."/5" }, card)
+                end
             end
         end
     end,
@@ -500,9 +516,9 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Helios',
         text = {
-            "If {C:attention}poker hand{} contains",
-            "at least {C:attention}4{} different suits, {C:attention}first two{}",
-            "scored cards become {C:attention}Wild{}",
+            "{C:green}#2# in #3#{} chance for",
+            "played cards with {C:hearts}#4#{} suit",
+            "to give {X:mult,C:white} X#5# {} Mult when scored",
             "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
         }
     },
@@ -510,6 +526,9 @@ SMODS.Consumable {
         extra = {
             times_left = 3,
             should_tick_down = false,
+            odds = 2,
+            Xmult = 1.5,
+            suit = 'Hearts'
         }
     },
     pos = { x = 3, y = 1 },
@@ -520,15 +539,27 @@ SMODS.Consumable {
         code = "athebyne",
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.times_left } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cbean_sdown_helios')
+        return { vars = { card.ability.extra.times_left, numerator, denominator, localize(card.ability.extra.suit, 'suits_singular'), card.ability.extra.Xmult } }
     end,
 
     calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if(context.other_card:is_suit(card.ability.extra.suit)) then
+                card.should_tick_down = true
+                if SMODS.pseudorandom_probability(card, 'cbsd_demeter_init', 1, card.ability.extra.odds) then
+                    return {
+                        xmult = card.ability.extra.Xmult
+                    }
+                end
+            end
+        end
         if context.after and card.should_tick_down then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -557,7 +588,8 @@ SMODS.Consumable {
             "If {C:attention}poker hand{} contains",
             "at least {C:attention}4{} different suits, {C:attention}first two{}",
             "scored cards become {C:attention}Wild{}",
-            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+            "{C:inactive}({C:attention}#1#{C:inactive} hands left)",
+            "{C:inactive}(Drag to rearrange)"
         }
     },
     config = {
@@ -583,6 +615,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -636,6 +669,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -689,6 +723,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"
@@ -742,6 +777,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
                     message = (card.ability.extra.times_left).."/3"

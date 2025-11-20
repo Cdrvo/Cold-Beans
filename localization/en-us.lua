@@ -823,6 +823,7 @@ return {
             regression_least_suit = "(Least common suit)s",
             demeter_random_rank = "[Rank]",
             sdown_czodiac_add = "+1 Zodiac",
+            k_dispelled_ex="Dispelled!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack"
         },
         high_scores = {},
