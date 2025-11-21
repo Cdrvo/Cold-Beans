@@ -701,7 +701,7 @@ return {
                 },
             },
             j_cbean_colon_aristotle = { -- Glitchkat10 | N/A | N/A
-                name = "Hippocrates",
+                name = "Aristotle",
                 text = {
                     "Open a {C:attention}Blessing Pack{} when {C:money,E:1}CEO Blind{} is defeated",
                     "When a Blessing is obtained from a {C:attention}Booster Pack{},",
@@ -787,6 +787,38 @@ return {
                     "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
+            },
+            p_cbean_blessing_normal1 = {
+                name = "Pantheon Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "take"
+                }
+            },
+            p_cbean_blessing_normal2 = {
+                name = "Pantheon Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "take"
+                }
+            },
+            p_cbean_blessing_jumbo = {
+                name = "Jumbo Pantheon Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "take"
+                }
+            },
+            p_cbean_blessing_mega = {
+                name = "Mega Pantheon Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "take"
+                }
             }
         },
         Planet = {
@@ -824,7 +856,9 @@ return {
             demeter_random_rank = "[Rank]",
             sdown_czodiac_add = "+1 Zodiac",
             k_dispelled_ex="Dispelled!",
-            k_cbean_sdown_czodiacpack = "Zodiac Pack"
+            k_strengthened_ex="Strengthened!",
+            k_cbean_sdown_czodiacpack = "Zodiac Pack",
+            k_cbean_sdown_blessingpack = "Pantheon Pack"
         },
         high_scores = {},
         labels = {
