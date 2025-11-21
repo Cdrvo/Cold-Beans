@@ -587,7 +587,6 @@ SMODS.Consumable {
             "scored cards become {C:attention}Wild{}",
             "{C:inactive}({C:attention}#1#{C:inactive} hands left)",
             "{C:inactive}(Drag to rearrange)",
-            "{C:Red}NOT YET IMPLEMENTED{}"
         }
     },
     config = {
@@ -601,13 +600,45 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "",
-        code = "",
+        code = "mys. minty",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
     end,
 
     calculate = function(self, card, context)
+        if context.before then
+            local suits = {}
+            local count = 0
+            for i,v in ipairs(context.scoring_hand) do
+                if not SMODS.has_no_suit(v) then
+                    if not SMODS.has_any_suit(v) then
+                        for kk,vv in pairs(SMODS.Suits) do
+                            if not suits[kk] and v:is_suit(kk) then --Fucky if a card has multiple-but-not-all suits
+                                suits[kk] = true                    --but only like two mods ever do that ¯\_(ツ)_/¯
+                                count = count + 1
+                                break
+                            end
+                        end
+                    else
+                        count = count + 1
+                    end
+                end
+            end
+            if count >= 4 then
+                card.should_tick_down = true
+                return {
+                    func = function ()
+                        context.scoring_hand[1]:set_ability("m_wild", nil, true)
+                        SMODS.calculate_effect({message = "Wild!" }, context.scoring_hand[1])
+                        context.scoring_hand[2]:set_ability("m_wild", nil, true)
+                        SMODS.calculate_effect({message = "Wild!" }, context.scoring_hand[2])
+                    end
+                }
+            end
+            return
+        end
+
         if context.after and card.should_tick_down then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
