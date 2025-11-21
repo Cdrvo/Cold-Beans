@@ -17,7 +17,7 @@ SMODS.Tag {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "TBA",
+        art = "mys. minty (placeholder :V)",
         code = "Athebyne",
     },
     apply = function(self, tag, context)
@@ -61,7 +61,7 @@ SMODS.Tag {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "TBA",
+        art = "mys. minty (placeholder :V)",
         code = "Athebyne",
     },
     apply = function(self, tag, context)
