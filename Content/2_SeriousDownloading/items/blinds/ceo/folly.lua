@@ -1,11 +1,11 @@
 Colonparen.CEOBlind {
     key = "sdown_folly",
     name = "The Folly",
-    pos = { x = 0, y = 22 },
+    pos = { x = 0, y = 0 },
     boss = { min = 1 },
-    atlas = "colon_CEOBlind",
+    atlas = "sdown_blinds_atlas",
     mult = 1,
-    boss_colour = HEX("5933BB"),
+    boss_colour = HEX("B16048"),
     defeat = function(self)
         if G.GAME.chips > G.GAME.blind.chips then
             if not G.GAME.BlindFolly then G.GAME.BlindFolly = 0 end

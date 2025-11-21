@@ -1,11 +1,11 @@
 Colonparen.CEOBlind {
     key = "sdown_sinker",
     name = "The Sinker",
-    pos = { x = 0, y = 22 },
+    pos = { x = 0, y = 4 },
     boss = { min = 1 },
-    atlas = "colon_CEOBlind",
+    atlas = "sdown_blinds_atlas",
     mult = 3,
-    boss_colour = HEX("5933BB"),
+    boss_colour = HEX("575A84"),
     in_pool = function()
         if (G.GAME.modifiers.no_shop_jokers)then
             return false

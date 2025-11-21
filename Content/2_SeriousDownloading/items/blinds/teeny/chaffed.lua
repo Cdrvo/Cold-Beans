@@ -1,19 +1,17 @@
 Colonparen.TeenyBlind{
     key = "sdown_chaffed",
-    atlas = "colon_TeenyBlind", --placeholder
-    --[[
+    atlas = "sdown_blinds_atlas",
     pos = {
         x = 0,
-        y = 0,
+        y = 9,
     },
-    ]]
     mult = 0.75,
     dollars = 2,
-    boss_colour = HEX("658e7f"),
+    boss_colour = HEX("6B6B6B"),
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "mys. minty",
     },
     calculate = function (self, blind, context)

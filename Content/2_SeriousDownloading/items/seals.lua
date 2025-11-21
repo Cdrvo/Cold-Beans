@@ -9,18 +9,19 @@ SMODS.Seal {
         name = 'Lunar Seal',
         text = {
             "Creates a {C:attention}Chinese Zodiac{} card",
-            "when TBA WE HAVEN'T DECIDED THE CONDITION YET",
+            "when hand is played",
             "{C:inactive}(Must have room)"
         }
     },
     beans_credits = {
         team = "SeriousDownloading",
-        idea = "TBA",
+        idea = "Athebyne",
         art = "Crabus",
         code = "Athebyne",
     },
     calculate = function(self, card, context)
         --TODO: Temporary trigger condition of on score until we decide on one.
+        --welp i guess we never decided on one huh
         if  context.main_scoring and context.cardarea == G.play and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             return {

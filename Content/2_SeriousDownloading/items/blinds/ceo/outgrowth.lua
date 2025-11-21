@@ -1,11 +1,11 @@
 Colonparen.CEOBlind {
     key = "sdown_outgrowth",
     name = "The Outcrop",
-    pos = { x = 0, y = 22 },
+    pos = { x = 0, y = 1 },
     boss = { min = 1 },
-    atlas = "colon_CEOBlind",
+    atlas = "sdown_blinds_atlas",
     mult = 3,
-    boss_colour = HEX("5933BB"),
+    boss_colour = HEX("897959"),
     debuff_hand = function(self, cards, hand, handname, check)
         local _,_,_,scoring_hand,_ = G.FUNCS.get_poker_hand_info(cards)
         local always_scores_count = 0

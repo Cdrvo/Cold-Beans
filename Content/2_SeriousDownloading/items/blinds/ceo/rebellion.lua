@@ -1,11 +1,11 @@
 Colonparen.CEOBlind {
     key = "sdown_rebellion",
     name = "The Rebellion",
-    pos = { x = 0, y = 22 },
+    pos = { x = 0, y = 2 },
     boss = { min = 1 },
-    atlas = "colon_CEOBlind",
+    atlas = "sdown_blinds_atlas",
     mult = 3,
-    boss_colour = HEX("5933BB"),
+    boss_colour = HEX("A86B65"),
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.modify_hand and #G.hand.cards~=0 then

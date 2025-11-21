@@ -1,11 +1,11 @@
 Colonparen.CEOBlind {
     key = "sdown_regression",
     name = "The Regression",
-    pos = { x = 0, y = 22 },
+    pos = { x = 0, y = 3 },
     boss = { min = 2},
-    atlas = "colon_CEOBlind",
+    atlas = "sdown_blinds_atlas",
     mult = 3,
-    boss_colour = HEX("5933BB"),
+    boss_colour = HEX("2E3534"),
     loc_vars = function (self)
         return {
             vars = {
