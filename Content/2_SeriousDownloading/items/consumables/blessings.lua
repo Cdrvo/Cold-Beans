@@ -458,7 +458,9 @@ SMODS.Consumable {
         text = {
             "Destroy scored cards",
             "{C:inactive}({C:attention}#1#{C:inactive} cards left)",
-            "{C:inactive}(Drag to rearrange)"
+            "{C:inactive}(Drag to rearrange)",
+            " ",
+            "{C:inactive,s:0.8}My hair is fire, your argument is invalid."
         }
     },
     config = {
@@ -468,10 +470,11 @@ SMODS.Consumable {
         }
     },
     pos = { x = 2, y = 1 },
+    soul_pos = {x = 2, y = 4},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "mys. minty (placeholder lel)",
         code = "Athebyne",
     },
     loc_vars = function(self, info_queue, card)
