@@ -664,8 +664,6 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
     end,
-    --TODO: need to bypass "must have room" requirement while holding Nyx
-    --Also needs to not increase cost of shop items retroactively, scamming you and potentially giving you negative money LMAO
     calculate = function(self, card, context)
         if context.card_added and context.card.ability.consumeable and card.ability.extra.times_left > 0 and (not context.card.edition or not context.card.edition.negative) and not context.card.nyxed then
             card.ability.extra.times_left = card.ability.extra.times_left - 1
