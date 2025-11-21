@@ -217,6 +217,7 @@ SMODS.Booster {
     pos = { x = 0, y = 0 },
     draw_hand = true,
     kind = "sdown_blessing",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "sdown_blessing",
@@ -250,6 +251,7 @@ SMODS.Booster {
     pos = { x = 1, y = 0 },
     draw_hand = true,
     kind = "sdown_blessing",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "sdown_blessing",
@@ -283,6 +285,7 @@ SMODS.Booster {
     pos = { x = 0, y = 1 },
     draw_hand = true,
     kind = "sdown_blessing",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "sdown_blessing",
@@ -316,6 +319,7 @@ SMODS.Booster {
     pos = { x = 1, y = 1 },
     draw_hand = true,
     kind = "sdown_blessing",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "sdown_blessing",
