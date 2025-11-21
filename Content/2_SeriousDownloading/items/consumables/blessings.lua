@@ -425,7 +425,7 @@ SMODS.Consumable {
     end,
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+        if context.end_of_round and not context.game_over and context.main_eval then
             if card.ability.extra.times_left > 0 then
 
             end
@@ -547,7 +547,8 @@ SMODS.Consumable {
         if context.individual and context.cardarea == G.play then
             if(context.other_card:is_suit(card.ability.extra.suit)) then
                 card.should_tick_down = true
-                if SMODS.pseudorandom_probability(card, 'cbsd_demeter_init', 1, card.ability.extra.odds) then
+                if SMODS.pseudorandom_probability(card, 'helios', 1, card.ability.extra.odds) then
+                    card:juice_up()
                     return {
                         xmult = card.ability.extra.Xmult
                     }
@@ -603,7 +604,7 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "",
-        code = "athebyne",
+        code = "",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
@@ -714,7 +715,7 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "",
-        code = "athebyne",
+        code = "",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
@@ -729,7 +730,7 @@ SMODS.Consumable {
                 SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
-                    message = (card.ability.extra.times_left).."/3"
+                    message = (card.ability.extra.times_left).."/2"
                 }
             end
         end
@@ -751,15 +752,17 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Zeus',
         text = {
-            "If {C:attention}poker hand{} contains",
-            "at least {C:attention}4{} different suits, {C:attention}first two{}",
-            "scored cards become {C:attention}Wild{}",
-            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+            "{C:green}#2# in #3#{} chance to create",
+            "a free {C:attention}Double Tag{} if played",
+            "{C:attention}poker hand{} has already",
+            "been played this round",
+            "{C:inactive}({C:attention}#1#{C:inactive} rounds left)"
         }
     },
     config = {
         extra = {
-            times_left = 3,
+            times_left = 2,
+            odds = 4,
             should_tick_down = false,
         }
     },
@@ -767,15 +770,32 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
-        code = "athebyne",
+        art = "Slipstream",
+        code = "Athebyne",
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.times_left } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cbean_sdown_zeus')
+        return { vars = { card.ability.extra.times_left, numerator, denominator } }
     end,
 
     calculate = function(self, card, context)
-        if context.after and card.should_tick_down then
+        if context.before and G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round > 1 and card.ability.extra.times_left > 0 then
+            card.should_tick_down = true
+            if SMODS.pseudorandom_probability(card, "zeus", 1, card.ability.extra.odds) then
+                card:juice_up()
+                G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        add_tag(Tag('tag_double'))
+                        play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                        play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+                        return true
+                    end)
+                }))
+            else
+                SMODS.calculate_effect({message = (localize("k_nope_ex")) }, card)
+            end
+        end
+        if context.end_of_round and not context.game_over and card.should_tick_down then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
@@ -783,7 +803,7 @@ SMODS.Consumable {
                 SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
                 return {
-                    message = (card.ability.extra.times_left).."/3"
+                    message = (card.ability.extra.times_left).."/2"
                 }
             end
         end
