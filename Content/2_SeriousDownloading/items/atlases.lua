@@ -40,6 +40,13 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas{
+    key = "sdown_tags",
+    path = "2_SeriousDownloading/tags.png",
+    px = 34,
+    py = 34
+}
+
 SMODS.Atlas({
     key = "sdown_blinds_atlas",
     atlas_table = "ANIMATION_ATLAS",
