@@ -667,13 +667,19 @@ SMODS.Consumable {
     --TODO: need to bypass "must have room" requirement while holding Nyx
     --Also needs to not increase cost of shop items retroactively, scamming you and potentially giving you negative money LMAO
     calculate = function(self, card, context)
-        if context.card_added and context.card.ability.consumeable and card.ability.extra.times_left > 0 and (not context.card.edition or not context.card.edition.negative) then
+        if context.card_added and context.card.ability.consumeable and card.ability.extra.times_left > 0 and (not context.card.edition or not context.card.edition.negative) and not context.card.nyxed then
             card.ability.extra.times_left = card.ability.extra.times_left - 1
-            --this isn't actually keeping the cost the same???? huh?
+            local bought = context.card
+            bought.nyxed = true
             local sell_cost = context.card.sell_cost
-            context.card:set_edition("e_negative", true)
-            context.card.sell_cost = sell_cost
-            context.card:set_cost()
+            G.E_MANAGER:add_event(Event({
+                func = function ()
+                    bought:set_edition("e_negative", true)
+                    bought.sell_cost = sell_cost
+                    bought.nyxed = nil
+                    return true
+                end
+            }))
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
