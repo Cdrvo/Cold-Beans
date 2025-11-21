@@ -391,7 +391,6 @@ SMODS.Consumable {
     end
 }
 
---Gonna save this for later because adding a line to the cashout screen seems nontrivial?
 SMODS.Consumable {
     key = 'sdown_hermes',
     set = 'sdown_blessing',
@@ -404,7 +403,6 @@ SMODS.Consumable {
             "unused {C:blue}hand{}",
             "at end of round",
             "{C:inactive}({C:attention}#1#{C:inactive} rounds left)",
-            "{C:Red}NOT YET IMPLEMENTED{}"
         }
     },
     config = {
@@ -424,25 +422,21 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left, card.ability.extra.dollars } }
     end,
-
-    calculate = function(self, card, context)
-        if context.end_of_round and not context.game_over and context.main_eval then
-            if card.ability.extra.times_left > 0 then
-
+    calc_dollar_bonus = function (self, card)
+        local amt = card.ability.extra.dollars * G.GAME.current_round.hands_left
+        card.ability.extra.times_left = card.ability.extra.times_left - 1
+        G.E_MANAGER:add_event(Event({
+            func = function ()
+                if card.ability.extra.times_left <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
+                else
+                    SMODS.calculate_effect({message = (card.ability.extra.times_left).."/2" }, card)
+                end
+                return true
             end
-        end
-        if context.after and card.should_tick_down then
-            card.should_tick_down = false
-            card.ability.extra.times_left = card.ability.extra.times_left - 1
-            if card.ability.extra.times_left <= 0 then
-                SMODS.destroy_cards(card, nil, nil, true)
-                SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
-            else
-                return {
-                    message = (card.ability.extra.times_left).."/3"
-                }
-            end
-        end
+        }))
+        return amt
     end,
 
     use = function(self, card, area, copier)
