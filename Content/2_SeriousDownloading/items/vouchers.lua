@@ -2,14 +2,19 @@
 --Note: The Tier 2 voucher does not exist... but could! Future teams, you are fully allowed to make the T2 Voucher of this!
 SMODS.Voucher({
     key = "sdown_amphora",
-    atlas = "sdown_other_atlas",
+    atlas = "sdown_vouchers",
     pos = {x = 1, y = 0},
     cost = 10,
     unlocked = true,
     discovered = false,
     available = true,
     config = {extra = {increase = 1}},
-    artist_credits = {'gappie'},
+    beans_credits = {
+        team = "SeriousDownloading",
+        idea = "athebyne",
+        art = "mys. minty (placeholder)",
+        code = "athebyne",
+    },
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.increase}}
     end,
@@ -17,7 +22,7 @@ SMODS.Voucher({
         name = 'Amphora',
         text = {
             "When CEO Blind is defeated,",
-            "Add {C:attention}#1#{} charge to",
+            "add {C:attention}#1#{} charge to",
             "all held {C:attention}Blessings{}"
         }
     },
