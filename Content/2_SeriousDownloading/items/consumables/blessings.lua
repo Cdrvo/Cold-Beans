@@ -165,7 +165,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "Slipstream",
         code = "Athebyne",
     },
     loc_vars = function(self, info_queue, card)
@@ -351,7 +351,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "Slipstream",
         code = "athebyne",
     },
     loc_vars = function(self, info_queue, card)
@@ -416,7 +416,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "Slipstream",
         code = "mys. minty",
     },
     loc_vars = function(self, info_queue, card)
@@ -470,11 +470,10 @@ SMODS.Consumable {
         }
     },
     pos = { x = 2, y = 1 },
-    soul_pos = {x = 2, y = 4},
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "mys. minty (placeholder lel)",
+        art = "Slipstream",
         code = "Athebyne",
     },
     loc_vars = function(self, info_queue, card)
@@ -602,7 +601,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "Slipstream",
         code = "mys. minty",
     },
     loc_vars = function(self, info_queue, card)
@@ -687,7 +686,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "Slipstream",
         code = "athebyne",
     },
     loc_vars = function(self, info_queue, card)
@@ -748,7 +747,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "kars",
-        art = "",
+        art = "Slipstream",
         code = "",
     },
     loc_vars = function(self, info_queue, card)
