@@ -823,13 +823,13 @@ return {
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
-                name = "Unnamed Gay Planet"
+                name = "Salacia"
             },
             c_cbean_sdown_gayflush_planet = {
-                name = "Unnamed Gay Flush Planet"
+                name = "Orcus"
             },
             c_cbean_sdown_bobtail_planet = {
-                name = "Unnamed Bobtail Planet"
+                name = "Vesta"
             }
         },
         Spectral = {},
