@@ -403,7 +403,8 @@ SMODS.Consumable {
             "Gain {C:money}$#2#{} per",
             "unused {C:blue}hand{}",
             "at end of round",
-            "{C:inactive}({C:attention}#1#{C:inactive} rounds left)"
+            "{C:inactive}({C:attention}#1#{C:inactive} rounds left)",
+            "{C:Red}NOT YET IMPLEMENTED{}"
         }
     },
     config = {
@@ -590,7 +591,8 @@ SMODS.Consumable {
             "at least {C:attention}4{} different suits, {C:attention}first two{}",
             "scored cards become {C:attention}Wild{}",
             "{C:inactive}({C:attention}#1#{C:inactive} hands left)",
-            "{C:inactive}(Drag to rearrange)"
+            "{C:inactive}(Drag to rearrange)",
+            "{C:Red}NOT YET IMPLEMENTED{}"
         }
     },
     config = {
@@ -698,15 +700,14 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Hera',
         text = {
-            "If {C:attention}poker hand{} contains",
-            "at least {C:attention}4{} different suits, {C:attention}first two{}",
-            "scored cards become {C:attention}Wild{}",
-            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+            "The next {C:attention}Booster Pack{}",
+            "you open has {C:attention}+1{} card option and choice",
+            "{C:inactive}({C:attention}#1#{C:inactive} packs left)"
         }
     },
     config = {
         extra = {
-            times_left = 3,
+            times_left = 2,
             should_tick_down = false,
         }
     },
@@ -722,9 +723,22 @@ SMODS.Consumable {
     end,
 
     calculate = function(self, card, context)
-        if context.after and card.should_tick_down then
-            card.should_tick_down = false
+        if context.open_booster then
+            G.GAME.pack_choices = G.GAME.pack_choices + 1
             card.ability.extra.times_left = card.ability.extra.times_left - 1
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    local card
+                    local _card_to_spawn = context.card.config.center:create_card(context.card, #G.pack_cards.cards+1)
+                    if type((_card_to_spawn or {}).is) == 'function' and _card_to_spawn:is(Card) then
+                        card = _card_to_spawn
+                    else
+                        card = SMODS.create_card(_card_to_spawn)
+                    end
+                    G.pack_cards:emplace(card)
+                    return true
+                end)
+            }))
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
