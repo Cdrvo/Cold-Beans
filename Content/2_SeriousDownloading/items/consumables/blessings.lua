@@ -671,7 +671,7 @@ SMODS.Consumable {
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             local bought = context.card
             bought.nyxed = true
-            local sell_cost = context.card.sell_cost
+            local sell_cost = bought.sell_cost
             G.E_MANAGER:add_event(Event({
                 func = function ()
                     bought:set_edition("e_negative", true)
