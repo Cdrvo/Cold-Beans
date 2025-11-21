@@ -1,7 +1,7 @@
 --TODO: this name kinda sucks can we get a better one
 SMODS.Tag {
     key = 'hongbao',
-    atlas = 'sdown_other_atlas',
+    atlas = 'sdown_tags',
     pos = { x = 1, y = 0 },
     discovered = false,
     loc_vars = function(self, info_queue)
@@ -45,8 +45,8 @@ SMODS.Tag {
 
 SMODS.Tag {
     key = 'olympus',
-    atlas = 'sdown_other_atlas',
-    pos = { x = 1, y = 0 },
+    atlas = 'sdown_tags',
+    pos = { x = 0, y = 0 },
     discovered = false,
     loc_vars = function(self, info_queue)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_blessing_mega
