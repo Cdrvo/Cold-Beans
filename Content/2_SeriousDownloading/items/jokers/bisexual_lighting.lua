@@ -7,7 +7,7 @@ SMODS.Joker {
         last_hand_gay = false
     },
     atlas = "sdown_joker_atlas",
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     loc_vars = function(self, _, card)
         return {
             vars = {
