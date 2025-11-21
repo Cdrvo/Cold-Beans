@@ -424,6 +424,7 @@ SMODS.Consumable {
     end,
     calc_dollar_bonus = function (self, card)
         local amt = card.ability.extra.dollars * G.GAME.current_round.hands_left
+        if amt == 0 then return end --Disable this line if we want it to still tick down if you don't earn money
         card.ability.extra.times_left = card.ability.extra.times_left - 1
         G.E_MANAGER:add_event(Event({
             func = function ()
