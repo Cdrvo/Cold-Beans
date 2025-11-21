@@ -1,4 +1,4 @@
-# hey all, team mrrp mrp mrpw here
+# hey all, team mrrp mrp mrow here
 
 If you do extremely fucky things with suits, you might have to patch Dionysus  
 Also look at Patchy, she insisted on being here when I wrote this  
