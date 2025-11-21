@@ -640,10 +640,9 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Nyx',
         text = {
-            "If {C:attention}poker hand{} contains",
-            "at least {C:attention}4{} different suits, {C:attention}first two{}",
-            "scored cards become {C:attention}Wild{}",
-            "{C:inactive}({C:attention}#1#{C:inactive} hands left)"
+            "When you get a consumable card,",
+            "add {C:dark_edition}Negative{} to it",
+            "{C:inactive}({C:attention}#1#{C:inactive} cards left)"
         }
     },
     config = {
@@ -662,11 +661,16 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
     end,
-
+    --TODO: need to bypass "must have room" requirement while holding Nyx
+    --Also needs to not increase cost of shop items retroactively, scamming you and potentially giving you negative money LMAO
     calculate = function(self, card, context)
-        if context.after and card.should_tick_down then
-            card.should_tick_down = false
+        if context.card_added and context.card.ability.consumeable and card.ability.extra.times_left > 0 and (not context.card.edition or not context.card.edition.negative) then
             card.ability.extra.times_left = card.ability.extra.times_left - 1
+            --this isn't actually keeping the cost the same???? huh?
+            local sell_cost = context.card.sell_cost
+            context.card:set_edition("e_negative", true)
+            context.card.sell_cost = sell_cost
+            context.card:set_cost()
             if card.ability.extra.times_left <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
@@ -677,7 +681,6 @@ SMODS.Consumable {
             end
         end
     end,
-
     use = function(self, card, area, copier)
         return nil
     end,
