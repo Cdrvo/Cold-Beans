@@ -34,6 +34,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+    key = "czodiacpack_atlas",
+    path = "2_SeriousDownloading/czodiacpack.png",
+    px = 71,
+    py = 95,
+})
+
+SMODS.Atlas({
     key = "sdown_other_atlas",
     path = "2_SeriousDownloading/other_consumables.png",
     px = 71,
