@@ -11,3 +11,10 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+    key = "0chill_spectral_atlas",
+    path = "3_0driverOfTheChillVacation/spectral_atlas.png",
+    px = 71,
+    py = 95,
+})

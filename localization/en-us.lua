@@ -897,7 +897,17 @@ return {
                 name = "Vesta"
             }
         },
-        Spectral = {},
+        Spectral = {
+            c_cbean_0chill_qilin = {
+                name = "The Qilin",
+                text = {
+                    "Turn at least {C:attention}2{} selected cards",
+                    "into the rank of the {C:attention}leftmost{}",
+                    "selected card and {C:dark_edition}Negative{}",
+                    "{C:inactive}(Drag to rearrange)"
+                }
+            }
+        },
         Stake = {},
         Tag = {},
         Tarot = {},
