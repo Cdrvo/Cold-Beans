@@ -786,7 +786,15 @@ return {
                     "a {C:attention}#2#{}"
                 },
             },
-
+            j_cbean_0chill_nat20 = {
+                name = "Nat 20",
+                text = {
+                    "Turns all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities{}",
+                    "into a random probability between {C:green}1 in 20{} and {C:green}19 in 20{}.",
+                    "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}14 in 20{C:inactive})",
+                },
+            },
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
