@@ -732,7 +732,7 @@ return {
 
             --Common
             j_cbean_0chill_homosexual = {
-                name = "Homosexual Joker",
+                name = "Queer Joker",
                 text = {
                     "{C:mult}+#1#{} Mult if played",
                     "hand contains",
@@ -741,7 +741,7 @@ return {
             },
 
             j_cbean_0chill_lesbian = {
-                name = "Lesbian Joker",
+                name = "Curious Joker",
                 text = {
                     "{C:chips}+#1#{} Chips if played",
                     "hand contains",
@@ -750,7 +750,7 @@ return {
             },
 
             j_cbean_0chill_short = {
-                name = "Short Joker",
+                name = "Playful Joker",
                 text = {
                     "{C:mult}+#1#{} Mult if played",
                     "hand contains",
@@ -759,7 +759,7 @@ return {
             },
 
             j_cbean_0chill_abbreviated = {
-                name = "Abbreviated Joker",
+                name = "Sharp Joker",
                 text = {
                     "{C:chips}+#1#{} Chips if played",
                     "hand contains",
@@ -770,7 +770,7 @@ return {
             --Rare
 
             j_cbean_0chill_chaos = {
-                name = "The Chaotic",
+                name = "The Parade",
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
@@ -779,7 +779,7 @@ return {
             },
 
             j_cbean_0chill_clique = {
-                name = "The Clique",
+                name = "The Hierarchy",
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
@@ -789,9 +789,9 @@ return {
             j_cbean_0chill_nat20 = {
                 name = "Nat 20",
                 text = {
-                    "Turns all {C:attention}listed",
-                    "{C:green,E:1,S:1.1}probabilities{}",
-                    "into a random probability between {C:green}1 in 20{} and {C:green}19 in 20{}.",
+                    "Turns all {C:attention}listed {C:green,E:1,S:1.1}probabilities{}",
+                    "into a random probability",
+                    "between {C:green}1 in 20{} and {C:green}19 in 20{}",
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}14 in 20{C:inactive})",
                 },
             },
