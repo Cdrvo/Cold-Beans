@@ -727,10 +727,67 @@ return {
                 },
             },
 
-
-
-
             
+            --0 Driver Jokers
+
+            --Common
+            j_cbean_0chill_homosexual = {
+                name = "Homosexual Joker",
+                text = {
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{}"
+                },
+            },
+
+            j_cbean_0chill_lesbian = {
+                name = "Lesbian Joker",
+                text = {
+                    "{C:chips}+#1#{} Chips if played",
+                    "hand contains",
+                    "a {C:attention}#2#{}"
+                },
+            },
+
+            j_cbean_0chill_short = {
+                name = "Short Joker",
+                text = {
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{}"
+                },
+            },
+
+            j_cbean_0chill_abbreviated = {
+                name = "Abbreviated Joker",
+                text = {
+                    "{C:chips}+#1#{} Chips if played",
+                    "hand contains",
+                    "a {C:attention}#2#{}"
+                },
+            },
+
+            --Rare
+
+            j_cbean_0chill_chaos = {
+                name = "The Chaotic",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{}"
+                },
+            },
+
+            j_cbean_0chill_clique = {
+                name = "The Clique",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{}"
+                },
+            },
+
+            --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
                 text = {
