@@ -7,11 +7,11 @@ SMODS.Joker {
     cost = 10,
     pos = { x = 2, y = 0 },
     calculate = function(self, card, context)
-        if context.mod_probability and not context.blueprint then
-            return {
-                numerator = math.random(1,19), -- SOMEONE MAKE THIS CONSISTENT WITH PLAYTHROUGHS WITH THE SAME SEED PLEASE
-                denominator = 20
-            }
-        end
-    end,
+    if context.mod_probability and not context.blueprint then
+        return {
+            numerator = pseudorandom("0chill_nat20_roll", 1, 19), -- someone make this not reroll when its being hovered on
+            denominator = 20
+        }
+    end
+end,
 }   
