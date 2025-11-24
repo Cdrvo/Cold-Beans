@@ -1,7 +1,7 @@
 SMODS.Joker { --Modifed from Vanilla Remade's example
     key = "0chill_chaos", 
     atlas = "0chill_joker_atlas",
-    pos = { x = 1, y = 0 },
+    pos = { x = 1, y = 2 },
     rarity = 3,
     order = 3,
     blueprint_compat = true,
@@ -22,7 +22,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             "The Chill Vacation"
         },
         idea = "MarioFan597",
-        art =  "TBA",
+        art =  "cmykl",
         code = "MarioFan597",
     }
 }
