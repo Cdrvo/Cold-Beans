@@ -8,7 +8,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     cost = 3,
     config = { 
         extra = { 
-            mult = 5,
+            mult = 5.5,
         },
         immutable = {
             hand_size = 2
