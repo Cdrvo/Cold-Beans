@@ -811,6 +811,14 @@ return {
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}14 in 20{C:inactive})",
                 },
             },
+            j_cbean_0chill_driving_in_my_truck = {
+                name = "Asgore's Truck",
+                text = {
+                    "When hand played, destroys all King cards",
+                    "gives {X:mult,C:white}X0.5{} Mult for each card destroyed",
+                    "resets each Ante (BROKEN SOMEONE PLS FIX)",
+                },
+            },
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
