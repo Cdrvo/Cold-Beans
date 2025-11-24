@@ -906,6 +906,18 @@ return {
                     "selected card and {C:dark_edition}Negative{}",
                     "{C:inactive}(Drag to rearrange)"
                 }
+            },
+            c_cbean_0chill_cronus = {
+                name = "The Blessing of Cronus",
+                text = {{
+                    "Prevents {C:attention}Blessings{} from",
+                    "using charges each round",
+                    "{C:inactive}({C:attention}#1#{C:inactive} rounds left)"
+                },
+                {
+                    "Gains {C:attention}#2#{} charges when",
+                    "a blessing is {C:attention}sold{}",
+                }}
             }
         },
         Stake = {},
