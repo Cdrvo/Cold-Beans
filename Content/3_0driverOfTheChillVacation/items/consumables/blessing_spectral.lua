@@ -49,6 +49,7 @@ SMODS.Consumable {
             end
         end
     end,
+    select_card = "consumeables",
     beans_credits = {
         team = {"0 Driver Of",
             "The Chill Vacation"
