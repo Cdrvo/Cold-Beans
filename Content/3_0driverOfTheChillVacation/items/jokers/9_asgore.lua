@@ -6,20 +6,35 @@ SMODS.Joker {
     order = 1,
     blueprint_compat = true,
     cost = 9,
-    config = { extra = { xmult_gain = 0.5, xmult = 1 } },
+    config = { extra = { xmult_gain = 2, xmult = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
-        if context.individual and context.card and context.card:get_id() == "K" then
-            card.ability.extra.stored = card.ability.extra.stored + card.ability.extra.base_mult
-            return {
-                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-                colour = G.C.RED,
-                remove = true
-            }
+        if
+            (context.cardarea == G.play or context.cardarea == "unscored")
+            and context.destroying_card
+            and not context.blueprint
+            and not context.retrigger_joker
+        then
+            if context.destroying_card:get_id() == 13 then
+        
+                SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_gain",
+                        scaling_message = {
+                            message = "Berkuntruckin",
+                            colour = G.C.RED,
+                        },
+                    })
+                    return {
+                        card = context.other_card,
+                        remove = not context.destroying_card.ability.eternal,
+                    }
+            end
         end
-        if context.ante_up then
+        if context.ante_change and context.ante_change > 0 then
             card.ability.extra.xmult = 1
             return {
                 message = localize('k_reset'),
@@ -38,6 +53,7 @@ SMODS.Joker {
         },
         idea = {"restruct"},
         art =  "Monachrome",
-        code = "restruct",
+        code = {"restruct",
+        "MarioFan597"},
     }
 }

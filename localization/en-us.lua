@@ -813,11 +813,16 @@ return {
             },
             j_cbean_0chill_driving_in_my_truck = {
                 name = "Asgore's Truck",
-                text = {
-                    "When hand played, destroys all King cards",
-                    "gives {X:mult,C:white}X0.5{} Mult for each card destroyed",
-                    "resets each Ante (BROKEN SOMEONE PLS FIX)",
-                },
+                text = {{
+                    "Destroys scored {C:attention}King{} cards",
+                    "in played hand"
+                    },
+                    {
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult for",
+                    "each card destroyed this way,",
+                    "resets after each {C:attention}Ante{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+                }},
             },
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
