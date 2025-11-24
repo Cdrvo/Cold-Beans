@@ -1,7 +1,7 @@
 SMODS.Joker { --Modifed from Vanilla Remade's example
     key = "0chill_thorn_ring", 
-    atlas = "0chill_joker_atlas",
-    pos = { x = 2, y = 0 },
+    atlas = "0chill_thorn_ring_atlas",
+    pos = { x = 0, y = 0 },
     rarity = 2,
     order = 1,
     blueprint_compat = true,
@@ -49,17 +49,20 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     end,
 
     add_to_deck = function(self, card, from_debuff)
+        play_sound('cbean_0chill_thorn_ring_equip')
+        card.children.center:set_sprite_pos({x = 1, y = 0})
         G.hand:change_size(-card.ability.immutable.hand_size)
     end,
 
     remove_from_deck = function(self, card, from_debuff)
+        play_sound('cbean_0chill_thorn_ring_sell')
         G.hand:change_size(card.ability.immutable.hand_size)
     end,
     beans_credits = {
         team = {"0 Driver Of",
             "The Chill Vacation"
         },
-        idea = {"restruct",
+        idea = {"CapitalChrip",
              "MarioFan597"
         },
         art =  "Monachrome",
