@@ -767,6 +767,22 @@ return {
                 },
             },
 
+            --Uncommon
+            j_cbean_0chill_thorn_ring = {
+                name = "Thorn Ring",
+                text = {{
+                    "{X:mult,C:white}X#1#{} Mult"
+                },
+                {
+                    "{C:red}-#2#{} hand size"
+                },
+                {
+                    "All non-{C:hearts}Heart{} cards",
+                    "are {C:red}debuffed{}"
+                }}
+            },
+
+
             --Rare
 
             j_cbean_0chill_chaos = {
