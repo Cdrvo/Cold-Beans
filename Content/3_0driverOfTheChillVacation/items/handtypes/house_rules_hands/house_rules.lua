@@ -25,7 +25,7 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
             track_ranks[11],
             track_ranks[4],
             track_ranks[3],
-            track_ranks[14],
+            track_ranks[14]
         }
 
         return {scoring_cards}
@@ -34,10 +34,10 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
 
 SMODS.PokerHand{
     key = "0chill_house_rules",
-    l_chips = 11,
-    l_mult = 4,
-    chips = 3,
-    mult = 1,
+    chips = 11,
+    mult = 4,
+    l_chips = 3,
+    l_mult = 1,
     visible = false,
     example = {
         { "D_J", true },

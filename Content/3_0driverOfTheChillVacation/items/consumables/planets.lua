@@ -3,15 +3,42 @@ house_rules_hands = {
     "cbean_0chill_fibonacci_flush",
     "cbean_0chill_house_rules"
 }
-
+--[[
+SMODS.Consumable {
+    key = "mercury",
+    set = "vremade_Planet",
+    cost = 3,
+    pos = { x = 0, y = 3 },
+    config = { hand_type = 'Pair' },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                G.GAME.hands[card.ability.hand_type].level,
+                localize(card.ability.hand_type, 'poker_hands'),
+                G.GAME.hands[card.ability.hand_type].l_mult,
+                G.GAME.hands[card.ability.hand_type].l_chips,
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+            }
+        }
+    end
+}
+]]
 
 SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
     key = '0chill_house_rules_planet',
     set = 'Planet',
+    cost = 8,
     atlas = '0chill_joker_atlas',
-    pos = { x = 9, y = 3 },
-    hidden = true,
-    config = {hand_type = "0chill_house_rules", softlock = true},
+    pos = { x = 5, y = 3 },
+    config = {hand_type = {"cbean_0chill_house_rules"}, softlock = false}, --Wanted it to only appear
+    beans_credits = {
+        team = {"0 Driver Of",
+            "The Chill Vacation"
+        },
+        idea = "MarioFan597",
+        art =  "NA",
+        code = "MarioFan597",
+    },
     use = function(self, card, area, copier)
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
             { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
