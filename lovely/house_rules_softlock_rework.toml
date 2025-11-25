@@ -1,0 +1,14 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# 0 Drivers of the chill vaction
+# Changes planet card's softlock so that instead of requiring planets of have been played, they just need to be visible. Important for the House Rules Joker.
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''if (not v.config.softlock or G.GAME.hands[v.config.hand_type].played > 0) then'''
+position = "at"
+payload = '''if (not v.config.softlock or SMODS.is_poker_hand_visible(v.config.hand_type)) then'''
+match_indent = true
+overide = true

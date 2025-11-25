@@ -3,26 +3,6 @@ house_rules_hands = {
     "cbean_0chill_fibonacci_flush",
     "cbean_0chill_house_rules"
 }
---[[
-SMODS.Consumable {
-    key = "mercury",
-    set = "vremade_Planet",
-    cost = 3,
-    pos = { x = 0, y = 3 },
-    config = { hand_type = 'Pair' },
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                G.GAME.hands[card.ability.hand_type].level,
-                localize(card.ability.hand_type, 'poker_hands'),
-                G.GAME.hands[card.ability.hand_type].l_mult,
-                G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-            }
-        }
-    end
-}
-]]
 
 SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
     key = '0chill_house_rules_planet',
@@ -30,7 +10,7 @@ SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
     cost = 8,
     atlas = '0chill_joker_atlas',
     pos = { x = 5, y = 3 },
-    config = {hand_type = {"cbean_0chill_house_rules"}, softlock = false}, --Wanted it to only appear
+    config = {hand_type = "cbean_0chill_house_rules", softlock = true}, --Wanted it to only appear
     beans_credits = {
         team = {"0 Driver Of",
             "The Chill Vacation"
