@@ -824,6 +824,21 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
                 }},
             },
+
+            j_cbean_0chill_house_rules = {
+                name = "House Rules",
+                text = {{
+                    "Unlocks new hands",
+                    "based on owned {C:attention}Jokers"
+                },
+                {
+                    "{C:attention}Select{} this Joker and",
+                    "check {C:attention}Run Info{} to",
+                    "see possible hands",
+                    "{C:inactive}(Indicated with an HR)"
+                }}
+            },
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
@@ -924,7 +939,16 @@ return {
             },
             c_cbean_sdown_bobtail_planet = {
                 name = "Vesta"
-            }
+            },
+
+            c_cbean_0chill_house_rules_planet = {
+                name = "Planet Drool",
+                text = {
+                    "Upgrade every House",
+                    "Rules {C:legendary,E:1}poker hand",
+                    "by {C:attention}1{} level",
+                },
+            },
         },
         Spectral = {
             c_cbean_0chill_qilin = {
@@ -992,12 +1016,34 @@ return {
             ["cbean_sdown_bobtail"] = {
                 "4 cards in a row (consecutive ranks) with",
                 "all cards sharing the same suit",
+            },
+
+            --House Rules Hands
+            ["cbean_0chill_fibonacci"] = {
+                "A hand that contains an 8, 5, 3, 2, and an Ace",
+                "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"  
+            },
+
+            ["cbean_0chill_fibonacci_flush"] = {
+                "A hand that contains an 8, 5, 3, 2,",
+                "and an Ace sharing the same suit",
+                "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"  
+            },
+
+            ["cbean_0chill_house_rules"] = {
+                "A hand that contains an Jack, 4, 3, and an Ace,",
+                "Must have {C:attention}House Rules{} to play"  
             }
         },
         poker_hands = {
             ["cbean_sdown_antistraight"] = "Gay", -- Athebyne | N/A | Athebyne
             ["cbean_sdown_antistraight_flush"] = "Gay Flush", -- Athebyne | N/A | Athebyne
-            ["cbean_sdown_bobtail"] = "Bobtail" -- Athebyne | N/A | Athebyne
+            ["cbean_sdown_bobtail"] = "Bobtail", -- Athebyne | N/A | Athebyne
+
+            --House Rules Hands
+            ["cbean_0chill_fibonacci"] = "HR Fibonacci",
+            ["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
+            ["cbean_0chill_house_rules"] = "HR House Rules"
         },
         quips = {},
         ranks = {},
