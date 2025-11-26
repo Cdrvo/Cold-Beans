@@ -18,3 +18,10 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+    key = "0chill_thorn_ring_atlas",
+    path = "3_0driverOfTheChillVacation/thorn_ring.png",
+    px = 71,
+    py = 95,
+})
