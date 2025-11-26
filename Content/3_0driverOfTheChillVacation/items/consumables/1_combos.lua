@@ -47,13 +47,16 @@ end
 function SelectCombo(card)
     table.insert(G.GAME.cbean_combo_index, card.ability.immutable.combo_type)
     card.ability.immutable.sequence = #G.GAME.cbean_combo_index
-    --print(#G.GAME.cbean_combo_index)
+
+    local eval = function(card) return (card.ability.immutable.sequence ~= 0) end
+                                	juice_card_until(card, eval, true)
+    print(#G.GAME.cbean_combo_index)
 end
 
 function UnselectCombo(card)
     G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
     card.ability.immutable.sequence = 0
-    --print(#G.GAME.cbean_combo_index)
+    print(#G.GAME.cbean_combo_index)
 end
 
 
@@ -134,6 +137,9 @@ SMODS.Consumable {
     keep_on_use = function(self, card) --Needed for every combo card
         return true
     end,
+    remove_from_deck = function(self, card, from_debuff) 
+        UnselectCombo(card)
+    end
 }
 
 SMODS.Consumable {
@@ -185,4 +191,7 @@ SMODS.Consumable {
     keep_on_use = function(self, card) --Needed for every combo card
         return true
     end,
+    remove_from_deck = function(self, card, from_debuff) 
+        UnselectCombo(card)
+    end
 }
