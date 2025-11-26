@@ -49,7 +49,7 @@ function SelectCombo(card)
     card.ability.immutable.sequence = #G.GAME.cbean_combo_index
 
     local eval = function(card) return (card.ability.immutable.sequence ~= 0) end
-                                	juice_card_until(card, eval, true)
+        juice_card_until(card, eval, true)
     print(#G.GAME.cbean_combo_index)
 end
 
