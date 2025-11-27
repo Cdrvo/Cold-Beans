@@ -1,16 +1,16 @@
 SMODS.Consumable {
-    key = '0chill_punch',
+    key = '0chill_raging_storm',
     set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
     config = { 
          immutable = {
             ---------------------- What every combo card needs
-            combo_type = "starter",
+            combo_type = "finisher",
             sequence = 0
             ----------------------
         },
         extra = {
-            mult = 10
+            mult = 4
         },
         extra_slots_used = -0.75
     },
@@ -38,7 +38,7 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         if context.joker_main and card.ability.immutable.sequence > 0 then
             return {
-                mult = (card.ability.extra.mult * (1 + (card.ability.immutable.sequence - 1)/10 )) --Combo effects power
+                x_mult = (card.ability.extra.mult * (1 + (card.ability.immutable.sequence - 1)/10 )) --Combo effects power
             }
         end
         if context.after and card.ability.immutable.sequence > 0 then
@@ -53,10 +53,8 @@ SMODS.Consumable {
         team = {"0 Driver Of",
                 "The Chill Vacation"
                 },
-        idea = "MarioFan597", --TODO
-        art = "cmykl",  --TODO
-        code = {"MarioFan597",
-                "Inspector_B"
-                },
+        idea = "CapitalChirp",
+        art = "cmykl",
+        code = "MarioFan597",
     },
 }

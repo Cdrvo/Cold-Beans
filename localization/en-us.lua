@@ -500,18 +500,17 @@ return {
             },
         },
         Combo = {
-            c_cbean_0chill_punch= {
-                name = {"Punch",
-                    "{X:green,C:white,s:0.7}Starter{}"
+            c_cbean_0chill_raging_storm= {
+                name = {"Raging Storm",
+                    "{X:red,C:white,s:0.7}Finisher{}"
                 },
                 text = {{
-                    "{C:mult}+#1#{} Mult",
-                    "when in a combo"
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "Boosted by combo",
+                    "length when selected"
                 },
                 {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                    "Ends Combo"
                 }}
             },
             c_cbean_0chill_standing_punch= {
