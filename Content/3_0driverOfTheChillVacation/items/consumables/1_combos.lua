@@ -22,6 +22,10 @@ function CanCombo(card) --Checks if the card can combo. Also makes the combo ind
         --print("Made Combo Index")
         G.GAME.cbean_combo_index = {}
     end
+    if not G.GAME.cbean_combos_used then --Stores the number of combo cards used. Needed for Lone Warrior
+        --print("Made Combo Index")
+        G.GAME.cbean_combos_used = 0
+    end
     if next(G.GAME.cbean_combo_index) == nil and card.ability.immutable.sequence <= 0 then
         if card.ability.immutable.combo_type == ("starter" or "taunt") then
             --print("Can Combo Sucessfully From Empty Index") 
@@ -100,8 +104,141 @@ SMODS.ConsumableType {
 
 ---Combo Cards
 
+
 SMODS.Consumable {
-    key = '0chill_starter1',
+    key = '0chill_standing_punch',
+    set = 'Combo', --Had to leave out team name since the 0 caused issues
+    atlas = '0chill_combo_atlas',
+    config = { 
+         immutable = {
+            ---------------------- What every combo card needs
+            combo_type = "starter",
+            sequence = 0
+            ----------------------
+        },
+        extra = {
+            chips = 100
+        },
+        extra_slots_used = -0.75
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
+        return { vars = { card.ability.extra.chips} }
+    end,
+    pos = { x = 1, y = 0 },
+    can_use = function(self, card)
+        return true
+    end,
+    use = function(self, card, area, copier) --Each card will have two uses. The first is when it is selected  and the second is when it is de-selected
+
+        if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
+        then
+            SelectCombo(card)
+        elseif G.GAME.blind.in_blind and CanUncombo(card) then --Deselecting Card
+            UnselectCombo(card)
+        else
+            return nil
+        end              
+    end,                                 
+    keep_on_use = function(self, card) --Needed for every combo card
+        return true
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 then
+            if(context.other_card == context.scoring_hand[1]) then
+                return {
+                    chips = (card.ability.extra.chips * (1 + (card.ability.immutable.sequence - 1)/10 ))
+                }
+            end
+        end
+        if context.after and card.ability.immutable.sequence > 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff) 
+        UnselectCombo(card)
+    end,
+    beans_credits = {
+        team = {"0 Driver Of",
+                "The Chill Vacation"
+                },
+        idea = "MarioFan597", --TODO
+        art = "",  --TODO
+        code = {"MarioFan597",
+                "Inspector_B"
+                },
+    },
+}
+
+SMODS.Consumable {
+    key = '0chill_standing_knee',
+    set = 'Combo', --Had to leave out team name since the 0 caused issues
+    atlas = '0chill_combo_atlas',
+    config = { 
+         immutable = {
+            ---------------------- What every combo card needs
+            combo_type = "starter",
+            sequence = 0
+            ----------------------
+        },
+        extra = {
+            mult = 20
+        },
+        extra_slots_used = -0.75
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
+        return { vars = { card.ability.extra.mult} }
+    end,
+    pos = { x = 6, y = 0 },
+    can_use = function(self, card)
+        return true
+    end,
+    use = function(self, card, area, copier) --Each card will have two uses. The first is when it is selected  and the second is when it is de-selected
+
+        if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
+        then
+            SelectCombo(card)
+        elseif G.GAME.blind.in_blind and CanUncombo(card) then --Deselecting Card
+            UnselectCombo(card)
+        else
+            return nil
+        end              
+    end,                                 
+    keep_on_use = function(self, card) --Needed for every combo card
+        return true
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 then
+            if(context.other_card == context.scoring_hand[1]) then
+                return {
+                    mult = (card.ability.extra.mult * (1 + (card.ability.immutable.sequence - 1)/10 ))
+                }
+            end
+        end
+        if context.after and card.ability.immutable.sequence > 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff) 
+        UnselectCombo(card)
+    end,
+    beans_credits = {
+        team = {"0 Driver Of",
+                "The Chill Vacation"
+                },
+        idea = "MarioFan597", --TODO
+        art = "",  --TODO
+        code = {"MarioFan597",
+                "Inspector_B"
+                },
+    },
+}
+
+SMODS.Consumable {
+    key = '0chill_punch',
     set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
     config = { 
@@ -140,11 +277,12 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         if context.joker_main and card.ability.immutable.sequence > 0 then
             return {
-                mult = card.ability.extra.mult
+                mult = (card.ability.extra.mult * (1 + (card.ability.immutable.sequence - 1)/10 )) --Combo effects power
             }
         end
         if context.after and card.ability.immutable.sequence > 0 then
             SMODS.destroy_cards(card, nil, nil, true)
+            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
         end
     end,
     remove_from_deck = function(self, card, from_debuff) 
@@ -154,7 +292,7 @@ SMODS.Consumable {
         team = {"0 Driver Of",
                 "The Chill Vacation"
                 },
-        idea = "", --TODO
+        idea = "MarioFan597", --TODO
         art = "",  --TODO
         code = {"MarioFan597",
                 "Inspector_B"
@@ -162,43 +300,33 @@ SMODS.Consumable {
     },
 }
 
+
+--[[  Basic Example
 SMODS.Consumable {
-    key = '0chill_taunt1',
-    set = 'Combo',
+    key = '0chill_punch',
+    set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
     config = { 
          immutable = {
             ---------------------- What every combo card needs
-            combo_type = "series",
+            combo_type = "starter",
             sequence = 0
             ----------------------
-            --mult_
-        }
+        },
+        extra = {
+            mult = 10
+        },
+        extra_slots_used = -0.75
     },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult} }
+    end,
     pos = { x = 2, y = 0 },
-    beans_credits = {
-        team = {"0 Driver Of",
-                "The Chill Vacation"
-                },
-        idea = "", --TODO
-        art = "",  --TODO
-        code = {"MarioFan597",
-                "Inspector_B"
-                },
-    },
-    generate_ui = 0,
-     loc_txt = {
-        name = 'series',
-        text = {
-            "Lorem Ipsem",
-            "Lorem Ipsem",
-            "Lorem Ipsem"
-        }
-    },
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier) --Each card will have two uses. The first is when it is selected  and the second is when it is de-selected
+
         if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
         then
             SelectCombo(card)
@@ -207,13 +335,33 @@ SMODS.Consumable {
         else
             return nil
         end              
-    end,                                    
+    end,                                 
     keep_on_use = function(self, card) --Needed for every combo card
         return true
     end,
-    remove_from_deck = function(self, card, from_debuff)
-        if G.GAME.blind.in_blind then
-            UnselectCombo(card)
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.immutable.sequence > 0 then
+            return {
+                mult = (card.ability.extra.mult * (1 + (card.ability.immutable.sequence - 1)/10 )) --Combo effects power
+            }
         end
-    end
+        if context.after and card.ability.immutable.sequence > 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff) 
+        UnselectCombo(card)
+    end,
+    beans_credits = {
+        team = {"0 Driver Of",
+                "The Chill Vacation"
+                },
+        idea = "MarioFan597", --TODO
+        art = "",  --TODO
+        code = {"MarioFan597",
+                "Inspector_B"
+                },
+    },
 }
+]]

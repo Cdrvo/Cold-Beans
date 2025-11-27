@@ -500,13 +500,41 @@ return {
             },
         },
         Combo = {
-            c_cbean_0chill_starter1= {
+            c_cbean_0chill_punch= {
                 name = {"Punch",
                     "{X:green,C:white,s:0.7}Starter{}"
                 },
                 text = {{
                     "{C:mult}+#1#{} Mult",
                     "when in a combo"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                }}
+            },
+            c_cbean_0chill_standing_punch= {
+                name = {"Standing Punch",
+                    "{X:green,C:white,s:0.7}Starter{}"
+                },
+                text = {{
+                    "{C:chips}+#1#{} Chips for",
+                    "first card scored"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                }}
+            },
+            c_cbean_0chill_standing_knee= {
+                name = {"Standing Knee",
+                    "{X:green,C:white,s:0.7}Starter{}"
+                },
+                text = {{
+                    "{C:mult}+#1#{} Mult for",
+                    "first card scored"
                 },
                 {
                     "Combos Into:",
@@ -841,6 +869,15 @@ return {
                 }},
             },
 
+            j_cbean_0chill_lone_warrior = {
+                name = "Lone Warrior",
+                text = {
+                    "Gains {X:mult,C:white}X#2#{} Mult",
+                    "for each {C:attention}Combo{} card",
+                    "used this run",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive} Mult)"
+                }
+            },
             j_cbean_0chill_house_rules = {
                 name = "House Rules",
                 text = {{
@@ -944,6 +981,13 @@ return {
                     "{C:attention}#2# {C:attention}Blessing{} cards",
                     "take"
                 }
+            },
+            cbean_combo_starter = { --Explains if card can be used to start a combo
+                name = "Combo Starter",
+                text = {
+                    "This card can be used",
+                    "to start a combo"
+                },
             }
         },
         Planet = {
@@ -1015,6 +1059,7 @@ return {
             k_strengthened_ex="Strengthened!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
             k_cbean_sdown_blessingpack = "Pantheon Pack"
+
         },
         high_scores = {},
         labels = {
