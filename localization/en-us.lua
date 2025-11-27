@@ -541,6 +541,20 @@ return {
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
                     "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
                 }}
+            },
+            c_cbean_0chill_rose= {
+                name = {"Rose",
+                    "{X:black,C:white,s:0.7}Taunt{}"
+                },
+                text = {{
+                    "Lowers blind by {C:dark_edition}-#1#%",
+                    "when scored",
+                    "Boosted by combo"
+                },
+                {
+                    "Combos Into:",
+                    "{X:cbean_series,C:white}Series{}, {X:red,C:white}Finisher{}",
+                }}
             }
         },
         Enhanced = {},
@@ -1058,7 +1072,8 @@ return {
             k_dispelled_ex="Dispelled!",
             k_strengthened_ex="Strengthened!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
-            k_cbean_sdown_blessingpack = "Pantheon Pack"
+            k_cbean_sdown_blessingpack = "Pantheon Pack",
+            cbean_0chill_blind_weakend = "Blind Weakend"
 
         },
         high_scores = {},
