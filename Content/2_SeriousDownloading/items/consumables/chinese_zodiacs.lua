@@ -107,7 +107,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "L'",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -147,7 +147,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -187,7 +187,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -227,7 +227,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -267,7 +267,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -307,7 +307,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "L'",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -347,7 +347,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -387,7 +387,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -427,7 +427,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "L'",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -467,7 +467,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "L'",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -507,7 +507,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
@@ -547,7 +547,7 @@ SMODS.Consumable {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art = "N/A",
+        art = "Slipstream",
         code = "Athebyne",
     },
     use = function(self, card, area, copier)
