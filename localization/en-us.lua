@@ -542,14 +542,14 @@ return {
                     "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
                 }}
             },
-            c_cbean_0chill_rose= {
-                name = {"Rose",
+            c_cbean_0chill_rose_throw= {
+                name = {"Rose Throw",
                     "{X:black,C:white,s:0.7}Taunt{}"
                 },
                 text = {{
                     "Lowers blind by {C:dark_edition}-#1#%",
                     "when scored",
-                    "Boosted by combo"
+                    "Boosted by combo",
                 },
                 {
                     "Combos Into:",
