@@ -49,8 +49,10 @@ SMODS.Consumable {
             G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
         end
     end,
-    remove_from_deck = function(self, card, from_debuff) 
-        UnselectCombo(card)
+    remove_from_deck = function(self, card, from_debuff)
+        if CanUncombo(card) and card.ability.immutable.sequence > 0 then 
+            UnselectCombo(card)
+        end
     end,
     beans_credits = {
         team = {"0 Driver Of",
