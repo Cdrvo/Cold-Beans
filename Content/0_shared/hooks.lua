@@ -25,18 +25,20 @@ end
 --Reveals all HR hands when seleceted
 local show_house_hands = SMODS.is_poker_hand_visible
 function SMODS.is_poker_hand_visible(handname)
-    if G.jokers.highlighted[1] then
-        if  
-            ((#SMODS.find_card('j_cbean_0chill_house_rules') > 0)
-            and (G.jokers.highlighted[1].config.center.key == 'j_cbean_0chill_house_rules')
-            and
-            (
-                handname == 'cbean_0chill_fibonacci' or 
-                handname == 'cbean_0chill_fibonacci_flush'
-            ))
-            
-        then 
-            return true 
+    if G.jokers then
+        if G.jokers.highlighted[1] then
+            if  
+                ((#SMODS.find_card('j_cbean_0chill_house_rules') > 0)
+                and (G.jokers.highlighted[1].config.center.key == 'j_cbean_0chill_house_rules')
+                and
+                (
+                    handname == 'cbean_0chill_fibonacci' or 
+                    handname == 'cbean_0chill_fibonacci_flush'
+                ))
+                
+            then 
+                return true 
+            end
         end
     end
     return show_house_hands(handname)
