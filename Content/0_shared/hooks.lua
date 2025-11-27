@@ -4,7 +4,7 @@ G.FUNCS.check_for_buy_space = function(card)
     return buyspace(card)
 end
 
---0 Drivers of the Chill Vaction
+--0 Drivers of the Chill Vacation
 --Hides and reveals House Rules hands when House Rules is picked up or sold
 
 --Makes the HR hand enabled without being played. Used to make planet show up
@@ -56,4 +56,18 @@ function SMODS.is_poker_hand_visible(handname)
         return false
     end
     return show_house_hands(handname)
+end
+
+
+--Keeps combo cards from being sold when one is activated to prevent order mix up
+local cant_sell_combo = Card.can_sell_card
+function Card:can_sell_card(context)
+    if G.GAME.cbean_combo_index then
+        if self.ability.immutable then
+            if (self.ability.immutable.sequence ~= 0) or (self.ability.immutable.sequence ~= #G.GAME.cbean_combo_index) then 
+                return false 
+            end
+        end
+    end
+    return cant_sell_combo(self, context)
 end

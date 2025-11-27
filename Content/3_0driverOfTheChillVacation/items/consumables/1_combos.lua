@@ -9,6 +9,12 @@ combo_table = { --Lists all combo_types and what they can combo into
 } 
 
 
+SMODS.current_mod.calculate = function(self, context)
+    if context.press_play then
+        G.GAME.cbean_combo_index = {}
+    end
+end
+
 ---Functions (By MarioFan597)
 
 function CanCombo(card) --Checks if the card can combo. Also makes the combo index which stores the sequence of moves used.
@@ -50,23 +56,27 @@ function SelectCombo(card)
 
     local eval = function(card) return (card.ability.immutable.sequence ~= 0) end
         juice_card_until(card, eval, true)
-    print(#G.GAME.cbean_combo_index)
+    --print(#G.GAME.cbean_combo_index)
+    --print(G.GAME.cbean_combo_index)
 end
 
 function UnselectCombo(card)
-    G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
+    if G.GAME.cbean_combo_index then
+        G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
+    end
     card.ability.immutable.sequence = 0
-    print(#G.GAME.cbean_combo_index)
+    --print(#G.GAME.cbean_combo_index)
+    --print(G.GAME.cbean_combo_index)
 end
 
 
 
 
 
----Combo Cards
+---Combo Cards Definition
 
 SMODS.ConsumableType {
-    key = '0chill_combo',
+    key = 'Combo',
     default = 'c_cbean_0chill_starter1',
     primary_colour = HEX('E89A35'), --placeholder for now, we can update these once we know what we want to do.
     secondary_colour = HEX('BA6900'), --placeholder for now, we can update these once we know what we want to do.
@@ -87,9 +97,12 @@ SMODS.ConsumableType {
     },
 }
 
+
+---Combo Cards
+
 SMODS.Consumable {
     key = '0chill_starter1',
-    set = '0chill_combo',
+    set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
     config = { 
          immutable = {
@@ -97,29 +110,16 @@ SMODS.Consumable {
             combo_type = "starter",
             sequence = 0
             ----------------------
-            --mult_
-        }
+        },
+        extra = {
+            mult = 10
+        },
+        extra_slots_used = -0.75
     },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult} }
+    end,
     pos = { x = 2, y = 0 },
-    beans_credits = {
-        team = {"0 Driver Of",
-                "The Chill Vacation"
-                },
-        idea = "", --TODO
-        art = "",  --TODO
-        code = {"MarioFan597",
-                "Inspector_B"
-                },
-    },
-    generate_ui = 0,
-     loc_txt = {
-        name = 'starter',
-        text = {
-            "Lorem Ipsem",
-            "Lorem Ipsem",
-            "Lorem Ipsem"
-        }
-    },
     can_use = function(self, card)
         return true
     end,
@@ -133,18 +133,38 @@ SMODS.Consumable {
         else
             return nil
         end              
-    end,                                    
+    end,                                 
     keep_on_use = function(self, card) --Needed for every combo card
         return true
     end,
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.immutable.sequence > 0 then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.after and card.ability.immutable.sequence > 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+        end
+    end,
     remove_from_deck = function(self, card, from_debuff) 
         UnselectCombo(card)
-    end
+    end,
+    beans_credits = {
+        team = {"0 Driver Of",
+                "The Chill Vacation"
+                },
+        idea = "", --TODO
+        art = "",  --TODO
+        code = {"MarioFan597",
+                "Inspector_B"
+                },
+    },
 }
 
 SMODS.Consumable {
     key = '0chill_taunt1',
-    set = '0chill_combo',
+    set = 'Combo',
     atlas = '0chill_combo_atlas',
     config = { 
          immutable = {
@@ -191,7 +211,9 @@ SMODS.Consumable {
     keep_on_use = function(self, card) --Needed for every combo card
         return true
     end,
-    remove_from_deck = function(self, card, from_debuff) 
-        UnselectCombo(card)
+    remove_from_deck = function(self, card, from_debuff)
+        if G.GAME.blind.in_blind then
+            UnselectCombo(card)
+        end
     end
 }

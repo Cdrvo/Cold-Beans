@@ -499,6 +499,22 @@ return {
                 }
             },
         },
+        Combo = {
+            c_cbean_0chill_starter1= {
+                name = {"Punch",
+                    "{X:green,C:white,s:0.7}Starter{}"
+                },
+                text = {{
+                    "{C:mult}+#1#{} Mult",
+                    "when in a combo"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                }}
+            }
+        },
         Enhanced = {},
         Joker = {
 
@@ -1031,7 +1047,7 @@ return {
             },
 
             ["cbean_0chill_house_rules"] = {
-                "A hand that contains an Jack, 4, 3, and an Ace,",
+                "A hand that contains an Jack, 4, 3, 1,",
                 "Must have {C:attention}House Rules{} to play"  
             }
         },
