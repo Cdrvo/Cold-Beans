@@ -525,7 +525,7 @@ return {
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
                 }}
             },
             c_cbean_0chill_standing_knee= {
@@ -539,7 +539,7 @@ return {
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
                 }}
             },
             c_cbean_0chill_rose_throw= {
@@ -605,7 +605,7 @@ return {
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:blue,C:white}Ultimate{}, {X:red,C:white}Finisher{}"
+                    "{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}"
                 }}
             },
                 c_cbean_0chill_crouching_punch= {
@@ -620,7 +620,7 @@ return {
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:blue,C:white}Ultimate{}, {X:red,C:white}Finisher{}"
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
                 }}
             },
                 c_cbean_0chill_hadouken= {
@@ -668,7 +668,7 @@ return {
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
                 }}
             },
             c_cbean_0chill_jump= {
@@ -683,7 +683,7 @@ return {
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:blue,C:white}Ultimate{}, {X:red,C:white}Finisher{}"
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
                 }}
             },
         },
