@@ -1,5 +1,5 @@
 SMODS.Consumable {
-    key = '0chill_victory_pose',
+    key = '0chill_fighting_stance',
     set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
     config = { 
@@ -8,18 +8,17 @@ SMODS.Consumable {
             combo_type = "taunt",
             sequence = 0,
             ----------------------
-            unique_round = true 
         },
         extra = {
-            lower = 2
+            combo_size = 3 --Needed to say how big it is
         },
         extra_slots_used = -0.75
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
-        return { vars = { card.ability.extra.lower} }
+        return { vars = { card.ability.extra.combo_size }}
     end,
-    pos = { x = 7, y = 4 },
+    pos = { x = 0, y = 0 },
     can_use = function(self, card)
         return true
     end,
@@ -34,11 +33,6 @@ SMODS.Consumable {
         end              
     end,
     calculate = function(self, card, context)
-        if context.before and card.ability.immutable.sequence > 0 then
-           card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize("cbean_0chill_blind_weakend"), colour = G.C.DARK_EDITION});
-           G.GAME.blind.chips = G.GAME.blind.chips * (1 - ((card.ability.extra.lower + (card.ability.immutable.sequence-1))/100))
-           G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)  
-        end
         if context.after and card.ability.immutable.sequence > 0 then
             SMODS.destroy_cards(card, nil, nil, true)
         end
@@ -57,8 +51,6 @@ SMODS.Consumable {
                 },
         idea = "MarioFan597",
         art = "cmykl",
-        code = {"MarioFan597",
-                "Inspector_B"
-                },
+        code = "MarioFan597",
     },
 }

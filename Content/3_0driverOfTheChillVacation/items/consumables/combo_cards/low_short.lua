@@ -10,7 +10,7 @@ SMODS.Consumable {
             ----------------------
         },
         extra = {
-            xmult = 1.2
+            xmult = 2
         },
         extra_slots_used = -0.75
     },

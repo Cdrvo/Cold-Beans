@@ -1,5 +1,5 @@
 SMODS.Consumable {
-    key = '0chill_victory_pose',
+    key = '0chill_wryyyyyy',
     set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
     config = { 
@@ -7,19 +7,21 @@ SMODS.Consumable {
             ---------------------- What every combo card needs
             combo_type = "taunt",
             sequence = 0,
-            ----------------------
-            unique_round = true 
+            ---------------------- 
+            max_rep = 40
         },
         extra = {
-            lower = 2
+            odds = 8,
+            redo = 1,
         },
         extra_slots_used = -0.75
     },
     loc_vars = function(self, info_queue, card)
+        local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Wryyyyyy")
         info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
-        return { vars = { card.ability.extra.lower} }
+        return { vars = { num, denom} }
     end,
-    pos = { x = 7, y = 4 },
+    pos = { x = 3, y = 1 },
     can_use = function(self, card)
         return true
     end,
@@ -34,10 +36,17 @@ SMODS.Consumable {
         end              
     end,
     calculate = function(self, card, context)
-        if context.before and card.ability.immutable.sequence > 0 then
-           card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize("cbean_0chill_blind_weakend"), colour = G.C.DARK_EDITION});
-           G.GAME.blind.chips = G.GAME.blind.chips * (1 - ((card.ability.extra.lower + (card.ability.immutable.sequence-1))/100))
-           G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)  
+        if context.repetition and context.cardarea == G.play and card.ability.immutable.sequence > 0 then
+            local reapeat_check = SMODS.pseudorandom_probability(card, "IT WAS ME: DIO!", 1, card.ability.extra.odds, "Wryyyyyy")
+            if reapeat_check then
+                card.ability.extra.redo = card.ability.extra.redo + 1
+            end
+            if card.ability.extra.redo > 1 then
+                return {
+                    message = localize("k_again_ex"),
+                    repetitions = math.min(card.ability.immutable.max_rep, card.ability.extra.redo - 1),
+                }
+            end
         end
         if context.after and card.ability.immutable.sequence > 0 then
             SMODS.destroy_cards(card, nil, nil, true)

@@ -59,8 +59,6 @@ SMODS.Consumable {
                 },
         idea = "CapitalChirp", 
         art = "cmykl", 
-        code = {"MarioFan597",
-                "Inspector_B"
-                },
+        code = "MarioFan597",
     },
 }

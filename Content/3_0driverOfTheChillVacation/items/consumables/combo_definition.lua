@@ -86,9 +86,13 @@ function CanCombo(card) --Checks if the card can combo. Also makes the combo ind
 end
 
 function CanUncombo(card) --Checks if the card can uncombo.
-    if card.ability.immutable.sequence == #G.GAME.cbean_combo_index then
-        if ComboUniqueCheck(card) then
-            return true
+    if G.GAME.cbean_combo_index then
+        if card.ability.immutable.sequence == #G.GAME.cbean_combo_index then
+            if ComboUniqueCheck(card) then
+                return true
+            else
+                return false
+            end
         else
             return false
         end
@@ -99,10 +103,25 @@ end
 
 function SelectCombo(card)
     --Adds card to combo index and saves the position in card
-    table.insert(G.GAME.cbean_combo_index, card.ability.immutable.combo_type)
+    if card.ability.extra then
+        if card.ability.extra.combo_size then
+            for i=1, card.ability.extra.combo_size do
+                table.insert(G.GAME.cbean_combo_index, card.ability.immutable.combo_type)
+                G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total + 1
+                G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn + 1
+            end
+        else
+            table.insert(G.GAME.cbean_combo_index, card.ability.immutable.combo_type)
+            G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total + 1
+            G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn + 1
+        end
+    else
+        table.insert(G.GAME.cbean_combo_index, card.ability.immutable.combo_type)
+        G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total + 1
+         G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn + 1
+    end
+
     card.ability.immutable.sequence = #G.GAME.cbean_combo_index
-    G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total + 1
-    G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn + 1
 
     --Remove unique hands from lists so they can be reslected if needed
     if card.ability.immutable.unique_hand then --Adds card id to lists if they are unique
@@ -116,12 +135,31 @@ function SelectCombo(card)
 end
 
 function UnselectCombo(card)
-    if G.GAME.cbean_combo_index then
-        G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
+    if card.ability.extra then
+        if card.ability.extra.combo_size then
+            for i=1, card.ability.extra.combo_size do
+                if G.GAME.cbean_combo_index then
+                    G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
+                end
+                G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total - 1
+                G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn - 1
+            end
+        else
+            if G.GAME.cbean_combo_index then
+                G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
+            end
+            G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total - 1
+            G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn - 1
+        end
+    else
+        if G.GAME.cbean_combo_index then
+            G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
+        end
+        G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total - 1
+        G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn - 1
     end
+
     card.ability.immutable.sequence = 0
-    G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total - 1
-    G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn - 1
 
     --Remove unique hands from lists so they can be reslected if needed
     if card.ability.immutable.unique_hand then
