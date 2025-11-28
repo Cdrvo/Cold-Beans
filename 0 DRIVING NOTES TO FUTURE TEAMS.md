@@ -24,4 +24,7 @@ oh and i better see something cool next loop around 👁️👁️
 ## other stuff
 apparently there's this mod called _Yggdrasil_ that doesn't work properly with Tiny and CEO blinds. restruct thinks that if that mod doesn't work, other mods that does stuff with new blinds might not also.<br>
 ig if anyone got free time and is a programmer maybe add crossmodding idk honestly this is like very very low priority imo
-
+<br>
+<br>
+okay that's it bye
+<img width="1570" height="1111" alt="culmination" src="https://github.com/user-attachments/assets/a4b4f8c6-036e-4b03-bf6a-c946b53d92e6" />
