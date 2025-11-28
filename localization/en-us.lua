@@ -1400,6 +1400,11 @@ return {
                 "{C:inactive}Driving in my truck, right after a beer..."  
             },
 
+            ["cbean_0chill_jackpot"] = {
+                "A hand that contains 3 sevens",
+                "Must have {C:attention}House Rules{} and {C:attention}Oops! All 6s{} to play",  
+            },
+
             ["cbean_0chill_house_rules"] = {
                 "A hand that contains an Jack, 4, 3, 1,",
                 "Must have {C:attention}House Rules{} to play"  
@@ -1415,7 +1420,8 @@ return {
             ["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
             ["cbean_0chill_house_rules"] = "HR House Rules",
             ["cbean_0chill_proceed"] = "HR PROCEED",
-            ["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights"
+            ["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
+            ["cbean_0chill_jackpot"] = "HR Jackpot!"
         },
         quips = {},
         ranks = {},
