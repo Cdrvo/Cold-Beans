@@ -506,11 +506,12 @@ return {
                 },
                 text = {{
                     "{X:mult,C:white}X#1#{} Mult",
-                    "Boosted by combo",
+                    "Boosted by current combo",
                     "length when selected"
                 },
                 {
-                    "Ends Combo"
+                    "Combos Into:",
+                    "Nothing",
                 }}
             },
             c_cbean_0chill_standing_punch= {
@@ -542,19 +543,149 @@ return {
                 }}
             },
             c_cbean_0chill_rose_throw= {
-                name = {"Rose Throw",
-                    "{X:black,C:white,s:0.7}Taunt{}"
+                name = {"Elegant Rose",
+                    "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
+                },
+                text = {{
+                    "Either gain {C:blue}+#1#{} hand",
+                    "or {C:red}+#1#{} discard",
+                },
+                {
+                    "Can only be used",
+                    "{C:attention}once{} per round"
+                },
+                {
+                    "Combos Into:",
+                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                }}
+            },
+            c_cbean_0chill_victory_pose= {
+                name = {"Victory Pose",
+                    "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
                 },
                 text = {{
                     "Lowers blind by {C:dark_edition}-#1#%",
                     "when scored",
-                    "Boosted by combo",
+                    "Boosted by current combo",
+                    "length when used"
+                },
+                {
+                    "Can only be used",
+                    "{C:attention}once{} per round"
                 },
                 {
                     "Combos Into:",
-                    "{X:cbean_series,C:white}Series{}, {X:red,C:white}Finisher{}",
+                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
                 }}
-            }
+            },
+            c_cbean_0chill_raging_demon= {
+                name = {"Raging Demon",
+                    "{X:blue,C:white,s:0.7}Ultimate{}"
+                },
+                text = {{
+                    "{C:chips}+#1#{} Chips for",
+                    "every card scored",
+                    "Boosted by {C:attention}total{}",
+                    "combo length"
+                },
+                {
+                    "Combos Into:",
+                    "Nothing",
+                }}
+            },
+            c_cbean_0chill_shoryuken= {
+                name = {"Shoryuken",
+                    "{X:purple,C:white,s:0.7}Special{}"
+                },
+                text = {{
+                    "Retrigger {C:attention}first{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} additional times",
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:blue,C:white}Ultimate{}, {X:red,C:white}Finisher{}"
+                }}
+            },
+                c_cbean_0chill_crouching_punch= {
+                name = {"Crouching Punch",
+                    "{X:green,C:white,s:0.7}Starter{}"
+                },
+                text = {{
+                    "{C:chips}+#1#{} Chips if played",
+                    "hand contains a {C:attention}#2#",
+
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:blue,C:white}Ultimate{}, {X:red,C:white}Finisher{}"
+                }}
+            },
+                c_cbean_0chill_hadouken= {
+                name = {"Hadouken",
+                    "{X:red,C:white,s:0.7}Finisher{}"
+                },
+                text = {{
+                    "{C:mult}+#1#{} Mult for every",
+                    "card in played hand",
+                    "Boosted by current combo",
+                    "length when used"
+
+                },
+                {
+                    "Combos Into:",
+                    "Nothing"
+                }}
+            },
+                c_cbean_0chill_tatsumaki= {
+                name = {"Tatsumaki Senpukyaku",
+                    "{X:red,C:white,s:0.7}Finisher{}"
+                },
+                text = {{
+                    "Retriggers all scoring",
+                    "cards up to an",
+                    "additional {C:attention}#1#{} times"
+
+                },
+                {
+                    "Combos Into:",
+                    "Nothing"
+                }}
+            },
+                c_cbean_0chill_low_short= {
+                name = {"Low Short",
+                    "{X:cbean_series,C:white,s:0.7}Series{}"
+                },
+                text = {{
+                    "The highest ranked card gives",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "Boosted by current combo",
+                    "length when used"
+
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:purple,C:white}Special{}, {X:red,C:white}Finisher{}"
+                }}
+            },
+            c_cbean_0chill_jump= {
+                name = {"Jump",
+                    "{X:green,C:white,s:0.7}Starter{}"
+                },
+                text = {{
+                    "Every {C:attention}played card{}",
+                    "counts in scoring",
+
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:blue,C:white}Ultimate{}, {X:red,C:white}Finisher{}"
+                }}
+            },
         },
         Enhanced = {},
         Joker = {
