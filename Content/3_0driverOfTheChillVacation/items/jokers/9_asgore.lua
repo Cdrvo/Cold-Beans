@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "0chill_driving_in_my_truck",
     atlas = "0chill_joker_atlas",
-    pos = { x = 3, y = 1 },
+    pos = { x = 2, y = 1 },
     rarity = 3,
     order = 1,
     blueprint_compat = true,
