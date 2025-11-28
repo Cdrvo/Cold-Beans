@@ -72,7 +72,7 @@ function CanCombo(card) --Checks if the card can combo. Also makes the combo ind
 
     --Checking if it is compatable with current combo index.
     if next(G.GAME.cbean_combo_index) == nil and card.ability.immutable.sequence <= 0 then --If the list is empty and combo card isn't already in a combo
-        if (card.ability.immutable.combo_type == "starter" or card.ability.immutable.combo_type == "taunt") and ComboUniqueCheck(card) then
+        if (card.ability.immutable.combo_type == "starter" or card.ability.immutable.combo_type == "taunt" or card.ability.immutable.combo_type == "universal") and ComboUniqueCheck(card) then
             return true
         else
             return false

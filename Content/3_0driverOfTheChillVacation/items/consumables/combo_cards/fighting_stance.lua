@@ -2,6 +2,7 @@ SMODS.Consumable {
     key = '0chill_fighting_stance',
     set = 'Combo', --Had to leave out team name since the 0 caused issues
     atlas = '0chill_combo_atlas',
+    cost = 5,
     config = { 
          immutable = {
             ---------------------- What every combo card needs
