@@ -1,7 +1,7 @@
 SMODS.Joker { --Modifed from Vanilla Remade's example
     key = "0chill_lone_warrior", 
     atlas = "0chill_joker_atlas",
-    pos = { x = 2, y = 2 },
+    pos = { x = 3, y = 0 },
     rarity = 3,
     blueprint_compat = true,
     cost = 8,
