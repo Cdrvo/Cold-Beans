@@ -1394,6 +1394,12 @@ return {
                 "Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play"  
             },
 
+            ["cbean_0chill_deer_in_headlights"] = {
+                "A hand that contains 5 kings",
+                "Must have {C:attention}House Rules{} and {C:attention}Asgore's Truck{} to play",
+                "{C:inactive}Driving in my truck, right after a beer..."  
+            },
+
             ["cbean_0chill_house_rules"] = {
                 "A hand that contains an Jack, 4, 3, 1,",
                 "Must have {C:attention}House Rules{} to play"  
@@ -1409,6 +1415,7 @@ return {
             ["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
             ["cbean_0chill_house_rules"] = "HR House Rules",
             ["cbean_0chill_proceed"] = "HR PROCEED",
+            ["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights"
         },
         quips = {},
         ranks = {},

@@ -18,7 +18,7 @@ SMODS.Joker {
             and not context.retrigger_joker
         then
             if context.destroying_card:get_id() == 13 then
-        
+                play_sound('cbean_0chill_asgore')
                 SMODS.scale_card(card, {
                         ref_table = card.ability.extra,
                         ref_value = "xmult",

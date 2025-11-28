@@ -34,6 +34,7 @@ function SMODS.is_poker_hand_visible(handname)
                 (
                     handname == 'cbean_0chill_fibonacci' or 
                     handname == 'cbean_0chill_fibonacci_flush' or
+                    handname == 'cbean_0chill_deer_in_headlights' or
                     handname == 'cbean_0chill_proceed'
                 ))
                 
@@ -54,6 +55,7 @@ function SMODS.is_poker_hand_visible(handname)
             handname == 'cbean_0chill_fibonacci' or 
             handname == 'cbean_0chill_fibonacci_flush' or
             handname == 'cbean_0chill_proceed' or
+            handname == 'cbean_0chill_deer_in_headlights' or
             handname == 'cbean_0chill_house_rules'
         )) 
     then 
