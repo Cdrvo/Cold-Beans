@@ -31,7 +31,7 @@ SMODS.Consumable {
         end              
     end,
     calculate = function(self, card, context) --This is just taken from vanilla remade. Will try to comback to give more original effect
-        if context.modify_scoring_hand and not context.blueprint and card.ability.immutable > 0 then
+        if context.modify_scoring_hand and card.ability.immutable.sequence > 0 and not context.blueprint  then
             return {
                 add_to_hand = true
             }
