@@ -1,7 +1,8 @@
 house_rules_hands = {
     "cbean_0chill_fibonacci",
     "cbean_0chill_fibonacci_flush",
-    "cbean_0chill_house_rules"
+    "cbean_0chill_house_rules",
+    "cbean_0chill_proceed"
 }
 
 SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole

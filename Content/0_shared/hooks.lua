@@ -33,7 +33,8 @@ function SMODS.is_poker_hand_visible(handname)
                 and
                 (
                     handname == 'cbean_0chill_fibonacci' or 
-                    handname == 'cbean_0chill_fibonacci_flush'
+                    handname == 'cbean_0chill_fibonacci_flush' or
+                    handname == 'cbean_0chill_proceed'
                 ))
                 
             then 
@@ -51,7 +52,8 @@ function SMODS.is_poker_hand_visible(handname)
         ((#SMODS.find_card('j_cbean_0chill_house_rules') < 1) and
         (
             handname == 'cbean_0chill_fibonacci' or 
-            handname == 'cbean_0chill_fibonacci_flush' or 
+            handname == 'cbean_0chill_fibonacci_flush' or
+            handname == 'cbean_0chill_proceed' or
             handname == 'cbean_0chill_house_rules'
         )) 
     then 

@@ -686,6 +686,145 @@ return {
                     "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
                 }}
             },
+            c_cbean_0chill_aohana= {
+                name = {"127 Shiki: Aohana",
+                    "{X:cbean_series,C:white,s:0.7}Series{}"
+                },
+                text = {{
+                    "Levels up {C:attention}played hand{}"
+                },
+                {
+                   "Can only be used",
+                    "{C:attention}once{} per round" 
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
+            c_cbean_0chill_crouching_launch= {
+                name = {"Crouching Launch",
+                    "{X:green,C:white,s:0.7}Starter{}"
+                },
+                text = {{
+                    "First played {C:attention}card{}",
+                    "permanently gains {C:chips}+#1#{} Chips",
+                    "when scored"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
+            c_cbean_0chill_flash_kick= {
+                name = {"Flash Kick",
+                    "{X:purple,C:white,s:0.7}Special{}"
+                },
+                text = {{
+                    "Retrigger {C:attention}last{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} additional times",
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}"
+                }}
+            },
+               c_cbean_0chill_aegis_reflector= {
+                name = {"Aegis Reflector",
+                    "{X:blue,C:white,s:0.7}Ultimate{}"
+                },
+                text = {{
+                    "Levels up {C:attention}played hand{}",
+                    "for length of",
+                    "{C:attention}total{} combo"
+                },
+                {
+                   "Can only be used",
+                    "{C:attention}once{} per round"
+                },
+                {
+                    "Combos Into:",
+                    "Nothing"
+                }}
+            },
+               c_cbean_0chill_wryyyyyy= {
+                name = {"WRYYYYYY!",
+                    "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
+                },
+                text = {{
+                    "{C:green}#1# in #2#{} chance the",
+                    "next scored card",
+                    "is retriggered when",
+                    "a card is scored"
+                },
+                {
+                    "Combos Into:",
+                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                }}
+            },
+               c_cbean_0chill_torou_zan= {
+                name = {"Torou Zan",
+                    "{X:cbean_series,C:white,s:0.7}Series{}"
+                },
+                text = {{
+                    "{X:mult,C:white}X#1#{} Mult,",
+                    "but {C:attention}increases{}",
+                    "blind size by {C:dark_edition}#2#%{}"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
+               c_cbean_0chill_joudan_sokuto_geri= {
+                name = {"Joudan Sokuto Geri",
+                    "{X:cbean_series,C:white,s:0.7}Series{}"
+                },
+                text = {{
+                    "The lowest ranked card gives",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "Gives an additional {X:mult,C:white}X#2#{} Mult",
+                    "for each scored card"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
+            c_cbean_0chill_god_fist= {
+                name = {"Electric Wind God Fist",
+                    "{X:cbean_series,C:white,s:0.7}Series{}"
+                },
+                text = {{
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "{C:green}#2# in #3#{} chance to",
+                    "instead be {X:chips,C:white}XChips"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
+               c_cbean_0chill_fighting_stance= {
+                name = {"Fighting Stance",
+                    "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
+                },
+                text = {{
+                    "Counts as using {C:attention}#1#{} Combo cards",
+                    "in a combo"
+                },
+                {
+                    "Combos Into:",
+                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                }}
+            },
         },
         Enhanced = {},
         Joker = {
@@ -1146,7 +1285,7 @@ return {
             },
 
             c_cbean_0chill_house_rules_planet = {
-                name = "Haumea",
+                name = "Planet Drool",
                 text = {
                     "Upgrade every House",
                     "Rules {C:legendary,E:1}poker hand",
@@ -1175,7 +1314,20 @@ return {
                     "Gains {C:attention}#2#{} charges when",
                     "a blessing is {C:attention}sold{}",
                 }}
-            }
+            },
+            c_cbean_0chill_nope_from_above= {
+                name = {"Nope! From Above",
+                    "{X:dark_edition,C:white,s:0.7}Universal{}"
+                },
+                text = {{
+                    "Counts as {C:dark_edition}#1#{} Combo cards",
+                },
+                {
+                    "Combos Into:",
+                    "{C:dark_edition}Anything",
+                    "{C:inactive}(Even if stated otherwise)"
+                }}
+            },
         },
         Stake = {},
         Tag = {},
@@ -1203,7 +1355,8 @@ return {
             k_strengthened_ex="Strengthened!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
             k_cbean_sdown_blessingpack = "Pantheon Pack",
-            cbean_0chill_blind_weakend = "Blind Weakend"
+            cbean_0chill_blind_weakend = "Blind Weakend!",
+            cbean_0chill_blind_strengthened = "Blind Strengthened!"
 
         },
         high_scores = {},
@@ -1236,10 +1389,15 @@ return {
                 "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"  
             },
 
+            ["cbean_0chill_proceed"] = {
+                "PROCEED",
+                "Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play"  
+            },
+
             ["cbean_0chill_house_rules"] = {
                 "A hand that contains an Jack, 4, 3, 1,",
                 "Must have {C:attention}House Rules{} to play"  
-            }
+            },
         },
         poker_hands = {
             ["cbean_sdown_antistraight"] = "Gay", -- Athebyne | N/A | Athebyne
@@ -1249,7 +1407,8 @@ return {
             --House Rules Hands
             ["cbean_0chill_fibonacci"] = "HR Fibonacci",
             ["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
-            ["cbean_0chill_house_rules"] = "HR House Rules"
+            ["cbean_0chill_house_rules"] = "HR House Rules",
+            ["cbean_0chill_proceed"] = "HR PROCEED",
         },
         quips = {},
         ranks = {},
