@@ -1146,7 +1146,7 @@ return {
             },
 
             c_cbean_0chill_house_rules_planet = {
-                name = "Planet Drool",
+                name = "Haumea",
                 text = {
                     "Upgrade every House",
                     "Rules {C:legendary,E:1}poker hand",
