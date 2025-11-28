@@ -22,7 +22,6 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
         return { vars = { card.ability.extra.combo_size }}
     end,
-    pos = { x = 0, y = 0 },
     can_use = function(self, card)
         return true
     end,
