@@ -1,18 +1,19 @@
 
 combo_table = { --Lists all combo_types and what they can combo into
-    starter = {starter=false, taunt=true, series=true, special_move=true, ultimate_move=false, finisher=true, universal=true},
-    taunt = {starter=false, taunt=false, series=true, special_move=true, ultimate_move=false, finisher=false, universal=true},
-    series = {starter=false, taunt=true, series=true, special_move=true, ultimate_move=false, finisher=true, universal=true},
-    special_move = {starter=false, taunt=true, series=true, special_move=true, ultimate_move=true, finisher=true, universal=true},
-    ultimate_move = {starter=false, taunt=false, series=false, special_move=false, ultimate_move=false, finisher=false, universal=true},
-    finisher = {starter=false, taunt=false, series=false, special_move=false, ultimate_move=false, finisher=false, universal=true},
-    universal = {starter=true, taunt=true, series=true, special_move=true, ultimate_move=true, finisher=true, universal=true}
+    starter = {starter=false, taunt=true, series=true, special=true, ultimate=false, finisher=true, universal=true},
+    taunt = {starter=false, taunt=false, series=true, special=true, ultimate=false, finisher=false, universal=true},
+    series = {starter=false, taunt=true, series=true, special=true, ultimate=false, finisher=true, universal=true},
+    special = {starter=false, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true},
+    ultimate = {starter=false, taunt=false, series=false, special=false, ultimate=false, finisher=false, universal=true},
+    finisher = {starter=false, taunt=false, series=false, special=false, ultimate=false, finisher=false, universal=true},
+    universal = {starter=true, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true}
 }   --Universal type is for spectral
 
 SMODS.current_mod.calculate = function(self,context)
     if context.after then
         G.GAME.cbean_combo_index = {}
         G.GAME.cbean_combo_unique_hand = {}
+        G.GAME.cbean_combos_used_turn = 0
     end
     if context.end_of_round then
         G.GAME.cbean_combo_unique_round = {}
@@ -62,8 +63,11 @@ function CanCombo(card) --Checks if the card can combo. Also makes the combo ind
     if not G.GAME.cbean_combo_unique_round then --Stores the name of the card if it is unique for the round
         G.GAME.cbean_combo_unique_round = {}
     end
-    if not G.GAME.cbean_combos_used then --Stores the number of combo cards used. Needed for Lone Warrior
-        G.GAME.cbean_combos_used = 0
+    if not G.GAME.cbean_combos_used_total then --Stores the number of combo cards used total Needed for Lone Warrior
+        G.GAME.cbean_combos_used_total = 0
+    end
+    if not G.GAME.cbean_combos_used_turn then --Stores the number of combo cards used in a turn.
+        G.GAME.cbean_combos_used_turn = 0
     end
 
     --Checking if it is compatable with current combo index.
@@ -97,6 +101,8 @@ function SelectCombo(card)
     --Adds card to combo index and saves the position in card
     table.insert(G.GAME.cbean_combo_index, card.ability.immutable.combo_type)
     card.ability.immutable.sequence = #G.GAME.cbean_combo_index
+    G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total + 1
+    G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn + 1
 
     --Remove unique hands from lists so they can be reslected if needed
     if card.ability.immutable.unique_hand then --Adds card id to lists if they are unique
@@ -114,6 +120,8 @@ function UnselectCombo(card)
         G.GAME.cbean_combo_index[#G.GAME.cbean_combo_index] = nil
     end
     card.ability.immutable.sequence = 0
+    G.GAME.cbean_combos_used_total = G.GAME.cbean_combos_used_total - 1
+    G.GAME.cbean_combos_used_turn = G.GAME.cbean_combos_used_turn - 1
 
     --Remove unique hands from lists so they can be reslected if needed
     if card.ability.immutable.unique_hand then

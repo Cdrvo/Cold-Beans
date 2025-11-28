@@ -44,7 +44,6 @@ SMODS.Consumable {
         end
         if context.after and card.ability.immutable.sequence > 0 then
             SMODS.destroy_cards(card, nil, nil, true)
-            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
         end
     end,                       
     keep_on_use = function(self, card) --Needed for every combo card

@@ -17,7 +17,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult} }
     end,
-    pos = { x = 2, y = 0 },
+    pos = { x = 4, y = 1 },
     can_use = function(self, card)
         return true
     end,
@@ -43,7 +43,6 @@ SMODS.Consumable {
         end
         if context.after and card.ability.immutable.sequence > 0 then
             SMODS.destroy_cards(card, nil, nil, true)
-            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
         end
     end,
     remove_from_deck = function(self, card, from_debuff)

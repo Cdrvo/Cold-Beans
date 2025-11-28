@@ -10,8 +10,8 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
         return { vars = { card.ability.extra.x_mult, card.ability.extra.x_mult_gain, } }
     end,
     calculate = function(self, card, context)
-        if G.GAME.cbean_combos_used then
-            card.ability.extra.x_mult = ((G.GAME.cbean_combos_used * card.ability.extra.x_mult_gain) + 1)
+        if G.GAME.cbean_combos_used_total then
+            card.ability.extra.x_mult = ((G.GAME.cbean_combos_used_total * card.ability.extra.x_mult_gain) + 1)
         end
 
         if context.joker_main and G.GAME.cbean_combos_used and card.ability.extra.x_mult > 1 then

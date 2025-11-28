@@ -10,7 +10,7 @@ SMODS.Consumable {
             ----------------------
         },
         extra = {
-            mult = 20
+            mult = 2
         },
         extra_slots_used = -0.75
     },
@@ -40,13 +40,12 @@ SMODS.Consumable {
         if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 then
             if(context.other_card == context.scoring_hand[1]) then
                 return {
-                    mult = (card.ability.extra.mult * (1 + (card.ability.immutable.sequence - 1)/10 ))
+                    mult = (card.ability.extra.mult * (1 + (#G.GAME.cbean_combo_index - 1)/10 ))
                 }
             end
         end
         if context.after and card.ability.immutable.sequence > 0 then
             SMODS.destroy_cards(card, nil, nil, true)
-            G.GAME.cbean_combos_used = G.GAME.cbean_combos_used + 1
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
