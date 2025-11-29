@@ -1175,6 +1175,28 @@ return {
                 }}
             },
 
+	    --Pissboys 
+
+            --Common
+            j_cbean_4piss_molotov = {
+                name = "Molotov Cocktail",
+                text = {
+                    "When {C:attention}first hand{} is played,",
+		    "destroy a random amount",
+		    "of cards {C:attention}held in hand{}",
+		    "{C:inactive}(Maximum of #1# cards)"
+                },
+            },
+			
+			j_cbean_4piss_vodka = {
+                name = "Vodka",
+                text = {
+                    "When {C:attention}Boss{} or {E:1,C:money}Ceo blind{} is",
+					"defeated, gain a random Tag",
+					"or {C:attention}#1#{} respectively"
+                },
+            },
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
@@ -1356,7 +1378,8 @@ return {
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
             k_cbean_sdown_blessingpack = "Pantheon Pack",
             cbean_0chill_blind_weakend = "Blind Weakend!",
-            cbean_0chill_blind_strengthened = "Blind Strengthened!"
+            cbean_0chill_blind_strengthened = "Blind Strengthened!",
+	    k_cbean_burned="Burned!"
 
         },
         high_scores = {},
@@ -1432,7 +1455,8 @@ return {
             coldbean_team = { "Team: #1#" },
             coldbean_idea = { "Idea: #1#" },
             coldbean_art = { "Art: #1#" },
-            coldbean_code = { "Code: #1#" }
+            coldbean_code = { "Code: #1#" },
+	    a_burned_cards="#1# Cards",
         },
         v_text = {
             --TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
