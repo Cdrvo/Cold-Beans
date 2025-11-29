@@ -1191,7 +1191,7 @@ return {
 			j_cbean_4piss_vodka = {
                 name = "Vodka",
                 text = {
-                    "When {C:attention}Boss{} or {E:1,C:money}Ceo blind{} is",
+                    "When {C:attention}Boss{} or {E:1,C:money}Ceo Blind{} is",
 					"defeated, gain a random Tag",
 					"or {C:attention}#1#{} respectively"
                 },
