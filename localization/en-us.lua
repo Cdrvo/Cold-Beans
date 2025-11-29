@@ -826,7 +826,16 @@ return {
                 }}
             },
         },
-        Enhanced = {},
+        Enhanced = {
+            m_cbean_pboys_piss = {
+                name = "Piss Card",
+                text = {
+                    	"Gives {C:chips}+#1#{} Chips for",
+			"each {C:attention}Piss card{} in deck",
+			"{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips)"
+                },
+            },
+        },
         Joker = {
 
             -- Common
@@ -1178,7 +1187,7 @@ return {
 	    --Pissboys 
 
             --Common
-            j_cbean_4piss_molotov = {
+            j_cbean_pboys_molotov = {
                 name = "Molotov Cocktail",
                 text = {
                     "When {C:attention}first hand{} is played,",
@@ -1188,12 +1197,12 @@ return {
                 },
             },
 			
-			j_cbean_4piss_vodka = {
+	    j_cbean_pboys_vodka = {
                 name = "Vodka",
                 text = {
-                    "When {C:attention}Boss{} or {E:1,C:money}Ceo Blind{} is",
-					"defeated, gain a random Tag",
-					"or {C:attention}#1#{} respectively"
+                    	"When {C:attention}Boss{} or {E:1,C:money}Ceo Blind{} is",
+			"defeated, gain a random Tag",
+			"or {C:attention}#1#{} respectively"
                 },
             },
 

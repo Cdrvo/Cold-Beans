@@ -1,6 +1,6 @@
 SMODS.Joker { --Modifed from Vanilla Remade's example
-    key = "4piss_molotov", 
-    atlas = "4piss_joker_atlas",
+    key = "pboys_molotov", 
+    atlas = "pboys_joker_atlas",
     pos = { x = 0, y = 0 },
     rarity = 2,
     order = 1,
