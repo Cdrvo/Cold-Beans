@@ -15,7 +15,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
         if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
 			if not(G.GAME.blind_on_deck ~= "CEO" and G.GAME.blind_on_deck ~= "Ceo") then
 				add_tag(Tag('tag_double'))
-			else
+			elseif G.GAME.blind_on_deck ~= "Teeny" then
 				local tag
 				repeat
 					tag = Tag(get_next_tag_key("vodka"))
