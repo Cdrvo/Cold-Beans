@@ -16,7 +16,7 @@ SMODS.Enhancement {
     end,
     beans_credits = {
         team = "Pissboys",
-        idea = "Gfsgfs",
+        idea = "Breuhh",
         art = "Gfsgfs",
         code = "Nrio_Modder",
     },

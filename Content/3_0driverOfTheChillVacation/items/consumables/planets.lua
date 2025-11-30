@@ -65,5 +65,10 @@ SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
     end,
     can_use = function(self, card)
         return true
+    end,
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
+            get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+            1.2)
     end
 }

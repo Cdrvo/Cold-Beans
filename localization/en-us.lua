@@ -1186,7 +1186,6 @@ return {
 
 	    --Pissboys 
 
-            --Common
             j_cbean_pboys_molotov = {
                 name = "Molotov Cocktail",
                 text = {
@@ -1197,7 +1196,7 @@ return {
                 },
             },
 			
-	    j_cbean_pboys_vodka = {
+			j_cbean_pboys_vodka = {
                 name = "Vodka",
                 text = {
                     	"When {C:attention}Boss{} or {E:1,C:money}Ceo Blind{} is",
@@ -1205,7 +1204,60 @@ return {
 			"or {C:attention}#1#{} respectively"
                 },
             },
+			
+			j_cbean_pboys_shower = {
+                name = "Golden Shower",
+                text = {
+                    "Each {C:attention}Piss{} card",
+                    "earns {C:money}$#1#{} when scored",
+					"or held in hand",
+                },
+            },
+			
+			j_cbean_pboys_hydrant = {
+                name = "Fire Hydrant",
+                text = {
+                    "Retrigger all",
+					"played {C:attention}Piss{} cards"
+                },
+            },
 
+			j_cbean_pboys_coriolis = {
+                name = "Coriolis Effect",
+                text = {
+                    "If played hand contains a {C:attention}#3#{},",
+					"first scored card gain {C:chips}+#1#{} Chips,",
+                    "last scored card gain {C:mult}+#2#{} Mult",
+                },
+            },
+			
+			j_cbean_pboys_kidney = {
+                name = "Kidney Stone",
+                text = {
+					"Every discarded {C:attention}Piss{} card",
+                    "has a {C:green}#1# in #2#{} chance to",
+                    "permanently get {C:red}+#3#{} Mult"
+                },
+            },
+			
+			j_cbean_pboys_flag_japan = {
+                name = "Flag of Japan",
+                text = {
+					"{C:mult}+#1#{} Mult for each {C:attention}Enhanced{}",
+					"card remaining in deck",
+					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)"
+                },
+            },
+			
+			j_cbean_pboys_restroom_closed = {
+                name = "Restroom Closed",
+                text = {
+					"Each {C:attention}Piss{} card",
+					"held in hand",
+					"gives {C:chips}+#1#{} Chips"
+                },
+            },
+			
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
@@ -1216,6 +1268,13 @@ return {
             },
         },
         Other = {
+			k_cbean_pissjoker = {
+                name = "Piss Joker",
+                text = {
+                    "Count as a {C:attention}Piss{}",
+					"{C:attention}releated{} Joker"
+                }
+            },
             p_cbean_czodiac_normal1 = {
                 name = "Zodiac Pack",
                 text = {
@@ -1316,7 +1375,7 @@ return {
             },
 
             c_cbean_0chill_house_rules_planet = {
-                name = "Planet Drool",
+                name = "Haumea",
                 text = {
                     "Upgrade every House",
                     "Rules {C:legendary,E:1}poker hand",
@@ -1388,7 +1447,7 @@ return {
             k_cbean_sdown_blessingpack = "Pantheon Pack",
             cbean_0chill_blind_weakend = "Blind Weakend!",
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
-	    k_cbean_burned="Burned!"
+			k_cbean_burned="Burned!"
 
         },
         high_scores = {},
