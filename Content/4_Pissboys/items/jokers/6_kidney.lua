@@ -20,7 +20,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
                 card.ability.extra.mult
             return {
                 message = localize('k_upgrade_ex'),
-                colour = G.C.MULTS
+                colour = G.C.MULT
             }
         end
     end,
