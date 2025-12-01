@@ -1258,6 +1258,15 @@ return {
                 },
             },
 			
+			j_cbean_pboys_yellow_snow = {
+                name = "Yellow Snow",
+                text = {
+					"At {C:attention}0{} discards,",
+					"non-final {C:blue}hands",
+					"can act as {C:red}discards"
+                },
+            },
+			
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",

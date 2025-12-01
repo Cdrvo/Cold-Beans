@@ -77,3 +77,15 @@ function Card:can_sell_card(context)
     end
     return cant_sell_combo(self, context)
 end
+
+--Pissboys
+--Yellow Snow allows over-discard on non-final hands
+local over_discard = G.FUNCS.can_discard
+G.FUNCS.can_discard = function(e)
+    over_discard(e)
+    if next(SMODS.find_card("j_cbean_pboys_yellow_snow")) and G.GAME.current_round.discards_left <= 0 and G.GAME.current_round.hands_left > 1
+    and #G.hand.highlighted > 0 and #G.hand.highlighted <= math.max(G.GAME.starting_params.discard_limit, 0) then
+        e.config.colour = G.C.RED
+        e.config.button = 'discard_cards_from_highlighted'
+    end
+end
