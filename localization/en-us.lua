@@ -1261,9 +1261,9 @@ return {
 			j_cbean_pboys_yellow_snow = {
                 name = "Yellow Snow",
                 text = {
-					"At {C:attention}0{} discards,",
-					"non-final {C:blue}hands",
-					"can act as {C:red}discards"
+					"When any card is {C:attention}sold{},",
+                    "{C:attention}enchance{} a random card",
+                    "into the {C:attention}Piss{} Card",
                 },
             },
 			
@@ -1456,7 +1456,8 @@ return {
             k_cbean_sdown_blessingpack = "Pantheon Pack",
             cbean_0chill_blind_weakend = "Blind Weakend!",
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
-			k_cbean_burned="Burned!"
+			k_cbean_burned="Burned!",
+            k_cbean_piss_ex = "Piss!",
 
         },
         high_scores = {},

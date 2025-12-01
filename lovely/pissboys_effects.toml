@@ -4,14 +4,14 @@ dump_lua = true
 priority = 0
 
 # Pissboys
-# Yellow Snow's over-discard effect subtract hands instead of discards
+# [Placeholder]'s over-discard effect subtract hands instead of discards
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
 pattern = '''ease_discard(-1)'''
 position = "at"
 payload = '''
-if next(SMODS.find_card("j_cbean_pboys_yellow_snow")) and G.GAME.current_round.discards_left <= 0 then
+if next(SMODS.find_card("j_cbean_pboys_placeholder")) and G.GAME.current_round.discards_left <= 0 then
     ease_hands_played(0-1) --This weird operation is to prevent unwanted pattern and regex patches
     --Unless someone is mad enough to add a system that allows fractional hands/discards per hand/discard used >:(
 else
