@@ -3,7 +3,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     atlas = "pboys_joker_atlas",
     pos = { x = 1, y = 0 },
     rarity = 3,
-    order = 1,
+    order = 2,
     blueprint_compat = false,
     cost = 9,
     config = {},
