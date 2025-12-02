@@ -1267,6 +1267,15 @@ return {
                 },
             },
 			
+			j_cbean_pboys_button_mashing = {
+                name = "Button Mashing",
+                text = {
+					"{C:green}#1# in #2#{} chance to",
+                    "create a {C:combo}Combo{} card",
+                    "when a hand is played",
+                },
+            },
+			
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
@@ -1458,6 +1467,7 @@ return {
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
+            k_cbean_mash_ex = "Mash!",
 
         },
         high_scores = {},
