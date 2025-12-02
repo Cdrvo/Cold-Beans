@@ -11,7 +11,7 @@ SMODS.Joker {
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_cbean_pboys_piss
     end,
     calculate = function(self, card, context)
-        if context.selling_card then
+        if context.selling_card and context.card ~= card then
             local target = pseudorandom_element(G.playing_cards or {}, "pboys_yellow_snow")
             if target then
                 target:set_ability("m_cbean_pboys_piss", nil, true)
