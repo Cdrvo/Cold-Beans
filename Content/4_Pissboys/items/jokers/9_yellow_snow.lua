@@ -12,7 +12,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.selling_card and context.card ~= card then
-            local target = pseudorandom_element(G.playing_cards or {}, "pboys_yellow_snow")
+            local target = pseudorandom_element(G.playing_cards or {}, pseudoseed("pboys_yellow_snow"))
             if target then
                 target:set_ability("m_cbean_pboys_piss", nil, true)
                 G.E_MANAGER:add_event(Event({func = function()
