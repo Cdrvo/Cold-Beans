@@ -1281,7 +1281,7 @@ return {
                 text = {
 					"For the next {C:attention}#1#{} rounds,",
                     "{C:attention}enchance{} a random card",
-                    "into the {C:attention}Piss{} Card",
+                    "in hand into the {C:attention}Piss{} Card",
                     "at end of round",
                 },
             },
