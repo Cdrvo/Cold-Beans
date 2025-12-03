@@ -1276,6 +1276,16 @@ return {
                 },
             },
 			
+			j_cbean_pboys_watermelon = {
+                name = "Watermelon",
+                text = {
+					"For the next {C:attention}#1#{} rounds,",
+                    "{C:attention}enchance{} a random card",
+                    "into the {C:attention}Piss{} Card",
+                    "at end of round",
+                },
+            },
+			
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
