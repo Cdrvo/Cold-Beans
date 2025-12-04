@@ -24,9 +24,11 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
 					if next(SMODS.get_enhancements(deck_card)) then en_tally = en_tally + 1 end
 				end
 			end
-            return {
-                chips = card.ability.extra.mult * en_tally
-            }
+            if en_tally > 0 then
+                return {
+                    mult = card.ability.extra.mult * en_tally
+                }
+            end
         end
     end,
     beans_credits = {
