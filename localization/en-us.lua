@@ -1263,7 +1263,7 @@ return {
                 text = {
 					"When any card is {C:attention}sold{},",
                     "{C:attention}enchance{} a random card",
-                    "into the {C:attention}Piss{} Card",
+                    "into a {C:attention}Piss{} Card",
                 },
             },
 			
@@ -1281,7 +1281,7 @@ return {
                 text = {
 					"For the next {C:attention}#1#{} rounds,",
                     "{C:attention}enchance{} a random card",
-                    "in hand into the {C:attention}Piss{} Card",
+                    "in hand into a {C:attention}Piss{} Card",
                     "at end of round",
                 },
             },
