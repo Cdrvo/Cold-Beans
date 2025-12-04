@@ -52,7 +52,7 @@ SMODS.Joker {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art =  "TBA",
+        art =  "FlameThrowerFIM",
         code = "Athebyne",
     }
 }

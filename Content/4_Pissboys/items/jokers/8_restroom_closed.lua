@@ -31,7 +31,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     beans_credits = {
         team = {"Pissboys",
         },
-        idea = "FlameThrowerFIM",
+        idea = "Gfsgfs",
         art =  "FlameThrowerFIM",
         code = "Nrio_Modder",
     }
