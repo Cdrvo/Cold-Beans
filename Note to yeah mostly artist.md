@@ -7,7 +7,7 @@ It would be fun if you came up with
 [Cold-Beans\Content\4_Pissboys\items\secret_button]
 -good luck
 
-# From gfsgfs
+# From gfsgfs (evil piss leader
 
 Thou shall make more combos card (bc there cool)
 
@@ -15,6 +15,6 @@ Thou shall maybe add back alley related joker
 
 Thou shall swag out 
 
-
-I put the new 4gs on the jeep
+And thou shall make something cool :)
+01110100 01101000 01100101 00100000 01100111 01100001 01101101 01100101
 
