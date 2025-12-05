@@ -1478,6 +1478,12 @@ return {
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
             k_cbean_mash_ex = "Mash!",
+			k_cbean_pboys_abet="Bet",
+			k_cbean_pboys_unique="???",
+			k_cbean_pboys_aexit="Exit",
+			k_cbean_pboys_arule="Choose a Cup",
+			k_cbean_pboys_aplus="+",
+			k_cbean_pboys_aminus="-",
 
         },
         high_scores = {},
@@ -1544,7 +1550,114 @@ return {
             ["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
             ["cbean_0chill_jackpot"] = "HR Jackpot!"
         },
-        quips = {},
+        quips={ 
+            cbean_pboys_hi_1={
+                "I hope you'll",
+				"be interested",
+				"in my game!",
+            },
+            cbean_pboys_hi_2={
+                "Hello there!",
+            },
+            cbean_pboys_hi_3={
+                "Let's play a game!",
+            },
+            cbean_pboys_hi_4={
+                "Top of the",
+				"morning to you!",
+            },
+            cbean_pboys_hi_5={
+                "Hello traveler!",
+            },
+            cbean_pboys_hi_6={
+                "Hi, I hope you",
+				"brought good",
+				"luck with you!",
+            },
+            cbean_pboys_hi_7={
+                "Welcome back alley!"
+            },
+			cbean_pboys_win_1={
+                "{C:dark_edition}YOU WIN!",
+                "{C:inactive}sadly...",
+            },
+            cbean_pboys_win_2={
+                "My disappearing",
+				"trick didn't work...",
+            },
+            cbean_pboys_win_3={
+                "It was",
+				"beginner's luck!",
+            },
+            cbean_pboys_win_4={
+                "I need to shuffle",
+				"{S:1.1,C:attention,E:2}faster",
+            },
+            cbean_pboys_win_5={
+                "You won?",
+				"{C:inactive}oh man",
+            },
+            cbean_pboys_win_6={
+                "My debts are growing",
+            },
+            cbean_pboys_win_7={
+                "...",
+            },
+			cbean_pboys_lose_1={
+                "Better luck",
+				"next time",
+            },
+            cbean_pboys_lose_2={
+                "99 percent of",
+				"gamblers stop right",
+				"before winning big",
+            },
+            cbean_pboys_lose_3={
+                "You cant stop",
+				"losing",
+            },
+            cbean_pboys_lose_4={
+                "Wheel of fortune",
+				"probably never",
+				"works for you!",
+            },
+            cbean_pboys_lose_5={
+                "Wait, Did I win?",
+            },
+            cbean_pboys_lose_6={
+                "Money Money Money",
+            },
+            cbean_pboys_lose_7={
+                "!!!",
+            },
+			cbean_pboys_tutorial_1={
+                "This is {C:attention}Back Alley!",
+            },
+            cbean_pboys_tutorial_2={
+                "You can {C:attention}bet{}",
+				"your money here",
+            },
+            cbean_pboys_tutorial_3={
+                "Then i will {C:attention}swap{} cups",
+				"and you have to",
+				"{C:attention}choose{} the right one",
+            },
+            cbean_pboys_tutorial_4={
+                "The correct cup is",
+				"to {C:attention}double{} the bet",
+            },
+            cbean_pboys_tutorial_5={
+                "Otherwise you will",
+				"{C:attention}lose{} everything",
+            },
+            cbean_pboys_tutorial_6={
+                "The higher the bet,",
+				"the more {C:attention}difficult{} it",
+            },
+            cbean_pboys_tutorial_7={
+                "{C:attention}Good luck!",
+            },
+        },
         ranks = {},
         suits_plural = {},
         suits_singular = {},
