@@ -1652,16 +1652,16 @@ return {
 				"{C:attention}choose{} the right one",
             },
             cbean_pboys_tutorial_4={
-                "The correct cup is",
-				"to {C:attention}double{} the bet",
+                "The correct cup will",
+				"{C:attention}double{} the bet",
             },
             cbean_pboys_tutorial_5={
                 "Otherwise you will",
 				"{C:attention}lose{} everything",
             },
             cbean_pboys_tutorial_6={
-                "The higher the bet,",
-				"the more {C:attention}difficult{} it",
+                "The higher the bet, the more",
+				"{C:attention}difficult{} it becomes",
             },
             cbean_pboys_tutorial_7={
                 "{C:attention}Good luck!",
