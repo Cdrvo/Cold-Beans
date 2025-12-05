@@ -298,7 +298,9 @@ G.FUNCS.hide_balley = function(e)
 	  show_shop()
 
 	  G.ajoker.alignment.offset.y = G.ROOM.T.y + 22
-	  G.ajoker.children.speech_bubble.states.visible = false
+	  if G.ajoker and G.ajoker.children and G.ajoker.children.speech_bubble then
+		G.ajoker.children.speech_bubble.states.visible = false
+	  end
 	  G.ajoker:remove()
 	  G.aball.alignment.offset.y = G.ROOM.T.y + 22
 	  G.aball:remove()
