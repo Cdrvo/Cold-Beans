@@ -277,9 +277,6 @@ G.FUNCS.show_balley = function(e)
   sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
   cached_hand_state = G.hand.states.visible
   G.hand.states.visible = false
-  
-
-  print "show balley"
 
 end
 
@@ -291,7 +288,6 @@ G.FUNCS.hide_balley = function(e)
 			G.cups[key]:remove()
 	  end
 	  G.cups = {}
-	  print "hide balley"
 	  G.hand.states.visible = cached_hand_state
 	  G.STATE = G.STATES.SHOP
 	  G.STATE_COMPLETE = false
