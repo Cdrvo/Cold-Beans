@@ -1,0 +1,68 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+# Game:update
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'before'
+pattern = '''if self.STATE == self.STATES.PLAY_TAROT then'''
+payload = '''
+if self.STATE == self.STATES.BALLEY then
+  update_balley()
+end
+
+'''
+match_indent = true
+
+# ease_background_colour_blind
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+position = 'before'
+pattern = '''elseif state == G.STATES.TAROT_PACK then'''
+payload = '''
+elseif state == G.STATES.BALLEY then
+    ease_colour(G.C.DYN_UI.MAIN, mix_colours(G.C.MONEY, G.C.BLACK, 0.9))
+'''
+match_indent = true
+
+# TEMPORARY PATCH (probably not temporary)
+# some fuckery happens when loading back into run while quit during balley
+# save_run
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'at'
+pattern = '''STATE = G.STATE,'''
+payload = '''
+STATE = G.STATE == G.STATES.BALLEY and G.STATES.SHOP or G.STATE,
+'''
+match_indent = true
+
+# Remove balley when closing the run and what not
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'after'
+pattern = '''if self.shop then self.shop:remove(); self.shop = nil end'''
+payload = '''
+if self.balley then self.balley:remove(); self.balley = nil end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = '''G.shop = nil'''
+payload = '''
+if G.balley then
+  G.balley:remove()
+  G.balley = nil
+end
+'''
+match_indent = true
