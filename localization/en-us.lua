@@ -1449,7 +1449,16 @@ return {
         },
         Stake = {},
         Tag = {},
-        Tarot = {},
+        Tarot = {
+			c_cbean_pboys_river = {
+                name = "The River",
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+		},
         Voucher = {},
     },
     misc = {
