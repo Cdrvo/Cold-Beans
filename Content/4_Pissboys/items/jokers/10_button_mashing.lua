@@ -44,8 +44,8 @@ SMODS.Joker {
     beans_credits = {
         team = {"Pissboys",
         },
-        idea = "Nrio_Modder",
-        art = "Pumpkin man",
+        idea = "Gfsgfs",
+	art = "Pumpkin man",
         code = "HuyTheKiller",
     }
 }
