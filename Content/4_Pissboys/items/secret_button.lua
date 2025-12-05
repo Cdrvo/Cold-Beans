@@ -5,24 +5,28 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 end
 
 G.FUNCS.can_switch = function(e)
-  if G.STATE == G.STATES.SHOP or G.STATE == G.STATES.BALLEY then
-	  if G.STATE == G.STATES.BALLEY then
-		  e.config.colour = G.C.GREEN
-		  e.config.button = 'hide_balley'
-	  else
-		  e.config.colour = G.C.GREEN
-		  e.config.button = 'show_balley'
-	  end
-  elseif G.STATE == G.STATES.SELECTING_HAND and G.PISSMAX and G.PISSMAX > 0 then
-		e.config.colour = G.C.YELLOW
-		if G.hand.highlighted and #G.hand.highlighted > 0 then
+  local text = localize('k_cbean_unique_ex')
+  if G.STATE == G.STATES.BALLEY then
+	  text=localize('k_cbean_aexit_ex')
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_balley'
+  elseif G.STATE == G.STATES.SHOP then
+	  text=localize('k_cbean_balley_ex')
+	  e.config.colour = G.C.GREEN
+	  e.config.button = 'show_balley'
+  elseif G.STATE == G.STATES.SELECTING_HAND and G.PISSMAX and G.PISSMAX > 0 and G.hand.highlighted and #G.hand.highlighted > 0 then
+			text=localize('k_cbean_piss_ex')
 			e.config.button = 'piss_in_hand'
-		else
-			e.config.button = nil
-		end
+			e.config.colour = G.C.YELLOW
   else 
 		e.config.colour = G.C.L_BLACK
-		e.config.button = nil
+		e.config.button = 'nothing'
+  end
+  if e.children[1].config.text ~= text then
+	e.children[1].config.text = text
+	if not (G.STATE == G.STATES.SELECTING_HAND) then
+		e.children[1].UIBox:recalculate()
+	end
   end
 end
 
@@ -91,7 +95,7 @@ function create_UIBox_HUD()
       {
         n = G.UIT.T,
         config = {
-          text = localize('k_cbean_pboys_unique'),
+          text = localize('k_cbean_unique_ex'),
           scale = 0.5,
           colour = G.C.WHITE,
           shadow = true
