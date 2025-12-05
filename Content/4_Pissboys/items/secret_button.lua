@@ -21,7 +21,7 @@ G.FUNCS.can_switch = function(e)
 			e.config.colour = G.C.YELLOW
   else 
 		e.config.colour = G.C.L_BLACK
-		e.config.button = 'nothing'
+		e.config.button = nil
   end
   if e.children[1].config.text ~= text then
 	e.children[1].config.text = text
