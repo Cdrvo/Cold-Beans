@@ -1,5 +1,6 @@
+-- idk why this is not working
 SMODS.current_mod.reset_game_globals = function(run_start)
-  if run_start then
+  if run_start then 
     G.PISSMAX = 1
   end
 end
