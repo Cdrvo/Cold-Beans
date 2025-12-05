@@ -3,6 +3,10 @@
 
 ColdBeans = SMODS.current_mod
 
+-- Talisman magic-trick!
+to_big = to_big or function(x) return x end
+to_number = to_number or function(x) return x end
+
 -- defining this here because it would be quite silly for this to not be a global api
 local on_calculate_cbs = {}
 ColdBeans.OnCalculate = function (cb)

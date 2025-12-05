@@ -47,7 +47,7 @@ function G.FUNCS.ease_babet(e)
 		local betsp = {0,1,2,5,10,25,40,60,100}
 		for key, value in pairs(betsp) do
 				if G.current_betmoney == betsp[key] then
-					G.current_betmoney = betsp[(key+num)] and G.GAME.dollars >= betsp[(key+num)] and betsp[(key+num)] or G.current_betmoney
+					G.current_betmoney = betsp[(key+num)] and G.GAME.dollars >= to_big(betsp[(key+num)]) and betsp[(key+num)] or G.current_betmoney
 					if G.current_betmoney > 59 then
 						G.MODE = 3
 					elseif G.current_betmoney > 24 then
