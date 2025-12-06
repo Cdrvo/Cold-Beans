@@ -826,6 +826,17 @@ return {
                 }}
             },
         },
+        yma_keys = {
+            c_cbean_yma_alpha = {
+                name = 'Alpha Key',
+                text = {
+                    '{C:red}Removes{} a random {C:money}Sticker{}',
+                    'from a random {C:attention}Joker{} at the',
+                    'end of {C:attention}round',
+                    '{C:inactive}(Uses #1#/#2#)',
+                }
+            },
+        },
         Enhanced = {
             m_cbean_pboys_piss = {
                 name = "Piss Card",
@@ -1314,6 +1325,13 @@ return {
             },
         },
         Other = {
+            undiscovered_yma_keys = {
+				name = 'Unknown Key Card',
+				text = {
+					'Find this card in an unseeded',
+					'run to find out what it does'
+				}
+			},
 			k_cbean_pissjoker = {
                 name = "Piss Joker",
                 text = {
@@ -1791,6 +1809,9 @@ return {
             k_cbean_sdown_blessingpack = "Pantheon Pack",
             cbean_0chill_blind_weakend = "Blind Weakend!",
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
+            k_yma_keys = 'Keys',
+            b_yma_keys_cards = 'Keys',
+            k_yma_key_broke = 'Broken',
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
             k_cbean_mash_ex = "Mash!",
@@ -1995,3 +2016,4 @@ return {
         },
     },
 }
+
