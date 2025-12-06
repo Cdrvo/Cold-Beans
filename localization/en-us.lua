@@ -985,10 +985,16 @@ return {
             c_cbean_yma_music_box = {
                 name = 'Music Box Key',
                 text = {
-                    '{C:attention}Jokers{} are shuffled each',
-                    '{C:blue}hand{}, leftmost {c:attention}Joker',
-                    '{C:attention}triggers{} again',
-                    '{C:inactive}(Uses #1#/#2# blinds)',
+                    {
+                        '{C:attention}Jokers{} are shuffled each',
+                        '{C:blue}hand{}'
+                    },
+                    {
+                        'Leftmost {C:attention}Joker',
+                        '{C:attention}triggers{} again',
+                        '{C:inactive}(Uses #1#/#2# blinds)',
+                    }
+                     
                 }
             },
             c_cbean_yma_orchestra = {

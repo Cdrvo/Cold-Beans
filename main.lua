@@ -13,6 +13,10 @@ ColdBeans.OnCalculate = function (cb)
 	on_calculate_cbs[#on_calculate_cbs+1] = cb
 end
 
+SMODS.current_mod.optional_features = {
+  retrigger_joker = true
+}
+
 local function GetJokers()
 	local jokers = {}
 	for i, card in pairs(G.jokers.cards) do
