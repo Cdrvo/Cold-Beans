@@ -387,6 +387,59 @@ SMODS.Consumable {
     }
 }
 --Enigma Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_enigma",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 2, y = 1 },
+
+    config = {
+        extra = {
+            uses = 1,
+            max_uses = 1,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.blueprint and context.main_eval then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                SMODS.calculate_effect({message = "?/?" }, card)
+            end
+        end
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        local uses = pseudorandom_element({1,2,3}, pseudoseed('yma_enigma'))
+        card.ability.consumeable.extra.uses = uses
+        card.ability.consumeable.extra.max_uses = uses
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Gender Key
 --Ghost Key
 --Giant Key
