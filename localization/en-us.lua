@@ -1007,9 +1007,7 @@ return {
             c_cbean_yma_shadow = {
                 name = 'Shadow Key',
                 text = {
-                    '{C:attention}Jokers{} are restored when',
-                    '{C:red}destroyed',
-                    '{C:inactive}(Uses #1#/#2#)',
+                    ''
                 }
             },
             c_cbean_yma_stamp = {
@@ -1045,7 +1043,9 @@ return {
             c_cbean_yma_timeshift = {
                 name = 'Timeshift Key',
                 text = {
-                    ''
+                    '{C:attention}Jokers{} are restored when',
+                    '{C:red}destroyed',
+                    '{C:inactive}(Uses #1#/#2#)',
                 }
             },
             c_cbean_yma_undertree = {
