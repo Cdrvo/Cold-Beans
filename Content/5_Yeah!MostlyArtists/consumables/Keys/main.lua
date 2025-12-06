@@ -2,6 +2,80 @@ YMA = YMA or {
 
 }
 
+function YMA_reroll_card(card, key, set, append, temp_key, _card)
+    local victim_joker = card
+      
+    local victim_rarity = victim_joker.config.center.rarity or 1
+    local is_legendary = victim_rarity == 4
+    local victim_key = victim_joker.config.center.key
+
+    
+    local replacement_pool = {}
+    for _, center_data in ipairs(G.P_CENTER_POOLS[set or card.config.center.set]) do
+        local current_rarity = center_data.rarity or 1
+        if current_rarity == victim_rarity then
+            if center_data.key ~= victim_key then
+                if not center_data.demo and not center_data.wip and (center_data.unlocked or G.GAME.modifiers.all_jokers_unlocked or center_data.rarity == 4) then
+                    local can_add = true
+                    if center_data.in_pool and type(center_data.in_pool) == 'function' then
+                        if not center_data:in_pool() then can_add = false end
+                    end
+                    if can_add then table.insert(replacement_pool, center_data.key) end
+                end
+            end
+        end
+    end
+
+      
+    if #replacement_pool == 0 and not key then
+        card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'No replacement found!', colour = G.C.RED })
+        return false
+    end
+
+    
+    local replacement_key = key or pseudorandom_element(replacement_pool, pseudoseed(append..'_replacement'))
+
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after', 
+        delay = 0.4, 
+        func = function()
+            play_sound('tarot1')
+            card:juice_up(0.3, 0.5)
+            return true 
+        end 
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function() 
+            victim_joker:flip()
+            play_sound('card1', 1)
+            victim_joker:juice_up(0.5, 0.5)
+            return true 
+        end 
+    }))
+    delay(0.5)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.1,
+        func = function()
+            victim_joker:set_ability(G.P_CENTERS[replacement_key])
+            victim_joker:set_cost()
+            return true
+        end
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function() 
+            victim_joker:flip()
+            play_sound('tarot2', 1, 0.6)
+            victim_joker:juice_up(0.3, 0.3)
+            return true 
+        end 
+    }))
+    delay(0.5)
+end
 
 -- Remove use Buttons from key cards
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
