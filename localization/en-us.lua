@@ -868,7 +868,7 @@ return {
                 name = 'Chain Key',
                 text = {
                     'When the {C:yma_keys}Key{} to the left',
-                    '{C:attention}triggers{} add an {C:attention}addiontal',
+                    '{C:attention}triggers{} add an {C:attention}additional',
                     'use to the {C:yma_keys}Key{} to the right',
                     '{C:inactive}(Uses #1#/#2#)',
                 }
