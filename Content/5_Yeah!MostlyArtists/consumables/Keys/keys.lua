@@ -89,6 +89,72 @@ SMODS.Consumable {
     }
 }
 --Angel Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_angel",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 1, y = 0 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.open_booster then 
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('sdown_blessing',G.consumeables, nil, nil, nil, nil, nil, 'for')
+                        if cardd.ability.extra.times_left == 5 then
+                            cardd.ability.extra.times_left = cardd.ability.extra.times_left - 1 
+                        end
+                        cardd.ability.extra.times_left = cardd.ability.extra.times_left - 1 
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end)
+                }))
+                if card.ability.consumeable.extra.uses <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+                else
+                    return {
+                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    }
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Animal Key
 --Anywhere Key
 --Biety Key
@@ -110,7 +176,7 @@ SMODS.Consumable {
 --Mirror Key
 --Moon Key
 --Music Box Key
---Omega Key
+--Omega Key (this one is a spectral)
 --Orchestra Key
 --Reali Key
 --Shadow Key
