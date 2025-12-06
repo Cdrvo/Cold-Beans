@@ -836,6 +836,223 @@ return {
                     '{C:inactive}(Uses #1#/#2#)',
                 }
             },
+            c_cbean_yma_angel = {
+                name = 'Angel Key',
+                text = {
+                    '{C:attention}Creates{} a random {C:sdown_blessing}Blessing{}',
+                    'with a {C:red}lower{} expire date',
+                    'when a {C:attention}Booster{} pack is',
+                    'opened',
+                    '{C:inactive}(Uses #1#/#2# packs)',
+                }
+            },
+            c_cbean_yma_animal = {
+                name = 'Animal Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_anywhere = {
+                name = 'Anywhere Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_bitey = {
+                name = 'Bitey Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_chain = {
+                name = 'Chain Key',
+                text = {
+                    'When the {C:yma_keys}Key{} to the left',
+                    '{C:attention}triggers{} add an {C:attention}addiontal',
+                    'use to the {C:yma_keys}Key{} to the right'
+                    '{C:inactive}(Uses #1#/#2#)',
+                }
+            },
+            c_cbean_yma_creation = {
+                name = 'Creation Key',
+                text = {
+                    'Creates a {C:attention}random{} free',
+                    '{C:attention}Booster{} pack in the {C:money}shop',
+                    '{C:inactive}(Uses #1#/#2# shops)'
+                }
+            },
+            c_cbean_yma_demon = {
+                name = 'Demon Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_echo = {
+                name = 'Echo Key',
+                text = {
+                    'When {C:blue}hand{} is {C:attention}played',
+                    'mimics {C:tarot}Tarot{} to the left',
+                    '{C:inactive}(Uses #1#/#2# hands)'
+                }
+            },
+            c_cbean_yma_enigma = {
+                name = 'Enigma Key',
+                text = {
+                    'A {C:attention}random{} other {C:attention}consumeable{}',
+                    'and {C:tarot}Tarot{} cards can be',
+                    'found in {C:tarot}Arcana packs',
+                    '{C:inactive}(Uses ?/? packs)'
+                }
+            },
+            c_cbean_yma_gender = {
+                name = 'Gender Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_ghost = {
+                name = 'Ghost Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_giant = {
+                name = 'Giant Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_harlequin = {
+                name = 'Harlequin Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_head = {
+                name = 'Head Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_hercules = {
+                name = 'Hercules Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_identity = {
+                name = 'Identity Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_hell = {
+                name = 'Key to Hell',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_matchstick = {
+                name = 'Matchstick Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_mending = {
+                name = 'Mending Key',
+                text = {
+                    '{C:attention}Jokers{} are restored when',
+                    '{C:red}destroyed',
+                    '{C:inactive}(Uses #1#/#2#)',
+                }
+            },
+            c_cbean_yma_mirror = {
+                name = 'Mirror Key',
+                text = {
+                    'When blind is {c:attention}selected',
+                    'replaces {C:attention}rightmost',
+                    'consumable with {C:attention}leftmost',
+                    'consumable',
+                    '{C:inactive}(Uses #1#/#2#)',
+                }
+            },
+            c_cbean_yma_moon = {
+                name = 'Moon Key',
+                text = {
+                    'Allows {C:money}sold{} or {C:red}destroyed',
+                    'Jokers to be {C:attention}bought{} in shop',
+                    '{C:inactive}(Uses #1#/#2# shops)',
+                }
+            },
+            c_cbean_yma_music_box = {
+                name = 'Music Box Key',
+                text = {
+                    '{C:attention}Jokers{} are shuffled each',
+                    '{C:blue}hand{}, leftmost {c:attention}Joker',
+                    '{C:attention}triggers{} again',
+                    '{C:inactive}(Uses #1#/#2# blinds)',
+                }
+            },
+            c_cbean_yma_orchestra = {
+                name = 'Orchestra Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_reali = {
+                name = 'Reali Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_shadow = {
+                name = 'Shadow Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_stamp = {
+                name = 'Stamp Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_sword = {
+                name = 'Sword Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_teddy = {
+                name = 'Teddy Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_tempus_fugit = {
+                name = 'Tempus Fugit Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_thorn = {
+                name = 'Thorn Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_timeshift = {
+                name = 'Timeshift Key',
+                text = {
+                    ''
+                }
+            },
+            c_cbean_yma_undertree = {
+                name = 'Undertree Key',
+                text = {
+                    ''
+                }
+            },
         },
         Enhanced = {
             m_cbean_pboys_piss = {
