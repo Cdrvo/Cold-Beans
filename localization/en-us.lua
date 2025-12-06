@@ -1671,6 +1671,14 @@ return {
             },
         },
         Spectral = {
+            c_cbean_yma_omega = {
+                name = 'Omega Key',
+                text = {
+                    '{C:attention}Create{} a random {C:dark_edition}Negative{} {C:yma_keys}Key{}',
+                    'when {C:blue}hand{} is played',
+                    '{C:inactive}(Uses #1#/#2# hands)'
+                }
+            },
             c_cbean_0chill_qilin = {
                 name = "The Qilin",
                 text = {
