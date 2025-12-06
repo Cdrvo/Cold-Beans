@@ -961,8 +961,8 @@ return {
             c_cbean_yma_mending = {
                 name = 'Mending Key',
                 text = {
-                    '{C:attention}Jokers{} are restored when',
-                    '{C:red}destroyed',
+                    '{C:attention}Restores{} one use of {C:yma_keys}Key{} to',
+                    'the left when it {C:attention}triggers',
                     '{C:inactive}(Uses #1#/#2#)',
                 }
             },
@@ -1008,7 +1008,9 @@ return {
             c_cbean_yma_shadow = {
                 name = 'Shadow Key',
                 text = {
-                    ''
+                    '{C:attention}Jokers{} are restored when',
+                    '{C:red}destroyed',
+                    '{C:inactive}(Uses #1#/#2#)',
                 }
             },
             c_cbean_yma_stamp = {
