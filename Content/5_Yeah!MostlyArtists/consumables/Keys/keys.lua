@@ -578,6 +578,78 @@ SMODS.Consumable {
 }
 --Moon Key
 --Music Box Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_music_box",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 0, y = 3 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            if #G.jokers.cards > 1 then 
+                G.jokers:shuffle('aajk')
+                play_sound('cardSlide1', 0.85)
+                delay(0.15)
+                G.jokers:shuffle('aajk')
+                play_sound('cardSlide1', 1.15)
+                delay(0.15)
+                G.jokers:shuffle('aajk')
+                play_sound('cardSlide1', 1)
+                delay(0.5) 
+            end
+        end
+        if context.repetition_only or (context.retrigger_joker_check) and #G.jokers.cards >= 1 then
+            if context.other_card == G.jokers.cards[1] then
+                return {
+                    repetitions = 1,
+                    card = context.other_card,
+                    message = localize('k_again_ex')
+                }  
+            end
+        end
+        if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Omega Key (this one is a spectral)
 --Orchestra Key
 --Reali Key
@@ -588,6 +660,45 @@ SMODS.Consumable {
 --Tempus Fugit Key
 --Thorn Key
 --Timeshift Key
+--SMODS.Consumable {
+--    set = "yma_keys",
+--    key = "yma_timeshift",
+--
+--    loc_vars = function(self, info_queue, card)
+--        return {
+--            vars = {
+--                card.ability.consumeable.extra.uses,
+--                card.ability.consumeable.extra.max_uses,
+--            }
+--        }
+--    end,
+--
+--    atlas = 'yea_art_key_atlas',
+--    pos = { x = 3, y = 4 },
+--
+--    config = {
+--        extra = {
+--            uses = 3,
+--            max_uses = 3,
+--        }
+--    },
+--
+--    calculate = function(self, card, context)
+--        if context.selling_card then
+--        end
+--    end,
+--
+--    in_pool = function(self, args)
+--        return true
+--    end,
+--
+--    beans_credits = {
+--        team = { "Yeah! Mostly Artists" },
+--        idea = "RattlingSnow353",
+--        art = "",
+--        code = "RattlingSnow353",
+--    }
+--}
 --Undertree Key
 
 

@@ -77,6 +77,25 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
     delay(0.5)
 end
 
+local start_dissolve_ref = Card.start_dissolve
+function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
+  local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+  if G.jokers and self.ability.set == 'Joker' then
+    local has_pellesini = #SMODS.find_card("c_cbean_yma_timeshift")
+    if has_pellesini >= 0 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
+        for i = 1, has_pellesini do
+            G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
+                local card = copy_card(self, nil, nil, nil, false)
+                card:start_materialize()
+                card:add_to_deck()
+                G.jokers:emplace(card)
+                return true end }))
+        end
+    end
+  end
+  return ref
+end
+
 -- Remove use Buttons from key cards
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
