@@ -2030,6 +2030,7 @@ return {
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
             k_yma_keys = 'Keys',
             b_yma_keys_cards = 'Keys',
+            k_yma_key_plus_use = 'Use'
             k_yma_key_broke = 'Broken',
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
