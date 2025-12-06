@@ -4,3 +4,12 @@ dump_lua = true
 priority = 0
 
 # Yeah Mostly Artists
+# Remove, doesn't do anything
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''ease_discard(-1)'''
+position = "before"
+payload = '''
+'''
+match_indent = true
