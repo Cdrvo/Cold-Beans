@@ -835,6 +835,24 @@ return {
 			"{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips)"
                 },
             },
+            m_cbean_yma_lucky_1 = {
+                name = "Lucky Card",
+                text = {
+                    "{C:green}#1# in #4#{} chance",
+                    "for {C:mult}+#3#{} Mult",
+                    "{C:green}#2# in #6#{} chance",
+                    "to win {C:money}$#5#",
+                },
+            },
+            m_cbean_yma_lucky_2 = {
+                name = "Lucky Card",
+                text = {
+                    "{C:green}#1# in #4#{} chance",
+                    "for {C:mult}+#3#{} Mult",
+                    "{C:green}#2# in #6#{} chance",
+                    "to win {C:money}$#5#",
+                },
+            },
         },
         Joker = {
 
@@ -1446,6 +1464,131 @@ return {
                     "{C:inactive}(Even if stated otherwise)"
                 }}
             },
+            -- yma upgraded spectrals
+			c_cbean_yma_wraith_level1 = {
+                name = {
+                    "Wraith",
+                    "{C:inactive}Level 1{}"
+                },
+                text = {
+                    "Creates a random",
+                    "{C:red}Rare{C:attention} Joker{},",
+                    "sets money to {C:money}$10",
+                },
+            },
+			c_cbean_yma_wraith_level2 = {
+                name = {
+                    "Wraith",
+                    "{C:inactive}Level 2{}"
+                },
+                text = {
+                    "Creates a random",
+                    "{C:red}Rare{C:attention} Joker{},",
+                    "with a random {C:dark_edition}Edition{},",
+                    "sets money to {C:money}$10",
+                },
+            },
+			c_cbean_yma_wraith_level3 = {
+                name = {
+                    "Wraith",
+                    "{C:inactive}Level 3{}"
+                },
+                text = {
+                    "Creates a random",
+                    "{C:red}Rare{C:attention} Joker{},",
+                    "with a random {C:dark_edition}Edition{},",
+                    "and a {C:dark_edition}Negative{},{C:attention} Perishable{},",
+                    "{C:red}Rare{} {C:attention} Joker",
+                    "sets money to {C:money}$10",
+                },
+            },
+			c_cbean_yma_wraith_level4 = {
+                name = {
+                    "Wraith",
+                    "{C:inactive}Level 4{}"
+                },
+                text = {
+                    "Creates a random",
+                    "{C:red}Rare{C:attention} Joker{},",
+                    "with a random {C:dark_edition}Edition{},",
+                    "and a {C:dark_edition}Negative{},{C:attention} Perishable{},",
+                    "{C:red}Rare{} {C:attention} Joker",
+                },
+            },
+			c_cbean_yma_wraith_level5 = {
+                name = {
+                    "Wraith",
+                    "{C:inactive}Level 5{}"
+                },
+                text = {
+                    "Creates {C:attention}2{} random",
+                    "{C:dark_edition}Negative{} {C:red}Rare{C:attention} Jokers{}"
+                },
+            },
+			c_cbean_yma_ectoplasm_level1 = {
+                name = {
+                    "Ectoplasm",
+                    "{C:inactive}Level 1{}"
+                },
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "a random {C:attention}Joker,",
+                    "{C:red}-#1#{} hand size",
+                },
+            },
+			c_cbean_yma_ectoplasm_level2 = {
+                name = {
+                    "Ectoplasm",
+                    "{C:inactive}Level 2{}"
+                },
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "a random {C:attention}Joker,",
+                    "and a random {C:attention}Consumable{},",
+                    "{C:red}-#1#{} hand size",
+                },
+            },
+			c_cbean_yma_ectoplasm_level3 = {
+                name = {
+                    "Ectoplasm",
+                    "{C:inactive}Level 3{}"
+                },
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "a random {C:attention}Joker,",
+                    "a random {C:attention}Consumable{} and",
+                    "{C:attention}3{} random {C:attention}Playing Cards{},",
+                    "in your deck,",
+                    "{C:red}-#1#{} hand size",
+                },
+            },
+			c_cbean_yma_ectoplasm_level4 = {
+                name = {
+                    "Ectoplasm",
+                    "{C:inactive}Level 4{}"
+                },
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "a selected {C:attention}Joker,",
+                    "a random {C:attention}Consumable{} and",
+                    "{C:attention}3{} random {C:attention}Playing Cards{},",
+                    "in your deck,",
+                    "{C:red}-#1#{} hand size",
+                },
+            },
+			c_cbean_yma_ectoplasm_level5 = {
+                name = {
+                    "Ectoplasm",
+                    "{C:inactive}Level 5{}"
+                },
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "a selected {C:attention}Joker,",
+                    "a random {C:attention}Consumable{} and",
+                    "{C:attention}3{} random {C:attention}Playing Cards{},",
+                    "in your deck and in your hand"
+                },
+            },
         },
         Stake = {},
         Tag = {},
@@ -1456,6 +1599,170 @@ return {
                     "Enhances {C:attention}#1#{}",
                     "selected cards to",
                     "{C:attention}#2#s",
+                },
+            },
+            -- yma consumable upgrades
+			c_cbean_yma_magician_level1 = {
+                name = {
+                    "The Magician",
+                    "{C:inactive}Level 1{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_magician_level2 = {
+                name = {
+                    "The Magician",
+                    "{C:inactive}Level 2{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_magician_level3 = {
+                name = {
+                    "The Magician",
+                    "{C:inactive}Level 3{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_magician_level4 = {
+                name = {
+                    "The Magician",
+                    "{C:inactive}Level 4{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Lucky cards{} have {C:green}double odds{}",
+                },
+            },
+			c_cbean_yma_magician_level5 = {
+                name = {
+                    "The Magician",
+                    "{C:inactive}Level 5{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Lucky cards{} have {C:green}triple odds{}",
+                },
+            },
+			c_cbean_yma_hermit_level1 = {
+                name = {
+                    "The Hermit",
+                    "{C:inactive}Level 1{}"
+                },
+                text = {
+                    "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+                    "{C:inactive}(Max of $#3#){}"
+                },
+            },
+			c_cbean_yma_hermit_level2 = {
+                name = {
+                    "The Hermit",
+                    "{C:inactive}Level 2{}"
+                },
+                text = {
+                    "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+                    "{C:inactive}(Max of $#3#){}"
+                },
+            },
+			c_cbean_yma_hermit_level3 = {
+                name = {
+                    "The Hermit",
+                    "{C:inactive}Level 3{}"
+                },
+                text = {
+                    "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+                    "{C:inactive}(Max of $#3#){}"
+                },
+            },
+			c_cbean_yma_hermit_level4 = {
+                name = {
+                    "The Hermit",
+                    "{C:inactive}Level 4{}"
+                },
+                text = {
+                    "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+                    "{C:inactive}(Max of $#3#){}"
+                },
+            },
+			c_cbean_yma_hermit_level5 = {
+                name = {
+                    "The Hermit",
+                    "{C:inactive}Level 5{}"
+                },
+                text = {
+                    "Earn {C:money}$#2#{}, then {C:money}triples{} it",
+                    "{C:inactive}(Max of $#3#){}"
+                },
+            },
+			c_cbean_yma_wheel_of_fortune_level1 = {
+                name = {
+                    "The Wheel of Fortune",
+                    "{C:inactive}Level 1{}"
+                },
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to a random {C:attention}Joker",
+                },
+            },
+			c_cbean_yma_wheel_of_fortune_level2 = {
+                name = {
+                    "The Wheel of Fortune",
+                    "{C:inactive}Level 2{}"
+                },
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to a random {C:attention}Joker",
+                },
+            },
+			c_cbean_yma_wheel_of_fortune_level3 = {
+                name = {
+                    "The Wheel of Fortune",
+                    "{C:inactive}Level 3{}"
+                },
+                text = {
+                    "Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to a random {C:attention}Joker",
+                },
+            },
+			c_cbean_yma_wheel_of_fortune_level4 = {
+                name = {
+                    "The Wheel of Fortune",
+                    "{C:inactive}Level 4{}"
+                },
+                text = {
+                    "Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to the selected {C:attention}Joker",
+                },
+            },
+			c_cbean_yma_wheel_of_fortune_level5 = {
+                name = {
+                    "The Wheel of Fortune",
+                    "{C:inactive}Level 5{}"
+                },
+                text = {
+                    "Adds any edition",
+                    "to the selected {C:attention}Joker",
                 },
             },
 		},
