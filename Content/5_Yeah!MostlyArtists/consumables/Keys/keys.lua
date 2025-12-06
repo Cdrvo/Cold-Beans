@@ -295,6 +295,97 @@ SMODS.Consumable {
 }
 --Demon Key
 --Echo Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_echo",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 1, y = 1 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            local left_card = nil
+            for k, v in pairs(G.consumeables.cards) do
+                if v == card then
+                    if G.consumeables.cards[k-1] and G.consumeables.cards[k-1].config.center.set == 'Tarot' then
+                        left_card = G.consumeables.cards[k-1]
+                    end
+                end
+            end
+            if left_card then
+                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                local used_consumeable = copy_card(left_card)
+                local prev_state = G.STATE
+                G.STATE = G.STATES.PLAY_TAROT
+                G.CONTROLLER.locks.use = true
+                draw_card(G.hand, G.play, 1, 'up', true, used_consumeable, nil, true)
+                card:juice_up()
+                local temp_hand = G.hand.highlighted
+                G.hand.highlighted = context.scoring_hand
+                used_consumeable:use_consumeable(used_consumeable.area)
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.7,
+                    func = function()
+                        G.hand.highlighted = temp_hand
+                        used_consumeable:start_dissolve()
+                        card:juice_up()
+                        G.STATE = prev_state
+                        G.CONTROLLER.locks.use = false
+                        return true
+                    end
+                }))
+                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.consumeable.extra.uses <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+                else
+                    return {
+                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    }
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        if G.consumeables and #G.consumeables.cards > 0 then
+            local tarots = 0
+            for k, v in pairs(G.consumeables.cards) do
+                if v.config.center.set == 'Tarot' then
+                    tarots = tarots + 1
+                end
+            end
+            if tarots >= 1 then
+                return true 
+            end
+        end
+        return false
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Enigma Key
 --Gender Key
 --Ghost Key
