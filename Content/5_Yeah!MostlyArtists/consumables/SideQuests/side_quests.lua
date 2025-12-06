@@ -15,7 +15,7 @@ SMODS.Consumable {
         }
     end,
 
-    atlas = 'yma_quest_atlas',
+    --atlas = '',
     pos = { x = 0, y = 0 },
     display_size = { w = 64, h = 64 },
 
@@ -41,8 +41,24 @@ SMODS.Consumable {
             SMODS.calculate_effect({ message = localize('k_reset') }, card)
         end
 
-        if context.money_altered and context.amount < 0 then
-            card.ability.extra.money_remaining = card.ability.extra.money_remaining + context.amount
+        -- Buying a card
+        if context.buying_card and context.card and context.card.cost then
+            card.ability.extra.money_remaining = card.ability.extra.money_remaining - context.card.cost
+            context.card.cost = 0
+            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
+        end
+
+        --Buying a booster pack
+        if context.open_booster and context.card and context.card.cost then
+            card.ability.extra.money_remaining = card.ability.extra.money_remaining - context.card.cost
+            context.card.cost = 0
+            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
+        end
+
+        -- Rerolling the shop
+        if context.reroll_shop then
+            card.ability.extra.money_remaining = card.ability.extra.money_remaining -
+                (G.GAME.current_round.reroll_cost - 1)
             SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
         end
 
@@ -75,7 +91,7 @@ SMODS.Consumable {
         }
     end,
 
-    atlas = 'yma_quest_atlas',
+    --atlas = '',
     pos = { x = 0, y = 0 },
     display_size = { w = 64, h = 64 },
 

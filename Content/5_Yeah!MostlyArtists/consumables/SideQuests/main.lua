@@ -2,14 +2,6 @@ YMA = {
 
 }
 
-SMODS.Atlas({
-    key = "yma_quest_atlas",
-    path = "5_Yeah!MostlyArtists/side_quests.png",
-    px = 64,
-    py = 64,
-})
-
-
 local set_screen_positions_ref = set_screen_positions
 function set_screen_positions()
     set_screen_positions_ref()
