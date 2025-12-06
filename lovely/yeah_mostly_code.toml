@@ -4,15 +4,22 @@ dump_lua = true
 priority = 0
 
 # Yeah Mostly Artists
-# Remove, doesn't do anything
+# Random pool
 [[patches]]
 [patches.pattern]
-target = "functions/state_events.lua"
-pattern = '''ease_discard(-1)'''
-position = "before"
-payload = '''
-'''
+target = "functions/common_events.lua"
+pattern = '''local _pool, _starting_pool, _pool_key, _pool_size = G.ARGS.TEMP_POOL, nil, '', 0'''
+position = "after"
 match_indent = true
+payload = '''
+if next(SMODS.find_card("c_cbean_yma_enigma")) then
+    for k, v in pairs(SMODS.ConsumableTypes) do
+        if _type == k then
+            local _pool, discard_key2 = get_current_pool('Consumeables')
+        end
+    end
+end
+'''
 
 # Game Variables
 [[patches]] #G.GAME 

@@ -898,10 +898,9 @@ return {
             c_cbean_yma_enigma = {
                 name = 'Enigma Key',
                 text = {
-                    'A {C:attention}random{} other {C:attention}consumeable{}',
-                    'and {C:tarot}Tarot{} cards can be',
-                    'found in {C:tarot}Arcana packs',
-                    '{C:inactive}(Uses ?/? packs)'
+                    '{C:attention}Consumeable{} pool is',
+                    'randomized',
+                    '{C:inactive}(Uses ?/? blinds)'
                 }
             },
             c_cbean_yma_gender = {
