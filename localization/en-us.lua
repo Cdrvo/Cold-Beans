@@ -977,8 +977,8 @@ return {
             c_cbean_yma_moon = {
                 name = 'Moon Key',
                 text = {
-                    'Allows {C:money}sold{} or {C:red}destroyed',
-                    'Jokers to be {C:attention}bought{} in shop',
+                    'Allows {C:red}destroyed{} Jokers to',
+                    'be {C:attention}bought{} in shop',
                     '{C:inactive}(Uses #1#/#2# shops)',
                 }
             },
