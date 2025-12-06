@@ -81,16 +81,15 @@ local start_dissolve_ref = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
   local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
   if G.jokers and self.ability.set == 'Joker' then
-    local has_pellesini = #SMODS.find_card("c_cbean_yma_timeshift")
-    if has_pellesini >= 0 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
-        for i = 1, has_pellesini do
-            G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
-                local card = copy_card(self, nil, nil, nil, false)
-                card:start_materialize()
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                return true end }))
-        end
+    local has_timeshift_key = #SMODS.find_card("c_cbean_yma_timeshift")
+    if has_timeshift_key >= 0 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
+        SMODS.calculate_context({yma = {timeshift_trigged = true, decrease = true}})
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
+            local card = copy_card(self, nil, nil, nil, false)
+            card:start_materialize()
+            card:add_to_deck()
+            G.jokers:emplace(card)
+            return true end }))
     end
   end
   return ref
