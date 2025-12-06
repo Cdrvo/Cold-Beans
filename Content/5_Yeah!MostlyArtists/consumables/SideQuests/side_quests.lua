@@ -9,6 +9,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
+                card.ability.extra.money,
                 card.ability.extra.money_remaining
             }
         }
@@ -21,7 +22,7 @@ SMODS.Consumable {
     loc_txt = {
         name = "credit card quest?!",
         text = {
-            "Spend {C:money}$20{} {C:inactive}(#1#){}",
+            "Spend {C:money}$#1#{} {C:inactive}(#2#){}",
             "in a single {C:attention}shop{}",
             "to create {C:attention}Credit Card{}",
         }
@@ -29,13 +30,14 @@ SMODS.Consumable {
 
     config = {
         extra = {
+            money = 20,
             money_remaining = 20
         }
     },
 
     calculate = function(self, card, context)
         if context.ending_shop then
-            card.ability.extra.money_remaining = 0
+            card.ability.extra.money_remaining = card.ability.extra.money
             SMODS.calculate_effect({ message = localize('k_reset') }, card)
         end
 
@@ -56,12 +58,12 @@ SMODS.Consumable {
         -- Rerolling the shop
         if context.reroll_shop then
             card.ability.extra.money_remaining = card.ability.extra.money_remaining -
-            (G.GAME.current_round.reroll_cost - 1)
+                (G.GAME.current_round.reroll_cost - 1)
             SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
         end
 
         if card.ability.extra.money_remaining <= 0 then
-            card.ability.extra.money_remaining = 20
+            card.ability.extra.money_remaining = card.ability.extra.money
             YMA.complete_quest(card, "Joker", "j_credit_card")
         end
     end,
