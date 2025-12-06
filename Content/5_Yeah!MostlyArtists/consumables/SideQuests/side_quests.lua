@@ -15,7 +15,7 @@ SMODS.Consumable {
         }
     end,
 
-    --atlas = '',
+    atlas = 'yma_quest_atlas',
     pos = { x = 0, y = 0 },
     display_size = { w = 64, h = 64 },
 
@@ -36,34 +36,8 @@ SMODS.Consumable {
     },
 
     calculate = function(self, card, context)
-        if context.ending_shop then
-            card.ability.extra.money_remaining = card.ability.extra.money
-            SMODS.calculate_effect({ message = localize('k_reset') }, card)
-        end
-
-        -- Buying a card
-        if context.buying_card and context.card and context.card.cost then
-            card.ability.extra.money_remaining = card.ability.extra.money_remaining - context.card.cost
-            context.card.cost = 0
-            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
-        end
-
-        --Buying a booster pack
-        if context.open_booster and context.card and context.card.cost then
-            card.ability.extra.money_remaining = card.ability.extra.money_remaining - context.card.cost
-            context.card.cost = 0
-            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
-        end
-
-        -- Rerolling the shop
-        if context.reroll_shop then
-            card.ability.extra.money_remaining = card.ability.extra.money_remaining -
-                (G.GAME.current_round.reroll_cost - 1)
-            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
-        end
-
-        if card.ability.extra.money_remaining <= 0 then
-            card.ability.extra.money_remaining = card.ability.extra.money
+        if context.money_altered and context.amount < 0 then
+            card.ability.extra.money_remaining = card.ability.extra.money_remaining + context.amount
             YMA.complete_quest(card, "Joker", "j_credit_card")
         end
     end,
@@ -91,7 +65,7 @@ SMODS.Consumable {
         }
     end,
 
-    --atlas = '',
+    atlas = 'yma_quest_atlas',
     pos = { x = 0, y = 0 },
     display_size = { w = 64, h = 64 },
 
