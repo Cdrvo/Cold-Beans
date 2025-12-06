@@ -13,3 +13,45 @@ position = "before"
 payload = '''
 '''
 match_indent = true
+
+# Game Variables
+[[patches]] #G.GAME 
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+unused_discards = 0,'''
+position = 'after'
+match_indent = true 
+payload = '''
+cbean = {
+    quest_complete = false,
+},
+
+'''
+
+# [Side Quests] Makes cardarea work with calculate function
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''        -- TARGET: add your own CardAreas for joker evaluation'''
+position = "before"
+payload = '''
+    if G.side_quests then
+        table.insert(t, G.side_quests)
+    end
+    '''
+match_indent = true
+
+# [Side Quests] - Create a new quest upon completion
+[[patches]] #G.GAME 
+[patches.pattern]
+target = 'game.lua'
+pattern = '''function Game:update(dt)'''
+position = 'after'
+match_indent = true 
+payload = '''
+    if G.GAME.cbean_quest_complete then
+        SMODS.add_card { set = "yma_quest", area = G.side_quests }
+        G.GAME.cbean_quest_complete = false
+    end
+'''
