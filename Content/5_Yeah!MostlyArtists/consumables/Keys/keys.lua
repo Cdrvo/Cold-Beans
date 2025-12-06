@@ -241,6 +241,58 @@ SMODS.Consumable {
     }
 }
 --Creation Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_creation",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 7, y = 0 },
+
+    config = {
+        extra = {
+            uses = 4,
+            max_uses = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.starting_shop then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            local booster_card = SMODS.add_booster_to_shop()
+            booster_card.ability.couponed = true
+            booster_card:set_cost()
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Demon Key
 --Echo Key
 --Enigma Key
