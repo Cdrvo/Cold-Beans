@@ -48,6 +48,7 @@ SMODS.Consumable {
                         return true
                     end)
                 }))
+                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
                 if card.ability.consumeable.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
@@ -132,6 +133,7 @@ SMODS.Consumable {
                         return true
                     end)
                 }))
+                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
                 if card.ability.consumeable.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
@@ -159,6 +161,85 @@ SMODS.Consumable {
 --Anywhere Key
 --Biety Key
 --Chain Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_chain",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 6, y = 0 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+        },
+        extra_slots_used = -1
+    },
+
+    calculate = function(self, card, context)
+        if context.yma and context.yma.key_triggered and context.yma.key ~= card then
+            local left_card = nil
+            local right_card = nil
+            for k, v in pairs(G.consumeables.cards) do
+                if v.config.center.set == 'yma_keys' then
+                    if v == card then
+                        if G.consumeables.cards[k-1] and G.consumeables.cards[k-1].config.center.set == 'yma_keys' then
+                            left_card = G.consumeables.cards[k-1]
+                        end
+                        if G.consumeables.cards[k+1] and G.consumeables.cards[k+1].config.center.set == 'yma_keys' then
+                            right_card = G.consumeables.cards[k+1]
+                        end
+                    end
+                end
+            end
+            if left_card and right_card then
+                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                right_card.ability.consumeable.extra.uses = right_card.ability.consumeable.extra.uses + 1
+                SMODS.calculate_effect({message = localize('k_cbean_pboys_aplus')..' 1 '..localize('k_yma_key_plus_use') }, right_card)
+                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.consumeable.extra.uses <= 0 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+                else
+                    return {
+                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    }
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        if G.consumeables and #G.consumeables.cards > 0 then
+            local keys = 0
+            for k, v in pairs(G.consumeables.cards) do
+                if v.config.center.set == 'yma_keys' then
+                    keys = keys + 1
+                end
+            end
+            if keys >= 2 then
+                return true 
+            end
+        end
+        return false
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Creation Key
 --Demon Key
 --Echo Key
@@ -187,3 +268,44 @@ SMODS.Consumable {
 --Thorn Key
 --Timeshift Key
 --Undertree Key
+
+
+--Key base 
+--SMODS.Consumable {
+--    set = "yma_keys",
+--    key = "yma_angel",
+--
+--    loc_vars = function(self, info_queue, card)
+--        return {
+--            vars = {
+--                card.ability.consumeable.extra.uses,
+--                card.ability.consumeable.extra.max_uses,
+--            }
+--        }
+--    end,
+--
+--    atlas = 'yea_art_key_atlas',
+--    pos = { x = 1, y = 0 },
+--
+--    config = {
+--        extra = {
+--            uses = 2,
+--            max_uses = 2,
+--        }
+--    },
+--
+--    calculate = function(self, card, context)
+--        
+--    end,
+--
+--    in_pool = function(self, args)
+--        return true
+--    end,
+--
+--    beans_credits = {
+--        team = { "Yeah! Mostly Artists" },
+--        idea = "RattlingSnow353",
+--        art = "",
+--        code = "RattlingSnow353",
+--    }
+--}
