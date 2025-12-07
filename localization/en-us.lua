@@ -1081,19 +1081,31 @@ return {
             c_cbean_yma_teddy = {
                 name = 'Teddy Key',
                 text = {
-                    ''
+                    'Gives {C:attention}+#3#{} {C:blue}hand{} and',
+                    '{C:attention}+#3#{} {C:red}discard',
+                    '{C:inactive}(Uses #1#/#2# blinds)',
                 }
             },
             c_cbean_yma_tempus_fugit = {
                 name = 'Tempus Fugit Key',
                 text = {
-                    ''
+                    {
+                        '{C:attention}Temporary{} turns into a',
+                        'random {C:attention}Joker'
+                    },
+                    {
+                        '{C:red}Reverts{} after {C:attention}first{} played',
+                        '{C:blue}hand',
+                        '{C:inactive}(Uses #1#/#2# blinds)',
+                    }
                 }
             },
             c_cbean_yma_thorn = {
                 name = 'Thorn Key',
                 text = {
-                    ''
+                    '{C:green}Probability{} is {C:attention}guaranteed',
+                    'for the leftmost {C:attention}Joker',
+                    '{C:inactive}(Uses #1#/#2# blinds)',
                 }
             },
             c_cbean_yma_timeshift = {
