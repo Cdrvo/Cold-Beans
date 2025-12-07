@@ -1073,7 +1073,9 @@ return {
             c_cbean_yma_sword = {
                 name = 'Sword Key',
                 text = {
-                    ''
+                    '{C:attention}Cuts{} the blind {C:attention}requirement',
+                    'in half',
+                    '{C:inactive}(Uses #1#/#2# blinds)',
                 }
             },
             c_cbean_yma_teddy = {
