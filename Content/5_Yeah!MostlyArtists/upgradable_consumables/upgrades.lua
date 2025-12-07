@@ -9,7 +9,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
-    end
+    end,
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -21,6 +22,7 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -32,6 +34,7 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -43,6 +46,7 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -54,6 +58,7 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
+    no_collection = true,
 }
 
 -- lucky cards for the last two magician upgrades
@@ -83,6 +88,7 @@ SMODS.Enhancement {
             return ret
         end
     end,
+    no_collection = true,
 }
 
 SMODS.Enhancement {
@@ -111,6 +117,7 @@ SMODS.Enhancement {
             return ret
         end
     end,
+    no_collection = true,
 }
 
 -- money generator
@@ -141,6 +148,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -170,6 +178,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -199,6 +208,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -228,6 +238,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -257,6 +268,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+    no_collection = true,
 }
 
 -- that fucking wheel
@@ -315,6 +327,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -372,6 +385,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -392,6 +406,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -410,6 +425,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -427,6 +443,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
     end
+    no_collection = true,
 }
 
 -- warth
@@ -451,6 +468,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -480,6 +498,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -525,6 +544,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -569,6 +589,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -610,6 +631,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+    no_collection = true,
 }
 
 -- ecto my plasms
@@ -642,6 +664,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -674,6 +697,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -709,6 +733,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -742,6 +767,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
     end
+    no_collection = true,
 }
 
 SMODS.Consumable {
@@ -772,4 +798,5 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
     end
+    no_collection = true,
 }
