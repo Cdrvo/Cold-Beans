@@ -937,9 +937,8 @@ return {
                 name = 'Giant Key',
                 text = {
                     'Create a {X:red,C:white}Finisher{} or',
-                    '{X:blue,C:white}Ultimate{} {C:combo}Combo{} and',
-                    'destroy a random {C:attention}Joker{}',
-                    'at end of {C:attention}round',
+                    '{X:blue,C:white}Ultimate{} {C:combo}Combo{} at',
+                    'end of {C:attention}round',
                     '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
@@ -1043,7 +1042,9 @@ return {
             c_cbean_yma_orchestra = {
                 name = 'Orchestra Key',
                 text = {
-                    ''
+                    '{C:attention}Create{} two {C:dark_edition}Negative{} {X:green,C:white}Starter{}',
+                    'or {X:black,C:white}Taunt{} {C:combo}Combos',
+                    '{C:inactive}(Uses #1#/#2# hands)',
                 }
             },
             c_cbean_yma_reali = {
