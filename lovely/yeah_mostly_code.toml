@@ -22,6 +22,68 @@ if next(SMODS.find_card("c_cbean_yma_enigma")) then
 end
 '''
 
+# Game:update
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'before'
+pattern = '''if self.STATE == self.STATES.PLAY_TAROT then'''
+payload = '''
+if self.STATE == self.STATES.GRAVEYARD then
+  update_graveyard()
+end
+
+'''
+match_indent = true
+
+# ease_background_colour_blind
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+position = 'before'
+pattern = '''elseif state == G.STATES.TAROT_PACK then'''
+payload = '''
+elseif state == G.STATES.GRAVEYARD then
+    ease_colour(G.C.DYN_UI.MAIN, mix_colours(G.C.GREY, G.C.BLACK, 0.9))
+'''
+match_indent = true
+
+# TEMPORARY PATCH (probably not temporary)
+# save_run
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'at'
+pattern = '''STATE = G.STATE,'''
+payload = '''
+STATE = G.STATE == G.STATES.GRAVEYARD and G.STATES.SHOP or G.STATE,
+'''
+match_indent = true
+
+# Remove graveyard when closing the run and what not
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'after'
+pattern = '''if self.shop then self.shop:remove(); self.shop = nil end'''
+payload = '''
+if self.graveyard then self.graveyard:remove(); self.graveyard = nil end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = '''G.shop = nil'''
+payload = '''
+if G.graveyard then
+  G.graveyard:remove()
+  G.graveyard = nil
+end
+'''
+match_indent = true
+
 # Game Variables
 [[patches]] #G.GAME 
 [patches.pattern]
@@ -33,6 +95,7 @@ match_indent = true
 payload = '''
 cbean = {
     quest_complete = false,
+    destroyed_jokers = {},
 },
 
 '''

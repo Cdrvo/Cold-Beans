@@ -1060,10 +1060,7 @@ return {
                 }
             },
         },
-
-	
         yma_quest = {
-
             c_cbean_yma_credit_card = {
                 name = {
                     "Credit Card",
@@ -1075,7 +1072,6 @@ return {
                     "to create {C:attention}Credit Card{}",
                 }
             },
-
             c_cbean_yma_burglar = {
                 name = {
                     "Burglar",
@@ -1087,7 +1083,6 @@ return {
                     "to create {C:attention}Burglar{}",
                 }
             },
-
             c_cbean_yma_yorick = {
                 name = {
                     "Yorick",
@@ -1100,8 +1095,6 @@ return {
                 }
             }
         },
-
-
         Enhanced = {
             m_cbean_pboys_piss = {
                 name = "Piss Card",
@@ -1590,7 +1583,6 @@ return {
             },
         },
         Other = {
-
             undiscovered_yma_quest = {
                 name = "Not Discovered",
                 text = {
@@ -1600,7 +1592,6 @@ return {
                     "learn what it does"
                 }
             },
-
             undiscovered_yma_keys = {
 				name = 'Unknown Key Card',
 				text = {
@@ -2096,6 +2087,7 @@ return {
             k_yma_keys = 'Keys',
             b_yma_keys_cards = 'Keys',
             k_yma_key_plus_use = 'Use',
+            k_cbean_yma_graveyard = 'Grave',
             k_yma_key_broke = 'Broken',
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
