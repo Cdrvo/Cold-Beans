@@ -1143,6 +1143,72 @@ SMODS.Consumable {
 }
 --Key to Hell
 --Matchstick Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_matchstick",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 2, y = 2 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.yma and context.yma.before_after and not temp then
+            if (context.total_chips + G.GAME.chips >= (G.GAME.blind.chips)) then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function() 
+                        yma_add_tag(yma_poll_tag('yma_matchstick'))
+                        return true 
+                    end 
+                }))
+            end
+        end
+        if context.end_of_round and not context.blueprint and context.main_eval then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            for k, v in pairs(G.consumeables.cards) do
+                if v.config.center.set == 'sdown_blessing' then
+                    SMODS.destroy_cards(v, nil, nil, true)
+                end
+            end
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Mending Key
 SMODS.Consumable {
     set = "yma_keys",

@@ -99,6 +99,51 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability)
     delay(0.5)
 end
 
+function yma_add_tag(tag, event, silent)
+  local func = function()
+    add_tag(type(tag) == 'string' and Tag(tag) or tag)
+    if not silent then
+      play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+      play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+    end
+    return true
+  end
+
+  if event then
+    G.E_MANAGER:add_event(Event {
+      func = func
+    })
+  else
+    func()
+  end
+end
+
+function yma_poll_tag(seed, options)
+  local pool = options or get_current_pool('Tag')
+  local tag_key = pseudorandom_element(pool, pseudoseed(seed))
+
+  while tag_key == 'UNAVAILABLE' do
+    tag_key = pseudorandom_element(pool, pseudoseed(seed))
+  end
+
+  local tag = Tag(tag_key)
+
+  if tag_key == "tag_orbital" then
+    local available_hands = {}
+
+    for _, k in ipairs(G.handlist) do
+      local hand = G.GAME.hands[k]
+      if hand.visible then
+        available_hands[#available_hands + 1] = k
+      end
+    end
+
+    tag.ability.orbital_hand = pseudorandom_element(available_hands, pseudoseed(seed .. '_orbital'))
+  end
+
+  return tag
+end
+
 local is_eternal_ref = SMODS.is_eternal
 function SMODS.is_eternal(card, trigger)
     if (card.ability and card.ability.yma_ghost_temporary) or (G.STATE == G.STATES.SELECTING_HAND and card.config.center.key == 'c_cbean_yma_hercules') then
