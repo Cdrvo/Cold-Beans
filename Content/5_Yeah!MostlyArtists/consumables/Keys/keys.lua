@@ -254,11 +254,9 @@ SMODS.Consumable {
                 end
             end
             if enhanced_cards_amt >= 1 then
-                local enhanced = {}
                 for k, v in ipairs(context.scoring_hand) do
                     if v.config.center ~= G.P_CENTERS.c_base and not v.debuff and not v.vampired then 
                         card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
-                        enhanced[#enhanced+1] = v
                         v.vampired = true
                         v:set_ability(G.P_CENTERS.c_base, nil, true)
                         v.ability.perma_mult = v.ability.perma_mult or 0
@@ -429,6 +427,84 @@ SMODS.Consumable {
     }
 }
 --Demon Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_demon",
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.consumeable.extra.odds, 'yma_demon')
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 7, y = 0 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+            odds = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            if #G.play.cards > 1 then 
+                G.play:shuffle('yma_demon')
+                play_sound('cardSlide1', 0.85)
+                delay(0.15)
+                G.play:shuffle('yma_demon')
+                play_sound('cardSlide1', 1.15)
+                delay(0.15)
+                G.play:shuffle('yma_demon')
+                play_sound('cardSlide1', 1)
+                delay(0.5) 
+                local leftmost_cards = {}
+                for k, v in pairs(G.play.cards) do
+                    if v == G.play.cards[1] or v == G.play.cards[2] then
+                        leftmost_cards[#leftmost_cards+1] = v
+                    end
+                end
+                for k, v in pairs(leftmost_cards) do
+                    if SMODS.pseudorandom_probability(card, 'yma_demon', 1, card.ability.extra.odds) then
+                        local edition = poll_edition('yma_demon'..G.GAME.round_resets.ante, nil, true, true)
+                        v:set_edition(edition)
+                    end
+                end
+            end
+        end
+        if context.after then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Echo Key
 SMODS.Consumable {
     set = "yma_keys",
@@ -576,7 +652,147 @@ SMODS.Consumable {
     }
 }
 --Gender Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_gender",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 2, y = 1 },
+
+    config = {
+        extra = {
+            uses = 10,
+            max_uses = 10,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            local face_cards_amt = 0
+            for k, v in ipairs(context.scoring_hand) do
+                if v:is_face() and not v.debuff then 
+                    face_cards_amt = face_cards_amt + 1
+                end
+            end
+            if face_cards_amt >= 1 then
+                for k, v in ipairs(context.scoring_hand) do
+                    if v:is_face() and not v.debuff then 
+                        card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                        
+                        if v:get_id() ~= 12 then
+                            SMODS.modify_rank(v, 12-v:get_id())
+                        else
+                            local rank = pseudorandom_element({11, 13}, pseudoseed('yma_gender'))
+                            SMODS.modify_rank(v, rank-v:get_id())
+                        end
+
+                        SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+                        if card.ability.consumeable.extra.uses <= 0 then
+                            SMODS.destroy_cards(card, nil, nil, true)
+                            SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+                        else
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                        end
+                    end
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Ghost Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_ghost",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 3, y = 1 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind then 
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    for i = 1, 2 do
+                        local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, nil, 'yma_ghost')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        cardd.ability = cardd.ability or {}
+                        cardd.ability.yma_ghost_temporary = true
+                        G.jokers:emplace(cardd)
+                    end
+                    return true
+                end)
+            }))
+        end
+        if context.ending_shop then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            for k, v in pairs(G.jokers.cards) do
+                if v.ability and v.ability.yma_ghost_temporary then
+                    v.ability.yma_ghost_temporary = nil
+                    SMODS.destroy_cards(v, nil, nil, true)
+                    SMODS.calculate_effect({message = localize('k_yma_key_faded') }, v)
+                end
+            end
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Giant Key
 --Harlequin Key
 --Head Key
@@ -789,13 +1005,13 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         if context.before then
             if #G.jokers.cards > 1 then 
-                G.jokers:shuffle('aajk')
+                G.jokers:shuffle('yma_music_box')
                 play_sound('cardSlide1', 0.85)
                 delay(0.15)
-                G.jokers:shuffle('aajk')
+                G.jokers:shuffle('yma_music_box')
                 play_sound('cardSlide1', 1.15)
                 delay(0.15)
-                G.jokers:shuffle('aajk')
+                G.jokers:shuffle('yma_music_box')
                 play_sound('cardSlide1', 1)
                 delay(0.5) 
             end

@@ -61,6 +61,9 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
         func = function()
             victim_joker:set_ability(G.P_CENTERS[replacement_key])
             victim_joker:set_cost()
+            victim_joker.ability = victim_joker.ability or {}
+            victim_joker.ability.extra = victim_joker.ability.extra or {}
+            victim_joker.ability.extra.temp_key = temp_key
             return true
         end
     }))
@@ -75,6 +78,14 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
         end 
     }))
     delay(0.5)
+end
+
+local is_eternal_ref = SMODS.is_eternal
+function SMODS.is_eternal(card, trigger)
+    if card.ability and card.ability.yma_ghost_temporary then
+        return true
+    end
+    return is_eternal_ref(card, trigger)
 end
 
 local start_dissolve_ref = Card.start_dissolve
