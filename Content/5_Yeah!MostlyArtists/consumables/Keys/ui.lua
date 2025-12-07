@@ -44,10 +44,6 @@ G.FUNCS.hide_yma_graveyard = function(e)
 	G.hand.states.visible = cached_hand_state
 	G.STATE = G.STATES.SHOP
 	G.STATE_COMPLETE = false
-    if G.graveyard and G.graveyard.alignment.offset.py then 
-      G.graveyard.alignment.offset.py = G.graveyard.alignment.offset.y
-      G.graveyard.alignment.offset.y = G.ROOM.T.y + 29
-    end
 	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	ease_background_colour_blind(G.STATES.SHOP)
 	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]

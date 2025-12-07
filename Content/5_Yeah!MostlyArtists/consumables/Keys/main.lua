@@ -2,12 +2,16 @@ YMA = YMA or {
 
 }
 
-function YMA_reroll_card(card, key, set, append, temp_key, _card)
+function YMA_reroll_card(card, key, set, append, temp_key, ability)
+    append = append or 'yma_reroll_card'
     local victim_joker = card
     local temp_table = {}
     for k, v in pairs(victim_joker.ability) do
         temp_table[k] = v
     end
+
+    local temp_card = victim_joker
+    local temp_set = victim_joker.config.center.set
       
     local victim_rarity = victim_joker.config.center.rarity or 1
     local is_legendary = victim_rarity == 4
@@ -15,7 +19,7 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
 
     
     local replacement_pool = {}
-    for _, center_data in ipairs(G.P_CENTER_POOLS[set or card.config.center.set]) do
+    for _, center_data in ipairs(G.P_CENTER_POOLS[set or temp_set]) do
         local current_rarity = center_data.rarity or 1
         if current_rarity == victim_rarity then
             if center_data.key ~= victim_key then
@@ -65,9 +69,19 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
         func = function()
             victim_joker:set_ability(G.P_CENTERS[replacement_key])
             victim_joker:set_cost()
-            victim_joker.ability = victim_joker.ability or {}
+            if ability then 
+                for k, v in pairs(ability) do
+                    victim_joker.ability[k] = v
+                end
+            else
+                victim_joker.ability = victim_joker.ability or {}
+            end
             victim_joker.ability.yma_temp_key = temp_key
+            if temp_table.yma_temp_ability_table then
+                temp_table.yma_temp_ability_table = nil
+            end
             victim_joker.ability.yma_temp_ability_table = temp_table
+            victim_joker.ability.yma_temp_set = temp_set
             return true
         end
     }))
@@ -78,6 +92,7 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
             victim_joker:flip()
             play_sound('tarot2', 1, 0.6)
             victim_joker:juice_up(0.3, 0.3)
+            SMODS.calculate_context({yma = {after_reroll = true, card = victim_joker, old_card = temp_card}})
             return true 
         end 
     }))

@@ -1081,6 +1081,66 @@ SMODS.Consumable {
     }
 }
 --Identity Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_identity",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 0, y = 2 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind then 
+            local pool = {}
+            for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
+                if v.config.immutable.combo_type == "series" or v.config.immutable.combo_type == "special" then
+                    pool[#pool+1] = v.key
+                end
+            end
+            local ran_combo = pseudorandom_element(pool, pseudoseed('yma_giant'))
+            YMA_reroll_card(card, ran_combo, 'Combo', 'yma_identity', card.config.center.key)
+        end
+        if context.yma and context.yma.after_reroll and context.yma.card == card then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Key to Hell
 --Matchstick Key
 --Mending Key
