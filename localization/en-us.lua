@@ -1060,6 +1060,48 @@ return {
                 }
             },
         },
+
+	
+        yma_quest = {
+
+            c_cbean_yma_credit_card = {
+                name = {
+                    "Credit Card",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Spend {C:money}$#1#{} {C:inactive}(#2#){}",
+                    "in a single {C:attention}shop{}",
+                    "to create {C:attention}Credit Card{}",
+                }
+            },
+
+            c_cbean_yma_burglar = {
+                name = {
+                    "Burglar",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Destroy {C:attention}2{} {C:inactive}(#1#){} cards with",
+                    "a {C:diamonds}Diamond{} suit",
+                    "to create {C:attention}Burglar{}",
+                }
+            },
+
+            c_cbean_yma_yorick = {
+                name = {
+                    "Yorick",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Discard {C:attention}#1#{} {C:inactive}(#2#){} cards",
+                    "in a single {C:attention}Ante{}",
+                    "to create {C:attention}Yorick{}",
+                }
+            }
+        },
+
+
         Enhanced = {
             m_cbean_pboys_piss = {
                 name = "Piss Card",
@@ -1548,6 +1590,17 @@ return {
             },
         },
         Other = {
+
+            undiscovered_yma_quest = {
+                name = "Not Discovered",
+                text = {
+                    "Complete Side",
+                    "Quests in an",
+                    "unseeded run to",
+                    "learn what it does"
+                }
+            },
+
             undiscovered_yma_keys = {
 				name = 'Unknown Key Card',
 				text = {

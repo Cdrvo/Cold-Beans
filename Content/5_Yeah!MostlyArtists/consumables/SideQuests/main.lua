@@ -1,12 +1,10 @@
-YMA = {
-
-}
+YMA = {}
 
 SMODS.Atlas({
     key = "yma_quest_atlas",
     path = "5_Yeah!MostlyArtists/side_quests.png",
-    px = 64,
-    py = 64,
+    px = 67,
+    py = 67,
 })
 
 local set_screen_positions_ref = set_screen_positions
@@ -87,15 +85,37 @@ SMODS.ConsumableType {
         collection = "Side Quests",
         label = "Side Quest",
         name = "Side Quest",
-        undiscovered = {
-            name = "Not Discovered",
-            text = {
-                "Complete Side",
-                "Quests in an",
-                "unseeded run to",
-                "learn what it does"
-            }
-        },
     },
-    shop_rate = 0
+
+    inject_card = function(self, center)
+        if not self.default then self.default = center.key end
+        SMODS.ConsumableType.inject_card(self, center)
+        if self.rarity_pools[center.rarity] then
+            table.insert(self.rarity_pools[center.rarity], center)
+        end
+    end,
+
+    set_card_type_badge = function(self, _c, card, badges)
+        if not _c.discovered then return end
+
+        local quest_rarity = {
+            [1] = { name = localize('k_common'), colour = G.C.BLUE },
+            [2] = { name = localize('k_uncommon'), colour = G.C.GREEN },
+            [3] = { name = localize('k_rare'), colour = G.C.RED },
+            [4] = { name = localize('k_legendary'), colour = G.C.PURPLE },
+        }
+
+        local r = _c.rarity or 1
+        local rarity = quest_rarity[r]
+
+        table.insert(badges, create_badge(rarity.name, rarity.colour, nil, 1.2))
+    end,
+
+    rarities = {
+        { key = 1, weight = 65 },
+        { key = 2, weight = 30 },
+        { key = 3, weight = 15 },
+        { key = 4, weight = 1 },
+    },
+    shop_rate = 0,
 }

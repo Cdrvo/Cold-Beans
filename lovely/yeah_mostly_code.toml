@@ -4,6 +4,7 @@ dump_lua = true
 priority = 0
 
 # Yeah Mostly Artists
+
 # Random pool
 [[patches]]
 [patches.pattern]
@@ -61,4 +62,18 @@ payload = '''
         SMODS.add_card { set = "yma_quest", area = G.side_quests }
         G.GAME.cbean_quest_complete = false
     end
+'''
+
+# get_current_pool() (Borrowed from AutumnMoodMechanics)
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "for k, v in ipairs(_starting_pool) do"
+match_indent = true
+overwrite = false
+position = 'before'
+payload = '''
+if _legendary and _type == 'yma_quest' then
+	_starting_pool, _pool_key = SMODS.ConsumableTypes[_type].rarity_pools[-4], _type.."-4"..(_append or '')
+end
 '''
