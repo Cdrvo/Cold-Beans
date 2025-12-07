@@ -890,7 +890,15 @@ return {
             c_cbean_yma_demon = {
                 name = 'Demon Key',
                 text = {
-                    ''
+                    {
+                        '{C:green}#3# in #4#{} chance to {C:attention}apply{} a',
+                        'random {C:edition}edition{} to the two',
+                        '{C:attention}leftmost{} playing cards'
+                    },
+                    {
+                        '{C:attention}Shuffles{} played {C:attention}cards',
+                        '{C:inactive}(Uses #1#/#2# hands)',
+                    }
                 }
             },
             c_cbean_yma_echo = {
@@ -912,13 +920,17 @@ return {
             c_cbean_yma_gender = {
                 name = 'Gender Key',
                 text = {
-                    ''
+                    '{C:attention}Scored{} face cards change {C:attention}gender',
+                    '{C:inactive}(Uses #1#/#2# cards)',
                 }
             },
             c_cbean_yma_ghost = {
                 name = 'Ghost Key',
                 text = {
-                    ''
+                    '{C:attention}Creates{} two temporary',
+                    '{C:dark_edition}Negative{} {C:attention}Jokers{} when blind',
+                    'is {C:attention}selected',
+                    '{C:inactive}(Uses #1#/#2# shops)',
                 }
             },
             c_cbean_yma_giant = {
@@ -2095,6 +2107,7 @@ return {
             k_yma_key_plus_use = 'Use',
             k_cbean_yma_graveyard = 'Grave',
             k_yma_key_broke = 'Broken',
+            k_yma_key_faded = 'Faded',
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
             k_cbean_mash_ex = "Mash!",
