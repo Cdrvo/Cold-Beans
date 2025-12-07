@@ -1794,8 +1794,168 @@ SMODS.Consumable {
     }
 }
 --Teddy Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_teddy",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+                card.ability.consumeable.extra.discards_and_hands,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 5, y = 3 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+            discards_and_hands = 1,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.first_hand_drawn then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            ease_hands_played(card.ability.consumeable.extra.discards_and_hands)
+            ease_discard(card.ability.consumeable.extra.discards_and_hands)
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Tempus Fugit Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_tempus_fugit",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 6, y = 3 },
+
+    config = {
+        extra = {
+            uses = 4,
+            max_uses = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.first_hand_drawn then
+            YMA_reroll_card(card, nil, 'Joker', 'yma_identity', card.config.center.key, nil, 'after')
+        end
+        if context.yma and context.yma.after_reroll and context.yma.card == card then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Thorn Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_thorn",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 7, y = 3 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.mod_probability and context.trigger_obj and G.jokers.cards and context.trigger_obj == G.jokers.cards[1] then
+            return {
+                numerator = context.denominator,
+                denominator = context.denominator
+            }
+        end
+        if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Timeshift Key
 SMODS.Consumable {
     set = "yma_keys",

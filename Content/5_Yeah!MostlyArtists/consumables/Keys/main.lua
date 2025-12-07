@@ -2,7 +2,8 @@ YMA = YMA or {
 
 }
 
-function YMA_reroll_card(card, key, set, append, temp_key, ability)
+function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
+    context = context or 'end_of_round'
     append = append or 'yma_reroll_card'
     local victim_joker = card
     local temp_table = {}
@@ -82,6 +83,7 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability)
             end
             victim_joker.ability.yma_temp_ability_table = temp_table
             victim_joker.ability.yma_temp_set = temp_set
+            victim_joker.ability.yma_context = context
             return true
         end
     }))
