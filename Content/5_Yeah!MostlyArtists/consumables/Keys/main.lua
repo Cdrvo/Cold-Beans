@@ -81,8 +81,17 @@ local start_dissolve_ref = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
   local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
   if G.jokers and self.ability.set == 'Joker' then
+    local yma_can_add = true
+    for k, v in pairs(G.GAME.cbean.destroyed_jokers) do
+        if v == self.config.center.key then 
+            yma_can_add = false
+        end
+    end
+    if yma_can_add then
+        G.GAME.cbean.destroyed_jokers[#G.GAME.cbean.destroyed_jokers+1] = self.config.center.key
+    end
     local has_timeshift_key = #SMODS.find_card("c_cbean_yma_timeshift")
-    if has_timeshift_key >= 0 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
+    if has_timeshift_key >= 1 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
         SMODS.calculate_context({yma = {timeshift_trigged = true, decrease = true}})
         G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
             local card = copy_card(self, nil, nil, nil, false)
