@@ -183,6 +183,20 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
     }))
     return
   end
+  if G.consumeables and self.ability.set == 'Combo' then
+    local has_shadow_key = #SMODS.find_card("c_cbean_yma_shadow")
+    if has_shadow_key >= 1 and self.ability.yma_cant_be_copied == nil and self.ability.yma_sold_self == nil then
+        SMODS.calculate_context({yma = {shadow_trigged = true, decrease = true}})
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
+            local card = copy_card(self, nil, nil, nil, false)
+            card.ability.yma_cant_be_copied = true
+            UnselectCombo(card)
+            card:start_materialize()
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            return true end }))
+    end
+  end
   if G.jokers and self.ability.set == 'Joker' then
     local yma_can_add = true
     for k, v in pairs(G.GAME.cbean.destroyed_jokers) do

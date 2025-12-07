@@ -1598,6 +1598,61 @@ SMODS.Consumable {
 }
 --Reali Key
 --Shadow Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_shadow",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 2, y = 3 },
+
+    config = {
+        extra = {
+            uses = 5,
+            max_uses = 5,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.selling_card then
+            if context.other_card and context.other_card.ability then
+                context.other_card.ability.yma_sold_self = true
+            end
+        end
+        if context.yma and context.yma.shadow_trigged and context.yma.decrease then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            context.yma.decrease = false
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Stamp Key
 --Sword Key
 --Teddy Key
