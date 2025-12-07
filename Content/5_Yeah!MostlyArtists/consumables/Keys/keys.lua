@@ -158,6 +158,66 @@ SMODS.Consumable {
     }
 }
 --Animal Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_animal",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 2, y = 0 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    local cardd = create_card('sdown_czodiac',G.consumeables, nil, nil, nil, nil, nil, 'yma_animal')
+                    cardd:set_edition({ negative = true })
+                    cardd:add_to_deck()
+                    G.consumeables:emplace(cardd)
+                    return true
+                end)
+            }))
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Anywhere Key
 --Biety Key
 --Chain Key
