@@ -1056,7 +1056,9 @@ return {
             c_cbean_yma_shadow = {
                 name = 'Shadow Key',
                 text = {
-                    ''
+                    '{C:combo}Combo{} cards can be used',
+                    '{C:attention}twice',
+                    '{C:inactive}(Uses #1#/#2#)',
                 }
             },
             c_cbean_yma_stamp = {
