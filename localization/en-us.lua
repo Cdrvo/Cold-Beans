@@ -849,7 +849,10 @@ return {
             c_cbean_yma_animal = {
                 name = 'Animal Key',
                 text = {
-                    ''
+                    '{C:attention}Create{} a random {C:dark_edition}Negative{}',
+                    '{C:sdown_czodiac}Chinese Zodiac{} when',
+                    '{C:attention}selecting{} blind',
+                    '{C:inactive}(Uses #1#/#2# blinds)',
                 }
             },
             c_cbean_yma_anywhere = {
