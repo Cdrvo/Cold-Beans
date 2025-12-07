@@ -11,6 +11,14 @@ G.FUNCS.can_switch = function(e)
 	  text=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_balley'
+  elseif G.STATE == G.STATES.GRAVEYARD then
+      text=localize('k_cbean_aexit_ex')
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_graveyard'
+  elseif G.STATE == G.STATES.SHOP and #SMODS.find_card("c_cbean_yma_moon") >= 1 and G.GAME and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+	  text=localize('k_cbean_yma_graveyard')
+	  e.config.colour = G.C.BLACK
+	  e.config.button = 'show_yma_graveyard'
   elseif G.STATE == G.STATES.SHOP then
 	  text=localize('k_cbean_balley_ex')
 	  e.config.colour = G.C.GREEN

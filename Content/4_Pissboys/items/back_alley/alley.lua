@@ -16,7 +16,7 @@ SMODS.Sound({
 	sync = false,
 	pitch = 1,
 	select_music_track = function()
-		return G.STATE == G.STATES.BALLEY
+		return (G.STATE == G.STATES.BALLEY or G.STATE == G.STATES.GRAVEYARD)
 			and 7
 	end,
 })
