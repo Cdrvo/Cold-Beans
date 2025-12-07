@@ -21,7 +21,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
-    end
+    end,
     no_collection = true,
 }
 
@@ -33,7 +33,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
-    end
+    end,
     no_collection = true,
 }
 
@@ -45,7 +45,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
-    end
+    end,
     no_collection = true,
 }
 
@@ -57,7 +57,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
-    end
+    end,
     no_collection = true,
 }
 
@@ -147,7 +147,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
-    end
+    end,
     no_collection = true,
 }
 
@@ -177,7 +177,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
-    end
+    end,
     no_collection = true,
 }
 
@@ -207,7 +207,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
-    end
+    end,
     no_collection = true,
 }
 
@@ -237,7 +237,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
-    end
+    end,
     no_collection = true,
 }
 
@@ -267,7 +267,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
-    end
+    end,
     no_collection = true,
 }
 
@@ -326,7 +326,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-    end
+    end,
     no_collection = true,
 }
 
@@ -384,7 +384,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-    end
+    end,
     no_collection = true,
 }
 
@@ -405,7 +405,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-    end
+    end,
     no_collection = true,
 }
 
@@ -424,7 +424,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
-    end
+    end,
     no_collection = true,
 }
 
@@ -442,7 +442,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
-    end
+    end,
     no_collection = true,
 }
 
@@ -467,7 +467,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
-    end
+    end,
     no_collection = true,
 }
 
@@ -497,7 +497,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
-    end
+    end,
     no_collection = true,
 }
 
@@ -543,7 +543,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
-    end
+    end,
     no_collection = true,
 }
 
@@ -588,7 +588,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
-    end
+    end,
     no_collection = true,
 }
 
@@ -630,7 +630,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
-    end
+    end,
     no_collection = true,
 }
 
@@ -663,7 +663,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-    end
+    end,
     no_collection = true,
 }
 
@@ -696,7 +696,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-    end
+    end,
     no_collection = true,
 }
 
@@ -732,7 +732,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-    end
+    end,
     no_collection = true,
 }
 
@@ -766,7 +766,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
-    end
+    end,
     no_collection = true,
 }
 
@@ -797,6 +797,6 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
-    end
+    end,
     no_collection = true,
 }
