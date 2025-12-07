@@ -818,10 +818,8 @@ SMODS.Consumable {
     },
 
     calculate = function(self, card, context)
-        if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
+        if context.end_of_round and not context.blueprint and context.main_eval then 
             card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
-            local ran_joker = pseudorandom_element(G.jokers.cards, pseudoseed('yma_giant'))
-            SMODS.destroy_cards(ran_joker, nil, nil, true)
             local pool = {}
             for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
                 if v.config.immutable.combo_type == "ultimate" or v.config.immutable.combo_type == "finisher" then
@@ -1099,8 +1097,8 @@ SMODS.Consumable {
 
     config = {
         extra = {
-            uses = 3,
-            max_uses = 3,
+            uses = 6,
+            max_uses = 6,
         }
     },
 
@@ -1524,6 +1522,80 @@ SMODS.Consumable {
     }
 }
 --Orchestra Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_orchestra",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 0, y = 3 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    for i = 1, 2 do
+                        local pool = {}
+                        for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
+                            if v.config.immutable.combo_type == "taunt" or v.config.immutable.combo_type == "starter" then
+                                pool[#pool+1] = v.key
+                            end
+                        end
+                        local ran_combo = pseudorandom_element(pool, pseudoseed('yma_giant'))
+                        local cardd = create_card('Combo',G.consumeables, nil, nil, nil, nil, ran_combo, 'yma_orchestra')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                    end
+                    return true
+                end)
+            }))
+            for k, v in pairs(G.consumeables.cards) do
+                if v.config.immutable and v.config.immutable.combo_type and (v.config.immutable.combo_type == "taunt" or v.config.immutable.combo_type == "starter") then
+                    SMODS.destroy_cards(v, nil, nil, true)
+                end
+            end
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Reali Key
 --Shadow Key
 --Stamp Key

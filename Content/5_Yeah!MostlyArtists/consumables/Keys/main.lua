@@ -155,6 +155,34 @@ end
 local start_dissolve_ref = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
   local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+  if self.ability and self.ability.yma_temp_key then
+    local key = self.ability.yma_temp_key
+    G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = (function()
+            local card = create_card(self.ability.yma_temp_set,self.area, nil, nil, nil, nil, key, 'yma_giant')
+            card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("k_reset"), colour = G.C.FILTER})
+            for k, v in pairs(self.ability.yma_temp_ability_table) do
+                card.ability[k] = v
+            end
+            card:add_to_deck()
+            self.area:emplace(card)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function() 
+                    play_sound('tarot2', 1, 0.6)
+                    card:juice_up(0.3, 0.3)
+                    SMODS.calculate_context({yma = {after_reroll = true, card = card, old_card = self}})
+                    return true 
+                end 
+            }))
+            return true
+        end)
+    }))
+    return
+  end
   if G.jokers and self.ability.set == 'Joker' then
     local yma_can_add = true
     for k, v in pairs(G.GAME.cbean.destroyed_jokers) do
