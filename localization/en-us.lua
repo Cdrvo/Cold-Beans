@@ -994,7 +994,10 @@ return {
             c_cbean_yma_matchstick = {
                 name = 'Matchstick Key',
                 text = {
-                    ''
+                    'If {C:blue}hand{} scores larger than',
+                    'the blind {C:attention}requirement',
+                    '{C:attention}create{} a random {C:attention}Tag',
+                    '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
             c_cbean_yma_mending = {
