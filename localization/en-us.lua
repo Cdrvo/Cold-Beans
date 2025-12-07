@@ -936,13 +936,19 @@ return {
             c_cbean_yma_giant = {
                 name = 'Giant Key',
                 text = {
-                    ''
+                    'Create a {X:red,C:white}Finisher{} or',
+                    '{X:blue,C:white}Ultimate{} {C:combo}Combo{} and',
+                    'destroy a random {C:attention}Joker{}',
+                    'at end of {C:attention}round',
+                    '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
             c_cbean_yma_harlequin = {
                 name = 'Harlequin Key',
                 text = {
-                    ''
+                    '{C:attention}Mimics{} leftmost {C:attention}Joker',
+                    '{B:1,C:white}#3#',
+                    '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
             c_cbean_yma_head = {
