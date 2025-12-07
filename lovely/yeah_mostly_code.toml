@@ -22,6 +22,33 @@ if next(SMODS.find_card("c_cbean_yma_enigma")) then
 end
 '''
 
+# Resets temporary consumeable cards
+[[patches]] 
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "-- TARGET: evaluate your own general effects"
+position = "before"
+match_indent = true
+payload = '''
+if context.end_of_round and context.cardarea == G.consumeables then
+    for k, v in pairs(G.consumeables.cards) do
+        if v.ability and v.ability.yma_temp_key then
+            local key = v.ability.yma_temp_key
+            v.ability.yma_temp_key = nil
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("k_reset"), colour = G.C.FILTER})
+                    YMA_reroll_card(v, key, v.ability.yma_temp_set, nil, nil, v.ability.yma_temp_ability_table, true)
+                    return true
+                end)
+            }))
+        end
+    end
+end
+'''
+
 # Game:update
 [[patches]]
 [patches.pattern]
