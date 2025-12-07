@@ -1064,7 +1064,10 @@ return {
             c_cbean_yma_stamp = {
                 name = 'Stamp Key',
                 text = {
-                    ''
+                    '{C:attention}Scored{} cards with a {C:blue}Blue',
+                    'Seal {C:attention}permanently{} gain a',
+                    '{C:attention}retrigger',
+                    '{C:inactive}(Uses #1#/#2# cards)',
                 }
             },
             c_cbean_yma_sword = {
