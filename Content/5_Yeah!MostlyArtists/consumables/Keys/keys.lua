@@ -1735,6 +1735,64 @@ SMODS.Consumable {
     }
 }
 --Sword Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_sword",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 4, y = 3 },
+
+    config = {
+        extra = {
+            uses = 3,
+            max_uses = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.first_hand_drawn then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            yam_ease_blind_requirement(nil, -1 * math.ceil(G.GAME.blind.chips * 50 * 0.01))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    if G.GAME.chips - G.GAME.blind.chips >= 0 then
+                        G.STATE = G.STATES.NEW_ROUND
+                        G.STATE_COMPLETE = false
+                    end
+                    return true
+                end
+            }))
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Teddy Key
 --Tempus Fugit Key
 --Thorn Key

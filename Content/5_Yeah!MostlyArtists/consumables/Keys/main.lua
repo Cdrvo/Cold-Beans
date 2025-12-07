@@ -152,6 +152,87 @@ function SMODS.is_eternal(card, trigger)
     return is_eternal_ref(card, trigger)
 end
 
+-- Automatically saves G.GAME.blind.original_chips when blind is loaded
+local yma_blind_set_blind_ref = Blind.set_blind
+function Blind:set_blind(blind, reset, silent)
+    local ret = yma_blind_set_blind_ref(self, blind, reset, silent)
+    if not reset then
+        self.original_chips = self.chips
+    end
+    return ret
+end
+
+-- Handle original chips when game is saved and reloaded
+local yma_blind_save_ref = Blind.save
+function Blind:save()
+    local blindTable = yma_blind_save_ref(self)
+    blindTable.original_chips = self.original_chips
+    return blindTable
+end
+local yma_blind_load_ref = Blind.load
+function Blind:load(blindTable)
+    local ret = yma_blind_load_ref(self, blindTable)
+    self.original_chips = blindTable.original_chips
+    return blindTable
+end
+
+function yam_ease_blind_requirement(mod_mult, mod_add)
+    local original_chips = G.GAME.blind.original_chips > 0 and G.GAME.blind.original_chips or G.GAME.blind.chips
+
+    mod_mult = mod_mult ~= nil and mod_mult or 0
+    mod_add = mod_add ~= nil and mod_add or 0
+    local current_mult = G.GAME.blind.chips / (original_chips / G.GAME.blind.mult) -- Takes into account previous ease_blind_requirement calls
+    local final_chips = (original_chips / G.GAME.blind.mult) * (current_mult + mod_mult) + mod_add
+    local chip_mod -- iterate over ~120 ticks
+    if type(G.GAME.blind.chips) ~= 'table' then
+        chip_mod = math.ceil(math.abs(final_chips - G.GAME.blind.chips) / 120)
+    else
+        chip_mod = ((final_chips - G.GAME.blind.chips):abs() / 120):ceil()
+    end
+    local step = 0
+    if G.GAME.blind.chips < final_chips then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            blocking = true,
+            func = function()
+                G.GAME.blind.chips = G.GAME.blind.chips + G.SETTINGS.GAMESPEED * chip_mod
+                if G.GAME.blind.chips < final_chips then
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    if step % 5 == 0 then
+                        play_sound('chips1', 0.8 + (step * 0.005))
+                    end
+                    step = step + 1
+                else
+                    G.GAME.blind.chips = final_chips
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    G.GAME.blind:wiggle()
+                    return true
+                end
+            end
+        }))
+    else
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            blocking = true,
+            func = function()
+                G.GAME.blind.chips = G.GAME.blind.chips - G.SETTINGS.GAMESPEED * chip_mod
+                if G.GAME.blind.chips > final_chips then
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    if step % 5 == 0 then
+                        play_sound('chips1', 0.8 + (step * 0.005))
+                    end
+                    step = step - 1
+                else
+                    G.GAME.blind.chips = final_chips
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    G.GAME.blind:wiggle()
+                    return true
+                end
+            end
+        }))
+    end
+end
+
 local start_dissolve_ref = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
   local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
