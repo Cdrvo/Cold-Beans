@@ -219,7 +219,82 @@ SMODS.Consumable {
     }
 }
 --Anywhere Key
---Biety Key
+--Bitey Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_bitey",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+                card.ability.consumeable.extra.mult_mod,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 4, y = 0 },
+
+    config = {
+        extra = {
+            uses = 8,
+            max_uses = 8,
+            mult_mod = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            local enhanced_cards_amt = 0
+            for k, v in ipairs(context.scoring_hand) do
+                if v.config.center ~= G.P_CENTERS.c_base and not v.debuff and not v.vampired then 
+                    enhanced_cards_amt = enhanced_cards_amt + 1
+                end
+            end
+            if enhanced_cards_amt >= 1 then
+                local enhanced = {}
+                for k, v in ipairs(context.scoring_hand) do
+                    if v.config.center ~= G.P_CENTERS.c_base and not v.debuff and not v.vampired then 
+                        card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                        enhanced[#enhanced+1] = v
+                        v.vampired = true
+                        v:set_ability(G.P_CENTERS.c_base, nil, true)
+                        v.ability.perma_mult = v.ability.perma_mult or 0
+                        v.ability.perma_mult = v.ability.perma_mult + card.ability.extra.mult_mod
+                        card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.MULT })
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                v:juice_up()
+                                v.vampired = nil
+                                return true
+                            end
+                        })) 
+                        SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+                        if card.ability.consumeable.extra.uses <= 0 then
+                            SMODS.destroy_cards(card, nil, nil, true)
+                            SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+                        else
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                        end
+                    end
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Chain Key
 SMODS.Consumable {
     set = "yma_keys",
