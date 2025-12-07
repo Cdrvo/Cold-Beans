@@ -1654,6 +1654,86 @@ SMODS.Consumable {
     }
 }
 --Stamp Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_stamp",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 3, y = 3 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            local blue_seal_cards_amt = 0
+            for k, v in ipairs(context.scoring_hand) do
+                if v.seal == 'Blue' then 
+                    blue_seal_cards_amt = blue_seal_cards_amt + 1
+                end
+            end
+            if blue_seal_cards_amt >= 1 then
+                for k, v in ipairs(context.scoring_hand) do
+                    if v.seal == 'Blue' then 
+                        card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                        v.ability.perma_repetitions = v.ability.perma_repetitions or 0
+                        v.ability.perma_repetitions = v.ability.perma_repetitions + 1
+                        card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                v:juice_up()
+                                return true
+                            end
+                        })) 
+                        SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+                        if card.ability.consumeable.extra.uses <= 0 then
+                            SMODS.destroy_cards(card, nil, nil, true)
+                            SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+                        else
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                        end
+                    end
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        local seal_count = 0
+        if G.GAME and G.playing_cards then
+            for _, card in ipairs(G.playing_cards) do
+                if card.seal == 'Blue' then
+                    seal_count = seal_count + 1
+                end
+            end
+        end
+        if seal_count > 0 then
+            return true
+        else
+            return false
+        end
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Sword Key
 --Teddy Key
 --Tempus Fugit Key
