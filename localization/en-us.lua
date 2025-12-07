@@ -864,7 +864,10 @@ return {
             c_cbean_yma_bitey = {
                 name = 'Bitey Key',
                 text = {
-                    ''
+                    'Removes {C:attention}enhancements{} from',
+                    '{C:attention}scored{} cards and gives',
+                    'them {C:attention}permanently{} {C:mult}+#3#{} Mult',
+                    '{C:inactive}(Uses #1#/#2# cards)',
                 }
             },
             c_cbean_yma_chain = {
