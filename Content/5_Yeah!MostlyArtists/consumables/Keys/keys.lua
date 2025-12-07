@@ -794,7 +794,152 @@ SMODS.Consumable {
     }
 }
 --Giant Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_giant",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 4, y = 1 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            local ran_joker = pseudorandom_element(G.jokers.cards, pseudoseed('yma_giant'))
+            SMODS.destroy_cards(ran_joker, nil, nil, true)
+            local pool = {}
+            for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
+                if v.config.immutable.combo_type == "ultimate" or v.config.immutable.combo_type == "finisher" then
+                    pool[#pool+1] = v.key
+                end
+            end
+            local ran_combo = pseudorandom_element(pool, pseudoseed('yma_giant'))
+            local cardd = create_card('Combo',G.consumeables, nil, nil, nil, nil, ran_combo, 'yma_giant')
+            cardd:add_to_deck()
+            G.consumeables:emplace(cardd)
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Harlequin Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_harlequin",
+
+    loc_vars = function(self, info_queue, card)
+        local target_joker = G.jokers and #G.jokers.cards >= 1 and G.jokers.cards[1]
+
+
+        if target_joker then
+            local other_vars = nil
+            if target_joker.config.center.loc_vars then
+                local ret = target_joker.config.center:loc_vars({}, target_joker)
+                if ret then
+                    other_vars = ret.vars
+                end
+            else
+                other_vars, _, _ = target_joker:generate_UIBox_ability_table(true)
+            end
+
+            if other_vars then
+                target_joker.config.center.specific_vars = other_vars
+                target_joker.config.center.specific_vars.aij_elder = true
+            end
+
+            info_queue[#info_queue + 1] = target_joker.config.center
+        end
+        local compactable = 'incompatible'
+        local colour = G.C.RED
+        if target_joker and target_joker.config.center.blueprint_compat then
+            compactable = 'compatible'
+            colour = G.C.GREEN
+        end
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+                compactable,
+                colours = {
+                    colour
+                }
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 5, y = 1 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+        if G.jokers and #G.jokers.cards >= 1 then
+            return SMODS.blueprint_effect(card, G.jokers.cards[1], context)
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Head Key
 --Hercules Key
 --Identity Key
