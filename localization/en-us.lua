@@ -963,7 +963,16 @@ return {
             c_cbean_yma_hercules = {
                 name = 'Hercules Key',
                 text = {
-                    ''
+                    {
+                        '{C:attention}Creates{} two {C:dark_edition}Negative',
+                        '{C:sdown_blessing}Blessings{} when blind is',
+                        '{C:attention}selected'
+                    },
+                    {
+                        'All {C:sdown_blessing}Blessings{} are {C:red}destroyed',
+                        'at the end of {C:attention}round',
+                        '{C:inactive}(Uses #1#/#2# blinds)'
+                    }
                 }
             },
             c_cbean_yma_identity = {
