@@ -954,7 +954,10 @@ return {
             c_cbean_yma_head = {
                 name = 'Head Key',
                 text = {
-                    ''
+                    '{C:green}#3# in #4#{} chance to {C:attention}create{} a',
+                    '{C:yma_keys}Key{} when the {C:attention}Boss{} blind',
+                    'is {C:attention}defeated',
+                    '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
             c_cbean_yma_hercules = {
