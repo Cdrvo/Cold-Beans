@@ -4,6 +4,10 @@ YMA = YMA or {
 
 function YMA_reroll_card(card, key, set, append, temp_key, _card)
     local victim_joker = card
+    local temp_table = {}
+    for k, v in pairs(victim_joker.ability) do
+        temp_table[k] = v
+    end
       
     local victim_rarity = victim_joker.config.center.rarity or 1
     local is_legendary = victim_rarity == 4
@@ -62,8 +66,8 @@ function YMA_reroll_card(card, key, set, append, temp_key, _card)
             victim_joker:set_ability(G.P_CENTERS[replacement_key])
             victim_joker:set_cost()
             victim_joker.ability = victim_joker.ability or {}
-            victim_joker.ability.extra = victim_joker.ability.extra or {}
-            victim_joker.ability.extra.temp_key = temp_key
+            victim_joker.ability.yma_temp_key = temp_key
+            victim_joker.ability.yma_temp_ability_table = temp_table
             return true
         end
     }))
@@ -82,7 +86,7 @@ end
 
 local is_eternal_ref = SMODS.is_eternal
 function SMODS.is_eternal(card, trigger)
-    if card.ability and card.ability.yma_ghost_temporary then
+    if (card.ability and card.ability.yma_ghost_temporary) or (G.STATE == G.STATES.SELECTING_HAND and card.config.center.key == 'c_cbean_yma_hercules') then
         return true
     end
     return is_eternal_ref(card, trigger)

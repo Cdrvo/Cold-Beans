@@ -911,7 +911,8 @@ SMODS.Consumable {
     },
 
     calculate = function(self, card, context)
-        if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
+        local target_joker = G.jokers and #G.jokers.cards >= 1 and G.jokers.cards[1]
+        if context.end_of_round and not context.blueprint and context.main_eval and target_joker and target_joker.config.center.blueprint_compat then 
             card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
 
             SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
@@ -924,8 +925,8 @@ SMODS.Consumable {
                 }
             end
         end
-        if G.jokers and #G.jokers.cards >= 1 then
-            return SMODS.blueprint_effect(card, G.jokers.cards[1], context)
+        if target_joker then
+            return SMODS.blueprint_effect(card, target_joker, context)
         end
     end,
 
@@ -1010,6 +1011,75 @@ SMODS.Consumable {
     }
 }
 --Hercules Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_hercules",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 7, y = 1 },
+
+    config = {
+        extra = {
+            uses = 2,
+            max_uses = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind then 
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    for i = 1, 2 do
+                        local cardd = create_card('sdown_blessing',G.consumeables, nil, nil, nil, nil, nil, 'yma_hercules')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                    end
+                    return true
+                end)
+            }))
+        end
+        if context.end_of_round and not context.blueprint and context.main_eval then 
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            for k, v in pairs(G.consumeables.cards) do
+                if v.config.center.set == 'sdown_blessing' then
+                    SMODS.destroy_cards(v, nil, nil, true)
+                end
+            end
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "",
+        code = "RattlingSnow353",
+    }
+}
 --Identity Key
 --Key to Hell
 --Matchstick Key
