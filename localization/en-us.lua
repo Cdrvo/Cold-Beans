@@ -978,7 +978,11 @@ return {
             c_cbean_yma_identity = {
                 name = 'Identity Key',
                 text = {
-                    ''
+                    '{C:attention}Temporary{} turns into a',
+                    'random {X:cbean_series,C:white}Series{} or {X:purple,C:white}Special{}',
+                    '{C:combo}Combo{} card when blind is',
+                    '{C:attention}selected',
+                    '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
             c_cbean_yma_hell = {
