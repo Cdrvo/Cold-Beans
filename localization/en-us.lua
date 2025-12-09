@@ -1124,7 +1124,7 @@ return {
             },
         },
         yma_quest = {
-            c_cbean_yma_credit_card = {
+            q_cbean_yma_credit_card = {
                 name = {
                     "Credit Card",
                     "{C:dark_edition,s:0.7}Side Quest{}"
@@ -1135,25 +1135,57 @@ return {
                     "to create {C:attention}Credit Card{}",
                 }
             },
-            c_cbean_yma_burglar = {
+            q_cbean_yma_delayed_grat = {
+                name = {
+                    "Delayed Gratification",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Finish a round without",
+                    "using any {C:red}discards{}",
+                    "to create {C:attention}Delayed Gratification{}",
+                },
+            },
+            q_cbean_yma_burglar = {
                 name = {
                     "Burglar",
                     "{C:dark_edition,s:0.7}Side Quest{}"
                 },
                 text = {
-                    "Destroy {C:attention}2{} {C:inactive}(#1#){} cards with",
+                    "Destroy {C:attention}#1#{} {C:inactive}(#2#){} cards with",
                     "a {C:diamonds}Diamond{} suit",
                     "to create {C:attention}Burglar{}",
                 }
             },
-            c_cbean_yma_yorick = {
+            q_cbean_yma_vampire = {
+                name = {
+                    "Vampire",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Score a hand full of {C:attention}Enhanced{} cards",
+                    "to create {C:attention}Vampire{}",
+                }
+            },
+            q_cbean_yma_vagabond = {
+                name = {
+                    "Vagabond",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Play {C:attention}#1#{} {C:inactive}(#2#){} hands",
+                    "with {C:money}$4{} or less",
+                    "to create {C:attention}Vagabond{}",
+                }
+            },
+            q_cbean_yma_yorick = {
                 name = {
                     "Yorick",
                     "{C:dark_edition,s:0.7}Side Quest{}"
                 },
                 text = {
                     "Discard {C:attention}#1#{} {C:inactive}(#2#){} cards",
-                    "in a single {C:attention}Ante{}",
+                    "in a single {C:attention}round{}",
                     "to create {C:attention}Yorick{}",
                 }
             }

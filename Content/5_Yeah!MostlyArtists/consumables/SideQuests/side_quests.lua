@@ -1,8 +1,8 @@
-SMODS.Consumable {
-    set = "yma_quest",
+YMA.SideQuests.quest {
     key = "yma_credit_card",
-
+    order = 1,
     rarity = 1,
+
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_credit_card
         return {
@@ -16,6 +16,7 @@ SMODS.Consumable {
     atlas = 'yma_quest_atlas',
     pos = { x = 0, y = 0 },
     display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
 
     config = {
         extra = {
@@ -29,7 +30,6 @@ SMODS.Consumable {
             card.ability.extra.money_remaining = card.ability.extra.money
             SMODS.calculate_effect({ message = localize('k_reset') }, card)
         end
-
         if context.money_altered and context.amount < 0 then
             card.ability.extra.money_remaining = card.ability.extra.money_remaining + context.amount
             SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
@@ -42,14 +42,50 @@ SMODS.Consumable {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
-        idea = "",
-        art = "",
+        idea = "cloudzXIII",
+        art = "FirstTry",
         code = "cloudzXIII",
     }
 }
 
-SMODS.Consumable {
-    set = "yma_quest",
+
+YMA.SideQuests.quest {
+    order = 2,
+    key = "yma_delayed_grat",
+    rarity = 1,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_delayed_grat
+        return {
+            vars = {
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 0, y = 1 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.individual and not context.repetition and not context.blueprint and G.GAME.current_round.discards_used == 0 then
+            YMA.complete_quest(card, "Joker", "j_delayed_grat")
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+
+YMA.SideQuests.quest {
+    order = 3,
     key = "yma_burglar",
     rarity = 2,
 
@@ -57,18 +93,20 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS.j_burglar
         return {
             vars = {
-                card.ability.extra.diamonds
+                card.ability.extra.diamonds,
+                card.ability.extra.diamonds_left
             }
         }
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 1 },
     display_size = { w = 65, h = 65 },
-
+    pixel_size = { w = 65, h = 65 },
     config = {
         extra = {
-            diamonds = 2
+            diamonds = 2,
+            diamonds_left = 2
         }
     },
 
@@ -77,12 +115,12 @@ SMODS.Consumable {
             for _, removed_card in ipairs(context.removed) do
                 if removed_card:is_suit("Diamonds") then
                     SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
-                    card.ability.extra.diamonds = card.ability.extra.diamonds - 1
+                    card.ability.extra.diamonds_left = card.ability.extra.diamonds_left - 1
                 end
             end
 
-            if card.ability.extra.diamonds <= 0 then
-                card.ability.extra.diamonds = 2
+            if card.ability.extra.diamonds_left <= 0 then
+                card.ability.extra.diamonds_left = card.ability.extra.diamonds
                 YMA.complete_quest(card, "Joker", "j_burglar")
             end
         end
@@ -90,13 +128,104 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "Flynn",
-        art = "",
+        art = "FirstTry",
         code = "cloudzXIII",
     }
 }
 
-SMODS.Consumable {
-    set = "yma_quest",
+
+
+YMA.SideQuests.quest {
+    order = 4,
+    key = "yma_vampire",
+    rarity = 2,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_vampire
+        return {
+            vars = {
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 1, y = 0 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local enhanced = 0
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if next(SMODS.get_enhancements(scored_card)) then
+                    enhanced = enhanced + 1
+                end
+            end
+            if enhanced >= 5 then
+                enhanced = 0
+                YMA.complete_quest(card, "Joker", "j_vampire")
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+
+YMA.SideQuests.quest {
+    order = 5,
+    key = "yma_vagabond",
+    rarity = 3,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_vagabond
+        return {
+            vars = {
+                card.ability.extra.hands,
+                card.ability.extra.hands_remaining
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 2, y = 1 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            hands = 3,
+            hands_remaining = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before and G.GAME.dollars <= 4 then
+            card.ability.extra.hands_remaining = card.ability.extra.hands_remaining - 1
+            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
+
+            if card.ability.extra.hands_remaining <= 0 then
+                card.ability.extra.hands_remaining = card.ability.extra.hands
+                YMA.complete_quest(card, "Joker", "j_vagabond")
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+
+YMA.SideQuests.quest {
+    order = 6,
     key = "yma_yorick",
     rarity = 4,
 
@@ -111,9 +240,9 @@ SMODS.Consumable {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 0, y = 0 },
+    pos = { x = 3, y = 0 },
     display_size = { w = 65, h = 65 },
-
+    pixel_size = { w = 65, h = 65 },
     config = {
         extra = {
             discards = 23,
@@ -138,7 +267,9 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "Flynn",
-        art = "",
+        art = "FirstTry",
         code = "cloudzXIII",
     }
 }
+
+-- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 7)

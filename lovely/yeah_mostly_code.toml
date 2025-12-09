@@ -134,26 +134,26 @@ target = 'game.lua'
 pattern = '''
 unused_discards = 0,'''
 position = 'after'
-match_indent = true 
 payload = '''
 cbean = {
     quest_complete = false,
+    completed_quests = {},
     destroyed_jokers = {},
 },
-
 '''
+match_indent = true 
 
 # [Side Quests] Makes cardarea work with calculate function
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'
-pattern = '''        -- TARGET: add your own CardAreas for joker evaluation'''
+pattern = '''-- TARGET: add your own CardAreas for joker evaluation'''
 position = "before"
 payload = '''
     if G.side_quests then
         table.insert(t, G.side_quests)
     end
-    '''
+'''
 match_indent = true
 
 # [Side Quests] - Create a new quest upon completion
@@ -162,24 +162,34 @@ match_indent = true
 target = 'game.lua'
 pattern = '''function Game:update(dt)'''
 position = 'after'
-match_indent = true 
 payload = '''
     if G.GAME.cbean_quest_complete then
         SMODS.add_card { set = "yma_quest", area = G.side_quests }
         G.GAME.cbean_quest_complete = false
     end
 '''
+match_indent = true 
 
-# get_current_pool() (Borrowed from AutumnMoodMechanics)
+# [Side Quests] - Pool
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
-pattern = "for k, v in ipairs(_starting_pool) do"
-match_indent = true
-overwrite = false
+pattern = '''--cull the pool'''
 position = 'before'
 payload = '''
-if _legendary and _type == 'yma_quest' then
-	_starting_pool, _pool_key = SMODS.ConsumableTypes[_type].rarity_pools[-4], _type.."-4"..(_append or '')
+if _type == 'yma_quest' then
+    _starting_pool, _pool_key = G.P_CENTER_POOLS["yma_quest"], 'yma_quest'..(_append or '')
 end
 '''
+match_indent = true
+
+# [Side Quests] - Default Pool
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''elseif _type == 'Joker' then _pool[#_pool + 1] = "j_joker"'''
+position = 'before'
+payload = '''
+elseif _type == 'yma_quest' then _pool[#_pool + 1] = "q_cbean_yma_credit_card"
+'''
+match_indent = true
