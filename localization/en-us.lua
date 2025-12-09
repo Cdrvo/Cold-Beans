@@ -276,7 +276,7 @@ return {
                 text = {
                     "Redeem 1 random Voucher,",
                     "create 1 random Joker, and",
-                    "create 1 random consumeable"
+                    "create 1 random consumable"
                 }
             },
             bl_cbean_upper_colon_iota = { -- Glitchkat10 | George The Rat | N/A
@@ -285,7 +285,7 @@ return {
                     "Redeem 2 random Vouchers,",
                     "create 2 random Negative Jokers,",
                     "and create 2 random Negative",
-                    "consumeables when hand is played"
+                    "consumables when hand is played"
                 }
             },
             bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -912,7 +912,7 @@ return {
             c_cbean_yma_enigma = {
                 name = 'Enigma Key',
                 text = {
-                    '{C:attention}Consumeable{} pool is',
+                    '{C:attention}consumable{} pool is',
                     'randomized',
                     '{C:inactive}(Uses ?/? blinds)'
                 }
@@ -1011,8 +1011,8 @@ return {
                 name = 'Mirror Key',
                 text = {
                     'When blind is {C:attention}selected',
-                    'replaces {C:attention}rightmost{} consumeable',
-                    'with {C:attention}leftmost{} consumeable',
+                    'replaces {C:attention}rightmost{} consumable',
+                    'with {C:attention}leftmost{} consumable',
                     '{C:inactive}(Uses #1#/#2#)',
                 }
             },
@@ -1900,7 +1900,7 @@ return {
                 text = {
                     "Add {C:dark_edition}Negative{} to",
                     "a random {C:attention}Joker,",
-                    "and a random {C:attention}Consumeable{},",
+                    "and a random {C:attention}consumable{},",
                     "{C:red}-#1#{} hand size",
                 },
             },
@@ -1912,7 +1912,7 @@ return {
                 text = {
                     "Add {C:dark_edition}Negative{} to",
                     "a random {C:attention}Joker,",
-                    "a random {C:attention}Consumeable{} and",
+                    "a random {C:attention}consumable{} and",
                     "{C:attention}3{} random {C:attention}Playing Cards{},",
                     "in your deck,",
                     "{C:red}-#1#{} hand size",
@@ -1926,7 +1926,7 @@ return {
                 text = {
                     "Add {C:dark_edition}Negative{} to",
                     "a selected {C:attention}Joker,",
-                    "a random {C:attention}Consumeable{} and",
+                    "a random {C:attention}consumable{} and",
                     "{C:attention}3{} random {C:attention}Playing Cards{},",
                     "in your deck,",
                     "{C:red}-#1#{} hand size",
@@ -1940,7 +1940,7 @@ return {
                 text = {
                     "Add {C:dark_edition}Negative{} to",
                     "a selected {C:attention}Joker,",
-                    "a random {C:attention}Consumeable{} and",
+                    "a random {C:attention}consumable{} and",
                     "{C:attention}3{} random {C:attention}Playing Cards{},",
                     "in your deck and in your hand"
                 },
@@ -1957,7 +1957,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-            -- yma consumeable upgrades
+            -- yma consumable upgrades
 			c_cbean_yma_magician_level1 = {
                 name = {
                     "The Magician",
