@@ -28,10 +28,10 @@ SMODS.ObjectType {
     end,
     -- Rarities don't seem to work
     rarities = {
-        { key = 1, weight = 50 },
-        { key = 2, weight = 30 },
-        { key = 3, weight = 15 },
-        { key = 4, weight = 5 },
+        { key = 'Common', weight = 60 },
+        { key = 'Uncommon', weight = 25 },
+        { key = 'Rare', weight = 12 },
+        { key = 'Legendary', weight = 3 },
     },
     
 };
@@ -62,6 +62,7 @@ YMA.SideQuests.quest = SMODS.Center:extend({
     end,
     inject = function(self)
         SMODS.Center.inject(self)
+        table.insert(SMODS.ObjectTypes['yma_quest'].rarity_pools[self.rarity], self)
     end,
 })
 
