@@ -259,7 +259,7 @@ YMA.SideQuests.quest {
                 return nil, true
             end
         end
-        if context.end_of_round and not context.blueprint and not context.repetition then
+        if context.end_of_round and not context.blueprint and context.main_eval then
             card.ability.extra.discards_remaining = card.ability.extra.discards
             SMODS.calculate_effect({ message = localize('k_reset') }, card)
         end
