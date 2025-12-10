@@ -272,11 +272,13 @@ G.FUNCS.show_balley = function(e)
   G.STATE_COMPLETE = false
 
   local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
   ease_background_colour_blind(G.STATE)
   G.HP_JTEM_DELIVERY_VISIBLE = true
   sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
   G.hand.states.visible = false
   sign_sprite.states.visible = true
+  sign_text = DynaText({string = {localize('ph_alley_wager')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
 end
 
 -- Clicked back to shop
@@ -290,10 +292,12 @@ G.FUNCS.hide_balley = function(e)
 	  G.STATE = G.STATES.MAIN_STREET
 	  G.STATE_COMPLETE = false
 	  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+	  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	  ease_background_colour_blind(G.STATES.MAIN_STREET)
 	  G.HP_JTEM_DELIVERY_VISIBLE = true
 	  sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
 	  sign_sprite.states.visible = false
+	  sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
 	  show_location(G.main_street)
 
 	  hide_many_locations({G.aball, G.aball})
