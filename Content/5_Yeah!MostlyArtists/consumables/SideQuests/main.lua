@@ -6,8 +6,8 @@ YMA.SideQuests = { quest = {} }
 SMODS.Atlas({
     key = "yma_quest_atlas",
     path = "5_Yeah!MostlyArtists/side_quests.png",
-    px = 67,
-    py = 67,
+    px = 65,
+    py = 65,
 })
 
 SMODS.ObjectType {
