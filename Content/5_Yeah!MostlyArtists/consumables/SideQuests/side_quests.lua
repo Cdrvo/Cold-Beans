@@ -72,7 +72,7 @@ YMA.SideQuests.quest {
     },
 
     calculate = function(self, card, context)
-        if context.end_of_round and not context.individual and not context.repetition and not context.blueprint and G.GAME.current_round.discards_used == 0 then
+        if context.end_of_round and not context.blueprint and context.main_eval and G.GAME.current_round.discards_used == 0 then
             YMA.complete_quest(card, "Joker", "j_delayed_grat")
         end
     end,
