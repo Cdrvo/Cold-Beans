@@ -210,6 +210,13 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "yma_key_packs_atlas",
+    path = "5_Yeah!MostlyArtists/keys_packs.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.ConsumableType {
     key = "yma_keys",
     collection_rows = { 5, 6 },
