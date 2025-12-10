@@ -23,7 +23,7 @@ SMODS.Tag {
     apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
             tag:yep('+', G.C.GREEN, function()
-                local key = 'p_cbean_czodiac_mega1'
+                local key = 'p_cbean_czodiac_mega2'
                 local card = Card(
                         G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2,
                         G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2,
