@@ -103,7 +103,7 @@ SMODS.Booster {
 --}
 
 SMODS.Booster {
-    key = "czodiac_jumbo",
+    key = "czodiac_jumbo2",
     config = { extra = 5, choose = 1 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
@@ -169,7 +169,7 @@ SMODS.Booster {
 --}
 
 SMODS.Booster {
-    key = "czodiac_mega",
+    key = "czodiac_mega2",
     config = { extra = 5, choose = 2 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
