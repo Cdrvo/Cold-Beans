@@ -1222,6 +1222,38 @@ return {
                     "to win {C:money}$#5#",
                 },
             },
+            m_cbean_yma_steel_1 = {
+                name = "Steel Card",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "while this card",
+                    "stays in hand",
+                },
+            },
+            m_cbean_yma_steel_2 = {
+                name = "Steel Card",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "when this card is played",
+                    "or in hand",
+                },
+            },
+            m_cbean_yma_glass_1 = {
+                name = "Glass Card",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "{C:green}#2# in #3#{} chance to",
+                    "destroy card",
+                },
+            },
+            m_cbean_yma_glass_2 = {
+                name = "Glass Card",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "{C:green}#2# in #3#{} chance to",
+                    "destroy card",
+                },
+            },
         },
         Joker = {
 
@@ -1928,7 +1960,7 @@ return {
 			c_cbean_yma_wraith_level1 = {
                 name = {
                     "Wraith",
-                    "{C:inactive}Level 1{}"
+                    "{C:attention,s:0.7}Level 1{}"
                 },
                 text = {
                     "Creates a random",
@@ -1939,7 +1971,7 @@ return {
 			c_cbean_yma_wraith_level2 = {
                 name = {
                     "Wraith",
-                    "{C:inactive}Level 2{}"
+                    "{C:attention,s:0.7}Level 2{}"
                 },
                 text = {
                     "Creates a random",
@@ -1951,7 +1983,7 @@ return {
 			c_cbean_yma_wraith_level3 = {
                 name = {
                     "Wraith",
-                    "{C:inactive}Level 3{}"
+                    "{C:attention,s:0.7}Level 3{}"
                 },
                 text = {
                     "Creates a random",
@@ -1965,7 +1997,7 @@ return {
 			c_cbean_yma_wraith_level4 = {
                 name = {
                     "Wraith",
-                    "{C:inactive}Level 4{}"
+                    "{C:attention,s:0.7}Level 4{}"
                 },
                 text = {
                     "Creates a random",
@@ -1978,7 +2010,7 @@ return {
 			c_cbean_yma_wraith_level5 = {
                 name = {
                     "Wraith",
-                    "{C:inactive}Level 5{}"
+                    "{C:attention,s:0.7}Level 5{}"
                 },
                 text = {
                     "Creates {C:attention}2{} random",
@@ -1988,7 +2020,7 @@ return {
 			c_cbean_yma_ectoplasm_level1 = {
                 name = {
                     "Ectoplasm",
-                    "{C:inactive}Level 1{}"
+                    "{C:attention,s:0.7}Level 1{}"
                 },
                 text = {
                     "Add {C:dark_edition}Negative{} to",
@@ -1999,7 +2031,7 @@ return {
 			c_cbean_yma_ectoplasm_level2 = {
                 name = {
                     "Ectoplasm",
-                    "{C:inactive}Level 2{}"
+                    "{C:attention,s:0.7}Level 2{}"
                 },
                 text = {
                     "Add {C:dark_edition}Negative{} to",
@@ -2011,7 +2043,7 @@ return {
 			c_cbean_yma_ectoplasm_level3 = {
                 name = {
                     "Ectoplasm",
-                    "{C:inactive}Level 3{}"
+                    "{C:attention,s:0.7}Level 3{}"
                 },
                 text = {
                     "Add {C:dark_edition}Negative{} to",
@@ -2025,7 +2057,7 @@ return {
 			c_cbean_yma_ectoplasm_level4 = {
                 name = {
                     "Ectoplasm",
-                    "{C:inactive}Level 4{}"
+                    "{C:attention,s:0.7}Level 4{}"
                 },
                 text = {
                     "Add {C:dark_edition}Negative{} to",
@@ -2039,7 +2071,7 @@ return {
 			c_cbean_yma_ectoplasm_level5 = {
                 name = {
                     "Ectoplasm",
-                    "{C:inactive}Level 5{}"
+                    "{C:attention,s:0.7}Level 5{}"
                 },
                 text = {
                     "Add {C:dark_edition}Negative{} to",
@@ -2065,7 +2097,7 @@ return {
 			c_cbean_yma_magician_level1 = {
                 name = {
                     "The Magician",
-                    "{C:inactive}Level 1{}"
+                    "{C:attention,s:0.7}Level 1{}"
                 },
                 text = {
                     "Enhances {C:attention}#1#{}",
@@ -2076,7 +2108,7 @@ return {
 			c_cbean_yma_magician_level2 = {
                 name = {
                     "The Magician",
-                    "{C:inactive}Level 2{}"
+                    "{C:attention,s:0.7}Level 2{}"
                 },
                 text = {
                     "Enhances {C:attention}#1#{}",
@@ -2087,7 +2119,7 @@ return {
 			c_cbean_yma_magician_level3 = {
                 name = {
                     "The Magician",
-                    "{C:inactive}Level 3{}"
+                    "{C:attention,s:0.7}Level 3{}"
                 },
                 text = {
                     "Enhances {C:attention}#1#{}",
@@ -2098,7 +2130,7 @@ return {
 			c_cbean_yma_magician_level4 = {
                 name = {
                     "The Magician",
-                    "{C:inactive}Level 4{}"
+                    "{C:attention,s:0.7}Level 4{}"
                 },
                 text = {
                     "Enhances {C:attention}#1#{}",
@@ -2110,7 +2142,7 @@ return {
 			c_cbean_yma_magician_level5 = {
                 name = {
                     "The Magician",
-                    "{C:inactive}Level 5{}"
+                    "{C:attention,s:0.7}Level 5{}"
                 },
                 text = {
                     "Enhances {C:attention}#1#{}",
@@ -2119,60 +2151,180 @@ return {
                     "Created {C:attention}Lucky cards{} have {C:green}triple odds{}",
                 },
             },
+			c_cbean_yma_chariot_level1 = {
+                name = {
+                    "The Chariot",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_chariot_level2 = {
+                name = {
+                    "The Chariot",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_chariot_level3 = {
+                name = {
+                    "The Chariot",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_chariot_level4 = {
+                name = {
+                    "The Chariot",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Steel Cards{} give",
+                    "{X:mult,C:white}+X0.5{} more Mult",
+                },
+            },
+			c_cbean_yma_chariot_level5 = {
+                name = {
+                    "The Chariot",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Steel Cards{} give",
+                    "{X:mult,C:white}+X0.5{} more Mult and",
+                    "work {C:attention}when played{}",
+                },
+            },
+			c_cbean_yma_justice_level1 = {
+                name = {
+                    "Justice",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_justice_level2 = {
+                name = {
+                    "Justice",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_justice_level3 = {
+                name = {
+                    "Justice",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_justice_level4 = {
+                name = {
+                    "Justice",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Glass Cards{} are",
+                    "{C:attention}half as likely{} to {C:attention}break"
+                },
+            },
+			c_cbean_yma_justice_level5 = {
+                name = {
+                    "Justice",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Glass Cards{} are",
+                    "{C:attention}half as likely{} to {C:attention}break",
+                    "and give {X:mult,C:white}+X1{} more Mult"
+                },
+            },
 			c_cbean_yma_hermit_level1 = {
                 name = {
                     "The Hermit",
-                    "{C:inactive}Level 1{}"
+                    "{C:attention,s:0.7}Level 1{}"
                 },
                 text = {
                     "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-                    "{C:inactive}(Max of $#3#){}"
+                    "{C:inactive}(Max of $#1#){}"
                 },
             },
 			c_cbean_yma_hermit_level2 = {
                 name = {
                     "The Hermit",
-                    "{C:inactive}Level 2{}"
+                    "{C:attention,s:0.7}Level 2{}"
                 },
                 text = {
                     "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-                    "{C:inactive}(Max of $#3#){}"
+                    "{C:inactive}(Max of $#1#){}"
                 },
             },
 			c_cbean_yma_hermit_level3 = {
                 name = {
                     "The Hermit",
-                    "{C:inactive}Level 3{}"
+                    "{C:attention,s:0.7}Level 3{}"
                 },
                 text = {
                     "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-                    "{C:inactive}(Max of $#3#){}"
+                    "{C:inactive}(Max of $#1#){}"
                 },
             },
 			c_cbean_yma_hermit_level4 = {
                 name = {
                     "The Hermit",
-                    "{C:inactive}Level 4{}"
+                    "{C:attention,s:0.7}Level 4{}"
                 },
                 text = {
                     "Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-                    "{C:inactive}(Max of $#3#){}"
+                    "{C:inactive}(Max of $#1#){}"
                 },
             },
 			c_cbean_yma_hermit_level5 = {
                 name = {
                     "The Hermit",
-                    "{C:inactive}Level 5{}"
+                    "{C:attention,s:0.7}Level 5{}"
                 },
                 text = {
                     "Earn {C:money}$#2#{}, then {C:money}triples{} it",
-                    "{C:inactive}(Max of $#3#){}"
+                    "{C:inactive}(Max of $#1#){}"
                 },
             },
 			c_cbean_yma_wheel_of_fortune_level1 = {
                 name = {
                     "The Wheel of Fortune",
-                    "{C:inactive}Level 1{}"
+                    "{C:attention,s:0.7}Level 1{}"
                 },
                 text = {
                     "{C:green}#1# in #2#{} chance to add",
@@ -2184,7 +2336,7 @@ return {
 			c_cbean_yma_wheel_of_fortune_level2 = {
                 name = {
                     "The Wheel of Fortune",
-                    "{C:inactive}Level 2{}"
+                    "{C:attention,s:0.7}Level 2{}"
                 },
                 text = {
                     "{C:green}#1# in #2#{} chance to add",
@@ -2196,7 +2348,7 @@ return {
 			c_cbean_yma_wheel_of_fortune_level3 = {
                 name = {
                     "The Wheel of Fortune",
-                    "{C:inactive}Level 3{}"
+                    "{C:attention,s:0.7}Level 3{}"
                 },
                 text = {
                     "Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
@@ -2207,7 +2359,7 @@ return {
 			c_cbean_yma_wheel_of_fortune_level4 = {
                 name = {
                     "The Wheel of Fortune",
-                    "{C:inactive}Level 4{}"
+                    "{C:attention,s:0.7}Level 4{}"
                 },
                 text = {
                     "Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
@@ -2218,7 +2370,7 @@ return {
 			c_cbean_yma_wheel_of_fortune_level5 = {
                 name = {
                     "The Wheel of Fortune",
-                    "{C:inactive}Level 5{}"
+                    "{C:attention,s:0.7}Level 5{}"
                 },
                 text = {
                     "Adds any edition",

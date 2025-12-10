@@ -205,11 +205,77 @@ function G.UIDEF.use_and_sell_buttons(card)
 end
 
 local upgrading = false
+local base_consumables = {
+    "c_magician",
+    "c_hermit",
+    "c_wheel_of_fortune",
+    "c_wraith",
+    "c_chariot",
+    "c_justice",
+    "c_ectoplasm"
+}
+local level1_consumables = {
+    "c_cbean_yma_magician_level1",
+    "c_cbean_yma_hermit_level1",
+    "c_cbean_yma_wheel_of_fortune_level1",
+    "c_cbean_yma_wraith_level1",
+    "c_cbean_yma_chariot_level1",
+    "c_cbean_yma_justice_level1",
+    "c_cbean_yma_ectoplasm_level1"
+}
+local level2_consumables = {
+    "c_cbean_yma_magician_level2",
+    "c_cbean_yma_hermit_level2",
+    "c_cbean_yma_wheel_of_fortune_level2",
+    "c_cbean_yma_wraith_level2",
+    "c_cbean_yma_chariot_level2",
+    "c_cbean_yma_justice_level2",
+    "c_cbean_yma_ectoplasm_level2"
+}
+local level3_consumables = {
+    "c_cbean_yma_magician_level3",
+    "c_cbean_yma_hermit_level3",
+    "c_cbean_yma_wheel_of_fortune_level3",
+    "c_cbean_yma_wraith_level3",
+    "c_cbean_yma_chariot_level3",
+    "c_cbean_yma_justice_level3",
+    "c_cbean_yma_ectoplasm_level3"
+}
+local level4_consumables = {
+    "c_cbean_yma_magician_level4",
+    "c_cbean_yma_hermit_level4",
+    "c_cbean_yma_wheel_of_fortune_level4",
+    "c_cbean_yma_wraith_level4",
+    "c_cbean_yma_chariot_level4",
+    "c_cbean_yma_justice_level4",
+    "c_cbean_yma_ectoplasm_level4"
+}
+local level5_consumables = {
+    "c_cbean_yma_magician_level5",
+    "c_cbean_yma_hermit_level5",
+    "c_cbean_yma_wheel_of_fortune_level5",
+    "c_cbean_yma_wraith_level5",
+    "c_cbean_yma_chariot_level5",
+    "c_cbean_yma_justice_level5",
+    "c_cbean_yma_ectoplasm_level5"
+}
 
 G.FUNCS.can_upgrade = function(e)
     if to_big(G.GAME.dollars - G.GAME.bankrupt_at) >= to_big(5) and not upgrading and not G.CONTROLLER.locked then
-        e.config.colour = G.C.GREEN
-        e.config.button = "upgrade"
+        for i = 1, #base_consumables do
+            if G.consumeables.highlighted[1].config.center.key == base_consumables[i]
+            or G.consumeables.highlighted[1].config.center.key == level1_consumables[i]
+            or G.consumeables.highlighted[1].config.center.key == level2_consumables[i]
+            or G.consumeables.highlighted[1].config.center.key == level3_consumables[i]
+            or G.consumeables.highlighted[1].config.center.key == level4_consumables[i] then
+                e.config.colour = G.C.GREEN
+                e.config.button = "upgrade"
+                break
+            else
+                e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+                e.config.button = nil
+            end
+        end
     else
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
@@ -221,7 +287,23 @@ G.FUNCS.upgrade = function(e)
     local ref = e.config.ref_table
     --ease_dollars(-ref.ability.upgradecost)
     ease_dollars(-5)
-    print(G.consumeables.highlighted[1].config.center.key)
-    SMODS.add_card({ set = 'Consumeable', key = "c_cbean_yma_magician_level1" })
+    for i = 1, #base_consumables do
+        if G.consumeables.highlighted[1].config.center.key == base_consumables[i] then
+            SMODS.add_card({ set = 'Consumeable', key = level1_consumables[i] })
+            break
+        elseif G.consumeables.highlighted[1].config.center.key == level1_consumables[i] then
+            SMODS.add_card({ set = 'Consumeable', key = level2_consumables[i] })
+            break
+        elseif G.consumeables.highlighted[1].config.center.key == level2_consumables[i] then
+            SMODS.add_card({ set = 'Consumeable', key = level3_consumables[i] })
+            break
+        elseif G.consumeables.highlighted[1].config.center.key == level3_consumables[i] then
+            SMODS.add_card({ set = 'Consumeable', key = level4_consumables[i] })
+            break
+        elseif G.consumeables.highlighted[1].config.center.key == level4_consumables[i] then
+            SMODS.add_card({ set = 'Consumeable', key = level5_consumables[i] })
+            break
+        end
+    end
     G.consumeables.highlighted[1]:start_dissolve(nil, true)
 end

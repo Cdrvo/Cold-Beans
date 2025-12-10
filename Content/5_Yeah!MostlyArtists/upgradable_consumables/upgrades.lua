@@ -10,6 +10,9 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -21,6 +24,9 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -34,6 +40,9 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -45,6 +54,9 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -58,6 +70,9 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -65,7 +80,6 @@ SMODS.Consumable {
 SMODS.Enhancement {
     key = 'yma_lucky_1',
     pos = { x = 4, y = 1 },
-    -- We can't use 'mult' or 'p_dollars' outside of 'extra' here because they would be scored unconditionally if we did
     config = { extra = { mult = 20, dollars = 20, mult_odds = 5, dollars_odds = 15 } },
     loc_vars = function(self, info_queue, card)
         local mult_numerator, mult_denominator = SMODS.get_probability_vars(card, 2, card.ability.extra.mult_odds,
@@ -88,13 +102,15 @@ SMODS.Enhancement {
             return ret
         end
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
 SMODS.Enhancement {
     key = 'yma_lucky_2',
     pos = { x = 4, y = 1 },
-    -- We can't use 'mult' or 'p_dollars' outside of 'extra' here because they would be scored unconditionally if we did
     config = { extra = { mult = 20, dollars = 20, mult_odds = 5, dollars_odds = 15 } },
     loc_vars = function(self, info_queue, card)
         local mult_numerator, mult_denominator = SMODS.get_probability_vars(card, 3, card.ability.extra.mult_odds,
@@ -117,6 +133,233 @@ SMODS.Enhancement {
             return ret
         end
     end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- the king's chariot cannot be stopped
+SMODS.Consumable {
+    key = 'yma_chariot_level1',
+    set = 'Tarot',
+    pos = { x = 7, y = 0 },
+    config = { max_highlighted = 2, mod_conv = 'm_steel' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_chariot_level2',
+    set = 'Tarot',
+    pos = { x = 7, y = 0 },
+    config = { max_highlighted = 3, mod_conv = 'm_steel' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_chariot_level3',
+    set = 'Tarot',
+    pos = { x = 7, y = 0 },
+    config = { max_highlighted = 4, mod_conv = 'm_steel' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_chariot_level4',
+    set = 'Tarot',
+    pos = { x = 7, y = 0 },
+    config = { max_highlighted = 4, mod_conv = 'm_cbean_yma_steel_1' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_chariot_level5',
+    set = 'Tarot',
+    pos = { x = 7, y = 0 },
+    config = { max_highlighted = 4, mod_conv = 'm_cbean_yma_steel_2' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- steel cards for the chariot upgrades
+SMODS.Enhancement {
+    key = 'yma_steel_1',
+    pos = { x = 6, y = 1 },
+    config = { h_x_mult = 2 },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.h_x_mult } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Enhancement {
+    key = 'yma_steel_2',
+    pos = { x = 6, y = 1 },
+    config = { h_x_mult = 2, x_mult = 2 },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.h_x_mult, card.ability.x_mult } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- just ice
+SMODS.Consumable {
+    key = 'yma_justice_level1',
+    set = 'Tarot',
+    pos = { x = 8, y = 0 },
+    config = { max_highlighted = 2, mod_conv = 'm_glass' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_justice_level2',
+    set = 'Tarot',
+    pos = { x = 8, y = 0 },
+    config = { max_highlighted = 3, mod_conv = 'm_glass' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_justice_level3',
+    set = 'Tarot',
+    pos = { x = 8, y = 0 },
+    config = { max_highlighted = 4, mod_conv = 'm_glass' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_justice_level4',
+    set = 'Tarot',
+    pos = { x = 8, y = 0 },
+    config = { max_highlighted = 4, mod_conv = 'm_cbean_yma_glass_1' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_justice_level5',
+    set = 'Tarot',
+    pos = { x = 8, y = 0 },
+    config = { max_highlighted = 4, mod_conv = 'm_cbean_yma_glass_2' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- glass cards for justice
+SMODS.Enhancement {
+    key = 'yma_glass_1',
+    pos = { x = 5, y = 1 },
+    config = { Xmult = 2, extra = { odds = 8 } },
+    shatters = true,
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_glass')
+        return { vars = { card.ability.Xmult, numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
+            SMODS.pseudorandom_probability(card, 'vremade_glass', 1, card.ability.extra.odds) then
+            card.glass_trigger = true -- SMODS addition
+            return { remove = true }
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Enhancement {
+    key = 'yma_glass_2',
+    pos = { x = 5, y = 1 },
+    config = { Xmult = 3, extra = { odds = 8 } },
+    shatters = true,
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_glass')
+        return { vars = { card.ability.Xmult, numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
+            SMODS.pseudorandom_probability(card, 'vremade_glass', 1, card.ability.extra.odds) then
+            card.glass_trigger = true -- SMODS addition
+            return { remove = true }
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -127,7 +370,7 @@ SMODS.Consumable {
     pos = { x = 9, y = 0 },
     config = { extra = { max = 20, dollars = 5 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        return { vars = { card.ability.extra.max, card.ability.extra.dollars } }
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -147,6 +390,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -178,6 +424,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -207,6 +456,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -238,6 +490,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -267,6 +522,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -327,6 +585,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -385,6 +646,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -406,6 +670,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -425,6 +692,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -442,6 +712,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -467,6 +740,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -497,6 +773,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -544,6 +823,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -589,6 +871,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.cards < G.jokers.config.card_limit or card.area == G.jokers
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -631,6 +916,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -664,6 +952,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -696,6 +987,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
@@ -733,6 +1027,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -767,6 +1064,9 @@ SMODS.Consumable {
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
     end,
+    in_pool = function(self, args)
+        return false
+    end,
     no_collection = true,
 }
 
@@ -797,6 +1097,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
     end,
     no_collection = true,
 }
