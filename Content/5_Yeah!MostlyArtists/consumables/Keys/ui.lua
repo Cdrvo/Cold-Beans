@@ -10,8 +10,10 @@ G.FUNCS.show_yma_main_street = function(e)
   show_location(G.main_street)
 
   local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
   ease_background_colour_blind(G.STATE)
   sign_sprite.states.visible = false
+  sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
   cached_hand_state = G.hand.states.visible
   G.hand.states.visible = false
 end
@@ -25,9 +27,11 @@ G.FUNCS.hide_yma_main_street = function(e)
     show_location(G.shop)
 
 	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATES.SHOP)
 	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
     sign_sprite.states.visible = true
+    sign_text = DynaText({string = {localize('ph_improve_run')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
 end
 
 
@@ -40,10 +44,12 @@ G.FUNCS.show_yma_graveyard = function(e)
   
 
   local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
   ease_background_colour_blind(G.STATE)
   sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
   G.hand.states.visible = false
   sign_sprite.states.visible = true
+  sign_text = DynaText({string = {localize('ph_graveyard')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
   show_location(G.graveyard)
 end
 
@@ -54,8 +60,11 @@ G.FUNCS.hide_yma_graveyard = function(e)
 	G.STATE_COMPLETE = false
     
 	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATES.MAIN_STREET)
 	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    sign_sprite.states.visible = false
+    sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     show_location(G.main_street)
 end
 
@@ -158,16 +167,16 @@ function G.UIDEF.yma_main_street()
     
     G.yma_mainstreet_alleyway = UIBox{
         definition = G.UIDEF.alleysprite(),
-        config = {align='cm', offset = {x=0.1,y=-0.4}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+        config = {align='cm', offset = {x=0.1,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
     G.yma_mainstreet_graveyard = UIBox{
         definition = G.UIDEF.gravesprite(),
-        config = {align='cm', offset = {x=0,y=-0.4}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+        config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
 
     local table = {}
     table[#table+1] = {
-        n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, minh = 3.0, emboss = 0.05}, nodes={
+        n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, minh = 1.5, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_alleyway}},
         }}
     if G.yma_mainstreet_graveyard.states.visible then
@@ -191,7 +200,7 @@ end
 
 function G.UIDEF.alleysprite()
   
-	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.35, (71*0.057)*0.35, G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"], { x = 0, y = 0 }) or nil
+	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"], { x = 0, y = 0 }) or nil
 
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_alley}},
@@ -201,7 +210,7 @@ end
 
 function G.UIDEF.gravesprite()
   
-	local sprite_grave = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.35, (71*0.057)*0.35, G.ANIMATION_ATLAS["shop_sign"], { x = 0, y = 0 }) or nil
+	local sprite_grave = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["shop_sign"], { x = 0, y = 0 }) or nil
 
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_grave}},

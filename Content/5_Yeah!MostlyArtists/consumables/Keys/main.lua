@@ -101,8 +101,26 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
     delay(0.5)
 end
 
+function yma_state_function_events(e)
+    local text = localize('k_cbean_unique_ex')
+    if G.STATE == G.STATES.GRAVEYARD then
+      text=localize('k_cbean_aexit_ex')
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_graveyard'
+      return true
+    end
+    if e.children[1].config.text ~= text then
+	    e.children[1].config.text = text
+	    if not (G.STATE == G.STATES.SELECTING_HAND) then
+		    e.children[1].UIBox:recalculate()
+	    end
+    end
+	return false
+end
+
+
 function yma_can_access_location(location)
-    if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1)and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+    if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
         return true
     end
 end
