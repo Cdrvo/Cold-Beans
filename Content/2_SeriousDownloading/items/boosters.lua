@@ -316,7 +316,7 @@ SMODS.Booster {
     cost = 8,
     atlas = "blessingpack_atlas",
     weight = 0.75,
-    pos = { x = 1, y = 1 },
+    pos = { x = 2, y = 1 },
     draw_hand = true,
     kind = "sdown_blessing",
     select_card = "consumeables",
