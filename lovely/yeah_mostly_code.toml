@@ -198,19 +198,6 @@ payload = '''
 '''
 match_indent = true 
 
-# [Side Quests] - Pool
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''--cull the pool'''
-position = 'before'
-payload = '''
-if _type == 'yma_quest' then
-    _starting_pool, _pool_key = G.P_CENTER_POOLS["yma_quest"], 'yma_quest'..(_append or '')
-end
-'''
-match_indent = true
-
 # [Side Quests] - Default Pool
 [[patches]]
 [patches.pattern]
