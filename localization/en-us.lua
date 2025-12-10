@@ -2244,6 +2244,8 @@ return {
             k_strengthened_ex="Strengthened!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
             k_cbean_sdown_blessingpack = "Pantheon Pack",
+            ph_alley_wager = 'Care to make a wager?',
+            ph_graveyard = 'Where the dead sleeps',
             k_cbean_yma_keypack = "Key Pack",
             cbean_0chill_blind_weakend = "Blind Weakend!",
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
