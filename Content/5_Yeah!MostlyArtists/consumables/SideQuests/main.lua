@@ -129,9 +129,12 @@ YMA.add_random_quest = function()
     end
 end
 
-YMA.complete_quest = function(card, set, key)
+YMA.complete_quest = function(card, set, key, add_card)
+    add_card = (add_card == nil) and true or add_card
     G.GAME.cbean.completed_quests[#G.GAME.cbean.completed_quests+1] = card.config.center.key
-    SMODS.add_card { set = set, key = key }
+    if add_card then
+        SMODS.add_card { set = set, key = key }
+    end
     SMODS.calculate_effect({ message = "Complete!", colour = G.C.GREEN }, card)
     SMODS.destroy_cards(card)
     G.E_MANAGER:add_event(Event({

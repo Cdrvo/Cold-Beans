@@ -225,7 +225,67 @@ YMA.SideQuests.quest {
 }
 
 YMA.SideQuests.quest {
-    order = 6,
+    order = 5,
+    key = "yma_invisible",
+    rarity = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 2, y = 0 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            cup_won = false
+        }
+    },
+    
+    calculate = function(self, card, context)
+        if G.num and G.MODE and G.cups and #G.cups and G.GAME then
+            if G.MODE >= 3 and G.STATE_CHOOSEBALL then
+                for key, ad in pairs(G.cups) do
+                    if G.cups[key].states.collide.is then
+                        if G.cups[key].ball then
+                            card.ability.extra.cup_won = true
+                        end
+                    end
+                end
+            end
+        end
+        if card.ability.extra.cup_won then
+            card.ability.extra.cup_won = false
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    local leg = create_card('Joker',G.jokers, true, nil, nil, nil, nil, 'yma_ghost')
+                    leg:set_edition({ negative = true })
+                    leg:add_to_deck()
+                    leg.ability = leg.ability or {}
+                    leg.ability.yma_quest_temporary = true
+                    G.jokers:emplace(leg)
+                return true
+                end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+
+
+YMA.SideQuests.quest {
+    order = 7,
     key = "yma_yorick",
     rarity = 4,
 
@@ -272,4 +332,61 @@ YMA.SideQuests.quest {
     }
 }
 
--- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 7)
+YMA.SideQuests.quest {
+    order = 8,
+    key = "yma_wheel",
+    rarity = 2,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_wheel_of_fortune
+        return {
+            vars = {
+                card.ability.extra.rounds_remaining
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 1, y = 0 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            rounds_remaining = 3,
+            rounds = 3
+        }
+    },
+
+    calculate = function(self, card, context)
+        if card.ability.extra.rounds_remaining > 0 and context.pseudorandom_result and context.result and context.identifier == "wheel_of_fortune" then
+            card.ability.extra.rounds_remaining = card.ability.extra.rounds
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = function()
+                    local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+                    local eligible_card = pseudorandom_element(editionless_jokers, 'yma_wheel_of_fortune')
+                    eligible_card:set_edition('e_negative', true)
+                    return true
+                end
+            }))
+            YMA.complete_quest(card, nil, nil, false)
+        end
+        if card.ability.extra.rounds_remaining <= 0 then
+            YMA.complete_quest(card, nil, nil, false)
+        end
+        if context.end_of_round and context.main_eval and not context.blueprint then
+            card.ability.extra.rounds_remaining = card.ability.extra.rounds_remaining - 1
+            return {
+                message = (card.ability.extra.rounds_remaining .. "!"),
+                colour = G.C.FILTER
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+-- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 9)

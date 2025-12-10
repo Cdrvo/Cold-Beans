@@ -1172,6 +1172,32 @@ return {
                     "to create {C:attention}Vampire{}",
                 }
             },
+            q_cbean_yma_wheel = {
+                name = {
+                    "Jackpot",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "a random Joker",
+                    "when a {C:attention}Wheel of Fortune{}",
+                    "{C:green}successfully{} triggers",
+                    "{C:inactive}(Expires in {C:attention}#1#{} {C:inactive}rounds){}"
+                }
+            },
+            q_cbean_yma_invisible = {
+                name = {
+                    "Invisible",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Win a game of {C:attention}Cups{}",
+                    "in the {C:attention}Back Alley{}",
+                    "while having bet at least {C:money}$60{}",
+                    "to create a temporary",
+                    "{C:dark_edition}Negative{} {C:legendary,E:1}Legendary{} Joker"
+                }
+            },
             q_cbean_yma_vagabond = {
                 name = {
                     "Vagabond",
