@@ -2250,7 +2250,7 @@ return {
             k_yma_keys = 'Keys',
             b_yma_keys_cards = 'Keys',
             k_yma_key_plus_use = 'Use',
-            k_cbean_yma_graveyard = 'Grave',
+            k_cbean_yma_street = 'Street',
             k_yma_key_broke = 'Broken',
             k_yma_key_faded = 'Faded',
 			k_cbean_burned="Burned!",
