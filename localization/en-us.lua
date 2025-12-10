@@ -1701,11 +1701,12 @@ return {
 					"{C:attention}releated{} Joker"
                 }
             },
+            --Zodiacs
             p_cbean_czodiac_normal1 = {
                 name = "Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
             },
@@ -1713,7 +1714,7 @@ return {
                 name = "Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
             },
@@ -1721,15 +1722,15 @@ return {
                 name = "Jumbo Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
             },
-            p_cbean_czodiac_jumbo2 = {
+            p_cbean_czodiac_jumbo = {
                 name = "Jumbo Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
             },
@@ -1737,23 +1738,24 @@ return {
                 name = "Mega Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
             },
-            p_cbean_czodiac_mega2 = {
+            p_cbean_czodiac_mega = {
                 name = "Mega Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Chinese Zodiac{} cards to",
+                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
                     "be used immediately"
                 }
             },
+            --Blessings
             p_cbean_blessing_normal1 = {
                 name = "Pantheon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
                     "take"
                 }
             },
@@ -1761,7 +1763,7 @@ return {
                 name = "Pantheon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
                     "take"
                 }
             },
@@ -1769,7 +1771,7 @@ return {
                 name = "Jumbo Pantheon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
                     "take"
                 }
             },
@@ -1777,7 +1779,7 @@ return {
                 name = "Mega Pantheon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:attention}Blessing{} cards",
+                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
                     "take"
                 }
             },
@@ -1787,7 +1789,72 @@ return {
                     "This card can be used",
                     "to start a combo"
                 },
-            }
+            },
+            --Keys
+            p_cbean_yma_key_normal1 = {
+                name = "Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_normal2 = {
+                name = "Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_normal3 = {
+                name = "Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_normal4 = {
+                name = "Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_jumbo1 = {
+                name = "Jumbo Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_jumbo2 = {
+                name = "Jumbo Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_mega1 = {
+                name = "Mega Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_yma_key_mega2 = {
+                name = "Mega Key Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+                    "be used immediately"
+                }
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
