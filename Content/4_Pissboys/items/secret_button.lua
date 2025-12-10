@@ -20,8 +20,8 @@ G.FUNCS.can_switch = function(e)
 	  text=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_balley'
-  elseif yma_state_function_events(e) then
-      yma_state_function_events(e) 
+  elseif yma_state_function_events(e, text) then
+      yma_state_function_events(e, text) 
   elseif G.STATE == G.STATES.SELECTING_HAND and G.PISSMAX and G.PISSMAX > 0 and G.hand.highlighted and #G.hand.highlighted > 0 then
 			text=localize('k_cbean_piss_ex')
 			e.config.button = 'piss_in_hand'
