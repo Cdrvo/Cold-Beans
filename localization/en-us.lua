@@ -1726,7 +1726,7 @@ return {
                     "be used immediately"
                 }
             },
-            p_cbean_czodiac_jumbo = {
+            p_cbean_czodiac_jumbo2 = {
                 name = "Jumbo Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
@@ -1742,7 +1742,7 @@ return {
                     "be used immediately"
                 }
             },
-            p_cbean_czodiac_mega = {
+            p_cbean_czodiac_mega2 = {
                 name = "Mega Zodiac Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
@@ -2244,6 +2244,7 @@ return {
             k_strengthened_ex="Strengthened!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
             k_cbean_sdown_blessingpack = "Pantheon Pack",
+            k_cbean_yma_keypack = "Key Pack",
             cbean_0chill_blind_weakend = "Blind Weakend!",
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
             k_yma_keys = 'Keys',
