@@ -858,7 +858,10 @@ return {
             c_cbean_yma_anywhere = {
                 name = 'Anywhere Key',
                 text = {
-                    ''
+                    '{C:attention}Allows{} access to any',
+                    '{C:attention}location{} otherwise {C:red}blocked{}',
+                    'off by another {C:yma_keys}Key',
+                    '{C:inactive}(Uses #1#/#2# shops)',
                 }
             },
             c_cbean_yma_bitey = {
@@ -984,10 +987,11 @@ return {
                     '{C:inactive}(Uses #1#/#2# blinds)'
                 }
             },
-            c_cbean_yma_hell = {
+            c_cbean_yma_key_to_hell = {
                 name = 'Key to Hell',
                 text = {
-                    ''
+                    '{C:attention}Grants{} access to {C:red}Hell',
+                    '{C:inactive}(Uses #1#/#2# shops)',
                 }
             },
             c_cbean_yma_matchstick = {
@@ -1050,7 +1054,8 @@ return {
             c_cbean_yma_reali = {
                 name = 'Reali Key',
                 text = {
-                    ''
+                    '{C:attention}Grants{} access to {C:dark_edition}Dreamland',
+                    '{C:inactive}(Uses #1#/#2# shops)',
                 }
             },
             c_cbean_yma_shadow = {
