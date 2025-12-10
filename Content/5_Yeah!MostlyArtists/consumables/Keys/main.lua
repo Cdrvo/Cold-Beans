@@ -101,6 +101,12 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
     delay(0.5)
 end
 
+function yma_can_access_location(location)
+    if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1)and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+        return true
+    end
+end
+
 function yma_add_tag(tag, event, silent)
   local func = function()
     add_tag(type(tag) == 'string' and Tag(tag) or tag)

@@ -70,7 +70,7 @@ function update_main_street()
         }
         G.main_street:recalculate()
         if G.yma_mainstreet_graveyard then
-            if #SMODS.find_card("c_cbean_yma_moon") >= 1 and G.GAME and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+            if yma_can_access_location('graveyard') then
                 G.yma_mainstreet_graveyard.states.visible = true
             else
                 G.yma_mainstreet_graveyard.states.visible = false
@@ -148,7 +148,7 @@ function Controller:L_cursor_press(x, y)
 	if G.STATE == G.STATES.MAIN_STREET and G.main_street and G.GAME then
         if G.yma_mainstreet_alleyway and G.yma_mainstreet_alleyway.states.collide.is then
             G.FUNCS.show_balley()
-        elseif G.yma_mainstreet_graveyard and G.yma_mainstreet_graveyard.states.collide.is and #SMODS.find_card("c_cbean_yma_moon") >= 1 and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+        elseif G.yma_mainstreet_graveyard and G.yma_mainstreet_graveyard.states.collide.is and yma_can_access_location('graveyard') then
             G.FUNCS.show_yma_graveyard()
 		end
 	end
