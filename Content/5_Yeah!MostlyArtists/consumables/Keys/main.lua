@@ -101,19 +101,40 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
     delay(0.5)
 end
 
+function yma_hell_upgrade_card(card)
+	local upgrades_weight = {['perma_bonus'] = {weight = 10, amt = 3}, ['perma_mult'] = {weight = 4, amt = 1}, ['perma_h_chips'] = {weight = 7, amt = 3}, ['perma_h_mult'] = {weight = 3.8, amt = 2}, ['perma_p_dollars'] = {weight = 2, amt = 1}, ['perma_h_dollars'] = {weight = 3.6, amt = 1}, ['perma_x_chips'] = {weight = 3.6, amt = 0.1}, ['perma_x_mult'] = {weight = 2.2, amt = 0.1}, ['perma_h_x_chips'] = {weight = 2.2, amt = 0.1}, ['perma_h_x_mult'] = {weight = 1, amt = 0.1}, ['perma_repetitions'] = {weight = 0.1, amt = 1}}
+    local total_rate = 0
+    for k, v in pairs(upgrades_weight) do
+        total_rate = total_rate + v.weight
+    end
+    local polled_rate = pseudorandom(pseudoseed('huc'..G.GAME.round_resets.ante))*total_rate
+    local check_rate = 0
+    
+    local rates = {}
+    for k, v in pairs(upgrades_weight) do
+        rates[#rates+1] = {type = k, val = v.weight, amt = v.amt}
+    end
+    for _, v in ipairs(rates) do
+        if polled_rate > check_rate and polled_rate <= check_rate + v.val then
+            local key = v.type
+            card.ability[key] = card.ability[key] or 0
+            card.ability[key] = card.ability[key] + v.amt
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+            return
+        end
+        check_rate = check_rate + v.val
+    end
+end
+
 function yma_state_function_events(e)
-    local text = localize('k_cbean_unique_ex')
     if G.STATE == G.STATES.GRAVEYARD then
-      text=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_yma_graveyard'
       return true
-    end
-    if e.children[1].config.text ~= text then
-	    e.children[1].config.text = text
-	    if not (G.STATE == G.STATES.SELECTING_HAND) then
-		    e.children[1].UIBox:recalculate()
-	    end
+    elseif G.STATE == G.STATES.HELL then
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_hell'
+      return true
     end
 	return false
 end
@@ -121,6 +142,9 @@ end
 
 function yma_can_access_location(location)
     if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+        return true
+    end
+    if location == 'hell' and (#SMODS.find_card("c_cbean_yma_key_to_hell") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) then
         return true
     end
 end
@@ -240,6 +264,13 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas {
+  key = "yma_hell_sign",
+  path = "5_Yeah!MostlyArtists/hell_sign.png",
+  px = 113,py = 57,
+  frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
 
 SMODS.ConsumableType {
     key = "yma_keys",

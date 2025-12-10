@@ -1,5 +1,6 @@
 G.STATES.MAIN_STREET = 24783948327
 G.STATES.GRAVEYARD = 1366468461
+G.STATES.HELL = 666384372666
 
 G.FUNCS.show_yma_main_street = function(e)
   stop_use()
@@ -14,6 +15,7 @@ G.FUNCS.show_yma_main_street = function(e)
   ease_background_colour_blind(G.STATE)
   sign_sprite.states.visible = false
   sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+  G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   cached_hand_state = G.hand.states.visible
   G.hand.states.visible = false
 end
@@ -32,40 +34,7 @@ G.FUNCS.hide_yma_main_street = function(e)
 	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
     sign_sprite.states.visible = true
     sign_text = DynaText({string = {localize('ph_improve_run')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-end
-
-
-G.FUNCS.show_yma_graveyard = function(e)
-  stop_use()
-  hide_location(G.main_street)
-  
-  G.STATE = G.STATES.GRAVEYARD
-  G.STATE_COMPLETE = false
-  
-
-  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
-  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
-  ease_background_colour_blind(G.STATE)
-  sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
-  G.hand.states.visible = false
-  sign_sprite.states.visible = true
-  sign_text = DynaText({string = {localize('ph_graveyard')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-  show_location(G.graveyard)
-end
-
-G.FUNCS.hide_yma_graveyard = function(e)
-    stop_use()
-	hide_location(G.graveyard)
-	G.STATE = G.STATES.MAIN_STREET
-	G.STATE_COMPLETE = false
-    
-	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
-    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
-	ease_background_colour_blind(G.STATES.MAIN_STREET)
-	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
-    sign_sprite.states.visible = false
-    sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-    show_location(G.main_street)
+    G.SHOP_SIGN.UIRoot.UIBox:recalculate()
 end
 
 function update_main_street()
@@ -77,15 +46,18 @@ function update_main_street()
             definition = G.UIDEF.yma_main_street(),
             config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
         }
-        G.main_street:recalculate()
-        if G.yma_mainstreet_graveyard then
-            if yma_can_access_location('graveyard') then
-                G.yma_mainstreet_graveyard.states.visible = true
-            else
-                G.yma_mainstreet_graveyard.states.visible = false
-            end
-            G.yma_mainstreet_graveyard:recalculate()
+        if yma_can_access_location('graveyard') then
+            G.yma_mainstreet_graveyard.states.visible = true
+        else
+            G.yma_mainstreet_graveyard.states.visible = false
         end
+        G.yma_mainstreet_graveyard:recalculate()
+        if yma_can_access_location('hell') then
+            G.yma_mainstreet_hell.states.visible = true
+        else
+            G.yma_mainstreet_hell.states.visible = false
+        end
+        G.yma_mainstreet_hell:recalculate()
 
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -114,43 +86,6 @@ function update_main_street()
     end
 end
 
-function update_graveyard()
-    if not G.STATE_COMPLETE then
-        stop_use()
-        ease_background_colour_blind(G.STATES.GRAVEYARD)
-        local graveyard_exists = not not G.graveyard
-        G.graveyard = G.graveyard or UIBox{
-            definition = G.UIDEF.yma_graveyard(),
-            config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
-        }
-
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                G.graveyard.alignment.offset.y = -5.3
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.2,
-                    blockable = false,
-                    func = function()
-                        if math.abs(G.graveyard.T.y - G.graveyard.VT.y) < 3 then
-                            local nosave_graveyard = nil 
-                            -- Back to shop button
-							play_sound('cbean_pboy_bavoice', G.SPEEDFACTOR*(math.random()*0.4+2), 2.5)
-                            G.CONTROLLER:snap_to({node = G.graveyard:get_UIE_by_ID('shop_button')})
-                            -- not loaded from save?
-                            if not nosave_graveyard then G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end})) end
-                            return true
-                        end
-                    end}))
-                return true
-            end
-        }))
-
-
-        G.STATE_COMPLETE = true
-    end
-end
-
 local lcpref2 = Controller.L_cursor_press
 function Controller:L_cursor_press(x, y)
     lcpref2(self, x, y)
@@ -159,6 +94,8 @@ function Controller:L_cursor_press(x, y)
             G.FUNCS.show_balley()
         elseif G.yma_mainstreet_graveyard and G.yma_mainstreet_graveyard.states.collide.is and yma_can_access_location('graveyard') then
             G.FUNCS.show_yma_graveyard()
+        elseif G.yma_mainstreet_hell and G.yma_mainstreet_hell.states.collide.is and yma_can_access_location('hell') then
+            G.FUNCS.show_yma_hell()
 		end
 	end
 end
@@ -173,23 +110,28 @@ function G.UIDEF.yma_main_street()
         definition = G.UIDEF.gravesprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
+    G.yma_mainstreet_hell = UIBox{
+        definition = G.UIDEF.hellsprite(),
+        config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+    }
 
     local table = {}
     table[#table+1] = {
         n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, minh = 1.5, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_alleyway}},
         }}
-    if G.yma_mainstreet_graveyard.states.visible then
-        table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+    table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_graveyard}},
         }}
-    end
+    table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+            {n=G.UIT.O, config={object = G.yma_mainstreet_hell}},
+        }}
     
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.L_BLACK}, nodes={
-                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table},
-                    {n=G.UIT.R, config={align = "cm", minh = 3.5}, nodes={}},
+                    {n=G.UIT.C, config={align = "cm", padding = 0.05}, nodes=table},
+                    {n=G.UIT.C, config={align = "cm", minh = 3.5}, nodes={}},
                 }
               },
               
@@ -216,6 +158,173 @@ function G.UIDEF.gravesprite()
             {n=G.UIT.O, config={object = sprite_grave}},
     }}
     return t
+end
+
+function G.UIDEF.hellsprite()
+  
+	local sprite_hell = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_yma_hell_sign"], { x = 0, y = 0 }) or nil
+
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+            {n=G.UIT.O, config={object = sprite_hell}},
+    }}
+    return t
+end
+
+G.FUNCS.show_yma_hell = function(e)
+  stop_use()
+  hide_location(G.main_street)
+  
+  G.STATE = G.STATES.HELL
+  G.STATE_COMPLETE = false
+  
+
+  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+  ease_background_colour_blind(G.STATE)
+  sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_yma_hell_sign"]
+  G.hand.states.visible = false
+  sign_sprite.states.visible = true
+  sign_text = DynaText({string = {localize('ph_hell')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+  G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+  show_location(G.yma_hell)
+end
+
+G.FUNCS.hide_yma_hell = function(e)
+    stop_use()
+    G.FUNCS.draw_from_card_area_to_deck(G.hells_playing_card_holder)
+	hide_location(G.yma_hell)
+	G.STATE = G.STATES.MAIN_STREET
+	G.STATE_COMPLETE = false
+    
+	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+	ease_background_colour_blind(G.STATES.MAIN_STREET)
+	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    sign_sprite.states.visible = false
+    G.hells_playing_card_holder.states.visible = false
+    sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+    G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+    show_location(G.main_street)
+end
+
+function update_yma_hell()
+    if not G.STATE_COMPLETE then
+        stop_use()
+        ease_background_colour_blind(G.STATES.HELL)
+        local hell_exists = not not G.yma_hell
+        G.yma_hell = G.yma_hell or UIBox{
+            definition = G.UIDEF.yma_hell(),
+            config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+        }
+        G.hells_playing_card_holder.states.visible = true
+        if #G.hells_playing_card_holder.cards <= 0 then
+            G.FUNCS.draw_from_deck_to_card_area(G.hells_playing_card_holder, 10)
+        end
+        
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.yma_hell.alignment.offset.y = -5.3
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    blockable = false,
+                    func = function()
+                        if math.abs(G.yma_hell.T.y - G.yma_hell.VT.y) < 3 then
+                            local nosave_yma_hell = nil 
+                            -- Back to shop button
+                            G.CONTROLLER:snap_to({node = G.yma_hell:get_UIE_by_ID('shop_button')})
+                            -- not loaded from save?
+                            if not nosave_yma_hell then G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end})) end
+                            return true
+                        end
+                    end}))
+                return true
+            end
+        }))
+
+
+        G.STATE_COMPLETE = true
+    end
+end
+
+function G.UIDEF.yma_hell()
+    G.hells_playing_card_holder = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = 10, type = 'hand', negative_info = 'playing_card', highlight_limit = 2})
+
+    G.GAME.hell_upgrade_uses_left = 5
+
+    local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
+            UIBox_dyn_container({
+                {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.BLACK}, nodes={
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 8.2}, nodes={
+                          {n=G.UIT.O, config={object = G.hells_playing_card_holder}},
+                      }},
+                    }},
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+                        {n=G.UIT.R, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.DARK_EDITION, button = 'upgrade_yma_hell', func = 'can_upgrade_yma_hell', hover = true,shadow = true}, nodes = {
+                            {n=G.UIT.R, config={align = "cm", maxw = 2.5}, nodes={
+                                {n=G.UIT.T, config={text = localize('k_hell_sac')..' ('..G.GAME.hell_upgrade_uses_left..'/5)', scale = 0.6, colour = G.C.WHITE, shadow = true}},
+                            }},
+                        }},
+                      }},
+                    }},
+                }
+              },
+              
+              }, false)
+        }}
+    return t
+end
+
+G.FUNCS.can_upgrade_yma_hell = function(e)
+    e.children[1].children[1].config.text = localize('k_hell_sac')..' ('..G.GAME.hell_upgrade_uses_left..'/5)'
+    if G.GAME.hell_upgrade_uses_left <= 0 or #G.hells_playing_card_holder.highlighted ~= 2 then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.DARK_EDITION
+        e.config.button = 'upgrade_yma_hell'
+    end
+end
+
+G.FUNCS.upgrade_yma_hell = function(e) 
+    stop_use()
+    G.CONTROLLER.locks.hell_sac = true
+    if G.CONTROLLER:save_cardarea_focus('hells_playing_card_holder') then G.CONTROLLER.interrupt.focus = true end
+    local uses_left = G.GAME.hell_upgrade_uses_left
+    local upgraded_card = G.hells_playing_card_holder.highlighted[1]
+    local destroyed_card = G.hells_playing_card_holder.highlighted[2]
+    for k, v in pairs(G.hells_playing_card_holder.cards) do
+        if v == G.hells_playing_card_holder.highlighted[1] then
+            destroyed_card = G.hells_playing_card_holder.highlighted[1]
+            upgraded_card = G.hells_playing_card_holder.highlighted[2]
+        end
+        if v == G.hells_playing_card_holder.highlighted[2] then
+            destroyed_card = G.hells_playing_card_holder.highlighted[2]
+            upgraded_card = G.hells_playing_card_holder.highlighted[1]
+        end
+    end
+    
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+          G.CONTROLLER.interrupt.focus = false
+          G.CONTROLLER.locks.hell_sac = false
+          G.CONTROLLER:recall_cardarea_focus('hells_playing_card_holder')
+          yma_hell_upgrade_card(upgraded_card)
+          SMODS.destroy_cards(destroyed_card)
+          return true
+        end
+      }))
+    G.GAME.hell_upgrade_uses_left = G.GAME.hell_upgrade_uses_left - 1
+    G.yma_hell.UIRoot.UIBox:recalculate()
+    G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end}))
 end
 
 function G.UIDEF.yma_graveyard()
@@ -328,10 +437,10 @@ G.FUNCS.reroll_yma_graveyard = function(e)
 end
 
 function create_card_for_graveyard_jokers(area)
-    local total_rate = G.GAME.joker_rate + G.GAME.playing_card_rate
+    local total_rate = G.GAME.joker_rate
     local polled_rate = pseudorandom(pseudoseed('cdt'..G.GAME.round_resets.ante))*total_rate
     local check_rate = 0
-    -- need to preserve order to leave RNG unchanged
+    
     local rates = {
     {type = 'Joker', val = G.GAME.joker_rate},
     }
@@ -356,3 +465,77 @@ function create_card_for_graveyard_jokers(area)
         check_rate = check_rate + v.val
     end
   end
+
+G.FUNCS.draw_from_card_area_to_deck = function(card_area)
+    local hand_count = #card_area.cards
+    for i=1, hand_count do --draw cards from deck
+        draw_card(card_area, G.deck, i*100/hand_count,'down', nil, nil,  0.08)
+    end
+end
+
+G.FUNCS.draw_from_deck_to_card_area = function(card_area, amt)
+    if not (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+        card_area.config.card_limit <= 0 and #card_area.cards == 0 then 
+        G.STATE = G.STATES.GAME_OVER; G.STATE_COMPLETE = false 
+        return true
+    end
+
+    local hand_space = amt
+    local cards_to_draw = {}
+    if not hand_space then
+        local limit = card_area.config.card_limit - #card_area.cards - (SMODS.cards_to_draw or 0)
+        local unfixed = not card_area.config.fixed_limit
+        local n = 0
+        while n < #G.deck.cards do
+            local card = G.deck.cards[#G.deck.cards-n]
+            local mod = unfixed and (card.ability.card_limit - card.ability.extra_slots_used) or 0
+            if limit - 1 + mod < 0 then
+            else    
+                limit = limit - 1 + mod
+                table.insert(cards_to_draw, card)
+                if limit <= 0 then break end
+            end
+            n = n + 1
+        end
+        hand_space = #cards_to_draw
+    end
+    if G.GAME.blind.name == 'The Serpent' and
+        not G.GAME.blind.disabled and
+        (G.GAME.current_round.hands_played > 0 or
+        G.GAME.current_round.discards_used > 0) then
+            hand_space = math.min(#G.deck.cards, 3)
+    end
+    local flags = SMODS.calculate_context({drawing_cards = true, amount = hand_space})
+    hand_space = math.min(#G.deck.cards, flags.cards_to_draw or flags.modify or hand_space)
+    delay(0.3)
+    SMODS.cards_to_draw = (SMODS.cards_to_draw or 0) + math.max(hand_space, 0)
+    SMODS.drawn_cards = {}
+    for i=1, hand_space do --draw cards from deckL
+        if G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK then 
+            draw_card(G.deck,card_area, i*100/hand_space,'up', true, cards_to_draw[i])
+        else
+            draw_card(G.deck,card_area, i*100/hand_space,'up', true, cards_to_draw[i])
+        end
+    end
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()                
+            SMODS.cards_to_draw = SMODS.cards_to_draw - math.max(hand_space, 0)
+            return true
+        end
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.4,
+        func = function()
+            if #SMODS.drawn_cards > 0 then
+                SMODS.calculate_context({first_hand_drawn = not G.GAME.current_round.any_hand_drawn and G.GAME.facing_blind,
+                                        hand_drawn = G.GAME.facing_blind and SMODS.drawn_cards,
+                                        other_drawn = not G.GAME.facing_blind and SMODS.drawn_cards})
+                SMODS.drawn_cards = {}
+                if G.GAME.facing_blind then G.GAME.current_round.any_hand_drawn = true end
+            end
+            return true
+        end
+    }))
+end
