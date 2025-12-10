@@ -85,7 +85,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "Rainstar",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -153,7 +153,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -214,7 +214,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -289,7 +289,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -369,7 +369,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -422,7 +422,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -501,7 +501,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -593,7 +593,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -647,7 +647,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -715,7 +715,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -789,7 +789,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -849,7 +849,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -935,7 +935,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1004,7 +1004,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1074,7 +1074,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1135,7 +1135,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1203,7 +1203,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1278,7 +1278,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1330,7 +1330,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1381,7 +1381,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1454,7 +1454,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1517,7 +1517,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1592,7 +1592,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1649,7 +1649,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1730,7 +1730,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1789,7 +1789,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1841,7 +1841,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1895,7 +1895,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -1952,7 +1952,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -2008,7 +2008,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "",
+        art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
 }
@@ -2050,7 +2050,7 @@ SMODS.Consumable {
 --    beans_credits = {
 --        team = { "Yeah! Mostly Artists" },
 --        idea = "RattlingSnow353",
---        art = "",
+--        art = "RattlingSnow353",
 --        code = "RattlingSnow353",
 --    }
 --}
