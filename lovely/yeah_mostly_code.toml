@@ -75,7 +75,9 @@ payload = '''
 if self.STATE == self.STATES.GRAVEYARD then
   update_graveyard()
 end
-
+if self.STATE == self.STATES.MAIN_STREET then
+  update_main_street()
+end
 '''
 match_indent = true
 
