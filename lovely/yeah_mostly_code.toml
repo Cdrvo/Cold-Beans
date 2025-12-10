@@ -78,6 +78,9 @@ end
 if self.STATE == self.STATES.MAIN_STREET then
   update_main_street()
 end
+if self.STATE == self.STATES.HELL then
+  update_yma_hell()
+end
 '''
 match_indent = true
 
@@ -102,6 +105,8 @@ position = 'at'
 pattern = '''STATE = G.STATE,'''
 payload = '''
 STATE = G.STATE == G.STATES.GRAVEYARD and G.STATES.SHOP or G.STATE,
+STATE = G.STATE == G.STATES.HELL and G.STATES.SHOP or G.STATE,
+STATE = G.STATE == G.STATES.MAIN_STREET and G.STATES.SHOP or G.STATE,
 '''
 match_indent = true
 
@@ -113,6 +118,8 @@ position = 'after'
 pattern = '''if self.shop then self.shop:remove(); self.shop = nil end'''
 payload = '''
 if self.graveyard then self.graveyard:remove(); self.graveyard = nil end
+if self.yma_hell then self.yma_hell:remove(); self.yma_hell = nil end
+if self.main_street then self.main_street:remove(); self.main_street = nil end
 '''
 match_indent = true
 
@@ -125,6 +132,14 @@ payload = '''
 if G.graveyard then
   G.graveyard:remove()
   G.graveyard = nil
+end
+if G.main_street then
+  G.main_street:remove()
+  G.main_street = nil
+end
+if G.yma_hell then
+  G.yma_hell:remove()
+  G.yma_hell = nil
 end
 '''
 match_indent = true
