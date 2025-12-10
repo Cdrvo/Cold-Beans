@@ -89,3 +89,124 @@ G.FUNCS.can_discard = function(e)
         e.config.button = 'discard_cards_from_highlighted'
     end
 end
+
+--Yeah! Mostly artists
+--Disallows cheatery with certern Keys
+local is_eternal_ref = SMODS.is_eternal
+function SMODS.is_eternal(card, trigger)
+    if (card.ability and card.ability.yma_ghost_temporary) or (G.STATE == G.STATES.SELECTING_HAND and card.config.center.key == 'c_cbean_yma_hercules') then
+        return true
+    end
+    return is_eternal_ref(card, trigger)
+end
+
+--Automatically saves G.GAME.blind.original_chips when blind is loaded
+local yma_blind_set_blind_ref = Blind.set_blind
+function Blind:set_blind(blind, reset, silent)
+    local ret = yma_blind_set_blind_ref(self, blind, reset, silent)
+    if not reset then
+        self.original_chips = self.chips
+    end
+    return ret
+end
+
+--Handle original chips when game is saved and reloaded
+local yma_blind_save_ref = Blind.save
+function Blind:save()
+    local blindTable = yma_blind_save_ref(self)
+    blindTable.original_chips = self.original_chips
+    return blindTable
+end
+local yma_blind_load_ref = Blind.load
+function Blind:load(blindTable)
+    local ret = yma_blind_load_ref(self, blindTable)
+    self.original_chips = blindTable.original_chips
+    return blindTable
+end
+
+--All cards selectable with Engima Key
+local yma_card_select_area_ref = SMODS.card_select_area
+function SMODS.card_select_area(card, pack)
+    if card.ability and card.ability.consumeable and #SMODS.find_card("c_cbean_yma_enigma") >= 1 then 
+        return "consumeables" 
+    end
+    return yma_card_select_area_ref(card, pack)
+end
+
+local yma_selectable_from_pack_ref = Card.selectable_from_pack
+function Card.selectable_from_pack(card, pack)
+    if card.ability and card.ability.consumeable and #SMODS.find_card("c_cbean_yma_enigma") >= 1 then 
+        return "consumeables" 
+    end
+    return yma_selectable_from_pack_ref(card, pack)
+end
+
+--Giant, Timeshift and Shadow Key code
+local start_dissolve_ref = Card.start_dissolve
+function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
+  local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+  if self.ability and self.ability.yma_temp_key then
+    local key = self.ability.yma_temp_key
+    G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = (function()
+            local card = create_card(self.ability.yma_temp_set,self.area, nil, nil, nil, nil, key, 'yma_giant')
+            card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("k_reset"), colour = G.C.FILTER})
+            for k, v in pairs(self.ability.yma_temp_ability_table) do
+                card.ability[k] = v
+            end
+            card:add_to_deck()
+            self.area:emplace(card)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function() 
+                    play_sound('tarot2', 1, 0.6)
+                    card:juice_up(0.3, 0.3)
+                    SMODS.calculate_context({yma = {after_reroll = true, card = card, old_card = self}})
+                    return true 
+                end 
+            }))
+            return true
+        end)
+    }))
+    return
+  end
+  if G.consumeables and self.ability.set == 'Combo' then
+    local has_shadow_key = #SMODS.find_card("c_cbean_yma_shadow")
+    if has_shadow_key >= 1 and self.ability.yma_cant_be_copied == nil and self.ability.yma_sold_self == nil then
+        SMODS.calculate_context({yma = {shadow_trigged = true, decrease = true}})
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
+            local card = copy_card(self, nil, nil, nil, false)
+            card.ability.yma_cant_be_copied = true
+            UnselectCombo(card)
+            card:start_materialize()
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            return true end }))
+    end
+  end
+  if G.jokers and self.ability.set == 'Joker' then
+    local yma_can_add = true
+    for k, v in pairs(G.GAME.cbean.destroyed_jokers) do
+        if v == self.config.center.key then 
+            yma_can_add = false
+        end
+    end
+    if yma_can_add then
+        G.GAME.cbean.destroyed_jokers[#G.GAME.cbean.destroyed_jokers+1] = self.config.center.key
+    end
+    local has_timeshift_key = #SMODS.find_card("c_cbean_yma_timeshift")
+    if has_timeshift_key >= 1 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
+        SMODS.calculate_context({yma = {timeshift_trigged = true, decrease = true}})
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
+            local card = copy_card(self, nil, nil, nil, false)
+            card:start_materialize()
+            card:add_to_deck()
+            G.jokers:emplace(card)
+            return true end }))
+    end
+  end
+  return ref
+end
