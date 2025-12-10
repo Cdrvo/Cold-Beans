@@ -265,7 +265,7 @@ end
 -- Let's go gambling
 G.FUNCS.show_balley = function(e)
   stop_use()
-  hide_shop()
+  hide_location(G.main_street)
   
   G.current_betmoney = 0
   G.STATE = G.STATES.BALLEY
@@ -275,9 +275,8 @@ G.FUNCS.show_balley = function(e)
   ease_background_colour_blind(G.STATE)
   G.HP_JTEM_DELIVERY_VISIBLE = true
   sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
-  cached_hand_state = G.hand.states.visible
   G.hand.states.visible = false
-
+  sign_sprite.states.visible = true
 end
 
 -- Clicked back to shop
@@ -288,15 +287,16 @@ G.FUNCS.hide_balley = function(e)
 			G.cups[key]:remove()
 	  end
 	  G.cups = {}
-	  G.hand.states.visible = cached_hand_state
-	  G.STATE = G.STATES.SHOP
+	  G.STATE = G.STATES.MAIN_STREET
 	  G.STATE_COMPLETE = false
 	  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
-	  ease_background_colour_blind(G.STATES.SHOP)
+	  ease_background_colour_blind(G.STATES.MAIN_STREET)
 	  G.HP_JTEM_DELIVERY_VISIBLE = true
 	  sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
-	  show_shop()
+	  sign_sprite.states.visible = false
+	  show_location(G.main_street)
 
+	  hide_many_locations({G.aball, G.aball})
 	  G.ajoker.alignment.offset.y = G.ROOM.T.y + 22
 	  if G.ajoker and G.ajoker.children and G.ajoker.children.speech_bubble then
 		G.ajoker.children.speech_bubble.states.visible = false
@@ -304,12 +304,15 @@ G.FUNCS.hide_balley = function(e)
 	  G.ajoker:remove()
 	  G.aball.alignment.offset.y = G.ROOM.T.y + 22
 	  G.aball:remove()
+	  hide_location(G.balley)
 	  G.balley.alignment.offset.y = G.ROOM.T.y + 20
 
 	  for key, ad in pairs(G.cups) do
+			hide_location(G.cups[key])
 			G.cups[key].balley.config.offset.y = G.ROOM.T.y + 22
 			G.cups[key]:remove()
 	  end
+	  
 		-- TODO
 	  --[[G.CONTROLLER.locks.toggle_shop = true
 	  if G.shop then 

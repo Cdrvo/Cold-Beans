@@ -7,7 +7,16 @@ end
 
 G.FUNCS.can_switch = function(e)
   local text = localize('k_cbean_unique_ex')
-  if G.STATE == G.STATES.BALLEY then
+  
+  if G.STATE == G.STATES.MAIN_STREET then
+	  text=localize('k_cbean_aexit_ex')
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_main_street'
+  elseif G.STATE == G.STATES.SHOP then
+	  text=localize('k_cbean_yma_street')
+	  e.config.colour = G.C.GREEN
+	  e.config.button = 'show_yma_main_street'
+  elseif G.STATE == G.STATES.BALLEY then
 	  text=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_balley'
@@ -15,14 +24,6 @@ G.FUNCS.can_switch = function(e)
       text=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_yma_graveyard'
-  elseif G.STATE == G.STATES.SHOP and #SMODS.find_card("c_cbean_yma_moon") >= 1 and G.GAME and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
-	  text=localize('k_cbean_yma_graveyard')
-	  e.config.colour = G.C.BLACK
-	  e.config.button = 'show_yma_graveyard'
-  elseif G.STATE == G.STATES.SHOP then
-	  text=localize('k_cbean_balley_ex')
-	  e.config.colour = G.C.GREEN
-	  e.config.button = 'show_balley'
   elseif G.STATE == G.STATES.SELECTING_HAND and G.PISSMAX and G.PISSMAX > 0 and G.hand.highlighted and #G.hand.highlighted > 0 then
 			text=localize('k_cbean_piss_ex')
 			e.config.button = 'piss_in_hand'

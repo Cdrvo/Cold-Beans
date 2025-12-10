@@ -3,18 +3,27 @@
 
 
 
-function show_shop()
-    if G.shop and G.shop.alignment.offset.py then 
-      G.shop.alignment.offset.y = G.shop.alignment.offset.py
-      G.shop.alignment.offset.py = nil
+function show_location(location)
+    if location and location.alignment.offset.py then 
+      location.alignment.offset.y = location.alignment.offset.py
+      location.alignment.offset.py = nil
     end
 end
 
-function hide_shop()
-    if G.shop and not G.shop.alignment.offset.py then
-      G.shop.alignment.offset.py = G.shop.alignment.offset.y
-      G.shop.alignment.offset.y = G.ROOM.T.y + 29
+function hide_location(location)
+    if location and not location.alignment.offset.py then
+      location.alignment.offset.py = location.alignment.offset.y
+      location.alignment.offset.y = G.ROOM.T.y + 29
     end
+end
+
+function hide_many_locations(locations)
+	for k, v in pairs(locations) do
+		if v and not v.alignment.offset.py then
+		  v.alignment.offset.py = v.alignment.offset.y
+		  v.alignment.offset.y = G.ROOM.T.y + 29
+		end
+	end
 end
 
 function update_value_shiff()
