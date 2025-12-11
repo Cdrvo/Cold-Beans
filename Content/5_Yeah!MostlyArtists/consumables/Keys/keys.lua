@@ -1284,7 +1284,7 @@ SMODS.Consumable {
     },
 
     calculate = function(self, card, context)
-        if context.yma and context.yma.before_after and not temp then
+        if context.yma and context.yma.before_after then
             if (context.total_chips + G.GAME.chips >= (G.GAME.blind.chips)) then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
