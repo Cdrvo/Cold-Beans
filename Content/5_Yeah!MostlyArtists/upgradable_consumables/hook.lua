@@ -1,208 +1,5 @@
 
 -- upgrade my consumables
-local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
-function G.UIDEF.use_and_sell_buttons(card)
-    local abc = G_UIDEF_use_and_sell_buttons_ref(card)
-    if (card.area == G.consumeables and G.consumeables) and not card.debuff then
-        sell = {
-            n = G.UIT.C,
-            config = { align = "cr" },
-            nodes = {
-                {
-                    n = G.UIT.C,
-                    config = {
-                        ref_table = card,
-                        align = "cr",
-                        padding = 0.1,
-                        r = 0.08,
-                        minw = 1.25,
-                        hover = true,
-                        shadow = true,
-                        colour = G.C.UI.BACKGROUND_INACTIVE,
-                        one_press = true,
-                        button = "sell_card",
-                        func = "can_sell_card",
-                        handy_insta_action = "sell",
-                    },
-                    nodes = {
-                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
-                        {
-                            n = G.UIT.C,
-                            config = { align = "tm" },
-                            nodes = {
-                                {
-                                    n = G.UIT.R,
-                                    config = { align = "cm", maxw = 1.25 },
-                                    nodes = {
-                                        {
-                                            n = G.UIT.T,
-                                            config = {
-                                                text = localize("b_sell"),
-                                                colour = G.C.UI.TEXT_LIGHT,
-                                                scale = 0.4,
-                                                shadow = true,
-                                            },
-                                        },
-                                    },
-                                },
-                                {
-                                    n = G.UIT.R,
-                                    config = { align = "cm" },
-                                    nodes = {
-                                        {
-                                            n = G.UIT.T,
-                                            config = {
-                                                text = localize("$"),
-                                                colour = G.C.WHITE,
-                                                scale = 0.4,
-                                                shadow = true,
-                                            },
-                                        },
-                                        {
-                                            n = G.UIT.T,
-                                            config = {
-                                                ref_table = card,
-                                                ref_value = "sell_cost_label",
-                                                colour = G.C.WHITE,
-                                                scale = 0.55,
-                                                shadow = true,
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        }
-        use = 
-        {
-            n = G.UIT.C, 
-            config = { align = "cr" }, 
-            nodes = {
-                { 
-                    n = G.UIT.C, 
-                    config ={
-                        ref_table = card, 
-                        align = "cr",
-                        maxw = 1.25,
-                        padding = 0.1, 
-                        r=0.08, 
-                        minw = 1.25, 
-                        minh = (card.area and card.area.config.type == 'joker') and 0 or 1,
-                        hover = true,
-                        shadow = true,
-                        colour = G.C.UI.BACKGROUND_INACTIVE,
-                        one_press = true,
-                        button = 'use_card', 
-                        func = 'can_use_consumeable'}, 
-                        nodes={
-                            {n=G.UIT.B,
-                            config = {w=0.1,h=0.6}},
-                            {n=G.UIT.T, 
-                            config={text = localize('b_use'),
-                            colour = G.C.UI.TEXT_LIGHT, 
-                            scale = 0.55, 
-                            shadow = true}}
-          }}
-        }}
-        upgrade = {
-            n = G.UIT.C,
-            config = { align = "cr" },
-            nodes = {
-                {
-                    n = G.UIT.C,
-                    config = {
-                        ref_table = card,
-                        align = "cr",
-                        padding = 0.1,
-                        r = 0.08,
-                        minw = 1.25,
-                        hover = true,
-                        shadow = true,
-                        colour = G.C.UI.BACKGROUND_INACTIVE,
-                        one_press = true,
-                        button = "upgrade",
-                        func = "can_upgrade",
-                    },
-                    nodes = {
-                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
-                        {
-                            n = G.UIT.C,
-                            config = { align = "tm" },
-                            nodes = {
-                                {
-                                    n = G.UIT.R,
-                                    config = { align = "cm", maxw = 1.25 },
-                                    nodes = {
-                                        {
-                                            n = G.UIT.T,
-                                            config = {
-                                                text = "Upgrade",
-                                                colour = G.C.UI.TEXT_LIGHT,
-                                                scale = 0.4,
-                                                shadow = true,
-                                            },
-                                        },
-                                    },
-                                },
-                                {
-                                    n = G.UIT.R,
-                                    config = { align = "cm" },
-                                    nodes = {
-                                        {
-                                            n = G.UIT.T,
-                                            config = {
-                                                text = localize("$"),
-                                                colour = G.C.WHITE,
-                                                scale = 0.4,
-                                                shadow = true,
-                                            },
-                                        },
-                                        {
-                                            n = G.UIT.T,
-                                            config = {
-                                                --ref_table = card,
-                                                --ref_value = "upgradecost",
-                                                text = "5",
-                                                colour = G.C.WHITE,
-                                                scale = 0.55,
-                                                shadow = true,
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        }
-        return {
-            n = G.UIT.ROOT,
-            config = { padding = 0, colour = G.C.CLEAR },
-            nodes = {
-                {
-                    n = G.UIT.C,
-                    config = { padding = 0, align = "cl" },
-                    nodes = {
-                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
-                            sell,
-                        } },
-                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
-                            use,
-                        } },
-                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
-                            upgrade,
-                        } },
-                    },
-                },
-            },
-        }
-    end
-    return abc
-end
 
 local upgrading = false
 local base_consumables = {
@@ -260,7 +57,7 @@ local level5_consumables = {
     "c_cbean_yma_ectoplasm_level5"
 }
 
-G.FUNCS.can_upgrade = function(e)
+G.FUNCS.can_upgrade_from_consumeable_slot  = function(e)
     if to_big(G.GAME.dollars - G.GAME.bankrupt_at) >= to_big(5) and not upgrading and not G.CONTROLLER.locked then
         for i = 1, #base_consumables do
             if G.consumeables.highlighted[1].config.center.key == base_consumables[i]
@@ -269,7 +66,7 @@ G.FUNCS.can_upgrade = function(e)
             or G.consumeables.highlighted[1].config.center.key == level3_consumables[i]
             or G.consumeables.highlighted[1].config.center.key == level4_consumables[i] then
                 e.config.colour = G.C.GREEN
-                e.config.button = "upgrade"
+                e.config.button = "upgrade_from_consumeable_slot"
                 break
             else
                 e.config.colour = G.C.UI.BACKGROUND_INACTIVE
@@ -283,7 +80,7 @@ G.FUNCS.can_upgrade = function(e)
 end
 
 
-G.FUNCS.upgrade = function(e)
+G.FUNCS.upgrade_from_consumeable_slot = function(e)
     local ref = e.config.ref_table
     --ease_dollars(-ref.ability.upgradecost)
     ease_dollars(-5)
@@ -306,4 +103,53 @@ G.FUNCS.upgrade = function(e)
         end
     end
     G.consumeables.highlighted[1]:start_dissolve(nil, true)
+end
+
+G.FUNCS.can_upgrade_from_dreamland  = function(e)
+    G.GAME.yma_upgradecost_text = G.GAME.yma_upgradecost_text or 5
+    if G.dreamlands_consumeable_card_holder and #G.dreamlands_consumeable_card_holder.highlighted == 1 and to_big(G.GAME.dollars - G.GAME.bankrupt_at) >= to_big(5) and not upgrading and not G.CONTROLLER.locked then
+        local card = G.dreamlands_consumeable_card_holder.highlighted[1]
+        for i = 1, #base_consumables do
+            if card.config.center.key == base_consumables[i]
+            or card.config.center.key == level1_consumables[i]
+            or card.config.center.key == level2_consumables[i]
+            or card.config.center.key == level3_consumables[i]
+            or card.config.center.key == level4_consumables[i] then
+                G.GAME.yma_upgradecost_text = (card.ability.yma_upgradecost or 5)
+                e.config.colour = G.C.GREEN
+                e.config.button = "upgrade_from_dreamland"
+                break
+            else
+                e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+                e.config.button = nil
+            end
+        end
+    else
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    end
+end
+
+
+G.FUNCS.upgrade_from_dreamland = function(e)
+    local card = G.dreamlands_consumeable_card_holder.highlighted[1]
+    ease_dollars(-(card.ability.yma_upgradecost or 5))
+    for i = 1, #base_consumables do
+        if card.config.center.key == base_consumables[i] then
+            YMA_reroll_card(card, level1_consumables[i], nil, 'yma_dreamland_upgrade')
+            break
+        elseif card.config.center.key == level1_consumables[i] then
+            YMA_reroll_card(card, level2_consumables[i], nil, 'yma_dreamland_upgrade')
+            break
+        elseif card.config.center.key == level2_consumables[i] then
+            YMA_reroll_card(card, level3_consumables[i], nil, 'yma_dreamland_upgrade')
+            break
+        elseif card.config.center.key == level3_consumables[i] then
+            YMA_reroll_card(card, level4_consumables[i], nil, 'yma_dreamland_upgrade')
+            break
+        elseif card.config.center.key == level4_consumables[i] then
+            YMA_reroll_card(card, level5_consumables[i], nil, 'yma_dreamland_upgrade')
+            break
+        end
+    end
 end
