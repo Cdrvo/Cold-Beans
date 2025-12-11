@@ -393,8 +393,130 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6cabde"),
     pos = { x = 0, y = 15 },
     lower = {
+        calculate = function(self, blind, context)
+            if context.yma_before_before and context.scoring_hand and G.play then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''})
+                        return true
+                    end
+                }))
+                local first_card_suit = context.scoring_hand[1].base.suit
+                for i = 1, #context.scoring_hand do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('card1', percent)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                delay(0.2)
+                for i = 1, #context.scoring_hand do
+                    context.scoring_hand[i]:change_suit(first_card_suit) 
+                end
+                for i = 1, #context.scoring_hand do
+                    local percent = 0.85 + (i - 0.999) / (#context.scoring_hand - 0.998) * 0.3
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('tarot2', percent, 0.6)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                return {
+                    func = function()
+                        delay(0.2)
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                local text,disp_text,poker_hands,scoring_hand,non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
+
+                                update_hand_text({
+                                    sound = G.GAME.current_round.current_hand.handname ~= disp_text and 'button' or nil, 
+                                    volume = 0.4, 
+                                    immediate = true, 
+                                    nopulse = nil,
+                                    delay = G.GAME.current_round.current_hand.handname ~= disp_text and 0.4 or 0}, 
+                                    {handname=disp_text, level=G.GAME.hands[calculated_text or text].level, 
+                                    mult = G.GAME.hands[calculated_text or text].mult, 
+                                    chips = G.GAME.hands[calculated_text or text].chips})
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end,
     },
     upper = {
+        calculate = function(self, blind, context)
+            if context.yma_before_before and context.scoring_hand and G.play then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''})
+                        return true
+                    end
+                }))
+                local first_card_rank = context.scoring_hand[1]:get_id()
+                for i = 1, #context.scoring_hand do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('card1', percent)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                delay(0.2)
+                for i = 1, #context.scoring_hand do
+                    SMODS.modify_rank(context.scoring_hand[i], first_card_rank - context.scoring_hand[i]:get_id()) 
+                end
+                for i = 1, #context.scoring_hand do
+                    local percent = 0.85 + (i - 0.999) / (#context.scoring_hand - 0.998) * 0.3
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('tarot2', percent, 0.6)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                return {
+                    func = function()
+                        delay(0.2)
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                local text,disp_text,poker_hands,scoring_hand,non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
+
+                                update_hand_text({
+                                    sound = G.GAME.current_round.current_hand.handname ~= disp_text and 'button' or nil, 
+                                    volume = 0.4, 
+                                    immediate = true, 
+                                    nopulse = nil,
+                                    delay = G.GAME.current_round.current_hand.handname ~= disp_text and 0.4 or 0}, 
+                                    {handname=disp_text, level=G.GAME.hands[calculated_text or text].level, 
+                                    mult = G.GAME.hands[calculated_text or text].mult, 
+                                    chips = G.GAME.hands[calculated_text or text].chips})
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end,
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
