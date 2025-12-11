@@ -831,13 +831,27 @@ return {
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
                 text = {{
-                    "Retriggers the {C:attention}next{} combo",
+                    "Retriggers the {C:attention}next{} Combo",
                     "card in the {C:combo}Combo{} again",
                 },
                 {
                     "Combos Into:",
                     "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
                     "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
+            c_cbean_yma_astral_projection = {
+                name = {
+                    "Astral Projection",
+                    "{X:purple,C:white,s:0.7}Special{}"
+                },
+                text = {{
+                    "The {C:attention}previous{} Combo card",
+                    "wont trigger or be {C:attention}used"
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:green,C:white}Starter{}",
                 }}
             },
         },
