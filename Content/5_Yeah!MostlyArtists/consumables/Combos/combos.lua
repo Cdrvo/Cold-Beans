@@ -18,7 +18,7 @@ SMODS.Consumable {
         extra_slots_used = -0.75
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.mult} }
+        return { vars = { } }
     end,
     pos = { x = 1, y = 2 },
     can_use = function(self, card)
@@ -90,7 +90,7 @@ SMODS.Consumable {
         extra_slots_used = -0.75
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.mult} }
+        return { vars = { } }
     end,
     pos = { x = 0, y = 0 },
     can_use = function(self, card)
@@ -135,61 +135,73 @@ SMODS.Consumable {
     },
 }
 --Za Warudo
---SMODS.Consumable {
---    key = 'yma_za_warudo',
---    set = 'Combo',
---    atlas = 'yma_art_combo_atlas',
---    cost = 5,
---    config = { 
---         immutable = {
---            ---------------------- What every combo card needs
---            combo_type = "ultimate",
---            sequence = 0,
---            ----------------------
---        },
---        extra = {
---            blind_req_decrease = 30,
---        },
---        extra_slots_used = -0.75
---    },
---    loc_vars = function(self, info_queue, card)
---        return { vars = { card.ability.extra.chips, card.ability.extra.mult} }
---    end,
---    pos = { x = 1, y = 0 },
---    can_use = function(self, card)
---        return true
---    end,
---    use = function(self, card, area, copier) 
---
---        if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
---        then
---            SelectCombo(card)
---        elseif G.GAME.blind.in_blind and CanUncombo(card) then --Deselecting Card
---            UnselectCombo(card)
---        else
---            return nil
---        end              
---    end,                                 
---    keep_on_use = function(self, card) --Needed for every combo card
---        return true
---    end,
---    calculate = function(self, card, context) 
---        if context.before and card.ability.immutable.sequence > 0 then
---            SMODS.smart_level_up_hand(context.blueprint_card or card, context.scoring_name, nil, #G.GAME.cbean_combo_index)
---        end
---        if context.after and card.ability.immutable.sequence > 0 then
---            SMODS.destroy_cards(card, nil, nil, true)
---        end
---    end,
---    remove_from_deck = function(self, card, from_debuff)
---        if CanUncombo(card) and card.ability.immutable.sequence > 0 then 
---            UnselectCombo(card)
---        end
---    end,
---    beans_credits = {
---        team = { "Yeah! Mostly Artists" },
---        idea = "RattlingSnow353",
---        art = "RattlingSnow353",
---        code = "RattlingSnow353",
---    },
---}
+SMODS.Consumable {
+    key = 'yma_za_warudo',
+    set = 'Combo',
+    atlas = 'yma_art_combo_atlas',
+    cost = 5,
+    config = { 
+         immutable = {
+            ---------------------- What every combo card needs
+            combo_type = "ultimate",
+            sequence = 0,
+            ----------------------
+        },
+        extra = {
+            blind_req_decrease = 30,
+            bind_req_mod = 5,
+        },
+        extra_slots_used = -0.75
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.blind_req_decrease} }
+    end,
+    pos = { x = 1, y = 0 },
+    can_use = function(self, card)
+        return true
+    end,
+    use = function(self, card, area, copier) 
+
+        if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
+        then
+            SelectCombo(card)
+        elseif G.GAME.blind.in_blind and CanUncombo(card) then --Deselecting Card
+            UnselectCombo(card)
+        else
+            return nil
+        end              
+    end,                                 
+    keep_on_use = function(self, card) --Needed for every combo card
+        return true
+    end,
+    calculate = function(self, card, context) 
+        if context.before and card.ability.immutable.sequence > 0 then
+            card.ability.extra.blind_req_decrease = card.ability.extra.blind_req_decrease + (#G.GAME.cbean_combo_index*card.ability.extra.bind_req_mod)
+            yam_ease_blind_requirement(nil, -1 * math.ceil(G.GAME.blind.chips * card.ability.extra.blind_req_decrease * 0.01))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    if G.GAME.chips - G.GAME.blind.chips >= 0 then
+                        G.STATE = G.STATES.NEW_ROUND
+                        G.STATE_COMPLETE = false
+                    end
+                    return true
+                end
+            }))
+        end
+        if context.after and card.ability.immutable.sequence > 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if CanUncombo(card) and card.ability.immutable.sequence > 0 then 
+            UnselectCombo(card)
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    },
+}
