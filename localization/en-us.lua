@@ -1770,6 +1770,15 @@ return {
                     "({X:mult,C:white}X#1#{} Mult)",
                 },
             },
+        --Yeah! Mostly Artists
+            j_cbean_yma_charred_fool = {
+                name = "Charred Fool",
+                text = {
+                    "Upgrade every held",
+                    "{C:tarot}Tarot{} card",
+                    "at end of round"
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {
