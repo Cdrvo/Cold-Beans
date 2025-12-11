@@ -298,32 +298,6 @@ Colonparen.GreekBlind{
 }
 
 Colonparen.GreekBlind{
-    key = "colon_theta",
-    name = "Theta",
-    mult = 1,
-    boss_colour = HEX("76de6c"),
-    pos = { x = 0, y = 7 },
-    lower = {
-        set_blind = function(self, card, from_blind)
-        end,
-        calculate = function(self, blind, context)
-        end
-    },
-    upper = {
-        set_blind = function(self, card, from_blind)
-        end,
-        calculate = function(self, blind, context)
-        end
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
-    }
-}
-
-Colonparen.GreekBlind{
     key = "colon_iota",
     name = "Iota",
     mult = 1,
