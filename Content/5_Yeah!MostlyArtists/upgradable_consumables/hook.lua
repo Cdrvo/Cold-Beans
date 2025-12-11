@@ -48,6 +48,15 @@ function yma_upgrade_consumable(card)
     card.ability.yma_upgrade_lvl = card.ability.yma_upgrade_lvl + 1
 end
 
+--Makes Upgraded enhancements count as base enhancment
+local yma_has_enhancement_ref = SMODS.has_enhancement
+function SMODS.has_enhancement(card, key)
+    for i = 1, 5 do
+        if card.config.center.key == 'yma_'..key..'_'..i then return true end
+    end
+    return yma_has_enhancement_ref(card, key)
+end
+
 G.FUNCS.can_upgrade_from_dreamland  = function(e)
     G.GAME.yma_upgradecost_text = G.GAME.yma_upgradecost_text or 5
     if G.dreamlands_consumeable_card_holder and #G.dreamlands_consumeable_card_holder.highlighted == 1 and to_big(G.GAME.dollars - G.GAME.bankrupt_at) >= to_big(5) and not upgrading and not G.CONTROLLER.locked then
