@@ -172,13 +172,67 @@ Colonparen.GreekBlind{
     pos = { x = 0, y = 8 },
     lower = {
         set_blind = function(self, card, from_blind)
+            yma_redeem_voucher()
+            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:add_to_deck()
+                        G.jokers:emplace(cardd)
+                        G.GAME.joker_buffer = 0
+                        return true
+                    end)
+                }))
+            end
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Consumeables',G.consumeables, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end)
+                }))
+            end
         end,
         calculate = function(self, blind, context)
         end
     },
     upper = {
         set_blind = function(self, card, from_blind)
-        end,
+            for i = 1,2 do
+                yma_redeem_voucher()
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.jokers:emplace(cardd)
+                        return true
+                    end)
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Consumeables',G.consumeables, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        return true
+                    end)
+                }))
+            end
+    end,
         calculate = function(self, blind, context)
         end
     },
