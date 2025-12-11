@@ -151,14 +151,14 @@ return {
                     "Jokers can not be reordered"
                 }
             },
-            bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Alpha",
                 text = {
                     "Lucky cards' probabilities",
                     "are tripled",
                 }
             },
-            bl_cbean_upper_colon_alpha = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_alpha = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Alpha",
                 text = {
                     "Played lucky cards are guaranteed",
@@ -255,15 +255,15 @@ return {
                     "face cards when scored"
                 }
             },
-            bl_cbean_lower_colon_theta = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_theta = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Theta",
                 text = {
-                    "Earn $10 per X0.1",
+                    "Earn $10 per X1",
                     "Blind requirement",
                     "scored at end of round"
                 }
             },
-            bl_cbean_upper_colon_theta = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_theta = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Theta",
                 text = {
                     "-1 Ante per X10",
@@ -271,7 +271,7 @@ return {
                     "scored at end of round"
                 }
             },
-            bl_cbean_lower_colon_iota = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_iota = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Iota",
                 text = {
                     "Redeem 1 random Voucher,",
@@ -279,7 +279,7 @@ return {
                     "create 1 random consumable"
                 }
             },
-            bl_cbean_upper_colon_iota = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_iota = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Iota",
                 text = {
                     "Redeem 2 random Vouchers,",
@@ -302,22 +302,22 @@ return {
                     "and +1 hand size"
                 }
             },
-            bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Lambda",
                 text = {
                     "Redeem 2 random",
                     "Tier 1 Vouchers",
                 }
             },
-            bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Lambda",
                 text = {
-                    "Redeem 2 random Tier 2",
+                    "Redeem 2 random Tier 1",
                     "Vouchers and their",
-                    "corresponding Tier 1s",
+                    "corresponding Tier 2s",
                 }
             },
-            bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Mu",
                 text = {
                     "If played hand contains 3 or more",
@@ -325,7 +325,7 @@ return {
                     "each scoring card gains +10 Mult",
                 }
             },
-            bl_cbean_upper_colon_mu = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_mu = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Mu",
                 text = {
                     "If played hand contains 3 or more",
@@ -371,7 +371,7 @@ return {
                     "gain +5 Mult when scored"
                 }
             },
-            bl_cbean_upper_colon_omicron = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_omicron = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Omicron",
                 text = {
                     "Played Enhanced cards gain",
@@ -382,7 +382,7 @@ return {
                     "X0.2 Mult when scored"
                 }
             },
-            bl_cbean_lower_colon_pi = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_pi = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Pi",
                 text = {
                     "First scored card's",
@@ -390,7 +390,7 @@ return {
                     "to all scored cards"
                 }
             },
-            bl_cbean_upper_colon_pi = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_pi = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Pi",
                 text = {
                     "First scored card's",
@@ -398,7 +398,7 @@ return {
                     "to all scored cards"
                 }
             },
-            bl_cbean_lower_colon_rho = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_rho = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Rho",
                 text = {
                     "If played poker hand",
@@ -406,7 +406,7 @@ return {
                     "level of all poker hands"
                 }
             },
-            bl_cbean_upper_colon_rho = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_rho = { -- Glitchkat10 | George The Rat | RattlingSnow353
                 name = "Rho",
                 text = {
                     "Upgrade level of most played",
@@ -414,7 +414,7 @@ return {
                     "of times it's been played"
                 }
             },
-            bl_cbean_lower_colon_chi = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_lower_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
                 name = "Chi",
                 text = {
                     "When Blind is selected,",
@@ -422,7 +422,7 @@ return {
                     "and 1 random {C:dark_edition}Negative{} {C:green}Uncommon{C:attention} Joker{}",
                 }
             },
-            bl_cbean_upper_colon_chi = { -- Glitchkat10 | George The Rat | N/A
+            bl_cbean_upper_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
                 name = "Chi",
                 text = {
                     "When Blind is selected,",
