@@ -22,6 +22,28 @@ if next(SMODS.find_card("c_cbean_yma_enigma")) then
 end
 '''
 
+# Stops redeeming a voucher from crashing
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'before'
+pattern = '''G.CONTROLLER:snap_to({node = G.shop:get_UIE_by_ID('next_round_button')})'''
+payload = '''
+if G.shop then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = '''G.CONTROLLER:snap_to({node = G.shop:get_UIE_by_ID('next_round_button')})'''
+payload = '''
+end
+'''
+match_indent = true
+
+
 # Resets temporary consumeable cards
 [[patches]] 
 [patches.pattern]
@@ -128,7 +150,7 @@ STATE = G.STATE == G.STATES.DREAMLAND and G.STATES.SHOP or G.STATE,
 '''
 match_indent = true
 
-# Remove graveyard when closing the run and what not
+# Remove areas when closing the run and what not
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
