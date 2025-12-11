@@ -1124,7 +1124,10 @@ return {
             c_cbean_yma_undertree = {
                 name = 'Undertree Key',
                 text = {
-                    ''
+                    'When an {C:tarot}Arcana{} pack is',
+                    '{C:attention}opened{} it will {C:attention}contain{} an',
+                    '{C:attention}upgraded{} {C:tarot}Tarot{} card',
+                    '{C:inactive}(Uses #1#/#2# packs)',
                 }
             },
         },
