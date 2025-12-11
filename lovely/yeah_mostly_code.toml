@@ -52,34 +52,32 @@ pattern = "-- TARGET: evaluate your own general effects"
 position = "before"
 match_indent = true
 payload = '''
-if context.end_of_round then
-    if context.cardarea == G.consumeables then
-        for k, v in pairs(G.consumeables.cards) do
-            if v.ability and v.ability.yma_temp_key then
-                local key = v.ability.yma_temp_key
-                v.ability.yma_temp_key = nil
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'before',
-                    delay = 0.0,
-                    func = (function()
-                        card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("k_reset"), colour = G.C.FILTER})
-                        YMA_reroll_card(v, key, v.ability.yma_temp_set, nil, nil, v.ability.yma_temp_ability_table, true)
-                        return true
-                    end)
-                }))
-            end
-            if v.ability and v.ability.yma_failed_pray then
-                v.ability.yma_failed_pray = nil
-            end
+if context.cardarea == G.consumeables then
+    for k, v in pairs(G.consumeables.cards) do
+        if v.ability and v.ability.yma_temp_key and context[v.ability.yma_context] then
+            local key = v.ability.yma_temp_key
+            v.ability.yma_temp_key = nil
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("k_reset"), colour = G.C.FILTER})
+                    YMA_reroll_card(v, key, v.ability.yma_temp_set, nil, nil, v.ability.yma_temp_ability_table, true)
+                    return true
+                end)
+            }))
+        end
+        if v.ability and v.ability.yma_failed_pray then
+            v.ability.yma_failed_pray = nil
         end
     end
-    if context.cardarea == G.jokers then
-        for k, v in pairs(G.jokers.cards) do
-            if v.ability and v.ability.yma_quest_temporary then
-                v.ability.yma_quest_temporary = nil
-                SMODS.destroy_cards(v, nil, nil, true)
-                SMODS.calculate_effect({message = localize('k_yma_key_faded') }, v)
-            end
+end
+if context.cardarea == G.jokers then
+    for k, v in pairs(G.jokers.cards) do
+        if v.ability and v.ability.yma_quest_temporary and context[v.ability.yma_context] then
+            v.ability.yma_quest_temporary = nil
+            SMODS.destroy_cards(v, nil, nil, true)
+            SMODS.calculate_effect({message = localize('k_yma_key_faded') }, v)
         end
     end
 end
