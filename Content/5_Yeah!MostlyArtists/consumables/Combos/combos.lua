@@ -74,66 +74,66 @@ SMODS.Consumable {
     },
 }
 --Astral Projection
---SMODS.Consumable {
---    key = 'yma_astral_projection',
---    set = 'Combo',
---    atlas = 'yma_art_combo_atlas',
---    cost = 5,
---    config = { 
---         immutable = {
---            ---------------------- What every combo card needs
---            combo_type = "astral_projection",
---            sequence = 0,
---            ----------------------
---        },
---        extra = {},
---        extra_slots_used = -0.75
---    },
---    loc_vars = function(self, info_queue, card)
---        return { vars = { card.ability.extra.chips, card.ability.extra.mult} }
---    end,
---    pos = { x = 1, y = 0 },
---    can_use = function(self, card)
---        return true
---    end,
---    use = function(self, card, area, copier) 
---
---        if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
---        then
---            SelectCombo(card)
---        elseif G.GAME.blind.in_blind and CanUncombo(card) then --Deselecting Card
---            UnselectCombo(card)
---        else
---            return nil
---        end              
---    end,                                 
---    keep_on_use = function(self, card) --Needed for every combo card
---        return true
---    end,
---    calculate = function(self, card, context) 
---        if context.before and card.ability.immutable.sequence > 0 then
---            for k, v in ipairs(G.consumeables.cards) do
---                if v == card then
---                    UnselectCombo(G.consumeables.cards[k-1])
---                end
---            end
---        end
---        if context.after and card.ability.immutable.sequence > 0 then
---            SMODS.destroy_cards(card, nil, nil, true)
---        end
---    end,
---    remove_from_deck = function(self, card, from_debuff)
---        if CanUncombo(card) and card.ability.immutable.sequence > 0 then 
---            UnselectCombo(card)
---        end
---    end,
---    beans_credits = {
---        team = { "Yeah! Mostly Artists" },
---        idea = "RattlingSnow353",
---        art = "RattlingSnow353",
---        code = "RattlingSnow353",
---    },
---}
+SMODS.Consumable {
+    key = 'yma_astral_projection',
+    set = 'Combo',
+    atlas = 'yma_art_combo_atlas',
+    cost = 5,
+    config = { 
+         immutable = {
+            ---------------------- What every combo card needs
+            combo_type = "astral_projection",
+            sequence = 0,
+            ----------------------
+        },
+        extra = {},
+        extra_slots_used = -0.75
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult} }
+    end,
+    pos = { x = 0, y = 0 },
+    can_use = function(self, card)
+        return true
+    end,
+    use = function(self, card, area, copier) 
+
+        if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card
+        then
+            SelectCombo(card)
+        elseif G.GAME.blind.in_blind and CanUncombo(card) then --Deselecting Card
+            UnselectCombo(card)
+        else
+            return nil
+        end              
+    end,                                 
+    keep_on_use = function(self, card) --Needed for every combo card
+        return true
+    end,
+    calculate = function(self, card, context) 
+        if context.before and card.ability.immutable.sequence > 0 then
+            for k, v in ipairs(G.consumeables.cards) do
+                if v == card then
+                    UnselectCombo(G.consumeables.cards[k-1])
+                end
+            end
+        end
+        if context.after and card.ability.immutable.sequence > 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if CanUncombo(card) and card.ability.immutable.sequence > 0 then 
+            UnselectCombo(card)
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    },
+}
 --Za Warudo
 --SMODS.Consumable {
 --    key = 'yma_za_warudo',
