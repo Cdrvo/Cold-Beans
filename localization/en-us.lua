@@ -285,7 +285,7 @@ return {
                     "Redeem 2 random Vouchers,",
                     "create 2 random Negative Jokers,",
                     "and create 2 random Negative",
-                    "consumables when hand is played"
+                    "consumables"
                 }
             },
             bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
