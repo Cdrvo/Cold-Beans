@@ -825,6 +825,21 @@ return {
                     "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
                 }}
             },
+            c_cbean_yma_neutral_special = {
+                name = {
+                    "Neutral Special",
+                    "{X:cbean_series,C:white,s:0.7}Series{}"
+                },
+                text = {{
+                    "Retriggers the {C:attention}next{} combo",
+                    "card in the {C:combo}Combo{} again",
+                },
+                {
+                    "Combos Into:",
+                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                }}
+            },
         },
         yma_keys = {
             c_cbean_yma_alpha = {
