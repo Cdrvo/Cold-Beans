@@ -1,32 +1,6 @@
 -- OI! PRETTY MUCH ALL OF THESE ARE UNFINISHED. DW ABOUT IT BECAUSE THE SECOND RUNAROUND EXISTS FOR A REASON - jamirror ( and the rest of Team :( )
 
 Colonparen.GreekBlind{
-    key = "colon_alpha",
-    name = "Alpha",
-    mult = 1,
-    boss_colour = HEX("de6c6c"),
-    pos = { x = 0, y = 0 },
-    lower = {
-        set_blind = function(self, card, from_blind)
-        end,
-        calculate = function(self, blind, context)
-        end
-    },
-    upper = {
-        set_blind = function(self, card, from_blind)
-        end,
-        calculate = function(self, blind, context)
-        end
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
-    }
-}
-
-Colonparen.GreekBlind{
     key = "colon_beta",
     name = "Beta",
     mult = 1,
