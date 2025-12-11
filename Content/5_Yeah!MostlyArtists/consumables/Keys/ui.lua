@@ -359,6 +359,32 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
     if G.CONTROLLER:save_cardarea_focus('dreamlands_consumeable_card_holder') then G.CONTROLLER.interrupt.focus = true end
     local card = G.dreamlands_consumeable_card_holder.highlighted[1]
     local temp, set = yma_improveable_consumable(card)
+    if set == 'sdown_blessing' then
+    if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+        card.ability.extra.times_left = card.ability.extra.times_left + 1 
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+        else
+            card.ability.yma_failed_pray = true
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_pray_fail')})
+        end
+    elseif set == 'yma_keys' then
+        if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+            if card.ability.consumeable.extra.type == 'cards' then
+                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 2
+                card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 2 
+            end
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 1 
+            card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 1 
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+        else
+            if SMODS.pseudorandom_probability(card, 'dreamland_failed', 2, 3, nil, true) then
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_polish_fail')})
+            else
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_key_broke')})
+                SMODS.destroy_cards(card, nil, nil, true)
+            end
+        end
+    end
     
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
@@ -366,32 +392,6 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
           G.CONTROLLER.interrupt.focus = false
           G.CONTROLLER.locks.dreamland_improve = false
           G.CONTROLLER:recall_cardarea_focus('dreamlands_consumeable_card_holder')
-          if set == 'sdown_blessing' then
-            if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
-                card.ability.extra.times_left = card.ability.extra.times_left + 1 
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
-            else
-                card.ability.yma_failed_pray = true
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_pray_fail')})
-            end
-          elseif set == 'yma_keys' then
-            if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
-                if card.ability.consumeable.extra.type == 'cards' then
-                    card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 2
-                    card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 2 
-                end
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 1 
-                card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 1 
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
-            else
-                if SMODS.pseudorandom_probability(card, 'dreamland_failed', 2, 3, nil, true) then
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_polish_fail')})
-                else
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_key_broke')})
-                    SMODS.destroy_cards(card, nil, nil, true)
-                end
-            end
-          end
           return true
         end
       }))
@@ -512,7 +512,7 @@ end
 
 G.FUNCS.can_upgrade_yma_hell = function(e)
     e.children[1].children[1].config.text = localize('k_hell_sac')..' ('..G.GAME.hell_upgrade_uses_left..'/5)'
-    if G.GAME.hell_upgrade_uses_left <= 0 or #G.hells_playing_card_holder.highlighted ~= 2 or G.CONTROLLER.locks.hell_sac then 
+    if G.CONTROLLER.locks.hell_sac or G.GAME.hell_upgrade_uses_left <= 0 or #G.hells_playing_card_holder.highlighted ~= 2 then 
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
     else
@@ -538,6 +538,10 @@ G.FUNCS.upgrade_yma_hell = function(e)
             upgraded_card = G.hells_playing_card_holder.highlighted[1]
         end
     end
+    yma_hell_upgrade_card(upgraded_card)
+    destroyed_card.highlighted = false
+    SMODS.destroy_cards(destroyed_card)
+    G.hells_playing_card_holder.highlighted[2] = nil
     
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
@@ -545,8 +549,6 @@ G.FUNCS.upgrade_yma_hell = function(e)
           G.CONTROLLER.interrupt.focus = false
           G.CONTROLLER.locks.hell_sac = false
           G.CONTROLLER:recall_cardarea_focus('hells_playing_card_holder')
-          yma_hell_upgrade_card(upgraded_card)
-          SMODS.destroy_cards(destroyed_card)
           return true
         end
       }))
