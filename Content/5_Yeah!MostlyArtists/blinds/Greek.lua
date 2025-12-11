@@ -47,3 +47,60 @@ Colonparen.GreekBlind{
         code = "RattlingSnow353",
     }
 }
+
+Colonparen.GreekBlind{
+    key = "colon_theta",
+    name = "Theta",
+    mult = 1,
+    boss_colour = HEX("76de6c"),
+    pos = { x = 0, y = 7 },
+    lower = {
+        set_blind = function(self, card, from_blind)
+        end,
+        calculate = function(self, blind, context)
+            --I changed it to per 1x instead of per 0.1X (since 0.1x is guaranteed $100 minimum) - RattlingSnow353
+            if context.end_of_round and not context.blueprint and context.main_eval then
+                local val = get_blind_amount(G.GAME.round_resets.ante)*1*G.GAME.starting_params.ante_scaling
+                local total = math.floor(G.GAME.chips/val)
+                if total >= 1 then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function() 
+                            ease_dollars(total*10)
+                            return true 
+                        end 
+                    }))
+                end
+            end
+        end
+    },
+    upper = {
+        set_blind = function(self, card, from_blind)
+        end,
+        calculate = function(self, blind, context)
+            if context.end_of_round and not context.blueprint and context.main_eval then
+                local val = get_blind_amount(G.GAME.round_resets.ante)*10*G.GAME.starting_params.ante_scaling
+                local total = math.floor(G.GAME.chips/val)
+                if total >= 1 then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function() 
+                            ease_ante(-total)
+                            G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+                            G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante-total
+                            return true 
+                        end 
+                    }))
+                end
+            end
+        end
+    },
+    beans_credits = {
+        team = ":( / Yeah! Mostly Artists",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "RattlingSnow353",
+    }
+}
