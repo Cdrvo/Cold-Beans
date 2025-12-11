@@ -19,6 +19,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'other',
         }
     },
 
@@ -110,6 +111,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'packs',
         }
     },
 
@@ -178,6 +180,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'blinds',
         }
     },
 
@@ -239,6 +242,7 @@ SMODS.Consumable {
         extra = {
             uses = 1,
             max_uses = 1,
+            type = 'shops',
         }
     },
 
@@ -292,6 +296,7 @@ SMODS.Consumable {
             uses = 8,
             max_uses = 8,
             mult_mod = 2,
+            type = 'cards',
         }
     },
 
@@ -364,6 +369,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'other',
         },
         extra_slots_used = -1
     },
@@ -444,6 +450,7 @@ SMODS.Consumable {
         extra = {
             uses = 4,
             max_uses = 4,
+            type = 'shops',
         }
     },
 
@@ -500,6 +507,7 @@ SMODS.Consumable {
             uses = 3,
             max_uses = 3,
             odds = 3,
+            type = 'hands',
         }
     },
 
@@ -576,6 +584,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'hands',
         }
     },
 
@@ -667,6 +676,7 @@ SMODS.Consumable {
         extra = {
             uses = 1,
             max_uses = 1,
+            type = 'blinds',
         }
     },
 
@@ -722,6 +732,7 @@ SMODS.Consumable {
         extra = {
             uses = 10,
             max_uses = 10,
+            type = 'cards',
         }
     },
 
@@ -790,6 +801,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'blinds',
         }
     },
 
@@ -864,6 +876,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'blinds',
         }
     },
 
@@ -955,6 +968,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'blinds',
         }
     },
 
@@ -1013,6 +1027,7 @@ SMODS.Consumable {
             uses = 3,
             max_uses = 3,
             odds = 3,
+            type = 'blinds',
         }
     },
 
@@ -1079,6 +1094,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'blinds',
         }
     },
 
@@ -1149,6 +1165,7 @@ SMODS.Consumable {
         extra = {
             uses = 6,
             max_uses = 6,
+            type = 'blinds',
         }
     },
 
@@ -1210,6 +1227,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'shops',
         }
     },
 
@@ -1261,6 +1279,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'blinds',
         }
     },
 
@@ -1328,6 +1347,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'other',
         }
     },
 
@@ -1403,6 +1423,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'other',
         },
         extra_slots_used = -1
     },
@@ -1455,6 +1476,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'shops',
         }
     },
 
@@ -1506,6 +1528,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'blinds',
         }
     },
 
@@ -1581,6 +1604,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'hands',
         }
     },
 
@@ -1642,6 +1666,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'hands',
         }
     },
 
@@ -1697,6 +1722,57 @@ SMODS.Consumable {
     }
 }
 --Reali Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_reali",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 1, y = 3 },
+
+    config = {
+        extra = {
+            uses = 4,
+            max_uses = 4,
+            type = 'shops',
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.ending_shop then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
 --Shadow Key
 SMODS.Consumable {
     set = "yma_keys",
@@ -1718,6 +1794,7 @@ SMODS.Consumable {
         extra = {
             uses = 5,
             max_uses = 5,
+            type = 'other',
         }
     },
 
@@ -1774,6 +1851,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'cards',
         }
     },
 
@@ -1855,6 +1933,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'blinds',
         }
     },
 
@@ -1916,6 +1995,7 @@ SMODS.Consumable {
             uses = 3,
             max_uses = 3,
             discards_and_hands = 1,
+            type = 'blinds',
         }
     },
 
@@ -1966,6 +2046,7 @@ SMODS.Consumable {
         extra = {
             uses = 4,
             max_uses = 4,
+            type = 'blinds',
         }
     },
 
@@ -2020,6 +2101,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
+            type = 'blinds',
         }
     },
 
@@ -2077,6 +2159,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
+            type = 'other',
         }
     },
 
@@ -2113,12 +2196,9 @@ SMODS.Consumable {
     }
 }
 --Undertree Key
-
-
---Key base 
 --SMODS.Consumable {
 --    set = "yma_keys",
---    key = "yma_angel",
+--    key = "yma_undertree",
 --
 --    loc_vars = function(self, info_queue, card)
 --        return {
@@ -2130,7 +2210,7 @@ SMODS.Consumable {
 --    end,
 --
 --    atlas = 'yea_art_key_atlas',
---    pos = { x = 1, y = 0 },
+--    pos = { x = 1, y = 4 },
 --
 --    config = {
 --        extra = {

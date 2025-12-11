@@ -126,6 +126,15 @@ function yma_hell_upgrade_card(card)
     end
 end
 
+function yma_improveable_consumable(card)
+    if card.config.center.set == 'sdown_blessing' or card.config.center.set == 'yma_keys' then
+        if not card.ability.yma_failed_pray then
+            return true, card.config.center.set
+        end
+    end
+	return false, card.config.center.set
+end
+
 function yma_state_function_events(e)
     if G.STATE == G.STATES.GRAVEYARD then
 	  e.config.colour = G.C.RED
@@ -134,6 +143,10 @@ function yma_state_function_events(e)
     elseif G.STATE == G.STATES.HELL then
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_yma_hell'
+      return true
+    elseif G.STATE == G.STATES.DREAMLAND then
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_dreamland'
       return true
     end
 	return false
@@ -145,6 +158,9 @@ function yma_can_access_location(location)
         return true
     end
     if location == 'hell' and (#SMODS.find_card("c_cbean_yma_key_to_hell") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) then
+        return true
+    end
+    if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) then
         return true
     end
 end
@@ -268,6 +284,12 @@ SMODS.Atlas({
 SMODS.Atlas {
   key = "yma_hell_sign",
   path = "5_Yeah!MostlyArtists/hell_sign.png",
+  px = 113,py = 57,
+  frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
+SMODS.Atlas {
+  key = "yma_dreamland_sign",
+  path = "5_Yeah!MostlyArtists/dreamland_sign.png",
   px = 113,py = 57,
   frames = 4, atlas_table = 'ANIMATION_ATLAS'
 }

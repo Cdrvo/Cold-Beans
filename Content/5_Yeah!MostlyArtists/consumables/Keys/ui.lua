@@ -1,6 +1,7 @@
 G.STATES.MAIN_STREET = 24783948327
 G.STATES.GRAVEYARD = 1366468461
 G.STATES.HELL = 666384372666
+G.STATES.DREAMLAND = 7983784839784932
 
 G.FUNCS.show_yma_main_street = function(e)
   stop_use()
@@ -58,6 +59,12 @@ function update_main_street()
             G.yma_mainstreet_hell.states.visible = false
         end
         G.yma_mainstreet_hell:recalculate()
+        if yma_can_access_location('dreamland') then
+            G.yma_mainstreet_dreamland.states.visible = true
+        else
+            G.yma_mainstreet_dreamland.states.visible = false
+        end
+        G.yma_mainstreet_dreamland:recalculate()
 
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -96,6 +103,8 @@ function Controller:L_cursor_press(x, y)
             G.FUNCS.show_yma_graveyard()
         elseif G.yma_mainstreet_hell and G.yma_mainstreet_hell.states.collide.is and yma_can_access_location('hell') then
             G.FUNCS.show_yma_hell()
+        elseif G.yma_mainstreet_dreamland and G.yma_mainstreet_dreamland.states.collide.is and yma_can_access_location('dreamland') then
+            G.FUNCS.show_yma_dreamland()
 		end
 	end
 end
@@ -114,24 +123,33 @@ function G.UIDEF.yma_main_street()
         definition = G.UIDEF.hellsprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
+    G.yma_mainstreet_dreamland = UIBox{
+        definition = G.UIDEF.dreamlandsprite(),
+        config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+    }
 
     local table = {}
     table[#table+1] = {
         n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, minh = 1.5, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_alleyway}},
         }}
-    table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+    table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_graveyard}},
         }}
-    table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+    table[#table+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_hell}},
+        }}
+    local table2 = {}
+    table2[#table2+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+            {n=G.UIT.O, config={object = G.yma_mainstreet_dreamland}},
         }}
     
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.L_BLACK}, nodes={
-                    {n=G.UIT.C, config={align = "cm", padding = 0.05}, nodes=table},
-                    {n=G.UIT.C, config={align = "cm", minh = 3.5}, nodes={}},
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table},
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table2},
+                    {n=G.UIT.R, config={align = "cm", minh = 3.5}, nodes={}},
                 }
               },
               
@@ -170,6 +188,216 @@ function G.UIDEF.hellsprite()
     return t
 end
 
+function G.UIDEF.dreamlandsprite()
+  
+	local sprite_hell = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_yma_dreamland_sign"], { x = 0, y = 0 }) or nil
+
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+            {n=G.UIT.O, config={object = sprite_hell}},
+    }}
+    return t
+end
+
+G.FUNCS.show_yma_dreamland = function(e)
+  stop_use()
+  hide_location(G.main_street)
+  
+  G.STATE = G.STATES.DREAMLAND
+  G.STATE_COMPLETE = false
+  
+
+  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+  ease_background_colour_blind(G.STATE)
+  sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_yma_dreamland_sign"]
+  G.hand.states.visible = false
+  sign_sprite.states.visible = true
+  sign_text = DynaText({string = {localize('ph_dreamland')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+  G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+  show_location(G.yma_dreamland)
+end
+
+G.FUNCS.hide_yma_dreamland = function(e)
+    stop_use()
+	hide_location(G.yma_dreamland)
+    if #G.dreamlands_consumeable_card_holder.cards > 0 then
+        for k, v in pairs(G.dreamlands_consumeable_card_holder.cards) do 
+            draw_card(G.dreamlands_consumeable_card_holder,G.consumeables, 100/1,'up', nil, v)
+        end
+    end
+	G.STATE = G.STATES.MAIN_STREET
+	G.STATE_COMPLETE = false
+    
+	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+	ease_background_colour_blind(G.STATES.MAIN_STREET)
+	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    sign_sprite.states.visible = false
+    sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+    G.dreamlands_consumeable_card_holder.states.visible = false
+    G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+    show_location(G.main_street)
+end
+
+function update_yma_dreamland()
+    if not G.STATE_COMPLETE then
+        stop_use()
+        ease_background_colour_blind(G.STATES.DREAMLAND)
+        local dreamland_exists = not not G.yma_dreamland
+        G.yma_dreamland = G.yma_dreamland or UIBox{
+            definition = G.UIDEF.yma_dreamland(),
+            config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+        }
+        G.dreamlands_consumeable_card_holder.states.visible = true
+        if #G.dreamlands_consumeable_card_holder.cards <= 0 then
+            G.FUNCS.draw_from_card_area_to_card_area(G.consumeables, G.dreamlands_consumeable_card_holder)
+        end
+        
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.yma_dreamland.alignment.offset.y = -5.3
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    blockable = false,
+                    func = function()
+                        if math.abs(G.yma_dreamland.T.y - G.yma_dreamland.VT.y) < 3 then
+                            local nosave_yma_dreamland = nil 
+                            -- Back to shop button
+                            G.CONTROLLER:snap_to({node = G.yma_dreamland:get_UIE_by_ID('shop_button')})
+                            -- not loaded from save?
+                            if not nosave_yma_dreamland then G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end})) end
+                            return true
+                        end
+                    end}))
+                return true
+            end
+        }))
+
+
+        G.STATE_COMPLETE = true
+    end
+end
+
+function G.UIDEF.yma_dreamland()
+    G.dreamlands_consumeable_card_holder = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
+
+    G.GAME.yma_dreamland_improve_text = localize('k_yma_polish')
+    G.GAME.yma_dreamland_chance_text = localize('k_yma_chance_to_fail_key')
+    G.GAME.yma_upgradecost_text = G.GAME.yma_upgradecost_text or 5
+
+
+    local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
+            UIBox_dyn_container({
+                {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.BLACK}, nodes={
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 8.2}, nodes={
+                          {n=G.UIT.O, config={object = G.dreamlands_consumeable_card_holder}},
+                      }},
+                    }},
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+                        {n=G.UIT.R, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.SECONDARY_SET.yma_keys, button = 'improve_consumable_yma_dreamland', func = 'can_improve_consumable_yma_dreamland', hover = true,shadow = true}, nodes = {
+                            {n=G.UIT.R, config={align = "cm", maxw = 2.5}, nodes={
+                                {n=G.UIT.T, config={ref_table = G.GAME, ref_value = 'yma_dreamland_improve_text', scale = 0.6, colour = G.C.WHITE, shadow = true}},
+                            }},
+                            {n=G.UIT.R, config={align = "cm", minh = 0.3}, nodes={
+                            }},
+                            {n=G.UIT.R, config={align = "cm", maxw = 1.3}, nodes={
+                                {n=G.UIT.T, config={ref_table = G.GAME, ref_value = 'yma_dreamland_chance_text', scale = 0.4, colour = G.C.WHITE, shadow = true}},
+                            }},
+                        }},
+                      }},
+                      {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+                        {n=G.UIT.R, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.GREEN, button = 'upgrade_from_dreamland', func = 'can_upgrade_from_dreamland', hover = true,shadow = true}, nodes = {
+                            {n=G.UIT.R, config={align = "cm", maxw = 1.3}, nodes={
+                                {n=G.UIT.T, config={text = localize('k_yma_dreamland_upgrade'), scale = 0.4, colour = G.C.WHITE, shadow = true}},
+                            }},
+                            {n=G.UIT.R, config={align = "cm", maxw = 1.3}, nodes={
+                                {n=G.UIT.T, config={text = localize('$'), scale = 0.7, colour = G.C.WHITE, shadow = true}},
+                                {n=G.UIT.T, config={ref_table = G.GAME, ref_value = 'yma_upgradecost_text', scale = 0.6, colour = G.C.WHITE, shadow = true}},
+                            }},
+                        }},
+                      }},
+                    }},
+                }
+              },
+              }, false)
+        }}
+    return t
+end
+
+G.FUNCS.can_improve_consumable_yma_dreamland = function(e)
+    local has_vaild_card, card_set = false, nil
+    if #G.dreamlands_consumeable_card_holder.highlighted == 1 then
+        has_vaild_card, card_set = yma_improveable_consumable(G.dreamlands_consumeable_card_holder.highlighted[1])
+    end
+    if #G.dreamlands_consumeable_card_holder.highlighted ~= 1 or G.CONTROLLER.locks.dreamland_improve or not has_vaild_card then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    elseif card_set == 'yma_keys' then
+        e.config.colour = G.C.SECONDARY_SET.yma_keys
+        e.config.button = 'improve_consumable_yma_dreamland'
+        G.GAME.yma_dreamland_improve_text = localize('k_yma_polish')
+        G.GAME.yma_dreamland_chance_text = localize('k_yma_chance_to_fail_key')
+    elseif card_set == 'sdown_blessing' then
+        e.config.colour = G.C.SECONDARY_SET.sdown_blessing
+        e.config.button = 'improve_consumable_yma_dreamland'
+        G.GAME.yma_dreamland_improve_text = localize('k_yma_pray')
+        G.GAME.yma_dreamland_chance_text = localize('k_yma_chance_to_fail_belssing')
+    end
+end
+
+G.FUNCS.improve_consumable_yma_dreamland = function(e) 
+    stop_use()
+    G.CONTROLLER.locks.dreamland_improve = true
+    if G.CONTROLLER:save_cardarea_focus('dreamlands_consumeable_card_holder') then G.CONTROLLER.interrupt.focus = true end
+    local card = G.dreamlands_consumeable_card_holder.highlighted[1]
+    local temp, set = yma_improveable_consumable(card)
+    
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+          G.CONTROLLER.interrupt.focus = false
+          G.CONTROLLER.locks.dreamland_improve = false
+          G.CONTROLLER:recall_cardarea_focus('dreamlands_consumeable_card_holder')
+          if set == 'sdown_blessing' then
+            if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+                card.ability.extra.times_left = card.ability.extra.times_left + 1 
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+            else
+                card.ability.yma_failed_pray = true
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_pray_fail')})
+            end
+          elseif set == 'yma_keys' then
+            if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+                if card.ability.consumeable.extra.type == 'cards' then
+                    card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 2
+                    card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 2 
+                end
+                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 1 
+                card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 1 
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+            else
+                if SMODS.pseudorandom_probability(card, 'dreamland_failed', 2, 3, nil, true) then
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_polish_fail')})
+                else
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_key_broke')})
+                    SMODS.destroy_cards(card, nil, nil, true)
+                end
+            end
+          end
+          return true
+        end
+      }))
+    G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end}))
+end
+
 G.FUNCS.show_yma_hell = function(e)
   stop_use()
   hide_location(G.main_street)
@@ -191,7 +419,7 @@ end
 
 G.FUNCS.hide_yma_hell = function(e)
     stop_use()
-    G.FUNCS.draw_from_card_area_to_deck(G.hells_playing_card_holder)
+    G.FUNCS.draw_from_card_area_to_card_area(G.hells_playing_card_holder, G.deck)
 	hide_location(G.yma_hell)
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
@@ -284,7 +512,7 @@ end
 
 G.FUNCS.can_upgrade_yma_hell = function(e)
     e.children[1].children[1].config.text = localize('k_hell_sac')..' ('..G.GAME.hell_upgrade_uses_left..'/5)'
-    if G.GAME.hell_upgrade_uses_left <= 0 or #G.hells_playing_card_holder.highlighted ~= 2 then 
+    if G.GAME.hell_upgrade_uses_left <= 0 or #G.hells_playing_card_holder.highlighted ~= 2 or G.CONTROLLER.locks.hell_sac then 
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
     else
@@ -325,6 +553,76 @@ G.FUNCS.upgrade_yma_hell = function(e)
     G.GAME.hell_upgrade_uses_left = G.GAME.hell_upgrade_uses_left - 1
     G.yma_hell.UIRoot.UIBox:recalculate()
     G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end}))
+end
+
+G.FUNCS.show_yma_graveyard = function(e)
+  stop_use()
+  hide_location(G.main_street)
+  
+  G.STATE = G.STATES.GRAVEYARD
+  G.STATE_COMPLETE = false
+  
+
+  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+  ease_background_colour_blind(G.STATE)
+  sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+  G.hand.states.visible = false
+  sign_sprite.states.visible = true
+  sign_text = DynaText({string = {localize('ph_graveyard')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+  show_location(G.graveyard)
+end
+
+G.FUNCS.hide_yma_graveyard = function(e)
+    stop_use()
+	hide_location(G.graveyard)
+	G.STATE = G.STATES.MAIN_STREET
+	G.STATE_COMPLETE = false
+    
+	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+	ease_background_colour_blind(G.STATES.MAIN_STREET)
+	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    sign_sprite.states.visible = false
+    sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+    show_location(G.main_street)
+end
+
+function update_graveyard()
+    if not G.STATE_COMPLETE then
+        stop_use()
+        ease_background_colour_blind(G.STATES.GRAVEYARD)
+        local graveyard_exists = not not G.graveyard
+        G.graveyard = G.graveyard or UIBox{
+            definition = G.UIDEF.yma_graveyard(),
+            config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+        }
+
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.graveyard.alignment.offset.y = -5.3
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    blockable = false,
+                    func = function()
+                        if math.abs(G.graveyard.T.y - G.graveyard.VT.y) < 3 then
+                            local nosave_graveyard = nil 
+                            -- Back to shop button
+							play_sound('cbean_pboy_bavoice', G.SPEEDFACTOR*(math.random()*0.4+2), 2.5)
+                            G.CONTROLLER:snap_to({node = G.graveyard:get_UIE_by_ID('shop_button')})
+                            -- not loaded from save?
+                            if not nosave_graveyard then G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end})) end
+                            return true
+                        end
+                    end}))
+                return true
+            end
+        }))
+
+
+        G.STATE_COMPLETE = true
+    end
 end
 
 function G.UIDEF.yma_graveyard()
@@ -466,10 +764,10 @@ function create_card_for_graveyard_jokers(area)
     end
   end
 
-G.FUNCS.draw_from_card_area_to_deck = function(card_area)
+G.FUNCS.draw_from_card_area_to_card_area = function(card_area, card_area2)
     local hand_count = #card_area.cards
     for i=1, hand_count do --draw cards from deck
-        draw_card(card_area, G.deck, i*100/hand_count,'down', nil, nil,  0.08)
+        draw_card(card_area, card_area2, i*100/hand_count,'down', nil, nil,  0.08)
     end
 end
 
