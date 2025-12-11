@@ -153,6 +153,7 @@ Colonparen.GreekBlind{
     }
 }
 
+-- Improved This blind - RattlingSnow353
 Colonparen.GreekBlind{
     key = "colon_zeta",
     name = "Zeta",
@@ -168,11 +169,10 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
-            if context.before then
-                for i, card in pairs(G.play.cards) do -- I cant fuckn test if i cant tell if they exist
-                    if card.config.center_key == "m_glass" then
-                        card.ability.Xmult = card.ability.Xmult + 0.5 -- wont update text??
-                    end
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                if SMODS.has_enhancement(context.other_card, "m_glass") then
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult +0.5
                 end
             end
         end
@@ -181,11 +181,9 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
-            if context.before then
-                for i, card in pairs(G.play.cards) do
-                    if card.config.center_key == "m_glass" then
-                        card.ability.extra = card.ability.extra + 1
-                    end
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                if SMODS.has_enhancement(context.other_card, "m_glass") then
+                    card.ability.extra = card.ability.extra + 1
                 end
             end
         end
@@ -298,32 +296,6 @@ Colonparen.GreekBlind{
 }
 
 Colonparen.GreekBlind{
-    key = "colon_iota",
-    name = "Iota",
-    mult = 1,
-    boss_colour = HEX("6cde80"),
-    pos = { x = 0, y = 8 },
-    lower = {
-        set_blind = function(self, card, from_blind)
-        end,
-        calculate = function(self, blind, context)
-        end
-    },
-    upper = {
-        set_blind = function(self, card, from_blind)
-        end,
-        calculate = function(self, blind, context)
-        end
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
-    }
-}
-
-Colonparen.GreekBlind{
     key = "colon_kappa",
     name = "Kappa",
     mult = 1,
@@ -352,50 +324,6 @@ Colonparen.GreekBlind{
         idea = "Glitchkat10",
         art = "George The Rat",
         code = "Glitchkat10",
-    }
-}
-
-Colonparen.GreekBlind{
-    key = "colon_lambda",
-    name = "Lambda",
-    mult = 1,
-    boss_colour = HEX("6cdea3"),
-    pos = { x = 0, y = 10 },
-    lower = {
-        set_blind = function(self, card, from_blind)
-        end,
-    },
-    upper = {
-        set_blind = function(self, card, from_blind)
-        end,
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
-    }
-}
-
-Colonparen.GreekBlind{
-    key = "colon_mu",
-    name = "Mu",
-    mult = 1,
-    boss_colour = HEX("6cdec6"),
-    pos = { x = 0, y = 11 },
-    lower = {
-        set_blind = function(self, card, from_blind)
-        end,
-    },
-    upper = {
-        set_blind = function(self, card, from_blind)
-        end,
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
     }
 }
 
@@ -481,60 +409,6 @@ Colonparen.GreekBlind{
         idea = "Glitchkat10",
         art = "George The Rat",
         code = "Glitchkat10",
-    }
-}
-
-Colonparen.GreekBlind{
-    key = "colon_omicron",
-    name = "Omicron",
-    mult = 1,
-    boss_colour = HEX("6cbfde"),
-    pos = { x = 0, y = 14 },
-    lower = {
-    },
-    upper = {
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
-    }
-}
-
-Colonparen.GreekBlind{
-    key = "colon_pi",
-    name = "Pi",
-    mult = 1,
-    boss_colour = HEX("6cabde"),
-    pos = { x = 0, y = 15 },
-    lower = {
-    },
-    upper = {
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
-    }
-}
-
-Colonparen.GreekBlind{
-    key = "colon_rho",
-    name = "Rho",
-    mult = 1,
-    boss_colour = HEX("6c97de"),
-    pos = { x = 0, y = 16 },
-    lower = {
-    },
-    upper = {
-    },
-    beans_credits = {
-        team = ":(",
-        idea = "Glitchkat10",
-        art = "George The Rat",
-        code = "",
     }
 }
 
