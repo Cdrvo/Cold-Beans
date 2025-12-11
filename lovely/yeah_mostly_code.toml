@@ -46,6 +46,9 @@ if context.end_of_round then
                     end)
                 }))
             end
+            if v.ability and v.ability.yma_failed_pray then
+                v.ability.yma_failed_pray = nil
+            end
         end
     end
     if context.cardarea == G.jokers then
@@ -92,6 +95,9 @@ end
 if self.STATE == self.STATES.HELL then
   update_yma_hell()
 end
+if self.STATE == self.STATES.DREAMLAND then
+  update_yma_dreamland()
+end
 '''
 match_indent = true
 
@@ -118,6 +124,7 @@ payload = '''
 STATE = G.STATE == G.STATES.GRAVEYARD and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.HELL and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.MAIN_STREET and G.STATES.SHOP or G.STATE,
+STATE = G.STATE == G.STATES.DREAMLAND and G.STATES.SHOP or G.STATE,
 '''
 match_indent = true
 
@@ -131,6 +138,7 @@ payload = '''
 if self.graveyard then self.graveyard:remove(); self.graveyard = nil end
 if self.yma_hell then self.yma_hell:remove(); self.yma_hell = nil end
 if self.main_street then self.main_street:remove(); self.main_street = nil end
+if self.yma_dreamland then self.yma_dreamland:remove(); self.yma_dreamland = nil end
 '''
 match_indent = true
 
@@ -151,6 +159,10 @@ end
 if G.yma_hell then
   G.yma_hell:remove()
   G.yma_hell = nil
+end
+if G.yma_dreamland then
+  G.yma_dreamland:remove()
+  G.yma_dreamland = nil
 end
 '''
 match_indent = true
@@ -180,6 +192,9 @@ position = "before"
 payload = '''
     if G.side_quests then
         table.insert(t, G.side_quests)
+    end
+    if G.dreamlands_consumeable_card_holder then
+        table.insert(t, G.dreamlands_consumeable_card_holder)
     end
 '''
 match_indent = true

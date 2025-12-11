@@ -1172,32 +1172,6 @@ return {
                     "to create {C:attention}Vampire{}",
                 }
             },
-            q_cbean_yma_wheel = {
-                name = {
-                    "Jackpot",
-                    "{C:dark_edition,s:0.7}Side Quest{}"
-                },
-                text = {
-                    "Add {C:dark_edition}Negative{} to",
-                    "a random Joker",
-                    "when a {C:attention}Wheel of Fortune{}",
-                    "{C:green}successfully{} triggers",
-                    "{C:inactive}(Expires in {C:attention}#1#{} {C:inactive}rounds){}"
-                }
-            },
-            q_cbean_yma_invisible = {
-                name = {
-                    "Invisible",
-                    "{C:dark_edition,s:0.7}Side Quest{}"
-                },
-                text = {
-                    "Win a game of {C:attention}Cups{}",
-                    "in the {C:attention}Back Alley{}",
-                    "while having bet at least {C:money}$60{}",
-                    "to create a temporary",
-                    "{C:dark_edition}Negative{} {C:legendary,E:1}Legendary{} Joker"
-                }
-            },
             q_cbean_yma_vagabond = {
                 name = {
                     "Vagabond",
@@ -2437,7 +2411,14 @@ return {
             k_yma_key_plus_use = 'Use',
             k_cbean_yma_street = 'Street',
             k_hell_sac = 'Sacrifice',
+            k_yma_chance_to_fail_key = '(Chance to break)',
+            k_yma_chance_to_fail_belssing = '(Chance to fail)',
+            k_yma_polish = 'Polish',
+            k_yma_pray = 'Pray',
+            k_yma_pray_fail = 'Unanswered',
+            k_yma_polish_fail = 'Salvaged',
             k_yma_key_broke = 'Broken',
+            k_yma_dreamland_upgrade = "Upgrade",
             k_yma_key_faded = 'Faded',
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
