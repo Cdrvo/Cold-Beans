@@ -194,7 +194,7 @@ payload = '''
         table.insert(t, G.side_quests)
     end
     if G.dreamlands_consumeable_card_holder then
-        table.insert(t, G.dreamlands_consumeable_card_holder)
+        table.insert(t, 1, G.dreamlands_consumeable_card_holder)
     end
 '''
 match_indent = true
