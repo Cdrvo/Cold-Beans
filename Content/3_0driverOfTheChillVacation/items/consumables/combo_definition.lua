@@ -6,7 +6,8 @@ combo_table = { --Lists all combo_types and what they can combo into
     special = {starter=false, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true},
     ultimate = {starter=false, taunt=false, series=false, special=false, ultimate=false, finisher=false, universal=true},
     finisher = {starter=false, taunt=false, series=false, special=false, ultimate=false, finisher=false, universal=true},
-    universal = {starter=true, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true}
+    universal = {starter=true, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true},
+    astral_projection = {starter=true, taunt=true, series=false, special=false, ultimate=false, finisher=false, universal=true}
 }   --Universal type is for spectral
 
 SMODS.current_mod.calculate = function(self,context)
