@@ -80,7 +80,7 @@ Colonparen.GreekBlind{
     },
     upper = {
         config = {
-            lucky_trigger = 'lucky_mult',
+            lucky_trigger = '',
         },
         set_blind = function(self, card, from_blind)
         end,
@@ -96,6 +96,9 @@ Colonparen.GreekBlind{
                     numerator = context.numerator * trigger,
                     denominator = context.denominator 
                 }
+            end
+            if context.after then
+                self.config.lucky_trigger = ''
             end
         end
     },
@@ -232,7 +235,7 @@ Colonparen.GreekBlind{
                     end)
                 }))
             end
-    end,
+        end,
         calculate = function(self, blind, context)
         end
     },
@@ -279,9 +282,49 @@ Colonparen.GreekBlind{
     lower = {
         set_blind = function(self, card, from_blind)
         end,
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local same_ranks = {}
+                for k, v in pairs(context.scoring_hand) do
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] or 0
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] + 1
+                end
+                local mode_rank = 0
+                for k, v in pairs(same_ranks) do
+                    if v >= mode_rank then
+                        mode_rank = v
+                    end
+                end
+                if mode_rank >= 3 then
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 10
+                    card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
+        end,
     },
     upper = {
         set_blind = function(self, card, from_blind)
+        end,
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local same_ranks = {}
+                for k, v in pairs(context.scoring_hand) do
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] or 0
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] + 1
+                end
+                local mode_rank = 0
+                for k, v in pairs(same_ranks) do
+                    if v >= mode_rank then
+                        mode_rank = v
+                    end
+                end
+                if mode_rank >= 3 then
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 1
+                    card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
         end,
     },
     beans_credits = {
