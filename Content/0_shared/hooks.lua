@@ -100,6 +100,15 @@ function SMODS.is_eternal(card, trigger)
     return is_eternal_ref(card, trigger)
 end
 
+--No using consumeables in Dreamland
+local yma_can_use_consumeable_ref = Card.can_use_consumeable
+function Card:can_use_consumeable(any_state, skip_check)
+    if G.STATE == G.STATES.DREAMLAND then
+        return false
+    end
+    return yma_can_use_consumeable_ref(self, any_state, skip_check)
+end
+
 --Automatically saves G.GAME.blind.original_chips when blind is loaded
 local yma_blind_set_blind_ref = Blind.set_blind
 function Blind:set_blind(blind, reset, silent)
