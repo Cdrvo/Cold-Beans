@@ -854,6 +854,21 @@ return {
                     "{X:black,C:white}Taunt{}, {X:green,C:white}Starter{}",
                 }}
             },
+            c_cbean_yma_za_warudo = {
+                name = {
+                    "Za Warudo",
+                    "{X:blue,C:white,s:0.7}Ultimate{}"
+                },
+                text = {{
+                    "Lowers blind by {C:dark_edition}-#1#%",
+                    "Boosted by current combo",
+                    "length when used"
+                },
+                {
+                    "Combos Into:",
+                    "Nothing",
+                }}
+            },
         },
         yma_keys = {
             c_cbean_yma_alpha = {
