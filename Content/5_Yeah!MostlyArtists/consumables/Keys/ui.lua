@@ -280,13 +280,6 @@ function update_yma_dreamland()
 end
 
 function G.UIDEF.yma_dreamland()
-    G.dreamlands_consumeable_card_holder = CardArea(
-      G.hand.T.x+0,
-      G.hand.T.y+G.ROOM.T.y + 9,
-      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
-      1.05*G.CARD_H, 
-      {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
-
     G.GAME.yma_dreamland_improve_text = localize('k_yma_polish')
     G.GAME.yma_dreamland_chance_text = localize('k_yma_chance_to_fail_key')
     G.GAME.yma_upgradecost_text = G.GAME.yma_upgradecost_text or 5

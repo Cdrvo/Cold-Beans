@@ -275,6 +275,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+    key = "yma_art_combo_atlas",
+    path = "5_Yeah!MostlyArtists/combo_atlas.png",
+    px = 71,
+    py = 95,
+})
+
+SMODS.Atlas({
     key = "yma_key_packs_atlas",
     path = "5_Yeah!MostlyArtists/keys_packs.png",
     px = 71,
