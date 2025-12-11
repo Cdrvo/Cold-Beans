@@ -233,6 +233,17 @@ payload = '''
 '''
 match_indent = true
 
+# Fix for temporary card area calculation
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''if args and args.joker_area and not args.has_area then context.cardarea = area end'''
+position = "before"
+payload = '''
+if not area then goto skip end
+'''
+match_indent = true
+
 # [Side Quests] - Create a new quest upon completion
 [[patches]] #G.GAME 
 [patches.pattern]
