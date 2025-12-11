@@ -1251,6 +1251,34 @@ return {
                     "to win {C:money}$#5#",
                 },
             },
+            m_cbean_yma_mult_1 = {
+                name = "Mult Card",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                },
+            },
+            m_cbean_yma_mult_2 = {
+                name = "Mult Card",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                    "Gives an additional {C:mult}5%{}",
+                    "of your current Mult",
+                },
+            },
+            m_cbean_yma_bonus_1 = {
+                name = "Bonus Card",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                },
+            },
+            m_cbean_yma_bonus_2 = {
+                name = "Bonus Card",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "Gives an additional {C:chips}5%{}",
+                    "of your current Chips",
+                },
+            },
             m_cbean_yma_steel_1 = {
                 name = "Steel Card",
                 text = {
@@ -2180,6 +2208,197 @@ return {
                     "Created {C:attention}Lucky cards{} have {C:green}triple odds{}",
                 },
             },
+            c_cbean_yma_high_priestess_level1 = {
+                name = {
+                    "The High Priestess",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:planet}Planet{} cards",
+                    "One of those {C:planet}Planet{} cards",
+                    "is guranteed to be your",
+                    "{C:attention}Highest played hand's{}",
+                    "{C:planet}Planet{} card",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_cbean_yma_high_priestess_level2 = {
+                name = {
+                    "The High Priestess",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:planet}Planet{} cards",
+                    "One of those {C:planet}Planet{} cards",
+                    "is guranteed to be your",
+                    "{C:attention}Highest played hand's{}",
+                    "{C:planet}Planet{} card",
+                    "{C:inactive}(Must have at least 2 slots)",
+                },
+            },
+            c_cbean_yma_high_priestess_level3 = {
+                name = {
+                    "The High Priestess",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:planet}Planet{} cards",
+                    "Two of those {C:planet}Planet{} cards",
+                    "are guranteed to be your",
+                    "{C:attention}Highest played hand's{}",
+                    "{C:planet}Planet{} card",
+                    "{C:inactive}(Must have at least 2 slots)",
+                },
+            },
+            c_cbean_yma_high_priestess_level4 = {
+                name = {
+                    "The High Priestess",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
+                    "Two of those {C:planet}Planet{} cards",
+                    "are guranteed to be your",
+                    "{C:attention}Highest played hand's{}",
+                    "{C:planet}Planet{} card",
+                },
+            },
+            c_cbean_yma_high_priestess_level5 = {
+                name = {
+                    "The High Priestess",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
+                    "of your {C:attention}Highest played hand's{}",
+                    "{C:planet}Planet{} card",
+                },
+            },
+			c_cbean_yma_empress_level1 = {
+                name = {
+                    "The Empress",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_empress_level2 = {
+                name = {
+                    "The Empress",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_empress_level3 = {
+                name = {
+                    "The Empress",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_empress_level4 = {
+                name = {
+                    "The Empress",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Mult{} cards give {C:mult}+4{}",
+                    "extra Mult",
+                },
+            },
+			c_cbean_yma_empress_level5 = {
+                name = {
+                    "The Empress",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Mult{} cards give {C:mult}+4{}",
+                    "extra Mult, plus an additional",
+                    "{C:attention}5%{} of your current Mult",
+                },
+            },
+			c_cbean_yma_heirophant_level1 = {
+                name = {
+                    "The Hierophant",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_heirophant_level2 = {
+                name = {
+                    "The Hierophant",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_heirophant_level3 = {
+                name = {
+                    "The Hierophant",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+			c_cbean_yma_heirophant_level4 = {
+                name = {
+                    "The Hierophant",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Bonus{} cards give {C:chips}+20{}",
+                    "extra Chips",
+                },
+            },
+			c_cbean_yma_heirophant_level5 = {
+                name = {
+                    "The Hierophant",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                    "Created {C:attention}Bonus{} cards give {C:chips}+20{}",
+                    "extra Chips, plus an additional",
+                    "{C:attention}5%{} of your current Chips",
+                },
+            },
 			c_cbean_yma_chariot_level1 = {
                 name = {
                     "The Chariot",
@@ -2404,6 +2623,311 @@ return {
                 text = {
                     "Adds any edition",
                     "to the selected {C:attention}Joker",
+                },
+            },
+			c_cbean_yma_star_level1 = {
+                name = {
+                    "The Star",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_star_level2 = {
+                name = {
+                    "The Star",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_star_level3 = {
+                name = {
+                    "The Star",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Gold Cards{}",
+                },
+            },
+			c_cbean_yma_star_level4 = {
+                name = {
+                    "The Star",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Gold Cards{}",
+                    "and have {C:attention}Blue Seals{}",
+                },
+            },
+			c_cbean_yma_star_level5 = {
+                name = {
+                    "The Star",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Gold Cards{}",
+                    "and have {C:attention}Blue Seals{} and {C:dark_edition}Negative{}",
+                },
+            },
+			c_cbean_yma_moon_level1 = {
+                name = {
+                    "The Moon",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_moon_level2 = {
+                name = {
+                    "The Moon",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_moon_level3 = {
+                name = {
+                    "The Moon",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Glass Cards{}",
+                },
+            },
+			c_cbean_yma_moon_level4 = {
+                name = {
+                    "The Moon",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Glass Cards{}",
+                    "and have {C:attention}Purple Seals{}",
+                },
+            },
+			c_cbean_yma_moon_level5 = {
+                name = {
+                    "The Moon",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Glass Cards{}",
+                    "and have {C:attention}Purple Seals{} and {C:dark_edition}Foil{}",
+                },
+            },
+			c_cbean_yma_sun_level1 = {
+                name = {
+                    "The Sun",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_sun_level2 = {
+                name = {
+                    "The Sun",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_sun_level3 = {
+                name = {
+                    "The Sun",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Steel Cards{}",
+                },
+            },
+			c_cbean_yma_sun_level4 = {
+                name = {
+                    "The Sun",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Steel Cards{}",
+                    "and have {C:attention}Red Seals{}",
+                },
+            },
+			c_cbean_yma_sun_level5 = {
+                name = {
+                    "The Sun",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Steel Cards{}",
+                    "and have {C:attention}Red Seals{} and {C:dark_edition}Polychrome{}",
+                },
+            },
+			c_cbean_yma_world_level1 = {
+                name = {
+                    "The World",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_world_level2 = {
+                name = {
+                    "The World",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+			c_cbean_yma_world_level3 = {
+                name = {
+                    "The World",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Lucky Cards{}",
+                },
+            },
+			c_cbean_yma_world_level4 = {
+                name = {
+                    "The World",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Lucky Cards{}",
+                    "and have {C:attention}Gold Seals{}",
+                },
+            },
+			c_cbean_yma_world_level5 = {
+                name = {
+                    "The World",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                    "Converted cards also become {C:attention}Lucky Cards{}",
+                    "and have {C:attention}Gold Seals{} and {C:dark_edition}Holographic{}",
+                },
+            },
+			c_cbean_yma_judgement_level1 = {
+                name = {
+                    "Judgement",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Creates a random",
+                    "{C:attention}Joker{} card",
+                    "{C:green}#1# in #2#{} chance to",
+                    "create a {C:attention}Buffoon Tag{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+			c_cbean_yma_judgement_level2 = {
+                name = {
+                    "Judgement",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Creates a random",
+                    "{C:attention}Joker{} card",
+                    "and a {C:attention}Buffoon Tag{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+			c_cbean_yma_judgement_level3 = {
+                name = {
+                    "Judgement",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Creates 2 random",
+                    "{C:attention}Jokers{} and a",
+                    "{C:attention}Buffoon Tag{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+			c_cbean_yma_judgement_level4 = {
+                name = {
+                    "Judgement",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Creates 2 random",
+                    "{C:attention}Jokers{} and a",
+                    "{C:attention}Buffoon Tag{}",
+                    "{C:green}#1# in #2#{} chance to",
+                    "create a random {C:attention}Non-Common Joker{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+			c_cbean_yma_judgement_level5 = {
+                name = {
+                    "Judgement",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Creates 2 random",
+                    "{C:attention}Jokers{} and a",
+                    "{C:attention}Buffoon Tag{}",
+                    "{C:green}#1# in #2#{} chance to",
+                    "create a random {C:attention}Non-Common Joker{}",
+                    "{C:inactive}(Must have room)",
                 },
             },
 		},

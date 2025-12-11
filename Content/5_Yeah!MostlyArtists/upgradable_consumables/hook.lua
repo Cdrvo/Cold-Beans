@@ -5,8 +5,16 @@ function yma_can_upgrade_consumable(card)
     local consumables_list = {
         base = {
             "magician",
+            "high_priestess",
+            "empress",
+            "heirophant",
             "hermit",
             "wheel_of_fortune",
+            "star",
+            "sun",
+            "moon",
+            "world",
+            "judgement",
             "wraith",
             "chariot",
             "justice",
