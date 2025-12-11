@@ -10,6 +10,12 @@ combo_table = { --Lists all combo_types and what they can combo into
     astral_projection = {starter=true, taunt=true, series=false, special=false, ultimate=false, finisher=false, universal=true}
 }   --Universal type is for spectral
 
+for k, v in pairs(combo_table) do
+    if v.special then
+        v['astral_projection'] = true
+    end
+end
+
 SMODS.current_mod.calculate = function(self,context)
     if context.after then
         G.GAME.cbean_combo_index = {}
