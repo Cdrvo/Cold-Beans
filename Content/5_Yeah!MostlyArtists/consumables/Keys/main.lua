@@ -293,6 +293,12 @@ SMODS.Atlas {
   px = 113,py = 57,
   frames = 4, atlas_table = 'ANIMATION_ATLAS'
 }
+SMODS.Atlas {
+  key = "yma_graveyard_sign",
+  path = "5_Yeah!MostlyArtists/graveyard_sign.png",
+  px = 113,py = 57,
+  frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
 
 SMODS.ConsumableType {
     key = "yma_keys",

@@ -170,7 +170,7 @@ end
 
 function G.UIDEF.gravesprite()
   
-	local sprite_grave = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["shop_sign"], { x = 0, y = 0 }) or nil
+	local sprite_grave = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_yma_graveyard_sign"], { x = 0, y = 0 }) or nil
 
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_grave}},
@@ -582,7 +582,7 @@ G.FUNCS.hide_yma_graveyard = function(e)
 	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
     local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATES.MAIN_STREET)
-	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+	sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_yma_graveyard_sign"]
     sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     show_location(G.main_street)
