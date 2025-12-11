@@ -298,7 +298,7 @@ Colonparen.GreekBlind{
                 if mode_rank >= 3 then
                     context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
                     context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 10
-                    card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
                 end
             end
         end,
@@ -322,7 +322,7 @@ Colonparen.GreekBlind{
                 if mode_rank >= 3 then
                     context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
                     context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 1
-                    card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
                 end
             end
         end,
@@ -342,8 +342,41 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6cbfde"),
     pos = { x = 0, y = 14 },
     lower = {
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local has_modifications = context.other_card.config.center ~= G.P_CENTERS.c_base or context.other_card:get_seal() or context.other_card.edition
+                if has_modifications then
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 5
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
+        end,
     },
     upper = {
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local has_enhancement = context.other_card.config.center ~= G.P_CENTERS.c_base 
+                local had_seal = context.other_card:get_seal()
+                local has_edition = context.other_card.edition
+                local has_modifications = has_enhancement or had_seal or has_edition
+                if has_enhancement then
+                    context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+                    context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + 30
+                end
+                if has_edition then
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 10
+                end
+                if has_seal then
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 0.2
+                end
+                if has_modifications then
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
+        end,
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
