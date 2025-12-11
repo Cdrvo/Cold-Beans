@@ -80,7 +80,7 @@ Colonparen.GreekBlind{
     },
     upper = {
         config = {
-            lucky_trigger = 'lucky_mult',
+            lucky_trigger = '',
         },
         set_blind = function(self, card, from_blind)
         end,
@@ -96,6 +96,9 @@ Colonparen.GreekBlind{
                     numerator = context.numerator * trigger,
                     denominator = context.denominator 
                 }
+            end
+            if context.after then
+                self.config.lucky_trigger = ''
             end
         end
     },
@@ -172,12 +175,66 @@ Colonparen.GreekBlind{
     pos = { x = 0, y = 8 },
     lower = {
         set_blind = function(self, card, from_blind)
+            yma_redeem_voucher()
+            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:add_to_deck()
+                        G.jokers:emplace(cardd)
+                        G.GAME.joker_buffer = 0
+                        return true
+                    end)
+                }))
+            end
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Consumeables',G.consumeables, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end)
+                }))
+            end
         end,
         calculate = function(self, blind, context)
         end
     },
     upper = {
         set_blind = function(self, card, from_blind)
+            for i = 1,2 do
+                yma_redeem_voucher()
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.jokers:emplace(cardd)
+                        return true
+                    end)
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Consumeables',G.consumeables, nil, nil, nil, nil, nil, 'colon_iota')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        return true
+                    end)
+                }))
+            end
         end,
         calculate = function(self, blind, context)
         end
@@ -225,9 +282,49 @@ Colonparen.GreekBlind{
     lower = {
         set_blind = function(self, card, from_blind)
         end,
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local same_ranks = {}
+                for k, v in pairs(context.scoring_hand) do
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] or 0
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] + 1
+                end
+                local mode_rank = 0
+                for k, v in pairs(same_ranks) do
+                    if v >= mode_rank then
+                        mode_rank = v
+                    end
+                end
+                if mode_rank >= 3 then
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 10
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
+        end,
     },
     upper = {
         set_blind = function(self, card, from_blind)
+        end,
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local same_ranks = {}
+                for k, v in pairs(context.scoring_hand) do
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] or 0
+                    same_ranks[v:get_id()] = same_ranks[v:get_id()] + 1
+                end
+                local mode_rank = 0
+                for k, v in pairs(same_ranks) do
+                    if v >= mode_rank then
+                        mode_rank = v
+                    end
+                end
+                if mode_rank >= 3 then
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 1
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
         end,
     },
     beans_credits = {
@@ -245,8 +342,41 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6cbfde"),
     pos = { x = 0, y = 14 },
     lower = {
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local has_modifications = context.other_card.config.center ~= G.P_CENTERS.c_base or context.other_card:get_seal() or context.other_card.edition
+                if has_modifications then
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 5
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
+        end,
     },
     upper = {
+        calculate = function(self, blind, context)
+            if context.individual and context.cardarea == G.play and not context.end_of_round then
+                local has_enhancement = context.other_card.config.center ~= G.P_CENTERS.c_base 
+                local had_seal = context.other_card:get_seal()
+                local has_edition = context.other_card.edition
+                local has_modifications = has_enhancement or had_seal or has_edition
+                if has_enhancement then
+                    context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+                    context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + 30
+                end
+                if has_edition then
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+                    context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + 10
+                end
+                if has_seal then
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 0.2
+                end
+                if has_modifications then
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
+                end
+            end
+        end,
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
@@ -263,8 +393,130 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6cabde"),
     pos = { x = 0, y = 15 },
     lower = {
+        calculate = function(self, blind, context)
+            if context.yma_before_before and context.scoring_hand and G.play then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''})
+                        return true
+                    end
+                }))
+                local first_card_suit = context.scoring_hand[1].base.suit
+                for i = 1, #context.scoring_hand do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('card1', percent)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                delay(0.2)
+                for i = 1, #context.scoring_hand do
+                    context.scoring_hand[i]:change_suit(first_card_suit) 
+                end
+                for i = 1, #context.scoring_hand do
+                    local percent = 0.85 + (i - 0.999) / (#context.scoring_hand - 0.998) * 0.3
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('tarot2', percent, 0.6)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                return {
+                    func = function()
+                        delay(0.2)
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                local text,disp_text,poker_hands,scoring_hand,non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
+
+                                update_hand_text({
+                                    sound = G.GAME.current_round.current_hand.handname ~= disp_text and 'button' or nil, 
+                                    volume = 0.4, 
+                                    immediate = true, 
+                                    nopulse = nil,
+                                    delay = G.GAME.current_round.current_hand.handname ~= disp_text and 0.4 or 0}, 
+                                    {handname=disp_text, level=G.GAME.hands[calculated_text or text].level, 
+                                    mult = G.GAME.hands[calculated_text or text].mult, 
+                                    chips = G.GAME.hands[calculated_text or text].chips})
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end,
     },
     upper = {
+        calculate = function(self, blind, context)
+            if context.yma_before_before and context.scoring_hand and G.play then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''})
+                        return true
+                    end
+                }))
+                local first_card_rank = context.scoring_hand[1]:get_id()
+                for i = 1, #context.scoring_hand do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('card1', percent)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                delay(0.2)
+                for i = 1, #context.scoring_hand do
+                    SMODS.modify_rank(context.scoring_hand[i], first_card_rank - context.scoring_hand[i]:get_id()) 
+                end
+                for i = 1, #context.scoring_hand do
+                    local percent = 0.85 + (i - 0.999) / (#context.scoring_hand - 0.998) * 0.3
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        func = function()
+                            context.scoring_hand[i]:flip()
+                            play_sound('tarot2', percent, 0.6)
+                            context.scoring_hand[i]:juice_up(0.3, 0.3)
+                            return true
+                        end
+                    }))
+                end
+                return {
+                    func = function()
+                        delay(0.2)
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                local text,disp_text,poker_hands,scoring_hand,non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
+
+                                update_hand_text({
+                                    sound = G.GAME.current_round.current_hand.handname ~= disp_text and 'button' or nil, 
+                                    volume = 0.4, 
+                                    immediate = true, 
+                                    nopulse = nil,
+                                    delay = G.GAME.current_round.current_hand.handname ~= disp_text and 0.4 or 0}, 
+                                    {handname=disp_text, level=G.GAME.hands[calculated_text or text].level, 
+                                    mult = G.GAME.hands[calculated_text or text].mult, 
+                                    chips = G.GAME.hands[calculated_text or text].chips})
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end,
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
@@ -281,8 +533,39 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6c97de"),
     pos = { x = 0, y = 16 },
     lower = {
+        calculate = function(self, blind, context)
+            if context.yma_before_before then
+                local most_played_hand = nil
+                local val = 1
+                for k, v in pairs(G.GAME.hands) do
+                    if v.played >= val and v.visible then
+                        val = v.played
+                        most_played_hand = k
+                    end
+                end
+                if context.scoring_name == most_played_hand then
+                    delay(1.3)
+                    for k, v in pairs(G.GAME.hands) do
+                        level_up_hand(nil, k, true)
+                    end
+                end
+            end
+        end,
     },
     upper = {
+        set_blind = function(self, card, from_blind)
+            local most_played_hand = nil
+            local val = 1
+            for k, v in pairs(G.GAME.hands) do
+                if v.played >= val and v.visible then
+                    val = v.played
+                    most_played_hand = k
+                end
+            end
+            update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(most_played_hand, 'poker_hands'),chips = G.GAME.hands[most_played_hand].chips, mult = G.GAME.hands[most_played_hand].mult, level=G.GAME.hands[most_played_hand].level})
+            level_up_hand(nil, most_played_hand, nil, val)
+            update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
+        end,
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
