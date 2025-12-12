@@ -1899,6 +1899,111 @@ return {
                     "resets after each {C:attention}Blind{}",
                 }
             },
+            j_cbean_yma_yeah_mostly_artists_form0 = {
+                name = {
+                    "FirstTry",
+                    "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
+                },
+                text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+                    {
+                        "{C:green}#1# in #2#{} chance",
+                        "for cards {C:attention}held in hand{}",
+                        "to create a {C:attention}Buffoon Tag{}"
+                    }
+                }
+            },
+            j_cbean_yma_yeah_mostly_artists_form1 = {
+                name = {
+                    "Flynn",
+                    "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
+                },
+                text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+                    {
+                        "Cards held in hand",
+                        "permanently gain {C:mult}+#4#{} mult"
+                    }
+                }
+            },
+            j_cbean_yma_yeah_mostly_artists_form2 = {
+                name = {
+                    "Rainstar",
+                    "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
+                },
+                text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+                    {
+                        "If played hand contains",
+                        "a {C:attention}#3#{}, convert",
+                        "all cards held in hand into",
+                        "the {C:attention}suit{} of first played card",
+                    }
+                }
+            },
+            j_cbean_yma_yeah_mostly_artists_form3 = {
+                name = {
+                    "cloudzXIII",
+                    "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
+                },
+                text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
+                        "If played hand contains",
+                        "a card with an {C:attention}Enhancement{},",
+                        "enhance a random",
+                        "card held in hand",
+                    }
+                }
+            },
+            j_cbean_yma_yeah_mostly_artists_form4 = {
+                name = {
+                    "RattlingSnow353",
+                    "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
+                },
+                text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+                    {
+                        "(no effect)"
+                    }
+                }
+            },
+            j_cbean_yma_yeah_mostly_artists_form5 = {
+                name = {
+                    "Lyre",
+                    "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
+                },
+                text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+                    {
+                        "(no effect)"
+                    }
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {
@@ -3652,6 +3757,8 @@ return {
             k_yma_key_broke = 'Broken',
             k_yma_dreamland_upgrade = "Upgrade",
             k_yma_key_faded = 'Faded',
+            k_yma_transform = "Transformed!",
+            k_yma_tag = "Tag!",
 			k_cbean_burned="Burned!",
             k_cbean_piss_ex = "Piss!",
             k_cbean_mash_ex = "Mash!",
