@@ -3049,7 +3049,17 @@ return {
                 },
             },
 		},
-        Voucher = {},
+        Voucher = {
+        --Yeah! Mostly Artists
+            v_cbean_yma_special_deal = {
+				name = "Special Deal",
+				text = {
+					"{C:attention}Booster{} Packs have",
+					"{C:attention}#1#{} extra option",
+					"to choose from"
+				},
+			},
+        },
     },
     misc = {
         achievement_descriptions = {},
