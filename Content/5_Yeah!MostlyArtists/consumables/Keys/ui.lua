@@ -357,8 +357,13 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
         card.ability.extra.times_left = card.ability.extra.times_left + 1 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
         else
-            card.ability.yma_failed_pray = true
-            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_pray_fail')})
+            if G.GAME and G.GAME.used_vouchers['v_cbean_yma_krater'] and SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+                card.ability.extra.times_left = card.ability.extra.times_left + 1 
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+            else
+                card.ability.yma_failed_pray = true
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_pray_fail')})
+            end
         end
     elseif set == 'yma_keys' then
         if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
