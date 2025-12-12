@@ -22,6 +22,17 @@ if next(SMODS.find_card("c_cbean_yma_enigma")) then
 end
 '''
 
+# Pool fix for Seeing Stars
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif _type == 'Joker' then _pool[#_pool + 1] = "j_joker"'''
+position = "before"
+match_indent = true
+payload = '''
+elseif _type == 'Joker' and next(SMODS.find_card("j_cbean_yma_seeing_stars")) then _pool[#_pool + 1] = "j_astronomer"
+'''
+
 # Before before context
 [[patches]] 
 [patches.pattern]
