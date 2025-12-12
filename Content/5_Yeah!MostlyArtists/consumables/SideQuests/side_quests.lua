@@ -558,4 +558,48 @@ YMA.SideQuests.quest {
     }
 }
 
+YMA.SideQuests.quest {
+    order = 12,
+    key = "yma_patience",
+    rarity = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 0, y = 1 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            rerolled = false,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.reroll_shop then
+            card.ability.extra.rerolled = true
+        end
+        if context.ante_change and context.ante_end then
+            if not card.ability.extra.rerolled then
+                G.GAME.cbean.patience_quest = true
+                YMA.complete_quest(card, nil, nil, false)
+            end
+            if card.ability.extra.rerolled then
+                SMODS.calculate_effect({ message = localize('k_reset') }, card)
+                card.ability.extra.rerolled = false
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
 -- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 12)

@@ -106,6 +106,13 @@ if context.cardarea == G.jokers then
         end
     end
 end
+if context.starting_shop and G.GAME.cbean.patience_quest then
+    SMODS.change_free_rerolls(5)
+end
+if context.ending_shop and G.GAME.cbean.patience_quest then
+    G.GAME.cbean.patience_quest = false
+    SMODS.change_free_rerolls(-5)
+end
 '''
 
 # Before After context
@@ -224,6 +231,7 @@ cbean = {
     quest_complete = false,
     completed_quests = {},
     destroyed_jokers = {},
+    patience_quest = false,
 },
 '''
 match_indent = true 

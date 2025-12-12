@@ -1300,6 +1300,18 @@ return {
                     "a random {C:attention}Voucher{}",
                 }
             },
+            q_cbean_yma_patience = {
+                name = {
+                    "Patience",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Beat an {C:attention}Ante{}",
+                    "without {C:attention}rerolling{}",
+                    "to get {C:attention}5{} free {C:green}Rerollls{}",
+                    "in the next {C:attention}shop{}"
+                }
+            },
         },
         Enhanced = {
             m_cbean_pboys_piss = {
