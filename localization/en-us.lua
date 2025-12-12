@@ -3715,6 +3715,13 @@ return {
 					"to choose from"
 				},
 			},
+            v_cbean_yma_krater = {
+				name = "Krater",
+				text = {
+                    "{C:attention}Praying{} becomes",
+                    "more {C:attention}effective",
+				},
+			},
         },
     },
     misc = {
