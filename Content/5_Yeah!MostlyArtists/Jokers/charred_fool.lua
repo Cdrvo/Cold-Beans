@@ -5,8 +5,8 @@ SMODS.Joker {
 	end,
 
 	rarity = 3,
-	--atlas = 'yma_joker_atlas',
-	pos = { x = 0, y = 0 },
+	atlas = 'yma_joker_atlas',
+	pos = { x = 3, y = 0 },
 	cost = 7,
 	blueprint_compat = false,
 
@@ -23,7 +23,7 @@ SMODS.Joker {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "Flynn",
-        art = "N/A",
+        art = "RattlingSnow353",
         code = "cloudzXIII",
     }
 }
