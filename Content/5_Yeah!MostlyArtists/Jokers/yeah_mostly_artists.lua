@@ -83,13 +83,7 @@ SMODS.Joker {
 		elseif pos == 1 then -- Flynn: Cards held in hand permanently gain +1 mult
             if context.individual and context.cardarea == G.hand and not context.end_of_round then
                 context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        context.other_card:juice_up()
-                        SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, context.other_card)
-                        return true
-                    end
-                }))
+                SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, context.other_card)
             end
 
 		elseif pos == 2 then -- Rainstar: if played hand contains a flush convert all cards held in hand into the suit of the first played card
