@@ -1278,7 +1278,6 @@ return {
                     "to create {C:attention}Shortcut{}",
                 }
             },
-
             q_cbean_yma_luchador = {
                 name = {
                     "Luchador",
@@ -2226,6 +2225,14 @@ return {
             },
         },
         Spectral = {
+            c_cbean_yma_archive = {
+                name = 'Archive',
+                text = {
+                    'Add a {V:1}#2#',
+                    'to {C:attention}#1#{} selected',
+                    'card in your hand'
+                }
+            },
             c_cbean_yma_omega = {
                 name = 'Omega Key',
                 text = {
