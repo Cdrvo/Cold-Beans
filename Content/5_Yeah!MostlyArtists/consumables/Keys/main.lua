@@ -101,6 +101,73 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
     delay(0.5)
 end
 
+function yma_retrieve_joker_text(joker, descip, name)
+    local function get_text(main)
+        local text = ""
+        if type(main) == "string" then
+            text = text .. main
+            return text
+        end
+        for i = 1, #main do
+            if type(main[i]) == "string" then
+                text = text .. main[i]
+            elseif main[i].config and main[i].config.text and type(main[i].config.text) == "string" then
+                text = text .. main[i].config.text
+
+            -- Parses any Dynatext objects
+            elseif main[i].config and main[i].config.object and main[i].config.object.config and type(main[i].config.object.config) == "table" and main[i].config.object.config.string then
+                local options = main[i].config.object.config.string
+                local random_element = main[i].config.object.config.random_element
+                local chosen_option = nil
+                if random_element then
+                    chosen_option = options[pseudorandom('aij_retrieve_joker_text', 1, #options)]
+                else
+                    chosen_option = options[math.floor((G.TIMERS.REAL or pseudorandom('aij_retrieve_joker_text', 1, 60)) * love.timer.getFPS( ) % #options) + 1]
+                end
+                if type(chosen_option) == "table" then
+                    text = text .. chosen_option.string or get_text(chosen_option)
+                else
+                    text = text .. chosen_option
+                end
+            elseif type(main[i]) == "table" then
+                -- Parses any text in XMult/XChip/similar blocks
+                if main[i].nodes and type(main[i].nodes) == "table" then
+                    text = text .. " "
+                    text = text .. get_text(main[i].nodes)
+                else
+                    text = text .. " "
+                    text = text .. get_text(main[i])
+                end
+            end
+        end
+        return text
+    end
+    local text = ""
+    if name and descip and G.localization.descriptions['Joker'][joker.key or joker] then
+        local main = G.localization.descriptions['Joker'][joker.key or joker].name
+        text = text .. get_text(main)
+        if text and type(text) == 'string' then text = string.gsub(text, "{.-}", "") end
+    elseif descip and G.localization.descriptions['Joker'][joker.key or joker] then
+        local main = G.localization.descriptions['Joker'][joker.key or joker].text
+        text = text .. get_text(main)
+        if text and type(text) == 'string' then text = string.gsub(text, "{.-}", "") end
+    else
+        if joker.generate_UIBox_ability_table then
+            if not joker.ability_UIBox_table then -- Removing this check causes memory leaks
+                joker.ability_UIBox_table = joker:generate_UIBox_ability_table()
+            end
+            local main = joker.ability_UIBox_table.main
+            text = text .. get_text(main)
+            local multi_box = joker.ability_UIBox_table.multi_box
+            if multi_box then
+                text = text .. " "
+                text = text .. get_text(multi_box)
+            end
+        end
+    end
+    return text
+end
+
 function yma_hell_upgrade_card(card)
 	local upgrades_weight = {['perma_bonus'] = {weight = 10, amt = 3}, ['perma_mult'] = {weight = 4, amt = 1}, ['perma_h_chips'] = {weight = 7, amt = 3}, ['perma_h_mult'] = {weight = 3.8, amt = 2}, ['perma_p_dollars'] = {weight = 2, amt = 1}, ['perma_h_dollars'] = {weight = 3.6, amt = 1}, ['perma_x_chips'] = {weight = 3.6, amt = 0.1}, ['perma_x_mult'] = {weight = 2.2, amt = 0.1}, ['perma_h_x_chips'] = {weight = 2.2, amt = 0.1}, ['perma_h_x_mult'] = {weight = 1, amt = 0.1}, ['perma_repetitions'] = {weight = 0.1, amt = 1}}
     local total_rate = 0
