@@ -150,6 +150,16 @@ function Card.selectable_from_pack(card, pack)
     return yma_selectable_from_pack_ref(card, pack)
 end
 
+--If card was sold
+local sell_card_ref = Card.sell_card
+function Card:sell_card()
+  local ref = sell_card_ref(self)
+  if self.ability then
+    self.ability.yma_sold_self = true
+  end
+  return ref
+end
+
 --Giant, Timeshift and Shadow Key code
 local start_dissolve_ref = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
