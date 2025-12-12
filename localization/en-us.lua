@@ -1845,10 +1845,9 @@ return {
             j_cbean_yma_key_ring = {
                 name = "Key Ring",
                 text = {
-                    'When getting a {C:yma_keys}Key{} {C:green}#1#',
-                    '{C:green}in #2#{} chance to get a',
-                    '{C:attention}copy{} of it',
-                    '{C:inactive}(Must have room)'
+                    'When a {C:yma_keys}Key{} breaks',
+                    'have a {C:green}chance{} to get a',
+                    'fresh {C:attention}copy{} of it',
                 }
             },
             j_cbean_yma_the_jest_around = {
