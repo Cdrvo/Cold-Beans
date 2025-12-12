@@ -2183,6 +2183,15 @@ return {
                     "be used immediately"
                 }
             },
+            --Seals
+            cbean_yma_cipher_seal = {
+                name = "Cipher Seal",
+                text = {
+                    '{C:green}#1# in #2#{} chance to {C:attention}polish',
+                    'a random {C:yma_keys}Key{} when this',
+                    'card is {C:attention}scored'
+                }
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3780,7 +3789,8 @@ return {
         },
         high_scores = {},
         labels = {
-            cbean_sdown_lunar_seal = "Lunar Seal"
+            cbean_sdown_lunar_seal = "Lunar Seal",
+            cbean_yma_cipher_seal = "Cipher Seal"
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
