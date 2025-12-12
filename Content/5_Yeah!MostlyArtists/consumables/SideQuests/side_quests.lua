@@ -389,4 +389,50 @@ YMA.SideQuests.quest {
         code = "cloudzXIII",
     }
 }
--- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 9)
+YMA.SideQuests.quest {
+    order = 9,
+    key = "yma_shortcut",
+    rarity = 2,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_shortcut
+        return {
+            vars = {
+                card.ability.extra.skips_remaining
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 1, y = 1 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            skips_remaining = 2,
+            skips = 2
+        }
+    },
+
+    calculate = function(self, card, context)
+         if context.skip_blind and not context.blueprint then
+            card.ability.extra.skips_remaining = card.ability.extra.skips_remaining - 1
+             SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
+        end
+        if card.ability.extra.skips_remaining <= 0 then
+            card.ability.extra.skips_remaining = card.ability.extra.skips
+            YMA.complete_quest(card, "Joker", "j_shortcut")
+        end
+        if context.setting_blind then
+            card.ability.extra.skips_remaining = card.ability.extra.skips
+            SMODS.calculate_effect({ message = localize('k_reset') }, card)
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}        
+-- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 10)

@@ -1266,7 +1266,18 @@ return {
                     "in a single {C:attention}round{}",
                     "to create {C:attention}Yorick{}",
                 }
-            }
+            },
+            q_cbean_yma_shortcut = {
+                name = {
+                    "Shortcut",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Skip {C:attention}2{} {C:inactive}(#1#){}",
+                    "consecutive {C:attention}Blinds{}",
+                    "to create {C:attention}Shortcut{}",
+                }
+            },
         },
         Enhanced = {
             m_cbean_pboys_piss = {
