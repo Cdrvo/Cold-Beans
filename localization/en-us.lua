@@ -1289,6 +1289,17 @@ return {
                     "to create {C:attention}Luchador{}",
                 }
             },
+            q_cbean_yma_voucher = {
+                name = {
+                    "Collector",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Open {C:attention}#2#{} {C:inactive}(#1#){} unique {C:attention}Booster",
+                    "{C:attention}Packs{} to redeem",
+                    "a random {C:attention}Voucher{}",
+                }
+            },
         },
         Enhanced = {
             m_cbean_pboys_piss = {

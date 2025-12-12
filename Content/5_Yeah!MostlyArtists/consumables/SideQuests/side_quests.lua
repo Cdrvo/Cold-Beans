@@ -487,4 +487,75 @@ YMA.SideQuests.quest {
     }
 }
 
--- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 10)
+YMA.SideQuests.quest {
+    order = 11,
+    key = "yma_voucher",
+    rarity = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.packs_left,
+                card.ability.extra.unique_packs
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 0, y = 0 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            boosters_opened = {},
+            unique_packs = 3,
+            packs_left = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.open_booster then
+            local pack_type = context.card.config.center.kind
+            local unique = true
+            for _, booster in ipairs(card.ability.extra.boosters_opened) do
+                if booster == pack_type then
+                    unique = false
+                    break
+                end
+            end
+            if unique then
+                table.insert(card.ability.extra.boosters_opened, pack_type)
+                card.ability.extra.packs_left = card.ability.extra.packs_left - 1
+                SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
+            end
+        end
+
+        if card.ability.extra.packs_left <= 0 then
+            card.ability.extra.packs_left = card.ability.extra.unique_packs
+			local voucher_key = get_next_voucher_key(true)
+			
+			local new_card = create_card("Voucher", G.play, nil, nil, nil, nil, voucher_key, nil)
+			new_card:start_materialize()
+			new_card.cost = 0
+			new_card.from_tag = true
+			new_card:redeem()
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.2,
+				func = (function()
+					new_card:start_dissolve()                    
+					return true
+				end
+            )}))
+            YMA.complete_quest(card, nil, nil, false)
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "cloudzXIII",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+
+-- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 12)
