@@ -139,6 +139,9 @@ function SMODS.card_select_area(card, pack)
     if card.ability and card.ability.consumeable and #SMODS.find_card("c_cbean_yma_enigma") >= 1 then 
         return "consumeables" 
     end
+    if G.GAME and G.GAME.used_vouchers['v_cbean_yma_grand_theft'] and card.ability.consumeable and card.area == G.pack_cards and G.pack_cards then
+        return "consumeables" 
+    end
     return yma_card_select_area_ref(card, pack)
 end
 
@@ -146,6 +149,13 @@ local yma_selectable_from_pack_ref = Card.selectable_from_pack
 function Card.selectable_from_pack(card, pack)
     if card.ability and card.ability.consumeable and #SMODS.find_card("c_cbean_yma_enigma") >= 1 then 
         return "consumeables" 
+    end
+    if G.GAME and G.GAME.used_vouchers['v_cbean_yma_grand_theft'] and card.ability.consumeable and card.area == G.pack_cards and G.pack_cards then
+        local edition_card_limit = card.ability.card_limit
+        local area = 'consumeables'
+        if area and #G[area].cards < G[area].config.card_limit + edition_card_limit then
+            return "consumeables" 
+        end
     end
     return yma_selectable_from_pack_ref(card, pack)
 end
