@@ -1823,6 +1823,72 @@ return {
                     "at end of round"
                 }
             },
+            j_cbean_yma_edward = {
+                name = "Exponentiation Edward",
+                text = {
+                    "{X:dark_edition,C:white}^#1#{} Mult",
+                }
+            },
+            j_cbean_yma_manny = {
+                name = "Multiplication Manny",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                }
+            },
+            j_cbean_yma_seeing_stars = {
+                name = "Seeing Stars",
+                text = {
+                    "Only {C:planet}Planet{} related",
+                    "Jokers can appear",
+                }
+            },
+            j_cbean_yma_key_ring = {
+                name = "Key Ring",
+                text = {
+                    'When getting a {C:yma_keys}Key{} {C:green}#1#',
+                    '{C:green}in #2#{} chance to get a',
+                    '{C:attention}copy{} of it',
+                    '{C:inactive}(Must have room)'
+                }
+            },
+            j_cbean_yma_the_jest_around = {
+                name = "The Jest Around",
+                text = {
+                    '{X:mult,C:white}X#1#{} Mult per {C:combo}Combo{} card',
+                    'being used',
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+                }
+            },
+            j_cbean_yma_born_salesman = {
+                name = "Born Salesman",
+                text = {
+                    '{C:money}Shop{} and {C:attention}Pack{} based {C:yma_keys}Keys',
+                    'take no {C:dark_edition}space'
+                }
+            },
+            j_cbean_yma_well_wrapped = {
+                name = "Well Wrapped",
+                text = {
+                    'When this {C:attention}Joker{} is {C:red}destroyed',
+                    '{C:green}#1# in #2#{} chance to create',
+                    'The Soul',
+                }
+            },
+            j_cbean_yma_joker_vision = {
+                name = "Joker Vision",
+                text = {
+                    'Leftmost {C:combo}Combo{} card {C:attention}retriggers{}',
+                    'twice'
+                }
+            },
+            j_cbean_yma_set_of_dice = {
+                name = "Set of Dice",
+                text = {
+                    '{C:green}Probability{} is {C:attention}guaranteed',
+                    'for all {C:attention}#1#',
+                    "resets after each {C:attention}Blind{}",
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {
