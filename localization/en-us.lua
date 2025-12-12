@@ -1843,7 +1843,7 @@ return {
                 }
             },
             j_cbean_yma_key_ring = {
-                name = "Key Ring",
+                name = "Spare Key",
                 text = {
                     'When a {C:yma_keys}Key{} breaks',
                     'have a {C:green}chance{} to get a',
