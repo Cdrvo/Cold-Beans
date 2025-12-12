@@ -101,6 +101,16 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
     delay(0.5)
 end
 
+function yma_get_keys_of_type(type)
+    local center_key_table = {}
+    for k, v in pairs(G.P_CENTER_POOLS['yma_keys']) do
+        if v.config.extra.usage_type == type then
+            center_key_table[#center_key_table+1] = v.key
+        end
+    end
+    return center_key_table
+end
+
 function yma_retrieve_joker_text(joker, descip, name)
     local function get_text(main)
         local text = ""

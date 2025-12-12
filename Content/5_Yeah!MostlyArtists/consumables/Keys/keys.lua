@@ -19,7 +19,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'other',
+            usage_type = 'other',
         }
     },
 
@@ -111,7 +111,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'packs',
+            usage_type = 'packs',
         }
     },
 
@@ -180,7 +180,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -242,7 +242,7 @@ SMODS.Consumable {
         extra = {
             uses = 1,
             max_uses = 1,
-            type = 'shops',
+            usage_type = 'shops',
         }
     },
 
@@ -296,7 +296,7 @@ SMODS.Consumable {
             uses = 8,
             max_uses = 8,
             mult_mod = 2,
-            type = 'cards',
+            usage_type = 'cards',
         }
     },
 
@@ -369,7 +369,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'other',
+            usage_type = 'other',
         },
         extra_slots_used = -1
     },
@@ -450,7 +450,7 @@ SMODS.Consumable {
         extra = {
             uses = 4,
             max_uses = 4,
-            type = 'shops',
+            usage_type = 'shops',
         }
     },
 
@@ -507,7 +507,7 @@ SMODS.Consumable {
             uses = 3,
             max_uses = 3,
             odds = 3,
-            type = 'hands',
+            usage_type = 'hands',
         }
     },
 
@@ -584,7 +584,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'hands',
+            usage_type = 'hands',
         }
     },
 
@@ -676,7 +676,7 @@ SMODS.Consumable {
         extra = {
             uses = 1,
             max_uses = 1,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -732,7 +732,7 @@ SMODS.Consumable {
         extra = {
             uses = 10,
             max_uses = 10,
-            type = 'cards',
+            usage_type = 'cards',
         }
     },
 
@@ -801,7 +801,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'blinds',
+            usage_type = 'shops',
         }
     },
 
@@ -876,7 +876,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -968,7 +968,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -1027,7 +1027,7 @@ SMODS.Consumable {
             uses = 3,
             max_uses = 3,
             odds = 3,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -1094,7 +1094,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'blinds',
+            usage_usage_type = 'blinds',
         }
     },
 
@@ -1165,7 +1165,7 @@ SMODS.Consumable {
         extra = {
             uses = 6,
             max_uses = 6,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -1227,7 +1227,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'shops',
+            usage_type = 'shops',
         }
     },
 
@@ -1279,7 +1279,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -1347,7 +1347,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'other',
+            usage_type = 'other',
         }
     },
 
@@ -1423,7 +1423,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'other',
+            usage_type = 'other',
         },
         extra_slots_used = -1
     },
@@ -1476,7 +1476,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'shops',
+            usage_type = 'shops',
         }
     },
 
@@ -1528,7 +1528,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -1604,7 +1604,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'hands',
+            usage_type = 'hands',
         }
     },
 
@@ -1666,7 +1666,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'hands',
+            usage_type = 'hands',
         }
     },
 
@@ -1742,7 +1742,7 @@ SMODS.Consumable {
         extra = {
             uses = 4,
             max_uses = 4,
-            type = 'shops',
+            usage_type = 'shops',
         }
     },
 
@@ -1794,7 +1794,7 @@ SMODS.Consumable {
         extra = {
             uses = 5,
             max_uses = 5,
-            type = 'other',
+            usage_type = 'other',
         }
     },
 
@@ -1851,7 +1851,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'cards',
+            usage_type = 'cards',
         }
     },
 
@@ -1933,7 +1933,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -1995,7 +1995,7 @@ SMODS.Consumable {
             uses = 3,
             max_uses = 3,
             discards_and_hands = 1,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -2046,7 +2046,7 @@ SMODS.Consumable {
         extra = {
             uses = 4,
             max_uses = 4,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -2101,7 +2101,7 @@ SMODS.Consumable {
         extra = {
             uses = 2,
             max_uses = 2,
-            type = 'blinds',
+            usage_type = 'blinds',
         }
     },
 
@@ -2159,7 +2159,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'other',
+            usage_type = 'other',
         }
     },
 
@@ -2216,7 +2216,7 @@ SMODS.Consumable {
         extra = {
             uses = 3,
             max_uses = 3,
-            type = 'packs',
+            usage_type = 'packs',
         }
     },
 
