@@ -10,3 +10,10 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+SMODS.Atlas({
+    key = "yma_seals_atlas",
+    path = "5_Yeah!MostlyArtists/seals.png",
+    px = 71,
+    py = 95,
+})
+
