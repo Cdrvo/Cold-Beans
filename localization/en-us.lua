@@ -1278,6 +1278,18 @@ return {
                     "to create {C:attention}Shortcut{}",
                 }
             },
+
+            q_cbean_yma_luchador = {
+                name = {
+                    "Luchador",
+                    "{C:dark_edition,s:0.7}Side Quest{}"
+                },
+                text = {
+                    "Beat a {C:attention}Boss Blind{}",
+                    "without {C:attention}triggering{} it",
+                    "to create {C:attention}Luchador{}",
+                }
+            },
         },
         Enhanced = {
             m_cbean_pboys_piss = {

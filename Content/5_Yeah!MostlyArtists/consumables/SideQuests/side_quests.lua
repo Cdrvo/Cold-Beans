@@ -389,6 +389,7 @@ YMA.SideQuests.quest {
         code = "cloudzXIII",
     }
 }
+
 YMA.SideQuests.quest {
     order = 9,
     key = "yma_shortcut",
@@ -434,5 +435,56 @@ YMA.SideQuests.quest {
         art = "FirstTry",
         code = "cloudzXIII",
     }
-}        
+}
+
+YMA.SideQuests.quest {
+    order = 10,
+    key = "yma_luchador",
+    rarity = 2,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_luchador
+        return {
+            vars = {
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 1, y = 1 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            blind_triggered = false
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind and G.GAME.blind.boss then
+            card.ability.extra.blind_triggered = false
+        end
+        
+        if G.GAME.blind.boss and G.GAME.blind.in_blind then
+            if context.debuffed_hand or context.joker_main then
+                if G.GAME.blind.triggered then
+                    card.ability.extra.blind_triggered = true
+                end
+            end
+        end
+
+        if context.end_of_round and context.beat_boss and context.main_eval and not context.blueprint then
+            if not card.ability.extra.blind_triggered then
+                YMA.complete_quest(card, "Joker", "j_luchador")
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Flynn",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
+
 -- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 10)
