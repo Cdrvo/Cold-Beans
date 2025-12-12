@@ -108,22 +108,6 @@ function Game:start_run(args)
     YMA.add_random_quest()
 end
 
-local add_to_pool_ref = SMODS.add_to_pool
-function SMODS.add_to_pool(prototype_obj, args)
-    if prototype_obj.set == "yma_quest" and #G.GAME.cbean.completed_quests > 0 then
-        --print("Completed Quests: ", #G.GAME.cbean.completed_quests)
-
-        for _, completed_quest in ipairs(G.GAME.cbean.completed_quests) do
-            if completed_quest == prototype_obj.key then
-                --print("removed: ",prototype_obj.key, " key from pool")
-                return false  
-            end
-        end
-    end
-    
-    return add_to_pool_ref(prototype_obj, args)
-end
-
 YMA.add_random_quest = function()
     if G.side_quests and #G.side_quests.cards == 0 then
         SMODS.add_card { set = "yma_quest", area = G.side_quests }
