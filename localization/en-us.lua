@@ -3750,6 +3750,14 @@ return {
                     "more {C:attention}effective",
 				},
 			},
+            v_cbean_yma_grand_theft = {
+				name = "Grand Theft",
+				text = {
+                    "You may now {C:attention}steal",
+                    "consumables from",
+                    "{C:attention}Booster{} packs",
+				},
+			},
         },
     },
     misc = {
