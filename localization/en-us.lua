@@ -2132,6 +2132,291 @@ return {
                 }}
             },
             -- yma upgraded spectrals
+            c_cbean_yma_familiar_level1 = {
+                name = {
+                    "Familiar",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced face",
+                    "{C:attention}cards{} to your hand",
+                },
+            },
+            c_cbean_yma_familiar_level2 = {
+                name = {
+                    "Familiar",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced face",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}Face cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                },
+            },
+            c_cbean_yma_familiar_level3 = {
+                name = {
+                    "Familiar",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced face",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}Face cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_familiar_level4 = {
+                name = {
+                    "Familiar",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced face",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}Face cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_familiar_level5 = {
+                name = {
+                    "Familiar",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced face",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}Face cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_grim_level1 = {
+                name = {
+                    "Grim",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced Aces",
+                    "to your hand",
+                },
+            },
+            c_cbean_yma_grim_level2 = {
+                name = {
+                    "Grim",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced Aces",
+                    "to your hand",
+                    "Created {C:attention}Aces{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                },
+            },
+            c_cbean_yma_grim_level3 = {
+                name = {
+                    "Grim",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced Aces",
+                    "to your hand",
+                    "Created {C:attention}Aces{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_grim_level4 = {
+                name = {
+                    "Grim",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced Aces",
+                    "to your hand",
+                    "Created {C:attention}Aces{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_grim_level5 = {
+                name = {
+                    "Grim",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced Aces",
+                    "to your hand",
+                    "Created {C:attention}Aces{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_incantation_level1 = {
+                name = {
+                    "Incantation",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced numbered",
+                    "{C:attention}cards{} to your hand",
+                },
+            },
+            c_cbean_yma_incantation_level2 = {
+                name = {
+                    "Incantation",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced numbered",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}numbered cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}"
+                },
+            },
+            c_cbean_yma_incantation_level3 = {
+                name = {
+                    "Incantation",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} random",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced numbered",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}numbered cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_incantation_level4 = {
+                name = {
+                    "Incantation",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced numbered",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}numbered cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+            c_cbean_yma_incantation_level5 = {
+                name = {
+                    "Incantation",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Destroy {C:attention}#1#{} selected",
+                    "card in your hand, add",
+                    "{C:attention}#2#{} random {C:attention}Enhanced numbered",
+                    "{C:attention}cards{} to your hand",
+                    "Created {C:attention}numbered cards{} have a",
+                    "{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+                    "and/or an {C:dark_edition}Edition{}",
+                },
+            },
+			c_cbean_yma_talisman_level1 = {
+                name = {
+                    "Talisman",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Add a {C:attention}Gold Seal{}",
+                    "to {C:attention}#1#{} selected",
+                    "card in your hand",
+                },
+            },
+			c_cbean_yma_talisman_level2 = {
+                name = {
+                    "Talisman",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Add a {C:attention}Gold Seal{}",
+                    "to {C:attention}#1#{} selected",
+                    "card in your hand",
+                    "When held, retrigger all",
+                    "{C:attention}Gold Sealed cards{} once",
+                },
+            },
+			c_cbean_yma_talisman_level3 = {
+                name = {
+                    "Talisman",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Add a {C:attention}Gold Seal{}",
+                    "to {C:attention}#1#{} selected",
+                    "card in your hand",
+                    "When held, retrigger all",
+                    "{C:attention}Gold Sealed cards{} once",
+                    "and they give {C:money}+$1{} for every",
+                    "{C:attention}Gold Sealed card{} in deck",
+                },
+            },
+			c_cbean_yma_talisman_level4 = {
+                name = {
+                    "Talisman",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Add a {C:attention}Gold Seal{}",
+                    "to {C:attention}#1#{} selected",
+                    "card in your hand",
+                    "When held, retrigger all",
+                    "{C:attention}Gold Sealed cards{} once",
+                    "and they give {C:money}+$1{} for every",
+                    "{C:attention}Gold Sealed card{} in deck",
+                },
+            },
+			c_cbean_yma_talisman_level5 = {
+                name = {
+                    "Talisman",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Add a {C:attention}Gold Seal{}",
+                    "to {C:attention}#1#{} selected",
+                    "card in your hand",
+                    "When held, retrigger all",
+                    "{C:attention}Gold Sealed cards{} once,",
+                    "they give {C:money}+$1{} for every",
+                    "{C:attention}Gold Sealed card{} in deck,",
+                    "and gives {C:money}+$6{} for every",
+                    "{C:attention}Gold Sealed card{} that {C:attention}hasn't{}",
+                    "been played",
+                },
+            },
 			c_cbean_yma_wraith_level1 = {
                 name = {
                     "Wraith",
@@ -2190,6 +2475,70 @@ return {
                 text = {
                     "Creates {C:attention}2{} random",
                     "{C:dark_edition}Negative{} {C:red}Rare{C:attention} Jokers{}"
+                },
+            },
+			c_cbean_yma_sigil_level1 = {
+                name = {
+                    "Sigil",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Converts all cards",
+                    "in hand to the {C:attention}suit",
+                    "of the selected {C:attention}card",
+                },
+            },
+			c_cbean_yma_sigil_level2 = {
+                name = {
+                    "Sigil",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Converts all cards",
+                    "in hand to the {C:attention}suit",
+                    "of the selected {C:attention}card",
+                    "They additionally gain the same,",
+                    "{C:attention}random Enhancement",
+                },
+            },
+			c_cbean_yma_sigil_level3 = {
+                name = {
+                    "Sigil",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Converts all cards",
+                    "in hand to the {C:attention}suit",
+                    "of the selected {C:attention}card",
+                    "They additionally gain the same,",
+                    "{C:attention}random Enhancement {}and {C:attention}Seal",
+                },
+            },
+			c_cbean_yma_sigil_level4 = {
+                name = {
+                    "Sigil",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Converts up to {C:attention}10{} cards and all cards",
+                    "in hand to the {C:attention}suit",
+                    "of the selected {C:attention}card",
+                    "They additionally gain the same,",
+                    "{C:attention}random Enhancement {}and {C:attention}Seal",
+                },
+            },
+			c_cbean_yma_sigil_level5 = {
+                name = {
+                    "Sigil",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Converts up to {C:attention}10{} cards and all cards",
+                    "in hand to the {C:attention}suit",
+                    "of the selected {C:attention}card",
+                    "They additionally gain the same,",
+                    "{C:attention}random Enhancement {}, {C:attention}Seal",
+                    "and {C:dark_edition}Edition{}",
                 },
             },
 			c_cbean_yma_ectoplasm_level1 = {
@@ -2254,6 +2603,197 @@ return {
                     "a random {C:attention}consumable{} and",
                     "{C:attention}3{} random {C:attention}Playing Cards{},",
                     "in your deck and in your hand"
+                },
+            },
+			c_cbean_yma_immolate_level1 = {
+                name = {
+                    "Immolate",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Destroys {C:attention}#1#{} random",
+                    "cards and {C:attention}#3#{} selected card in hand,",
+                    "gain {C:money}$#2#",
+                },
+            },
+			c_cbean_yma_immolate_level2 = {
+                name = {
+                    "Immolate",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Destroys {C:attention}#1#{} random",
+                    "cards and {C:attention}#3#{} selected cards in hand,",
+                    "gain {C:money}$#2#",
+                },
+            },
+			c_cbean_yma_immolate_level3 = {
+                name = {
+                    "Immolate",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Destroys {C:attention}#1#{} random",
+                    "cards and {C:attention}#3#{} selected cards in hand,",
+                    "gain {C:money}$#2#",
+                },
+            },
+			c_cbean_yma_immolate_level4 = {
+                name = {
+                    "Immolate",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Destroys {C:attention}#3#{} selected cards in hand,",
+                    "gain {C:money}$#2#",
+                },
+            },
+			c_cbean_yma_immolate_level5 = {
+                name = {
+                    "Immolate",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Destroys {C:attention}up to #3#{} selected cards in hand,",
+                    "gain {C:money}$#2#",
+                },
+            },
+			c_cbean_yma_soul_level1 = {
+                name = {
+                    "The Soul",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Creates a",
+                    "{C:legendary,E:1}Legendary{} Joker",
+                    "Created Joker has {X:money,C:white}X2.5{} sell value",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+			c_cbean_yma_soul_level2 = {
+                name = {
+                    "The Soul",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Creates a",
+                    "{C:legendary,E:1}Legendary{} Joker",
+                    "Created Joker has {X:money,C:white}X2.5{} sell value",
+                    "and always appears with an {C:dark_edition}Edition{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+			c_cbean_yma_soul_level3 = {
+                name = {
+                    "The Soul",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Creates a",
+                    "{C:legendary,E:1}Legendary{} Joker",
+                    "Created Joker has {X:money,C:white}X2.5{} sell value",
+                    "and an {C:dark_edition}Edition{}",
+                },
+            },
+			c_cbean_yma_soul_level4 = {
+                name = {
+                    "The Soul",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Creates a",
+                    "{C:legendary,E:1}Legendary{} Joker",
+                    "Created Joker has {X:money,C:white}X2.5{} sell value",
+                    "and {C:dark_edition}Negative{}",
+                },
+            },
+			c_cbean_yma_soul_level5 = {
+                name = {
+                    "The Soul",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Creates a",
+                    "{C:legendary,E:1}Legendary{} Joker",
+                    "Created Joker has {X:money,C:white}X2.5{} sell value",
+                    "and {C:dark_edition}Negative{}",
+                    "Creates another joker,",
+                    "{C:green}Fixed 50% chance{} to either be",
+                    "another {C:legendary,E:1}Legendary{} or a {C:rare}Rare{}",
+                },
+            },
+			c_cbean_yma_black_hole_level1 = {
+                name = {
+                    "Black Hole",
+                    "{C:attention,s:0.7}Level 1{}"
+                },
+                text = {
+                    "Upgrade every",
+                    "{C:legendary,E:1}poker hand",
+                    "by {C:attention}2{} levels",
+                },
+            },
+			c_cbean_yma_black_hole_level2 = {
+                name = {
+                    "Black Hole",
+                    "{C:attention,s:0.7}Level 2{}"
+                },
+                text = {
+                    "Upgrade every",
+                    "{C:legendary,E:1}poker hand",
+                    "by {C:attention}2{} levels",
+                    "Upgrades the {C:attention}3 most played Poker Hands{}",
+                    "by {C:attention}3{} levels",
+                },
+            },
+			c_cbean_yma_black_hole_level3 = {
+                name = {
+                    "Black Hole",
+                    "{C:attention,s:0.7}Level 3{}"
+                },
+                text = {
+                    "Upgrade every",
+                    "{C:legendary,E:1}poker hand",
+                    "by {C:attention}2{} levels plus",
+                    "the level of the {C:attention}lowest",
+                    "{C:attention}level Poker Hand",
+                    "Upgrades the {C:attention}3 most played Poker Hands{}",
+                    "by {C:attention}3{} levels",
+                },
+            },
+			c_cbean_yma_black_hole_level4 = {
+                name = {
+                    "Black Hole",
+                    "{C:attention,s:0.7}Level 4{}"
+                },
+                text = {
+                    "Upgrade every",
+                    "{C:legendary,E:1}poker hand",
+                    "by {C:attention}2{} levels plus",
+                    "the level of the {C:attention}lowest",
+                    "{C:attention}level Poker Hand",
+                    "Upgrades the {C:attention}3 most played Poker Hands{}",
+                    "by {C:attention}3{} levels",
+                    "{C:attention}Doubles{} Chips & Mult of all",
+                    "{C:attention}Poker Hands{}",
+                },
+            },
+			c_cbean_yma_black_hole_level5 = {
+                name = {
+                    "Black Hole",
+                    "{C:attention,s:0.7}Level 5{}"
+                },
+                text = {
+                    "Upgrade every",
+                    "{C:legendary,E:1}poker hand",
+                    "by {C:attention}2{} levels plus",
+                    "the level of the {C:attention}lowest",
+                    "{C:attention}level Poker Hand",
+                    "Upgrades the {C:attention}3 most played Poker Hands{}",
+                    "by {C:attention}3{} levels",
+                    "{C:attention}Doubles{} Chips, Mult",
+                    "Level Chips & Level Mult of all",
+                    "{C:attention}Poker Hands{}",
                 },
             },
         },

@@ -8,6 +8,8 @@ function yma_can_upgrade_consumable(card)
             "high_priestess",
             "empress",
             "heirophant",
+            "chariot",
+            "justice",
             "hermit",
             "wheel_of_fortune",
             "star",
@@ -15,10 +17,16 @@ function yma_can_upgrade_consumable(card)
             "moon",
             "world",
             "judgement",
+            "familiar",
+            "grim",
+            "incantation",
+            "talisman",
             "wraith",
-            "chariot",
-            "justice",
-            "ectoplasm"
+            "sigil",
+            "ectoplasm",
+            "immolate",
+            "soul",
+            "black_hole"
         }
     }
     local levels = 5

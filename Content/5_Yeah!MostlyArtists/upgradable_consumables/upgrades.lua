@@ -898,7 +898,7 @@ SMODS.Consumable {
     pos = { x = 9, y = 0 },
     config = { extra = { max = 30, dollars = 5 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        return { vars = { card.ability.extra.max, card.ability.extra.dollars } }
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -931,7 +931,7 @@ SMODS.Consumable {
     pos = { x = 9, y = 0 },
     config = { extra = { max = 30, dollars = 10 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        return { vars = { card.ability.extra.max, card.ability.extra.dollars } }
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -964,7 +964,7 @@ SMODS.Consumable {
     pos = { x = 9, y = 0 },
     config = { extra = { max = 50, dollars = 10 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        return { vars = { card.ability.extra.max, card.ability.extra.dollars } }
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -997,7 +997,7 @@ SMODS.Consumable {
     pos = { x = 9, y = 0 },
     config = { extra = { max = 50, dollars = 10 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        return { vars = { card.ability.extra.max, card.ability.extra.dollars } }
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -1953,6 +1953,1259 @@ SMODS.Consumable {
     no_collection = true,
 }
 
+-- this looks rather familiar doesnt it
+SMODS.Consumable {
+    key = 'yma_familiar_level1',
+    set = 'Spectral',
+    pos = { x = 0, y = 4 },
+    config = { extra = { destroy = 1, cards = 4 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local faces = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank.face then table.insert(faces, rank) end
+                    end
+                    local _rank = pseudorandom_element(faces, 'familiar_level1').card_key
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_familiar_level2',
+    set = 'Spectral',
+    pos = { x = 0, y = 4 },
+    config = { extra = { destroy = 1, cards = 4, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'familiar_level2')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank.face then table.insert(faces, rank) end
+                    end
+                    local _rank = pseudorandom_element(faces, 'familiar_level1').card_key
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'familiar_level2'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                    if SMODS.pseudorandom_probability(card, 'familiar_level2', 1, card.ability.extra.odds) then
+                        cards[i]:set_seal(seal, nil, true)
+                    end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_familiar_level3',
+    set = 'Spectral',
+    pos = { x = 0, y = 4 },
+    config = { extra = { destroy = 1, cards = 4, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'familiar_level3')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank.face then table.insert(faces, rank) end
+                    end
+                    local _rank = pseudorandom_element(faces, 'familiar_level1').card_key
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'familiar_level3'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'familiar_level3', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'familiar_level3', 1, card.ability.extra.odds) then
+                local edition = poll_edition('wraith_level4', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_familiar_level4',
+    set = 'Spectral',
+    pos = { x = 0, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'familiar_level4')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank.face then table.insert(faces, rank) end
+                    end
+                    local _rank = pseudorandom_element(faces, 'familiar_level1').card_key
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'familiar_level4'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'familiar_level4', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'familiar_level4', 1, card.ability.extra.odds) then
+                local edition = poll_edition('familiar_level4', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+
+SMODS.Consumable {
+    key = 'yma_familiar_level5',
+    set = 'Spectral',
+    pos = { x = 0, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'familiar_level5')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank.face then table.insert(faces, rank) end
+                    end
+                    local _rank = pseudorandom_element(faces, 'familiar_level1').card_key
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'familiar_level5'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'familiar_level5', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'familiar_level5', 1, card.ability.extra.odds) then
+                local edition = poll_edition('familiar_level5', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- shits looking very grim these days
+SMODS.Consumable {
+    key = 'yma_grim_level1',
+    set = 'Spectral',
+    pos = { x = 1, y = 4 },
+    config = { extra = { destroy = 1, cards = 3 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement.key }
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_grim_level2',
+    set = 'Spectral',
+    pos = { x = 1, y = 4 },
+    config = { extra = { destroy = 1, cards = 3, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'grim_level2')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'grim_level2'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'grim_level2', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_grim_level3',
+    set = 'Spectral',
+    pos = { x = 1, y = 4 },
+    config = { extra = { destroy = 1, cards = 3, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'grim_level3')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'grim_level3'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'grim_level3', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'grim_level3', 1, card.ability.extra.odds) then
+                local edition = poll_edition('wraith_level4', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_grim_level4',
+    set = 'Spectral',
+    pos = { x = 1, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'grim_level4')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'grim_level4'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'grim_level4', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'grim_level4', 1, card.ability.extra.odds) then
+                local edition = poll_edition('grim_level4', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+
+SMODS.Consumable {
+    key = 'yma_grim_level5',
+    set = 'Spectral',
+    pos = { x = 1, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'grim_level5')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'grim_level5'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = 'Ace', enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'grim_level5', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'grim_level5', 1, card.ability.extra.odds) then
+                local edition = poll_edition('grim_level5', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                end
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+-- i cant think of anything with incantation im sorry
+SMODS.Consumable {
+    key = 'yma_incantation_level1',
+    set = 'Spectral',
+    pos = { x = 2, y = 4 },
+    config = { extra = { destroy = 1, cards = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
+                    end
+                    local _rank = pseudorandom_element(numbers, 'incantation_create').card_key
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_incantation_level2',
+    set = 'Spectral',
+    pos = { x = 2, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'incantation_level2')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
+                    end
+                    local _rank = pseudorandom_element(numbers, 'incantation_create').card_key
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'incantation_level2'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'incantation_level2', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_incantation_level3',
+    set = 'Spectral',
+    pos = { x = 2, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'incantation_level3')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = pseudorandom_element(G.hand.cards, 'random_destroy')
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                        local rank = SMODS.Ranks[rank_key]
+                        if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
+                    end
+                    local _rank = pseudorandom_element(numbers, 'incantation_create').card_key
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'incantation_level3'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'incantation_level3', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'incantation_level3', 1, card.ability.extra.odds) then
+                local edition = poll_edition('wraith_level4', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_incantation_level4',
+    set = 'Spectral',
+    pos = { x = 2, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'incantation_level4')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                    local rank = SMODS.Ranks[rank_key]
+                    if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
+                end
+                local _rank = pseudorandom_element(numbers, 'incantation_create').card_key
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'incantation_level4'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'incantation_level4', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'incantation_level4', 1, card.ability.extra.odds) then
+                local edition = poll_edition('incantation_level4', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+
+SMODS.Consumable {
+    key = 'yma_incantation_level5',
+    set = 'Spectral',
+    pos = { x = 2, y = 4 },
+    config = { extra = { destroy = 1, cards = 5, odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'incantation_level5')
+        return { vars = { card.ability.extra.destroy, card.ability.extra.cards, numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        local card_to_destroy = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(card_to_destroy)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = function()
+                local cards = {}
+                for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+                    local rank = SMODS.Ranks[rank_key]
+                    if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
+                end
+                local _rank = pseudorandom_element(numbers, 'incantation_create').card_key
+                for i = 1, card.ability.extra.cards do
+                    local cen_pool = {}
+                    local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'incantation_level5'})
+                    for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                            cen_pool[#cen_pool + 1] = enhancement_center
+                        end
+                    end
+                    local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+                    cards[i] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+                if SMODS.pseudorandom_probability(card, 'incantation_level5', 1, card.ability.extra.odds) then
+                    cards[i]:set_seal(seal, nil, true)
+                end
+                if SMODS.pseudorandom_probability(card, 'incantation_level5', 1, card.ability.extra.odds) then
+                local edition = poll_edition('incantation_level5', nil, true, true,
+                { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
+                    cards[i]:set_edition(edition, true)
+                end
+                end
+                SMODS.calculate_context({ playing_card_added = true, cards = cards })
+                return true
+            end
+        }))
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- just like the hit balatro mod that is incompatible with every mod ever
+SMODS.Consumable {
+    key = 'yma_talisman_level1',
+    set = 'Spectral',
+    pos = { x = 3, y = 4 },
+    config = { extra = { seal = 'Gold' }, max_highlighted = 2 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        for i=1, #G.hand.highlighted do
+            local conv_card = G.hand.highlighted[i]
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('tarot1')
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    conv_card:set_seal(card.ability.extra.seal, nil, true)
+                    return true
+                end
+            }))
+
+            delay(0.5)
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_talisman_level2',
+    set = 'Spectral',
+    pos = { x = 3, y = 4 },
+    config = { extra = { seal = 'Gold', retriggers = 1 }, max_highlighted = 2 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                repetition = card.ability.extra.retriggers
+            end
+        end
+    end,
+    use = function(self, card, area, copier)
+        for i=1, #G.hand.highlighted do
+            local conv_card = G.hand.highlighted[i]
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('tarot1')
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    conv_card:set_seal(card.ability.extra.seal, nil, true)
+                    return true
+                end
+            }))
+
+            delay(0.5)
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_talisman_level3',
+    set = 'Spectral',
+    pos = { x = 3, y = 4 },
+    config = { extra = { seal = 'Gold', retriggers = 1 }, max_highlighted = 2 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    calculate = function(self, card, context)
+        local gold_seals = 0
+        for k, v in ipairs(G.deck.cards) do
+            if v.seal == "Gold" then
+                gold_seals = gold_seals + 1
+            end
+        end
+        if context.individual and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                ease_dollars(gold_seals)
+            end
+        end
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                repetition = card.ability.extra.retriggers
+            end
+        end
+    end,
+    use = function(self, card, area, copier)
+        for i=1, #G.hand.highlighted do
+            local conv_card = G.hand.highlighted[i]
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('tarot1')
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    conv_card:set_seal(card.ability.extra.seal, nil, true)
+                    return true
+                end
+            }))
+
+            delay(0.5)
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_talisman_level4',
+    set = 'Spectral',
+    pos = { x = 3, y = 4 },
+    config = { extra = { seal = 'Gold', retriggers = 1 }, max_highlighted = 3 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    calculate = function(self, card, context)
+        local gold_seals = 0
+        for k, v in ipairs(G.deck.cards) do
+            if v.seal == "Gold" then
+                gold_seals = gold_seals + 1
+            end
+        end
+        if context.individual and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                ease_dollars(gold_seals)
+            end
+        end
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                repetition = card.ability.extra.retriggers
+            end
+        end
+    end,
+    use = function(self, card, area, copier)
+        for i=1, #G.hand.highlighted do
+            local conv_card = G.hand.highlighted[i]
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('tarot1')
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    conv_card:set_seal(card.ability.extra.seal, nil, true)
+                    return true
+                end
+            }))
+
+            delay(0.5)
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_talisman_level5',
+    set = 'Spectral',
+    pos = { x = 3, y = 4 },
+    config = { extra = { seal = 'Gold', retriggers = 1 }, max_highlighted = 3 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    calculate = function(self, card, context)
+        local gold_seals = 0
+        local gold_seals_not_played = 0
+        for k, v in ipairs(G.deck.cards) do
+            if v.seal == "Gold" then
+                gold_seals = gold_seals + 1
+            end
+        end
+        for k, v in ipairs(G.deck.cards) do
+            for i=1, #G.play.cards do
+                if v.seal == "Gold" and v ~= G.play.cards[i] then
+                    gold_seals_not_played = gold_seals_not_played + 1
+                end
+            end
+        end
+        if context.individual and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                ease_dollars(gold_seals)
+            end
+        end
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card.seal == "Gold" then
+                repetition = card.ability.extra.retriggers
+            end
+        end
+        if context.final_scoring_step and context.cardarea == G.consumeables then
+            ease_dollars(6 * (gold_seals_not_played))
+        end
+    end,
+    use = function(self, card, area, copier)
+        for i=1, #G.hand.highlighted do
+            local conv_card = G.hand.highlighted[i]
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('tarot1')
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    conv_card:set_seal(card.ability.extra.seal, nil, true)
+                    return true
+                end
+            }))
+
+            delay(0.5)
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
 -- warth
 SMODS.Consumable {
     key = 'yma_wraith_level1',
@@ -1995,7 +3248,7 @@ SMODS.Consumable {
 	            card1:add_to_deck()
 	            card1:start_materialize()
 	            G.jokers:emplace(card1) 
-                local edition = poll_edition('wheel_of_fortune', nil, true, true,
+                local edition = poll_edition('wraith_level2', nil, true, true,
                 { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
                 card1:set_edition(edition, true)
                 card:juice_up(0.3, 0.5)
@@ -2028,7 +3281,7 @@ SMODS.Consumable {
 	            card1:add_to_deck()
 	            card1:start_materialize()
 	            G.jokers:emplace(card1)
-                local edition = poll_edition('wheel_of_fortune', nil, true, true,
+                local edition = poll_edition('wraith_level3', nil, true, true,
                 { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
                 card1:set_edition(edition, true)
                 card:juice_up(0.3, 0.5)
@@ -2077,7 +3330,7 @@ SMODS.Consumable {
 	            card1:add_to_deck()
 	            card1:start_materialize()
 	            G.jokers:emplace(card1)
-                local edition = poll_edition('wheel_of_fortune', nil, true, true,
+                local edition = poll_edition('wraith_level4', nil, true, true,
                 { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' })
                 card1:set_edition(edition, true)
                 card:juice_up(0.3, 0.5)
@@ -2149,6 +3402,392 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- we summonin da sigil w this one
+SMODS.Consumable {
+    key = 'yma_sigil_level1',
+    set = 'Spectral',
+    pos = { x = 6, y = 4 },
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.cards do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = G.hand.cards[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.5)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_sigil_level2',
+    set = 'Spectral',
+    pos = { x = 6, y = 4 },
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        local cen_pool = {}
+        for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+            if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                cen_pool[#cen_pool + 1] = enhancement_center
+            end
+        end
+        local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+        for i = 1, #G.hand.cards do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = G.hand.cards[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    _card:set_ability(enhancement)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.5)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_sigil_level3',
+    set = 'Spectral',
+    pos = { x = 6, y = 4 },
+    use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        local cen_pool = {}
+        for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+            if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                cen_pool[#cen_pool + 1] = enhancement_center
+            end
+        end
+        local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'sigil_level3'})
+        local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+        for i = 1, #G.hand.cards do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = G.hand.cards[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    _card:set_ability(enhancement)
+                    _card:set_seal(seal, nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.5)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_sigil_level4',
+    set = 'Spectral',
+    pos = { x = 6, y = 4 },
+    config = { cards = 10 },
+    use = function(self, card, area, copier)
+        local cards_to_convert = {}
+        for i = 1, card.ability.cards do
+            if G.deck.cards[i] ~= G.hand.highlighted[1].base.suit then
+                cards_to_convert = cards_to_convert + v
+            end
+        end
+        local used_tarot = copier or card
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        local cen_pool = {}
+        for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+            if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                cen_pool[#cen_pool + 1] = enhancement_center
+            end
+        end
+        local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'sigil_level3'})
+        local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+        for i = 1, #G.hand.cards do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = G.hand.cards[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    _card:set_ability(enhancement)
+                    _card:set_seal(seal, nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #cards_to_convert do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = cards_to_convert[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    _card:set_ability(enhancement)
+                    _card:set_seal(seal, nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.5)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+
+SMODS.Consumable {
+    key = 'yma_sigil_level5',
+    set = 'Spectral',
+    pos = { x = 6, y = 4 },
+    config = { cards = 10 },
+    use = function(self, card, area, copier)
+        local cards_to_convert = {}
+        for i = 1, card.ability.cards do
+            if G.deck.cards[i] ~= G.hand.highlighted[1].base.suit then
+                cards_to_convert = cards_to_convert + v
+            end
+        end
+        local used_tarot = copier or card
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                used_tarot:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        local cen_pool = {}
+        for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+            if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                cen_pool[#cen_pool + 1] = enhancement_center
+            end
+        end
+        local seal = SMODS.poll_seal({ guaranteed = true, type_key = 'sigil_level3'})
+        local edition = SMODS.poll_edition({ guaranteed = true, type_key = 'sigil_level3'})
+        local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+        for i = 1, #G.hand.cards do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = G.hand.cards[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    _card:set_ability(enhancement)
+                    _card:set_seal(seal, nil, true)
+                    _card:set_edition(edition, nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #cards_to_convert do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local _card = cards_to_convert[i]
+                    assert(SMODS.change_base(_card, G.hand.highlighted[1].base.suit))
+                    _card:set_ability(enhancement)
+                    _card:set_seal(seal, nil, true)
+                    _card:set_edition(edition, nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.cards do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.cards[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.cards[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.5)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 1
     end,
     in_pool = function(self, args)
         return false
@@ -2331,6 +3970,1039 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return #G.jokers.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- Deal 21 damage to ALL enemies. Add a burn to your discard pile.
+SMODS.Consumable {
+    key = 'yma_immolate_level1',
+    set = 'Spectral',
+    pos = { x = 9, y = 4 },
+    config = { extra = { destroy = 4, dollars = 20, max_highlighted = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.destroy, card.ability.extra.dollars, card.ability.extra.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        local destroyed_cards = {}
+        local temp_hand = {}
+
+        for _, playing_card in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = playing_card end
+        table.sort(temp_hand,
+            function(a, b)
+                return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card
+            end
+        )
+
+        pseudoshuffle(temp_hand, 'immolate')
+
+        for i = 1, card.ability.extra.destroy do destroyed_cards[#destroyed_cards + 1] = temp_hand[i] end
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(destroyed_cards)
+        for i = 1, #G.hand.highlighted do
+            SMODS.destroy_cards(G.hand.highlighted[i])
+        end
+        delay(0.5)
+        ease_dollars(card.ability.extra.dollars)
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_immolate_level2',
+    set = 'Spectral',
+    pos = { x = 9, y = 4 },
+    config = { extra = { destroy = 2, dollars = 20, max_highlighted = 3 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.destroy, card.ability.extra.dollars, card.ability.extra.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        local destroyed_cards = {}
+        local temp_hand = {}
+
+        for _, playing_card in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = playing_card end
+        table.sort(temp_hand,
+            function(a, b)
+                return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card
+            end
+        )
+
+        pseudoshuffle(temp_hand, 'immolate')
+
+        for i = 1, card.ability.extra.destroy do destroyed_cards[#destroyed_cards + 1] = temp_hand[i] end
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(destroyed_cards)
+        for i = 1, #G.hand.highlighted do
+            SMODS.destroy_cards(G.hand.highlighted[i])
+        end
+        delay(0.5)
+        ease_dollars(card.ability.extra.dollars)
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 3
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_immolate_level3',
+    set = 'Spectral',
+    pos = { x = 9, y = 4 },
+    config = { extra = { destroy = 2, dollars = 40, max_highlighted = 3 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.destroy, card.ability.extra.dollars, card.ability.extra.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        local destroyed_cards = {}
+        local temp_hand = {}
+
+        for _, playing_card in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = playing_card end
+        table.sort(temp_hand,
+            function(a, b)
+                return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card
+            end
+        )
+
+        pseudoshuffle(temp_hand, 'immolate')
+
+        for i = 1, card.ability.extra.destroy do destroyed_cards[#destroyed_cards + 1] = temp_hand[i] end
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(destroyed_cards)
+        for i = 1, #G.hand.highlighted do
+            SMODS.destroy_cards(G.hand.highlighted[i])
+        end
+        delay(0.5)
+        ease_dollars(card.ability.extra.dollars)
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.cards > 0 and #G.hand.highlighted == 3
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_immolate_level4',
+    set = 'Spectral',
+    pos = { x = 9, y = 4 },
+    config = { extra = { dollars = 40, max_highlighted = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars, card.ability.extra.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(destroyed_cards)
+        for i = 1, #G.hand.highlighted do
+            SMODS.destroy_cards(G.hand.highlighted[i])
+        end
+        delay(0.5)
+        ease_dollars(card.ability.extra.dollars)
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return #G.hand.highlighted == 5
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_immolate_level5',
+    set = 'Spectral',
+    pos = { x = 9, y = 4 },
+    config = { extra = { dollars = 40, max_highlighted = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars, card.ability.extra.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        SMODS.destroy_cards(destroyed_cards)
+        for i = 1, #G.hand.highlighted do
+            SMODS.destroy_cards(G.hand.highlighted[i])
+        end
+        delay(0.5)
+        ease_dollars(card.ability.extra.dollars)
+        delay(0.3)
+    end,
+    can_use = function(self, card)
+        return #G.hand.highlighted >= 1
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+-- le soule
+SMODS.Consumable {
+    key = 'yma_soul_level1',
+    set = 'Spectral',
+    pos = { x = 2, y = 2 },
+    hidden = true,
+    soul_set = 'Tarot',
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                local legendary = SMODS.add_card({ set = 'Joker', legendary = true })
+                legendary.ability.extra_value = card.ability.extra_value * 2.5
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_soul_level2',
+    set = 'Spectral',
+    pos = { x = 2, y = 2 },
+    hidden = true,
+    soul_set = 'Tarot',
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                local legendary = SMODS.add_card({ set = 'Joker', legendary = true, edition = poll_edition('soul_level2', nil, true, true, { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' }) })
+                legendary.ability.extra_value = card.ability.extra_value * 2.5
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_soul_level3',
+    set = 'Spectral',
+    pos = { x = 2, y = 2 },
+    hidden = true,
+    soul_set = 'Tarot',
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                local legendary = SMODS.add_card({ set = 'Joker', legendary = true, edition = poll_edition('soul_level2', nil, true, true, { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative' }) })
+                legendary.ability.extra_value = card.ability.extra_value * 2.5
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_soul_level4',
+    set = 'Spectral',
+    pos = { x = 2, y = 2 },
+    hidden = true,
+    soul_set = 'Tarot',
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                local legendary = SMODS.add_card({ set = 'Joker', legendary = true, edition = 'e_negative' })
+                legendary.ability.extra_value = card.ability.extra_value * 2.5
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_soul_level5',
+    set = 'Spectral',
+    pos = { x = 2, y = 2 },
+    hidden = true,
+    soul_set = 'Tarot',
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                local legendary = SMODS.add_card({ set = 'Joker', legendary = true, edition = 'e_negative' })
+                legendary.ability.extra_value = card.ability.extra_value * 2.5
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+        if math.random(0, 1) > 0.5 then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    local legendary = SMODS.add_card({ set = 'Joker', rarity = 'Rare', edition = 'e_negative' })
+                    legendary.ability.extra_value = card.ability.extra_value * 2.5
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+            delay(0.6)
+        else
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    local legendary = SMODS.add_card({ set = 'Joker', legendary = true, edition = 'e_negative' })
+                    legendary.ability.extra_value = card.ability.extra_value * 2.5
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+            delay(0.6)
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    no_collection = true,
+}
+
+SMODS.DrawStep {
+    key = 'yma_soul',
+    order = 50,
+    func = function(card)
+        if (card.config.center.key == "c_cbean_yma_soul_level1" or card.config.center.key == "c_cbean_yma_soul_level2" or
+        card.config.center.key == "c_cbean_yma_soul_level3" or card.config.center.key == "c_cbean_yma_soul_level4" or
+        card.config.center.key == "c_cbean_yma_soul_level5") and (card.config.center.discovered or card.bypass_discovery_center) then
+            local scale_mod = 0.05 + 0.05 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.07 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) * math.pi * 14) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            local rotate_mod = 0.1 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.07 * math.sin((G.TIMERS.REAL) * math.pi * 5) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+
+            G.shared_soul.role.draw_major = card
+            G.shared_soul:draw_shader('dissolve', 0, nil, nil, card.children.center, scale_mod, rotate_mod, nil,
+                0.1 + 0.03 * math.sin(1.8 * G.TIMERS.REAL), nil, 0.6)
+            G.shared_soul:draw_shader('dissolve', nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    end,
+    conditions = { vortex = false, facing = 'front' },
+}
+
+-- this hole is black
+SMODS.Consumable {
+    key = 'yma_black_hole_level1',
+    set = 'Spectral',
+    pos = { x = 9, y = 3 },
+    hidden = true,
+    soul_set = 'Planet',
+    use = function(self, card, area, copier)
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+2' })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.level = poker_hand_key.level + 2
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' })
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    draw = function(self, card, layer)
+        -- This is for the Spectral shader. You don't need this with `set = "Spectral"`
+        -- Also look into SMODS.DrawStep if you make multiple cards that need the same shader
+        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_black_hole_level2',
+    set = 'Spectral',
+    pos = { x = 9, y = 3 },
+    hidden = true,
+    soul_set = 'Planet',
+    use = function(self, card, area, copier)
+        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
+                _hand1 = handname
+                _tally1 = G.GAME.hands[handname].played
+            end
+            if tally1 > tally2 then
+                _hand2 = handname
+                _tally2 = G.GAME.hands[handname].played
+            end
+            if tally2 > tally3 then
+                _hand3 = handname
+                _tally3 = G.GAME.hands[handname].played
+            end
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+2' })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.level = poker_hand_key.level + 2
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
+        delay(1.3)
+        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
+        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
+        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' })
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    draw = function(self, card, layer)
+        -- This is for the Spectral shader. You don't need this with `set = "Spectral"`
+        -- Also look into SMODS.DrawStep if you make multiple cards that need the same shader
+        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_black_hole_level3',
+    set = 'Spectral',
+    pos = { x = 9, y = 3 },
+    hidden = true,
+    soul_set = 'Planet',
+    use = function(self, card, area, copier)
+        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
+                _hand1 = handname
+                _tally1 = G.GAME.hands[handname].played
+            end
+            if tally1 > tally2 then
+                _hand2 = handname
+                _tally2 = G.GAME.hands[handname].played
+            end
+            if tally2 > tally3 then
+                _hand3 = handname
+                _tally3 = G.GAME.hands[handname].played
+            end
+        end
+        local lowest, lowesttally = nil, 1000000
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played < lowesttally then
+                lowest = handname
+                lowesttally = G.GAME.hands[handname].level
+            end
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' .. 2 + G.GAME.hands[lowest].level })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.level = poker_hand_key.level + 2 + G.GAME.hands[lowest].level
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
+        delay(1.3)
+        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
+        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
+        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' })
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    draw = function(self, card, layer)
+        -- This is for the Spectral shader. You don't need this with `set = "Spectral"`
+        -- Also look into SMODS.DrawStep if you make multiple cards that need the same shader
+        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_black_hole_level4',
+    set = 'Spectral',
+    pos = { x = 9, y = 3 },
+    hidden = true,
+    soul_set = 'Planet',
+    use = function(self, card, area, copier)
+        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
+                _hand1 = handname
+                _tally1 = G.GAME.hands[handname].played
+            end
+            if tally1 > tally2 then
+                _hand2 = handname
+                _tally2 = G.GAME.hands[handname].played
+            end
+            if tally2 > tally3 then
+                _hand3 = handname
+                _tally3 = G.GAME.hands[handname].played
+            end
+        end
+        local lowest, lowesttally = nil, 1000000
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played < lowesttally then
+                lowest = handname
+                lowesttally = G.GAME.hands[handname].level
+            end
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' .. 2 + G.GAME.hands[lowest].level })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.level = poker_hand_key.level + 2 + G.GAME.hands[lowest].level
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
+        delay(1.3)
+        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
+        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
+        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = 'X2', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = 'X2', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.chips = poker_hand_key.chips * 2
+            poker_hand_key.mult = poker_hand_key.mult * 2
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' })
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    in_pool = function(self, args)
+        return false
+    end,
+    no_collection = true,
+}
+
+SMODS.Consumable {
+    key = 'yma_black_hole_level5',
+    set = 'Spectral',
+    pos = { x = 9, y = 3 },
+    hidden = true,
+    soul_set = 'Planet',
+    use = function(self, card, area, copier)
+        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
+                _hand1 = handname
+                _tally1 = G.GAME.hands[handname].played
+            end
+            if tally1 > tally2 then
+                _hand2 = handname
+                _tally2 = G.GAME.hands[handname].played
+            end
+            if tally2 > tally3 then
+                _hand3 = handname
+                _tally3 = G.GAME.hands[handname].played
+            end
+        end
+        local lowest, lowesttally = nil, 1000000
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played < lowesttally then
+                lowest = handname
+                lowesttally = G.GAME.hands[handname].level
+            end
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' .. 2 + G.GAME.hands[lowest].level })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.level = poker_hand_key.level + 2 + G.GAME.hands[lowest].level
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
+        delay(1.3)
+        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
+        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
+        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = 'X2', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = 'X2', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { })
+        delay(1.3)
+        for poker_hand_key, _ in pairs(G.GAME.hands) do
+            poker_hand_key.chips = poker_hand_key.chips * 2
+            poker_hand_key.mult = poker_hand_key.mult * 2
+            poker_hand_key.level_chips = poker_hand_key.level_chips * 2
+            poker_hand_key.level_mult = poker_hand_key.level_mult * 2
+        end
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' })
+    end,
+    can_use = function(self, card)
+        return true
     end,
     in_pool = function(self, args)
         return false
