@@ -1,5 +1,6 @@
 SMODS.Sticker({
 	key = "flashcard",
+    atlas = "NAMETEAM_Stickers",
 	pos = {
 		x = 0,
 		y = 0,

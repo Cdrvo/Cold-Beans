@@ -1,7 +1,8 @@
 SMODS.Sticker({
 	key = "mailed",
+    atlas = "NAMETEAM_Stickers",
 	pos = {
-		x = 0,
+		x = 1,
 		y = 0,
 	},
 	badge_colour = HEX("c8a676"),

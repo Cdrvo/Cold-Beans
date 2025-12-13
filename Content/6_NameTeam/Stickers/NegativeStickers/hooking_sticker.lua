@@ -1,7 +1,8 @@
 SMODS.Sticker({ -- fix this
 	key = "hooking",
+    atlas = "NAMETEAM_Stickers",
 	pos = {
-		x = 0,
+		x = 2,
 		y = 0,
 	},
 	badge_colour = HEX("c8a676"),
