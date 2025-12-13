@@ -24,12 +24,12 @@ SMODS.Sticker({
         for k, v in ipairs(G.play.cards) do
 				if v:is_face() then
 					face_found = true
-				end
-				return {
+                    SMODS.debuff_card(card, true, self.key)
+                    				return {
 					message = localize("k_debuffed"),
 				}
+				end
 			end
-        if face_found then SMODS.debuff_card(card, true, self.key) end
        end
     end
 })
