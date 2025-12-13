@@ -2251,6 +2251,15 @@ return {
                     "{C:green}Rerolled{}"
 				}
 			},
+            cbean_frowning = {
+				name = "Frowning Sticker",
+				text = {
+					"{C:red}Debuff{} this card",
+                    "if played hand",
+                    "contains a",
+                    "{C:attention}Face{} card"
+				}
+			},
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3868,7 +3877,8 @@ return {
             cbean_yma_cipher_seal = "Cipher Seal",
             cbean_mailed = "Mailed",
             cbean_hooking = "Hooking",
-            cbean_flashcard = "Flashcard"
+            cbean_flashcard = "Flashcard",
+            cbean_frowning = "Frowning"
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
