@@ -1,0 +1,114 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+
+# Sticker sets
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+key = "eternal",
+'''
+position = 'after'
+payload = '''
+sets = {
+    Joker = true
+},
+'''
+match_indent = false
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+key = "perishable",
+'''
+position = 'after'
+payload = '''
+sets = {
+    Joker = true,
+    Default = true,
+    Enhanced = true,
+},
+'''
+match_indent = false
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+key = "rental",
+'''
+position = 'after'
+payload = '''
+sets = {
+    Joker = true,
+    Default = true,
+    Enhanced = true,
+},
+'''
+match_indent = false
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+key = "pinned",
+'''
+position = 'after'
+payload = '''
+sets = {
+    Joker = true,
+},
+'''
+match_indent = false
+
+# Perishable trigger twice fix
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+            if context.end_of_round and not context.repetition and not context.individual then
+                card:calculate_perishable()
+            end
+'''
+position = 'at'
+payload = '''
+        if card.ability.set == "Default" or card.ability.set == "Enhanced" then
+            if context.end_of_round and not card.hpot_temp_check then
+                card.hpot_temp_check = true
+                card:calculate_perishable()
+            end
+        elseif context.end_of_round and not context.repetition and not context.individual then
+            card:calculate_perishable()
+        end
+
+'''
+match_indent = false
+
+# Rental trigger twice fix
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+            if context.end_of_round and not context.repetition and not context.individual then
+                card:calculate_rental()
+            end
+'''
+position = 'at'
+payload = '''
+        if card.ability.set == "Default" or card.ability.set == "Enhanced" then
+            if context.end_of_round and not card.hpot_temp_check then
+                card.hpot_temp_check = true
+                card:calculate_rental()
+            end
+        elseif context.end_of_round and not context.repetition and not context.individual then
+            card:calculate_rental()
+        end
+
+'''
+match_indent = false
