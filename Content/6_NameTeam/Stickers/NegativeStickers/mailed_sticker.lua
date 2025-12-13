@@ -5,7 +5,7 @@ SMODS.Sticker({
 		x = 1,
 		y = 0,
 	},
-	badge_colour = HEX("c8a676"),
+	badge_colour = HEX("55a383"),
 	config = {},
 	rate = 0.06,
 	needs_enable_flag = true,
