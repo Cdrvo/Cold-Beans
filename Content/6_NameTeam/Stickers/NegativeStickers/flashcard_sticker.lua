@@ -2,7 +2,7 @@ SMODS.Sticker({
 	key = "flashcard",
     atlas = "NAMETEAM_Stickers",
 	pos = {
-		x = 0,
+		x = 1,
 		y = 0,
 	},
 	badge_colour = HEX("86dd94"),

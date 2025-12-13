@@ -2226,6 +2226,31 @@ return {
                     'card is {C:attention}scored'
                 }
             },
+            -- Name Team Stickers
+            cbean_mailed = {
+				name = "Mailed Sticker",
+				text = {
+					"{C:red}-2${} When",
+                    "discarded"
+				}
+			},
+            cbean_hooking = {
+				name = "Hooking Sticker",
+				text = {
+					"{C:red}Discard{}",
+                    "if kept in hand"
+				}
+			},
+            cbean_flashcard = {
+				name = "Flashcard Sticker",
+				text = {
+					"{C:attention}Replace{} this card",
+                    "with another card",
+                    "with the same rarity",
+                    "when shop is",
+                    "{C:green}Rerolled{}"
+				}
+			},
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3840,7 +3865,10 @@ return {
         high_scores = {},
         labels = {
             cbean_sdown_lunar_seal = "Lunar Seal",
-            cbean_yma_cipher_seal = "Cipher Seal"
+            cbean_yma_cipher_seal = "Cipher Seal",
+            cbean_mailed = "Mailed",
+            cbean_hooking = "Hooking",
+            cbean_flashcard = "Flashcard"
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
