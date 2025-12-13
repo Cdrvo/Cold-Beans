@@ -24,5 +24,10 @@ SMODS.Sticker({
                 dollars = -2
             }
         end
-    end
+    end,
+    beans_credits = {
+        code = "Revo",
+        team = "Name Team",
+        art = "GhostSalt"
+    }
 })

@@ -21,5 +21,10 @@ SMODS.Sticker({
         if context.reroll_shop then
             NAMETEAM.replacecards(card)
         end
-    end
+    end,
+    beans_credits = {
+        code = "Revo",
+        team = "Name Team",
+        art = "GhostSalt"
+    }
 })

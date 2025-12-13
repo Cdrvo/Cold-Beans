@@ -33,7 +33,10 @@ SMODS.Sticker({ -- fix this
         return true end 
     })) 
         end
-
-    
-    end
+    end,
+    beans_credits = {
+        code = "Revo",
+        team = "Name Team",
+        art = "GhostSalt"
+    }
 })
