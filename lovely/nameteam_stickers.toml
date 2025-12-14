@@ -48,6 +48,7 @@ sets = {
     Joker = true,
     Default = true,
     Enhanced = true,
+    Consumable = true,
 },
 '''
 match_indent = false
@@ -79,8 +80,8 @@ pattern = '''
 position = 'at'
 payload = '''
         if card.ability.set == "Default" or card.ability.set == "Enhanced" then
-            if context.end_of_round and not card.hpot_temp_check then
-                card.hpot_temp_check = true
+            if context.end_of_round and not card.cbean_temp_check then
+                card.cbean_temp_check = true
                 card:calculate_perishable()
             end
         elseif context.end_of_round and not context.repetition and not context.individual then
@@ -102,8 +103,8 @@ pattern = '''
 position = 'at'
 payload = '''
         if card.ability.set == "Default" or card.ability.set == "Enhanced" then
-            if context.end_of_round and not card.hpot_temp_check then
-                card.hpot_temp_check = true
+            if context.end_of_round and not card.cbean_temp_check then
+                card.cbean_temp_check = true
                 card:calculate_rental()
             end
         elseif context.end_of_round and not context.repetition and not context.individual then
@@ -132,6 +133,28 @@ for k, v in pairs(SMODS.Stickers) do
         end
     end
   end
+end
+'''
+match_indent = true
+
+
+# Adding sticker appearance in shops (this is so wrong istg)
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "create_shop_card_ui(card, v.type, area)"
+position = "before"
+payload = '''
+for kk, vv in pairs(SMODS.ConsumableTypes) do
+    if G.GAME.modifiers.consumable_stickers then
+        if kk == v.type then
+            local st = NAMETEAM.poll_sticker(false, card, true, "Consumable")
+            if st then
+                SMODS.Stickers[st]:apply(card, true)
+            end
+            break
+        end
+    end
 end
 '''
 match_indent = true
