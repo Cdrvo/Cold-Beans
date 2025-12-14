@@ -588,6 +588,7 @@ YMA.SideQuests.quest {
             if not card.ability.extra.rerolled then
                 G.GAME.cbean.patience_quest = true
                 YMA.complete_quest(card, nil, nil, false)
+                SMODS.change_free_rerolls(5)
             end
             if card.ability.extra.rerolled then
                 SMODS.calculate_effect({ message = localize('k_reset') }, card)
@@ -602,4 +603,5 @@ YMA.SideQuests.quest {
         code = "cloudzXIII",
     }
 }
+
 -- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 12)
