@@ -17,7 +17,7 @@ SMODS.Sticker({
 	end,
     apply = function(self, card, val)
         card.ability[self.key] = val
-        if G.hand ~= nil then
+        if card.area then
             if card.ability[self.key] then
                 G.hand:change_size(1)
                 G.jokers:change_size(-1)
