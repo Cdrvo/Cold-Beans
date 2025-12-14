@@ -2268,6 +2268,22 @@ return {
                     "and {C:red}Mult{} when",
                     "calculating final score"
                 }
+            },
+            cbean_painted = {
+                name = "Painted Sticker",
+                text = {
+                    "{C:attention}+1{} hand size,",
+                    "{C:red}-1{} Joker slot"
+                }
+            },
+            cbean_black = {
+                name = "Black Sticker",
+                text = {
+                    "{C:blue}-1{} hand",
+                    "every round",
+                    "Jokers are {C:attention}10x{} more",
+                    "likely to be {C:dark_edition}Negative{}"
+                }
             }
         },
         Planet = {
@@ -3888,7 +3904,9 @@ return {
             cbean_hooking = "Hooking",
             cbean_flashcard = "Flashcard",
             cbean_frowning = "Frowning",
-            cbean_plasma = "Plasma"
+            cbean_plasma = "Plasma",
+            cbean_painted = "Painted",
+            cbean_black = "Black",
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
