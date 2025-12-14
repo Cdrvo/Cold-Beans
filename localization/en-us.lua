@@ -2260,6 +2260,15 @@ return {
                     "{C:attention}Face{} card"
 				}
 			},
+            cbean_plasma = {
+                name = "Plasma Sticker",
+                text = {
+                    "{X:purple,C:white}X2{} Blind size",
+                    "Balances {C:attention}10%{} of {C:blue}Chips",
+                    "and {C:red}Mult{} when",
+                    "calculating final score"
+                }
+            }
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3869,7 +3878,7 @@ return {
 			k_cbean_pboys_arule="Choose a Cup",
 			k_cbean_pboys_aplus="+",
 			k_cbean_pboys_aminus="-",
-
+            k_cbean_nteam_doubled = "Doubled!",
         },
         high_scores = {},
         labels = {
@@ -3878,7 +3887,8 @@ return {
             cbean_mailed = "Mailed",
             cbean_hooking = "Hooking",
             cbean_flashcard = "Flashcard",
-            cbean_frowning = "Frowning"
+            cbean_frowning = "Frowning",
+            cbean_plasma = "Plasma"
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {

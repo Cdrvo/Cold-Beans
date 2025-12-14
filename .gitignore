@@ -1,3 +1,4 @@
 .lovelyignore
 BitterBackups
 *.ase
+.luarc.json
