@@ -2060,7 +2060,14 @@ return {
                     "on any card or deck",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 }
-            }
+            },
+            j_cbean_nameteam_stachenscarfen = {
+                name = "Stachenscarfen",
+                text = {
+					"All spawned {C:attention}Jokers{}",
+                    "are {C:green}Uncommon{}"
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {
