@@ -148,3 +148,71 @@ function NAMETEAM.contains(table, element)
 	end
 	return false
 end
+
+function NAMETEAM.create_localized_rows(set, key, args)
+	args = args or {}
+	args.bg_colour = args.bg_colour or G.C.WHITE
+	local loc_entry
+	args.text_scale = args.text_scale or 1
+	if set then
+		loc_entry = G.localization.descriptions[set][key]
+	else
+		loc_entry = G.localization.misc.dictionary[key]
+	end
+	local rows = {}
+	if set then
+		table.insert(rows, {
+			n = G.UIT.R,
+			config = { align = "cm", padding = 0.05 },
+			nodes = {
+				{
+					n = G.UIT.C,
+					config = { align = "cm" },
+					nodes = {
+						{ n = G.UIT.T, config = { text = loc_entry.name, colour = G.C.UI.TEXT_LIGHT, scale = 0.4 } },
+					},
+				},
+			},
+		})
+		local text_rows = {}
+		for _, line in ipairs(loc_entry.text_parsed) do
+			table.insert(text_rows, {
+				n = G.UIT.R,
+				config = { align = "cm" },
+				nodes = SMODS.localize_box(line, { scale = 0.9 * args.text_scale, vars = args.loc_vars }),
+			})
+		end
+		table.insert(rows, {
+			n = G.UIT.R,
+			config = { align = "cm", padding = 0.05, colour = args.bg_colour, r = 0.1, emboss = 0.05 },
+			nodes = {
+				{
+					n = G.UIT.C,
+					config = { align = "cm", padding = 0.05 },
+					nodes = text_rows,
+				},
+			},
+		})
+	else
+		local text_rows = {}
+		for _, line in ipairs(loc_entry) do
+			table.insert(text_rows, {
+				n = G.UIT.R,
+				config = { align = "cm" },
+				nodes = SMODS.localize_box(loc_parse_string(line), { scale = 0.9 * args.text_scale, vars = args.loc_vars }),
+			})
+		end
+		table.insert(rows, {
+			n = G.UIT.R,
+			config = { align = "cm", padding = 0.05, colour = args.bg_colour, r = 0.1, emboss = 0.05 },
+			nodes = {
+				{
+					n = G.UIT.C,
+					config = { align = "cm", padding = 0.05 },
+					nodes = text_rows,
+				},
+			},
+		})
+	end
+	return rows
+end
