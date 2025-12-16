@@ -2328,6 +2328,14 @@ return {
                     "while kept in hand"
                 }
             },
+            cbean_shield = {
+                name = "Shield Sticker",
+                text = {
+                    "{C:green}Prevents{} the",
+                    "{C:red}destruction{} of this",
+                    "card {C:attention}once"
+                }
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3952,7 +3960,8 @@ return {
             cbean_plasma = "Plasma",
             cbean_painted = "Painted",
             cbean_black = "Black",
-            cbean_heavy = "Heavy"
+            cbean_heavy = "Heavy",
+            cbean_shield = "Shield",
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
