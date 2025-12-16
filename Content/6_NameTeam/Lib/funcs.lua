@@ -28,41 +28,29 @@ function NAMETEAM.poll_sticker(guaranteed, check, check_allowed, set, test)
 		end
 	end
 
+	local finaltab = {}
 
-  local finaltab = {}
+	for k, v in pairs(tab) do
+		if SMODS.Stickers[v.key].sets[set] then
+			finaltab[#finaltab + 1] = v
+		end
+	end
 
-    for k, v in pairs(tab) do
-      if SMODS.Stickers[v.key].sets[set] then
-        finaltab[#finaltab+1] = v
-      end 
-    end
+	local random_sticker = pseudorandom_element(finaltab)
 
+	if random_sticker then
+		if guaranteed then
+			random_sticker = random_sticker
+		else
+			if pseudorandom("poll_sticker") < tonumber(SMODS.Stickers[random_sticker.key].rate) then
+				random_sticker = nil
+			end
+		end
+	end
 
-    
-		local random_sticker = pseudorandom_element(finaltab)
-
-     
-
-      if random_sticker then
-        
-
-					if guaranteed then
-
-             random_sticker = random_sticker
-             
-          else
-						if (pseudorandom("poll_sticker") < tonumber(SMODS.Stickers[random_sticker.key].rate)) then
-							random_sticker = nil
-						end
-					end
-
-          
-					
-        end
-  
-  if random_sticker then
-    return random_sticker.key
-  end
+	if random_sticker then
+		return random_sticker.key
+	end
 end
 
 function NAMETEAM.replacecards(card)
@@ -153,10 +141,10 @@ end
 
 -- Stolen straight from StackOverflow
 function NAMETEAM.contains(table, element)
-    for _, value in pairs(table) do
-      if value == element then
-        return true
-      end
-    end
-    return false
-  end
+	for _, value in pairs(table) do
+		if value == element then
+			return true
+		end
+	end
+	return false
+end
