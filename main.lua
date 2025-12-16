@@ -28,6 +28,14 @@ local function GetJokers()
 	return jokers -- to find joker in owned jokers do jokers["key of joker"]
 end
 
+function count_consumables()
+  if G.consumeables.get_total_count then
+    return G.consumeables:get_total_count()
+  else
+    return #G.consumeables.cards + G.GAME.consumeable_buffer
+  end
+end
+
 ColdBeans.calculate = function(mod, context)
 	if context.card_added and context.cardarea == G.jokers then
 		local jokers = GetJokers()
