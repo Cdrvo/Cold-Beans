@@ -2320,7 +2320,14 @@ return {
                     "Jokers are {C:attention}10x{} more",
                     "likely to be {C:dark_edition}Negative{}"
                 }
-            }
+            },
+            cbean_heavy = {
+                name = "Heavy Sticker",
+                text = {
+                    "{C:red}-1{} Hand Size",
+                    "while kept in hand"
+                }
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3945,6 +3952,7 @@ return {
             cbean_plasma = "Plasma",
             cbean_painted = "Painted",
             cbean_black = "Black",
+            cbean_heavy = "Heavy"
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
