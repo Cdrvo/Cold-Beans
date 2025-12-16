@@ -49,7 +49,7 @@ end
 
 
 SMODS.Joker {
-    key = "nameteam_technologyconnections",
+    key = "nameteam_alecwatson",
     rarity = 1,
     atlas = 'NAMETEAM_Jokers',
     pos = { x = 6, y = 0 },

@@ -2068,8 +2068,11 @@ return {
                     "are {C:green}Uncommon{}"
                 }
             },
-            j_cbean_nameteam_technologyconnections = {
-                name = "Technology Connections",
+            j_cbean_nameteam_alecwatson = {
+                name = {
+                    "Alec Watson",
+                    "{s:0.7}[Technology Connections]{}"
+                },
                 text = {
 					"{C:inactive}No ability (yet){}"
                 }
