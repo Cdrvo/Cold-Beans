@@ -2068,6 +2068,12 @@ return {
                     "are {C:green}Uncommon{}"
                 }
             },
+            j_cbean_nameteam_technologyconnections = {
+                name = "Technology Connections",
+                text = {
+					"{C:inactive}No ability (yet){}"
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {
@@ -3926,6 +3932,7 @@ return {
 			k_cbean_pboys_aplus="+",
 			k_cbean_pboys_aminus="-",
             k_cbean_nteam_doubled = "Doubled!",
+            cbean_disable_animations = "Disable Joker Animations",
         },
         high_scores = {},
         labels = {

@@ -14,7 +14,14 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
-    pronouns = "he_him"
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    }
 }
 
 local create_card_ref = create_card
@@ -39,3 +46,28 @@ function SMODS:create_card(t)
     end
     return smods_create_card_ref(self, t)
 end
+
+
+SMODS.Joker {
+    key = "nameteam_technologyconnections",
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 6, y = 0 },
+    cbean_anim = {
+        { xrange = { first = 6, last = 8 }, y = 0, t = 0.1 },
+        { x = 7, y = 0, t = 0.1 }
+    },
+    cost = 4,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+    hpot_unbreedable = true,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    }
+}
