@@ -2061,6 +2061,36 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 }
             },
+            j_cbean_nameteam_topsyturvy = {
+                name = "Topsy Turvy",
+                text = {
+                    "Played {C:attention}3s{} give",
+                    "{C:chips}+#1#{} Chips when scored,",
+                    "played {C:attention}2s{} give",
+                    "{C:chips}+#2#{} Chips when scored"
+                }
+            },
+            j_cbean_nameteam_bettercreditcard = {
+                name = "Better Credit Card",
+                text = {
+                    {
+                        "Go up to",
+                        "{C:red}-$#1#{} in debt"
+                    },
+                    {
+                        "Sell this {C:attention}Joker{}",
+                        "to {C:red}nullify{} debt"
+                    }
+                }
+            },
+            j_cbean_nameteam_hollyjollyjoker = {
+                name = "Holly Jolly Joker",
+                text = {
+                    "Cards with {C:clubs}Clubs{} suit",
+                    "give {C:money}$#1#{} if played",
+                    "hand contains a {C:attention}Pair{}"
+                }
+            },
             j_cbean_nameteam_stachenscarfen = {
                 name = "Stachenscarfen",
                 text = {
@@ -2074,7 +2104,10 @@ return {
                     "{s:0.7}[Technology Connections]{}"
                 },
                 text = {
-					"{C:inactive}No ability (yet){}"
+					"When a {C:attention}consumable{} is",
+                    "purchased, creates a",
+                    "{C:attention}second copy{} of it",
+                    "{C:inactive}(Must have room){}"
                 }
             },
         },
