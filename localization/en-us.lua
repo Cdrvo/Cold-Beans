@@ -2038,6 +2038,29 @@ return {
                     }
                 }
             },
+        --Name Team
+            j_cbean_nameteam_stickerbomb = {
+                name = {
+                    "Stickerbomb"
+                },
+                text = {
+                    "{C:mult}+#1#{} Mult per {C:attention}Sticker",
+                    "currently applied",
+                    "on any card or deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
+            },
+            j_cbean_nameteam_sticker_collection = {
+                name = {
+                    "Sticker Collection"
+                },
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult per unique",
+                    "{C:attention}Sticker{} currently applied",
+                    "on any card or deck",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+                }
+            }
         },
         Other = {
             undiscovered_yma_quest = {

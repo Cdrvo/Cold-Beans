@@ -150,3 +150,13 @@ function NAMETEAM.plasma_visuals(card)
 
 	delay(0.6)
 end
+
+-- Stolen straight from StackOverflow
+function NAMETEAM.contains(table, element)
+    for _, value in pairs(table) do
+      if value == element then
+        return true
+      end
+    end
+    return false
+  end
