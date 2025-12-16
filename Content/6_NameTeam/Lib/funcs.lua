@@ -216,3 +216,17 @@ function NAMETEAM.create_localized_rows(set, key, args)
 	end
 	return rows
 end
+
+function NAMETEAM.get_unique_pseudorandom_elements(t, n, seed)
+	local eligible = {}
+	for i = 1, #t do
+		eligible[#eligible + 1] = i
+	end
+	local ret = {}
+	for i = 1, math.min(n, #t) do
+		local target_index, eligible_index = pseudorandom_element(eligible, seed)
+		ret[#ret + 1] = t[target_index]
+		table.remove(eligible, eligible_index)
+	end
+	return ret
+end
