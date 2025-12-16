@@ -149,6 +149,7 @@ function NAMETEAM.contains(table, element)
 	return false
 end
 
+-- Yoinked from Multiverse
 function NAMETEAM.create_localized_rows(set, key, args)
 	args = args or {}
 	args.bg_colour = args.bg_colour or G.C.WHITE
@@ -227,6 +228,16 @@ function NAMETEAM.get_unique_pseudorandom_elements(t, n, seed)
 		local target_index, eligible_index = pseudorandom_element(eligible, seed)
 		ret[#ret + 1] = t[target_index]
 		table.remove(eligible, eligible_index)
+	end
+	return ret
+end
+
+function NAMETEAM.filter(t, func)
+	local ret = {}
+	for _, v in ipairs(t) do
+		if func(v) then
+			table.insert(ret, v)
+		end
 	end
 	return ret
 end
