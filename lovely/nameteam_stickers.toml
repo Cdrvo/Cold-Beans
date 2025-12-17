@@ -272,7 +272,9 @@ position = "at"
 payload = '''
 local eff, triggered
 if individual.tname_deck_sticker_calc then
-    eff, triggered = individual.object:calculate(G.deck.cards[1] or G.deck, context)
+    if individual.object.calculate then
+        eff, triggered = individual.object:calculate(G.deck.cards[1] or G.deck, context)
+    end
 else
     eff, triggered = individual.object:calculate(context)
 end
