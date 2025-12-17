@@ -3,7 +3,16 @@
 
 return {
     descriptions = {
-        Back = {},
+        Back = {
+            b_cbean_nameteam_urine = {
+                name = "Urine Deck",
+                text = {
+                    "All cards of a",
+                    "random {C:attention}rank{} start",
+                    "as {C:money}Piss{} cards"
+                }
+            }
+        },
         Blind = {
             bl_cbean_colon_treasure = { -- George The Rat | George The Rat | N/A
                 name = "The Treasure",
@@ -2123,6 +2132,24 @@ return {
                 name = "Give Way",
                 text = {
 					"{C:white,X:mult}X#1#{} Mult before scoring"
+                }
+            },
+            j_cbean_nameteam_ghostimage = {
+                name = "Ghost Image",
+                text = {
+					"Upgrades a random",
+                    "poker hand by {C:attention}#1#{}",
+                    "level when using",
+                    "a {C:planet}Planet{} card"
+                }
+            },
+            j_cbean_nameteam_tipoftheiceberg = {
+                name = "Tip of the Iceberg",
+                text = {
+                    "Gains {C:chips}+#1#{} Chips for each",
+                    "card {C:attention}purchased{} from the",
+                    "shop before {C:green}rerolling{}",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips){}"
                 }
             },
         },

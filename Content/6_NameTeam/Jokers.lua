@@ -239,7 +239,9 @@ SMODS.Joker {
         if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
             local valid = false
             for _, v in ipairs(context.scoring_hand) do
-                if not v:is_suit("Diamonds") or SMODS.has_any_suit(v) then valid = true; break; end
+                if not v:is_suit("Diamonds") or SMODS.has_any_suit(v) then
+                    valid = true; break;
+                end
             end
 
             if valid then return { mult = card.ability.extra.mult } end
@@ -277,5 +279,90 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.initial_scoring_step then return { xmult = 2 } end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_ghostimage",
+    config = { extra = { levels = 1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 6, y = 1 },
+    pos_extra = { x = 7, y = 1 },
+    draw_extra = function(self, card, layer)
+        if self.discovered or card.params.bypass_discovery_center then
+            card.cbean_extra:draw_shader('negative_shine', nil, card.ARGS.send_to_shader, nil, card.children.center)
+        end
+    end,
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.levels } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.using_consumeable and context.consumeable.config.center.set == "Planet" then
+            local valid_hands = {}
+            for k, v in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(k) then valid_hands[#valid_hands + 1] = k end
+            end
+            local chosen_hand = pseudorandom_element(valid_hands, pseudoseed("ghostimage"))
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    SMODS.smart_level_up_hand(card, chosen_hand, nil, card.ability.extra.levels)
+                    return true
+                end
+            }))
+            return { message = localize('k_level_up_ex'), colour = G.C.FILTER }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_tipoftheiceberg",
+    config = { extra = { counted_rerolls = 0, added_chips = 15, current_chips = 0 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 8, y = 1 },
+    cbean_anim = {
+        { xrange = { first = 8, last = 10 }, y = 1, t = 0.3 }
+    },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.added_chips, card.ability.extra.current_chips } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.extra.current_chips > 0 then return { chips = card.ability.extra.current_chips } end
+
+        if context.reroll_shop and not context.blueprint then card.ability.extra.counted_rerolls = card.ability.extra.counted_rerolls + 1 end
+        if context.ending_shop and not context.blueprint then card.ability.extra.counted_rerolls = 0 end
+
+        if context.buying_card and not context.blueprint and card.ability.extra.counted_rerolls == 0 then
+            card.ability.extra.current_chips = card.ability.extra.current_chips + card.ability.extra.added_chips
+            return { message = localize("k_upgrade_ex"), colour = G.C.FILTER }
+        end
     end
 }
