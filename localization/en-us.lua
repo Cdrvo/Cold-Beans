@@ -2064,10 +2064,10 @@ return {
             j_cbean_nameteam_topsyturvy = {
                 name = "Topsy Turvy",
                 text = {
-                    "Played {C:attention}3s{} give",
-                    "{C:chips}+#1#{} Chips when scored,",
-                    "played {C:attention}2s{} give",
-                    "{C:chips}+#2#{} Chips when scored"
+                    "Played {C:attention}3s{} give {C:chips}+#1#{}",
+                    "Chips when scored,",
+                    "played {C:attention}2s{} give {C:chips}+#2#{}",
+                    "Chips when scored"
                 }
             },
             j_cbean_nameteam_bettercreditcard = {
@@ -2086,8 +2086,8 @@ return {
             j_cbean_nameteam_hollyjollyjoker = {
                 name = "Holly Jolly Joker",
                 text = {
-                    "Cards with {C:clubs}Clubs{} suit",
-                    "give {C:money}$#1#{} if played",
+                    "Played cards with {C:clubs}Clubs{}",
+                    "suit give {C:money}$#1#{} if played",
                     "hand contains a {C:attention}Pair{}"
                 }
             },
@@ -2108,6 +2108,15 @@ return {
                     "purchased, creates a",
                     "{C:attention}second copy{} of it",
                     "{C:inactive}(Must have room){}"
+                }
+            },
+            j_cbean_nameteam_diamondshapewithadotinside = {
+                name = "{s:0.9}Diamond Shape With a Dot Inside{}",
+                text = {
+					"Played {C:diamonds}Diamonds{} give",
+                    "{C:mult}+#1#{} Mult when scored",
+                    "if played hand contains",
+                    "a {C:red}non-Diamond{}"
                 }
             },
         },

@@ -1,7 +1,15 @@
 SMODS.Joker { --Modifed from Vanilla Remade's example
     key = "pboys_molotov", 
-    atlas = "pboys_joker_atlas",
-    pos = { x = 0, y = 0 },
+    atlas = "NAMETEAM_Jokers", -- get absolutely animated you goobers >:3
+    pos = { x = 0, y = 8 },
+    cbean_anim = {
+        { xrange = { first = 0, last = 11 }, yrange = { first = 6, last = 7 }, t = 0.1 },
+        { xrange = { first = 0, last = 1 }, y = 8, t = 0.1 }
+    },
+    pos_extra = { x = 2, y = 8 },
+    cbean_anim_extra = {
+        { xrange = { first = 2, last = 4 }, y = 8, t = 0.234567 }
+    },
     rarity = 2,
     order = 1,
     blueprint_compat = false,

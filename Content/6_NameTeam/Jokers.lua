@@ -204,3 +204,38 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_diamondshapewithadotinside",
+    config = { extra = { mult = 7 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 0, y = 1 },
+    cbean_anim = { { xrange = { first = 0, last = 3 }, y = 1, t = 0.1 } },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "any_all",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
+            local valid = false
+            for _, v in ipairs(context.scoring_hand) do
+                if not v:is_suit("Diamonds") or SMODS.has_any_suit(v) then valid = true; break; end
+            end
+
+            if valid then return { mult = card.ability.extra.mult } end
+        end
+    end
+}
