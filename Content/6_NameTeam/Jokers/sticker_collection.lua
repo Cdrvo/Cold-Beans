@@ -15,11 +15,11 @@ SMODS.Joker({
     eternal_compat = true,
     unlocked = true,
     discovered = true,
-    -- atlas = 'jokers',
-    -- pos = {
-    --     x = 4,
-    --     y = 0
-    -- },
+    atlas = 'NAMETEAM_Jokers',
+    pos = {
+        x = 11,
+        y = 1
+    },
 	config = {
         extra = {
             add_mult = 0.1,
@@ -47,7 +47,7 @@ SMODS.Joker({
     beans_credit = {
 		code = "TheAlternateDoctor",
 		team = "Name Team",
-		art = "",
+		art = "TheAlternateDoctor",
     }
 })
 
