@@ -243,11 +243,15 @@ function NAMETEAM.filter(t, func)
 end
 
 function Card:NAMETEAM_remove_sticker_calc(sticker, card) 
-    sticker:NAMETEAM_removed(self, card)
-	SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = card})
+	if sticker and sticker.NAMETEAM_removed then
+    	sticker:NAMETEAM_removed(self, card)
+		SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = card})
+	end
 end
 
 function Card:NAMETEAM_apply_sticker_calc(sticker, card) 
-    sticker:NAMETEAM_applied(self, card)
-	SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = card})
+	if sticker and sticker.NAMETEAM_applied then
+    	sticker:NAMETEAM_applied(self, card)
+		SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = card})
+	end
 end

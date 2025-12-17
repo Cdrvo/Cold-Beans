@@ -236,7 +236,7 @@ position = 'after'
 payload = '''
 if self.ability then
     for k, v in pairs(SMODS.Stickers) do
-        if self.ability[k] then
+        if self.ability[k] and not SMODS.Stickers[k].no_dissolve_trigger then
             self:NAMETEAM_remove_sticker_calc(v, self)
         end
     end
