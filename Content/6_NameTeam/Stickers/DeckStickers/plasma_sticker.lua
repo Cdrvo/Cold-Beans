@@ -15,6 +15,9 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	apply_to_deck = function(self, back, val)
+		back.ability[self.key] = val
+	end,
 	calculate = function(self, card, context)
 		if context.setting_blind then
 			G.E_MANAGER:add_event(Event({

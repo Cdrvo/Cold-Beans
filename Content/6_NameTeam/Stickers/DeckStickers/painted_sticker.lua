@@ -15,18 +15,28 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
-    apply = function(self, card, val)
-        card.ability[self.key] = val
-        if card.area then
-            if card.ability[self.key] then
-                G.hand:change_size(1)
-                G.jokers:change_size(-1)
-            else
-                G.hand:change_size(-1)
-                G.jokers:change_size(1)
-            end
-        end
-    end,
+	apply = function(self, card, val)
+		card.ability[self.key] = val
+		if card.area then
+			if card.ability[self.key] then
+				G.hand:change_size(1)
+				G.jokers:change_size(-1)
+			else
+				G.hand:change_size(-1)
+				G.jokers:change_size(1)
+			end
+		end
+	end,
+	apply_to_deck = function(self, back, val)
+		back.ability[self.key] = val
+		if back.ability[self.key] then
+			G.hand:change_size(1)
+			G.jokers:change_size(-1)
+		else
+			G.hand:change_size(-1)
+			G.jokers:change_size(1)
+		end
+	end,
 	beans_credits = {
 		code = "TheAlternateDoctor",
 		team = "Name Team",

@@ -243,3 +243,38 @@ if self.ability then
  end
 '''
 match_indent = false
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''
+-- TARGET: add your own individual scoring targets
+'''
+position = "after"
+payload = '''
+if G.GAME.selected_back.ability then
+    for k, v in pairs(G.GAME.selected_back.ability) do
+        if v and SMODS.Stickers[k] then
+            t[#t + 1] = { object = SMODS.Stickers[k], scored_card = G.deck.cards[1] or G.deck, tname_deck_sticker_calc = true }
+        end
+    end
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''
+local eff, triggered = individual.object:calculate(context)
+'''
+position = "at"
+payload = '''
+local eff, triggered
+if individual.tname_deck_sticker_calc then
+    eff, triggered = individual.object:calculate(G.deck.cards[1] or G.deck, context)
+else
+    eff, triggered = individual.object:calculate(context)
+end
+'''
+match_indent = true

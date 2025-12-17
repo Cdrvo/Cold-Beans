@@ -15,35 +15,41 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
-    apply = function(self, card, val)
-        card.ability[self.key] = val
-        if card.area  then
-            -- If there's anything changing the negative rate, we keep the old one so we can revert it
-            G.GAME.modifiers.cbean_base_negative_rate = G.P_CENTERS.e_negative:get_weight()
-            G.GAME.modifiers.cbean_negative_rate = G.GAME.modifiers.cbean_base_negative_rate + 30
-            
-            if card.ability[self.key] then
-                G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
-                ease_hands_played(-1)                
-                SMODS.Edition:take_ownership("negative", {
-                    get_weight = function(self)
-                        return self.weight * (G.GAME.modifiers.cbean_negative_rate or 1)
-                    end,
-                }, true)
-            else
-                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
-                ease_hands_played(1)                
-                SMODS.Edition:take_ownership("negative", {
-                    get_weight = function(self)
-                        return (G.GAME.modifiers.cbean_base_negative_rate or self.weight)
-                    end,
-                }, true)
-            end
-        end
-    end,
+	apply = function(self, card, val)
+		card.ability[self.key] = val
+		if card.area then
+			if card.ability[self.key] then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+				ease_hands_played(-1)
+				G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) * 10
+			else
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+				ease_hands_played(1)
+				G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) / 10
+			end
+		end
+	end,
+	apply_to_deck = function(self, back, val)
+		back.ability[self.key] = val
+		if back.ability[self.key] then
+			G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+			ease_hands_played(-1)
+			G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) * 10
+		else
+			G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+			ease_hands_played(1)
+			G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) / 10
+		end
+	end,
 	beans_credits = {
 		code = "TheAlternateDoctor",
 		team = "Name Team",
-		art = "GhostSalt",  
+		art = "GhostSalt",
 	},
 })
+
+SMODS.Edition:take_ownership("negative", {
+	get_weight = function(self)
+		return (self.weight * (G.GAME.modifiers.cbean_negative_boost or 1))
+	end,
+}, true)
