@@ -2119,6 +2119,12 @@ return {
                     "a {C:red}non-Diamond{}"
                 }
             },
+            j_cbean_nameteam_giveway = {
+                name = "Give Way",
+                text = {
+					"{C:white,X:mult}X#1#{} Mult before scoring"
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {

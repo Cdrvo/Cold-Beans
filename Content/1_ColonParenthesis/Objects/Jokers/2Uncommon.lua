@@ -58,8 +58,26 @@ SMODS.Joker {
             count6 = 0
         }
     },
-	atlas = "colon_JokerAtlas",
-    pos = { x = 5, y = 2 },
+    atlas = "NAMETEAM_Jokers2", -- back at it again >:3
+    pos = { x = 0, y = 0 },
+    cbean_anim = {
+        { xrange = { first = 0, last = 11 }, yrange = { first = 0, last = 1 }, t = 0.1 }
+    },
+    pos_extra = { x = 0, y = 2 },
+    cbean_anim_extra = {
+        { x = 0, y = 2, t = 0.075 },
+        { x = 1, y = 2, t = 0.125 },
+        { x = 2, y = 2, t = 0.175 },
+        { x = 3, y = 2, t = 0.3 },
+        { x = 2, y = 2, t = 0.175 },
+        { x = 1, y = 2, t = 0.125 },
+        { x = 0, y = 2, t = 0.075 },
+        { x = 4, y = 2, t = 0.125 },
+        { x = 5, y = 2, t = 0.175 },
+        { x = 6, y = 2, t = 0.3 },
+        { x = 5, y = 2, t = 0.175 },
+        { x = 4, y = 2, t = 0.125 }
+    },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -94,7 +112,7 @@ SMODS.Joker {
                     }
                 end
             end
-        end 
+        end
     end,
     beans_credits = {
         team = ":(",
@@ -106,7 +124,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_rna",
     name = "RNA",
-	atlas = "colon_JokerAtlas",
+    atlas = "colon_JokerAtlas",
     pos = { x = 7, y = 0 },
     pronouns = "it_its",
     rarity = 2,
@@ -163,7 +181,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "colon_sproinky",
     name = "Sproinky",
-	atlas = "colon_JokerAtlas",
+    atlas = "colon_JokerAtlas",
     pos = { x = 8, y = 0 },
     rarity = 2,
     cost = 8,
@@ -180,7 +198,7 @@ SMODS.Joker {
             return {
                 func = function()
                     for _, other_card in pairs(G.play.cards) do
-                        if not scored[other_card] then 
+                        if not scored[other_card] then
                             other_card:set_ability("m_steel", nil, true)
                         elseif SMODS.has_enhancement(other_card, "m_steel") then
                             SMODS.debuff_card(other_card, true, "Sproinky")
@@ -206,8 +224,12 @@ SMODS.Joker {
             discards = 1
         }
     },
-    atlas = "colon_JokerAtlas",
-    pos = { x = 3, y = 0 },
+    atlas = "NAMETEAM_Jokers", -- woah look it's me! what have i done to this joker, hmm!
+    pos = { x = 9, y = 0 },
+    cbean_anim = {
+        { xrange = { first = 9, last = 11 }, y = 0, t = 0.2 },
+        { x = 10,                            y = 0, t = 0.2 }
+    },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -247,7 +269,7 @@ SMODS.Joker {
 --         extra = {
 --             hands = 2,
 --             discards = 2,
---             hand_size = 2 
+--             hand_size = 2
 --         }
 --     },
 --     -- atlas = "",

@@ -5,6 +5,13 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "NAMETEAM_Jokers2",
+    path = "6_NameTeam/ColdBeansJokers2.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Joker {
     key = 'nameteam_topsyturvy',
     config = { extra = { three_given_chips = 20, two_given_chips = 40 } },
@@ -237,5 +244,38 @@ SMODS.Joker {
 
             if valid then return { mult = card.ability.extra.mult } end
         end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_giveway",
+    config = { extra = { xmult = 2 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 4, y = 1 },
+    pos_extra = { x = 5, y = 1 },
+    draw_extra = function(self, card, layer)
+        if self.discovered or card.params.bypass_discovery_center then
+            card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+        end
+    end,
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.initial_scoring_step then return { xmult = 2 } end
     end
 }

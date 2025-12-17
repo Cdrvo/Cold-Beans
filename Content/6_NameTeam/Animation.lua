@@ -26,7 +26,7 @@ SMODS.DrawStep {
 
         local center = self.config.center
         if center.draw_extra and type(center.draw_extra) == 'function' then
-          self.cbean_extra:draw_extra(self, layer)
+          center:draw_extra(self, layer)
         end
 
         local edition = self.delay_edition or self.edition
