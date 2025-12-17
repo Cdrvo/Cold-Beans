@@ -15,7 +15,9 @@ function Back:nteam_apply_sticker(key)
 			end
 		end
 	end
-    sticker_table:apply_to_deck(self, val)
+	if not self.ability[key] then
+		sticker_table:apply_to_deck(self, val)
+	end
 end
 
 function Back:nteam_remove_sticker(key)
