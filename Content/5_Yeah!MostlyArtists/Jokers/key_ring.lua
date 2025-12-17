@@ -2,8 +2,26 @@ SMODS.Joker {
 	key = 'yma_key_ring',
 
 	rarity = 2,
-	atlas = 'yma_joker_atlas',
-	pos = { x = 0, y = 1 },
+    atlas = "NAMETEAM_Jokers", -- HEY GUYS i animated your thing!!
+    pos = { x = 0, y = 5 },
+    cbean_anim = {
+        { xrange = { first = 0, last = 8 }, y = 5, t = 0.1 }
+    },
+    pos_extra = { x = 5, y = 8 },
+    cbean_anim_extra = {
+        { x = 5, y = 8, t = 0.075 },
+        { x = 6, y = 8, t = 0.125 },
+        { x = 7, y = 8, t = 0.175 },
+        { x = 8, y = 8, t = 0.3 },
+        { x = 7, y = 8, t = 0.175 },
+        { x = 6, y = 8, t = 0.125 },
+        { x = 5, y = 8, t = 0.075 },
+        { x = 9, y = 8, t = 0.125 },
+        { x = 10, y = 8, t = 0.175 },
+        { x = 11, y = 8, t = 0.3 },
+        { x = 10, y = 8, t = 0.175 },
+        { x = 9, y = 8, t = 0.125 }
+    },
 	cost = 6,
 	blueprint_compat = false,
 	config = {

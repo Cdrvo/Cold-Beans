@@ -1,7 +1,26 @@
 SMODS.Joker {
     key = "pboys_watermelon",
-    atlas = "pboys_joker_atlas",
-    pos = { x = 1, y = 1 },
+    atlas = "NAMETEAM_Jokers", -- mwehehehe get animated suckers
+    pos = { x = 0, y = 10 },
+    cbean_anim = {
+        { xrange = { first = 0, last = 11 }, y = 10, t = 0.1 },
+        { xrange = { first = 0, last = 2 }, y = 11, t = 0.1 }
+    },
+    pos_extra = { x = 3, y = 11 },
+    cbean_anim_extra = {
+        { x = 3, y = 11, t = 0.075 },
+        { x = 4, y = 11, t = 0.125 },
+        { x = 5, y = 11, t = 0.175 },
+        { x = 6, y = 11, t = 0.3 },
+        { x = 5, y = 11, t = 0.175 },
+        { x = 4, y = 11, t = 0.125 },
+        { x = 3, y = 11, t = 0.075 },
+        { x = 7, y = 11, t = 0.125 },
+        { x = 8, y = 11, t = 0.175 },
+        { x = 9, y = 11, t = 0.3 },
+        { x = 8, y = 11, t = 0.175 },
+        { x = 7, y = 11, t = 0.125 }
+    },
     rarity = 1,
     order = 11,
     blueprint_compat = false,
