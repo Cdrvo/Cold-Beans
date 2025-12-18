@@ -17,6 +17,13 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+    apply_to_deck = function(self, val)
+        if val == false then
+            self:NAMETEAM_removed(self)
+        else
+            self:NAMETEAM_applied(self)
+        end
+    end,
     NAMETEAM_applied = function(self, card)
         if card.area and G.hand then G.hand:change_size(-1) end
     end,

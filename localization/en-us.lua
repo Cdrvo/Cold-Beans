@@ -2532,6 +2532,13 @@ return {
                     "are debuffed"
                 },
             },
+            cbean_the_psychic_sticker = {
+                name = "The Psychic",
+                text={
+                    "Must play",
+                    "5 or more cards"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4190,6 +4197,7 @@ return {
             cbean_the_pillar_sticker = "The Pillar",
             cbean_the_needle_sticker = "The Needle",
             cbean_the_plant_sticker = "The Plant",
+            cbean_the_psychic_sticker = "The Psychic",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",

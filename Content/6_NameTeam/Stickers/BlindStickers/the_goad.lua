@@ -17,6 +17,13 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+    apply_to_deck = function(self, val)
+        if val == false then
+            self:NAMETEAM_removed(self)
+        else
+            self:NAMETEAM_applied(self)
+        end
+    end,
     NAMETEAM_removed = function(self, card)
 		if G.playing_cards then
 			for k, v in pairs(G.playing_cards) do
