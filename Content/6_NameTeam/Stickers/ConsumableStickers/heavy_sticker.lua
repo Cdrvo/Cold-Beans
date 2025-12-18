@@ -18,10 +18,10 @@ SMODS.Sticker({
 		}
 	end,
     NAMETEAM_applied = function(self, card)
-        G.hand:change_size(-1)
+        if card.area and G.hand then G.hand:change_size(-1) end
     end,
     NAMETEAM_removed = function(self, card)
-        G.hand:change_size(1)
+        if card.area and G.hand then G.hand:change_size(1) end
     end,
 	beans_credits = {
 		code = "Revo",

@@ -43,6 +43,10 @@ function G:start_run(args)
 	-- 	)
     -- initialize ability table where deck stickers are stored
     G.GAME.selected_back.ability = G.GAME.selected_back.ability or {}
+
+	if pseudorandom("deck_sticker") < 1 / 4 then
+		-- NAMETEAM.poll_sticker(true, G.deck.cards[1], true, "Deck")
+	end
 end
 
 -- Following 2 hooks are for storing and saving the stickers to the deck
