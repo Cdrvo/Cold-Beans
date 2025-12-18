@@ -1,5 +1,6 @@
 SMODS.Sticker({
 	key = "crimson_heart_sticker",
+	showdown_sticker = true,
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
 		x = 5,

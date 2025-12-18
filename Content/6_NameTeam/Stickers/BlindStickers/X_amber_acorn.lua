@@ -1,5 +1,6 @@
 SMODS.Sticker({
 	key = "amber_acorn_sticker",
+	showdown_sticker = true,
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
 		x = 3,

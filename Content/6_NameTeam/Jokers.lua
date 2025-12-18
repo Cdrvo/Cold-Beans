@@ -352,3 +352,45 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_presidenthathaway",
+    config = { extra = { xmult = 2 } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 3, y = 2 },
+    cost = 10,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 13 and context.other_card:is_suit("Spades") then
+            return { xmult = card.ability.extra.xmult }
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if not from_debuff and not G.CONTROLLER.locks.selling_card then
+            G.STATE = G.STATES.GAME_OVER
+            if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then
+                G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+            end
+            G:save_settings()
+            G.FILE_HANDLER.force = true
+            G.STATE_COMPLETE = false
+            G.SETTINGS.paused = false
+            return
+        end
+    end,
+}

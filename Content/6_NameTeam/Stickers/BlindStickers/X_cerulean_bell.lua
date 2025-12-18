@@ -1,5 +1,6 @@
  SMODS.Sticker({
 	key = "cerulean_bell_sticker",
+	showdown_sticker = true,
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
 		x = 4,

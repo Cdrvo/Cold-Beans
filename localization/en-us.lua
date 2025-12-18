@@ -2152,6 +2152,20 @@ return {
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips){}"
                 }
             },
+            j_cbean_nameteam_presidenthathaway = {
+                name = "President Hathaway",
+                text = {
+                    {
+                        "Played {C:attention}Kings{} of",
+                        "{C:spades}Spades{} give {C:white,X:mult}X#1#{} Mult",
+                        "when scored"
+                    },
+                    {
+                        "{C:red,E:1}Lose the run{} if this",
+                        "Joker is {C:red}destroyed{}"
+                    }
+                }
+            },
         },
         Other = {
             undiscovered_yma_quest = {
@@ -2427,7 +2441,7 @@ return {
 
             cbean_the_arm_sticker = {
                 name = "The Arm",
-                text={
+                text = {
                     "Decrease level of",
                     "played poker hand",
                 },
@@ -2435,7 +2449,7 @@ return {
 
             cbean_the_club_sticker = {
                 name = "The Club",
-                text={
+                text = {
                     "When in a blind",
                     "{C:red}debuff{} all Club cards",
                 },
@@ -2443,42 +2457,42 @@ return {
 
             cbean_the_eye_sticker = {
                 name = "The Eye",
-                text={
+                text = {
                     "No repeat",
                     "hand types"
                 },
             },
             cbean_the_fish_sticker = {
                 name = "The Fish",
-                text={
+                text = {
                     "Cards drawn face down",
                     "after each hand played"
                 },
             },
             cbean_the_flint_sticker = {
                 name = "The Flint",
-                  text={
+                text = {
                     "Base Chips and",
                     "Mult are halved",
                 },
             },
             cbean_the_goad_sticker = {
                 name = "The Goad",
-                text={
+                text = {
                     "When in a blind",
                     "{C:red}debuff{} all Spade cards",
                 },
             },
             cbean_the_head_sticker = {
                 name = "The Head",
-                text={
+                text = {
                     "When in a blind",
                     "{C:red}debuff{} all Heart cards",
                 },
             },
             cbean_the_wall_sticker = {
                 name = "The Wall",
-                text={
+                text = {
                     "Double the blind",
                     "requirement upon",
                     "entering one"
@@ -2486,13 +2500,13 @@ return {
             },
             cbean_the_manacle_sticker = {
                 name = "The Manacle",
-                text={
+                text = {
                     "-1 Hand Size"
                 },
             },
             cbean_the_mark_sticker = {
                 name = "The Mark",
-                text={
+                text = {
                     "All face cards are",
                     "drawn face down",
                 },
@@ -2614,7 +2628,7 @@ return {
         Planet = {
             c_cbean_sdown_gay_planet = {
                 name = "Salacia"
-            },  
+            },
             c_cbean_sdown_gayflush_planet = {
                 name = "Orcus"
             },
