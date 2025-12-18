@@ -2170,7 +2170,7 @@ return {
                     'run to find out what it does'
                 }
             },
-            undiscovered_cbean_StickerSheet = {
+            undiscovered_cbean_stickersheet = {
                 name = "Not Discovered",
                 text = {
                     "Obtain this card in",
@@ -4049,6 +4049,8 @@ return {
             k_cbean_pboys_aminus = "-",
             k_cbean_nteam_doubled = "Doubled!",
             cbean_disable_animations = "Disable Joker Animations",
+            k_cbean_stickersheet = "Sticker Sheet",
+            b_cbean_stickersheet_cards = "Sticker Sheets"
         },
         high_scores = {},
         labels = {

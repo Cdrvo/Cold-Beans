@@ -23,7 +23,8 @@ SMODS.UndiscoveredSprite({
   pos = { x = 1, y = 0 },
   px = 71,
   py = 95,
-}):register()
+  no_overlay = true
+})
 
 
 
