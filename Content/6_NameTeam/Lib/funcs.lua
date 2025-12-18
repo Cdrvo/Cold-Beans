@@ -259,3 +259,14 @@ function Card:NAMETEAM_apply_sticker_calc(sticker, card)
 		SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = card})
 	end
 end
+
+function NAMETEAM.most_played()
+	local _hand, _tally = nil, -1
+	for k, v in ipairs(G.handlist) do
+		if G.GAME.hands[v].visible and G.GAME.hands[v].played > _tally then
+			_hand = v
+			_tally = G.GAME.hands[v].played
+		end
+	end
+	return _hand
+end

@@ -2504,6 +2504,13 @@ return {
                     "type every round",
                 },
             },
+            cbean_the_ox_sticker = {
+                name = "The Ox",
+                text={
+                    "Playing a #1#",
+                    "sets money to $0",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
