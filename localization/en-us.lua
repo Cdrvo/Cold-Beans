@@ -4146,9 +4146,9 @@ return {
             cbean_the_flint_sticker = "The Flint",
             cbean_the_goad_sticker = "The Goad",
             cbean_the_head_sticker = "The Head",
-            cban_the_wall_sticker = "The Wall",
+            cbean_the_wall_sticker = "The Wall",
             cbean_the_manacle_sticker = "The Manacle",
-            cbea_the_mark_sticker = "The Mark",
+            cbean_the_mark_sticker = "The Mark",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
