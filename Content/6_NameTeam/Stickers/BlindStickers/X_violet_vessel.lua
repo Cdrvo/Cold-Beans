@@ -1,5 +1,5 @@
 SMODS.Sticker({
-	key = "the_wall_sticker",
+	key = "violet_vessel_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
 		x = 2,
