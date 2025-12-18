@@ -37,6 +37,14 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
+	if context.after then
+        G.GAME.cbean_combo_index = {}
+        G.GAME.cbean_combo_unique_hand = {}
+        G.GAME.cbean_combos_used_turn = 0
+    end
+    if context.end_of_round then
+        G.GAME.cbean_combo_unique_round = {}
+    end
 	if context.card_added and context.cardarea == G.jokers then
 		local jokers = GetJokers()
 		local troub, minne, trouv = jokers["j_troubadour"], jokers["j_cbean_colon_minnesang"], jokers["j_cbean_colon_trouvere"]
