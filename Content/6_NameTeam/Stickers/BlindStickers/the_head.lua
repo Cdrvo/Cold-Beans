@@ -17,11 +17,21 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+    NAMETEAM_removed = function(self, card)
+		if G.playing_cards then
+			for k, v in pairs(G.playing_cards) do
+				if v.debuffed_by_headstkr then
+					v.debuffed_by_headstkr = nil
+					SMODS.debuff_card(v, false, "NAMETEAM_head_sticker")
+				end
+			end
+		end
+	end,
     calculate = function(self,card,context)
         if context.setting_blind then
             for k, v in pairs(G.playing_cards) do
                 if v:is_suit("Hearts") and not v.debuff then
-                    v.debuff = true
+                    SMODS.debuff_card(v, true, "NAMETEAM_head_sticker")
                     v.debuffed_by_headstkr = true
                 end
             end
@@ -30,7 +40,7 @@ SMODS.Sticker({
             for k, v in pairs(G.playing_cards) do
                 if v:is_suit("Hearts") and v.debuffed_by_headstkr then
                     v.debuffed_by_headstkr = nil
-                    v.debuff = false
+                    SMODS.debuff_card(v, false, "NAMETEAM_head_sticker")
                 end
             end
         end

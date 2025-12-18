@@ -17,12 +17,22 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	NAMETEAM_removed = function(self, card)
+		if G.playing_cards then
+			for k, v in pairs(G.playing_cards) do
+				if v.debuffed_by_pillarstkr then
+					v.debuffed_by_pillarstkr = nil
+					SMODS.debuff_card(v, false, "NAMETEAM_pillar_sticker")
+				end
+			end
+		end
+	end,
     calculate = function(self,card,context)
         if context.final_scoring_step then
             G.E_MANAGER:add_event(Event({
 				func = function()
 					for k, v in pairs(context.scoring_hand) do
-                        v.debuff = true
+                        SMODS.debuff_card(v, true, "NAMETEAM_pillar_sticker")
                         v:juice_up()
                         v.debuffed_by_pillarstkr = true
                     end
@@ -34,7 +44,7 @@ SMODS.Sticker({
             for k, v in pairs(G.playing_cards) do
                 if v.debuffed_by_pillarstkr then
                     v.debuffed_by_pillarstkr = nil
-                    v.debuff = false
+                    SMODS.debuff_card(v, false, "NAMETEAM_pillar_sticker")
                 end
             end
         end

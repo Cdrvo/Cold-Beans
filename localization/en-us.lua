@@ -2525,6 +2525,13 @@ return {
                     "Blind sizes are halved",
                 },
             },
+            cbean_the_plant_sticker = {
+                name = "The Plant",
+                text={
+                    "All face cards",
+                    "are debuffed"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4182,6 +4189,7 @@ return {
             cbean_the_ox_sticker = "The Ox",
             cbean_the_pillar_sticker = "The Pillar",
             cbean_the_needle_sticker = "The Needle",
+            cbean_the_plant_sticker = "The Plant",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",

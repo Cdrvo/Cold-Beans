@@ -19,6 +19,7 @@ SMODS.Sticker({
 	end,
     calculate = function(self,card,context)
         if context.first_hand_drawn then
+            ease_hands_played(-(G.GAME.current_round.hands_left-1))
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					G.GAME.blind.chips = G.GAME.blind.chips / 2
