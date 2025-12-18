@@ -22,7 +22,7 @@ SMODS.Sticker({
         for k, v in pairs(G.playing_cards) do
             if v:is_face() and not v.debuff then
                 v.debuffed_by_plantstkr = true
-                SMODS.debuff_card(v, true, self)
+                SMODS.debuff_card(v, true, "NAMETEAM_plant_sticker")
             end
         end
     end
@@ -30,7 +30,7 @@ SMODS.Sticker({
     NAMETEAM_removed = function(self, card)
     if G.playing_cards then
         for k, v in pairs(G.playing_cards) do
-            if v:is_face() and v.debuffed_by_plantstkr then
+            if v.debuffed_by_plantstkr then
                 v.debuffed_by_plantstkr = nil
                  SMODS.debuff_card(v, false, "NAMETEAM_plant_sticker")
             end

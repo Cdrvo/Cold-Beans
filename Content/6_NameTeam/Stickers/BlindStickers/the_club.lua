@@ -30,7 +30,7 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.setting_blind then
 			for k, v in pairs(G.playing_cards) do
-				if v:is_suit("Clubs") and not v.debuff then
+				if v:is_suit("Clubs",false) then
 					SMODS.debuff_card(v, true, "NAMETEAM_club_sticker")
 					v.debuffed_by_clubstkr = true
 				end
@@ -38,7 +38,7 @@ SMODS.Sticker({
 		end
 		if context.end_of_round then
 			for k, v in pairs(G.playing_cards) do
-				if v:is_suit("Clubs") and v.debuffed_by_clubstkr then
+				if v:is_suit("Clubs", true) and v.debuffed_by_clubstkr then
 					v.debuffed_by_clubstkr = nil
 					SMODS.debuff_card(v, false, "NAMETEAM_club_sticker")
 				end

@@ -38,7 +38,7 @@ SMODS.Sticker({
         end
         if context.end_of_round then
             for k, v in pairs(G.playing_cards) do
-                if v:is_suit("Hearts") and v.debuffed_by_headstkr then
+                if v:is_suit("Hearts", true) and v.debuffed_by_headstkr then
                     v.debuffed_by_headstkr = nil
                     SMODS.debuff_card(v, false, "NAMETEAM_head_sticker")
                 end
