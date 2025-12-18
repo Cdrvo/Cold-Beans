@@ -2487,6 +2487,13 @@ return {
                     "entering one"
                 },
             },
+
+            cbean_the_manacle_sticker = {
+                name = "The Manacle",
+                text={
+                    "-1 Hand Size"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4137,6 +4144,7 @@ return {
             cbean_the_goad_sticker = "The Goad",
             cbean_the_head_sticker = "The Head",
             cban_the_wall_sticker = "The Wall",
+            cbean_the_manacle_sticker = "The Manacle",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
