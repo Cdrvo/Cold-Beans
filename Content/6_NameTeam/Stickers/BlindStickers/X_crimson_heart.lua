@@ -5,7 +5,7 @@
 		x = 5,
 		y = 2,
 	},
-	badge_colour = SMODS.Gradients["nteam_crimson_heart"],
+	badge_colour = HEX("ac3232"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,

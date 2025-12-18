@@ -5,7 +5,7 @@
 		x = 4,
 		y = 2,
 	},
-	badge_colour = SMODS.Gradients["nteam_cerulean_bell"],
+	badge_colour = HEX("009cfd"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,

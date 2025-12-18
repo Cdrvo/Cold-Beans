@@ -27,7 +27,7 @@ SMODS.Atlas({
 	frames = 4,
 })
 
-SMODS.Gradient({
+--[[SMODS.Gradient({
 	key = "nteam_verdant_leaf",
 	colours = {
 		HEX("56a786"),
@@ -65,4 +65,4 @@ SMODS.Gradient({
 		HEX("ac3232"),
 		HEX("852727")
 	}
-})
+})]]

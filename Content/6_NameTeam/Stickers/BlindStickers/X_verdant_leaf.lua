@@ -5,7 +5,7 @@ SMODS.Sticker({
 		x = 1,
 		y = 2,
 	},
-	badge_colour = SMODS.Gradients["nteam_verdant_leaf"],
+	badge_colour = HEX("56a786"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
