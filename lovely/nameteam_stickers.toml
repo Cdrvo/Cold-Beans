@@ -297,8 +297,12 @@ if G.GAME.selected_back then
 		local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Deck")
 		if ae then
 			G.GAME.selected_back:nteam_apply_sticker(ae)
+            if G.deck.cards[1] then
+                SMODS.calculate_effect { card = G.deck.cards[1], message = "Sticker Applied!" }
+            end
 		end
 	end
 end
 '''
 match_indent = true
+

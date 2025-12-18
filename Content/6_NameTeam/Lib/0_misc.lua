@@ -5,6 +5,12 @@ SMODS.Atlas({
 	py = 95,
 })
 SMODS.Atlas({
+	key = "NAMETEAM_Stickers_boss",
+	path = "6_NameTeam/ColdBeansBossStickers.png",
+	px = 71,
+	py = 95,
+})
+SMODS.Atlas({
 	key = "NAMETEAM_stationery",
 	px = 113,
 	py = 57,
