@@ -240,6 +240,9 @@ function yma_can_access_location(location)
     if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) then
         return true
     end
+    if location == "stationery" and G.GAME.nteam_sticker_obtained then
+        return true
+    end
 end
 
 function yma_add_tag(tag, event, silent)

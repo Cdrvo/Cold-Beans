@@ -1,17 +1,3 @@
-SMODS.Atlas({
-    key = "NAMETEAM_Jokers",
-    path = "6_NameTeam/ColdBeansJokers.png",
-    px = 71,
-    py = 95,
-})
-
-SMODS.Atlas({
-    key = "NAMETEAM_Jokers2",
-    path = "6_NameTeam/ColdBeansJokers2.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Joker {
     key = 'nameteam_topsyturvy',
     config = { extra = { three_given_chips = 20, two_given_chips = 40 } },

@@ -116,6 +116,6 @@ if _c.set == 'Other' then
 payload = '''
 local cfg = (card and card.ability) or _c['config']
 if _c.set == 'Other' or _c.set == "Sticker" then
-  localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or (_c.loc_vars and _c:loc_vars(info_queue, card).vars)}
+  localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or (_c.loc_vars and _c:loc_vars(info_queue, card or {ability = {}}).vars)}
 '''
 match_indent = true

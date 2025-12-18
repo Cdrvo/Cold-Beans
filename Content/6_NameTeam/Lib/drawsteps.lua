@@ -1,13 +1,3 @@
--- SMODS.DrawStep({
--- 	key = "put_in_stationery",
--- 	order = -30,
--- 	func = function(card, layer)
--- 		if card.children.cbean_stationery_button and card.highlighted and G.STATE == G.STATES.STATIONERY then
--- 			card.children.cbean_stationery_button:draw()
--- 		end
--- 	end,
--- })
-
 SMODS.DrawStep({
 	key = "deck_stickers",
 	order = 41,

@@ -4257,6 +4257,45 @@ return {
             ph_alley_wager = 'Care to make a wager?',
             ph_graveyard = 'Where the dead sleeps',
             ph_stationery = "We trade Stickers!",
+            cbean_stationery_accepts = {
+                "Only accepts Jokers",
+                "with {C:attention}1 or more{} of the",
+                "{C:attention}Stickers{} listed below:",
+            },
+            cbean_stationery_gives = {
+                "In exchange for the",
+                "listed {C:attention}Stickers{}, will",
+                "give the following:",
+            },
+            cbean_stationery_details = {
+                ""
+            },
+            --#region Stationery rewards
+            cbean_reward_money = {
+                "Earn {C:money}$#1#{}"
+            },
+            cbean_reward_joker_edition = {
+                "Creates a random Joker",
+                "with a random {C:dark_edition}Edition{}",
+                "{C:inactive}(Must have room)"
+            },
+            cbean_reward_shield = {
+                "Applies {V:1,T:cbean_shield}Shield{} to",
+                "selected Joker",
+            },
+            cbean_reward_plasma = {
+                "Applies {V:1,T:cbean_plasma}Plasma{} to",
+                "current Deck"
+            },
+            cbean_reward_black = {
+                "Applies {V:1,T:cbean_black}Black{} to",
+                "current Deck"
+            },
+            cbean_reward_painted = {
+                "Applies {V:1,T:cbean_painted}Painted{} to",
+                "current Deck"
+            },
+            --#endregion
             k_cbean_yma_keypack = "Key Pack",
             cbean_0chill_blind_weakend = "Blind Weakened!",
             cbean_0chill_blind_strengthened = "Blind Strengthened!",
@@ -4290,7 +4329,8 @@ return {
             k_cbean_nteam_halved = "Halved!",
             cbean_disable_animations = "Disable Joker Animations",
             k_cbean_stickersheet = "Sticker Sheet",
-            b_cbean_stickersheet_cards = "Sticker Sheets"
+            b_cbean_stickersheet_cards = "Sticker Sheets",
+            b_nteam_exchange = "Exchange",
         },
         high_scores = {},
         labels = {
@@ -4500,6 +4540,51 @@ return {
             },
             cbean_pboys_tutorial_7 = {
                 "{C:attention}Good luck!",
+            },
+            cbean_nteam_tutorial_0 = {
+                "Click me to begin the",
+                "{C:attention}Stationery Shop{} tutorial.",
+                "{C:inactive}(0/7)",
+            },
+            cbean_nteam_tutorial_1 = {
+                "Welcome to the",
+                "{C:attention}Stationery Shop{}.",
+                "{C:inactive}(1/7)",
+            },
+            cbean_nteam_tutorial_2 = {
+                "First, select",
+                "exactly {C:attention}1{} Joker.",
+                "{C:inactive}(2/7)",
+            },
+            cbean_nteam_tutorial_3 = {
+                "If the selected Joker",
+                "has {C:attention}1 or more{} of the",
+                "{C:attention}Stickers{} listed to the right...",
+                "{C:inactive}(3/7)",
+            },
+            cbean_nteam_tutorial_4 = {
+                "...you can press the",
+                "{C:attention}Exchange{} button to remove",
+                "all listed {C:attention}Stickers and...",
+                "{C:inactive}(4/7)",
+            },
+            cbean_nteam_tutorial_5 = {
+                "...receive all the",
+                "benefits listed below",
+                "the accepted {C:attention}Stickers{}.",
+                "{C:inactive}(5/7)",
+            },
+            cbean_nteam_tutorial_6 = {
+                "If the benefit says",
+                "that a {C:attention}Sticker{} will be",
+                "applied and the listed...",
+                "{C:inactive}(6/7)",
+            },
+            cbean_nteam_tutorial_7 = {
+                "...target(s) already has",
+                "that {C:attention}Sticker{}, then the",
+                "{C:attention}Sticker{} won't be reapplied.",
+                "{C:inactive}(7/7)",
             },
         },
         ranks = {},
