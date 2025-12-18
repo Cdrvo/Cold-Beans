@@ -5,7 +5,7 @@ SMODS.Sticker({
 		x = 0,
 		y = 1,
 	},
-	badge_colour = HEX("cc73d9"),
+	badge_colour = G.C.BLACK,
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -16,13 +16,14 @@ SMODS.Sticker({
 		}
 	end,
 	apply = function(self, card, val)
+		local had_sticker = card.ability[self.key]
 		card.ability[self.key] = val
 		if card.area then
-			if card.ability[self.key] then
+			if card.ability[self.key] and not had_sticker then
 				G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
 				ease_hands_played(-1)
 				G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) * 10
-			else
+			elseif had_sticker then
 				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
 				ease_hands_played(1)
 				G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) / 10
@@ -30,12 +31,15 @@ SMODS.Sticker({
 		end
 	end,
 	apply_to_deck = function(self, back, val)
+		-- check if object already had this sticker
+		local had_sticker = back.ability[self.key]
 		back.ability[self.key] = val
-		if back.ability[self.key] then
+		-- if back did not already have this sticker and a sticker was applied
+		if back.ability[self.key] and not had_sticker then
 			G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
 			ease_hands_played(-1)
 			G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) * 10
-		else
+		elseif had_sticker then -- if back already had a sticker and a sticker was removed
 			G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
 			ease_hands_played(1)
 			G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) / 10
