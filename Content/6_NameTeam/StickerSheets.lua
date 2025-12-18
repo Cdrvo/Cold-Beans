@@ -35,11 +35,16 @@ SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "eternal_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 0 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
   atlas = "NAMETEAM_StickerSheets",
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["eternal"]
     info_queue[#info_queue + 1] = G.P_TAGS["tag_voucher"]
-    return { }
+    return {}
   end,
   can_use = function(self, card)
     local candidates = {}
