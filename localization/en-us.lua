@@ -2440,11 +2440,68 @@ return {
                     "{C:red}debuff{} all Club cards",
                 },
             },
+
+            cbean_the_eye_sticker = {
+                name = "The Eye",
+                text={
+                    "No repeat",
+                    "hand types"
+                },
+            },
+            cbean_the_fish_sticker = {
+                name = "The Fish",
+                text={
+                    "Cards drawn face down",
+                    "after each hand played"
+                },
+            },
+            cbean_the_flint_sticker = {
+                name = "The Flint",
+                  text={
+                    "Base Chips and",
+                    "Mult are halved",
+                },
+            },
+            cbean_the_goad_sticker = {
+                name = "The Goad",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Spade cards",
+                },
+            },
+            cbean_the_head_sticker = {
+                name = "The Head",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Heart cards",
+                },
+            },
+            cbean_the_wall_sticker = {
+                name = "The Wall",
+                text={
+                    "Double the blind",
+                    "requirement upon",
+                    "entering one"
+                },
+            },
+            cbean_the_manacle_sticker = {
+                name = "The Manacle",
+                text={
+                    "-1 Hand Size"
+                },
+            },
+            cbean_the_mark_sticker = {
+                name = "The Mark",
+                text={
+                    "All face cards are",
+                    "drawn face down",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
                 name = "Salacia"
-            },
+            },  
             c_cbean_sdown_gayflush_planet = {
                 name = "Orcus"
             },
@@ -4125,6 +4182,7 @@ return {
         labels = {
             cbean_sdown_lunar_seal = "Lunar Seal",
             cbean_yma_cipher_seal = "Cipher Seal",
+
             cbean_mailed = "Mailed",
             cbean_hooking = "Hooking",
             cbean_flashcard = "Flashcard",
@@ -4134,6 +4192,15 @@ return {
             cbean_black = "Black",
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
+            cbean_the_eye_sticker = "The Eye",
+            cbean_the_fish_sticker = "The Fish",
+            cbean_the_flint_sticker = "The Flint",
+            cbean_the_goad_sticker = "The Goad",
+            cbean_the_head_sticker = "The Head",
+            cbean_the_wall_sticker = "The Wall",
+            cbean_the_manacle_sticker = "The Manacle",
+            cbean_the_mark_sticker = "The Mark",
+
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
         },
