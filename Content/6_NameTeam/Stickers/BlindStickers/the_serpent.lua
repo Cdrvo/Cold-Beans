@@ -32,6 +32,7 @@ SMODS.Sticker({
 	end,
 	NAMETEAM_applied = function(self, card)
 		G.GAME.NAMETEAM_Serpent_Sticker = true
+		if not G.GAME.serpent_sticker_counter then G.GAME.serpent_sticker_counter = 0 end
 		G.GAME.serpent_sticker_counter = G.GAME.serpent_sticker_counter + 1
 	end,
 	NAMETEAM_removed = function(self, card)
