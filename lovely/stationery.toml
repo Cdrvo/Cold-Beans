@@ -1,0 +1,121 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+# Game:update
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'before'
+pattern = '''if self.STATE == self.STATES.PLAY_TAROT then'''
+payload = '''
+if self.STATE == self.STATES.STATIONERY then
+  update_stationery()
+end
+
+'''
+match_indent = true
+
+# ease_background_colour_blind
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+position = 'before'
+pattern = '''elseif state == G.STATES.TAROT_PACK then'''
+payload = '''
+elseif state == G.STATES.STATIONERY then
+    ease_colour(G.C.DYN_UI.MAIN, mix_colours(G.C.BLACK, G.C.BLUE, 0.5))
+'''
+match_indent = true
+
+# save_run
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'after'
+pattern = '''
+    VERSION = G.VERSION
+  }
+'''
+payload = '''
+G.culled_table.STATE = (G.STATE == G.STATES.STATIONERY or G.STATE == G.STATES.MAIN_STREET) and G.STATES.SHOP or G.STATE
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'after'
+pattern = '''if self.shop then self.shop:remove(); self.shop = nil end'''
+payload = '''
+if self.stationery then self.stationery:remove(); self.stationery = nil end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = '''G.shop = nil'''
+payload = '''
+if G.stationery then
+  G.stationery:remove()
+  G.stationery = nil
+end
+'''
+match_indent = true
+
+# Make stickers be able to show UI with {T:...} localization modifiers
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+position = "at"
+pattern = '''
+detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,
+'''
+payload = '''
+detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or SMODS.Stickers[part.control.T]) or nil,
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "at"
+pattern = '''
+      detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,
+'''
+payload = '''
+detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or SMODS.Stickers[part.control.T]) or nil,
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+position = "at"
+pattern = '''
+if not G.localization.descriptions[set][_c.key] then set = "Other" end
+'''
+payload = '''
+if set == "Sticker" or not G.localization.descriptions[set][_c.key] then set = "Other" end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+position = "at"
+pattern = '''
+local cfg = (card and card.ability) or _c['config']
+if _c.set == 'Other' then
+  localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars}
+'''
+payload = '''
+local cfg = (card and card.ability) or _c['config']
+if _c.set == 'Other' or _c.set == "Sticker" then
+  localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or (_c.loc_vars and _c:loc_vars(info_queue, card).vars)}
+'''
+match_indent = true
