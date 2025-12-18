@@ -36,7 +36,7 @@ SMODS.Sticker({
 			if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
 				jokers[#jokers + 1] = G.jokers.cards[i]
 			end
-			SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
+			SMODS.debuff_card(G.jokers.cards[i], false, "NAMETEAM_crimson_heart_sticker")
 		end
 	end,
 	calculate = function(self, card, context)
@@ -60,7 +60,7 @@ SMODS.Sticker({
 				if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
 					jokers[#jokers + 1] = G.jokers.cards[i]
 				end
-				SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
+				SMODS.debuff_card(G.jokers.cards[i], false, "NAMETEAM_crimson_heart_sticker")
 			end
 		end
 	end,
