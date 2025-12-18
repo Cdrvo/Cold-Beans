@@ -2539,6 +2539,27 @@ return {
                     "5 or more cards"
                 },
             },
+            cbean_the_serpent_sticker = {
+                name = "The Serpent",
+                text={
+                    "After Play or Discard,",
+                    "always draw 3 cards",
+                },
+            },
+            cbean_the_tooth_sticker = {
+                name = "The Tooth",
+                text={
+                    "Lose $1 per",
+                    "card played"
+                },
+            },
+            cbean_the_water_sticker = {
+                name = "The Water",
+                text={
+                    "Upon entering a blind",
+                    "lose all discards"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4249,6 +4270,10 @@ return {
             cbean_the_needle_sticker = "The Needle",
             cbean_the_plant_sticker = "The Plant",
             cbean_the_psychic_sticker = "The Psychic",
+            cbean_the_serpent_sticker = "The Serpent",
+            cbean_the_tooth_sticker = "The Tooth",
+            cbean_the_water_sticker = "The Water",
+            cbean_the_wheel_sticker = "The Wheel",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
