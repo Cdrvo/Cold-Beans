@@ -17,14 +17,21 @@
 			vars = {},
 		}
 	end,
-    apply_to_deck = function(self, val)
-        if val == false then
-            self:NAMETEAM_removed(self)
-        else
-            self:NAMETEAM_applied(self)
-        end
-    end,
+	apply_to_deck = function(self, back, val)
+		local had_sticker = back.ability[self.key]
+		back.ability[self.key] = val
+		if back.ability[self.key] and not had_sticker then
+			if self.NAMETEAM_removed then
+				if val == false then
+					self:NAMETEAM_removed(self)
+				else
+					self:NAMETEAM_applied(self)
+				end
+			end
+		end
+	end,
     NAMETEAM_removed = function(self, card)
+            local jokers = {}
            for i = 1, #G.jokers.cards do
                 if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then jokers[#jokers+1] =G.jokers.cards[i] end
                 SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
@@ -44,6 +51,7 @@
             end
         end
         if context.end_of_round then
+                         local jokers = {}
             for i = 1, #G.jokers.cards do
                 if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then jokers[#jokers+1] =G.jokers.cards[i] end
                 SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")

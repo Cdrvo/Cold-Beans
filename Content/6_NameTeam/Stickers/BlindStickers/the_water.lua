@@ -17,10 +17,23 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	apply_to_deck = function(self, back, val)
+		local had_sticker = back.ability[self.key]
+		back.ability[self.key] = val
+		if back.ability[self.key] and not had_sticker then
+			if self.NAMETEAM_removed then
+				if val == false then
+					self:NAMETEAM_removed(self)
+				else
+					self:NAMETEAM_applied(self)
+				end
+			end
+		end
+	end,
 	calculate = function(self, card, context)
 		if context.first_hand_drawn then
-            ease_discard(-(G.GAME.current_round.discards_left))
-        end
+			ease_discard(-G.GAME.current_round.discards_left)
+		end
 	end,
 	beans_credits = {
 		code = "Revo",

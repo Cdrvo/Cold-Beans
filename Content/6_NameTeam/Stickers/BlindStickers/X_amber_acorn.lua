@@ -17,6 +17,19 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	apply_to_deck = function(self, back, val)
+		local had_sticker = back.ability[self.key]
+		back.ability[self.key] = val
+		if back.ability[self.key] and not had_sticker then
+			if self.NAMETEAM_removed then
+				if val == false then
+					self:NAMETEAM_removed(self)
+				else
+					self:NAMETEAM_applied(self)
+				end
+			end
+		end
+	end,
 	calculate = function(self, card, context)
 		if context.setting_blind then
 			G.jokers:unhighlight_all()
@@ -57,12 +70,12 @@ SMODS.Sticker({
 				}))
 			end
 		end
-        if context.end_of_round then
-            G.jokers:unhighlight_all()
+		if context.end_of_round then
+			G.jokers:unhighlight_all()
 			for k, v in ipairs(G.jokers.cards) do
 				v:flip()
 			end
-        end
+		end
 	end,
 	beans_credits = {
 		code = "Revo",

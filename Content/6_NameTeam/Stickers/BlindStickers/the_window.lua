@@ -17,13 +17,19 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
-    apply_to_deck = function(self, val)
-        if val == false then
-            self:NAMETEAM_removed(self)
-        else
-            self:NAMETEAM_applied(self)
-        end
-    end,
+	apply_to_deck = function(self, back, val)
+		local had_sticker = back.ability[self.key]
+		back.ability[self.key] = val
+		if back.ability[self.key] and not had_sticker then
+			if self.NAMETEAM_removed then
+				if val == false then
+					self:NAMETEAM_removed(self)
+				else
+					self:NAMETEAM_applied(self)
+				end
+			end
+		end
+	end,
 	NAMETEAM_removed = function(self, card)
 		if G.playing_cards then
 			for k, v in pairs(G.playing_cards) do
@@ -37,7 +43,7 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.setting_blind then
 			for k, v in pairs(G.playing_cards) do
-				if v:is_suit("Diamonds",false) then
+				if v:is_suit("Diamonds", false) then
 					SMODS.debuff_card(v, true, "NAMETEAM_window_sticker")
 					v.debuffed_by_windowstkr = true
 				end

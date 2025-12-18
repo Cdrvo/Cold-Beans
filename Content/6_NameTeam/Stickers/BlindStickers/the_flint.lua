@@ -6,8 +6,7 @@ SMODS.Sticker({
 		y = 0,
 	},
 	badge_colour = HEX("e56a2f"),
-	config = {
-    },
+	config = {},
 	rate = 0,
 	needs_enable_flag = false,
 	sets = {
@@ -18,12 +17,25 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	apply_to_deck = function(self, back, val)
+		local had_sticker = back.ability[self.key]
+		back.ability[self.key] = val
+		if back.ability[self.key] and not had_sticker then
+			if self.NAMETEAM_removed then
+				if val == false then
+					self:NAMETEAM_removed(self)
+				else
+					self:NAMETEAM_applied(self)
+				end
+			end
+		end
+	end,
 	calculate = function(self, card, context)
-       if context.modify_hand then
-        	mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
+		if context.modify_hand then
+			mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
 			hand_chips = mod_chips(math.max(math.floor(hand_chips * 0.5 + 0.5), 0))
-			update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
-       end
+			update_hand_text({ sound = "chips2", modded = true }, { chips = hand_chips, mult = mult })
+		end
 	end,
 	beans_credits = {
 		code = "Revo",

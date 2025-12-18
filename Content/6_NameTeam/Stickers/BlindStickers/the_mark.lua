@@ -7,8 +7,8 @@ SMODS.Sticker({
 	},
 	badge_colour = HEX("3e85bd"),
 	config = {
-        shld_stay_flipped = false
-    },
+		shld_stay_flipped = false,
+	},
 	rate = 0,
 	needs_enable_flag = false,
 	sets = {
@@ -19,8 +19,21 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	apply_to_deck = function(self, back, val)
+		local had_sticker = back.ability[self.key]
+		back.ability[self.key] = val
+		if back.ability[self.key] and not had_sticker then
+			if self.NAMETEAM_removed then
+				if val == false then
+					self:NAMETEAM_removed(self)
+				else
+					self:NAMETEAM_applied(self)
+				end
+			end
+		end
+	end,
 	calculate = function(self, card, context)
-        local s = self.config
+		local s = self.config
 		if context.stay_flipped and context.to_area == G.hand and context.other_card:is_face() then
 			return {
 				stay_flipped = true,

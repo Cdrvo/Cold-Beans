@@ -59,3 +59,4 @@ SMODS.Edition:take_ownership("negative", {
 		return (self.weight * (G.GAME.modifiers.cbean_negative_boost or 1))
 	end,
 }, true)
+
