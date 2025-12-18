@@ -2478,6 +2478,15 @@ return {
                     "{C:red}debuff{} all Heart cards",
                 },
             },
+
+            cbean_the_wall_sticker = {
+                name = "The Wall",
+                text={
+                    "Double the blind",
+                    "requirement upon",
+                    "entering one"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4127,6 +4136,7 @@ return {
             cbean_the_flint_sticker = "The Flint",
             cbean_the_goad_sticker = "The Goad",
             cbean_the_head_sticker = "The Head",
+            cban_the_wall_sticker = "The Wall",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
