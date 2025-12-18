@@ -2448,6 +2448,13 @@ return {
                     "hand types"
                 },
             },
+            cbean_the_fish_sticker = {
+                name = "The Fish",
+                text={
+                    "Cards drawn face down",
+                    "after each hand played"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4092,6 +4099,7 @@ return {
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
             cbean_the_eye_sticker = "The Eye",
+            cbean_the_fish_sticker = "The Fish",
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
         },
