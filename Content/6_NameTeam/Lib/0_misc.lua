@@ -26,3 +26,43 @@ SMODS.Atlas({
 	atlas_table = "ANIMATION_ATLAS",
 	frames = 4,
 })
+
+SMODS.Gradient({
+	key = "nteam_verdant_leaf",
+	colours = {
+		HEX("56a786"),
+		HEX("417e65")
+	}
+})
+
+SMODS.Gradient({
+	key = "nteam_amber_acorn",
+	colours = {
+		HEX("fda200"),
+		HEX("bd7900")
+	}
+})
+
+SMODS.Gradient({
+	key = "nteam_violet_vessel",
+	colours = {
+		HEX("8a71e1"),
+		HEX("6856aa")
+	}
+})
+
+SMODS.Gradient({
+	key = "nteam_cerulean_bell",
+	colours = {
+		HEX("009cfd"),
+		HEX("007ecb")
+	}
+})
+
+SMODS.Gradient({
+	key = "nteam_crimson_heart",
+	colours = {
+		HEX("ac3232"),
+		HEX("852727")
+	}
+})
