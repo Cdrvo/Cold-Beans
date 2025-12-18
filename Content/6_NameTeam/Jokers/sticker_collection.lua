@@ -9,8 +9,8 @@ SMODS.Joker({
                     }
                 }
     end,
-    cost = 1,
-    rarity = 1,
+    cost = 6,
+    rarity = 2,
     blueprint_compat = false,
     eternal_compat = true,
     unlocked = true,
@@ -85,6 +85,10 @@ function cbean_nteam_get_amount_of_unique_stickers()
     for _ in pairs(sticker_gotten) do
         unique_stickers = unique_stickers +1 
     end
-    -- Do something for the deck sticker
+    for jk, jv in pairs(G.GAME.selected_back.ability) do
+        if NAMETEAM.contains(sticker_keys, jk) then
+            sticker_amount = sticker_amount + 1
+        end
+    end
     return unique_stickers
 end

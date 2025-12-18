@@ -1,11 +1,11 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_tooth_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
-		y = 0,
+		x = 7,
+		y = 1,
 	},
-	badge_colour = HEX("6865f3"),
+	badge_colour = HEX("b52d2d"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -31,10 +31,24 @@ SMODS.Sticker({
 		end
 	end,
 	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
-			end
+		if context.press_play then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.2,
+				func = function()
+					for i = 1, #G.play.cards do
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								G.play.cards[i]:juice_up()
+								return true
+							end,
+						}))
+						ease_dollars(-1)
+						delay(0.23)
+					end
+					return true
+				end,
+			}))
 		end
 	end,
 	beans_credits = {

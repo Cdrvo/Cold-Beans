@@ -1,0 +1,24 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+#Change the reroll costs
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''local reroll_cost = G.GAME.current_round.reroll_cost'''
+position = "before"
+payload = '''
+if not G.GAME.cbean_nteam_rerolls_left then
+    G.GAME.cbean_nteam_rerolls_left = -1
+end
+if G.GAME.cbean_nteam_rerolls_left > 0 then
+    G.GAME.cbean_nteam_rerolls_left = G.GAME.cbean_nteam_rerolls_left -1
+elseif G.GAME.cbean_nteam_rerolls_left == 0 then
+    G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - G.GAME.cbean_nteam_rerolls_cost
+    G.GAME.current_round.reroll_cost = G.GAME.current_round.reroll_cost - 3
+    G.GAME.cbean_nteam_rerolls_left = G.GAME.cbean_nteam_rerolls_left -1
+end
+'''
+match_indent = true

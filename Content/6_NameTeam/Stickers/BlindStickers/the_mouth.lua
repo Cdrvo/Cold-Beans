@@ -1,11 +1,11 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_mouth_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
 		x = 0,
-		y = 0,
+		y = 1,
 	},
-	badge_colour = HEX("6865f3"),
+	badge_colour = HEX("ae718e"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -17,6 +17,7 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	hands = {},
 	apply_to_deck = function(self, back, val)
 		local had_sticker = back.ability[self.key]
 		back.ability[self.key] = val
@@ -31,10 +32,25 @@ SMODS.Sticker({
 		end
 	end,
 	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
+		if context.initial_scoring_step and not self.hand_set then
+			self.hands = {}
+			for _, poker_hand in ipairs(G.handlist) do
+				if poker_hand ~= G.GAME.current_round.current_hand.handname_text then
+					self.hands[poker_hand] = true
+					self.hand_set = true
+				end
 			end
+		end
+		if context.debuff_hand then
+			if self.hands[context.scoring_name] then
+				return {
+					debuff = true,
+				}
+			end
+		end
+		if context.end_of_round then
+			self.hand_set = false
+			self.hands = {}
 		end
 	end,
 	beans_credits = {

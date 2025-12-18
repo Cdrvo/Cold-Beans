@@ -1,11 +1,11 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_manacle_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
+		x = 8,
 		y = 0,
 	},
-	badge_colour = HEX("6865f3"),
+	badge_colour = HEX("575757"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -30,11 +30,14 @@ SMODS.Sticker({
 			end
 		end
 	end,
-	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
-			end
+	NAMETEAM_applied = function(self, card)
+		if card.area and G.hand then
+			G.hand:change_size(-1)
+		end
+	end,
+	NAMETEAM_removed = function(self, card)
+		if card.area and G.hand then
+			G.hand:change_size(1)
 		end
 	end,
 	beans_credits = {

@@ -1,11 +1,11 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_ox_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
-		y = 0,
+		x = 2,
+		y = 1,
 	},
-	badge_colour = HEX("6865f3"),
+	badge_colour = HEX("b95b08"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -14,7 +14,7 @@ SMODS.Sticker({
 	},
 	loc_vars = function(self, info_queue, card)
 		return {
-			vars = {},
+			vars = { NAMETEAM.most_played() },
 		}
 	end,
 	apply_to_deck = function(self, back, val)
@@ -32,8 +32,8 @@ SMODS.Sticker({
 	end,
 	calculate = function(self, card, context)
 		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
+			if G.GAME.current_round.current_hand.handname_text == NAMETEAM.most_played() then
+				ease_dollars(-G.GAME.dollars)
 			end
 		end
 	end,

@@ -1,11 +1,11 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_psychic_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
-		y = 0,
+		x = 5,
+		y = 1,
 	},
-	badge_colour = HEX("6865f3"),
+	badge_colour = HEX("efc03c"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -30,10 +30,13 @@ SMODS.Sticker({
 			end
 		end
 	end,
+	hands = {},
 	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
+		if context.debuff_hand then
+			if #context.full_hand < 5 then
+				return {
+					debuff = true,
+				}
 			end
 		end
 	end,

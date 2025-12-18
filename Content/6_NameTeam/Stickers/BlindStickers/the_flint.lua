@@ -1,11 +1,11 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_flint_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
+		x = 4,
 		y = 0,
 	},
-	badge_colour = HEX("6865f3"),
+	badge_colour = HEX("e56a2f"),
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
@@ -31,10 +31,10 @@ SMODS.Sticker({
 		end
 	end,
 	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
-			end
+		if context.modify_hand then
+			mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
+			hand_chips = mod_chips(math.max(math.floor(hand_chips * 0.5 + 0.5), 0))
+			update_hand_text({ sound = "chips2", modded = true }, { chips = hand_chips, mult = mult })
 		end
 	end,
 	beans_credits = {

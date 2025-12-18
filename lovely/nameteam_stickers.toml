@@ -306,3 +306,26 @@ end
 '''
 match_indent = true
 
+# The Serpent sticker
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+    if G.GAME.blind.name == 'The Serpent' and
+        not G.GAME.blind.disabled and
+        (G.GAME.current_round.hands_played > 0 or
+        G.GAME.current_round.discards_used > 0) then
+            hand_space = math.min(#G.deck.cards, 3)
+    end
+'''
+position = "at"
+payload = '''
+    if (G.GAME.blind.name == 'The Serpent' and
+        not G.GAME.blind.disabled or G.GAME.NAMETEAM_Serpent_Sticker) and
+        (G.GAME.current_round.hands_played > 0 or
+        G.GAME.current_round.discards_used > 0) then
+            hand_space = math.min(#G.deck.cards, 3)
+    end
+'''
+match_indent = true

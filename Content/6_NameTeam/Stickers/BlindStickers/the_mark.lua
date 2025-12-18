@@ -1,12 +1,14 @@
 SMODS.Sticker({
-	key = "the_arm_sticker",
+	key = "the_mark_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
+		x = 9,
 		y = 0,
 	},
-	badge_colour = HEX("6865f3"),
-	config = {},
+	badge_colour = HEX("3e85bd"),
+	config = {
+		shld_stay_flipped = false,
+	},
 	rate = 0,
 	needs_enable_flag = false,
 	sets = {
@@ -31,10 +33,11 @@ SMODS.Sticker({
 		end
 	end,
 	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
-			end
+		local s = self.config
+		if context.stay_flipped and context.to_area == G.hand and context.other_card:is_face() then
+			return {
+				stay_flipped = true,
+			}
 		end
 	end,
 	beans_credits = {

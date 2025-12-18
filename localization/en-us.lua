@@ -2440,11 +2440,181 @@ return {
                     "{C:red}debuff{} all Club cards",
                 },
             },
+
+            cbean_the_eye_sticker = {
+                name = "The Eye",
+                text={
+                    "No repeat",
+                    "hand types"
+                },
+            },
+            cbean_the_fish_sticker = {
+                name = "The Fish",
+                text={
+                    "Cards drawn face down",
+                    "after each hand played"
+                },
+            },
+            cbean_the_flint_sticker = {
+                name = "The Flint",
+                  text={
+                    "Base Chips and",
+                    "Mult are halved",
+                },
+            },
+            cbean_the_goad_sticker = {
+                name = "The Goad",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Spade cards",
+                },
+            },
+            cbean_the_head_sticker = {
+                name = "The Head",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Heart cards",
+                },
+            },
+            cbean_the_wall_sticker = {
+                name = "The Wall",
+                text={
+                    "Double the blind",
+                    "requirement upon",
+                    "entering one"
+                },
+            },
+            cbean_the_manacle_sticker = {
+                name = "The Manacle",
+                text={
+                    "-1 Hand Size"
+                },
+            },
+            cbean_the_mark_sticker = {
+                name = "The Mark",
+                text={
+                    "All face cards are",
+                    "drawn face down",
+                },
+            },
+            cbean_the_mouth_sticker = {
+                name = "The Mouth",
+                text={
+                    "Play only 1 hand",
+                    "type every round",
+                },
+            },
+            cbean_the_ox_sticker = {
+                name = "The Ox",
+                text={
+                    "Playing a #1#",
+                    "sets money to $0",
+                },
+            },
+            cbean_the_pillar_sticker = {
+                name = "The Pillar",
+                text={
+                    "Cards played this",
+                    "Ante are debuffed",
+                },
+            },
+            cbean_the_needle_sticker = {
+                name = "The Needle",
+                text={
+                    "Play only 1 hand",
+                    "Blind sizes are halved",
+                },
+            },
+            cbean_the_plant_sticker = {
+                name = "The Plant",
+                text={
+                    "All face cards",
+                    "are debuffed"
+                },
+            },
+            cbean_the_psychic_sticker = {
+                name = "The Psychic",
+                text={
+                    "Must play",
+                    "5 or more cards"
+                },
+            },
+            cbean_the_serpent_sticker = {
+                name = "The Serpent",
+                text={
+                    "After Play or Discard,",
+                    "always draw 3 cards",
+                },
+            },
+            cbean_the_tooth_sticker = {
+                name = "The Tooth",
+                text={
+                    "Lose $1 per",
+                    "card played"
+                },
+            },
+            cbean_the_water_sticker = {
+                name = "The Water",
+                text={
+                    "Upon entering a blind",
+                    "lose all discards"
+                },
+            },
+            cbean_the_wheel_sticker = {
+                name = "The Wheel",
+                text={
+                    "#1# in #2# cards get",
+                    "drawn face down"
+                },
+            },
+            cbean_the_window_sticker = {
+                name = "The Window",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Diamond cards",
+                },
+            },
+            cbean_verdant_leaf_sticker = {
+                name = "Verdant Leaf",
+                text={
+                    "All cards debuffed",
+                    "until 1 Joker sold"
+                },
+            },
+            cbean_cerulean_bell_sticker = {
+                name = "Cerulean Bell",
+                text={
+                    "Forces 1 card to",
+                    "always be selected"
+                },
+            },
+            cbean_amber_acorn_sticker = {
+                name = "Amber Acorn",
+                text={
+                    "Flips and shuffles",
+                    "all Joker cards"
+                },
+            },
+            cbean_crimson_heart_sticker = {
+                name = "Crimson Heart",
+                text={
+                    "One random Joker",
+                    "disabled every hand"
+                },
+            },
+            cbean_violet_vessel_sticker = {
+                name = "Violet Vessel",
+                text={
+                    "Triples the blind",
+                    "requirement upon",
+                    "entering one"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
                 name = "Salacia"
-            },
+            },  
             c_cbean_sdown_gayflush_planet = {
                 name = "Orcus"
             },
@@ -3192,7 +3362,58 @@ return {
                         "{C:attention}Voucher Tag{}"
                     }
                 }
-            }
+            },
+            c_cbean_rental_sheet = {
+                name = "Rental",
+                text = {
+                    {
+                        "Applies {C:rental}Rental{} to",
+                        "a random Joker"
+                    },
+                    {
+                        "Gives {C:money}$20"
+                    }
+                }
+            },
+            c_cbean_frowning_sheet = {
+                name = "Frowning",
+                text = {
+                    {
+                        "Applies {C:attention}Frowning{} to",
+                        "{C:attention}1{} selected card"
+                    },
+                    {
+                        "Creates a random",
+                        "{C:attention}Enhanced face card{}"
+                    }
+                }
+            },
+            c_cbean_flashcard_sheet = {
+                name = "Flashcard",
+                text = {
+                    {
+                        "Applies {C:attention}Flashcard{} to",
+                        "{C:attention}1{} selected Joker"
+                    },
+                    {
+                        "Next {C:attention}5{} rerolls",
+                        "cost {C:attention}$3{} more"
+                    }
+                }
+            },
+            c_cbean_perishable_sheet = {
+                name = "Perishable",
+                text = {
+                    {
+                        "Applies {C:attention}Perishable{} to",
+                        "a random Joker"
+                    },
+                    {
+                        "Applies {C:dark_edition}Negative{} to",
+                        "the same Joker"
+                    }
+                }
+            },
         },
         Tag = {},
         Tarot = {
@@ -4105,6 +4326,7 @@ return {
             k_cbean_pboys_aplus = "+",
             k_cbean_pboys_aminus = "-",
             k_cbean_nteam_doubled = "Doubled!",
+            k_cbean_nteam_halved = "Halved!",
             cbean_disable_animations = "Disable Joker Animations",
             k_cbean_stickersheet = "Sticker Sheet",
             b_cbean_stickersheet_cards = "Sticker Sheets",
@@ -4114,6 +4336,7 @@ return {
         labels = {
             cbean_sdown_lunar_seal = "Lunar Seal",
             cbean_yma_cipher_seal = "Cipher Seal",
+
             cbean_mailed = "Mailed",
             cbean_hooking = "Hooking",
             cbean_flashcard = "Flashcard",
@@ -4123,6 +4346,31 @@ return {
             cbean_black = "Black",
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
+            cbean_the_eye_sticker = "The Eye",
+            cbean_the_fish_sticker = "The Fish",
+            cbean_the_flint_sticker = "The Flint",
+            cbean_the_goad_sticker = "The Goad",
+            cbean_the_head_sticker = "The Head",
+            cbean_the_wall_sticker = "The Wall",
+            cbean_the_manacle_sticker = "The Manacle",
+            cbean_the_mark_sticker = "The Mark",
+            cbean_the_mouth_sticker = "The Mouth",
+            cbean_the_ox_sticker = "The Ox",
+            cbean_the_pillar_sticker = "The Pillar",
+            cbean_the_needle_sticker = "The Needle",
+            cbean_the_plant_sticker = "The Plant",
+            cbean_the_psychic_sticker = "The Psychic",
+            cbean_the_serpent_sticker = "The Serpent",
+            cbean_the_tooth_sticker = "The Tooth",
+            cbean_the_water_sticker = "The Water",
+            cbean_the_wheel_sticker = "The Wheel",
+            cbean_the_window_sticker = "The Window",
+            cbean_verdant_leaf_sticker = "Verdant Leaf",
+            cbean_amber_acorn_sticker = "Amber Acorn",
+            cbean_cerulean_bell_sticker = "Cerulean Bell",
+            cbean_violet_vessel_sticker = "Violet Vessel",
+            cbean_crimson_heart_sticker = "Crimson Heart",
+
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
         },
