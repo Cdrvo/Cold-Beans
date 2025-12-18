@@ -2455,6 +2455,13 @@ return {
                     "after each hand played"
                 },
             },
+            cbean_the_flint_sticker = {
+                name = "The Flint",
+                  text={
+                    "Base Chips and",
+                    "Mult are halved",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
