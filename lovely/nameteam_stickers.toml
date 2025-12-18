@@ -293,7 +293,7 @@ pattern = '''
 position = "after"
 payload = '''
 if G.GAME.selected_back then
-	if pseudorandom("deck_sticker") < 1 / 4 and G.GAME.modifiers.deck_stickers then
+	if pseudorandom("deck_sticker") < G.GAME.probabilities.normal / 4 and G.GAME.modifiers.deck_stickers then
 		local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Deck")
 		if ae then
 			G.GAME.selected_back:nteam_apply_sticker(ae)
