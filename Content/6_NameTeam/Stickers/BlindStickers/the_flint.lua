@@ -2,7 +2,7 @@ SMODS.Sticker({
 	key = "the_flint_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 3,
+		x = 4,
 		y = 0,
 	},
 	badge_colour = HEX("e56a2f"),
