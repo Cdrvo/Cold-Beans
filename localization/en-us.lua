@@ -2581,6 +2581,35 @@ return {
                     "until 1 Joker sold"
                 },
             },
+            cbean_cerulean_bell_sticker = {
+                name = "Cerulean Bell",
+                text={
+                    "Forces 1 card to",
+                    "always be selected"
+                },
+            },
+            cbean_amber_acorn_sticker = {
+                name = "Amber Acorn",
+                text={
+                    "Flips and shuffles",
+                    "all Joker cards"
+                },
+            },
+            cbean_crimson_heart_sticker = {
+                name = "Crimson Heart",
+                text={
+                    "One random Joker",
+                    "disabled every hand"
+                },
+            },
+            cbean_violet_vessel_sticker = {
+                name = "Violet Vessel",
+                text={
+                    "Triples the blind",
+                    "requirement upon",
+                    "entering one"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
