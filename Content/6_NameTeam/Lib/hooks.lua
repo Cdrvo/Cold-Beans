@@ -27,26 +27,24 @@ end
 local start_run_hook = G.start_run
 function G:start_run(args)
 	start_run_hook(self, args)
-	-- G.GAME.stationery_num_accepted = G.GAME.stationery_num_accepted or 2
-	-- G.GAME.stationery_accepted = G.GAME.stationery_accepted
-	-- 	or NAMETEAM.get_unique_pseudorandom_elements(
-	-- 		SMODS.Sticker.obj_buffer,
-	-- 		G.GAME.stationery_num_accepted,
-	-- 		"stationery_accepted" .. G.GAME.round_resets.ante
-	-- 	)
-	-- G.GAME.stationery_num_given = G.GAME.stationery_num_given or 1
-	-- G.GAME.stationery_given = G.GAME.stationery_given
-	-- 	or NAMETEAM.get_unique_pseudorandom_elements(
-	-- 		SMODS.Sticker.obj_buffer,
-	-- 		G.GAME.stationery_num_given,
-	-- 		"stationery_given" .. G.GAME.round_resets.ante
-	-- 	)
+	---@type integer
+	G.GAME.stationery_num_accepted = G.GAME.stationery_num_accepted or 2
+	---@type string[]
+	G.GAME.stationery_accepted = G.GAME.stationery_accepted
+		or {}
+	---@type integer
+	G.GAME.stationery_num_rewards = G.GAME.stationery_num_rewards or 1
+	---@type string[]
+	G.GAME.stationery_rewards = G.GAME.stationery_rewards
+		or {}
     -- initialize ability table where deck stickers are stored
+	---@type string[]
     G.GAME.selected_back.ability = G.GAME.selected_back.ability or {}
 
-	if pseudorandom("deck_sticker") < 1 / 4 then
-		-- NAMETEAM.poll_sticker(true, G.deck.cards[1], true, "Deck")
-	end
+	---@type integer
+	G.GAME.round_resets.stationery_reroll_cost = G.GAME.round_resets.stationery_reroll_cost or 5
+	---@type integer
+	G.GAME.round_resets.free_stationery_rerolls = G.GAME.round_resets.free_stationery_rerolls or 0
 end
 
 -- Following 2 hooks are for storing and saving the stickers to the deck

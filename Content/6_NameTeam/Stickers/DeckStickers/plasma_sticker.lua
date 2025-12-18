@@ -9,7 +9,9 @@ SMODS.Sticker({
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
-	sets = {},
+	sets = {
+		Deck = true
+	},
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {},
@@ -19,11 +21,12 @@ SMODS.Sticker({
 		back.ability[self.key] = val
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind then
+		if context.first_hand_drawn then
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					G.GAME.blind.chips = G.GAME.blind.chips * 2
 					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+					G.GAME.blind:juice_up()
                     SMODS.calculate_effect({
                         message = localize("k_cbean_nteam_doubled"),
                         colour = { 0.8, 0.45, 0.85, 1 },

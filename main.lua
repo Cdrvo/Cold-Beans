@@ -9,6 +9,8 @@ to_number = to_number or function(x) return x end
 
 -- defining this here because it would be quite silly for this to not be a global api
 local on_calculate_cbs = {}
+---Adds a function to a list whose functions are checked in the same place as the global mod calculate.
+---@param cb fun(mod: Mod, context: CalcContext)
 ColdBeans.OnCalculate = function (cb)
 	on_calculate_cbs[#on_calculate_cbs+1] = cb
 end

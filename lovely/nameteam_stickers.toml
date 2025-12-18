@@ -280,3 +280,29 @@ else
 end
 '''
 match_indent = true
+
+# Deck Stickers 
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''
+    G.CONTROLLER.locks.toggle_shop = true
+    if G.shop then 
+'''
+position = "after"
+payload = '''
+if G.GAME.selected_back then
+	if pseudorandom("deck_sticker") < 1 / 4 and G.GAME.modifiers.deck_stickers then
+		local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Deck")
+		if ae then
+			G.GAME.selected_back:nteam_apply_sticker(ae)
+            if G.deck.cards[1] then
+                SMODS.calculate_effect { card = G.deck.cards[1] or G.deck, message = locallize(ae, "labels") .. "!" }
+            end
+		end
+	end
+end
+'''
+match_indent = true
+
