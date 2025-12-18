@@ -2462,7 +2462,6 @@ return {
                     "Mult are halved",
                 },
             },
-
             cbean_the_goad_sticker = {
                 name = "The Goad",
                 text={
@@ -2470,7 +2469,6 @@ return {
                     "{C:red}debuff{} all Spade cards",
                 },
             },
-
             cbean_the_head_sticker = {
                 name = "The Head",
                 text={
@@ -2478,7 +2476,6 @@ return {
                     "{C:red}debuff{} all Heart cards",
                 },
             },
-
             cbean_the_wall_sticker = {
                 name = "The Wall",
                 text={
@@ -2487,11 +2484,17 @@ return {
                     "entering one"
                 },
             },
-
             cbean_the_manacle_sticker = {
                 name = "The Manacle",
                 text={
                     "-1 Hand Size"
+                },
+            },
+            cbean_the_mark_sticker = {
+                name = "The Mark",
+                text={
+                    "All face cards are",
+                    "drawn face down",
                 },
             },
         },
@@ -4145,6 +4148,7 @@ return {
             cbean_the_head_sticker = "The Head",
             cban_the_wall_sticker = "The Wall",
             cbean_the_manacle_sticker = "The Manacle",
+            cbea_the_mark_sticker = "The Mark",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
