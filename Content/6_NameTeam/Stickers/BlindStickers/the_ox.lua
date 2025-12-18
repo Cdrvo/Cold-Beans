@@ -3,8 +3,8 @@ SMODS.Sticker({
 	key = "the_ox_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
-		x = 0,
-		y = 0,
+		x = 2,
+		y = 1,
 	},
 	badge_colour = HEX("b95b08"),
 	config = {},

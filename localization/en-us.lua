@@ -2511,6 +2511,20 @@ return {
                     "sets money to $0",
                 },
             },
+            cbean_the_pillar_sticker = {
+                name = "The Pillar",
+                text={
+                    "Cards played this",
+                    "Ante are debuffed",
+                },
+            },
+            cbean_the_needle_sticker = {
+                name = "The Needle",
+                text={
+                    "Play only 1 hand",
+                    "Blind sizes are halved",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4137,6 +4151,7 @@ return {
             k_cbean_pboys_aplus = "+",
             k_cbean_pboys_aminus = "-",
             k_cbean_nteam_doubled = "Doubled!",
+            k_cbean_nteam_halved = "Halved!",
             cbean_disable_animations = "Disable Joker Animations",
             k_cbean_stickersheet = "Sticker Sheet",
             b_cbean_stickersheet_cards = "Sticker Sheets"
@@ -4164,6 +4179,9 @@ return {
             cbean_the_manacle_sticker = "The Manacle",
             cbean_the_mark_sticker = "The Mark",
             cbean_the_mouth_sticker = "The Mouth",
+            cbean_the_ox_sticker = "The Ox",
+            cbean_the_pillar_sticker = "The Pillar",
+            cbean_the_needle_sticker = "The Needle",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
