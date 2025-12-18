@@ -74,7 +74,7 @@ return {
                 name = "The Seed",
                 text = {
                     "+X0.05 Base for every",
-                    "card scored this round"                                                -- I changed ante to round if changed change code
+                    "card scored this round" -- I changed ante to round if changed change code
                 }
             },
             bl_cbean_colon_pipeline = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -509,374 +509,374 @@ return {
             },
         },
         Combo = {
-            c_cbean_0chill_raging_storm= {
-                name = {"Raging Storm",
+            c_cbean_0chill_raging_storm = {
+                name = { "Raging Storm",
                     "{X:red,C:white,s:0.7}Finisher{}"
                 },
-                text = {{
+                text = { {
                     "{X:mult,C:white}X#1#{} Mult",
                     "Boosted by current combo",
                     "length when selected"
                 },
-                {
-                    "Combos Into:",
-                    "Nothing",
-                }}
+                    {
+                        "Combos Into:",
+                        "Nothing",
+                    } }
             },
-            c_cbean_0chill_standing_punch= {
-                name = {"Standing Punch",
+            c_cbean_0chill_standing_punch = {
+                name = { "Standing Punch",
                     "{X:green,C:white,s:0.7}Starter{}"
                 },
-                text = {{
+                text = { {
                     "{C:chips}+#1#{} Chips for",
                     "first card scored"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_standing_knee= {
-                name = {"Standing Knee",
+            c_cbean_0chill_standing_knee = {
+                name = { "Standing Knee",
                     "{X:green,C:white,s:0.7}Starter{}"
                 },
-                text = {{
+                text = { {
                     "{C:mult}+#1#{} Mult for",
                     "first card scored"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_rose_throw= {
-                name = {"Elegant Rose",
+            c_cbean_0chill_rose_throw = {
+                name = { "Elegant Rose",
                     "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
                 },
-                text = {{
+                text = { {
                     "Either gain {C:blue}+#1#{} hand",
                     "or {C:red}+#1#{} discard",
                 },
-                {
-                    "Can only be used",
-                    "{C:attention}once{} per round"
-                },
-                {
-                    "Combos Into:",
-                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
-                }}
+                    {
+                        "Can only be used",
+                        "{C:attention}once{} per round"
+                    },
+                    {
+                        "Combos Into:",
+                        "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                    } }
             },
-            c_cbean_0chill_victory_pose= {
-                name = {"Victory Pose",
+            c_cbean_0chill_victory_pose = {
+                name = { "Victory Pose",
                     "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
                 },
-                text = {{
+                text = { {
                     "Lowers blind by {C:dark_edition}-#1#%",
                     "when scored",
                     "Boosted by current combo",
                     "length when used"
                 },
-                {
-                    "Can only be used",
-                    "{C:attention}once{} per round"
-                },
-                {
-                    "Combos Into:",
-                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
-                }}
+                    {
+                        "Can only be used",
+                        "{C:attention}once{} per round"
+                    },
+                    {
+                        "Combos Into:",
+                        "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                    } }
             },
-            c_cbean_0chill_raging_demon= {
-                name = {"Raging Demon",
+            c_cbean_0chill_raging_demon = {
+                name = { "Raging Demon",
                     "{X:blue,C:white,s:0.7}Ultimate{}"
                 },
-                text = {{
+                text = { {
                     "{C:chips}+#1#{} Chips for",
                     "every card scored",
                     "Boosted by {C:attention}total{}",
                     "combo length"
                 },
-                {
-                    "Combos Into:",
-                    "Nothing",
-                }}
+                    {
+                        "Combos Into:",
+                        "Nothing",
+                    } }
             },
-            c_cbean_0chill_shoryuken= {
-                name = {"Shoryuken",
+            c_cbean_0chill_shoryuken = {
+                name = { "Shoryuken",
                     "{X:purple,C:white,s:0.7}Special{}"
                 },
-                text = {{
+                text = { {
                     "Retrigger {C:attention}first{} played",
                     "card used in scoring",
                     "{C:attention}#1#{} additional times",
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}"
+                    } }
             },
-                c_cbean_0chill_crouching_punch= {
-                name = {"Crouching Punch",
+            c_cbean_0chill_crouching_punch = {
+                name = { "Crouching Punch",
                     "{X:green,C:white,s:0.7}Starter{}"
                 },
-                text = {{
+                text = { {
                     "{C:chips}+#1#{} Chips if played",
                     "hand contains a {C:attention}#2#",
 
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-                c_cbean_0chill_hadouken= {
-                name = {"Hadouken",
+            c_cbean_0chill_hadouken = {
+                name = { "Hadouken",
                     "{X:red,C:white,s:0.7}Finisher{}"
                 },
-                text = {{
+                text = { {
                     "{C:mult}+#1#{} Mult for every",
                     "card in played hand",
                     "Boosted by current combo",
                     "length when used"
 
                 },
-                {
-                    "Combos Into:",
-                    "Nothing"
-                }}
+                    {
+                        "Combos Into:",
+                        "Nothing"
+                    } }
             },
-                c_cbean_0chill_tatsumaki= {
-                name = {"Tatsumaki Senpukyaku",
+            c_cbean_0chill_tatsumaki = {
+                name = { "Tatsumaki Senpukyaku",
                     "{X:red,C:white,s:0.7}Finisher{}"
                 },
-                text = {{
+                text = { {
                     "Retriggers all scoring",
                     "cards up to an",
                     "additional {C:attention}#1#{} times"
 
                 },
-                {
-                    "Combos Into:",
-                    "Nothing"
-                }}
+                    {
+                        "Combos Into:",
+                        "Nothing"
+                    } }
             },
-                c_cbean_0chill_low_short= {
-                name = {"Low Short",
+            c_cbean_0chill_low_short = {
+                name = { "Low Short",
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
-                text = {{
+                text = { {
                     "The highest ranked card gives",
                     "{X:mult,C:white}X#1#{} Mult when scored",
                     "Boosted by current combo",
                     "length when used"
 
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_jump= {
-                name = {"Jump",
+            c_cbean_0chill_jump = {
+                name = { "Jump",
                     "{X:green,C:white,s:0.7}Starter{}"
                 },
-                text = {{
+                text = { {
                     "Every {C:attention}played card{}",
                     "counts in scoring",
 
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_aohana= {
-                name = {"127 Shiki: Aohana",
+            c_cbean_0chill_aohana = {
+                name = { "127 Shiki: Aohana",
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
-                text = {{
+                text = { {
                     "Levels up {C:attention}played hand{}"
                 },
-                {
-                   "Can only be used",
-                    "{C:attention}once{} per round" 
-                },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Can only be used",
+                        "{C:attention}once{} per round"
+                    },
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_crouching_launch= {
-                name = {"Crouching Launch",
+            c_cbean_0chill_crouching_launch = {
+                name = { "Crouching Launch",
                     "{X:green,C:white,s:0.7}Starter{}"
                 },
-                text = {{
+                text = { {
                     "First played {C:attention}card{}",
                     "permanently gains {C:chips}+#1#{} Chips",
                     "when scored"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_flash_kick= {
-                name = {"Flash Kick",
+            c_cbean_0chill_flash_kick = {
+                name = { "Flash Kick",
                     "{X:purple,C:white,s:0.7}Special{}"
                 },
-                text = {{
+                text = { {
                     "Retrigger {C:attention}last{} played",
                     "card used in scoring",
                     "{C:attention}#1#{} additional times",
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}"
+                    } }
             },
-               c_cbean_0chill_aegis_reflector= {
-                name = {"Aegis Reflector",
+            c_cbean_0chill_aegis_reflector = {
+                name = { "Aegis Reflector",
                     "{X:blue,C:white,s:0.7}Ultimate{}"
                 },
-                text = {{
+                text = { {
                     "Levels up {C:attention}played hand{}",
                     "for length of",
                     "{C:attention}total{} combo"
                 },
-                {
-                   "Can only be used",
-                    "{C:attention}once{} per round"
-                },
-                {
-                    "Combos Into:",
-                    "Nothing"
-                }}
+                    {
+                        "Can only be used",
+                        "{C:attention}once{} per round"
+                    },
+                    {
+                        "Combos Into:",
+                        "Nothing"
+                    } }
             },
-               c_cbean_0chill_wryyyyyy= {
-                name = {"WRYYYYYY!",
+            c_cbean_0chill_wryyyyyy = {
+                name = { "WRYYYYYY!",
                     "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
                 },
-                text = {{
+                text = { {
                     "{C:green}#1# in #2#{} chance the",
                     "next scored card",
                     "is retriggered when",
                     "a card is scored"
                 },
-                {
-                    "Combos Into:",
-                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                    } }
             },
-               c_cbean_0chill_torou_zan= {
-                name = {"Torou Zan",
+            c_cbean_0chill_torou_zan = {
+                name = { "Torou Zan",
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
-                text = {{
+                text = { {
                     "{X:mult,C:white}X#1#{} Mult,",
                     "but {C:attention}increases{}",
                     "blind size by {C:dark_edition}#2#%{}"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-               c_cbean_0chill_joudan_sokuto_geri= {
-                name = {"Joudan Sokuto Geri",
+            c_cbean_0chill_joudan_sokuto_geri = {
+                name = { "Joudan Sokuto Geri",
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
-                text = {{
+                text = { {
                     "The lowest ranked card gives",
                     "{X:mult,C:white}X#1#{} Mult when scored",
                     "Gives an additional {X:mult,C:white}X#2#{} Mult",
                     "for each scored card"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-            c_cbean_0chill_god_fist= {
-                name = {"Electric Wind God Fist",
+            c_cbean_0chill_god_fist = {
+                name = { "Electric Wind God Fist",
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
-                text = {{
+                text = { {
                     "{X:mult,C:white}X#1#{} Mult",
                     "{C:green}#2# in #3#{} chance to",
                     "instead be {X:chips,C:white}XChips"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
-               c_cbean_0chill_fighting_stance= {
-                name = {"Fighting Stance",
+            c_cbean_0chill_fighting_stance = {
+                name = { "Fighting Stance",
                     "{X:cbean_taunt_name,C:white,s:0.7}Taunt{}"
                 },
-                text = {{
+                text = { {
                     "Counts as using {C:attention}#1#{} Combo cards",
                     "in a combo"
                 },
-                {
-                    "Combos Into:",
-                    "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:cbean_series,C:white}Series{}, {X:purple,C:white}Special{}",
+                    } }
             },
             c_cbean_yma_neutral_special = {
                 name = {
                     "Neutral Special",
                     "{X:cbean_series,C:white,s:0.7}Series{}"
                 },
-                text = {{
+                text = { {
                     "Retriggers the {C:attention}next{} Combo",
                     "card in the {C:combo}Combo{} again",
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
-                    "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+                        "{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}"
+                    } }
             },
             c_cbean_yma_astral_projection = {
                 name = {
                     "Astral Projection",
                     "{X:purple,C:white,s:0.7}Special{}"
                 },
-                text = {{
+                text = { {
                     "The {C:attention}previous{} Combo card",
                     "wont trigger or be {C:attention}used"
                 },
-                {
-                    "Combos Into:",
-                    "{X:black,C:white}Taunt{}, {X:green,C:white}Starter{}",
-                }}
+                    {
+                        "Combos Into:",
+                        "{X:black,C:white}Taunt{}, {X:green,C:white}Starter{}",
+                    } }
             },
             c_cbean_yma_za_warudo = {
                 name = {
                     "Za Warudo",
                     "{X:blue,C:white,s:0.7}Ultimate{}"
                 },
-                text = {{
+                text = { {
                     "Lowers blind by {C:dark_edition}-#1#%",
                     "Boosted by current combo",
                     "length when used"
                 },
-                {
-                    "Combos Into:",
-                    "Nothing",
-                }}
+                    {
+                        "Combos Into:",
+                        "Nothing",
+                    } }
             },
         },
         yma_keys = {
@@ -1093,7 +1093,7 @@ return {
                         '{C:attention}triggers{} again',
                         '{C:inactive}(Uses #1#/#2# blinds)',
                     }
-                     
+
                 }
             },
             c_cbean_yma_orchestra = {
@@ -1326,9 +1326,9 @@ return {
             m_cbean_pboys_piss = {
                 name = "Piss Card",
                 text = {
-                    	"Gives {C:chips}+#1#{} Chips for",
-			"each {C:attention}Piss card{} in deck",
-			"{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips)"
+                    "Gives {C:chips}+#1#{} Chips for",
+                    "each {C:attention}Piss card{} in deck",
+                    "{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips)"
                 },
             },
             m_cbean_yma_lucky_1 = {
@@ -1523,9 +1523,9 @@ return {
             j_cbean_colon_rna = { -- bitter and George The Rat | N/A | bitter
                 name = "RNA",
                 text = {
-                    "If {C:attention}first hand{} of round has only {C:attention}1", 
-                    "add a permanent copy with a random enhancement", "to deck and draw to {C:attention}hand", 
-                    "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})"},
+                    "If {C:attention}first hand{} of round has only {C:attention}1",
+                    "add a permanent copy with a random enhancement", "to deck and draw to {C:attention}hand",
+                    "{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})" },
             },
             j_cbean_colon_shadow = { -- Glitchkat10 | N/A | N/A
                 name = "Shadow",
@@ -1637,7 +1637,7 @@ return {
                 },
             },
 
-            
+
             --0 Driver Jokers
 
             --Common
@@ -1680,16 +1680,16 @@ return {
             --Uncommon
             j_cbean_0chill_thorn_ring = {
                 name = "Thorn Ring",
-                text = {{
+                text = { {
                     "{X:mult,C:white}X#1#{} Mult"
                 },
-                {
-                    "{C:red}-#2#{} hand size"
-                },
-                {
-                    "All non-{C:hearts}Heart{} cards",
-                    "are {C:red}debuffed{}"
-                }}
+                    {
+                        "{C:red}-#2#{} hand size"
+                    },
+                    {
+                        "All non-{C:hearts}Heart{} cards",
+                        "are {C:red}debuffed{}"
+                    } }
             },
 
 
@@ -1723,16 +1723,16 @@ return {
             },
             j_cbean_0chill_driving_in_my_truck = {
                 name = "Asgore's Truck",
-                text = {{
+                text = { {
                     "Destroys scored {C:attention}King{} cards",
                     "in played hand"
-                    },
+                },
                     {
-                    "This Joker gains {X:mult,C:white}X#1#{} Mult for",
-                    "each card destroyed this way,",
-                    "resets after each {C:attention}Ante{}",
-                    "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
-                }},
+                        "This Joker gains {X:mult,C:white}X#1#{} Mult for",
+                        "each card destroyed this way,",
+                        "resets after each {C:attention}Ante{}",
+                        "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+                    } },
             },
 
             j_cbean_0chill_lone_warrior = {
@@ -1746,129 +1746,129 @@ return {
             },
             j_cbean_0chill_house_rules = {
                 name = "House Rules",
-                text = {{
+                text = { {
                     "Unlocks new hands",
                     "based on owned {C:attention}Jokers"
                 },
-                {
-                    "{C:attention}Select{} this Joker and",
-                    "check {C:attention}Run Info{} to",
-                    "see possible hands",
-                    "{C:inactive}(Indicated with an HR)"
-                }}
+                    {
+                        "{C:attention}Select{} this Joker and",
+                        "check {C:attention}Run Info{} to",
+                        "see possible hands",
+                        "{C:inactive}(Indicated with an HR)"
+                    } }
             },
 
-	    --Pissboys 
+            --Pissboys
 
             j_cbean_pboys_molotov = {
                 name = "Molotov Cocktail",
                 text = {
                     "When {C:attention}first hand{} is played,",
-		    "destroy a random amount",
-		    "of cards {C:attention}held in hand{}",
-		    "{C:inactive}(Maximum of #1# cards)"
+                    "destroy a random amount",
+                    "of cards {C:attention}held in hand{}",
+                    "{C:inactive}(Maximum of #1# cards)"
                 },
             },
-			
-			j_cbean_pboys_vodka = {
+
+            j_cbean_pboys_vodka = {
                 name = "Vodka",
                 text = {
-                    	"When {C:attention}Boss{} or {E:1,C:money}Ceo Blind{} is",
-			"defeated, gain a random Tag",
-			"or {C:attention}#1#{} respectively"
+                    "When {C:attention}Boss{} or {E:1,C:money}Ceo Blind{} is",
+                    "defeated, gain a random Tag",
+                    "or {C:attention}#1#{} respectively"
                 },
             },
-			
-			j_cbean_pboys_shower = {
+
+            j_cbean_pboys_shower = {
                 name = "Golden Shower",
                 text = {
                     "Each {C:attention}Piss{} card",
                     "earns {C:money}$#1#{} when scored",
-					"or held in hand",
-                },
-            },
-			
-			j_cbean_pboys_hydrant = {
-                name = "Fire Hydrant",
-                text = {
-                    "Retrigger all",
-					"played {C:attention}Piss{} cards"
+                    "or held in hand",
                 },
             },
 
-			j_cbean_pboys_coriolis = {
+            j_cbean_pboys_hydrant = {
+                name = "Fire Hydrant",
+                text = {
+                    "Retrigger all",
+                    "played {C:attention}Piss{} cards"
+                },
+            },
+
+            j_cbean_pboys_coriolis = {
                 name = "Coriolis Effect",
                 text = {
                     "If played hand contains a {C:attention}#3#{},",
-					"first scored card gain {C:chips}+#1#{} Chips,",
+                    "first scored card gain {C:chips}+#1#{} Chips,",
                     "last scored card gain {C:mult}+#2#{} Mult",
                 },
             },
-			
-			j_cbean_pboys_kidney = {
+
+            j_cbean_pboys_kidney = {
                 name = "Kidney Stone",
                 text = {
-					"Every discarded {C:attention}Piss{} card",
+                    "Every discarded {C:attention}Piss{} card",
                     "has a {C:green}#1# in #2#{} chance to",
                     "permanently get {C:red}+#3#{} Mult"
                 },
             },
-			
-			j_cbean_pboys_flag_japan = {
+
+            j_cbean_pboys_flag_japan = {
                 name = "Flag of Japan",
                 text = {
-					"{C:mult}+#1#{} Mult for each {C:attention}Enhanced{}",
-					"card remaining in deck",
-					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)"
+                    "{C:mult}+#1#{} Mult for each {C:attention}Enhanced{}",
+                    "card remaining in deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)"
                 },
             },
-			
-			j_cbean_pboys_restroom_closed = {
+
+            j_cbean_pboys_restroom_closed = {
                 name = "Restroom Closed",
                 text = {
-					"Each {C:attention}Piss{} card",
-					"held in hand",
-					"gives {C:chips}+#1#{} Chips"
+                    "Each {C:attention}Piss{} card",
+                    "held in hand",
+                    "gives {C:chips}+#1#{} Chips"
                 },
             },
-			
-			j_cbean_pboys_yellow_snow = {
+
+            j_cbean_pboys_yellow_snow = {
                 name = "Yellow Snow",
                 text = {
-					"When any card is {C:attention}sold{},",
+                    "When any card is {C:attention}sold{},",
                     "{C:attention}enchance{} a random card",
                     "into a {C:attention}Piss{} Card",
                 },
             },
-			
-			j_cbean_pboys_button_mashing = {
+
+            j_cbean_pboys_button_mashing = {
                 name = "Button Mashing",
                 text = {
-					"{C:green}#1# in #2#{} chance to",
+                    "{C:green}#1# in #2#{} chance to",
                     "create a {C:combo}Combo{} card",
                     "when a hand is played",
                 },
             },
-			
-			j_cbean_pboys_watermelon = {
+
+            j_cbean_pboys_watermelon = {
                 name = "Watermelon",
                 text = {
-					"For the next {C:attention}#1#{} rounds,",
+                    "For the next {C:attention}#1#{} rounds,",
                     "{C:attention}enchance{} a random card",
                     "in hand into a {C:attention}Piss{} Card",
                     "at end of round",
                 },
             },
-			
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
                 text = {
-                    "{E:1,C:attention}you werent meant to see this....", 
+                    "{E:1,C:attention}you werent meant to see this....",
                     "({X:mult,C:white}X#1#{} Mult)",
                 },
             },
-        --Yeah! Mostly Artists
+            --Yeah! Mostly Artists
             j_cbean_yma_charred_fool = {
                 name = "Charred Fool",
                 text = {
@@ -1948,11 +1948,11 @@ return {
                     "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
                 },
                 text = {
-					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker changes into",
-						"a random {C:legendary}Form{}",
-					},
+                    {
+                        "When a {C:attention}Blind{} is selected,",
+                        "this Joker changes into",
+                        "a random {C:legendary}Form{}",
+                    },
                     {
                         "{C:green}#1# in #2#{} chance",
                         "for cards {C:attention}held in hand{}",
@@ -1966,11 +1966,11 @@ return {
                     "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
                 },
                 text = {
-					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker changes into",
-						"a random {C:legendary}Form{}",
-					},
+                    {
+                        "When a {C:attention}Blind{} is selected,",
+                        "this Joker changes into",
+                        "a random {C:legendary}Form{}",
+                    },
                     {
                         "Cards held in hand",
                         "permanently gain {C:mult}+#4#{} mult"
@@ -1983,11 +1983,11 @@ return {
                     "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
                 },
                 text = {
-					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker changes into",
-						"a random {C:legendary}Form{}",
-					},
+                    {
+                        "When a {C:attention}Blind{} is selected,",
+                        "this Joker changes into",
+                        "a random {C:legendary}Form{}",
+                    },
                     {
                         "If played hand contains",
                         "a {C:attention}#3#{}, convert",
@@ -2002,12 +2002,12 @@ return {
                     "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
                 },
                 text = {
-					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker changes into",
-						"a random {C:legendary}Form{}",
-					},
-					{
+                    {
+                        "When a {C:attention}Blind{} is selected,",
+                        "this Joker changes into",
+                        "a random {C:legendary}Form{}",
+                    },
+                    {
                         "If played hand contains",
                         "a card with an {C:attention}Enhancement{},",
                         "enhance a random",
@@ -2021,11 +2021,11 @@ return {
                     "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
                 },
                 text = {
-					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker changes into",
-						"a random {C:legendary}Form{}",
-					},
+                    {
+                        "When a {C:attention}Blind{} is selected,",
+                        "this Joker changes into",
+                        "a random {C:legendary}Form{}",
+                    },
                     {
                         "(no effect)"
                     }
@@ -2037,17 +2037,17 @@ return {
                     "{C:legendary,s:0.7}Yeah! Mostly Artists{}"
                 },
                 text = {
-					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker changes into",
-						"a random {C:legendary}Form{}",
-					},
+                    {
+                        "When a {C:attention}Blind{} is selected,",
+                        "this Joker changes into",
+                        "a random {C:legendary}Form{}",
+                    },
                     {
                         "(no effect)"
                     }
                 }
             },
-        --Name Team
+            --Name Team
             j_cbean_nameteam_stickerbomb = {
                 name = {
                     "Stickerbomb"
@@ -2103,7 +2103,7 @@ return {
             j_cbean_nameteam_stachenscarfen = {
                 name = "Stachenscarfen",
                 text = {
-					"All spawned {C:attention}Jokers{}",
+                    "All spawned {C:attention}Jokers{}",
                     "are {C:green}Uncommon{}"
                 }
             },
@@ -2113,7 +2113,7 @@ return {
                     "{s:0.7}[Technology Connections]{}"
                 },
                 text = {
-					"When a {C:attention}consumable{} is",
+                    "When a {C:attention}consumable{} is",
                     "purchased, creates a",
                     "{C:attention}second copy{} of it",
                     "{C:inactive}(Must have room){}"
@@ -2122,7 +2122,7 @@ return {
             j_cbean_nameteam_diamondshapewithadotinside = {
                 name = "{s:0.9}Diamond Shape With a Dot Inside{}",
                 text = {
-					"Played {C:diamonds}Diamonds{} give",
+                    "Played {C:diamonds}Diamonds{} give",
                     "{C:mult}+#1#{} Mult when scored",
                     "if played hand contains",
                     "a {C:red}non-Diamond{}"
@@ -2131,13 +2131,13 @@ return {
             j_cbean_nameteam_giveway = {
                 name = "Give Way",
                 text = {
-					"{C:white,X:mult}X#1#{} Mult before scoring"
+                    "{C:white,X:mult}X#1#{} Mult before scoring"
                 }
             },
             j_cbean_nameteam_ghostimage = {
                 name = "Ghost Image",
                 text = {
-					"Upgrades a random",
+                    "Upgrades a random",
                     "poker hand by {C:attention}#1#{}",
                     "level when using",
                     "a {C:planet}Planet{} card"
@@ -2149,7 +2149,7 @@ return {
                     "Gains {C:chips}+#1#{} Chips for each",
                     "card {C:attention}purchased{} from the",
                     "shop before {C:green}rerolling{}",
-					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips){}"
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips){}"
                 }
             },
         },
@@ -2164,17 +2164,25 @@ return {
                 }
             },
             undiscovered_yma_keys = {
-				name = 'Unknown Key Card',
-				text = {
-					'Find this card in an unseeded',
-					'run to find out what it does'
-				}
-			},
-			k_cbean_pissjoker = {
+                name = 'Unknown Key Card',
+                text = {
+                    'Find this card in an unseeded',
+                    'run to find out what it does'
+                }
+            },
+            undiscovered_cbean_StickerSheet = {
+                name = "Not Discovered",
+                text = {
+                    "Obtain this card in",
+                    "an unseeded run to",
+                    "learn what it does",
+                }
+            },
+            k_cbean_pissjoker = {
                 name = "Piss Joker",
                 text = {
                     "Count as a {C:attention}Piss{}",
-					"{C:attention}releated{} Joker"
+                    "{C:attention}releated{} Joker"
                 }
             },
             --Zodiacs
@@ -2342,38 +2350,38 @@ return {
             },
             -- Name Team Stickers
             cbean_mailed = {
-				name = "Mailed Sticker",
-				text = {
-					"{C:red}-2${} When",
+                name = "Mailed Sticker",
+                text = {
+                    "{C:red}-2${} When",
                     "discarded"
-				}
-			},
+                }
+            },
             cbean_hooking = {
-				name = "Hooking Sticker",
-				text = {
-					"{C:red}Discard{}",
+                name = "Hooking Sticker",
+                text = {
+                    "{C:red}Discard{}",
                     "if kept in hand"
-				}
-			},
+                }
+            },
             cbean_flashcard = {
-				name = "Flashcard Sticker",
-				text = {
-					"{C:attention}Replace{} this card",
+                name = "Flashcard Sticker",
+                text = {
+                    "{C:attention}Replace{} this card",
                     "with another card",
                     "with the same rarity",
                     "when shop is",
                     "{C:green}Rerolled{}"
-				}
-			},
+                }
+            },
             cbean_frowning = {
-				name = "Frowning Sticker",
-				text = {
-					"{C:red}Debuff{} this card",
+                name = "Frowning Sticker",
+                text = {
+                    "{C:red}Debuff{} this card",
                     "if played hand",
                     "contains a",
                     "{C:attention}Face{} card"
-				}
-			},
+                }
+            },
             cbean_plasma = {
                 name = "Plasma Sticker",
                 text = {
@@ -2463,28 +2471,28 @@ return {
             },
             c_cbean_0chill_cronus = {
                 name = "The Blessing of Cronus",
-                text = {{
+                text = { {
                     "Prevents {C:attention}Blessings{} from",
                     "using charges each round",
                     "{C:inactive}({C:attention}#1#{C:inactive} rounds left)"
                 },
-                {
-                    "Gains {C:attention}#2#{} charges when",
-                    "a blessing is {C:attention}sold{}",
-                }}
+                    {
+                        "Gains {C:attention}#2#{} charges when",
+                        "a blessing is {C:attention}sold{}",
+                    } }
             },
-            c_cbean_0chill_nope_from_above= {
-                name = {"Nope! From Above",
+            c_cbean_0chill_nope_from_above = {
+                name = { "Nope! From Above",
                     "{X:dark_edition,C:white,s:0.7}Universal{}"
                 },
-                text = {{
+                text = { {
                     "Counts as {C:dark_edition}#1#{} Combo cards",
                 },
-                {
-                    "Combos Into:",
-                    "{C:dark_edition}Anything",
-                    "{C:inactive}(Even if stated otherwise)"
-                }}
+                    {
+                        "Combos Into:",
+                        "{C:dark_edition}Anything",
+                        "{C:inactive}(Even if stated otherwise)"
+                    } }
             },
             -- yma upgraded spectrals
             c_cbean_yma_familiar_level1 = {
@@ -2700,7 +2708,7 @@ return {
                     "and/or an {C:dark_edition}Edition{}",
                 },
             },
-			c_cbean_yma_talisman_level1 = {
+            c_cbean_yma_talisman_level1 = {
                 name = {
                     "Talisman",
                     "{C:attention,s:0.7}Level 1{}"
@@ -2711,7 +2719,7 @@ return {
                     "card in your hand",
                 },
             },
-			c_cbean_yma_talisman_level2 = {
+            c_cbean_yma_talisman_level2 = {
                 name = {
                     "Talisman",
                     "{C:attention,s:0.7}Level 2{}"
@@ -2724,7 +2732,7 @@ return {
                     "{C:attention}Gold Sealed cards{} once",
                 },
             },
-			c_cbean_yma_talisman_level3 = {
+            c_cbean_yma_talisman_level3 = {
                 name = {
                     "Talisman",
                     "{C:attention,s:0.7}Level 3{}"
@@ -2739,7 +2747,7 @@ return {
                     "{C:attention}Gold Sealed card{} in deck",
                 },
             },
-			c_cbean_yma_talisman_level4 = {
+            c_cbean_yma_talisman_level4 = {
                 name = {
                     "Talisman",
                     "{C:attention,s:0.7}Level 4{}"
@@ -2754,7 +2762,7 @@ return {
                     "{C:attention}Gold Sealed card{} in deck",
                 },
             },
-			c_cbean_yma_talisman_level5 = {
+            c_cbean_yma_talisman_level5 = {
                 name = {
                     "Talisman",
                     "{C:attention,s:0.7}Level 5{}"
@@ -2772,7 +2780,7 @@ return {
                     "been played",
                 },
             },
-			c_cbean_yma_wraith_level1 = {
+            c_cbean_yma_wraith_level1 = {
                 name = {
                     "Wraith",
                     "{C:attention,s:0.7}Level 1{}"
@@ -2783,7 +2791,7 @@ return {
                     "sets money to {C:money}$10",
                 },
             },
-			c_cbean_yma_wraith_level2 = {
+            c_cbean_yma_wraith_level2 = {
                 name = {
                     "Wraith",
                     "{C:attention,s:0.7}Level 2{}"
@@ -2795,7 +2803,7 @@ return {
                     "sets money to {C:money}$10",
                 },
             },
-			c_cbean_yma_wraith_level3 = {
+            c_cbean_yma_wraith_level3 = {
                 name = {
                     "Wraith",
                     "{C:attention,s:0.7}Level 3{}"
@@ -2809,7 +2817,7 @@ return {
                     "sets money to {C:money}$10",
                 },
             },
-			c_cbean_yma_wraith_level4 = {
+            c_cbean_yma_wraith_level4 = {
                 name = {
                     "Wraith",
                     "{C:attention,s:0.7}Level 4{}"
@@ -2822,7 +2830,7 @@ return {
                     "{C:red}Rare{} {C:attention} Joker",
                 },
             },
-			c_cbean_yma_wraith_level5 = {
+            c_cbean_yma_wraith_level5 = {
                 name = {
                     "Wraith",
                     "{C:attention,s:0.7}Level 5{}"
@@ -2832,7 +2840,7 @@ return {
                     "{C:dark_edition}Negative{} {C:red}Rare{C:attention} Jokers{}"
                 },
             },
-			c_cbean_yma_sigil_level1 = {
+            c_cbean_yma_sigil_level1 = {
                 name = {
                     "Sigil",
                     "{C:attention,s:0.7}Level 1{}"
@@ -2843,7 +2851,7 @@ return {
                     "of the selected {C:attention}card",
                 },
             },
-			c_cbean_yma_sigil_level2 = {
+            c_cbean_yma_sigil_level2 = {
                 name = {
                     "Sigil",
                     "{C:attention,s:0.7}Level 2{}"
@@ -2856,7 +2864,7 @@ return {
                     "{C:attention}random Enhancement",
                 },
             },
-			c_cbean_yma_sigil_level3 = {
+            c_cbean_yma_sigil_level3 = {
                 name = {
                     "Sigil",
                     "{C:attention,s:0.7}Level 3{}"
@@ -2869,7 +2877,7 @@ return {
                     "{C:attention}random Enhancement {}and {C:attention}Seal",
                 },
             },
-			c_cbean_yma_sigil_level4 = {
+            c_cbean_yma_sigil_level4 = {
                 name = {
                     "Sigil",
                     "{C:attention,s:0.7}Level 4{}"
@@ -2882,7 +2890,7 @@ return {
                     "{C:attention}random Enhancement {}and {C:attention}Seal",
                 },
             },
-			c_cbean_yma_sigil_level5 = {
+            c_cbean_yma_sigil_level5 = {
                 name = {
                     "Sigil",
                     "{C:attention,s:0.7}Level 5{}"
@@ -2896,7 +2904,7 @@ return {
                     "and {C:dark_edition}Edition{}",
                 },
             },
-			c_cbean_yma_ectoplasm_level1 = {
+            c_cbean_yma_ectoplasm_level1 = {
                 name = {
                     "Ectoplasm",
                     "{C:attention,s:0.7}Level 1{}"
@@ -2907,7 +2915,7 @@ return {
                     "{C:red}-#1#{} hand size",
                 },
             },
-			c_cbean_yma_ectoplasm_level2 = {
+            c_cbean_yma_ectoplasm_level2 = {
                 name = {
                     "Ectoplasm",
                     "{C:attention,s:0.7}Level 2{}"
@@ -2919,7 +2927,7 @@ return {
                     "{C:red}-#1#{} hand size",
                 },
             },
-			c_cbean_yma_ectoplasm_level3 = {
+            c_cbean_yma_ectoplasm_level3 = {
                 name = {
                     "Ectoplasm",
                     "{C:attention,s:0.7}Level 3{}"
@@ -2933,7 +2941,7 @@ return {
                     "{C:red}-#1#{} hand size",
                 },
             },
-			c_cbean_yma_ectoplasm_level4 = {
+            c_cbean_yma_ectoplasm_level4 = {
                 name = {
                     "Ectoplasm",
                     "{C:attention,s:0.7}Level 4{}"
@@ -2947,7 +2955,7 @@ return {
                     "{C:red}-#1#{} hand size",
                 },
             },
-			c_cbean_yma_ectoplasm_level5 = {
+            c_cbean_yma_ectoplasm_level5 = {
                 name = {
                     "Ectoplasm",
                     "{C:attention,s:0.7}Level 5{}"
@@ -2960,7 +2968,7 @@ return {
                     "in your deck and in your hand"
                 },
             },
-			c_cbean_yma_immolate_level1 = {
+            c_cbean_yma_immolate_level1 = {
                 name = {
                     "Immolate",
                     "{C:attention,s:0.7}Level 1{}"
@@ -2971,7 +2979,7 @@ return {
                     "gain {C:money}$#2#",
                 },
             },
-			c_cbean_yma_immolate_level2 = {
+            c_cbean_yma_immolate_level2 = {
                 name = {
                     "Immolate",
                     "{C:attention,s:0.7}Level 2{}"
@@ -2982,7 +2990,7 @@ return {
                     "gain {C:money}$#2#",
                 },
             },
-			c_cbean_yma_immolate_level3 = {
+            c_cbean_yma_immolate_level3 = {
                 name = {
                     "Immolate",
                     "{C:attention,s:0.7}Level 3{}"
@@ -2993,7 +3001,7 @@ return {
                     "gain {C:money}$#2#",
                 },
             },
-			c_cbean_yma_immolate_level4 = {
+            c_cbean_yma_immolate_level4 = {
                 name = {
                     "Immolate",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3003,7 +3011,7 @@ return {
                     "gain {C:money}$#2#",
                 },
             },
-			c_cbean_yma_immolate_level5 = {
+            c_cbean_yma_immolate_level5 = {
                 name = {
                     "Immolate",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3013,7 +3021,7 @@ return {
                     "gain {C:money}$#2#",
                 },
             },
-			c_cbean_yma_soul_level1 = {
+            c_cbean_yma_soul_level1 = {
                 name = {
                     "The Soul",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3025,7 +3033,7 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-			c_cbean_yma_soul_level2 = {
+            c_cbean_yma_soul_level2 = {
                 name = {
                     "The Soul",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3038,7 +3046,7 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-			c_cbean_yma_soul_level3 = {
+            c_cbean_yma_soul_level3 = {
                 name = {
                     "The Soul",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3050,7 +3058,7 @@ return {
                     "and an {C:dark_edition}Edition{}",
                 },
             },
-			c_cbean_yma_soul_level4 = {
+            c_cbean_yma_soul_level4 = {
                 name = {
                     "The Soul",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3062,7 +3070,7 @@ return {
                     "and {C:dark_edition}Negative{}",
                 },
             },
-			c_cbean_yma_soul_level5 = {
+            c_cbean_yma_soul_level5 = {
                 name = {
                     "The Soul",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3077,7 +3085,7 @@ return {
                     "another {C:legendary,E:1}Legendary{} or a {C:rare}Rare{}",
                 },
             },
-			c_cbean_yma_black_hole_level1 = {
+            c_cbean_yma_black_hole_level1 = {
                 name = {
                     "Black Hole",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3088,7 +3096,7 @@ return {
                     "by {C:attention}2{} levels",
                 },
             },
-			c_cbean_yma_black_hole_level2 = {
+            c_cbean_yma_black_hole_level2 = {
                 name = {
                     "Black Hole",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3101,7 +3109,7 @@ return {
                     "by {C:attention}3{} levels",
                 },
             },
-			c_cbean_yma_black_hole_level3 = {
+            c_cbean_yma_black_hole_level3 = {
                 name = {
                     "Black Hole",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3116,7 +3124,7 @@ return {
                     "by {C:attention}3{} levels",
                 },
             },
-			c_cbean_yma_black_hole_level4 = {
+            c_cbean_yma_black_hole_level4 = {
                 name = {
                     "Black Hole",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3133,7 +3141,7 @@ return {
                     "{C:attention}Poker Hands{}",
                 },
             },
-			c_cbean_yma_black_hole_level5 = {
+            c_cbean_yma_black_hole_level5 = {
                 name = {
                     "Black Hole",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3153,9 +3161,24 @@ return {
             },
         },
         Stake = {},
+        cbean_StickerSheet = {
+            c_cbean_eternal_sheet = {
+                name = "Eternal",
+                text = {
+                    {
+                        "Applies {C:eternal}Eternal{} to",
+                        "a random Joker"
+                    },
+                    {
+                        "Creates a free",
+                        "{C:attention}Voucher Tag{}"
+                    }
+                }
+            }
+        },
         Tag = {},
         Tarot = {
-			c_cbean_pboys_river = {
+            c_cbean_pboys_river = {
                 name = "The River",
                 text = {
                     "Enhances {C:attention}#1#{}",
@@ -3164,7 +3187,7 @@ return {
                 },
             },
             -- yma consumable upgrades
-			c_cbean_yma_magician_level1 = {
+            c_cbean_yma_magician_level1 = {
                 name = {
                     "The Magician",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3175,7 +3198,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_magician_level2 = {
+            c_cbean_yma_magician_level2 = {
                 name = {
                     "The Magician",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3186,7 +3209,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_magician_level3 = {
+            c_cbean_yma_magician_level3 = {
                 name = {
                     "The Magician",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3197,7 +3220,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_magician_level4 = {
+            c_cbean_yma_magician_level4 = {
                 name = {
                     "The Magician",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3209,7 +3232,7 @@ return {
                     "Created {C:attention}Lucky cards{} have {C:green}double odds{}",
                 },
             },
-			c_cbean_yma_magician_level5 = {
+            c_cbean_yma_magician_level5 = {
                 name = {
                     "The Magician",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3292,7 +3315,7 @@ return {
                     "{C:planet}Planet{} card",
                 },
             },
-			c_cbean_yma_empress_level1 = {
+            c_cbean_yma_empress_level1 = {
                 name = {
                     "The Empress",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3303,7 +3326,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_empress_level2 = {
+            c_cbean_yma_empress_level2 = {
                 name = {
                     "The Empress",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3314,7 +3337,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_empress_level3 = {
+            c_cbean_yma_empress_level3 = {
                 name = {
                     "The Empress",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3325,7 +3348,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_empress_level4 = {
+            c_cbean_yma_empress_level4 = {
                 name = {
                     "The Empress",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3338,7 +3361,7 @@ return {
                     "extra Mult",
                 },
             },
-			c_cbean_yma_empress_level5 = {
+            c_cbean_yma_empress_level5 = {
                 name = {
                     "The Empress",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3352,7 +3375,7 @@ return {
                     "{C:attention}5%{} of your current Mult",
                 },
             },
-			c_cbean_yma_heirophant_level1 = {
+            c_cbean_yma_heirophant_level1 = {
                 name = {
                     "The Hierophant",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3363,7 +3386,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_heirophant_level2 = {
+            c_cbean_yma_heirophant_level2 = {
                 name = {
                     "The Hierophant",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3374,7 +3397,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_heirophant_level3 = {
+            c_cbean_yma_heirophant_level3 = {
                 name = {
                     "The Hierophant",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3385,7 +3408,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_heirophant_level4 = {
+            c_cbean_yma_heirophant_level4 = {
                 name = {
                     "The Hierophant",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3398,7 +3421,7 @@ return {
                     "extra Chips",
                 },
             },
-			c_cbean_yma_heirophant_level5 = {
+            c_cbean_yma_heirophant_level5 = {
                 name = {
                     "The Hierophant",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3412,7 +3435,7 @@ return {
                     "{C:attention}5%{} of your current Chips",
                 },
             },
-			c_cbean_yma_chariot_level1 = {
+            c_cbean_yma_chariot_level1 = {
                 name = {
                     "The Chariot",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3423,7 +3446,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_chariot_level2 = {
+            c_cbean_yma_chariot_level2 = {
                 name = {
                     "The Chariot",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3434,7 +3457,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_chariot_level3 = {
+            c_cbean_yma_chariot_level3 = {
                 name = {
                     "The Chariot",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3445,7 +3468,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_chariot_level4 = {
+            c_cbean_yma_chariot_level4 = {
                 name = {
                     "The Chariot",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3458,7 +3481,7 @@ return {
                     "{X:mult,C:white}+X0.5{} more Mult",
                 },
             },
-			c_cbean_yma_chariot_level5 = {
+            c_cbean_yma_chariot_level5 = {
                 name = {
                     "The Chariot",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3472,7 +3495,7 @@ return {
                     "work {C:attention}when played{}",
                 },
             },
-			c_cbean_yma_justice_level1 = {
+            c_cbean_yma_justice_level1 = {
                 name = {
                     "Justice",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3483,7 +3506,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_justice_level2 = {
+            c_cbean_yma_justice_level2 = {
                 name = {
                     "Justice",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3494,7 +3517,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_justice_level3 = {
+            c_cbean_yma_justice_level3 = {
                 name = {
                     "Justice",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3505,7 +3528,7 @@ return {
                     "{C:attention}#2#s",
                 },
             },
-			c_cbean_yma_justice_level4 = {
+            c_cbean_yma_justice_level4 = {
                 name = {
                     "Justice",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3518,7 +3541,7 @@ return {
                     "{C:attention}half as likely{} to {C:attention}break"
                 },
             },
-			c_cbean_yma_justice_level5 = {
+            c_cbean_yma_justice_level5 = {
                 name = {
                     "Justice",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3532,7 +3555,7 @@ return {
                     "and give {X:mult,C:white}+X1{} more Mult"
                 },
             },
-			c_cbean_yma_hermit_level1 = {
+            c_cbean_yma_hermit_level1 = {
                 name = {
                     "The Hermit",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3542,7 +3565,7 @@ return {
                     "{C:inactive}(Max of $#1#){}"
                 },
             },
-			c_cbean_yma_hermit_level2 = {
+            c_cbean_yma_hermit_level2 = {
                 name = {
                     "The Hermit",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3552,7 +3575,7 @@ return {
                     "{C:inactive}(Max of $#1#){}"
                 },
             },
-			c_cbean_yma_hermit_level3 = {
+            c_cbean_yma_hermit_level3 = {
                 name = {
                     "The Hermit",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3562,7 +3585,7 @@ return {
                     "{C:inactive}(Max of $#1#){}"
                 },
             },
-			c_cbean_yma_hermit_level4 = {
+            c_cbean_yma_hermit_level4 = {
                 name = {
                     "The Hermit",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3572,7 +3595,7 @@ return {
                     "{C:inactive}(Max of $#1#){}"
                 },
             },
-			c_cbean_yma_hermit_level5 = {
+            c_cbean_yma_hermit_level5 = {
                 name = {
                     "The Hermit",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3582,7 +3605,7 @@ return {
                     "{C:inactive}(Max of $#1#){}"
                 },
             },
-			c_cbean_yma_wheel_of_fortune_level1 = {
+            c_cbean_yma_wheel_of_fortune_level1 = {
                 name = {
                     "The Wheel of Fortune",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3594,7 +3617,7 @@ return {
                     "to a random {C:attention}Joker",
                 },
             },
-			c_cbean_yma_wheel_of_fortune_level2 = {
+            c_cbean_yma_wheel_of_fortune_level2 = {
                 name = {
                     "The Wheel of Fortune",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3606,7 +3629,7 @@ return {
                     "to a random {C:attention}Joker",
                 },
             },
-			c_cbean_yma_wheel_of_fortune_level3 = {
+            c_cbean_yma_wheel_of_fortune_level3 = {
                 name = {
                     "The Wheel of Fortune",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3617,7 +3640,7 @@ return {
                     "to a random {C:attention}Joker",
                 },
             },
-			c_cbean_yma_wheel_of_fortune_level4 = {
+            c_cbean_yma_wheel_of_fortune_level4 = {
                 name = {
                     "The Wheel of Fortune",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3628,7 +3651,7 @@ return {
                     "to the selected {C:attention}Joker",
                 },
             },
-			c_cbean_yma_wheel_of_fortune_level5 = {
+            c_cbean_yma_wheel_of_fortune_level5 = {
                 name = {
                     "The Wheel of Fortune",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3638,7 +3661,7 @@ return {
                     "to the selected {C:attention}Joker",
                 },
             },
-			c_cbean_yma_star_level1 = {
+            c_cbean_yma_star_level1 = {
                 name = {
                     "The Star",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3649,7 +3672,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_star_level2 = {
+            c_cbean_yma_star_level2 = {
                 name = {
                     "The Star",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3660,7 +3683,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_star_level3 = {
+            c_cbean_yma_star_level3 = {
                 name = {
                     "The Star",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3672,7 +3695,7 @@ return {
                     "Converted cards also become {C:attention}Gold Cards{}",
                 },
             },
-			c_cbean_yma_star_level4 = {
+            c_cbean_yma_star_level4 = {
                 name = {
                     "The Star",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3685,7 +3708,7 @@ return {
                     "and have {C:attention}Blue Seals{}",
                 },
             },
-			c_cbean_yma_star_level5 = {
+            c_cbean_yma_star_level5 = {
                 name = {
                     "The Star",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3698,7 +3721,7 @@ return {
                     "and have {C:attention}Blue Seals{} and {C:dark_edition}Negative{}",
                 },
             },
-			c_cbean_yma_moon_level1 = {
+            c_cbean_yma_moon_level1 = {
                 name = {
                     "The Moon",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3709,7 +3732,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_moon_level2 = {
+            c_cbean_yma_moon_level2 = {
                 name = {
                     "The Moon",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3720,7 +3743,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_moon_level3 = {
+            c_cbean_yma_moon_level3 = {
                 name = {
                     "The Moon",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3732,7 +3755,7 @@ return {
                     "Converted cards also become {C:attention}Glass Cards{}",
                 },
             },
-			c_cbean_yma_moon_level4 = {
+            c_cbean_yma_moon_level4 = {
                 name = {
                     "The Moon",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3745,7 +3768,7 @@ return {
                     "and have {C:attention}Purple Seals{}",
                 },
             },
-			c_cbean_yma_moon_level5 = {
+            c_cbean_yma_moon_level5 = {
                 name = {
                     "The Moon",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3758,7 +3781,7 @@ return {
                     "and have {C:attention}Purple Seals{} and {C:dark_edition}Foil{}",
                 },
             },
-			c_cbean_yma_sun_level1 = {
+            c_cbean_yma_sun_level1 = {
                 name = {
                     "The Sun",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3769,7 +3792,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_sun_level2 = {
+            c_cbean_yma_sun_level2 = {
                 name = {
                     "The Sun",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3780,7 +3803,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_sun_level3 = {
+            c_cbean_yma_sun_level3 = {
                 name = {
                     "The Sun",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3792,7 +3815,7 @@ return {
                     "Converted cards also become {C:attention}Steel Cards{}",
                 },
             },
-			c_cbean_yma_sun_level4 = {
+            c_cbean_yma_sun_level4 = {
                 name = {
                     "The Sun",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3805,7 +3828,7 @@ return {
                     "and have {C:attention}Red Seals{}",
                 },
             },
-			c_cbean_yma_sun_level5 = {
+            c_cbean_yma_sun_level5 = {
                 name = {
                     "The Sun",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3818,7 +3841,7 @@ return {
                     "and have {C:attention}Red Seals{} and {C:dark_edition}Polychrome{}",
                 },
             },
-			c_cbean_yma_world_level1 = {
+            c_cbean_yma_world_level1 = {
                 name = {
                     "The World",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3829,7 +3852,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_world_level2 = {
+            c_cbean_yma_world_level2 = {
                 name = {
                     "The World",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3840,7 +3863,7 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-			c_cbean_yma_world_level3 = {
+            c_cbean_yma_world_level3 = {
                 name = {
                     "The World",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3852,7 +3875,7 @@ return {
                     "Converted cards also become {C:attention}Lucky Cards{}",
                 },
             },
-			c_cbean_yma_world_level4 = {
+            c_cbean_yma_world_level4 = {
                 name = {
                     "The World",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3865,7 +3888,7 @@ return {
                     "and have {C:attention}Gold Seals{}",
                 },
             },
-			c_cbean_yma_world_level5 = {
+            c_cbean_yma_world_level5 = {
                 name = {
                     "The World",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3878,7 +3901,7 @@ return {
                     "and have {C:attention}Gold Seals{} and {C:dark_edition}Holographic{}",
                 },
             },
-			c_cbean_yma_judgement_level1 = {
+            c_cbean_yma_judgement_level1 = {
                 name = {
                     "Judgement",
                     "{C:attention,s:0.7}Level 1{}"
@@ -3891,7 +3914,7 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-			c_cbean_yma_judgement_level2 = {
+            c_cbean_yma_judgement_level2 = {
                 name = {
                     "Judgement",
                     "{C:attention,s:0.7}Level 2{}"
@@ -3903,7 +3926,7 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-			c_cbean_yma_judgement_level3 = {
+            c_cbean_yma_judgement_level3 = {
                 name = {
                     "Judgement",
                     "{C:attention,s:0.7}Level 3{}"
@@ -3915,7 +3938,7 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-			c_cbean_yma_judgement_level4 = {
+            c_cbean_yma_judgement_level4 = {
                 name = {
                     "Judgement",
                     "{C:attention,s:0.7}Level 4{}"
@@ -3929,7 +3952,7 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-			c_cbean_yma_judgement_level5 = {
+            c_cbean_yma_judgement_level5 = {
                 name = {
                     "Judgement",
                     "{C:attention,s:0.7}Level 5{}"
@@ -3943,32 +3966,32 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-		},
+        },
         Voucher = {
-        --Yeah! Mostly Artists
+            --Yeah! Mostly Artists
             v_cbean_yma_special_deal = {
-				name = "Special Deal",
-				text = {
-					"{C:attention}Booster{} Packs have",
-					"{C:attention}#1#{} extra option",
-					"to choose from"
-				},
-			},
+                name = "Special Deal",
+                text = {
+                    "{C:attention}Booster{} Packs have",
+                    "{C:attention}#1#{} extra option",
+                    "to choose from"
+                },
+            },
             v_cbean_yma_krater = {
-				name = "Krater",
-				text = {
+                name = "Krater",
+                text = {
                     "{C:attention}Praying{} becomes",
                     "more {C:attention}effective",
-				},
-			},
+                },
+            },
             v_cbean_yma_grand_theft = {
-				name = "Grand Theft",
-				text = {
+                name = "Grand Theft",
+                text = {
                     "You may now {C:attention}steal",
                     "consumables from",
                     "{C:attention}Booster{} packs",
-				},
-			},
+                },
+            },
         },
     },
     misc = {
@@ -3988,8 +4011,8 @@ return {
             regression_least_suit = "(Least common suit)s",
             demeter_random_rank = "[Rank]",
             sdown_czodiac_add = "+1 Zodiac",
-            k_dispelled_ex="Dispelled!",
-            k_strengthened_ex="Strengthened!",
+            k_dispelled_ex = "Dispelled!",
+            k_strengthened_ex = "Strengthened!",
             k_cbean_sdown_czodiacpack = "Zodiac Pack",
             k_cbean_sdown_blessingpack = "Pantheon Pack",
             ph_alley_wager = 'Care to make a wager?',
@@ -4014,16 +4037,16 @@ return {
             k_yma_key_faded = 'Faded',
             k_yma_transform = "Transformed!",
             k_yma_tag = "Tag!",
-			k_cbean_burned="Burned!",
+            k_cbean_burned = "Burned!",
             k_cbean_piss_ex = "Piss!",
             k_cbean_mash_ex = "Mash!",
-			k_cbean_pboys_abet="Bet",
-			k_cbean_unique_ex="???",
-			k_cbean_balley_ex="Alley!",
-			k_cbean_aexit_ex="Exit",
-			k_cbean_pboys_arule="Choose a Cup",
-			k_cbean_pboys_aplus="+",
-			k_cbean_pboys_aminus="-",
+            k_cbean_pboys_abet = "Bet",
+            k_cbean_unique_ex = "???",
+            k_cbean_balley_ex = "Alley!",
+            k_cbean_aexit_ex = "Exit",
+            k_cbean_pboys_arule = "Choose a Cup",
+            k_cbean_pboys_aplus = "+",
+            k_cbean_pboys_aminus = "-",
             k_cbean_nteam_doubled = "Doubled!",
             cbean_disable_animations = "Disable Joker Animations",
         },
@@ -4058,40 +4081,40 @@ return {
             --House Rules Hands
             ["cbean_0chill_fibonacci"] = {
                 "A hand that contains an 8, 5, 3, 2, and an Ace",
-                "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"  
+                "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"
             },
 
             ["cbean_0chill_fibonacci_flush"] = {
                 "A hand that contains an 8, 5, 3, 2,",
                 "and an Ace sharing the same suit",
-                "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"  
+                "Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play"
             },
 
             ["cbean_0chill_proceed"] = {
                 "PROCEED",
-                "Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play"  
+                "Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play"
             },
 
             ["cbean_0chill_deer_in_headlights"] = {
                 "A hand that contains 5 kings",
                 "Must have {C:attention}House Rules{} and {C:attention}Asgore's Truck{} to play",
-                "{C:inactive}Driving in my truck, right after a beer..."  
+                "{C:inactive}Driving in my truck, right after a beer..."
             },
 
             ["cbean_0chill_jackpot"] = {
                 "A hand that contains 3 sevens",
-                "Must have {C:attention}House Rules{} and {C:attention}Oops! All 6s{} to play",  
+                "Must have {C:attention}House Rules{} and {C:attention}Oops! All 6s{} to play",
             },
 
             ["cbean_0chill_house_rules"] = {
                 "A hand that contains an Jack, 4, 3, 1,",
-                "Must have {C:attention}House Rules{} to play"  
+                "Must have {C:attention}House Rules{} to play"
             },
         },
         poker_hands = {
-            ["cbean_sdown_antistraight"] = "Gay", -- Athebyne | N/A | Athebyne
+            ["cbean_sdown_antistraight"] = "Gay",             -- Athebyne | N/A | Athebyne
             ["cbean_sdown_antistraight_flush"] = "Gay Flush", -- Athebyne | N/A | Athebyne
-            ["cbean_sdown_bobtail"] = "Bobtail", -- Athebyne | N/A | Athebyne
+            ["cbean_sdown_bobtail"] = "Bobtail",              -- Athebyne | N/A | Athebyne
 
             --House Rules Hands
             ["cbean_0chill_fibonacci"] = "HR Fibonacci",
@@ -4101,111 +4124,111 @@ return {
             ["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
             ["cbean_0chill_jackpot"] = "HR Jackpot!"
         },
-        quips={ 
-            cbean_pboys_hi_1={
+        quips = {
+            cbean_pboys_hi_1 = {
                 "I hope you'll",
-				"be interested",
-				"in my game!",
+                "be interested",
+                "in my game!",
             },
-            cbean_pboys_hi_2={
+            cbean_pboys_hi_2 = {
                 "Hello there!",
             },
-            cbean_pboys_hi_3={
+            cbean_pboys_hi_3 = {
                 "Let's play a game!",
             },
-            cbean_pboys_hi_4={
+            cbean_pboys_hi_4 = {
                 "Top of the",
-				"morning to you!",
+                "morning to you!",
             },
-            cbean_pboys_hi_5={
+            cbean_pboys_hi_5 = {
                 "Hello traveler!",
             },
-            cbean_pboys_hi_6={
+            cbean_pboys_hi_6 = {
                 "Hi, I hope you",
-				"brought good",
-				"luck with you!",
+                "brought good",
+                "luck with you!",
             },
-            cbean_pboys_hi_7={
+            cbean_pboys_hi_7 = {
                 "Welcome back alley!"
             },
-			cbean_pboys_win_1={
+            cbean_pboys_win_1 = {
                 "{C:dark_edition}YOU WIN!",
                 "{C:inactive}sadly...",
             },
-            cbean_pboys_win_2={
+            cbean_pboys_win_2 = {
                 "My disappearing",
-				"trick didn't work...",
+                "trick didn't work...",
             },
-            cbean_pboys_win_3={
+            cbean_pboys_win_3 = {
                 "It was",
-				"beginner's luck!",
+                "beginner's luck!",
             },
-            cbean_pboys_win_4={
+            cbean_pboys_win_4 = {
                 "I need to shuffle",
-				"{S:1.1,C:attention,E:2}faster",
+                "{S:1.1,C:attention,E:2}faster",
             },
-            cbean_pboys_win_5={
+            cbean_pboys_win_5 = {
                 "You won?",
-				"{C:inactive}oh man",
+                "{C:inactive}oh man",
             },
-            cbean_pboys_win_6={
+            cbean_pboys_win_6 = {
                 "My debts are growing",
             },
-            cbean_pboys_win_7={
+            cbean_pboys_win_7 = {
                 "...",
             },
-			cbean_pboys_lose_1={
+            cbean_pboys_lose_1 = {
                 "Better luck",
-				"next time",
+                "next time",
             },
-            cbean_pboys_lose_2={
+            cbean_pboys_lose_2 = {
                 "99 percent of",
-				"gamblers stop right",
-				"before winning big",
+                "gamblers stop right",
+                "before winning big",
             },
-            cbean_pboys_lose_3={
+            cbean_pboys_lose_3 = {
                 "You cant stop",
-				"losing",
+                "losing",
             },
-            cbean_pboys_lose_4={
+            cbean_pboys_lose_4 = {
                 "Wheel of fortune",
-				"probably never",
-				"works for you!",
+                "probably never",
+                "works for you!",
             },
-            cbean_pboys_lose_5={
+            cbean_pboys_lose_5 = {
                 "Wait, Did I win?",
             },
-            cbean_pboys_lose_6={
+            cbean_pboys_lose_6 = {
                 "Money Money Money",
             },
-            cbean_pboys_lose_7={
+            cbean_pboys_lose_7 = {
                 "!!!",
             },
-			cbean_pboys_tutorial_1={
+            cbean_pboys_tutorial_1 = {
                 "This is {C:attention}Back Alley!",
             },
-            cbean_pboys_tutorial_2={
+            cbean_pboys_tutorial_2 = {
                 "You can {C:attention}bet{}",
-				"your money here",
+                "your money here",
             },
-            cbean_pboys_tutorial_3={
+            cbean_pboys_tutorial_3 = {
                 "Then i will {C:attention}swap{} cups",
-				"and you have to",
-				"{C:attention}choose{} the right one",
+                "and you have to",
+                "{C:attention}choose{} the right one",
             },
-            cbean_pboys_tutorial_4={
+            cbean_pboys_tutorial_4 = {
                 "The correct cup will",
-				"{C:attention}double{} the bet",
+                "{C:attention}double{} the bet",
             },
-            cbean_pboys_tutorial_5={
+            cbean_pboys_tutorial_5 = {
                 "Otherwise you will",
-				"{C:attention}lose{} everything",
+                "{C:attention}lose{} everything",
             },
-            cbean_pboys_tutorial_6={
+            cbean_pboys_tutorial_6 = {
                 "The higher the bet, the more",
-				"{C:attention}difficult{} it becomes",
+                "{C:attention}difficult{} it becomes",
             },
-            cbean_pboys_tutorial_7={
+            cbean_pboys_tutorial_7 = {
                 "{C:attention}Good luck!",
             },
         },
@@ -4218,15 +4241,14 @@ return {
             coldbean_idea = { "Idea: #1#" },
             coldbean_art = { "Art: #1#" },
             coldbean_code = { "Code: #1#" },
-	    a_burned_cards="#1# Cards",
+            a_burned_cards = "#1# Cards",
         },
         v_text = {
             --TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
             --be that modifiable if nobody else uses this. In which case who cares tbh.
-            ch_c_cbean_sdown_all_blinds_are={
+            ch_c_cbean_sdown_all_blinds_are = {
                 "{C:attention}All Blinds{} are {C:attention}The Folly",
             }
         },
     },
 }
-
