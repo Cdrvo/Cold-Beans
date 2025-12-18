@@ -21,12 +21,10 @@ SMODS.Sticker({
 	end,
 	calculate = function(self, card, context)
         local s = self.config
-		if context.stay_flipped and context.to_area == G.hand then
-            if G.deck.cards[#G.deck.cards]:is_face() then
+		if context.stay_flipped and context.to_area == G.hand and context.other_card:is_face() then
 			return {
 				stay_flipped = true,
 			}
-        end
 		end
 	end,
 	beans_credits = {
