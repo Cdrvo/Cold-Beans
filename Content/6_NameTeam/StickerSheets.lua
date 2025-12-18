@@ -90,6 +90,62 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
+  key = "perishable_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 0 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  loc_vars = function(self, info_queue, card)
+    sticker_info = SMODS.Stickers["perishable"]
+    sticker_info.loc_vars = function(self, info_queue, card)
+      return {vars={5,5}}
+    end
+    info_queue[#info_queue + 1] = sticker_info
+    return {}
+  end,
+  can_use = function(self, card)
+    local candidates = {}
+    for _, v in ipairs(G.jokers.cards) do
+      if not (v.ability and v.ability.perishable) then return true end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local candidates = {}
+    for _, v in ipairs(G.jokers.cards) do
+      if not (v.ability and v.ability.perishable) then candidates[#candidates + 1] = v end
+    end
+    if #candidates > 0 then
+      local affected_card = pseudorandom_element(candidates, pseudoseed("perishable_stickersheet"))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          play_sound("gold_seal", 1.5, 1)
+          affected_card:add_sticker("perishable", true)
+          card:juice_up(0.3, 0.5)
+          affected_card:juice_up()
+          return true
+        end
+      }))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.2,
+        func = (function()
+          affected_card:set_edition({negative = true}, true)
+          return true
+        end)
+      }))
+      delay(0.6)
+    end
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
   key = "rental_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 0 },
   draw_extra = function(self, card, layer)
@@ -143,7 +199,7 @@ SMODS.Consumable {
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "frowning_sheet",
-  pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 1 },
+  pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 1 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
       card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
@@ -198,7 +254,7 @@ SMODS.Consumable {
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "flashcard_sheet",
-  pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 0 },
+  pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 6 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
       card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
@@ -246,61 +302,5 @@ SMODS.Consumable {
         end)
       }))
       delay(0.6)
-  end
-}
-
-SMODS.Consumable {
-  set = "cbean_StickerSheet",
-  key = "perishable_sheet",
-  pos = { x = 0, y = 0 }, pos_extra = { x = 5, y = 0 },
-  draw_extra = function(self, card, layer)
-    if self.discovered or card.params.bypass_discovery_center then
-      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
-    end
-  end,
-  atlas = "NAMETEAM_StickerSheets",
-  loc_vars = function(self, info_queue, card)
-    sticker_info = SMODS.Stickers["perishable"]
-    sticker_info.loc_vars = function(self, info_queue, card)
-      return {vars={5,5}}
-    end
-    info_queue[#info_queue + 1] = sticker_info
-    return {}
-  end,
-  can_use = function(self, card)
-    local candidates = {}
-    for _, v in ipairs(G.jokers.cards) do
-      if not (v.ability and v.ability.perishable) then return true end
-    end
-    return false
-  end,
-  use = function(self, card, area, copier)
-    local candidates = {}
-    for _, v in ipairs(G.jokers.cards) do
-      if not (v.ability and v.ability.perishable) then candidates[#candidates + 1] = v end
-    end
-    if #candidates > 0 then
-      local affected_card = pseudorandom_element(candidates, pseudoseed("perishable_stickersheet"))
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.4,
-        func = function()
-          play_sound("gold_seal", 1.5, 1)
-          affected_card:add_sticker("perishable", true)
-          card:juice_up(0.3, 0.5)
-          affected_card:juice_up()
-          return true
-        end
-      }))
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.2,
-        func = (function()
-          affected_card:set_edition({negative = true}, true)
-          return true
-        end)
-      }))
-      delay(0.6)
-    end
   end
 }
