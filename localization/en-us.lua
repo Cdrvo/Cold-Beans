@@ -4091,6 +4091,7 @@ return {
             cbean_black = "Black",
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
+            cbean_the_eye_sticker = "The Eye",
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
         },

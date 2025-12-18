@@ -298,7 +298,7 @@ if G.GAME.selected_back then
 		if ae then
 			G.GAME.selected_back:nteam_apply_sticker(ae)
             if G.deck.cards[1] then
-                SMODS.calculate_effect { card = G.deck.cards[1], message = "Sticker Applied!" }
+                SMODS.calculate_effect { card = G.deck.cards[1] or G.deck, message = locallize(ae, "labels") .. "!" }
             end
 		end
 	end
