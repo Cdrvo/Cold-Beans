@@ -19,9 +19,19 @@ SMODS.Sticker({
 	end,
     calculate = function(self,card,context)
         if context.first_hand_drawn then
-            SMODS.juice_up_blind()
-			G.GAME.blind.chips = G.GAME.blind.chips * 2
-			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					G.GAME.blind.chips = G.GAME.blind.chips * 2
+					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+					G.GAME.blind:juice_up()
+                    SMODS.calculate_effect({
+                        message = localize("k_cbean_nteam_doubled"),
+                        colour = { 0.8, 0.45, 0.85, 1 },
+                        instant = true
+                    }, card)
+					return true
+				end,
+			}))
 		end
     end,
 	beans_credits = {
