@@ -19,7 +19,9 @@ SMODS.Sticker({
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,
-	sets = {},
+	sets = {
+		Deck = true
+	},
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {},
