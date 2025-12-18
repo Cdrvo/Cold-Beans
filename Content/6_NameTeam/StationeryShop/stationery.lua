@@ -1,5 +1,10 @@
 G.STATES.STATIONERY = 102938475688888
 
+SMODS.Font({
+	key = "fancy",
+	path = "corinthia.ttf",
+})
+
 G.FUNCS.nteam_can_exchange_stickers = function(e)
 	local can_exchange = false
 	if G.jokers and #G.jokers.highlighted == 1 then
@@ -26,10 +31,38 @@ G.FUNCS.nteam_exchange_stickers = function(e)
 			target:remove_sticker(key)
 		end
 	end
+	G.E_MANAGER:add_event(Event({
+		func = function()
+			G.GAME.stationery_accepted = NAMETEAM.poll_stationery_accepted()
+			G.GAME.stationery_rewards = NAMETEAM.poll_stationery_rewards()
+			play_sound("coin2")
+			play_sound("other1")
+			local acc_container = G.stationery:get_UIE_by_ID("nteam_accepted")
+			if acc_container then
+				acc_container.config.object:remove()
+				acc_container.config.object = UIBox({
+					definition = G.UIDEF.nteam_accepted(),
+					config = { type = "cm", parent = acc_container },
+				})
+				acc_container.config.object:recalculate()
+			end
+			local rew_container = G.stationery:get_UIE_by_ID("nteam_rewards")
+			if rew_container then
+				rew_container.config.object:remove()
+				rew_container.config.object = UIBox({
+					definition = G.UIDEF.nteam_rewards(),
+					config = { type = "cm", parent = rew_container },
+				})
+				rew_container.config.object:recalculate()
+			end
+			G.stationery:recalculate()
+			return true
+		end,
+	}))
 	for _, r in ipairs(G.GAME.stationery_rewards) do
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
-			delay = 0.3,
+			delay = 0.2,
 			func = function()
 				NAMETEAM.STATIONERY_REWARDS[r]:apply(target)
 				return true
@@ -103,7 +136,7 @@ function G.UIDEF.nteam_scholar()
 		Sprite(0, 0, G.CARD_W * 1.5, G.CARD_H * 1.5, G.ASSET_ATLAS["cbean_NAMETEAM_Jokers"], { x = 7, y = 2 })
 	sprite.states.collide.can = true
 	sprite.states.drag.can = false
-	sprite.config.speech_bubble_align = { align = "bm", offset = { x = 0, y = 0.2 }, parent = sprite }
+	sprite.config.speech_bubble_align = { align = "bm", offset = { x = 0, y = 0.1 }, parent = sprite }
 	sprite.children.tutorial_text = not G.GAME.seen_stationery_tutorial
 			and UIBox({
 				definition = G.UIDEF.speech_bubble("cbean_nteam_tutorial_" .. NAMETEAM.TUTORIAL_STATE, { quip = true }),
@@ -128,8 +161,8 @@ function G.UIDEF.nteam_scholar()
 	end
 	function sprite:click()
 		Node.click(self)
-		NAMETEAM.TUTORIAL_STATE = (NAMETEAM.TUTORIAL_STATE + 1) % 8
-		if NAMETEAM.TUTORIAL_STATE == 7 then
+		NAMETEAM.TUTORIAL_STATE = (NAMETEAM.TUTORIAL_STATE + 1) % 11
+		if NAMETEAM.TUTORIAL_STATE == 10 then
 			G.GAME.seen_stationery_tutorial = true
 		end
 		if self.children.tutorial_text then
@@ -205,85 +238,128 @@ G.UIDEF.nteam_stationery = function()
 		nodes = {
 			UIBox_dyn_container({
 				{
-					n = G.UIT.C,
-					config = { padding = 0.1 },
+					n = G.UIT.R,
+					config = { align = "cm", colour = G.C.DYN_UI.BOSS_MAIN, r = 0.1, padding = 0.1, emboss = 0.05 },
 					nodes = {
 						{
-							n = G.UIT.R,
-							config = { align = "cm" },
+							n = G.UIT.C,
+							config = { padding = 0.1, colour = G.C.L_BLACK, r = 0.1, minh = 10 },
 							nodes = {
 								{
-									n = G.UIT.O,
-									config = {
-										object = UIBox({
-											definition = G.UIDEF.nteam_scholar(),
-											config = { align = "cm" },
-										}),
-									},
-								},
-							},
-						},
-					},
-				},
-				{
-					n = G.UIT.C,
-					config = { padding = 0.2 },
-					nodes = {
-						UIBox_button({
-							func = "nteam_can_exchange_stickers",
-							label = { localize("b_nteam_exchange") },
-						}),
-						{
-							n = G.UIT.R,
-							config = { align = "cm" },
-							nodes = {
-								{
-									n = G.UIT.C,
-									config = {
-										colour = G.C.GREEN,
-										r = 0.1,
-										align = "cm",
-										shadow = true,
-										minw = 2.7,
-										minh = 1.8,
-										func = "nteam_can_reroll_stationery",
-										button = "nteam_reroll_stationery",
-										hover = true,
-									},
+									n = G.UIT.R,
+									config = { align = "cm" },
 									nodes = {
 										{
-											n = G.UIT.R,
-											config = { align = "cm" },
-											nodes = {
-												{
-													n = G.UIT.T,
-													config = {
-														text = localize("k_reroll"),
-														scale = 0.4,
-														colour = G.C.UI.TEXT_LIGHT,
-													},
-												},
-											},
+											n = G.UIT.C,
+											config = {},
+											nodes = NAMETEAM.create_localized_rows(
+												nil,
+												"cbean_stationery_name",
+												{ text_scale = 0.9 }
+											),
 										},
+									},
+								},
+								{
+									n = G.UIT.R,
+									config = { align = "cm" },
+									nodes = {
 										{
-											n = G.UIT.R,
-											config = { align = "cm" },
+											n = G.UIT.O,
+											config = {
+												object = UIBox({
+													definition = G.UIDEF.nteam_scholar(),
+													config = { align = "cm" },
+												}),
+											},
+										},
+									},
+								},
+							},
+						},
+						{
+							n = G.UIT.C,
+							config = { padding = 0.1, minh = 10 },
+							nodes = {
+								UIBox_button({
+									func = "nteam_can_exchange_stickers",
+									label = { localize("b_nteam_exchange") },
+									minh = 1.5,
+									scale = 0.6
+								}),
+								{
+									n = G.UIT.R,
+									config = {},
+									nodes = {
+										{
+											n = G.UIT.B,
+											config = { w = 0.1, h = 0.05 },
+										},
+									},
+								},
+								{
+									n = G.UIT.R,
+									config = { align = "cm", r = 0.1 },
+									nodes = {
+										{
+											n = G.UIT.C,
+											config = {
+												--colour = G.C.GREEN,
+												r = 0.1,
+												align = "cm",
+												shadow = true,
+												minw = 2.7,
+												minh = 1.5,
+												func = "nteam_can_reroll_stationery",
+												button = "nteam_reroll_stationery",
+												hover = true,
+											},
 											nodes = {
 												{
-													n = G.UIT.T,
-													config = {
-														text = localize("$"),
-														scale = 0.7,
-														colour = G.C.UI.TEXT_LIGHT,
+													n = G.UIT.R,
+													config = { align = "cm" },
+													nodes = {
+														{
+															n = G.UIT.T,
+															config = {
+																text = localize("k_reroll"),
+																scale = 0.4,
+																colour = G.C.UI.TEXT_LIGHT,
+															},
+														},
 													},
 												},
 												{
-													n = G.UIT.T,
-													config = {
-														scale = 0.7,
-														colour = G.C.UI.TEXT_LIGHT,
-														ref_table = G.GAME,
-														ref_value = "stationery_reroll_cost",
+													n = G.UIT.R,
+													config = {},
+													nodes = {
+														{
+															n = G.UIT.B,
+															config = { w = 0.1, h = 0.05 },
+														},
+													},
+												},
+												{
+													n = G.UIT.R,
+													config = { align = "cm" },
+													nodes = {
+														{
+															n = G.UIT.T,
+															config = {
+																text = localize("$"),
+																scale = 0.7,
+																colour = G.C.UI.TEXT_LIGHT,
+															},
+														},
+														{
+															n = G.UIT.T,
+															config = {
+																scale = 0.75,
+																colour = G.C.UI.TEXT_LIGHT,
+																ref_table = G.GAME,
+																ref_value = "stationery_reroll_cost",
+															},
+														},
 													},
 												},
 											},
@@ -292,70 +368,70 @@ G.UIDEF.nteam_stationery = function()
 								},
 							},
 						},
-					},
-				},
-				{
-					n = G.UIT.C,
-					config = { padding = 0.1 },
-					nodes = {
 						{
-							n = G.UIT.R,
-							config = { align = "cm" },
+							n = G.UIT.C,
+							config = { padding = 0.1, colour = G.C.L_BLACK, r = 0.1, minh = 10 },
 							nodes = {
 								{
-									n = G.UIT.C,
-									config = {},
-									nodes = NAMETEAM.create_localized_rows(
-										nil,
-										"cbean_stationery_accepts",
-										{ text_scale = 1.2, minw = 4.2 }
-									),
-								},
-							},
-						},
-						{
-							n = G.UIT.R,
-							config = { align = "cm" },
-							nodes = {
-								{
-									n = G.UIT.O,
-									config = {
-										object = UIBox({
-											definition = G.UIDEF.nteam_accepted(),
-											config = { align = "cm" },
-										}),
-										id = "nteam_accepted",
+									n = G.UIT.R,
+									config = { align = "cm" },
+									nodes = {
+										{
+											n = G.UIT.C,
+											config = {},
+											nodes = NAMETEAM.create_localized_rows(
+												nil,
+												"cbean_stationery_accepts",
+												{ text_scale = 1.2, minw = 5 }
+											),
+										},
 									},
 								},
-							},
-						},
-						{
-							n = G.UIT.R,
-							config = { align = "cm" },
-							nodes = {
 								{
-									n = G.UIT.C,
-									config = {},
-									nodes = NAMETEAM.create_localized_rows(
-										nil,
-										"cbean_stationery_gives",
-										{ text_scale = 1.2, minw = 4.2 }
-									),
+									n = G.UIT.R,
+									config = { align = "cm" },
+									nodes = {
+										{
+											n = G.UIT.O,
+											config = {
+												object = UIBox({
+													definition = G.UIDEF.nteam_accepted(),
+													config = { align = "cm" },
+												}),
+												id = "nteam_accepted",
+											},
+										},
+									},
 								},
-							},
-						},
-						{
-							n = G.UIT.R,
-							config = { align = "cm" },
-							nodes = {
 								{
-									n = G.UIT.O,
-									config = {
-										object = UIBox({
-											definition = G.UIDEF.nteam_rewards(),
-											config = { align = "cm" },
-										}),
-										id = "nteam_rewards",
+									n = G.UIT.R,
+									config = { align = "cm" },
+									nodes = {
+										{
+											n = G.UIT.C,
+											config = {},
+											nodes = NAMETEAM.create_localized_rows(
+												nil,
+												"cbean_stationery_gives",
+												{ text_scale = 1.2, minw = 5 }
+											),
+										},
+									},
+								},
+								{
+									n = G.UIT.R,
+									config = { align = "cm" },
+									nodes = {
+										{
+											n = G.UIT.O,
+											config = {
+												object = UIBox({
+													definition = G.UIDEF.nteam_rewards(),
+													config = { align = "cm" },
+												}),
+												id = "nteam_rewards",
+											},
+										},
 									},
 								},
 							},
