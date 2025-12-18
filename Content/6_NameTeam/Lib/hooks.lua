@@ -41,12 +41,6 @@ function G:start_run(args)
 	---@type string[]
     G.GAME.selected_back.ability = G.GAME.selected_back.ability or {}
 
-	if pseudorandom("deck_sticker") < 1 / 4 and G.GAME.modifiers.deck_stickers then
-		local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Deck")
-		if ae then
-			G.GAME.selected_back:nteam_apply_sticker(ae)
-		end
-	end
 	---@type integer
 	G.GAME.round_resets.stationery_reroll_cost = G.GAME.round_resets.stationery_reroll_cost or 5
 	---@type integer
