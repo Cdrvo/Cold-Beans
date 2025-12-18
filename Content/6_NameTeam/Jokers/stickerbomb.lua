@@ -9,7 +9,7 @@ SMODS.Joker({
                     }
                 }
     end,
-    cost = 1,
+    cost = 4,
     rarity = 1,
     blueprint_compat = false,
     eternal_compat = true,
@@ -24,7 +24,7 @@ SMODS.Joker({
         extra = {
             add_mult = 2,
             current_mult = 0,
-            current_back = "j_satellite"
+            current_back = "none"
         }
     },
 
@@ -113,7 +113,11 @@ function cbean_nteam_get_amount_of_stickers()
             end
         end
     end
-    -- Do something for the deck sticker
+    for jk, jv in pairs(G.GAME.selected_back.ability) do
+        if NAMETEAM.contains(sticker_keys, jk) then
+            sticker_amount = sticker_amount + 1
+        end
+    end
     return sticker_amount
 end
 
