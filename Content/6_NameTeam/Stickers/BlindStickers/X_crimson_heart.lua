@@ -1,4 +1,4 @@
- SMODS.Sticker({
+SMODS.Sticker({
 	key = "crimson_heart_sticker",
 	atlas = "NAMETEAM_Stickers_boss",
 	pos = {
@@ -10,8 +10,8 @@
 	rate = 0,
 	needs_enable_flag = false,
 	sets = {
-        Blind = true
-    },
+		Blind = true,
+	},
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {},
@@ -30,38 +30,43 @@
 			end
 		end
 	end,
-    NAMETEAM_removed = function(self, card)
-            local jokers = {}
-           for i = 1, #G.jokers.cards do
-                if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then jokers[#jokers+1] =G.jokers.cards[i] end
-                SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
-            end 
-    end,
-    calculate = function(self,card,context)
-        if context.hand_drawn then
-             local jokers = {}
-            for i = 1, #G.jokers.cards do
-                if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then jokers[#jokers+1] =G.jokers.cards[i] end
-                SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
-            end 
-            local _card = pseudorandom_element(jokers, pseudoseed('crimson_heart'))
-            if _card then
-                SMODS.debuff_card(_card, true, "NAMETEAM_crimson_heart_sticker")
-                _card:juice_up()
-            end
-        end
-        if context.end_of_round then
-                         local jokers = {}
-            for i = 1, #G.jokers.cards do
-                if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then jokers[#jokers+1] =G.jokers.cards[i] end
-                SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
-            end 
-        end
-    end,
+	NAMETEAM_removed = function(self, card)
+		local jokers = {}
+		for i = 1, #G.jokers.cards do
+			if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
+				jokers[#jokers + 1] = G.jokers.cards[i]
+			end
+			SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
+		end
+	end,
+	calculate = function(self, card, context)
+		if context.hand_drawn then
+			local jokers = {}
+			for i = 1, #G.jokers.cards do
+				if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
+					jokers[#jokers + 1] = G.jokers.cards[i]
+				end
+				SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
+			end
+			local _card = pseudorandom_element(jokers, pseudoseed("crimson_heart"))
+			if _card then
+				SMODS.debuff_card(_card, true, "NAMETEAM_crimson_heart_sticker")
+				_card:juice_up()
+			end
+		end
+		if context.end_of_round then
+			local jokers = {}
+			for i = 1, #G.jokers.cards do
+				if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
+					jokers[#jokers + 1] = G.jokers.cards[i]
+				end
+				SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
+			end
+		end
+	end,
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Inky",  
+		art = "Inky",
 	},
 })
- 
