@@ -3291,7 +3291,58 @@ return {
                         "{C:attention}Voucher Tag{}"
                     }
                 }
-            }
+            },
+            c_cbean_rental_sheet = {
+                name = "Rental",
+                text = {
+                    {
+                        "Applies {C:rental}Rental{} to",
+                        "a random Joker"
+                    },
+                    {
+                        "Gives {C:money}$20"
+                    }
+                }
+            },
+            c_cbean_frowning_sheet = {
+                name = "Frowning",
+                text = {
+                    {
+                        "Applies {C:attention}Frowning{} to",
+                        "{C:attention}1{} selected card"
+                    },
+                    {
+                        "Creates a random",
+                        "{C:attention}Enhanced face card{}"
+                    }
+                }
+            },
+            c_cbean_flashcard_sheet = {
+                name = "Flashcard",
+                text = {
+                    {
+                        "Applies {C:attention}Flashcard{} to",
+                        "{C:attention}1{} selected Joker"
+                    },
+                    {
+                        "Next {C:attention}5{} rerolls",
+                        "cost {C:attention}$3{} more"
+                    }
+                }
+            },
+            c_cbean_perishable_sheet = {
+                name = "Perishable",
+                text = {
+                    {
+                        "Applies {C:attention}Perishable{} to",
+                        "a random Joker"
+                    },
+                    {
+                        "Applies {C:dark_edition}Negative{} to",
+                        "the same Joker"
+                    }
+                }
+            },
         },
         Tag = {},
         Tarot = {
