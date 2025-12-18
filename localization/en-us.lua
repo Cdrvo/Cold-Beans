@@ -2422,6 +2422,24 @@ return {
                     "card {C:attention}once"
                 }
             },
+
+            -- Blind Stickers
+
+            cbean_the_arm_sticker = {
+                name = "The Arm",
+                text={
+                    "Decrease level of",
+                    "played poker hand",
+                },
+            },
+
+            cbean_the_club_sticker = {
+                name = "The Club",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Club cards",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4063,6 +4081,8 @@ return {
             cbean_plasma = "Plasma",
             cbean_painted = "Painted",
             cbean_black = "Black",
+            cbean_the_arm_sticker = "The Arm",
+            cbean_the_club_sticker = "The Club",
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
         },
