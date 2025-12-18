@@ -18,10 +18,10 @@ SMODS.Sticker({
 		}
 	end,
     calculate = function(self,card,context)
-        if context.setting_blind then
+        if context.first_hand_drawn then
+            SMODS.juice_up_blind()
 			G.GAME.blind.chips = G.GAME.blind.chips * 2
 			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-			SMODS.juice_up_blind()
 		end
     end,
 	beans_credits = {
