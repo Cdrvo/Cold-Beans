@@ -185,7 +185,7 @@ function NAMETEAM.create_localized_rows(set, key, args)
 		end
 		table.insert(rows, {
 			n = G.UIT.R,
-			config = { align = "cm", padding = 0.05, colour = args.bg_colour, r = 0.1, emboss = 0.05 },
+			config = { align = "cm", padding = 0.05, colour = args.bg_colour, r = 0.1, emboss = 0.05, minw = args.minw },
 			nodes = {
 				{
 					n = G.UIT.C,
@@ -205,7 +205,7 @@ function NAMETEAM.create_localized_rows(set, key, args)
 		end
 		table.insert(rows, {
 			n = G.UIT.R,
-			config = { align = "cm", padding = 0.05, colour = args.bg_colour, r = 0.1, emboss = 0.05 },
+			config = { align = "cm", padding = 0.05, colour = args.bg_colour, r = 0.1, emboss = 0.05, minw = args.minw },
 			nodes = {
 				{
 					n = G.UIT.C,
@@ -232,6 +232,10 @@ function NAMETEAM.get_unique_pseudorandom_elements(t, n, seed)
 	return ret
 end
 
+---@generic T
+---@param t T[]
+---@param func fun(item: T): boolean
+---@return T[]
 function NAMETEAM.filter(t, func)
 	local ret = {}
 	for _, v in ipairs(t) do
