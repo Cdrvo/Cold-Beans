@@ -11,10 +11,10 @@ SMODS.Stake {
     },
     loc_txt = {
         name = "Blind Stake",
-        text = {"Consumables can spawn with certain stickers"},
+        text = {"Blind stickers can be applied to decks"},
         sticker = {
             name = "Blind Sticker",
-            text = {"Used this Joker", "to win on {C:attention}Blind", "{C:attention}stake{} difficulty"}
+            text = {"Used this Joker", "to win on {C:attention}Blind", "{C:attention}Stake{} difficulty"}
         }
     },
     modifiers = function()

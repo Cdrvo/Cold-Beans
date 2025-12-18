@@ -42,7 +42,7 @@ function G:start_run(args)
     G.GAME.selected_back.ability = G.GAME.selected_back.ability or {}
 
 	if pseudorandom("deck_sticker") < 1 / 4 and G.GAME.modifiers.deck_stickers then
-		local ae = NAMETEAM.poll_sticker(true, G.deck.cards[1], true, "Deck")
+		local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Deck")
 		if ae then
 			G.GAME.selected_back:nteam_apply_sticker(ae)
 		end

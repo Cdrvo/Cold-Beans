@@ -11,10 +11,10 @@ SMODS.Stake {
     },
     loc_txt = {
         name = "Deck Stake",
-        text = {"Consumables can spawn with certain stickers"},
+        text = {"Decks has a 1/4 chance to gain a sticker after leaving the shop"},
         sticker = {
-            name = "Consumable Sticker",
-            text = {"Used this Joker", "to win on {C:attention}Deck", "{C:attention}stake{} difficulty"}
+            name = "Deck Sticker",
+            text = {"Used this Joker", "to win on {C:attention}Deck", "{C:attention}Stake{} difficulty"}
 
         }
     },
