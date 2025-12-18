@@ -39,7 +39,7 @@ SMODS.Sticker({
 					G.GAME.blind:juice_up()
 					SMODS.calculate_effect({
 						message = localize("k_cbean_nteam_doubled"),
-						colour = { 0.8, 0.45, 0.85, 1 },
+						colour = G.C.PURPLE,
 						instant = true,
 					}, card)
 					return true

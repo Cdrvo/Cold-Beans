@@ -38,8 +38,8 @@ SMODS.Sticker({
 					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 					G.GAME.blind:juice_up()
                     SMODS.calculate_effect({
-                        message = localize("k_cbean_nteam_doubled"),
-                        colour = { 0.8, 0.45, 0.85, 1 },
+                        message = localize("k_cbean_nteam_tripled"),
+                        colour = G.C.PURPLE,
                         instant = true
                     }, card)
 					return true

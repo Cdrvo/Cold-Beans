@@ -4326,6 +4326,7 @@ return {
             k_cbean_pboys_aplus = "+",
             k_cbean_pboys_aminus = "-",
             k_cbean_nteam_doubled = "Doubled!",
+            k_cbean_nteam_tripled = "Tripled!",
             k_cbean_nteam_halved = "Halved!",
             cbean_disable_animations = "Disable Joker Animations",
             k_cbean_stickersheet = "Sticker Sheet",
