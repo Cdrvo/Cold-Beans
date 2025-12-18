@@ -2560,6 +2560,13 @@ return {
                     "lose all discards"
                 },
             },
+            cbean_the_wheel_sticker = {
+                name = "The Wheel",
+                text={
+                    "#1# in #2# cards get",
+                    "drawn face down"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
