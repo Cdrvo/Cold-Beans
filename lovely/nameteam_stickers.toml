@@ -329,3 +329,34 @@ payload = '''
     end
 '''
 match_indent = true
+
+# Deck Blind Sticker apply function
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+SMODS.calculate_context({end_of_round = true, game_over = game_over, beat_boss = G.GAME.blind.boss })
+'''
+position = "after"
+payload = '''
+if G.GAME.modifiers.blind_stickers then
+        local tab = {}
+        local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Blind")
+          
+        for k, v in pairs(SMODS.Stickers) do
+            if v.sets and v.sets["Blind"] then
+                tab[#tab+1] = k
+            end
+        end
+
+        for k, v in pairs(tab) do
+            if G.GAME.selected_back.ability[v] then
+                G.GAME.selected_back:nteam_remove_sticker(v)
+            end
+        end
+
+        G.GAME.selected_back:nteam_apply_sticker(ae)
+    end
+'''
+match_indent = true

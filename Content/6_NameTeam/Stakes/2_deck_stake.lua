@@ -1,7 +1,7 @@
 SMODS.Stake {
     key = "deck",
     colour = HEX("55c6d9"),
-    applied_stakes = {"gold"},
+    applied_stakes = {"cbean_consumable"},
     shiny = true,
     unlocked = false,
     prefix_config = {
