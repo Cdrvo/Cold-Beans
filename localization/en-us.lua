@@ -2440,6 +2440,14 @@ return {
                     "{C:red}debuff{} all Club cards",
                 },
             },
+
+            cbean_the_eye_sticker = {
+                name = "The Eye",
+                text={
+                    "No repeat",
+                    "hand types"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
