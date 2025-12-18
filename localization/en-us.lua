@@ -2497,6 +2497,13 @@ return {
                     "drawn face down",
                 },
             },
+            cbean_the_mouth_sticker = {
+                name = "The Mouth",
+                text={
+                    "Play only 1 hand",
+                    "type every round",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4149,6 +4156,7 @@ return {
             cbean_the_wall_sticker = "The Wall",
             cbean_the_manacle_sticker = "The Manacle",
             cbean_the_mark_sticker = "The Mark",
+            cbean_the_mouth_sticker = "The Mouth",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
