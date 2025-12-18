@@ -81,7 +81,7 @@ function cbean_nteam_get_amount_of_unique_stickers()
             end
         end
     end
-    sendDebugMessage(inspect(sticker_gotten), "cbean_nteam_sticker_collection")
+    -- endDebugMessage(inspect(sticker_gotten), "cbean_nteam_sticker_collection")
     for _ in pairs(sticker_gotten) do
         unique_stickers = unique_stickers +1 
     end

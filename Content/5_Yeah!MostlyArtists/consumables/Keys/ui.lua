@@ -65,6 +65,7 @@ function update_main_street()
             G.yma_mainstreet_dreamland.states.visible = false
         end
         G.yma_mainstreet_dreamland:recalculate()
+        G.yma_mainstreet_stationery:recalculate()
 
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -105,7 +106,9 @@ function Controller:L_cursor_press(x, y)
             G.FUNCS.show_yma_hell()
         elseif G.yma_mainstreet_dreamland and G.yma_mainstreet_dreamland.states.collide.is and yma_can_access_location('dreamland') then
             G.FUNCS.show_yma_dreamland()
-		end
+		elseif G.yma_mainstreet_stationery and G.yma_mainstreet_stationery.states.collide.is and yma_can_access_location('stationery') then
+            G.FUNCS.show_stationery()
+        end
 	end
 end
 
@@ -127,7 +130,11 @@ function G.UIDEF.yma_main_street()
         definition = G.UIDEF.dreamlandsprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
-
+    G.yma_mainstreet_stationery = UIBox{
+        definition = G.UIDEF.stationery_sprite(),
+        config = {align='cm', offset = {x=0,y=0}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+    }
+    
     local table = {}
     table[#table+1] = {
         n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.DYN_UI.BOSS_MAIN, minh = 1.5, emboss = 0.05}, nodes={
@@ -142,6 +149,9 @@ function G.UIDEF.yma_main_street()
     local table2 = {}
     table2[#table2+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_dreamland}},
+        }}
+    table2[#table2+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+            {n=G.UIT.O, config={object = G.yma_mainstreet_stationery}},
         }}
     
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={

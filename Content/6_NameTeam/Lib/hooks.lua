@@ -31,20 +31,25 @@ function G:start_run(args)
 	G.GAME.stationery_num_accepted = G.GAME.stationery_num_accepted or 2
 	---@type string[]
 	G.GAME.stationery_accepted = G.GAME.stationery_accepted
-		or {}
+		or NAMETEAM.poll_stationery_accepted()
 	---@type integer
 	G.GAME.stationery_num_rewards = G.GAME.stationery_num_rewards or 1
 	---@type string[]
 	G.GAME.stationery_rewards = G.GAME.stationery_rewards
-		or {}
+		or NAMETEAM.poll_stationery_rewards()
     -- initialize ability table where deck stickers are stored
 	---@type string[]
     G.GAME.selected_back.ability = G.GAME.selected_back.ability or {}
-
 	---@type integer
-	G.GAME.round_resets.stationery_reroll_cost = G.GAME.round_resets.stationery_reroll_cost or 5
+	G.GAME.round_resets.base_stationery_reroll_cost = G.GAME.round_resets.base_stationery_reroll_cost or 5
 	---@type integer
 	G.GAME.round_resets.free_stationery_rerolls = G.GAME.round_resets.free_stationery_rerolls or 0
+	---@type integer
+	G.GAME.stationery_reroll_cost = G.GAME.round_resets.base_stationery_reroll_cost or 5
+	---@type integer
+	G.GAME.stationery_reroll_cost_scaling = G.GAME.stationery_reroll_cost_scaling or 1
+	---@type boolean
+	G.GAME.seen_stationery_tutorial = G.GAME.seen_stationery_tutorial or false
 end
 
 -- Following 2 hooks are for storing and saving the stickers to the deck
