@@ -2462,11 +2462,27 @@ return {
                     "Mult are halved",
                 },
             },
+
+            cbean_the_goad_sticker = {
+                name = "The Goad",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Spade cards",
+                },
+            },
+
+            cbean_the_head_sticker = {
+                name = "The Head",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Heart cards",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
                 name = "Salacia"
-            },
+            },  
             c_cbean_sdown_gayflush_planet = {
                 name = "Orcus"
             },
@@ -4096,6 +4112,7 @@ return {
         labels = {
             cbean_sdown_lunar_seal = "Lunar Seal",
             cbean_yma_cipher_seal = "Cipher Seal",
+
             cbean_mailed = "Mailed",
             cbean_hooking = "Hooking",
             cbean_flashcard = "Flashcard",
@@ -4107,6 +4124,10 @@ return {
             cbean_the_club_sticker = "The Club",
             cbean_the_eye_sticker = "The Eye",
             cbean_the_fish_sticker = "The Fish",
+            cbean_the_flint_sticker = "The Flint",
+            cbean_the_goad_sticker = "The Goad",
+            cbean_the_head_sticker = "The Head",
+
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
         },
