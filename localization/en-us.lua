@@ -2567,6 +2567,13 @@ return {
                     "drawn face down"
                 },
             },
+            cbean_the_window_sticker = {
+                name = "The Window",
+                text={
+                    "When in a blind",
+                    "{C:red}debuff{} all Diamond cards",
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4281,6 +4288,7 @@ return {
             cbean_the_tooth_sticker = "The Tooth",
             cbean_the_water_sticker = "The Water",
             cbean_the_wheel_sticker = "The Wheel",
+            cbean_the_window_sticker = "The Window",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
