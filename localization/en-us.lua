@@ -2574,6 +2574,13 @@ return {
                     "{C:red}debuff{} all Diamond cards",
                 },
             },
+            cbean_verdant_leaf_sticker = {
+                name = "Verdant Leaf",
+                text={
+                    "All cards debuffed",
+                    "until 1 Joker sold"
+                },
+            },
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -4289,6 +4296,11 @@ return {
             cbean_the_water_sticker = "The Water",
             cbean_the_wheel_sticker = "The Wheel",
             cbean_the_window_sticker = "The Window",
+            cbean_verdant_leaf_sticker = "Verdant Leaf",
+            cbean_amber_acorn_sticker = "Amber Acorn",
+            cbean_cerulean_bell_sticker = "Cerulean Bell",
+            cbean_violet_vessel_sticker = "Violet Vessel",
+            cbean_crimson_heart_sticker = "Crimson Heart",
 
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
