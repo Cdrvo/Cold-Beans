@@ -2278,9 +2278,9 @@ return {
                 name = "{s:0.9}Charles “Chuck” McGill{}",
                 text =
                 {
-                    "Gives X#1# Mult if",
+                    "Gives {C:white,X:mult}X#1#{} Mult if",
                     "played hand is not",
-                    "the previous hand",
+                    "the {C:attention}previous hand{}",
                     "{C:inactive}(Previous hand: {C:attention}#2#{C:inactive}){}"
                 }
             },
@@ -3777,6 +3777,19 @@ return {
 						},
 					},
 				},
+                c_cbean_misprinted_sheet = {
+					name = "Misprinted",
+					text = {
+						{
+							"Applies {C:attention}Misprinted{} to {C:attention}1{}",
+							"selected {C:attention}playing card{}",
+						},
+						{
+							"Creates a",
+							"{C:dark_edition}Negative{} {C:attention}Misprint{}",
+						},
+					},
+				},
 				c_cbean_shield_sheet = {
 					name = "Shield",
 					text = {
@@ -4736,6 +4749,7 @@ return {
 				k_cbean_nteam_uhoh = "Uh oh!",
 				k_cbean_nteam_danger = "Danger!",
 				k_cbean_nteam_randomized = "Randomized!",
+				k_cbean_unknown = "Unknown",
 			},
 			high_scores = {},
 			labels = {
