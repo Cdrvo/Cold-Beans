@@ -2472,6 +2472,15 @@ return {
                 "{C:attention}Small Blind{} is selected "
               }
             },
+            cbean_green = {
+                name = "Green Sticker",
+                text = {
+                "Earn no {C:attention}Interest",
+                "Earn an additional {C:money}$1",
+                "per remaining {C:blue}Hand{} and",
+                "{C:red}discard{} at end of round"
+              }
+            },
             cbean_brainrot = {
                 name = "Brainrot Sticker",
                 text = {
