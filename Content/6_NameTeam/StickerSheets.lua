@@ -393,3 +393,101 @@ SMODS.Consumable {
     delay(0.6)
   end
 }
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "heavy_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 2 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_heavy"]
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+    return {}
+  end,
+  can_use = function(self, card)
+    if #G.hand.highlighted == 1 then
+      if not G.hand.highlighted[1].ability.cbean_heavy then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.hand.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        affected_card:add_sticker("cbean_heavy", true)
+        local edition = poll_edition('heavy_sheet', nil, true, true)
+        affected_card:set_edition(edition, true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = (function()
+        return true
+      end)
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "hungry_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 3 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_hungry"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if #G.jokers.highlighted == 1 then
+      if not G.jokers.highlighted[1].ability.cbean_hungry then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.jokers.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        affected_card:add_sticker("cbean_hungry", true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        affected_card.ability = NAMETEAM.mult_value(affected_card.ability, 1.5)
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}

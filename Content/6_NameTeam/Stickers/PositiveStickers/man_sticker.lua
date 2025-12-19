@@ -9,11 +9,8 @@ SMODS.Sticker({
 	badge_colour = HEX("555555"),
     needs_enable_flag = true,
 	rate = 0,
-	calculate = function(self, card, context)
-		
-	end,
 	beans_credits = {
-        code = "hasn't been done yet",
+        code = "Revo",
 		art = "GhostSalt",
 		team = "Name Team"
 	},

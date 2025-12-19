@@ -391,3 +391,26 @@ function Card:in_collection()
         end
     end
 end
+
+function NAMETEAM.mult_value(table, value)	
+	new_table = {}
+	for k, v in pairs(table) do
+		if type(v) == "table" then
+			new_new_table = copy_table(NAMETEAM.mult_value(v, value))
+			new_table[k] = new_new_table
+		elseif type(v) == "number" then
+			if
+			v ~= 0 and (v ~= 1 or (name ~= "x_chips" and name ~= "x_mult"))
+			then
+				new_table[k] = v * 2
+			else
+				new_table[k] = v
+			end
+		else
+			new_table[k] = v
+		end
+	end
+
+	return new_table
+end
+
