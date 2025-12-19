@@ -2488,6 +2488,14 @@ return {
                 "next to it"
               }
             },
+            cbean_barren = {
+                name = "Barren Sticker",
+                text = {
+                "Card {C:red}cannot",
+                "have an",
+                "enhancement"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4419,6 +4427,7 @@ return {
             cbean_nebula = "Nebula",
             cbean_brainrot = "Brainrot",
             cbean_hungry = "Hungry",
+            cbean_barren = "Barren",
 
 
             cbean_the_arm_sticker = "The Arm",
