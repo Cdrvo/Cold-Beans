@@ -27,6 +27,6 @@ SMODS.Sticker({
     beans_credits = {
         code = "Revo",
         team = "Name Team",
-        art = "GhostSalt"
+        art = "Doggfly"
     }
 })
