@@ -3538,6 +3538,33 @@ return {
                     }
                 }
             },
+            c_cbean_heavy_sheet = {
+                name = "Heavy",
+                text = {
+                    {
+                        "Applies {C:attention}Heavy{} to",
+                        "{C:attention}1{} selected card"
+                    },
+                    {
+                        "Applies {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                        "{C:dark_edition}Polychrome{} edition",
+                        "to the same Joker"
+                    }
+                }
+            },
+            c_cbean_hungry_sheet = {
+                name = "Hungry",
+                text = {
+                    {
+                        "Applies {C:attention}Hungry{} to",
+                        "a random Joker"
+                    },
+                    {
+                        "Values of said {C:attention}Joker",
+                        "are multiplied by {C:attention}x1.5"
+                    }
+                }
+            },
         },
         Tag = {},
         Tarot = {
