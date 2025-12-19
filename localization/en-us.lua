@@ -2464,6 +2464,27 @@ return {
                     "card {C:attention}once"
                 }
             },
+            cbean_egg = {
+                name = "Egg Sticker",
+                text = {
+                    "Gains {C:money}$2{} of",
+                    "{C:attention}sell value{} at",
+                    "end of round",
+                }
+            },
+            cbean_minuscule = {
+                name = "Minuscule Sticker",
+                text = {
+                    'Fills {C:dark_edition}0.5{} slots'
+                }
+            },
+            cbean_shuffle = {
+                name = "Shuffle Sticker",
+                text = {
+                    "When a hand is {C:attention}played{},",
+                    "randomizes this {C:attention}Joker's position"
+                }
+            },
 
             -- Blind Stickers
 
@@ -4390,6 +4411,9 @@ return {
             cbean_plasma = "Plasma",
             cbean_painted = "Painted",
             cbean_black = "Black",
+            cbean_egg = "Egg",
+            cbean_minuscule = "Minuscule",
+            cbean_shuffle = "Shuffle",
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
             cbean_the_eye_sticker = "The Eye",
