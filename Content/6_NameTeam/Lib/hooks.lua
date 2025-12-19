@@ -175,3 +175,18 @@ function Card:set_debuff(should_debuff)
 		return debuff_old(self, should_debuff)
 	end
 end
+
+local joker_calc_cold = Card.calculate_joker
+function Card:calculate_joker(context)
+    if self.ability then
+		if self.ability["cbean_square"] then
+			if G.play and G.play.cards and #G.play.cards == 4 then
+				return joker_calc_cold(self, context)
+			end
+		else
+			return joker_calc_cold(self, context)
+		end
+	else
+        return joker_calc_cold(self, context)
+    end
+end
