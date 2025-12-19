@@ -2107,6 +2107,23 @@ return {
                     "are {C:green}Uncommon{}"
                 }
             },
+            j_cbean_nameteam_manface = {
+                name = "Man Face",
+                text = {
+                    "When {C:attention}round{} begins,",
+                    "applies {C:attention}Man{} to one",
+                    "random {C:attention}non-Man{}",
+                    "card in your hand"
+                }
+            },
+            j_cbean_nameteam_jimboss = {
+                name = "Jimboss",
+                text = {
+                    "Disables current {C:attention}Boss{}",
+                    "or {E:1,C:money}CEO Blind{} on",
+                    "{C:attention}third{} hand of round"
+                }
+            },
             j_cbean_nameteam_alecwatson = {
                 name = {
                     "Alec Watson",
@@ -2131,7 +2148,8 @@ return {
             j_cbean_nameteam_giveway = {
                 name = "Give Way",
                 text = {
-                    "{C:white,X:mult}X#1#{} Mult before scoring"
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "before scoring"
                 }
             },
             j_cbean_nameteam_ghostimage = {
@@ -2161,12 +2179,18 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}"
                 }
             },
+            j_cbean_nameteam_halfbodyjoker = {
+                name = "Half-body Joker",
+                text = {
+                    "Cards held in hand",
+                    "give {C:mult}+#1#{} Mult"
+                }
+            },
             j_cbean_nameteam_teenyweenyjoker = {
                 name = "{s:0.6}Teeny Weeny Joker{}",
                 text = {
-                    "{s:0.8}Gains {C:mult,s:0.8}+#1#{s:0.8} Mult",
-                    "{s:0.8}if all played{}",
-                    "{s:0.8}cards are {C:attention,s:0.8}2s{}",
+                    "{s:0.8}Gains {C:mult,s:0.8}+#1#{s:0.8} Mult if all",
+                    "{s:0.8}played cards are {C:attention,s:0.8}2s{}",
                     "{C:inactive,s:0.8}(Currently {C:mult,s:0.8}+#2#{C:inactive,s:0.8} Mult){}"
                 }
             },
@@ -2192,6 +2216,16 @@ return {
                     "{C:red}destroys{} a random {C:tarot}Tarot{} card",
                     "If successful, creates",
                     "a {C:stickersheet}Sticker Sheet{}"
+                }
+            },
+            j_cbean_nameteam_theworldshardestjoker = {
+                name = "The World's Hardest Joker",
+                text =
+                {
+                    "Play {C:attention}#1#{} {C:inactive}[#2#]{} consecutive",
+                    "{C:attention}Straight Flushes{} to create",
+                    "a copy of {C:spectral}The Soul{}",
+                    "{C:inactive}(Must have room){}"
                 }
             },
         },
@@ -2394,34 +2428,33 @@ return {
             cbean_mailed = {
                 name = "Mailed Sticker",
                 text = {
-                    "{C:red}-2${} When",
-                    "discarded"
+                    "{C:red}-$2{} when",
+                    "{C:red}discarded{}"
                 }
             },
             cbean_hooking = {
                 name = "Hooking Sticker",
                 text = {
-                    "{C:red}Discard{}",
-                    "if kept in hand"
+                    "{C:red}Discarded{} if held",
+                    "in hand when",
+                    "hand is played"
                 }
             },
             cbean_flashcard = {
-                name = "Flashcard Sticker",
+                name = "Flash Card Sticker",
                 text = {
                     "{C:attention}Replace{} this card",
-                    "with another card",
-                    "with the same rarity",
-                    "when shop is",
-                    "{C:green}Rerolled{}"
+                    "with another card of",
+                    "the same {C:attention}rarity{} when",
+                    "{C:green}rerolling{} the shop"
                 }
             },
             cbean_frowning = {
                 name = "Frowning Sticker",
                 text = {
-                    "{C:red}Debuff{} this card",
-                    "if played hand",
-                    "contains a",
-                    "{C:attention}Face{} card"
+                    "{C:red}Debuffed{} if played",
+                    "hand contains",
+                    "any {C:attention}face{} cards"
                 }
             },
             cbean_plasma = {
@@ -2445,7 +2478,7 @@ return {
                 text = {
                     "{C:blue}-1{} hand",
                     "every round",
-                    "Jokers are {C:attention}10x{} more",
+                    "{C:attention}Jokers{} are {C:attention}10X{} more",
                     "likely to be {C:dark_edition}Negative{}"
                 }
             },
@@ -2458,7 +2491,7 @@ return {
                 }
             },
             cbean_dangerous = {
-                name = "Heavy Sticker",
+                name = "Dangerous Sticker",
                 text = {
                     "When used, {C:green}#1# in #2#{}",
                     "chance for the next",
@@ -2471,15 +2504,13 @@ return {
                 text = {
                     "{C:green}Prevents{} the",
                     "{C:red}destruction{} of this",
-                    "card {C:attention}once"
+                    "card {C:attention}once{}"
                 }
             },
-            cbean_egg = {
-                name = "Egg Sticker",
+            cbean_man = {
+                name = "Man Sticker",
                 text = {
-                    "Gains {C:money}$2{} of",
-                    "{C:attention}sell value{} at",
-                    "end of round",
+                    "Cannot be {C:red}debuffed{}"
                 }
             },
             cbean_minuscule = {
@@ -2562,16 +2593,17 @@ return {
             cbean_the_arm_sticker = {
                 name = "The Arm",
                 text = {
-                    "Decrease level of",
-                    "played poker hand",
+                    "{C:red}Decrease{} {C:planet}level{} of",
+                    "played {C:attention}poker hand{}",
                 },
             },
 
             cbean_the_club_sticker = {
                 name = "The Club",
                 text = {
-                    "When in a blind",
-                    "{C:red}debuff{} all Club cards",
+                    "During any {C:attention}Blind{},",
+                    "all {C:clubs}Club{} cards",
+                    "are {C:red}debuffed{}"
                 },
             },
 
@@ -2579,153 +2611,157 @@ return {
                 name = "The Eye",
                 text = {
                     "No repeat",
-                    "hand types"
+                    "{C:attention}hand types{}"
                 },
             },
             cbean_the_fish_sticker = {
                 name = "The Fish",
                 text = {
-                    "Cards drawn face down",
+                    "Cards drawn {C:attention}face down{}",
                     "after each hand played"
                 },
             },
             cbean_the_flint_sticker = {
                 name = "The Flint",
                 text = {
-                    "Base Chips and",
-                    "Mult are halved",
+                    "Base {C:chips}Chips{} and",
+                    "{C:mult}Mult{} are {C:attention}halved{}",
                 },
             },
             cbean_the_goad_sticker = {
                 name = "The Goad",
                 text = {
-                    "When in a blind",
-                    "{C:red}debuff{} all Spade cards",
+                    "During any {C:attention}Blind{},",
+                    "all {C:spades}Spade{} cards",
+                    "are {C:red}debuffed{}"
                 },
             },
             cbean_the_head_sticker = {
                 name = "The Head",
                 text = {
-                    "When in a blind",
-                    "{C:red}debuff{} all Heart cards",
+                    "During any {C:attention}Blind{},",
+                    "all {C:hearts}Heart{} cards",
+                    "are {C:red}debuffed{}"
                 },
             },
             cbean_the_wall_sticker = {
                 name = "The Wall",
                 text = {
-                    "Double the blind",
-                    "requirement upon",
-                    "entering one"
+                    "When {C:attention}Blind{} is selected,",
+                    "{C:white,X:purple}X2{} Blind requirement"
                 },
             },
             cbean_the_manacle_sticker = {
                 name = "The Manacle",
                 text = {
-                    "-1 Hand Size"
+                    "{C:red}-1{} hand size"
                 },
             },
             cbean_the_mark_sticker = {
                 name = "The Mark",
                 text = {
                     "All face cards are",
-                    "drawn face down",
+                    "drawn {C:attention}face down{}",
                 },
             },
             cbean_the_mouth_sticker = {
                 name = "The Mouth",
                 text = {
-                    "Play only 1 hand",
+                    "Play only {C:attention}1{} hand",
                     "type every round",
                 },
             },
             cbean_the_ox_sticker = {
                 name = "The Ox",
                 text = {
-                    "Playing a #1#",
-                    "sets money to $0",
+                    "Playing a {C:attention}#1#{}",
+                    "sets money to {C:red}$0{}",
                 },
             },
             cbean_the_pillar_sticker = {
                 name = "The Pillar",
                 text = {
-                    "Cards played this",
-                    "Ante are debuffed",
+                    "Cards played previously",
+                    "this {C:attention}Ante{} are {C:red}debuffed{}"
                 },
             },
             cbean_the_needle_sticker = {
                 name = "The Needle",
                 text = {
-                    "Play only 1 hand",
-                    "Blind sizes are halved",
+                    "Play only {C:attention}1{}",
+                    "hand per round",
+                    "Blind sizes are {C:attention}halved{}",
                 },
             },
             cbean_the_plant_sticker = {
                 name = "The Plant",
                 text = {
-                    "All face cards",
-                    "are debuffed"
+                    "During any {C:attention}Blind{},",
+                    "all {C:attention}face{} cards",
+                    "are {C:red}debuffed{}"
                 },
             },
             cbean_the_psychic_sticker = {
                 name = "The Psychic",
                 text = {
-                    "Must play",
-                    "5 or more cards"
+                    "Must play {C:attention}5{}",
+                    "or more cards"
                 },
             },
             cbean_the_serpent_sticker = {
                 name = "The Serpent",
                 text = {
-                    "After Play or Discard,",
-                    "always draw 3 cards",
+                    "After {C:blue}Play{} or {C:red}Discard{},",
+                    "always draw {C:attention}3{} cards",
                 },
             },
             cbean_the_tooth_sticker = {
                 name = "The Tooth",
                 text = {
-                    "Lose $1 per",
+                    "Lose {C:red}$1{} per",
                     "card played"
                 },
             },
             cbean_the_water_sticker = {
                 name = "The Water",
                 text = {
-                    "Upon entering a blind",
-                    "lose all discards"
+                    "When {C:attention}Blind{} is selected,",
+                    "lose all {C:red}discards{}"
                 },
             },
             cbean_the_wheel_sticker = {
                 name = "The Wheel",
                 text = {
-                    "#1# in #2# cards get",
-                    "drawn face down"
+                    "{C:green}#1# in #2#{} cards get",
+                    "drawn {C:attention}face down{}"
                 },
             },
             cbean_the_window_sticker = {
                 name = "The Window",
                 text = {
-                    "When in a blind",
-                    "{C:red}debuff{} all Diamond cards",
+                    "During any {C:attention}Blind{},",
+                    "all {C:diamonds}Diamond{} cards",
+                    "are {C:red}debuffed{}"
                 },
             },
             cbean_verdant_leaf_sticker = {
                 name = "Verdant Leaf",
                 text = {
-                    "All cards debuffed",
-                    "until 1 Joker sold"
+                    "All cards {C:red}debuffed{}",
+                    "until {C:attention}1{} Joker {C:money}sold{}"
                 },
             },
             cbean_cerulean_bell_sticker = {
                 name = "Cerulean Bell",
                 text = {
-                    "Forces 1 card to",
-                    "always be selected"
+                    "Forces {C:attention}1{} card to",
+                    "always be {C:attention}selected{}"
                 },
             },
             cbean_amber_acorn_sticker = {
                 name = "Amber Acorn",
                 text = {
-                    "Flips and shuffles",
+                    "{C:attention}Flips{} and {C:attention,E:1}shuffles{}",
                     "all Joker cards"
                 },
             },
@@ -2733,15 +2769,14 @@ return {
                 name = "Crimson Heart",
                 text = {
                     "One random Joker",
-                    "disabled every hand"
+                    "{C:red}disabled{} every hand"
                 },
             },
             cbean_violet_vessel_sticker = {
                 name = "Violet Vessel",
                 text = {
-                    "Triples the blind",
-                    "requirement upon",
-                    "entering one"
+                    "When {C:attention}Blind{} is selected,",
+                    "{C:white,X:purple}X3{} Blind requirement"
                 },
             },
         },
@@ -3489,49 +3524,11 @@ return {
                 text = {
                     {
                         "Applies {C:eternal}Eternal{} to",
-                        "a random Joker"
+                        "a random {C:attention}Joker{}"
                     },
                     {
                         "Creates a free",
                         "{C:attention}Voucher Tag{}"
-                    }
-                }
-            },
-            c_cbean_rental_sheet = {
-                name = "Rental",
-                text = {
-                    {
-                        "Applies {C:rental}Rental{} to",
-                        "a random Joker"
-                    },
-                    {
-                        "Gives {C:money}$20"
-                    }
-                }
-            },
-            c_cbean_frowning_sheet = {
-                name = "Frowning",
-                text = {
-                    {
-                        "Applies {C:attention}Frowning{} to",
-                        "{C:attention}1{} selected card"
-                    },
-                    {
-                        "Creates a random",
-                        "{C:attention}Enhanced face card{}"
-                    }
-                }
-            },
-            c_cbean_flashcard_sheet = {
-                name = "Flashcard",
-                text = {
-                    {
-                        "Applies {C:attention}Flashcard{} to",
-                        "{C:attention}1{} selected Joker"
-                    },
-                    {
-                        "Next {C:attention}5{} rerolls",
-                        "cost {C:attention}$3{} more"
                     }
                 }
             },
@@ -3540,12 +3537,70 @@ return {
                 text = {
                     {
                         "Applies {C:attention}Perishable{} to",
-                        "a random Joker"
+                        "a random {C:attention}Joker{}"
                     },
                     {
                         "Applies {C:dark_edition}Negative{} to",
-                        "the same Joker"
+                        "the same {C:attention}Joker{}"
                     }
+                }
+            },
+            c_cbean_rental_sheet = {
+                name = "Rental",
+                text = {
+                    {
+                        "Applies {C:rental}Rental{} to",
+                        "a random {C:attention}Joker{}"
+                    },
+                    {
+                        "Gives {C:money}$20"
+                    }
+                }
+            },
+            c_cbean_mailed_sheet = {
+                name = "Mailed",
+                text = {
+                    {
+                        "Applies {C:attention}Mailed{} to {C:attention}1{}",
+                        "selected playing card"
+                    },
+                    {
+                        "Adds a {C:tarot}Purple{} seal",
+                        "to the same {C:attention}playing card{}"
+                    }
+                }
+            },
+            c_cbean_flashcard_sheet = {
+                name = "Flash Card",
+                text = {
+                    {
+                        "Applies {C:attention}Flash Card{} to",
+                        "{C:attention}1{} selected {C:attention}Joker{}"
+                    },
+                    {
+                        "Next {C:attention}5{} rerolls",
+                        "cost {C:attention}$3{} more"
+                    }
+                }
+            },
+            c_cbean_frowning_sheet = {
+                name = "Frowning",
+                text = {
+                    {
+                        "Applies {C:attention}Frowning{} to {C:attention}1{}",
+                        "selected {C:attention}playing card{}"
+                    },
+                    {
+                        "Creates a random",
+                        "{C:attention}Enhanced face card{}"
+                    }
+                }
+            },
+            c_cbean_shield_sheet = {
+                name = "Shield",
+                text = {
+                    "Applies {C:attention}Shield{} to",
+                    "{C:attention}1{} selected {C:attention}Joker{}"
                 }
             },
         },
@@ -4469,6 +4524,7 @@ return {
             b_cbean_stickersheet_cards = "Sticker Sheets",
             b_nteam_exchange = "Exchange",
             k_plus_stickersheet = "+1 Sticker Sheet",
+            k_plus_soul = "+The Soul",
             k_cbean_nteam_uhoh = "Uh oh!",
             k_cbean_nteam_danger = "Danger!",
         },
@@ -4479,7 +4535,7 @@ return {
 
             cbean_mailed = "Mailed",
             cbean_hooking = "Hooking",
-            cbean_flashcard = "Flashcard",
+            cbean_flashcard = "Flash Card",
             cbean_frowning = "Frowning",
             cbean_plasma = "Plasma",
             cbean_painted = "Painted",
@@ -4496,6 +4552,7 @@ return {
             cbean_hungry = "Hungry",
             cbean_barren = "Barren",
             cbean_spore = "Spore",
+            cbean_healing = "Healing",
 
 
             cbean_the_arm_sticker = "The Arm",
@@ -4524,6 +4581,7 @@ return {
             cbean_cerulean_bell_sticker = "Cerulean Bell",
             cbean_violet_vessel_sticker = "Violet Vessel",
             cbean_crimson_heart_sticker = "Crimson Heart",
+            cbean_man = "Man",
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {

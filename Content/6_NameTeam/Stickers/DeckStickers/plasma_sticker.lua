@@ -51,7 +51,7 @@ SMODS.Sticker({
 	end,
 	beans_credits = {
 		code = "ThunderEdge",
-		team = "Name Team",
 		art = "GhostSalt",
-	},
+		team = "Name Team"
+	}
 })

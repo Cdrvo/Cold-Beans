@@ -144,6 +144,84 @@ function SMODS:create_card(t)
     return smods_create_card_ref(self, t)
 end
 
+SMODS.Sound({
+    key = "bwow",
+    path = "6_NameTeam/cbean_bwow.ogg"
+})
+
+SMODS.Joker {
+    key = "nameteam_manface",
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 4, y = 0 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = SMODS.Stickers["cbean_man"]
+        return {}
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.first_hand_drawn then
+            local candidates = {}
+            for i = 1, #G.hand.cards do
+                if not (G.hand.cards[i].ability and G.hand.cards[i].ability.cbean_man ~= nil) then
+                    candidates[#candidates + 1] = G.hand.cards[i]
+                end
+            end
+            if #candidates > 0 then
+                local chosen_card = pseudorandom_element(candidates, pseudoseed("manface"))
+                chosen_card:add_sticker("cbean_man", true)
+                card:juice_up()
+                play_sound("cbean_bwow", 1, 0.7)
+                return { message = localize("cbean_man", "labels"), colour = G.C.FILTER }
+            end
+        end
+    end,
+    pronouns = "he_him"
+}
+
+SMODS.Joker {
+    key = "nameteam_jimboss",
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 5, y = 0 },
+    cost = 6,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.before and G.GAME.current_round.hands_played == 2 and not context.blueprint then
+            if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss then
+                return {
+                    message = localize('ph_boss_disabled'),
+                    func = function()
+                        G.GAME.blind:disable()
+                    end
+                }
+            end
+        end
+    end,
+    pronouns = "he_him"
+}
+
 SMODS.Joker {
     key = "nameteam_alecwatson",
     rarity = 2,
@@ -361,22 +439,22 @@ SMODS.Joker {
     pos = { x = 10, y = 3 },
     cbean_anim = {
         { xrange = { first = 10, last = 11 }, y = 3, t = 0.1 },
-        { xrange = { first = 0, last = 7 }, y = 4, t = 0.1 }
+        { xrange = { first = 0, last = 7 },   y = 4, t = 0.1 }
     },
     pos_extra = { x = 8, y = 4 },
     cbean_anim_extra = {
-        { x = 8, y = 4, t = 0.075 },
-        { x = 9, y = 4, t = 0.125 },
+        { x = 8,  y = 4, t = 0.075 },
+        { x = 9,  y = 4, t = 0.125 },
         { x = 10, y = 4, t = 0.175 },
         { x = 11, y = 4, t = 0.3 },
         { x = 10, y = 4, t = 0.175 },
-        { x = 9, y = 4, t = 0.125 },
-        { x = 8, y = 4, t = 0.075 },
-        { x = 0, y = 5, t = 0.125 },
-        { x = 1, y = 5, t = 0.175 },
-        { x = 2, y = 5, t = 0.3 },
-        { x = 1, y = 5, t = 0.175 },
-        { x = 0, y = 5, t = 0.125 }
+        { x = 9,  y = 4, t = 0.125 },
+        { x = 8,  y = 4, t = 0.075 },
+        { x = 0,  y = 5, t = 0.125 },
+        { x = 1,  y = 5, t = 0.175 },
+        { x = 2,  y = 5, t = 0.3 },
+        { x = 1,  y = 5, t = 0.175 },
+        { x = 0,  y = 5, t = 0.125 }
     },
     cost = 5,
     loc_vars = function(self, info_queue, card)
@@ -405,6 +483,33 @@ SMODS.Joker {
             card.ability.extra.purchased_cards = 0
             return { message = localize("k_upgrade_ex"), colour = G.C.FILTER }
         end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_halfbodyjoker",
+    config = { extra = { mult = 2 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 1, y = 2 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.end_of_round and context.cardarea == G.hand then return { mult = card.ability.extra.mult } end
     end
 }
 
@@ -517,8 +622,6 @@ SMODS.Joker {
     },
 
     calculate = function(self, card, context)
-        if context.joker_main then return { xmult = card.ability.extra.current_xmult } end
-
         if context.setting_blind and not context.blueprint and not card.getting_sliced then
             local destructable_tarot = {}
             for i = 1, #G.consumeables.cards do
@@ -707,3 +810,78 @@ SMODS.Joker({
 		art = "TheAlternateDoctor",
     }
 })
+
+SMODS.Joker {
+    key = "nameteam_theworldshardestjoker",
+    config = { extra = { counted = 0, target = 3 } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 3, y = 5 },
+    pos_extra = { x = 4, y = 5 },
+    cbean_anim_extra = {
+        { xrange = { first = 4, last = 11 }, y = 5,                            t = 0.025 },
+        { xrange = { first = 0, last = 11 }, yrange = { first = 6, last = 7 }, t = 0.025 },
+        { xrange = { first = 0, last = 2 },  y = 8,                            t = 0.025 },
+        { xrange = { first = 1, last = 0 },  y = 8,                            t = 0.025 },
+        { xrange = { first = 11, last = 0 }, yrange = { first = 7, last = 6 }, t = 0.025 },
+        { xrange = { first = 11, last = 4 }, y = 5,                            t = 0.025 },
+        { x = 3,                             y = 8,                            t = 0.025 },
+    },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.target, card.ability.extra.target - card.ability.extra.counted } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "any_all",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.before and next(context.poker_hands["Straight Flush"]) then
+            card.ability.extra.counted = card.ability.extra.counted + 1
+            if card.ability.extra.counted >= card.ability.extra.target then
+                card.ability.extra.counted = 0
+                if count_consumables() < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    return {
+                        extra = {
+                            focus = card,
+                            message = localize('k_plus_soul'),
+                            func = function()
+                                G.E_MANAGER:add_event(Event({
+                                    trigger = 'before',
+                                    delay = 0.0,
+                                    func = function()
+                                        play_sound("timpani")
+                                        local new_card = SMODS.create_card({ set = "Spectral", area = G.consumeables, key = "c_soul" })
+                                        new_card:add_to_deck()
+                                        G.consumeables:emplace(new_card)
+                                        G.GAME.consumeable_buffer = 0
+                                        new_card:juice_up(0.3, 0.5)
+                                        return true
+                                    end
+                                }))
+                            end
+                        },
+                        colour = G.C.GREEN,
+                        card = card
+                    }
+                else
+                    return { message = localize("k_no_room_ex"), colour = G.RED }
+                end
+            else
+                return { message = card.ability.extra.counted .. "/" .. card.ability.extra.target, colour = G.FILTER }
+            end
+        elseif context.before and card.ability.extra.counted > 0 then
+            card.ability.extra.counted = 0
+            return { message = localize("k_reset"), colour = G.RED }
+        end
+    end
+}
