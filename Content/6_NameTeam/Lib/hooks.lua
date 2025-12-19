@@ -126,3 +126,16 @@ function Card:remove_sticker(sticker)
 		cbean_sticker_removed = true,
 	})
 end
+
+local old_set_ability = Card.set_ability
+function Card:set_ability(center, initial, delay_sprites)
+	if self and self.ability and self.ability.set == "Default" then
+		for k, v in pairs(G.P_CENTER_POOLS.Enhanced) do
+			if not self.ability["cbean_barren"] then
+				return old_set_ability(self, center, initial, delay_sprites)
+			end
+		end
+	else
+		return old_set_ability(self, center, initial, delay_sprites)
+	end
+end
