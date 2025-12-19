@@ -19,6 +19,7 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	sticker_type = "Positive",
     calculate = function(self, card, context)
         if context.end_of_round and (context.cardarea == G.jokers or context.cardarea == G.consumeables) then
             if card.set_cost then 
