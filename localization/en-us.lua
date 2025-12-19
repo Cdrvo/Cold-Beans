@@ -2594,6 +2594,13 @@ return {
                 "in the same area"
               }
             },
+            cbean_poor = {
+                name = "Poor Sticker",
+                text = {
+                "All earned money",
+                "is halved"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4629,6 +4636,7 @@ return {
             cbean_barren = "Barren",
             cbean_spore = "Spore",
             cbean_healing = "Healing",
+            cbean_poor = "Poor",
 
 
             cbean_the_arm_sticker = "The Arm",
