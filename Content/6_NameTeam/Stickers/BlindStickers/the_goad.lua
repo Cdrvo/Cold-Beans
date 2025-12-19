@@ -29,7 +29,11 @@ SMODS.Sticker({
 		end)
 	end,
 	calculate = function(self, card, context)
-		if context.debuff_card and context.debuff_card:is_suit("Spades", true) then
+		if
+			context.debuff_card
+			and context.debuff_card.area ~= G.jokers
+			and context.debuff_card:is_suit("Spades", true)
+		then
 			return {
 				debuff = true,
 			}

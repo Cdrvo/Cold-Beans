@@ -18,46 +18,25 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		local had_sticker = back.ability[self.key]
-		back.ability[self.key] = val
-		if back.ability[self.key] and not had_sticker then
-			if self.NAMETEAM_removed then
-				if val == false then
-					self:NAMETEAM_removed(self)
-				else
-					self:NAMETEAM_applied(self)
-				end
+		NAMETEAM.simple_apply(self, back, val, function()
+			for _, c in ipairs(G.playing_cards) do
+				SMODS.recalc_debuff(c)
 			end
-		end
-	end,
-	NAMETEAM_applied = function(self, card)
-		if G.playing_cards then
-			for k, v in pairs(G.playing_cards) do
-				if v:is_face() and not v.debuff then
-					v.debuffed_by_plantstkr = true
-					SMODS.debuff_card(v, true, "NAMETEAM_plant_sticker")
-				end
+		end, function()
+			for _, c in ipairs(G.playing_cards) do
+				SMODS.recalc_debuff(c)
 			end
-		end
-	end,
-	NAMETEAM_removed = function(self, card)
-		if G.playing_cards then
-			for k, v in pairs(G.playing_cards) do
-				if v.debuffed_by_plantstkr then
-					v.debuffed_by_plantstkr = nil
-					SMODS.debuff_card(v, false, "NAMETEAM_plant_sticker")
-				end
-			end
-		end
+		end)
 	end,
 	calculate = function(self, card, context)
-		if context.playing_card_added then
-			for k, v in pairs(context.cards) do
-				if v:is_face() and not v.debuff then
-					v.debuffed_by_plantstkr = true
-					SMODS.debuff_card(v, true, "NAMETEAM_plant_sticker")
-				end
-			end
+		if
+			context.debuff_card
+			and context.debuff_card.area ~= G.jokers
+			and context.debuff_card:is_face(true)
+		then
+			return {
+				debuff = true,
+			}
 		end
 	end,
 	beans_credits = {
