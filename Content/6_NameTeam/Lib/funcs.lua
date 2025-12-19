@@ -303,36 +303,34 @@ function NAMETEAM.get_amount_of_unique_stickers()
     for k, v in pairs(SMODS.Stickers) do
         sticker_keys[#sticker_keys+1] = v.key
     end
-    -- sendDebugMessage("Found "..#sticker_keys.." stickers in game in total", "cbean_nteam_sticker_collection")
     for k, v in ipairs(G.jokers.cards) do
         for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) then
+            if NAMETEAM.contains(sticker_keys, jk) and jv then
                 sticker_gotten[jk] = true
             end
         end
     end
-    for k, v in ipairs(G.deck.cards) do
+    for k, v in ipairs(G.playing_cards) do
         for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) then
+            if NAMETEAM.contains(sticker_keys, jk) and jv then
                 sticker_gotten[jk] = true
             end
         end
     end
     for k, v in ipairs(G.consumeables.cards) do
         for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) then
+            if NAMETEAM.contains(sticker_keys, jk) and jv then
                 sticker_gotten[jk] = true
             end
         end
     end
-    -- endDebugMessage(inspect(sticker_gotten), "cbean_nteam_sticker_collection")
+    for jk, jv in pairs(G.GAME.selected_back.ability) do
+        if NAMETEAM.contains(sticker_keys, jk) and jv then
+            sticker_gotten[jk] = true
+        end
+    end
     for _ in pairs(sticker_gotten) do
         unique_stickers = unique_stickers +1 
-    end
-    for jk, jv in pairs(G.GAME.selected_back.ability) do
-        if NAMETEAM.contains(sticker_keys, jk) then
-            sticker_amount = sticker_amount + 1
-        end
     end
     return unique_stickers
 end
@@ -344,30 +342,29 @@ function NAMETEAM.get_amount_of_stickers()
     for k, v in pairs(SMODS.Stickers) do
         sticker_keys[#sticker_keys+1] = v.key
     end
-    -- sendDebugMessage("Found "..#sticker_keys.." stickers in game in total", "cbean_nteam_stickerbomb")
     for k, v in ipairs(G.jokers.cards) do
         for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) then
+            if NAMETEAM.contains(sticker_keys, jk) and jv then
                 sticker_amount = sticker_amount + 1
             end
         end
     end
-    for k, v in ipairs(G.deck.cards) do
+    for k, v in ipairs(G.playing_cards) do
         for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) then
+            if NAMETEAM.contains(sticker_keys, jk) and jv then
                 sticker_amount = sticker_amount + 1
             end
         end
     end
     for k, v in ipairs(G.consumeables.cards) do
         for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) then
+            if NAMETEAM.contains(sticker_keys, jk) and jv then
                 sticker_amount = sticker_amount + 1
             end
         end
     end
     for jk, jv in pairs(G.GAME.selected_back.ability) do
-        if NAMETEAM.contains(sticker_keys, jk) then
+        if NAMETEAM.contains(sticker_keys, jk) and jv then
             sticker_amount = sticker_amount + 1
         end
     end

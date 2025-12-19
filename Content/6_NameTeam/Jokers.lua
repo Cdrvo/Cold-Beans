@@ -603,7 +603,9 @@ SMODS.Joker({
     calculate = function(self, card, context)
         -- Recalculating stickers whenever anything happens
         -- Should probably like, add a context for "on adding a sticker" or something??? How does that even work
-        card.ability.extra.current_mult = NAMETEAM.get_amount_of_unique_stickers() * card.ability.extra.add_mult +1
+        if context.cbean_sticker_added or context.cbean_sticker_removed then
+            card.ability.extra.current_mult = NAMETEAM.get_amount_of_unique_stickers() * card.ability.extra.add_mult +1
+        end
         if context.joker_main and context.cardarea == G.jokers then
             return {
                 xmult = card.ability.extra.current_mult
@@ -689,7 +691,9 @@ SMODS.Joker({
     calculate = function(self, card, context)
         -- Recalculating stickers whenever anything happens
         -- Should probably like, add a context for "on adding a sticker" or something??? How does that even work
-        card.ability.extra.current_mult = NAMETEAM.get_amount_of_stickers() * card.ability.extra.add_mult
+        if context.cbean_sticker_added or context.cbean_sticker_removed then
+            card.ability.extra.current_mult = NAMETEAM.get_amount_of_stickers() * card.ability.extra.add_mult
+        end
         if context.joker_main and context.cardarea == G.jokers then
             return {
                 mult = card.ability.extra.current_mult

@@ -110,6 +110,9 @@ function Card:add_sticker(sticker, bypass_check)
 	if not already_had and self.ability[sticker] then
 		self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
 	end
+	SMODS.calculate_context({
+		cbean_sticker_added = true,
+	})
 end
 
 local remove_sticker_hook = Card.remove_sticker
@@ -119,4 +122,7 @@ function Card:remove_sticker(sticker)
 	if already_had and not self.ability[sticker] then
 		self:NAMETEAM_remove_sticker_calc(SMODS.Stickers[sticker])
 	end
+	SMODS.calculate_context({
+		cbean_sticker_removed = true,
+	})
 end
