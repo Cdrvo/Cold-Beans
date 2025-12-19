@@ -3,7 +3,7 @@ SMODS.ConsumableType {
   primary_colour = HEX("677bb4"),
   secondary_colour = HEX("859ad7"),
   collection_rows = { 4, 4 },
-  shop_rate = 0,
+  shop_rate = 1,
   default = "c_cbean_eternal_sheet",
   can_stack = true,
   can_divide = true
@@ -42,6 +42,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["eternal"]
     info_queue[#info_queue + 1] = G.P_TAGS["tag_voucher"]
@@ -98,6 +99,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     sticker_info = SMODS.Stickers["perishable"]
     sticker_info.loc_vars = function(self, info_queue, card)
@@ -154,6 +156,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["rental"]
     return {}
@@ -206,6 +209,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_mailed"]
     info_queue[#info_queue + 1] = G.P_SEALS["Purple"]
@@ -247,6 +251,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_flashcard"]
     return {}
@@ -301,6 +306,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_frowning"]
     return {}
@@ -364,6 +370,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_shield"]
     return {}
@@ -404,6 +411,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_heavy"]
     info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
@@ -455,6 +463,7 @@ SMODS.Consumable {
     end
   end,
   atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_hungry"]
     return {}
