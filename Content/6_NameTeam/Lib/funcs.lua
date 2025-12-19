@@ -297,9 +297,9 @@ end
 
 function NAMETEAM.get_amount_of_unique_stickers()
     -- Starting by listing all sticker keys
-    sticker_keys = {}
-    sticker_gotten = {}
-    unique_stickers = 0
+    local sticker_keys = {}
+    local sticker_gotten = {}
+    local unique_stickers = 0
     for k, v in pairs(SMODS.Stickers) do
         sticker_keys[#sticker_keys+1] = v.key
     end
@@ -337,8 +337,8 @@ end
 
 function NAMETEAM.get_amount_of_stickers()
     -- Starting by listing all sticker keys
-    sticker_keys = {}
-    sticker_amount = 0
+    local sticker_keys = {}
+    local sticker_amount = 0
     for k, v in pairs(SMODS.Stickers) do
         sticker_keys[#sticker_keys+1] = v.key
     end
@@ -393,10 +393,10 @@ function Card:in_collection()
 end
 
 function NAMETEAM.mult_value(table, value)	
-	new_table = {}
+	local new_table = {}
 	for k, v in pairs(table) do
 		if type(v) == "table" then
-			new_new_table = copy_table(NAMETEAM.mult_value(v, value))
+			local new_new_table = copy_table(NAMETEAM.mult_value(v, value))
 			new_table[k] = new_new_table
 		elseif type(v) == "number" then
 			if
