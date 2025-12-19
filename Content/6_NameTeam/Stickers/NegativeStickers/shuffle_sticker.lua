@@ -17,6 +17,7 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+    sticker_type = "Negative",
     calculate = function(self, card, context)
         if context.yma_before_before and context.cardarea == G.jokers then
             old_pos = -1
