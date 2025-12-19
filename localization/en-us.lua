@@ -2436,7 +2436,7 @@ return {
             cbean_painted = {
                 name = "Painted Sticker",
                 text = {
-                    "{C:attention}+1{} hand size,",
+                    "{C:attention}+1{} hand size",
                     "{C:red}-1{} Joker slot"
                 }
             },
@@ -2452,8 +2452,18 @@ return {
             cbean_heavy = {
                 name = "Heavy Sticker",
                 text = {
-                    "{C:red}-1{} Hand Size",
-                    "while kept in hand"
+                    "{C:red}-1{} hand size",
+                    "while held in",
+                    "consumable slots"
+                }
+            },
+            cbean_dangerous = {
+                name = "Heavy Sticker",
+                text = {
+                    "When used, {C:green}#1# in #2#{}",
+                    "chance for the next",
+                    "selected Blind to",
+                    "have {X:purple,C:white}X2{} Blind size"
                 }
             },
             cbean_shield = {
@@ -4459,6 +4469,8 @@ return {
             b_cbean_stickersheet_cards = "Sticker Sheets",
             b_nteam_exchange = "Exchange",
             k_plus_stickersheet = "+1 Sticker Sheet",
+            k_cbean_nteam_uhoh = "Uh oh!",
+            k_cbean_nteam_danger = "Danger!",
         },
         high_scores = {},
         labels = {
@@ -4475,6 +4487,8 @@ return {
             cbean_egg = "Egg",
             cbean_minuscule = "Minuscule",
             cbean_shuffle = "Shuffle",
+            cbean_green = "Green",
+            cbean_dangerous = "Dangerous",
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
             cbean_nebula = "Nebula",

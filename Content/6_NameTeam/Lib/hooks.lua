@@ -52,6 +52,8 @@ function G:start_run(args)
 	G.GAME.seen_stationery_tutorial = G.GAME.seen_stationery_tutorial or false
 	---@type boolean
 	G.GAME.already_no_interest = G.GAME.already_no_interest or false
+	---@type integer
+	G.GAME.dangerous_mult = G.GAME.dangerous_mult or 1
 end
 
 local apply_hook = Back.apply_to_run
