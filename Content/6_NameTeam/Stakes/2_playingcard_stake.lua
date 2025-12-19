@@ -1,5 +1,5 @@
 SMODS.Stake {
-    key = "deck",
+    key = "playingcardstake",
     colour = HEX("55c6d9"),
     applied_stakes = {"cbean_consumable"},
     shiny = true,
@@ -10,20 +10,20 @@ SMODS.Stake {
         }
     },
     loc_txt = {
-        name = "Deck Stake",
-        text = {"Decks has a 1/4 chance to gain a sticker after leaving the shop"},
+        name = "Playing Card Stake",
+        text = {"Playing Cards has a chance to gain stickers after played"},
         sticker = {
-            name = "Deck Sticker",
-            text = {"Used this Joker", "to win on {C:attention}Deck", "{C:attention}Stake{} difficulty"}
+            name = "Playing Card Sticker",
+            text = {"Used this Joker", "to win on {C:attention}Playing Card", "{C:attention}Stake{} difficulty"}
 
         }
     },
     modifiers = function()
         for k, v in pairs(SMODS.Stickers) do
-            if v.sets and v.sets["Deck"] then
+            if v.sets and (v.sets["Default"] or v.sets["Enhanced"]) then
                 G.GAME.modifiers["enable_" .. k] = true
             end
         end
-        G.GAME.modifiers.deck_stickers = true
+        G.GAME.modifiers.playing_card_stickers = true
     end,
 }
