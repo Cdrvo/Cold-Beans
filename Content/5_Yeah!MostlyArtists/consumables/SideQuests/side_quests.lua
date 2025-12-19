@@ -278,7 +278,7 @@ YMA.SideQuests.quest {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "cloudzXIII",
-        art = "FirstTry",
+        art = "Inky",
         code = "cloudzXIII",
     }
 }
