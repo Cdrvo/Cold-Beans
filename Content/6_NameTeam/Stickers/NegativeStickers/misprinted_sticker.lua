@@ -45,17 +45,73 @@ SMODS.Sticker({
 		}
 	end,
 	calculate = function(self, card, context)
-		if self.config.copied then
+		local ret = nil
+		if self.config.copied and SMODS.Stickers[self.config.copied] and SMODS.Stickers[self.config.copied].calculate then
+			ret = SMODS.Stickers[self.config.copied]:calculate(card, context)
+		end
+		if context.end_of_round and not context.game_over and context.main_eval then
+			if card == G.deck.cards[1] or card == G.deck then
+				local pool = {}
+				for k, v in pairs(SMODS.Stickers) do
+					if k ~= "cbean_misprinted" and v.sets["Deck"] then
+						pool[#pool + 1] = k
+					end
+				end
+				if
+					self.config.copied
+					and SMODS.Stickers[self.config.copied]
+					and SMODS.Stickers[self.config.copied].NAMETEAM_removed
+				then
+					SMODS.Stickers[self.config.copied]:NAMETEAM_removed(card)
+				end
+				self.config.copied = pseudorandom_element(pool, "misprint_sticker")
+				if
+					self.config.copied
+					and SMODS.Stickers[self.config.copied]
+					and SMODS.Stickers[self.config.copied].NAMETEAM_applied
+				then
+					SMODS.Stickers[self.config.copied]:NAMETEAM_applied(card)
+				end
+			else
+				local pool = {}
+				for k, v in pairs(SMODS.Stickers) do
+					if k ~= "cbean_misprinted" and v.sets[card.ability.set] then
+						pool[#pool + 1] = k
+					end
+				end
+				if
+					self.config.copied
+					and SMODS.Stickers[self.config.copied]
+					and SMODS.Stickers[self.config.copied].NAMETEAM_removed
+				then
+					SMODS.Stickers[self.config.copied]:NAMETEAM_removed(card)
+				end
+				self.config.copied = pseudorandom_element(pool, "misprint_sticker")
+				if
+					self.config.copied
+					and SMODS.Stickers[self.config.copied]
+					and SMODS.Stickers[self.config.copied].NAMETEAM_applied
+				then
+					SMODS.Stickers[self.config.copied]:NAMETEAM_applied(card)
+				end
+			end
+			SMODS.calculate_effect({
+				message = localize("k_cbean_nteam_randomized"),
+			}, card)
+		end
+		return ret
+	end,
+	NAMETEAM_removed = function(self, card)
+		if
+			self.config.copied
+			and SMODS.Stickers[self.config.copied]
+			and SMODS.Stickers[self.config.copied].NAMETEAM_removed
+		then
+			SMODS.Stickers[self.config.copied]:NAMETEAM_removed(card)
 		end
 	end,
-	NAMETEAM_applied = function (self, card)
-        
-    end,
-    NAMETEAM_removed = function (self, card)
-        
-    end,
 	beans_credits = {
-		code = "Revo",
+		code = "ThunderEdge",
 		team = "Name Team",
 		art = "GhostSalt",
 	},

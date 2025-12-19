@@ -39,7 +39,7 @@ SMODS.Sticker({
 		G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) - 1
 	end,
 	beans_credits = {
-		code = "TheAlternateDoctor",
+		code = "ThunderEdge",
 		team = "Name Team",
 		art = "GhostSalt",
 	},

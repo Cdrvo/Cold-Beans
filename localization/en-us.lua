@@ -2594,6 +2594,16 @@ return {
                 "in the same area"
               }
             },
+            cbean_misprinted = {
+                name = "Misprinted Sticker",
+                text = {
+                "Copies a random",
+                "{C:attention}Sticker{} effect",    
+                "Chosen effect changes",
+                "at end of round",
+                "{C:inactive}(Copying #1#)"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4603,6 +4613,7 @@ return {
             k_plus_soul = "+The Soul",
             k_cbean_nteam_uhoh = "Uh oh!",
             k_cbean_nteam_danger = "Danger!",
+            k_cbean_nteam_randomized = "Randomized!",
         },
         high_scores = {},
         labels = {
@@ -4629,6 +4640,7 @@ return {
             cbean_barren = "Barren",
             cbean_spore = "Spore",
             cbean_healing = "Healing",
+            cbean_misprinted = "Misprinted",
 
 
             cbean_the_arm_sticker = "The Arm",
