@@ -354,6 +354,103 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+    key = "nameteam_bottomofthebarrel",
+    config = { extra = { purchased_cards = 0, added_mult = 2, current_mult = 0 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 10, y = 3 },
+    cbean_anim = {
+        { xrange = { first = 10, last = 11 }, y = 3, t = 0.1 },
+        { xrange = { first = 0, last = 7 }, y = 4, t = 0.1 }
+    },
+    pos_extra = { x = 8, y = 4 },
+    cbean_anim_extra = {
+        { x = 8, y = 4, t = 0.075 },
+        { x = 9, y = 4, t = 0.125 },
+        { x = 10, y = 4, t = 0.175 },
+        { x = 11, y = 4, t = 0.3 },
+        { x = 10, y = 4, t = 0.175 },
+        { x = 9, y = 4, t = 0.125 },
+        { x = 8, y = 4, t = 0.075 },
+        { x = 0, y = 5, t = 0.125 },
+        { x = 1, y = 5, t = 0.175 },
+        { x = 2, y = 5, t = 0.3 },
+        { x = 1, y = 5, t = 0.175 },
+        { x = 0, y = 5, t = 0.125 }
+    },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.added_mult, card.ability.extra.current_mult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "Inky",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.extra.current_mult > 0 then return { mult = card.ability.extra.current_mult } end
+
+        if context.reroll_shop and not context.blueprint then card.ability.extra.purchased_cards = 0 end
+        if context.buying_card and not context.blueprint then card.ability.extra.purchased_cards = card.ability.extra.purchased_cards + 1 end
+
+        if context.ending_shop and not context.blueprint and card.ability.extra.purchased_cards > 0 then
+            card.ability.extra.current_mult = card.ability.extra.current_mult + (card.ability.extra.added_mult * card.ability.extra.purchased_cards)
+            card.ability.extra.purchased_cards = 0
+            return { message = localize("k_upgrade_ex"), colour = G.C.FILTER }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_teenyweenyjoker",
+    config = { extra = { added_mult = 2, current_mult = 0 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 2, y = 2 },
+    display_size = { w = 0.75 * 71, h = 0.75 * 95 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.added_mult, card.ability.extra.current_mult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.extra.current_mult > 0 then return { mult = card.ability.extra.current_mult } end
+
+        if context.before and not context.blueprint then
+            local valid = true
+            for _, v in ipairs(G.play.cards) do
+                if v:get_id() ~= 2 then
+                    valid = false; break
+                end
+            end
+
+            if valid then
+                card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.added_mult
+                return { message = localize("k_upgrade_ex"), colour = G.C.FILTER }
+            end
+        end
+    end
+}
+
+SMODS.Joker {
     key = "nameteam_presidenthathaway",
     config = { extra = { xmult = 2 } },
     rarity = 3,
@@ -393,4 +490,77 @@ SMODS.Joker {
             return
         end
     end,
+}
+
+SMODS.Joker {
+    key = "nameteam_collager",
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers',
+    pos = { x = 4, y = 2 },
+    pos_extra = { x = 5, y = 2 },
+    draw_extra = function(self, card, layer)
+        if self.discovered or card.params.bypass_discovery_center then
+            card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+        end
+    end,
+    cost = 6,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt/Inky",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then return { xmult = card.ability.extra.current_xmult } end
+
+        if context.setting_blind and not context.blueprint and not card.getting_sliced then
+            local destructable_tarot = {}
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == "Tarot" and not G.consumeables.cards[i].getting_sliced and not G.consumeables.cards[i].ability.eternal then
+                    destructable_tarot[#destructable_tarot + 1] = G.consumeables.cards[i]
+                end
+            end
+            local tarot_to_destroy = #destructable_tarot > 0 and pseudorandom_element(destructable_tarot, pseudoseed("candle")) or nil
+
+            if tarot_to_destroy then
+                tarot_to_destroy.getting_sliced = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card:juice_up(0.8, 0.8)
+                        tarot_to_destroy:start_dissolve({ G.C.RED }, nil, 1.6)
+                        return true
+                    end,
+                }))
+                return {
+                    extra = {
+                        focus = card,
+                        message = localize('k_plus_stickersheet'),
+                        func = function()
+                            G.E_MANAGER:add_event(Event({
+                                trigger = 'before',
+                                delay = 0.0,
+                                func = function()
+                                    play_sound("timpani")
+                                    local new_card = create_card("cbean_StickerSheet", G.consumables, nil, nil, nil, nil, nil, "collager")
+                                    new_card:add_to_deck()
+                                    G.consumeables:emplace(new_card)
+                                    G.GAME.consumeable_buffer = 0
+                                    new_card:juice_up(0.3, 0.5)
+                                    return true
+                                end
+                            }))
+                        end
+                    },
+                    colour = G.C.FILTER,
+                    card = card
+                }
+            end
+        end
+    end
 }
