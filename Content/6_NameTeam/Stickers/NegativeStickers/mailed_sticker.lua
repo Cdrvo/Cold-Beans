@@ -18,6 +18,7 @@ SMODS.Sticker({
 		vars = {},
 	}
 	end,
+    sticker_type = "Negative",
 	calculate = function(self,card,context)
         if context.discard and context.other_card == card then
             return{

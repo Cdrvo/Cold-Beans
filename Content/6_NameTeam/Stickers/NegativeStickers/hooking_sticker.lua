@@ -18,6 +18,7 @@ SMODS.Sticker({ -- fix this
 		vars = {},
 	}
 	end,
+    sticker_type = "Negative",
 	calculate = function(self,card,context)
         if context.press_play and card.area == G.hand then
             local change_amnt = #G.hand.cards

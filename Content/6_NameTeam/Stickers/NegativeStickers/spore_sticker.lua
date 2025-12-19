@@ -18,6 +18,7 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
+	sticker_type = "Negative",
 	calculate = function(self, card, context)
 		if context.setting_blind then
 			local _set

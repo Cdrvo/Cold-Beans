@@ -9,6 +9,7 @@ SMODS.Sticker({
 	config = {},
 	rate = 0.06,
 	needs_enable_flag = true,
+    sticker_type = "Negative",
     sets = {
         Default = true,
         Enhanced = true,

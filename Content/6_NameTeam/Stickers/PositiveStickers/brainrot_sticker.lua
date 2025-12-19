@@ -13,6 +13,7 @@ SMODS.Sticker({
         seven = false,
         triggers = 1,
     },
+    sticker_type = "Positive",
 	badge_colour = HEX("e0bb21"),
     needs_enable_flag = true,
 	rate = 0.04,
