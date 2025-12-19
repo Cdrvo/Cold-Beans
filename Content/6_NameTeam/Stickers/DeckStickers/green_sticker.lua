@@ -5,7 +5,7 @@ SMODS.Sticker({
 		x = 3,
 		y = 1,
 	},
-	badge_colour = G.C.BLACK,
+	badge_colour = G.C.GREEN,
 	config = {},
 	rate = 0,
 	needs_enable_flag = false,

@@ -18,11 +18,10 @@ SMODS.Sticker({
 			vars = {},
 		}
 	end,
-    sticker_type = "Negative",
     calculate = function(self, card, context)
-        if context.yma_before_before and context.cardarea == G.jokers then
-            old_pos = -1
-            new_pos = -1
+        if context.cbean_first and context.cardarea == G.jokers then
+            local old_pos = -1
+            local new_pos = -1
             for k, v in ipairs(G.jokers.cards) do
                 if v == card then
                     old_pos = k

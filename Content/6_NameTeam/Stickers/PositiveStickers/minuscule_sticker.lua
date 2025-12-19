@@ -24,7 +24,7 @@ SMODS.Sticker({
         card.ability.extra_slots_used = -0.5
     end,
     NAMETEAM_removed = function(self, card)
-        back.ability.extra_slots_used = 0
+        card.ability.extra_slots_used = 0
     end,
 	beans_credits = {
 		code = "TheAlternateDoctor",

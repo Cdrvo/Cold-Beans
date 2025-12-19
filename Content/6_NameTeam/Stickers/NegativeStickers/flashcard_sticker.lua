@@ -1,3 +1,8 @@
+SMODS.Sound({
+  key = "flashcardreroll",
+  path = "6_NameTeam/cbean_flashcard.ogg"
+})
+
 SMODS.Sticker({
 	key = "flashcard",
     atlas = "NAMETEAM_Stickers",
@@ -20,12 +25,13 @@ SMODS.Sticker({
 	end,
 	calculate = function(self,card,context)
         if context.reroll_shop then
+			play_sound("cbean_flashcardreroll", 1, 0.2)
             NAMETEAM.replacecards(card)
         end
     end,
     beans_credits = {
         code = "Revo",
-        team = "Name Team",
-        art = "Doggfly"
+        art = "Doggfly",
+        team = "Name Team"
     }
 })

@@ -13,7 +13,6 @@ SMODS.Sticker({
 		Deck = true,
 	},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 		return {
 			vars = {},
 		}
@@ -31,9 +30,9 @@ SMODS.Sticker({
 	end,
 	beans_credits = {
 		code = "TheAlternateDoctor",
-		team = "Name Team",
 		art = "GhostSalt",
-	},
+		team = "Name Team"
+	}
 })
 
 SMODS.Edition:take_ownership("negative", {

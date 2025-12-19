@@ -52,6 +52,8 @@ function G:start_run(args)
 	G.GAME.seen_stationery_tutorial = G.GAME.seen_stationery_tutorial or false
 	---@type boolean
 	G.GAME.already_no_interest = G.GAME.already_no_interest or false
+	---@type integer
+	G.GAME.dangerous_mult = G.GAME.dangerous_mult or 1
 end
 
 local apply_hook = Back.apply_to_run
@@ -140,5 +142,36 @@ function Card:set_ability(center, initial, delay_sprites)
 		end
 	else
 		return old_set_ability(self, center, initial, delay_sprites)
+	end
+end
+
+local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
+function G.FUNCS.play_cards_from_highlighted(e)
+	SMODS.calculate_context({cbean_first = true})
+	old_play_highlighted(e)
+end
+
+local add_to_deck_old = Card.add_to_deck
+function Card:add_to_deck(from_debuff)
+	local ret = add_to_deck_old(self, from_debuff)
+	if self and self.ability then
+		for k, v in pairs(SMODS.Stickers) do
+			if self.ability[k] then
+				print(k ..  " is added to the deck")
+				self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[k])
+			end
+		end
+	end
+	return ret
+end
+
+local debuff_old = Card.set_debuff
+function Card:set_debuff(should_debuff)
+	if self.ability then
+		if not self.ability["cbean_man"] then
+			return debuff_old(self, should_debuff)
+		end
+	else
+		return debuff_old(self, should_debuff)
 	end
 end

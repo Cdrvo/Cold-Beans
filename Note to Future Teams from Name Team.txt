@@ -12,3 +12,4 @@ From ThunderEdge:
 * If you have any idea for adding stickers that can land on decks, check out 6_NameTeam\StickersOnEverything\DeckStickers.lua and Content\6_NameTeam\Stickers\DeckStickers
 * T:sticker_key in localization is now supported thanks to some Name Team patches
 * You can now append SMODS.Stickers[key] to info_queue in order to add a sticker as an info queue tooltip
+* I also screwed up adding info_queues to stickers because of the patches I had to make, if any of you know how to fix this please do so (didn't have time to fix)

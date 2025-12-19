@@ -1,3 +1,8 @@
+SMODS.Sound({
+  key = "shielddefend",
+  path = "6_NameTeam/cbean_shielddefend.ogg"
+})
+
 SMODS.Sticker({
 	key = "shield",
     atlas = "NAMETEAM_Stickers",
@@ -24,6 +29,8 @@ SMODS.Sticker({
 			local ccard = copy_card(card)
 			ccard:add_to_deck()
 			area:emplace(ccard)
+
+			play_sound("cbean_shielddefend", 1, 0.5)
 			SMODS.calculate_effect({ message = "Shielded!"}, ccard)
 
             SMODS.Stickers["cbean_shield"]:apply(ccard, false)
@@ -31,7 +38,7 @@ SMODS.Sticker({
 	end,
 	beans_credits = {
         code = "Revo",
-		art = "Inky" ,
+		art = "GhostSalt",
 		team = "Name Team"
 	},
 })

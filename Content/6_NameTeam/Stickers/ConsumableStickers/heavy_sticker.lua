@@ -18,14 +18,14 @@ SMODS.Sticker({
 		}
 	end,
     NAMETEAM_applied = function(self, card)
-        if card.area and G.hand then G.hand:change_size(-1) end
+        if not card:in_collection() and G.hand then G.hand:change_size(-1) end
     end,
     NAMETEAM_removed = function(self, card)
-        if card.area and G.hand then G.hand:change_size(1) end
+        if not card:in_collection() and G.hand then G.hand:change_size(1) end
     end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "Inky",  
+		art = "GhostSalt",
+		team = "Name Team"
 	},
 })

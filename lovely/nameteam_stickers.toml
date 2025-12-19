@@ -342,3 +342,28 @@ payload = '''
     if (self.facing == 'front' or (G.deck and self == G.deck.cards[1])) and (not self.states.drag.is or G.CONTROLLER.HID.touch) and not self.no_ui and not G.debug_tooltip_toggle then 
 '''
 match_indent = true
+
+# Stickers on playing cards >:D
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+SMODS.calculate_context({full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, final_scoring_step = true})
+'''
+position = "before"
+payload = '''
+		G.E_MANAGER:add_event(Event({
+			trigger = "before",
+			delay = 0.2,
+			func = function()
+				for i = 1, #G.play.cards do
+                    if pseudorandom("nteam_playing_card") < 1/2 and G.GAME.modifiers.playing_card_stickers then
+                        local ae = 
+                        G.play.cards[i]:add_sticker(NAMETEAM.poll_sticker(true, G.play.cards[i], true, "Default"), true)
+                    end 
+                end
+                return true
+			end,
+		}))
+'''
+match_indent = true
