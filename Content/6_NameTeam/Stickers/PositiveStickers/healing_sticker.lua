@@ -9,7 +9,7 @@ SMODS.Sticker({ --overcomplicated
         Joker = true,
         Consumable = true,
     },
-	badge_colour = HEX("866b54"),
+	badge_colour = HEX("ff9e9e"),
     needs_enable_flag = true,
 	rate = 0.03,
 	sticker_type = "Positive",

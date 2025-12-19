@@ -4552,6 +4552,7 @@ return {
             cbean_hungry = "Hungry",
             cbean_barren = "Barren",
             cbean_spore = "Spore",
+            cbean_healing = "Healing",
 
 
             cbean_the_arm_sticker = "The Arm",
