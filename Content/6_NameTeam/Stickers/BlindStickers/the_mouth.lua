@@ -19,17 +19,7 @@ SMODS.Sticker({
 	end,
 	hands = {},
 	apply_to_deck = function(self, back, val)
-		local had_sticker = back.ability[self.key]
-		back.ability[self.key] = val
-		if back.ability[self.key] and not had_sticker then
-			if self.NAMETEAM_removed then
-				if val == false then
-					self:NAMETEAM_removed(self)
-				else
-					self:NAMETEAM_applied(self)
-				end
-			end
-		end
+		NAMETEAM.simple_apply(self, back, val)
 	end,
 	calculate = function(self, card, context)
 		if context.initial_scoring_step and not self.hand_set then
