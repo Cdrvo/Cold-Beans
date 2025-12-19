@@ -2667,6 +2667,15 @@ return {
 					"is halved",
 				},
 			},
+            cbean_square = {
+				name = "Square Sticker",
+				text = {
+					"Can only trigger",
+                    "if played hand",
+                    "has exactly 4",
+                    "cards"
+				},
+			},
 
 			-- Blind Stickers
 
@@ -4710,6 +4719,8 @@ return {
 				cbean_healing = "Healing",
 				cbean_misprinted = "Misprinted",
 				cbean_poor = "Poor",
+                cbean_square = "Square",
+                
 
 				cbean_the_arm_sticker = "The Arm",
 				cbean_the_club_sticker = "The Club",
