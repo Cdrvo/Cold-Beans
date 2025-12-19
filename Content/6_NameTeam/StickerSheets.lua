@@ -4,7 +4,7 @@ SMODS.ConsumableType {
   secondary_colour = HEX("859ad7"),
   collection_rows = { 4, 4 },
   shop_rate = 0,
-  default = "cbean_eternal_sheet",
+  default = "c_cbean_eternal_sheet",
   can_stack = true,
   can_divide = true
 }
@@ -267,7 +267,7 @@ SMODS.Consumable {
   end,
   can_use = function(self, card)
     if #G.jokers.highlighted == 1 then
-      if not G.hand.jokers[1].ability.cbean_frowning then
+      if not G.jokers.highlighted[1].ability.cbean_flashcard then
         return true
       end
     end

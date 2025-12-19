@@ -2152,6 +2152,24 @@ return {
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips){}"
                 }
             },
+            j_cbean_nameteam_bottomofthebarrel = {
+                name = "Bottom of the Barrel",
+                text = {
+                    "Gains {C:mult}+#1#{} Mult for each",
+                    "card {C:attention}purchased{} from the",
+                    "shop after all {C:green}rerolls{}",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}"
+                }
+            },
+            j_cbean_nameteam_teenyweenyjoker = {
+                name = "{s:0.6}Teeny Weeny Joker{}",
+                text = {
+                    "{s:0.8}Gains {C:mult,s:0.8}+#1#{s:0.8} Mult",
+                    "{s:0.8}if all played{}",
+                    "{s:0.8}cards are {C:attention,s:0.8}2s{}",
+                    "{C:inactive,s:0.8}(Currently {C:mult,s:0.8}+#2#{C:inactive,s:0.8} Mult){}"
+                }
+            },
             j_cbean_nameteam_presidenthathaway = {
                 name = "President Hathaway",
                 text = {
@@ -2164,6 +2182,16 @@ return {
                         "{C:red,E:1}Lose the run{} if this",
                         "Joker is {C:red}destroyed{}"
                     }
+                }
+            },
+            j_cbean_nameteam_collager = {
+                name = "Collager",
+                text =
+                {
+                    "When {C:attention}Blind{} is selected,",
+                    "{C:red}destroys{} a random {C:tarot}Tarot{} card",
+                    "If successful, creates",
+                    "a {C:stickersheet}Sticker Sheet{}"
                 }
             },
         },
@@ -2513,112 +2541,112 @@ return {
             },
             cbean_the_mouth_sticker = {
                 name = "The Mouth",
-                text={
+                text = {
                     "Play only 1 hand",
                     "type every round",
                 },
             },
             cbean_the_ox_sticker = {
                 name = "The Ox",
-                text={
+                text = {
                     "Playing a #1#",
                     "sets money to $0",
                 },
             },
             cbean_the_pillar_sticker = {
                 name = "The Pillar",
-                text={
+                text = {
                     "Cards played this",
                     "Ante are debuffed",
                 },
             },
             cbean_the_needle_sticker = {
                 name = "The Needle",
-                text={
+                text = {
                     "Play only 1 hand",
                     "Blind sizes are halved",
                 },
             },
             cbean_the_plant_sticker = {
                 name = "The Plant",
-                text={
+                text = {
                     "All face cards",
                     "are debuffed"
                 },
             },
             cbean_the_psychic_sticker = {
                 name = "The Psychic",
-                text={
+                text = {
                     "Must play",
                     "5 or more cards"
                 },
             },
             cbean_the_serpent_sticker = {
                 name = "The Serpent",
-                text={
+                text = {
                     "After Play or Discard,",
                     "always draw 3 cards",
                 },
             },
             cbean_the_tooth_sticker = {
                 name = "The Tooth",
-                text={
+                text = {
                     "Lose $1 per",
                     "card played"
                 },
             },
             cbean_the_water_sticker = {
                 name = "The Water",
-                text={
+                text = {
                     "Upon entering a blind",
                     "lose all discards"
                 },
             },
             cbean_the_wheel_sticker = {
                 name = "The Wheel",
-                text={
+                text = {
                     "#1# in #2# cards get",
                     "drawn face down"
                 },
             },
             cbean_the_window_sticker = {
                 name = "The Window",
-                text={
+                text = {
                     "When in a blind",
                     "{C:red}debuff{} all Diamond cards",
                 },
             },
             cbean_verdant_leaf_sticker = {
                 name = "Verdant Leaf",
-                text={
+                text = {
                     "All cards debuffed",
                     "until 1 Joker sold"
                 },
             },
             cbean_cerulean_bell_sticker = {
                 name = "Cerulean Bell",
-                text={
+                text = {
                     "Forces 1 card to",
                     "always be selected"
                 },
             },
             cbean_amber_acorn_sticker = {
                 name = "Amber Acorn",
-                text={
+                text = {
                     "Flips and shuffles",
                     "all Joker cards"
                 },
             },
             cbean_crimson_heart_sticker = {
                 name = "Crimson Heart",
-                text={
+                text = {
                     "One random Joker",
                     "disabled every hand"
                 },
             },
             cbean_violet_vessel_sticker = {
                 name = "Violet Vessel",
-                text={
+                text = {
                     "Triples the blind",
                     "requirement upon",
                     "entering one"
@@ -4348,6 +4376,7 @@ return {
             k_cbean_stickersheet = "Sticker Sheet",
             b_cbean_stickersheet_cards = "Sticker Sheets",
             b_nteam_exchange = "Exchange",
+            k_plus_stickersheet = "+1 Sticker Sheet",
         },
         high_scores = {},
         labels = {
