@@ -2,20 +2,15 @@ SMODS.Stake {
     key = "nameteam",
     colour = HEX("55c6d9"),
     applied_stakes = {"gold"},
+    atlas = "nteam_stakes",
+    pos = {x=3,y=0},
+    sticker_atlas = "NAMETEAM_Stickers",
+    sticker_pos = {x=8,y=3},
     shiny = true,
     unlocked = false,
     prefix_config = {
         applied_stakes = {
             mod = false
-        }
-    },
-    loc_txt = {
-        name = "NTeam Stake",
-        text = {"Ton of stickers added by Name Team"},
-        sticker = {
-            name = "NTeam Sticker",
-            text = {"Used this Joker", "to win on {C:attention}NTeam", "{C:attention}stake{} difficulty"}
-
         }
     },
     modifiers = function()

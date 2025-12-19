@@ -1,20 +1,16 @@
 SMODS.Stake {
     key = "blind",
     colour = HEX("55c6d9"),
+    atlas = "nteam_stakes",
+    pos = {x=2,y=0},
+    sticker_atlas = "NAMETEAM_Stickers",
+    sticker_pos = {x=8,y=2},
     applied_stakes = {"cbean_deck"},
     shiny = true,
     unlocked = false,
     prefix_config = {
         applied_stakes = {
             mod = false
-        }
-    },
-    loc_txt = {
-        name = "Blind Stake",
-        text = {"After every boss blind, apply a random blind sticker to the deck"},
-        sticker = {
-            name = "Blind Sticker",
-            text = {"Used this Joker", "to win on {C:attention}Blind", "{C:attention}Stake{} difficulty"}
         }
     },
     modifiers = function()

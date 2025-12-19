@@ -20,16 +20,26 @@ SMODS.Sticker({
 	apply_to_deck = function(self, back, val)
 		NAMETEAM.simple_apply(self, back, val, function()
 			G.GAME.modifiers.no_interest = true
-            G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) + 1
-            G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + 1
+			G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) + 1
+			G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + 1
 		end, function()
 			G.GAME.modifiers.no_interest = G.GAME.already_no_interest
-            G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) - 1
-            G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) - 1
+			G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) - 1
+			G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) - 1
 		end)
 	end,
+	NAMETEAM_applied = function(self, card)
+		G.GAME.modifiers.no_interest = true
+		G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) + 1
+		G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + 1
+	end,
+	NAMETEAM_removed = function(self, card)
+		G.GAME.modifiers.no_interest = G.GAME.already_no_interest
+		G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) - 1
+		G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) - 1
+	end,
 	beans_credits = {
-		code = "TheAlternateDoctor",
+		code = "ThunderEdge",
 		team = "Name Team",
 		art = "GhostSalt",
 	},

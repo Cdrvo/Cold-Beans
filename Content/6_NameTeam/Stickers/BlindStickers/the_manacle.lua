@@ -18,11 +18,13 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		NAMETEAM.simple_apply(self, back, val, function()
-			G.hand:change_size(-1)
-		end, function()
-			G.hand:change_size(1)
-		end)
+		NAMETEAM.simple_apply(self, back, val)
+	end,
+	NAMETEAM_applied = function(self, card)
+		G.hand:change_size(-1)
+	end,
+	NAMETEAM_removed = function(self, card)
+		G.hand:change_size(1)
 	end,
 	beans_credits = {
 		code = "Revo",

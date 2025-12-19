@@ -27,6 +27,7 @@ SMODS.Sticker({
 			}
 		end
 	end,
+	
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",

@@ -19,15 +19,17 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		NAMETEAM.simple_apply(self, back, val, function()
-			for _, c in ipairs(G.playing_cards) do
-				SMODS.recalc_debuff(c)
-			end
-		end, function()
-			for _, c in ipairs(G.playing_cards) do
-				SMODS.recalc_debuff(c)
-			end
-		end)
+		NAMETEAM.simple_apply(self, back, val)
+	end,
+	NAMETEAM_applied = function(self, card)
+		for _, c in ipairs(G.playing_cards) do
+			SMODS.recalc_debuff(c)
+		end
+	end,
+	NAMETEAM_removed = function(self, card)
+		for _, c in ipairs(G.playing_cards) do
+			SMODS.recalc_debuff(c)
+		end
 	end,
 	calculate = function(self, card, context)
 		if context.debuff_card and context.debuff_card.area ~= G.jokers and not self.config.sold then

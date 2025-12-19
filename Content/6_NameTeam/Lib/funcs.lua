@@ -238,7 +238,7 @@ end
 ---@return T[]
 function NAMETEAM.filter(t, func)
 	local ret = {}
-	for _, v in ipairs(t) do
+	for _, v in pairs(t) do
 		if func(v) then
 			table.insert(ret, v)
 		end

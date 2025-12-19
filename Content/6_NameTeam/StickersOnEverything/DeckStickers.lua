@@ -52,7 +52,14 @@ start as follows:
 apply_to_deck = function(self, back, val)
     NAMETEAM.simple_apply(self, back, val)
 end
-Optionally, you can add 2 functions to NAMETEAM.simple_apply.
-The first function will trigger when the sticker is applied,
-and the second function will trigger when sticker is removed.
+Define NAMETEAM_applied to add an effect when:
+A card with a sticker is added to deck
+A sticker is added to a card
+Define NAMETEAM_removed to add an effect when:
+A card with a sticker is removed
+A sticker is removed from a card
+If you need specific behavior when a sticker is applied or removed, you
+can optionally pass an on_apply and on_remove function to NAMETEAM.simple_apply.
+Note that the functions passed into NAMETEAM.simple_apply won't be called
+if the card the sticker was on is removed.
 ]]

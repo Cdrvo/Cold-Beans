@@ -1,4 +1,7 @@
-hi :3 - GhostSalt
+hi :3
+I added the animation framework! Check out the animated Jokers in code to see how I animated them.
+I also included the state animation system from Phanta, but I didn't end up using it. Look there if you want examples.
+have fun lol - GhostSalt
 
 Hey! Name Team Artist Inky here. as you can see by our contributions, we've added stickers!
 I personally don't have much to say other than it has been fun to work on this project in the entirety of the week, and i am hoping that you future teams also cook up something well! 

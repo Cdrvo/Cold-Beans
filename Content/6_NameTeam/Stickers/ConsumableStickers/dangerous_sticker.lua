@@ -12,6 +12,7 @@ SMODS.Sticker({
 	sets = {
 		Consumable = true,
 	},
+	sticker_type = "Negative",
 	loc_vars = function(self, info_queue, card)
 		local num, denom = SMODS.get_probability_vars(self, 1, self.config.odds, "cbean_dangerous_sticker")
 		return {
