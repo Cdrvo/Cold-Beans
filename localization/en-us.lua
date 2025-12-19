@@ -2496,6 +2496,16 @@ return {
                 "enhancement"
               }
             },
+            cbean_spore = {
+                name = "Spore Sticker",
+                text = {
+                "When a {C:attention}Blind{}",
+                "is set gives",    
+                "a {C:dark_edition}Random{} sticker",
+                "to a card in the",
+                "same area"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4428,6 +4438,7 @@ return {
             cbean_brainrot = "Brainrot",
             cbean_hungry = "Hungry",
             cbean_barren = "Barren",
+            cbean_spore = "Spore",
 
 
             cbean_the_arm_sticker = "The Arm",

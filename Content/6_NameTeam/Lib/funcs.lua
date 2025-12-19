@@ -370,3 +370,14 @@ function NAMETEAM.get_amount_of_stickers()
     end
     return sticker_amount
 end
+
+function NAMETEAM.random_joker(area, exclude_card)
+	local jokers = {}
+	for i = 1, #area do
+		if area[i] ~= exclude_card then
+			jokers[#jokers + 1] = area[i]
+		end
+	end
+	local result = pseudorandom_element(jokers, pseudoseed("nteam_random_joker"))
+	return result
+end
