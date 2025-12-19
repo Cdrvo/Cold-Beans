@@ -2255,6 +2255,7 @@ return {
                     "{C:attention}Straight Flushes{} to create",
                     "a copy of {C:spectral}The Soul{}",
 					"{C:inactive}(Must have room){}",
+                }
             },
             j_cbean_nameteam_coffeemug = {
                 name = "Coffee Mug",
