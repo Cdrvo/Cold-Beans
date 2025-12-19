@@ -928,9 +928,13 @@ SMODS.Joker {
     },
 
     calculate = function(self, card, context)
+        local sticker_keys = {}
+        for _, v in pairs(SMODS.Stickers) do
+            sticker_keys[#sticker_keys + 1] = v.key
+        end
         if context.repetition and context.cardarea == G.play then
-            for _, v in ipairs(G.play.cards) do
-                for k, vv in pairs(v.ability) do
+            if context.other_card and context.other_card.ability then
+                for k, vv in pairs(context.other_card.ability) do
                     if NAMETEAM.contains(sticker_keys, k) and vv then
                         return { repetitions = card.ability.extra.retriggers }
                     end
@@ -979,10 +983,24 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.individual and not context.end_of_round and context.cardarea == G.hand and context.other_card:is_face() then
-            return { xmult = card.ability.extra.xmult }
+            local is_first_face = false
+            for i = 1, #G.hand.cards do
+                if G.hand.cards[i]:is_face() then
+                    is_first_face = G.hand.cards[i] == context.other_card
+                    break
+                end
+            end
+            if is_first_face then
+                return { xmult = card.ability.extra.xmult }
+            end
         end
     end
 }
+
+SMODS.Sound({
+    key = "chicanery",
+    path = "6_NameTeam/cbean_chicanery.ogg"
+})
 
 SMODS.Joker {
     key = "nameteam_chuckmcgill",
@@ -1007,8 +1025,16 @@ SMODS.Joker {
     },
 
     calculate = function(self, card, context)
-        if context.joker_main and G.GAME.last_hand_played ~= context.scoring_name then
-            return { xmult = card.ability.extra.xmult }
+        if context.joker_main then
+            local is_valid = context.scoring_name ~= card.ability.extra.prev_hand
+            card.ability.extra.prev_hand = context.scoring_name
+            if is_valid then
+                if not card.ability.extra.chicanery then
+                    card.ability.extra.chicanery = true
+                    play_sound("cbean_chicanery", 1, 0.7)
+                end
+                return { xmult = card.ability.extra.xmult }
+            end
         end
     end
 }

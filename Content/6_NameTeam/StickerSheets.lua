@@ -525,7 +525,6 @@ SMODS.Consumable {
       delay = 0.4,
       func = function()
         play_sound("gold_seal", 2, 0.75)
-        play_sound("cbean_frowning", 1, 0.65)
         affected_card:add_sticker("cbean_frowning", true)
         card:juice_up(0.3, 0.5)
         affected_card:juice_up()
