@@ -2546,9 +2546,16 @@ return {
             cbean_brainrot = {
                 name = "Brainrot Sticker",
                 text = {
-                "if {C:attention}6{} and {C:attention}7{}",
+                "If {C:attention}6{} and {C:attention}7{}",
                 "are {C:attention}scored{} together",
-                "{C:green}retrigger{} this card"
+                "{C:attention}retrigger{} this card"
+              }
+            },
+            cbean_egg = {
+                name = "Egg Sticker",
+                text = {
+                "Gains {C:money}$2{} of {C:attention}sell value",
+                "at end of round",
               }
             },
             cbean_hungry = {
