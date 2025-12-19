@@ -1,21 +1,16 @@
 SMODS.Stake {
     key = "consumable",
     colour = HEX("55c6d9"),
+    atlas = "nteam_stakes",
+    pos = {x=0,y=0},
+    sticker_atlas = "NAMETEAM_Stickers",
+    sticker_pos = {x=8,y=0},
     applied_stakes = {"cbean_nameteam"},
     shiny = true,
     unlocked = false,
     prefix_config = {
         applied_stakes = {
             mod = false
-        }
-    },
-    loc_txt = {
-        name = "Consumale Stake",
-        text = {"Consumables can spawn with certain stickers"},
-        sticker = {
-            name = "Consumable Sticker",
-            text = {"Used this Joker", "to win on {C:attention}Consumable", "{C:attention}stake{} difficulty"}
-
         }
     },
     modifiers = function()
