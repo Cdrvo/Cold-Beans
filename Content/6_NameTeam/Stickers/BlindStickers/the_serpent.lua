@@ -18,27 +18,17 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		local had_sticker = back.ability[self.key]
-		back.ability[self.key] = val
-		if back.ability[self.key] and not had_sticker then
-			if self.NAMETEAM_removed then
-				if val == false then
-					self:NAMETEAM_removed(self)
-				else
-					self:NAMETEAM_applied(self)
-				end
-			end
-		end
+		NAMETEAM.simple_apply(self, back, val)
 	end,
-	NAMETEAM_applied = function(self, card)
-		G.GAME.NAMETEAM_Serpent_Sticker = true
-		if not G.GAME.serpent_sticker_counter then G.GAME.serpent_sticker_counter = 0 end
-		G.GAME.serpent_sticker_counter = G.GAME.serpent_sticker_counter + 1
-	end,
-	NAMETEAM_removed = function(self, card)
-		G.GAME.serpent_sticker_counter = G.GAME.serpent_sticker_counter - 1
-		if G.GAME.serpent_sticker_counter == 0 then
-			G.GAME.NAMETEAM_Serpent_Sticker = false
+	calculate = function(self, card, context)
+		if
+			context.drawing_cards and (
+				G.GAME.current_round.hands_played ~= 0 or G.GAME.current_round.discards_used ~= 0
+			)
+		then
+			return {
+				cards_to_draw = 3,
+			}
 		end
 	end,
 	beans_credits = {
