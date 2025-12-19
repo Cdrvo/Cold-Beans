@@ -507,3 +507,57 @@ SMODS.Consumable {
     delay(0.6)
   end
 }
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "misprinted_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 5 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_misprinted"]
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    info_queue[#info_queue + 1] = G.P_CENTERS.j_misprint
+    return {}
+  end,
+  can_use = function(self, card)
+    if #G.jokers.highlighted == 1 then
+      if not G.jokers.highlighted[1].ability.cbean_misprinted then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.jokers.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        affected_card:add_sticker("cbean_misprinted", true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        SMODS.add_card({
+          set = "Joker",
+          edition = "e_negative",
+          key = "j_misprint"
+        })
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}

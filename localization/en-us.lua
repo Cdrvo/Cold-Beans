@@ -3732,6 +3732,19 @@ return {
 						},
 					},
 				},
+                c_cbean_misprinted_sheet = {
+					name = "Misprinted",
+					text = {
+						{
+							"Applies {C:attention}Misprinted{} to {C:attention}1{}",
+							"selected {C:attention}playing card{}",
+						},
+						{
+							"Creates a",
+							"{C:dark_edition}Negative{} {C:attention}Misprint{}",
+						},
+					},
+				},
 				c_cbean_shield_sheet = {
 					name = "Shield",
 					text = {
