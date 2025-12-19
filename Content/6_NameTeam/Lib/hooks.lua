@@ -142,3 +142,10 @@ function Card:set_ability(center, initial, delay_sprites)
 		return old_set_ability(self, center, initial, delay_sprites)
 	end
 end
+
+
+local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
+function G.FUNCS.play_cards_from_highlighted(e)
+	SMODS.calculate_context({cbean_first = true})
+	old_play_highlighted(e)
+end
