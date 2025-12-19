@@ -18,23 +18,13 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		local had_sticker = back.ability[self.key]
-		back.ability[self.key] = val
-		if back.ability[self.key] and not had_sticker then
-			if self.NAMETEAM_removed then
-				if val == false then
-					self:NAMETEAM_removed(self)
-				else
-					self:NAMETEAM_applied(self)
-				end
-			end
-		end
+		NAMETEAM.simple_apply(self, back, val)
 	end,
 	calculate = function(self, card, context)
-		if context.before then
-			if G.GAME.current_round.current_hand.hand_level ~= " lvl.1" then
-				SMODS.smart_level_up_hand(nil, G.GAME.current_round.current_hand.handname_text, nil, -1)
-			end
+		if context.before and G.GAME.hands[context.scoring_name].level > 1 then
+			return {
+				level_up = -1
+			}
 		end
 	end,
 	beans_credits = {
