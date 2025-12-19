@@ -42,6 +42,9 @@ regular stickers from being added to decks. If you are making
 a sticker that is intended to go on a deck, the function should
 start as follows:
 apply_to_deck = function(self, back, val)
-    back.ability[self.key] = val
+    NAMETEAM.simple_apply(self, back, val)
 end
+Optionally, you can add 2 functions to NAMETEAM.simple_apply.
+The first function will trigger when the sticker is applied,
+and the second function will trigger when sticker is removed.
 ]]
