@@ -2478,7 +2478,7 @@ return {
                 "Earn no {C:attention}Interest",
                 "Earn an additional {C:money}$1",
                 "per remaining {C:blue}Hand{} and",
-                "{C:red}discard{} at end of round"
+                "{C:red}Discard{} at end of round"
               }
             },
             cbean_brainrot = {
