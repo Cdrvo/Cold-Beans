@@ -50,7 +50,16 @@ function G:start_run(args)
 	G.GAME.stationery_reroll_cost_scaling = G.GAME.stationery_reroll_cost_scaling or 1
 	---@type boolean
 	G.GAME.seen_stationery_tutorial = G.GAME.seen_stationery_tutorial or false
-	G.deck.states.hover.can = true
+	---@type boolean
+	G.GAME.already_no_interest = G.GAME.already_no_interest or false
+end
+
+local apply_hook = Back.apply_to_run
+function Back:apply_to_run()
+	apply_hook(self)
+	if G.GAME.modifiers.no_interest then
+		G.GAME.already_no_interest = true
+	end
 end
 
 -- Following 2 hooks are for storing and saving the stickers to the deck
@@ -125,4 +134,17 @@ function Card:remove_sticker(sticker)
 	SMODS.calculate_context({
 		cbean_sticker_removed = true,
 	})
+end
+
+local old_set_ability = Card.set_ability
+function Card:set_ability(center, initial, delay_sprites)
+	if self and self.ability and self.ability.set == "Default" then
+		for k, v in pairs(G.P_CENTER_POOLS.Enhanced) do
+			if not self.ability["cbean_barren"] then
+				return old_set_ability(self, center, initial, delay_sprites)
+			end
+		end
+	else
+		return old_set_ability(self, center, initial, delay_sprites)
+	end
 end

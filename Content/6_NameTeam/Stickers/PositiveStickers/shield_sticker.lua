@@ -11,7 +11,8 @@ SMODS.Sticker({
     },
 	badge_colour = HEX("866b54"),
     needs_enable_flag = true,
-	rate = 0.05,
+	rate = 0.03,
+	sticker_type = "Positive",
 	calculate = function(self, card, context)
 		if context.cbean_destroyed and context.cbean_destroyed_card == card then
             local area

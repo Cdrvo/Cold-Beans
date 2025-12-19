@@ -1,14 +1,15 @@
 SMODS.Sticker({
-	key = "mailed",
+	key = "barren",
     atlas = "NAMETEAM_Stickers",
 	pos = {
-		x = 1,
-		y = 0,
+		x = 5,
+		y = 2,
 	},
-	badge_colour = HEX("55a383"),
+	badge_colour = HEX("aaaaaa"),
 	config = {},
 	rate = 0.06,
 	needs_enable_flag = true,
+    sticker_type = "Negative",
     sets = {
         Default = true,
         Enhanced = true,
@@ -18,12 +19,9 @@ SMODS.Sticker({
 		vars = {},
 	}
 	end,
-    sticker_type = "Negative",
-	calculate = function(self,card,context)
-        if context.discard and context.other_card == card then
-            return{
-                dollars = -2
-            }
+	NAMETEAM_applied = function(self, card)
+        if card.ability.set == "Enhanced" then
+            card:set_ability("c_base")
         end
     end,
     beans_credits = {

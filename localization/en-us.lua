@@ -2485,6 +2485,57 @@ return {
                     "randomizes this {C:attention}Joker's position"
                 }
             },
+            cbean_nebula = {
+                name = "Nebula Sticker",
+                text = {
+                "{C:red}-1{} consumable Slot, create a {C:dark_edition}Negative",
+                "{C:planet}Planet{} card for most played hand when ",
+                "{C:attention}Small Blind{} is selected "
+              }
+            },
+            cbean_green = {
+                name = "Green Sticker",
+                text = {
+                "Earn no {C:attention}Interest",
+                "Earn an additional {C:money}$1",
+                "per remaining {C:blue}Hand{} and",
+                "{C:red}Discard{} at end of round"
+              }
+            },
+            cbean_brainrot = {
+                name = "Brainrot Sticker",
+                text = {
+                "if {C:attention}6{} and {C:attention}7{}",
+                "are {C:attention}scored{} together",
+                "{C:green}retrigger{} this card"
+              }
+            },
+            cbean_hungry = {
+                name = "Hungry Sticker",
+                text = {
+                "When a {C:attention}Blind{} is selected",
+                "{C:red}consumes{} the card",
+                "next to it"
+              }
+            },
+            cbean_barren = {
+                name = "Barren Sticker",
+                text = {
+                "Card {C:red}cannot",
+                "have an",
+                "enhancement"
+              }
+            },
+            cbean_spore = {
+                name = "Spore Sticker",
+                text = {
+                "When a {C:attention}Blind{}",
+                "is set gives",    
+                "a {C:dark_edition}Random{} sticker",
+                "to a card in the",
+                "same area"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4414,6 +4465,15 @@ return {
             cbean_egg = "Egg",
             cbean_minuscule = "Minuscule",
             cbean_shuffle = "Shuffle",
+            cbean_heavy = "Heavy",
+            cbean_shield = "Shield",
+            cbean_nebula = "Nebula",
+            cbean_brainrot = "Brainrot",
+            cbean_hungry = "Hungry",
+            cbean_barren = "Barren",
+            cbean_spore = "Spore",
+
+
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
             cbean_the_eye_sticker = "The Eye",
@@ -4440,9 +4500,6 @@ return {
             cbean_cerulean_bell_sticker = "Cerulean Bell",
             cbean_violet_vessel_sticker = "Violet Vessel",
             cbean_crimson_heart_sticker = "Crimson Heart",
-
-            cbean_heavy = "Heavy",
-            cbean_shield = "Shield",
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {

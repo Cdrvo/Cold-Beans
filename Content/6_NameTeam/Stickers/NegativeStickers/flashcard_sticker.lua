@@ -12,6 +12,7 @@ SMODS.Sticker({
     sets = {
         Joker = true
     },
+	sticker_type = "Negative",
 	loc_vars = function(self, info_queue, card)
 	return {
 		vars = {},
