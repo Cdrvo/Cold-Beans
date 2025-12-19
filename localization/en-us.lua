@@ -2480,6 +2480,14 @@ return {
                 "{C:green}retrigger{} this card"
               }
             },
+            cbean_hungry = {
+                name = "Hungry Sticker",
+                text = {
+                "When a {C:attention}Blind{} is selected",
+                "{C:red}consumes{} the card",
+                "next to it"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4410,6 +4418,7 @@ return {
             cbean_shield = "Shield",
             cbean_nebula = "Nebula",
             cbean_brainrot = "Brainrot",
+            cbean_hungry = "Hungry",
 
 
             cbean_the_arm_sticker = "The Arm",

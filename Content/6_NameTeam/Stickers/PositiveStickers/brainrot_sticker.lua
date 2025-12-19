@@ -15,7 +15,7 @@ SMODS.Sticker({
     },
 	badge_colour = HEX("e0bb21"),
     needs_enable_flag = true,
-	rate = 0.05,
+	rate = 0.04,
 	calculate = function(self, card, context)
         local s = self.config
 		if context.before then
