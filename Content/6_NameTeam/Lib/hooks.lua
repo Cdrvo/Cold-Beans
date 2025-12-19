@@ -97,20 +97,7 @@ function Card:align_h_popup()
 				d_sticker_count = d_sticker_count + 1
 			end
 		end
-		local fac
-		if d_sticker_count <= 6 then
-			fac = 2.4
-		elseif d_sticker_count <= 8 then
-			fac = 2
-		elseif d_sticker_count <= 10 then
-			fac = 1.4
-		elseif d_sticker_count <= 12 then
-			fac = 1.8
-		elseif d_sticker_count < 16 then
-			fac = 1.2
-		else
-			fac = 0
-		end
+		local fac = 2.4 - math.max(0, d_sticker_count - 6) * 0.25
 		ret.offset.y = ret.offset.y + fac
 	end
 	return ret

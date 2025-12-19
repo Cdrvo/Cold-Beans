@@ -15,22 +15,12 @@ SMODS.Sticker({
 		Blind = true,
 	},
 	apply_to_deck = function(self, back, val)
-		local had_sticker = back.ability[self.key]
-		back.ability[self.key] = val
-		if back.ability[self.key] and not had_sticker then
-			if self.NAMETEAM_removed then
-				if val == false then
-					self:NAMETEAM_removed(self)
-				else
-					self:NAMETEAM_applied(self)
-				end
-			end
-		end
+		NAMETEAM.simple_apply(self, back, val)
 	end,
 	loc_vars = function(self, info_queue)
 		local numerator, denominator = SMODS.get_probability_vars(
 			self,
-			(G.GAME.probabilities.normal or 1),
+			1,
 			self.config.odds,
 			"cbean_the_wheel_sticker"
 		)
@@ -44,8 +34,8 @@ SMODS.Sticker({
 			and SMODS.pseudorandom_probability(
 				card,
 				"cbean_the_wheel_sticker",
-				(G.GAME.probabilities.normal or 1),
-				self.config.odds
+				1,
+				s.odds
 			)
 		then
 			return {
