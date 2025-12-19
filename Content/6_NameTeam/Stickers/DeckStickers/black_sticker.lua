@@ -18,21 +18,23 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		NAMETEAM.simple_apply(self, back, val, function()
-			G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
-			ease_hands_played(-1)
-			G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) * 10
-		end, function()
-			G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
-			ease_hands_played(1)
-			G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) / 10
-		end)
+		NAMETEAM.simple_apply(self, back, val)
+	end,
+	NAMETEAM_applied = function(self, card)
+		G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+		ease_hands_played(-1)
+		G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) * 10
+	end,
+	NAMETEAM_removed = function(self, card)
+		G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+		ease_hands_played(1)
+		G.GAME.modifiers.cbean_negative_boost = (G.GAME.modifiers.cbean_negative_boost or 1) / 10
 	end,
 	beans_credits = {
 		code = "TheAlternateDoctor",
 		art = "GhostSalt",
-		team = "Name Team"
-	}
+		team = "Name Team",
+	},
 })
 
 SMODS.Edition:take_ownership("negative", {

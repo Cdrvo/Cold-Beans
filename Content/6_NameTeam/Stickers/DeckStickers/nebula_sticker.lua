@@ -18,15 +18,17 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		NAMETEAM.simple_apply(self, back, val, function()
-			if G.consumeables then
-				G.consumeables:change_size(-1)
-			end
-		end, function()
-			if G.consumeables then
-				G.consumeables:change_size(1)
-			end
-		end)
+		NAMETEAM.simple_apply(self, back, val)
+	end,
+	NAMETEAM_applied = function(self, card)
+		if G.consumeables then
+			G.consumeables:change_size(-1)
+		end
+	end,
+	NAMETEAM_removed = function(self, card)
+		if G.consumeables then
+			G.consumeables:change_size(1)
+		end
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and G.GAME.blind:get_type() == "Small" then

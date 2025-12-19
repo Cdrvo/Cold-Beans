@@ -19,11 +19,12 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		NAMETEAM.simple_apply(self, back, val, nil, function()
-			for _, v in ipairs(G.playing_cards) do
-				v.ability.forced_selection = nil
-			end
-		end)
+		NAMETEAM.simple_apply(self, back, val)
+	end,
+	NAMETEAM_removed = function(self, card)
+		for _, v in ipairs(G.playing_cards) do
+			v.ability.forced_selection = nil
+		end
 	end,
 	calculate = function(self, card, context)
 		if context.hand_drawn then

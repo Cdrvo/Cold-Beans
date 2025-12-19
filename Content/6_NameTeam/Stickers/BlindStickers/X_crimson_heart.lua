@@ -19,16 +19,18 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		NAMETEAM.simple_apply(self, back, val, function()
-			for _, j in ipairs(G.jokers.cards) do
-				SMODS.recalc_debuff(j)
-			end
-		end, function()
-			for _, j in ipairs(G.jokers.cards) do
-				j.ability.crimson_heart_sticker_chosen = nil
-				SMODS.recalc_debuff(j)
-			end
-		end)
+		NAMETEAM.simple_apply(self, back, val)
+	end,
+	NAMETEAM_applied = function(self, card)
+		for _, j in ipairs(G.jokers.cards) do
+			SMODS.recalc_debuff(j)
+		end
+	end,
+	NAMETEAM_removed = function(self, card)
+		for _, j in ipairs(G.jokers.cards) do
+			j.ability.crimson_heart_sticker_chosen = nil
+			SMODS.recalc_debuff(j)
+		end
 	end,
 	calculate = function(self, card, context)
 		if context.debuff_card and context.debuff_card.area == G.jokers then
