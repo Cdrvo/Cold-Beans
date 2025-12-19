@@ -2464,6 +2464,14 @@ return {
                     "card {C:attention}once"
                 }
             },
+            cbean_nebula = {
+                name = "Nebula Sticker",
+                text = {
+                "{C:red}-1{} consumable Slot, create a {C:dark_edition}Negative",
+                "{C:planet}Planet{} card for most played hand when ",
+                "{C:attention}Small Blind{} is selected "
+              }
+            },
 
             -- Blind Stickers
 
@@ -4390,6 +4398,11 @@ return {
             cbean_plasma = "Plasma",
             cbean_painted = "Painted",
             cbean_black = "Black",
+            cbean_heavy = "Heavy",
+            cbean_shield = "Shield",
+            cbean_nebula = "Nebula",
+
+
             cbean_the_arm_sticker = "The Arm",
             cbean_the_club_sticker = "The Club",
             cbean_the_eye_sticker = "The Eye",
@@ -4416,9 +4429,6 @@ return {
             cbean_cerulean_bell_sticker = "Cerulean Bell",
             cbean_violet_vessel_sticker = "Violet Vessel",
             cbean_crimson_heart_sticker = "Crimson Heart",
-
-            cbean_heavy = "Heavy",
-            cbean_shield = "Shield",
         },
         poker_hand_descriptions = {
             ["cbean_sdown_antistraight"] = {
