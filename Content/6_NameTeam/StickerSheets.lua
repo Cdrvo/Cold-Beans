@@ -706,3 +706,61 @@ SMODS.Consumable {
     delay(0.6)
   end
 }
+
+
+-- SMODS.Consumable {
+--   set = "cbean_StickerSheet",
+--   key = "egg_sheet",
+--   pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 6 },
+--   draw_extra = function(self, card, layer)
+--     if self.discovered or card.params.bypass_discovery_center then
+--       card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+--     end
+--   end,
+--   atlas = "NAMETEAM_StickerSheets",
+--   cost = 6,
+--   loc_vars = function(self, info_queue, card)
+--     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_egg"]
+--     return {}
+--   end,
+--   can_use = function(self, card)
+--     local candidates = {}
+--     for _, v in ipairs(G.jokers.cards) do
+--       if not (v.ability and v.ability.cbean_egg) then return true end
+--     end
+--     return false
+--   end,
+--   use = function(self, card, area, copier)
+--     local candidates = {}
+--     for _, v in ipairs(G.jokers.cards) do
+--       if not (v.ability and v.ability.cbean_egg) then candidates[#candidates + 1] = v end
+--     end
+--     if #candidates > 0 then
+--       local affected_card = pseudorandom_element(candidates, pseudoseed("egg_stickersheet"))
+--       G.E_MANAGER:add_event(Event({
+--         trigger = 'after',
+--         delay = 0.4,
+--         func = function()
+--           play_sound("gold_seal", 2, 0.75)
+--           affected_card:add_sticker("cbean_egg", true)
+--           card:juice_up(0.3, 0.5)
+--           affected_card:juice_up()
+--           return true
+--         end
+--       }))
+--       G.E_MANAGER:add_event(Event({
+--         trigger = 'after',
+--         delay = 0.2,
+--         func = (function()
+--           if affected_card.set_cost then 
+--               affected_card.ability.extra_value = 0
+--               affected_card.sell_cost = 0
+--               affected_card:set_cost()
+--           end
+--           return true
+--         end)
+--       }))
+--       delay(0.6)
+--     end
+--   end
+-- }
