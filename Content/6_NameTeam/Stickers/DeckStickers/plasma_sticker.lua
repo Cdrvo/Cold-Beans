@@ -18,7 +18,7 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		back.ability[self.key] = val
+		NAMETEAM.simple_apply(self, back, val)
 	end,
 	calculate = function(self, card, context)
 		if context.first_hand_drawn then

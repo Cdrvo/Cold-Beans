@@ -279,3 +279,18 @@ function NAMETEAM.most_played()
 	end
 	return _hand
 end
+
+---@param sticker SMODS.Sticker
+---@param card Card | Back
+---@param val any
+---@param on_apply? fun()
+---@param on_remove? fun()
+function NAMETEAM.simple_apply(sticker, card, val, on_apply, on_remove)
+	local had_sticker = card.ability[sticker.key]
+	card.ability[sticker.key] = val
+	if val and not had_sticker and on_apply then
+		on_apply()
+	elseif had_sticker and not val and on_remove then
+		on_remove()
+	end
+end
