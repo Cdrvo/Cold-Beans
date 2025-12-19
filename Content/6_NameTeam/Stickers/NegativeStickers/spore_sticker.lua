@@ -26,12 +26,6 @@ SMODS.Sticker({
 			else
 				_set = "Joker"
 			end
-			local rr
-			for i = 1, #card.area.cards do
-				if card.area.cards[i] == card then
-					rr = i
-				end
-			end
             local _card = NAMETEAM.random_joker(card.area.cards, card)
             local ae = NAMETEAM.poll_sticker(true, _card, false, _set)
 			_card:add_sticker(ae, true)
