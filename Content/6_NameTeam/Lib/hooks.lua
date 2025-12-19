@@ -164,3 +164,14 @@ function Card:add_to_deck(from_debuff)
 	end
 	return ret
 end
+
+local debuff_old = Card.set_debuff
+function Card:set_debuff(should_debuff)
+	if self.ability then
+		if not self.ability["cbean_man"] then
+			return debuff_old(self, should_debuff)
+		end
+	else
+		return debuff_old(self, should_debuff)
+	end
+end
