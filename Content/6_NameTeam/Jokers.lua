@@ -672,12 +672,12 @@ SMODS.Joker({
     key = "nameteam_sticker_collection",
 
     loc_vars = function(self, info_queue, card)
-                return {
-                    vars = {
-                        card.ability.extra.add_mult,
-                        card.ability.extra.current_mult
-                    }
-                }
+        return {
+            vars = {
+                card.ability.extra.add_mult,
+                card.ability.extra.current_mult
+            }
+        }
     end,
     cost = 6,
     rarity = 2,
@@ -690,7 +690,7 @@ SMODS.Joker({
         x = 11,
         y = 1
     },
-	config = {
+    config = {
         extra = {
             add_mult = 0.1,
             current_mult = 1
@@ -699,7 +699,7 @@ SMODS.Joker({
 
     set_ability = function(self, card, initial, delay_sprites)
         if G.deck ~= nil then
-            card.ability.extra.current_mult = NAMETEAM.get_amount_of_unique_stickers() * card.ability.extra.add_mult +1
+            card.ability.extra.current_mult = NAMETEAM.get_amount_of_unique_stickers() * card.ability.extra.add_mult + 1
         end
     end,
 
@@ -707,7 +707,7 @@ SMODS.Joker({
         -- Recalculating stickers whenever anything happens
         -- Should probably like, add a context for "on adding a sticker" or something??? How does that even work
         if context.sticker_applied or context.sticker_removed then
-            card.ability.extra.current_mult = NAMETEAM.get_amount_of_unique_stickers() * card.ability.extra.add_mult +1
+            card.ability.extra.current_mult = NAMETEAM.get_amount_of_unique_stickers() * card.ability.extra.add_mult + 1
         end
         if context.joker_main and context.cardarea == G.jokers then
             return {
@@ -717,9 +717,9 @@ SMODS.Joker({
     end,
 
     beans_credit = {
-		code = "TheAlternateDoctor",
-		team = "Name Team",
-		art = "TheAlternateDoctor",
+        code = "TheAlternateDoctor",
+        team = "Name Team",
+        art = "TheAlternateDoctor",
     }
 })
 
@@ -727,12 +727,12 @@ SMODS.Joker({
     key = "nameteam_stickerbomb",
 
     loc_vars = function(self, info_queue, card)
-                return {
-                    vars = {
-                        card.ability.extra.add_mult,
-                        card.ability.extra.current_mult
-                    }
-                }
+        return {
+            vars = {
+                card.ability.extra.add_mult,
+                card.ability.extra.current_mult
+            }
+        }
     end,
     cost = 4,
     rarity = 1,
@@ -745,7 +745,7 @@ SMODS.Joker({
         x = 0,
         y = 2
     },
-	config = {
+    config = {
         extra = {
             add_mult = 2,
             current_mult = 0,
@@ -766,9 +766,9 @@ SMODS.Joker({
         if not card.ability then
             -- First we cull the non Jokers off
             jokers = {}
-            for k,v in pairs(G.P_CENTERS) do
+            for k, v in pairs(G.P_CENTERS) do
                 if string.find(k, "j_") == 1 then
-                    jokers[#jokers+1] = v
+                    jokers[#jokers + 1] = v
                 end
             end
             idx = pseudorandom('stickerbomb', 1, #jokers)
@@ -805,9 +805,9 @@ SMODS.Joker({
     end,
 
     beans_credit = {
-		code = "TheAlternateDoctor",
-		team = "Name Team",
-		art = "TheAlternateDoctor",
+        code = "TheAlternateDoctor",
+        team = "Name Team",
+        art = "TheAlternateDoctor",
     }
 })
 
@@ -882,6 +882,133 @@ SMODS.Joker {
         elseif context.before and card.ability.extra.counted > 0 then
             card.ability.extra.counted = 0
             return { message = localize("k_reset"), colour = G.RED }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_coffeemug",
+    config = { extra = { retriggers = 2, hands_left = 10 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 7, y = 2 },
+    cbean_anim = {
+        { xrange = { first = 7, last = 11 }, y = 2, t = 0.1 },
+        { xrange = { first = 0, last = 2 },  y = 3, t = 0.1 }
+    },
+    pos_extra = { x = 3, y = 3 },
+    cbean_anim_extra = {
+        { x = 3, y = 3, t = 0.075 },
+        { x = 4, y = 3, t = 0.125 },
+        { x = 5, y = 3, t = 0.175 },
+        { x = 6, y = 3, t = 0.3 },
+        { x = 5, y = 3, t = 0.175 },
+        { x = 4, y = 3, t = 0.125 },
+        { x = 3, y = 3, t = 0.075 },
+        { x = 7, y = 3, t = 0.125 },
+        { x = 8, y = 3, t = 0.175 },
+        { x = 9, y = 3, t = 0.3 },
+        { x = 8, y = 3, t = 0.175 },
+        { x = 7, y = 3, t = 0.125 }
+    },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.retriggers, card.ability.extra.hands_left } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "Inky",
+        art = "Inky",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play then
+            for _, v in ipairs(G.play.cards) do
+                for k, vv in pairs(v.ability) do
+                    if NAMETEAM.contains(sticker_keys, k) and vv then
+                        return { repetitions = card.ability.extra.retriggers }
+                    end
+                end
+            end
+        end
+        if context.after and not context.blueprint then
+            if card.ability.extra.hands_left - 1 <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                return {
+                    message = localize('k_drank_ex'),
+                    colour = G.C.FILTER
+                }
+            else
+                card.ability.extra.hands_left = card.ability.extra.hands_left - 1
+                return {
+                    message = card.ability.extra.hands_left .. '',
+                    colour = G.C.FILTER
+                }
+            end
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_poorphotography",
+    config = { extra = { xmult = 2 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 4, y = 8 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.end_of_round and context.cardarea == G.hand and context.other_card:is_face() then
+            return { xmult = card.ability.extra.xmult }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_chuckmcgill",
+    config = { extra = { xmult = 3 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 5, y = 8 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, (G.GAME and G.GAME.current_round and G.GAME.current_round.hands_played ~= 0 and G.GAME.last_hand_played) and localize(G.GAME.last_hand_played, 'poker_hands') or localize('k_cbean_unknown') } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main and G.GAME.last_hand_played ~= context.scoring_name then
+            return { xmult = card.ability.extra.xmult }
         end
     end
 }

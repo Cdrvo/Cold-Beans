@@ -535,18 +535,25 @@ SMODS.Consumable {
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.2,
-      func = (function()
-        _rank = pseudorandom_element({ 'J', 'Q', 'K' }, pseudoseed('frowning_stickersheet_r'))
-        _suit = pseudorandom_element({ 'S', 'H', 'D', 'C' }, pseudoseed('frowning_sheet_s'))
-        local cen_pool = {}
-        for k, v in pairs(G.P_CENTER_POOLS["Enhanced"]) do
-          if v.key ~= 'm_stone' then
-            cen_pool[#cen_pool + 1] = v
-          end
+      func = function()
+        local cards = {}
+        local faces = {}
+        for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+            local rank = SMODS.Ranks[rank_key]
+            if rank.face then table.insert(faces, rank) end
         end
-        create_playing_card({ front = G.P_CARDS[_suit .. '_' .. _rank], center = pseudorandom_element(cen_pool, pseudoseed('frowning_sheet')) }, G.hand, nil, i ~= 1, { G.C.SECONDARY_SET.Spectral })
+        local _rank = pseudorandom_element(faces, 'familiar_create').card_key
+        local cen_pool = {}
+        for _, enhancement_center in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+            if enhancement_center.key ~= 'm_stone' and not enhancement_center.overrides_base_rank then
+                cen_pool[#cen_pool + 1] = enhancement_center
+            end
+        end
+        local enhancement = pseudorandom_element(cen_pool, 'spe_card')
+        cards[#cards+1] = SMODS.add_card { set = "Base", rank = _rank, enhancement = enhancement.key }
+        SMODS.calculate_context({ playing_card_added = true, cards = cards })
         return true
-      end)
+      end
     }))
     delay(0.6)
   end
