@@ -50,6 +50,7 @@ function G:start_run(args)
 	G.GAME.stationery_reroll_cost_scaling = G.GAME.stationery_reroll_cost_scaling or 1
 	---@type boolean
 	G.GAME.seen_stationery_tutorial = G.GAME.seen_stationery_tutorial or false
+	G.deck.states.hover.can = true
 end
 
 -- Following 2 hooks are for storing and saving the stickers to the deck
@@ -64,4 +65,33 @@ local load_deck_hook = Back.load
 function Back:load(backTable)
     load_deck_hook(self, backTable)
     self.ability = backTable.ability
+end
+
+local function transparent_helper(t)
+	t.config.colour = G.C.CLEAR
+	t.config.outline_colour = G.C.CLEAR
+	t.config.no_fill = true
+	if t.nodes then
+		for i, child in ipairs(t.nodes) do
+			transparent_helper(child)
+		end
+	end
+end
+
+local popup_hook = G.UIDEF.card_h_popup
+function G.UIDEF.card_h_popup(card)
+	local ret = popup_hook(card)
+	if G.deck and G.deck.cards[1] == card then
+		transparent_helper(ret)
+	end
+	return ret
+end
+
+local get_popup_offset_hook = Card.align_h_popup
+function Card:align_h_popup()
+	local ret = get_popup_offset_hook(self)
+	if G.deck and self == G.deck.cards[1] then
+		ret.offset.y = ret.offset.y + 2.4
+	end
+	return ret
 end

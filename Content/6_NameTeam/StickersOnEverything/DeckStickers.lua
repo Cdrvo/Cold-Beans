@@ -20,7 +20,7 @@ end
 
 function Back:nteam_remove_sticker(key)
 	local sticker_table = SMODS.Stickers[key]
-    if type(sticker_table.apply_to_deck) ~= "function" then
+	if type(sticker_table.apply_to_deck) ~= "function" then
 		return
 	end
 	sticker_table:apply_to_deck(self, false)
@@ -36,5 +36,4 @@ start as follows:
 apply_to_deck = function(self, back, val)
     back.ability[self.key] = val
 end
-
 ]]

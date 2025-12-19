@@ -369,3 +369,15 @@ if G.GAME.modifiers.blind_stickers and G.GAME.blind.boss then
     end
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+    if self.facing == 'front' and (not self.states.drag.is or G.CONTROLLER.HID.touch) and not self.no_ui and not G.debug_tooltip_toggle then 
+'''
+position = "at"
+payload = '''
+    if (self.facing == 'front' or (G.deck and self == G.deck.cards[1])) and (not self.states.drag.is or G.CONTROLLER.HID.touch) and not self.no_ui and not G.debug_tooltip_toggle then 
+'''
+match_indent = true
