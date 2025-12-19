@@ -3619,6 +3619,51 @@ return {
 			},
 		},
 		cbean_StickerSheet = {
+			c_cbean_plasma_sheet = {
+				name = "Plasma",
+				text = {
+					{
+						"Applies {C:dark_edition}Plasma{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_black_sheet = {
+				name = "Black",
+				text = {
+					{
+						"Applies {C:dark_edition}Black{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_painted_sheet = {
+				name = "Painted",
+				text = {
+					{
+						"Applies {C:dark_edition}Painted{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_nebula_sheet = {
+				name = "Nebula",
+				text = {
+					{
+						"Applies {C:dark_edition}Nebula{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_green_sheet = {
+				name = "Green",
+				text = {
+					{
+						"Applies {C:dark_edition}Green{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
 			c_cbean_eternal_sheet = {
 				name = "Eternal",
 				text = {
