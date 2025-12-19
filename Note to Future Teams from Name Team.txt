@@ -1,6 +1,10 @@
 hi :3 - GhostSalt
 
-Hey! Name Team Artist Inky here. as you can see by our contributions, we've added stickers! I personally don't have much to say other than it has been fun to work on this project in the entirety of the week, and i am hoping that you future teams also cook up something well! Some animation was added to existing jokers by GhostSalt's behalf, as well as the option to disable animations, so no need to worry about implementing that. We'd love it if the next team could lend us a hand from what we missed in implementing decks, and maybe even contribute to new stickers! Best of luck to yall!
+Hey! Name Team Artist Inky here. as you can see by our contributions, we've added stickers!
+I personally don't have much to say other than it has been fun to work on this project in the entirety of the week, and i am hoping that you future teams also cook up something well! 
+Some animation was added to existing jokers by GhostSalt's behalf, as well as the option to disable animations, so no need to worry about implementing that. 
+We'd love it if the next team could lend us a hand from what we missed in implementing decks, and maybe even contribute to new stickers! 
+Best of luck to yall!
 
 From ThunderEdge:
 * Add rewards for the stationery shop that interact with any mechanics that you may add (Code and documentation located in 6_NameTeam\StationeryShop\stationery_rewards.lua)
