@@ -30,9 +30,9 @@ SMODS.Sticker({
 	end,
 	beans_credits = {
 		code = "TheAlternateDoctor",
-		team = "Name Team",
 		art = "GhostSalt",
-	},
+		team = "Name Team"
+	}
 })
 
 SMODS.Edition:take_ownership("negative", {
