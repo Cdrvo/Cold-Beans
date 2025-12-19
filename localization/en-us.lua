@@ -2598,10 +2598,16 @@ return {
                 name = "Misprinted Sticker",
                 text = {
                 "Copies a random",
-                "{C:attention}Sticker{} effect",    
+                "{C:attention}Sticker{} effect",
                 "Chosen effect changes",
                 "at end of round",
                 "{C:inactive}(Copying #1#)"
+            },
+            cbean_poor = {
+                name = "Poor Sticker",
+                text = {
+                "All earned money",
+                "is halved"
               }
             },
 
@@ -4641,6 +4647,7 @@ return {
             cbean_spore = "Spore",
             cbean_healing = "Healing",
             cbean_misprinted = "Misprinted",
+            cbean_poor = "Poor",
 
 
             cbean_the_arm_sticker = "The Arm",

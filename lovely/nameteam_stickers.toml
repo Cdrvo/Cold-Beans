@@ -367,3 +367,19 @@ payload = '''
 		}))
 '''
 match_indent = true
+
+#poor sticker
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+G.GAME.dollars = G.GAME.dollars + mod
+'''
+position = "before"
+payload = '''
+    if G.GAME.modifiers.cbean_half_money and G.GAME.modifiers.cbean_half_money > 0 then mod = mod / (G.GAME.modifiers.cbean_half_money*2) end
+'''
+match_indent = true
+
+
