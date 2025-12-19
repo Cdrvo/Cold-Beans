@@ -2536,6 +2536,16 @@ return {
                 "same area"
               }
             },
+            cbean_healing = {
+                name = "Healing Sticker",
+                text = {
+                "When a {C:attention}Blind{}",
+                "is set removes",    
+                "a {C:dark_edition}Random{} negative",
+                "sticker from a card",
+                "in the same area"
+              }
+            },
 
             -- Blind Stickers
 

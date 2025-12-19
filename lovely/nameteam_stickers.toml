@@ -17,6 +17,7 @@ payload = '''
 sets = {
     Joker = true
 },
+sticker_type = "Negative",
 '''
 match_indent = false
 
@@ -33,6 +34,7 @@ sets = {
     Default = true,
     Enhanced = true,
 },
+sticker_type = "Negative",
 '''
 match_indent = false
 
@@ -50,6 +52,7 @@ sets = {
     Enhanced = true,
     Consumable = true,
 },
+sticker_type = "Negative",
 '''
 match_indent = false
 
@@ -64,6 +67,7 @@ payload = '''
 sets = {
     Joker = true,
 },
+sticker_type = "Negative",
 '''
 match_indent = false
 
