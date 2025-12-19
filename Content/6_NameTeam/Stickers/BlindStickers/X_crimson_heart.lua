@@ -19,49 +19,66 @@ SMODS.Sticker({
 		}
 	end,
 	apply_to_deck = function(self, back, val)
-		local had_sticker = back.ability[self.key]
-		back.ability[self.key] = val
-		if back.ability[self.key] and not had_sticker then
-			if self.NAMETEAM_removed then
-				if val == false then
-					self:NAMETEAM_removed(self)
-				else
-					self:NAMETEAM_applied(self)
-				end
+		NAMETEAM.simple_apply(self, back, val, function()
+			for _, j in ipairs(G.jokers.cards) do
+				SMODS.recalc_debuff(j)
 			end
-		end
-	end,
-	NAMETEAM_removed = function(self, card)
-		local jokers = {}
-		for i = 1, #G.jokers.cards do
-			if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
-				jokers[#jokers + 1] = G.jokers.cards[i]
+		end, function()
+			for _, j in ipairs(G.jokers.cards) do
+				j.ability.crimson_heart_sticker_chosen = nil
+				SMODS.recalc_debuff(j)
 			end
-			SMODS.debuff_card(G.jokers.cards[i], false, "NAMETEAM_crimson_heart_sticker")
-		end
+		end)
 	end,
 	calculate = function(self, card, context)
-		if context.hand_drawn then
-			local jokers = {}
-			for i = 1, #G.jokers.cards do
-				if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
-					jokers[#jokers + 1] = G.jokers.cards[i]
-				end
-				SMODS.debuff_card(G.jokers.cards[i], true, "NAMETEAM_crimson_heart_sticker")
-			end
-			local _card = pseudorandom_element(jokers, pseudoseed("crimson_heart"))
-			if _card then
-				SMODS.debuff_card(_card, true, "NAMETEAM_crimson_heart_sticker")
-				_card:juice_up()
+		if context.debuff_card and context.debuff_card.area == G.jokers then
+			if context.debuff_card.ability.crimson_heart_sticker_chosen then
+				return {
+					debuff = true,
+				}
 			end
 		end
-		if context.end_of_round then
-			local jokers = {}
-			for i = 1, #G.jokers.cards do
-				if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then
-					jokers[#jokers + 1] = G.jokers.cards[i]
+		if context.press_play and G.jokers.cards[1] then
+			self.prepped = true
+		end
+		if context.hand_drawn then
+			if self.prepped and G.jokers.cards[1] then
+				local prev_chosen_set = {}
+				local fallback_jokers = {}
+				local jokers = {}
+				for i = 1, #G.jokers.cards do
+					if G.jokers.cards[i].ability.crimson_heart_sticker_chosen then
+						prev_chosen_set[G.jokers.cards[i]] = true
+						G.jokers.cards[i].ability.crimson_heart_sticker_chosen = nil
+						if G.jokers.cards[i].debuff then
+							SMODS.recalc_debuff(G.jokers.cards[i])
+						end
+					end
 				end
-				SMODS.debuff_card(G.jokers.cards[i], false, "NAMETEAM_crimson_heart_sticker")
+				for i = 1, #G.jokers.cards do
+					if not G.jokers.cards[i].debuff then
+						if not prev_chosen_set[G.jokers.cards[i]] then
+							jokers[#jokers + 1] = G.jokers.cards[i]
+						end
+						table.insert(fallback_jokers, G.jokers.cards[i])
+					end
+				end
+				if #jokers == 0 then
+					jokers = fallback_jokers
+				end
+				local _card = pseudorandom_element(jokers, "crimson_heart_sticker")
+				if _card then
+					_card.ability.crimson_heart_sticker_chosen = true
+					SMODS.recalc_debuff(_card)
+					_card:juice_up()
+				end
+			end
+			self.prepped = nil
+		end
+		if context.end_of_round and context.main_eval and not context.game_over then
+			for _, j in ipairs(G.jokers.cards) do
+				j.ability.crimson_heart_sticker_chosen = nil
+				SMODS.recalc_debuff(j)
 			end
 		end
 	end,
