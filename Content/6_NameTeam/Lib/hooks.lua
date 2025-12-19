@@ -145,9 +145,22 @@ function Card:set_ability(center, initial, delay_sprites)
 	end
 end
 
-
 local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
 function G.FUNCS.play_cards_from_highlighted(e)
 	SMODS.calculate_context({cbean_first = true})
 	old_play_highlighted(e)
+end
+
+local add_to_deck_old = Card.add_to_deck
+function Card:add_to_deck(from_debuff)
+	local ret = add_to_deck_old(self, from_debuff)
+	if self and self.ability then
+		for k, v in pairs(SMODS.Stickers) do
+			if self.ability[k] then
+				print(k ..  " is added to the deck")
+				self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[k])
+			end
+		end
+	end
+	return ret
 end

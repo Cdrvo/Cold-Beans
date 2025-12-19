@@ -381,3 +381,13 @@ function NAMETEAM.random_joker(area, exclude_card)
 	local result = pseudorandom_element(jokers, pseudoseed("nteam_random_joker"))
 	return result
 end
+
+function Card:in_collection()
+	if G.your_collection then
+        for i = 1, #G.your_collection do
+            if self and self.area and (self.area == G.your_collection[i]) then
+                return true
+            end
+        end
+    end
+end
