@@ -15,6 +15,10 @@ function Back:nteam_apply_sticker(key)
 			end
 		end
 	end
+	if not G.GAME.selected_back.ability[key] then
+		sticker_table:NAMETEAM_applied(G.GAME.selected_back)
+		SMODS.calculate_context({sticker_applied = true, other_sticker = sticker_table, other_card = self})
+	end
 	sticker_table:apply_to_deck(self, val)
 end
 
@@ -22,6 +26,10 @@ function Back:nteam_remove_sticker(key)
 	local sticker_table = SMODS.Stickers[key]
 	if type(sticker_table.apply_to_deck) ~= "function" then
 		return
+	end
+	if G.GAME.selected_back.ability[key] then
+		sticker_table:NAMETEAM_removed(G.GAME.selected_back)
+		SMODS.calculate_context({sticker_removed = true, other_sticker = sticker_table, other_card = self})
 	end
 	sticker_table:apply_to_deck(self, false)
 end

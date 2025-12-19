@@ -95,3 +95,21 @@ function Card:align_h_popup()
 	end
 	return ret
 end
+
+local apply_sticker_hook = Card.add_sticker
+function Card:add_sticker(sticker, bypass_check)
+	local already_had = self.ability[sticker]
+	apply_sticker_hook(self, sticker, bypass_check)
+	if not already_had and self.ability[sticker] then
+		self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
+	end
+end
+
+local remove_sticker_hook = Card.remove_sticker
+function Card:remove_sticker(sticker)
+	local already_had = self.ability[sticker]
+	remove_sticker_hook(self, sticker)
+	if already_had and not self.ability[sticker] then
+		self:NAMETEAM_remove_sticker_calc(SMODS.Stickers[sticker])
+	end
+end

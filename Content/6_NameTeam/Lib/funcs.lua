@@ -246,19 +246,28 @@ function NAMETEAM.filter(t, func)
 	return ret
 end
 
-function Card:NAMETEAM_remove_sticker_calc(sticker, card) 
-	if sticker and sticker.NAMETEAM_removed and card.area then
-    	sticker:NAMETEAM_removed(self, card)
-		SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = card})
+-- Both of these take sticker tables, not keys to strings
+function Card:NAMETEAM_remove_sticker_calc(sticker) 
+	if sticker and sticker.NAMETEAM_removed and self.area then
+    	sticker:NAMETEAM_removed(self)
+		SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = self})
 	end
 end
 
-function Card:NAMETEAM_apply_sticker_calc(sticker, card) 
-	if sticker and sticker.NAMETEAM_applied and card.area then
-    	sticker:NAMETEAM_applied(self, card)
-		SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = card})
+function Card:NAMETEAM_apply_sticker_calc(sticker) 
+	if sticker and sticker.NAMETEAM_applied and self.area then
+    	sticker:NAMETEAM_applied(self)
+		SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = self})
 	end
 end
+
+ColdBeans.OnCalculate(function (mod, context)
+	if context.sticker_applied or context.sticker_removed then
+		return {
+			message = "HI"
+		}
+	end
+end)
 
 function NAMETEAM.most_played()
 	local _hand, _tally = nil, -1

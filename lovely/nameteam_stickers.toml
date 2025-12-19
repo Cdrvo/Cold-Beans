@@ -165,15 +165,9 @@ match_indent = true
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'
 pattern = '''
-        apply = function(self, card, val)
-            card.ability[self.key] = val
-            if val and self.config and next(self.config) then
-                card.ability[self.key] = {}
-                for k, v in pairs(self.config) do
-                    if type(v) == 'table' then
-                        card.ability[self.key][k] = copy_table(v)
-                    else
-                        card.ability[self.key][k] = v
+                        if k == 'card_limit' or k == 'extra_slots_used' then
+                            card.ability[k] = (card.ability[k] or 0) + v
+                        end
                     end
                 end
             end
@@ -181,48 +175,11 @@ pattern = '''
 '''
 position = 'after'
 payload = '''
-,NAMETEAM_applied = function(self, card)
-end,
-NAMETEAM_removed = function(self, card)
-end,
+,
+NAMETEAM_applied = function(self, card) end,
+NAMETEAM_removed = function(self, card) end,
 '''
 match_indent = false
-
-# sticker functions
-
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/game_object.lua"]'
-pattern = '''
-            card.ability[self.key] = val
-            if val and self.config and next(self.config) then
-                card.ability[self.key] = {}
-                for k, v in pairs(self.config) do
-                    if type(v) == 'table' then
-                        card.ability[self.key][k] = copy_table(v)
-                    else
-                        card.ability[self.key][k] = v
-                    end
-                end
-            end
-        end
-'''
-position = 'before'
-payload = '''
-	if val == false and card.ability[self.key] then
-        card = card
-        if self and self.NAMETEAM_removed then
-        card:NAMETEAM_remove_sticker_calc(self, card)
-        end
-    else
-        card = card
-        if self and self.NAMETEAM_applied then
-        card:NAMETEAM_apply_sticker_calc(self, card)
-        end
-    end
-'''
-match_indent = false
-
 
 # Dissolve checks
 # this probably should be on something like card:remove but idc
