@@ -2472,6 +2472,14 @@ return {
                 "{C:attention}Small Blind{} is selected "
               }
             },
+            cbean_brainrot = {
+                name = "Brainrot Sticker",
+                text = {
+                "if {C:attention}6{} and {C:attention}7{}",
+                "are {C:attention}scored{} together",
+                "{C:green}retrigger{} this card"
+              }
+            },
 
             -- Blind Stickers
 
@@ -4401,6 +4409,7 @@ return {
             cbean_heavy = "Heavy",
             cbean_shield = "Shield",
             cbean_nebula = "Nebula",
+            cbean_brainrot = "Brainrot",
 
 
             cbean_the_arm_sticker = "The Arm",
