@@ -261,13 +261,13 @@ function Card:NAMETEAM_apply_sticker_calc(sticker)
 	end
 end
 
-ColdBeans.OnCalculate(function (mod, context)
-	if context.sticker_applied or context.sticker_removed then
-		return {
-			message = "HI"
-		}
-	end
-end)
+-- ColdBeans.OnCalculate(function (mod, context)
+-- 	if context.sticker_applied or context.sticker_removed then
+-- 		return {
+-- 			message = "HI"
+-- 		}
+-- 	end
+-- end)
 
 function NAMETEAM.most_played()
 	local _hand, _tally = nil, -1
