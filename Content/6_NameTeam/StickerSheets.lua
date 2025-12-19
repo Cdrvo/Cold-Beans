@@ -29,6 +29,205 @@ SMODS.UndiscoveredSprite({
 
 
 
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "plasma_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 1 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 10,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_plasma"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if not G.GAME.selected_back.ability.cbean_plasma then
+      return true
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        G.GAME.selected_back:nteam_apply_sticker("cbean_plasma")
+        SMODS.calculate_effect({
+          message = localize("cbean_plasma", "labels") .. "!",
+          instant = true,
+          colour = SMODS.Stickers["cbean_plasma"].badge_colour,
+        }, G.deck.cards[1] or G.deck)
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "black_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 1 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 10,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_black"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if not G.GAME.selected_back.ability.cbean_black then
+      return true
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        G.GAME.selected_back:nteam_apply_sticker("cbean_black")
+        SMODS.calculate_effect({
+          message = localize("cbean_black", "labels") .. "!",
+          instant = true,
+          colour = SMODS.Stickers["cbean_black"].badge_colour,
+        }, G.deck.cards[1] or G.deck)
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "painted_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 2 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 10,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_painted"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if not G.GAME.selected_back.ability.cbean_painted then
+      return true
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        G.GAME.selected_back:nteam_apply_sticker("cbean_painted")
+        SMODS.calculate_effect({
+          message = localize("cbean_painted", "labels") .. "!",
+          instant = true,
+          colour = SMODS.Stickers["cbean_painted"].badge_colour,
+        }, G.deck.cards[1] or G.deck)
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "nebula_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 2 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 10,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_nebula"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if not G.GAME.selected_back.ability.cbean_nebula then
+      return true
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        G.GAME.selected_back:nteam_apply_sticker("cbean_nebula")
+        SMODS.calculate_effect({
+          message = localize("cbean_nebula", "labels") .. "!",
+          instant = true,
+          colour = SMODS.Stickers["cbean_nebula"].badge_colour,
+        }, G.deck.cards[1] or G.deck)
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "green_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 2 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 10,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_green"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if not G.GAME.selected_back.ability.cbean_green then
+      return true
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        G.GAME.selected_back:nteam_apply_sticker("cbean_green")
+        SMODS.calculate_effect({
+          message = localize("cbean_green", "labels") .. "!",
+          instant = true,
+          colour = SMODS.Stickers["cbean_green"].badge_colour,
+        }, G.deck.cards[1] or G.deck)
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
 
 
 
