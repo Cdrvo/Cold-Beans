@@ -41,7 +41,7 @@ SMODS.Sticker({ --overcomplicated
 	end,
 	beans_credits = {
         code = "Revo",
-		art = "GhostSalt" ,
+		art = "Doggfly" ,
 		team = "Name Team"
 	},
 })
