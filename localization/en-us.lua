@@ -2786,6 +2786,27 @@ return {
                     "{C:white,X:purple}X3{} Blind requirement"
                 },
             },
+            -- Stake Stickers
+            cbean_nameteam_sticker = {
+                name = "NTeam Sticker",
+                text = {"Used this Joker", "to win on {C:attention}NTeam", "{C:attention}stake{} difficulty"}
+            },
+            cbean_consumable_sticker = {
+                name = "Consumed Sticker",
+                text = {"Used this Joker", "to win on {C:attention}Consumed", "{C:attention}stake{} difficulty"}
+            },
+            cbean_playingcardstake_sticker = {
+                name = "Spade of Stickers",
+                text = {"Used this Joker", "to win on {C:attention}Spade of Stakes", "difficulty"}
+            },
+            cbean_deck_sticker = {
+                name = "Painted Sticker",
+                text = {"Used this Joker", "to win on {C:attention}Painted", "{C:attention}Stake{} difficulty"}
+            },
+            cbean_blind_sticker = {
+                name = "Plant Sticker",
+                text = {"Used this Joker", "to win on {C:attention}Plant", "{C:attention}Stake{} difficulty"}
+            }
         },
         Planet = {
             c_cbean_sdown_gay_planet = {
@@ -3524,7 +3545,28 @@ return {
                 },
             },
         },
-        Stake = {},
+        Stake = {
+            stake_cbean_nameteam = {
+                name = "NTeam Stake",
+                text = {"Ton of stickers added by Name Team"},  
+			},
+            stake_cbean_consumable = {
+                name = "Consumed Stake",
+                text = {"Consumables can spawn with certain stickers"},
+			},
+            stake_cbean_playingcardstake = {
+                name = "Spade of Stakes",
+                text = {"Playing Cards has a chance to gain stickers after played"}, 
+			},
+            stake_cbean_deck = {
+                name = "Painted Stake",
+                text = {"Decks has a 1/4 chance to gain a sticker after leaving the shop"},
+			},
+            stake_cbean_blind = {
+                name = "Plant Stake",
+                text = {"After every boss blind, apply a random blind sticker to the deck"},
+			},
+        },
         cbean_StickerSheet = {
             c_cbean_eternal_sheet = {
                 name = "Eternal",

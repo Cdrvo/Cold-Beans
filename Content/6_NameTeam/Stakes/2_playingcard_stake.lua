@@ -1,21 +1,16 @@
 SMODS.Stake {
     key = "playingcardstake",
     colour = HEX("55c6d9"),
+    atlas = "nteam_stakes",
+    pos = {x=4,y=0},
+    sticker_atlas = "NAMETEAM_Stickers",
+    sticker_pos = {x=8,y=4},
     applied_stakes = {"cbean_consumable"},
     shiny = true,
     unlocked = false,
     prefix_config = {
         applied_stakes = {
             mod = false
-        }
-    },
-    loc_txt = {
-        name = "Playing Card Stake",
-        text = {"Playing Cards has a chance to gain stickers after played"},
-        sticker = {
-            name = "Playing Card Sticker",
-            text = {"Used this Joker", "to win on {C:attention}Playing Card", "{C:attention}Stake{} difficulty"}
-
         }
     },
     modifiers = function()
