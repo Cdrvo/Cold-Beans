@@ -12,10 +12,25 @@ pattern = '''G.STATE = G.STATES.SHOP'''
 position = "at"
 payload = '''
 -- Show the biome select screen if after CEO blind
-if G.GAME.round_resets.blind_states.CEO == 'Defeated' then
+if G.WGRP_CEOBLIND then
 G.STATE = G.STATES.BIOMETREE
+G.WGRP_CEOBLIND = false
 else
 G.STATE = G.STATES.SHOP
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''if  G.GAME and G.GAME.blind and G.GAME.blind.get_type then'''
+position = "after"
+payload = '''
+if (G.GAME.blind:get_type() == 'CEO') then
+    G.WGRP_CEOBLIND = true
+else
+    G.WGRP_CEOBLIND = false
 end
 '''
 match_indent = true
@@ -23,9 +38,9 @@ match_indent = true
 # biome select
 [[patches]]
 [patches.pattern]
-target = "game.lu"
+target = "game.lua"
 pattern = '''if self.STATE == self.STATES.PLAY_TAROT then '''
-position = "at"
+position = "before"
 payload = '''
 if self.STATE == self.STATES.BIOMETREE then
     update_wgrop_biometree()
