@@ -47,3 +47,12 @@ if self.STATE == self.STATES.BIOMETREE then
 end
 '''
 match_indent = true
+
+# hide the fuckin hands when in biome select state actually :nerd:
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''    if self.ARGS.invisible_area_types[self.config.type] or'''
+position = "after"
+payload = '''(self.config.type == 'hand' and ({[9223376854775807]=1})[state]) or'''
+match_indent = true
