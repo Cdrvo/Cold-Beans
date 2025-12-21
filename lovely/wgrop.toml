@@ -1,0 +1,34 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# wgrop
+# biome select instead of shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''G.STATE = G.STATES.SHOP'''
+position = "at"
+payload = '''
+-- Show the biome select screen if after CEO blind
+if G.GAME.round_resets.blind_states.CEO == 'Defeated' then
+G.STATE = G.STATES.BIOMETREE
+else
+G.STATE = G.STATES.SHOP
+end
+'''
+match_indent = true
+
+# biome select
+[[patches]]
+[patches.pattern]
+target = "game.lu"
+pattern = '''if self.STATE == self.STATES.PLAY_TAROT then '''
+position = "at"
+payload = '''
+if self.STATE == self.STATES.BIOMETREE then
+    update_wgrop_biometree()
+end
+'''
+match_indent = true
