@@ -69,7 +69,7 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
-pattern = '''G.GAME.round_resets.blind_states[skip_to] = 'Select''''
+pattern = '''G.GAME.round_resets.blind_states[skip_to] = 'Select'''
 position = "after"
 payload = '''
 if G.GAME.round_resets.blind_states['Forced'] == "Select" then
