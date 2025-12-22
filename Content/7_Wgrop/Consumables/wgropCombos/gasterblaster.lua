@@ -1,7 +1,7 @@
 SMODS.Consumable {
-    key = 'wgr_gaster_blaster',
+    key = 'wgrop_gaster_blaster',
     set = 'Combo',
-    atlas = 'wgr_combo_atlas',
+    atlas = 'wgrop_combo_atlas',
     cost = 5,
     config = { 
          immutable = {
