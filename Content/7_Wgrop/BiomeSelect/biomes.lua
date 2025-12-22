@@ -9,6 +9,12 @@ SMODS.Atlas({
 
 G['P_BIOMES'] = {}
 G['P_BIOME_POOLS'] = {}
+G['P_BIOME_POOLS']['default'] = { "bl_small", "bl_big", "bl_tooth", "bl_fish", "bl_cbean_colon_sheet", "bl_cbean_colon_promise", "bl_cbean_colon_button", "bl_cbean_colon_alpha",}
+-- IF YOUR BLIND DOES NOT APPEAR IN POOL IT IS BECAUSE IT'S NOT IN ANY BIOME POOL, ADD YOUR JOKER TO THE BIOME POOL OF YOUR CHOOSING OR HERE IN DEFAULT TO HAVE IT APPEAR ALWAYS
+-- -wgrop
+
+
+
 CBWG.ColdBeans_Biomes = {}
 
 ---@type SMODS.Center
@@ -23,7 +29,7 @@ CBWG.ColdBeans_Biome = SMODS.ObjectType:extend{
     inject = function(self)
         SMODS.ObjectType.inject(self)
         G['P_BIOMES'][self.key] = true
-        G['P_BIOME_POOLS'][self.key] = {}
+        G['P_BIOME_POOLS'][self.key] = copy_table(G['P_BIOME_POOLS']['default'])
         if self.blinds then
             for k, v in pairs(G.P_BLINDS) do
                 if self.blinds[k] then self:inject_blind(k) end
@@ -52,9 +58,6 @@ CBWG.ColdBeans_Biome{
     key = "wgrop_city",
     blinds = {
         ["bl_small"] = true,
-        ["bl_big"] = true,
-        ["bl_wall"] = true,
-        ["bl_cbean_colon_factory"] = true,
     },
     cards = {
         ["j_blue_joker"] = true,
@@ -89,6 +92,7 @@ function CBWG.get_new_boss()
     if G.FORCE_BOSS then return G.FORCE_BOSS end
     
     local eligible_bosses = {}
+
 	for key, value in pairs (G.P_BIOME_POOLS[G.GAME.round_resets.blind_biome]) do -- Hello from Wgrop!
         for k, v in pairs(G.P_BLINDS) do
             if k == value then
