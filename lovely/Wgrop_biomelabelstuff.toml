@@ -1,0 +1,27 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+
+# Really bad Biome Labeling made by tje.tsu
+# EXTREMELY Paranoid.
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+if obj and obj.set_badges and type(obj.set_badges) == 'function' then
+    obj:set_badges(card, badges)
+end
+'''
+position = 'before'
+payload = '''
+
+if card and card.config and card.config.center and not card.config.center.ignore_type_badge then
+   if card.config.center.wgrop_biometype and card.config.center.wgrop_biometype == "wgrop_rosygraveyard" then
+        badges[#badges+1] = create_badge("Rosy Graveyard", HEX("C57384"), G.C.WHITE, 1.2)
+    end
+end
+
+'''
+match_indent = true
+times = 1
