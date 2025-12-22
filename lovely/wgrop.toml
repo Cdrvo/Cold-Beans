@@ -81,7 +81,71 @@ match_indent = true
 target = "functions/common_events.lua"
 pattern = '''add = in_pool and (add or pool_opts.override_base_checks)'''
 position = "after"
-payload = '''if not CBWG.in_pool(v.key) then
+payload = '''if _type == 'Joker' and not CBWG.in_pool(v.key) then
 add = false
 end'''
+match_indent = true
+
+# modify pool
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+  G.blind_prompt_box = UIBox{
+    definition =
+      {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, padding = 0.2}, nodes={
+        {n=G.UIT.R, config={align = "cm"}, nodes={
+          {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_blind_1'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5}), id = 'prompt_dynatext1'}}
+        }},
+        {n=G.UIT.R, config={align = "cm"}, nodes={
+          {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_blind_2'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.7, pop_in = 0.5, maxw = 5, silent = true}), id = 'prompt_dynatext2'}}
+        }},
+        (G.GAME.used_vouchers["v_retcon"] or G.GAME.used_vouchers["v_directors_cut"]) and
+        UIBox_button({label = {localize('b_reroll_boss'), localize('$')..'10'}, button = "reroll_boss", func = 'reroll_boss_button'}) or nil
+      }},
+    config = {align="cm", offset = {x=0,y=-15},major = G.HUD:get_UIE_by_ID('row_blind'), bond = 'Weak'}
+  }
+  G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = (function()
+        G.blind_prompt_box.alignment.offset.y = 0
+        return true
+    end)
+  }))'''
+position = "after"
+payload = '''local shop_sign = Sprite(0, 0, 4.4, 2.2,
+        G.ASSET_ATLAS[CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome].atlas], CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome].pos)
+    shop_sign:define_draw_steps({
+      {shader = 'dissolve', shadow_height = 0.05},
+      {shader = 'dissolve'}
+    })
+    G.blind_prompt_box = UIBox{
+      definition = 
+        {n=G.UIT.ROOT, config = {colour = G.C.DYN_UI.MAIN, emboss = 0.05, align = 'cm', r = 0.1, padding = 0.1}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, minw = 4.72, minh = 3.1, colour = G.C.DYN_UI.DARK, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+              {n=G.UIT.O, config={object = shop_sign}}
+            }},
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_blind_1'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.5, pop_in = 0.5, maxw = 5}), id = 'prompt_dynatext1'}}
+            }},
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_blind_2'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5, silent = true}), id = 'prompt_dynatext2'}}
+            }},
+          }},
+        }},
+      config = {
+        align="cm",
+        offset = {x=0,y=-15},
+        major = G.HUD:get_UIE_by_ID('row_blind'),
+        bond = 'Weak'
+      }
+    }
+    G.E_MANAGER:add_event(Event({
+      trigger = 'immediate',
+      func = (function()
+          G.blind_prompt_box.alignment.offset.y = 0
+          return true
+      end)
+    }))'''
 match_indent = true
