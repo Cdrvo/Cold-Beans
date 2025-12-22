@@ -903,6 +903,26 @@ return {
 					},
 				},
 			},
+			c_cbean_wgrop_gaster_blaster = {
+				name = {
+					"Gaster Blaster",
+					"{X:purple,C:white,s:0.7}Special{}",
+				},
+				text = {
+					{
+						"Turns the {C:attention}Lowest Rank{}",
+						"scoring card into an {C:attention}Ace",
+						"{C:mult}+#1# Mult{} for every {C:attention}Rank{}",
+						"inbetween {C:attention}previous rank{}",
+						"and {C:attention}Ace{} when a card is scored",
+						"{C:inactive,s:0.8}[Counts Upward]{}"
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}",
+					},
+				},
+			}
 		},
 		yma_keys = {
 			c_cbean_yma_alpha = {
@@ -1433,6 +1453,31 @@ return {
 					"destroy card",
 				},
 			},
+			m_cbean_wgrop_thistled = {
+				name = "Thistled Card",
+				text = {
+					{
+					    "Cannot be {C:attention}debuffed{}"
+					},
+					{
+						"{C:red}Destroy{} this card to",
+						"turn it into a",
+						"{C:attention}Pale Remnant Card"
+					}
+					
+				},
+			},
+			m_cbean_wgrop_pale_remnant = {
+				name = "Pale Remnant",
+				text = {
+					{"{C:attention}Decrease{} this card's",
+					"when {C:attention}scored{}"},
+					{"{C:attention}rank{} Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
+					"when scored"},
+					{"{C:inactive}Currently{} {C:white,X:red}X#2#{}"}
+				},
+			},
+
 		},
 		Joker = {
 
@@ -1663,7 +1708,6 @@ return {
 					"{C:inactive}(Currently {C:attention}+0 {C:inactive}hand size)",
 				},
 			},
-
 			--0 Driver Jokers
 
 			--Common
@@ -2283,6 +2327,21 @@ return {
                     "the {C:attention}previous hand{}",
                     "{C:inactive}(Previous hand: {C:attention}#2#{C:inactive}){}"
                 }
+            },
+
+			--wgropop Jokers
+			j_cbean_wgrop_withering_memory = {
+                name = "Withering Memory",
+                text = {
+					{
+					"Scored {C:attention}Dark Suits{} give {C:white,X:chips}X#1#{}",
+					"if a {C:attention}Light Suit{} is scored {C:attention}beforehand{}",
+					},
+					{
+						"Scored {C:attention}Light Suits{} give {C:white,X:mult}X#2#{}",
+						"if a {C:attention}Dark Suit{} is scored {C:attention}beforehand{}",
+					}
+				},
             },
         },
         Other = {
@@ -4855,6 +4914,12 @@ return {
 					"A hand that contains an Jack, 4, 3, 1,",
 					"Must have {C:attention}House Rules{} to play",
 				},
+				["cbean_wgrop_thorny_boquete"] = {
+					"A hand that contains either",
+					"{C:attention}3{} Light Suits and {C:attention}2{} Dark Suits or",
+					"{C:attention}2{} Light Suits and {C:attention}3{} Dark Suits",
+					"Must have {C:attention}House Rules{} and {C:attention}Withering Memory{} to play"
+				},
 			},
 			poker_hands = {
 				["cbean_sdown_antistraight"] = "Gay", -- Athebyne | N/A | Athebyne
@@ -4868,6 +4933,7 @@ return {
 				["cbean_0chill_proceed"] = "HR PROCEED",
 				["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
 				["cbean_0chill_jackpot"] = "HR Jackpot!",
+				["cbean_wgrop_thorny_boquete"] = "HR Thorny Boquete",
 			},
 			quips = {
 				cbean_pboys_hi_1 = {
