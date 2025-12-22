@@ -8,19 +8,26 @@ SMODS.Atlas({
 })
 
 ---@type SMODS.Center
-CBWG.ColdBeans_Biomes = SMODS.Center:extend{
+CBWG.ColdBeans_Biomes = SMODS.ObjectType:extend{
     pos = { x = 0, y = 0 },
     config = {},
-    set = 'Biome',
     atlas = 'wgrop_biomes',
     class_prefix = 'biome',
     required_params = {
         'key',
     },
     inject = function(self)
-        -- call the parent function to ensure all pools are set
-        SMODS.Center.inject(self)
-        SMODS.insert_pool(G.P_CENTER_POOLS['Biome'], self)
+        SMODS.ObjectType.inject(self)
+        if self.blinds then
+            for k, v in pairs(G.P_BLINDS) do
+                if self.blinds[k] then self:inject_blind(v) end
+            end
+        end
+    end,
+    inject_blind = function(self, blind)
+        if blind.set ~= self.key then SMODS.insert_pool(G.P_CENTER_POOLS[self.key], blind) end
+        if not blind.pools then blind.pools = {} end
+        blind.pools[self.key] = true
     end
 }
 
