@@ -300,10 +300,14 @@ function Colonparen.get_new_blind(type)
 			end
 		end
 	else
-		for k, v in pairs(G[P_STRING]) do
-			eligible_bosses[k] = SMODS.add_to_pool(v)
-			if (not G.GAME.bosses_used[k]) then
-				G.GAME.bosses_used[k] = 0
+		for key, value in pairs(G.P_BIOME_POOLS[G.GAME.round_resets.blind_biome]) do -- Hello from Wgrop!
+			for k, v in pairs(G[P_STRING]) do
+				if value == k then
+					eligible_bosses[k] = SMODS.add_to_pool(v)
+					if (not G.GAME.bosses_used[k]) then
+						G.GAME.bosses_used[k] = 0
+					end
+				end
 			end
 		end
 	end

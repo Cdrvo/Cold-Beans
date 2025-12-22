@@ -52,6 +52,9 @@ CBWG.ColdBeans_Biome{
         ["bl_big"] = true,
         ["bl_wall"] = true,
         ["bl_cbean_colon_factory"] = true,
+    },
+    cards = {
+        ["j_blue_joker"] = true,
     }
 }
 
@@ -134,4 +137,12 @@ function CBWG.get_new_boss()
     G.GAME.bosses_used[boss] = G.GAME.bosses_used[boss] + 1
     
     return boss
+end
+
+function CBWG.in_pool(key)
+    for k, v in ipairs(G.P_CENTER_POOLS[G.GAME.round_resets.blind_biome]) do
+        if v.key == key then
+            return true
+        end
+    end
 end

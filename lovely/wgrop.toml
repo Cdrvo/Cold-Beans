@@ -74,3 +74,14 @@ pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
 position = "after"
 payload = '''self.GAME.round_resets.blind_biome = CBWG.get_new_biome(false) --Sets a random biome at start of game'''
 match_indent = true
+
+# modify pool
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''add = in_pool and (add or pool_opts.override_base_checks)'''
+position = "after"
+payload = '''if not CBWG.in_pool(v.key) then
+add = false
+end'''
+match_indent = true
