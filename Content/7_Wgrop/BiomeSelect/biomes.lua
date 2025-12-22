@@ -46,6 +46,9 @@ CBWG.ColdBeans_Biome = SMODS.ObjectType:extend{
 }
 
 CBWG.ColdBeans_Biome{
+    pos = { x = 0, y = 5 },
+    config = {},
+    atlas = 'wgrop_biomes',
     key = "wgrop_city",
     blinds = {
         ["bl_small"] = true,
