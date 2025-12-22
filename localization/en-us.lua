@@ -911,7 +911,7 @@ return {
 				text = {
 					{
 						"Turns the {C:attention}Lowest Rank{}",
-						"scoring card into an {C:attention}Ace",
+						"in scoring card into an {C:attention}Ace",
 						"{C:mult}+#1# Mult{} for every {C:attention}Rank{}",
 						"inbetween {C:attention}previous rank{}",
 						"and {C:attention}Ace{} when a card is scored",
@@ -1471,8 +1471,8 @@ return {
 				name = "Pale Remnant",
 				text = {
 					{"{C:attention}Decrease{} this card's",
-					"when {C:attention}scored{}"},
-					{"{C:attention}rank{} Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
+					"{C:attention}rank{} when {C:attention}scored{}"},
+					{" Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
 					"when scored"},
 					{"{C:inactive}Currently{} {C:white,X:red}X#2#{}"}
 				},
