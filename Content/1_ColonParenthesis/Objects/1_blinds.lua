@@ -193,6 +193,13 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
 					end
 				end
 			end
+			for k, v in pairs(G['P_BIOMES']) do
+				for key, value in pairs(CBWG.ColdBeans_Biomes[k].blinds) do
+					if key == self.key then
+						table.insert(G.P_BIOME_POOLS[k], self.key)
+					end
+				end
+			end
         end
     }
 end
@@ -236,7 +243,7 @@ function get_new_boss(...)
 		and G.GAME.colonparen_prescribed_blinds.Boss then
 			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds.Boss, "Boss")
 	end
-	return Colonparen.calculateReplacedBlind(old_get_new_boss(...), "Boss")
+	return Colonparen.calculateReplacedBlind(CBWG.get_new_boss(...), "Boss")
 end
 
 --why did you use Type as a variable what are you doing
@@ -257,26 +264,30 @@ function Colonparen.get_new_blind(type)
 	local eligible_bosses = {}
 
 	if type == 'CEO' then
-		for k, v in pairs(G[P_STRING]) do
-			local res, options = SMODS.add_to_pool(v)
-			options = options or {}
-			if not v.boss then
+		for key, value in pairs(G.P_BIOME_POOLS[G.GAME.round_resets.blind_biome]) do -- Hello from Wgrop!
+			for k, v in pairs(G[P_STRING]) do
+				if value == k then
+					local res, options = SMODS.add_to_pool(v)
+					options = options or {}
+					if not v.boss then
 
-			elseif options.ignore_showdown_check then
-				eligible_bosses[k] = res and true or nil
-			elseif v.in_pool and type_(v.in_pool) == 'function' then
-				if
-					(
-						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
-						(v.boss.showdown or false)
-					) and v:in_pool()
-				then
-					eligible_bosses[k] = res and true or nil
+					elseif options.ignore_showdown_check then
+						eligible_bosses[k] = res and true or nil
+					elseif v.in_pool and type_(v.in_pool) == 'function' then
+						if
+							(
+								((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
+								(v.boss.showdown or false)
+							) and v:in_pool()
+						then
+							eligible_bosses[k] = res and true or nil
+						end
+					elseif not v.boss.showdown and ((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+						eligible_bosses[k] = res and true or nil
+					elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
+						eligible_bosses[k] = res and true or nil
+					end
 				end
-			elseif not v.boss.showdown and ((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
-				eligible_bosses[k] = res and true or nil
-			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
-				eligible_bosses[k] = res and true or nil
 			end
 		end
 	elseif type == 'Teeny' then

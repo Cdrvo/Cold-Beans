@@ -56,3 +56,21 @@ pattern = '''    if self.ARGS.invisible_area_types[self.config.type] or'''
 position = "after"
 payload = '''(self.config.type == 'hand' and ({[9223376854775807]=1})[state]) or'''
 match_indent = true
+
+# add biomes when game starts
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''blind_ante = 1,'''
+position = "after"
+payload = '''blind_biome = 'wgrop_city', -- default biome'''
+match_indent = true
+
+# select a random biome when game starts
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
+position = "after"
+payload = '''self.GAME.round_resets.blind_biome = CBWG.get_new_biome(false) --Sets a random biome at start of game'''
+match_indent = true
