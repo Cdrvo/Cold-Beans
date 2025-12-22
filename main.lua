@@ -207,12 +207,6 @@ function SMODS.create_mod_badges(obj, badges)
 	end
 end
 
-
-
-
-
-
-
 ColdBeansConfig = SMODS.current_mod.config
 local cbeanConfigTab = function()
   cbean_nodes = {}
@@ -242,3 +236,10 @@ local cbeanConfigTab = function()
 end
 
 SMODS.current_mod.config_tab = cbeanConfigTab
+
+SMODS.Atlas({
+    key = "modicon",
+    path = "7_Wgrop/Icon.png",
+    px = 32,
+    py = 32
+})
