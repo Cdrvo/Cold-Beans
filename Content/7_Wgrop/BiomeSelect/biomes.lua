@@ -10,6 +10,7 @@ SMODS.Atlas({
 G['P_BIOMES'] = {}
 G['P_BIOME_POOLS'] = {}
 G['P_BIOME_POOLS']['default'] = {}
+G.P_CENTER_POOLS['default'] = {}
 
 CBWG.ColdBeans_Biomes = {}
 
@@ -224,5 +225,24 @@ SMODS.injectItems = function()
         ::continue::
     end
 
+    CARD_MASTER = {}
+    BIOME_CARDS = {}
+
+    for k, v in pairs(G['P_BIOMES']) do
+        for _, w in pairs(G.P_CENTER_POOLS[k]) do
+            table.insert(BIOME_CARDS, w)
+        end
+    end
+    
+    for k, v in pairs(G.P_CENTER_POOLS['Joker']) do table.insert(CARD_MASTER, v) end
+    
+    for k, v in pairs(CARD_MASTER) do 
+        for _, w in pairs(BIOME_CARDS) do if w == v then goto continue end end
+        table.insert(G.P_CENTER_POOLS['default'], v)
+        for key, value in pairs(G['P_BIOMES']) do
+            table.insert(G.P_CENTER_POOLS[key], v)
+        end
+        ::continue::
+    end
 end
 
