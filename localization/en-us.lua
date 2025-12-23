@@ -4726,6 +4726,8 @@ return {
 				ph_alley_wager = "Care to make a wager?",
 				ph_graveyard = "Where the dead sleeps",
 				ph_stationery = "We trade Stickers!",
+				ph_choose_biome_1 = "Choose your",
+				ph_choose_biome_2 = "Destination",
 				cbean_stationery_accepts = {
 					"Only accepts Jokers",
 					"with {C:attention}1 or more{} of the",
