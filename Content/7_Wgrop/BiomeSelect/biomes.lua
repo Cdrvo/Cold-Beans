@@ -220,7 +220,6 @@ SMODS.injectItems = function()
         table.insert(G['P_BIOME_POOLS']['default'], v)
         ::continue::
     end
-    injectitems_ref() --unpractical, unwise even, but works
 
 end
 
