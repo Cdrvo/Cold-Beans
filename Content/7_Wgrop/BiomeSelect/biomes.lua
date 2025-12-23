@@ -54,7 +54,7 @@ CBWG.ColdBeans_Biome {
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_desert",
-    blinds = {["bl_wheel"] = true, ["bl_mark"] = true, ["bl_final_acorn"] = true, ["bl_cbean_colon_pot"] = true},
+    blinds = {["bl_wheel"] = true,["bl_hook"] = true,["bl_manacle"] = true,["bl_window"] = true, ["bl_mark"] = true, ["bl_final_acorn"] = true, ["bl_cbean_colon_pot"] = true},
     cards = {}
 }
 
@@ -72,7 +72,7 @@ CBWG.ColdBeans_Biome {
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_graveyard",
-    blinds = {["bl_psychic"] = true, ["bl_eye"] = true, ["bl_final_vessel"] = true, ["bl_cbean_colon_assassination"] = true, ["bl_cbean_colon_hole"] = true, ["bl_cbean_colon_pipeline"] = true, ["bl_cbean_colon_rebellion"] = true},
+    blinds = {["bl_psychic"] = true, ["bl_goad"] = true, ["bl_eye"] = true, ["bl_final_vessel"] = true, ["bl_cbean_colon_assassination"] = true, ["bl_cbean_colon_hole"] = true, ["bl_cbean_colon_curse"] = true, ["bl_cbean_colon_regression"] = true},
     cards = {}
 }
 
@@ -82,7 +82,7 @@ CBWG.ColdBeans_Biome {
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_volcanic",
-    blinds = {["bl_needle"] = true, ["bl_flint"] = true, ["bl_final_heart"] = true, ["bl_cbean_colon_folly"] = true},
+    blinds = {["bl_needle"] = true, ["bl_flint"] = true,["bl_mouth"] = true,["bl_head"] = true, ["bl_final_heart"] = true, ["bl_cbean_colon_folly"] = true},
     cards = {}
 }
 
@@ -92,7 +92,7 @@ CBWG.ColdBeans_Biome {
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_glaciers",
-    blinds = {["bl_arm"] = true, ["bl_fish"] = true, ["bl_water"] = true, ["bl_final_bell"] = true, ["bl_cbean_colon_astro"] = true, ["bl_cbean_colon_sinker"] = true},
+    blinds = {["bl_arm"] = true, ["bl_pillar"] = true, ["bl_fish"] = true, ["bl_water"] = true, ["bl_final_bell"] = true,["bl_cbean_colon_island"] = true, ["bl_cbean_colon_astro"] = true, ["bl_cbean_colon_sinker"] = true},
     cards = {}
 }
 
