@@ -4765,6 +4765,7 @@ return {
 				ph_stationery = "We trade Stickers!",
 				ph_choose_biome_1 = "Choose your",
 				ph_choose_biome_2 = "Destination",
+				k_select_biome  = "Select",
 				cbean_stationery_accepts = {
 					"Only accepts Jokers",
 					"with {C:attention}1 or more{} of the",
