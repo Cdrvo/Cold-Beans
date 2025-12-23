@@ -50,13 +50,64 @@ CBWG.ColdBeans_Biome = SMODS.ObjectType:extend{
 }
 
 CBWG.ColdBeans_Biome {
+    pos = {x = 0, y = 0},
+    config = {},
+    atlas = 'wgrop_biomes',
+    key = "wgrop_desert",
+    blinds = {["bl_wheel"] = true, ["bl_mark"] = true, ["bl_final_acorn"] = true, ["bl_cbean_colon_pot"] = true},
+    cards = {}
+}
+
+CBWG.ColdBeans_Biome {
+    pos = {x = 0, y = 1},
+    config = {},
+    atlas = 'wgrop_biomes',
+    key = "wgrop_forest",
+    blinds = {["bl_ox"] = true, ["bl_club"] = true, ["bl_plant"] = true, ["bl_serpent"] = true, ["bl_final_leaf"] = true, ["bl_cbean_colon_treasure"] = true, ["bl_cbean_colon_seed"] = true, ["bl_cbean_colon_compass"] = true, ["bl_cbean_colon_outcrop"] = true},
+    cards = {}
+}
+
+CBWG.ColdBeans_Biome {
+    pos = {x = 0, y = 2},
+    config = {},
+    atlas = 'wgrop_biomes',
+    key = "wgrop_graveyard",
+    blinds = {["bl_psychic"] = true, ["bl_eye"] = true, ["bl_final_vessel"] = true, ["bl_cbean_colon_assassination"] = true, ["bl_cbean_colon_hole"] = true, ["bl_cbean_colon_pipeline"] = true, ["bl_cbean_colon_rebellion"] = true},
+    cards = {}
+}
+
+
+CBWG.ColdBeans_Biome {
+    pos = {x = 0, y = 3},
+    config = {},
+    atlas = 'wgrop_biomes',
+    key = "wgrop_volcanic",
+    blinds = {["bl_needle"] = true, ["bl_flint"] = true, ["bl_final_heart"] = true, ["bl_cbean_colon_folly"] = true},
+    cards = {}
+}
+
+
+CBWG.ColdBeans_Biome {
+    pos = {x = 0, y = 4},
+    config = {},
+    atlas = 'wgrop_biomes',
+    key = "wgrop_glaciers",
+    blinds = {["bl_arm"] = true, ["bl_fish"] = true, ["bl_water"] = true, ["bl_final_bell"] = true, ["bl_cbean_colon_astro"] = true, ["bl_cbean_colon_sinker"] = true},
+    cards = {}
+}
+
+CBWG.ColdBeans_Biome {
     pos = {x = 0, y = 5},
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_city",
-    blinds = {["bl_fish"] = true},
-    cards = {["j_blue_joker"] = true}
+    blinds = {["bl_house"] = true, ["bl_wall"] = true, ["bl_cbean_colon_gate"] = true,  ["bl_final_bell"] = true, ["bl_cbean_colon_stamp"] = true, ["bl_cbean_colon_salesman"] = true, ["bl_cbean_colon_factory"] = true, ["bl_cbean_colon_pipeline"] = true, ["bl_cbean_colon_rebellion"] = true, ["bl_cbean_sdown_estrogen"] = true},
+    cards = {}
 }
+-- ante 1 blinds have been removed as they get ignored and only the wall appears on ante 1
+-- all biomes should have a finisher blind or they get the wall
+-- wall is beautiful wall is beautiful wall is beautiful
+
 
 -- Function that gets a new biome
 function CBWG.get_new_biome(new_biome)
