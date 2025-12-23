@@ -1,7 +1,7 @@
 
 -- Define the PokerHand using the part
 SMODS.PokerHand{
-    key = "wgr_thorny_boquete",
+    key = "wgrop_thorny_boquete",
     chips = 35,
     mult = 10,
     l_chips = 8,
@@ -15,7 +15,7 @@ SMODS.PokerHand{
         { "H_6", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_wgr_withering_memory') > 0) then --Checks if house rules and required joker are owned 
+        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_wgrop_withering_memory') > 0) then --Checks if house rules and required joker are owned 
             local lightcount = 0
             local darkcount = 0
 
