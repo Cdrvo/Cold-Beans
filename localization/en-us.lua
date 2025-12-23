@@ -910,8 +910,8 @@ return {
 				},
 				text = {
 					{
-						"Turns the {C:attention}Lowest Rank{}",
-						"in scoring card into an {C:attention}Ace",
+						"Turns the {C:attention}Lowest Ranking{} card",
+						"in scoring hand into an {C:attention}Ace",
 						"{C:mult}+#1# Mult{} for every {C:attention}Rank{}",
 						"inbetween {C:attention}previous rank{}",
 						"and {C:attention}Ace{} when a card is scored",
@@ -920,6 +920,30 @@ return {
 					{
 						"Combos Into:",
 						"{X:black,C:white}Taunt{}",
+					},
+				},
+			},
+			c_cbean_wgrop_let_the_people_rejoice = {
+				name = {
+					"Let The People Rejoice",
+					"{{X:blue,C:white,s:0.7}Ultimate{}",
+				},
+				text = {
+					{
+						"{C:attention}After scoring{} all cards",
+						"For every {C:mult}#1# Mult{} of",
+						"{C:attention}scored hand{} above its {C:chips}Chips{}",
+						"{C:white,X:mult}X#2#{} {C:red}Mult{} and {C:white,X:chips}X#3#{} {C:chips}Chips{}",
+						"Boosted by current combo",
+						"length when used"
+					},
+					{
+						"Max of",
+						"{C:white,X:red}X#4#{} {C:white,X:blue}X#5#{}"
+					},
+					{
+						"Combos Into:",
+						"Nothing"
 					},
 				},
 			}
@@ -1462,7 +1486,7 @@ return {
 					{
 						"{C:red}Destroy{} this card to",
 						"turn it into a",
-						"{C:attention}Pale Remnant Card"
+						"{C:attention}Pale Remnant Card{}"
 					}
 					
 				},
@@ -1473,7 +1497,8 @@ return {
 					{"{C:attention}Decrease{} this card's",
 					"{C:attention}rank{} when {C:attention}scored{}"},
 					{" Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
-					"when scored"},
+					"for everytime it was {C:attention}scored{}",
+				    "at end of scoring"},
 					{"{C:inactive}Currently{} {C:white,X:red}X#2#{}"}
 				},
 			},
@@ -2343,6 +2368,18 @@ return {
 					}
 				},
             },
+			j_cbean_wgrop_jhett_the_poltergeist = {
+				name = "Jhett the Poltergeist",
+				text = {
+					{"{C:red}Destroy{} all {C:attention}Pale Remnant{} cards",
+					"in {C:attnetion}Hand{} after scoring"},
+					{"Gain {C:white,X:red}X#1#{} {C:attention}for every{} held",
+				    "{C:attention}Pale Remnant{} card at",
+					"the start of the hand when",
+					"destroying one"},
+					{"{C:inactive}Currently{} {C:white,X:mult}X#2#{}"}
+				}
+			}
         },
         Other = {
             undiscovered_yma_quest = {

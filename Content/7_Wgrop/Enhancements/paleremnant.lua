@@ -10,6 +10,22 @@ SMODS.Enhancement {
       }}
     end,
     calculate = function (self, card, context)
+        if context.main_scoring and context.cardarea == G.play then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    play_sound('tarot2')
+                    SMODS.modify_rank(card, -1)
+                    card:juice_up()
+                    card.ability.cxm = card.ability.cxm+card.ability.xms
+                    return true
+                end
+            }))
+            return {
+                xmult = card.ability.cxm
+            }
+        end
         beans_credits = {
             team = {"wgrop"
             },

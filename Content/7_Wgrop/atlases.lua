@@ -1,7 +1,7 @@
 SMODS.Atlas({
     key = "wgrop_combo_atlas",
     path = "7_Wgrop/Wgropcombo_atlas.png",
-    px = 71,
+    px = 70,
     py = 95,
 })
 

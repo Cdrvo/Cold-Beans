@@ -3,16 +3,18 @@ combo_table = { --Lists all combo_types and what they can combo into
     starter = {starter=false, taunt=true, series=true, special=true, ultimate=false, finisher=true, universal=true},
     taunt = {starter=false, taunt=false, series=true, special=true, ultimate=false, finisher=false, universal=true},
     series = {starter=false, taunt=true, series=true, special=true, ultimate=false, finisher=true, universal=true},
-    special = {starter=false, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true},
+    special = {starter=false, taunt=true, series=true, special=false, ultimate=true, finisher=true, universal=true},
     ultimate = {starter=false, taunt=false, series=false, special=false, ultimate=false, finisher=false, universal=true},
     finisher = {starter=false, taunt=false, series=false, special=false, ultimate=false, finisher=false, universal=true},
     universal = {starter=true, taunt=true, series=true, special=true, ultimate=true, finisher=true, universal=true},
-    astral_projection = {starter=true, taunt=true, series=false, special=false, ultimate=false, finisher=false, universal=true}
+    astral_projection = {starter=true, taunt=true, series=false, special=false, ultimate=false, finisher=false, universal=true},
+    gaster_blaster = {starter=false, taunt=true, series=false, special=false, ultimate=false, finisher=false, universal=true}
 }   --Universal type is for spectral
 
 for k, v in pairs(combo_table) do
     if v.special then
         v['astral_projection'] = true
+        v['gaster_blaster'] = true
     end
 end
 
