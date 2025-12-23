@@ -13,16 +13,25 @@ function CBWG.get_blind_modifier_ui(biome_key)
 end
 G.UIDEF.wgrop_biome_select_individual = function ( biome_key )
     local biome_modifiers = CBWG.get_blind_modifier_ui(biome_key) 
+    local biome_card = Sprite(0, 0, 3.2, 1.6, G.ASSET_ATLAS[CBWG.ColdBeans_Biomes[biome_key].atlas], CBWG.ColdBeans_Biomes[biome_key].pos)
+    biome_card:define_draw_steps({
+      {shader = 'dissolve', shadow_height = 0.05},
+      {shader = 'dissolve'}
+    })
     return {
         n = G.UIT.C,
         config = {
-            padding = 0.5,
+            align = "cm",
+            padding = 0.1,
+            emboss = 0.05,
+            r = 0.1,
+            colour = G.C.DYN_UI.BOSS_MAIN
         },
         nodes = {
             { -- biome title card thanks gud
-                n = G.UIT.C,
+                n = G.UIT.C, config={align = "cm"},
                 nodes = {
-                    
+              {     n=G.UIT.O, config={object = biome_card}}
                 }
             },
             { -- the fuckin piece of shit
@@ -53,24 +62,45 @@ end
 G.UIDEF.wgrop_full_biome_selection = function ()
     local destination_biome_nodes = {}
     for i = 1, 2 do
-        table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(i))
+        table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(CBWG.get_new_biome(true)))
     end
     return {
         n = G.UIT.ROOT,
         config = {
-            padding = 0.2,
+            padding = 0.1,
+            align = 'cl',
+            colour = G.C.CLEAR
         },
         nodes = {
-            { -- top row, used for destination biomes (aka biomes you can go to at any given time)
-                n = G.UIT.R,
-                nodes = destination_biome_nodes
-            },
-            { -- top row, used for destination biomes (aka biomes you can go to at any given time)
-                n = G.UIT.R,
-                nodes = {
-                    G.UIDEF.wgrop_biome_select_individual("current")
-                }
-            },
+            UIBox_dyn_container({
+                { -- top row, used for destination biomes (aka biomes you can go to at any given time)
+                    n = G.UIT.R,
+                    config = {
+                        padding = 0.1,
+                        align = "cm",
+                    },
+                    nodes =
+                    {{n=G.UIT.R, config={align = "cm"}, nodes={
+                    {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_biome_1'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 1, pop_in = 0.5, maxw = 5}), id = 'prompt_dynatext1'}}
+                    }},
+                    {n=G.UIT.R, config={align = "cm"}, nodes={
+                    {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_biome_2'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 1.2, pop_in = 0.5, maxw = 5, silent = true}), id = 'prompt_dynatext2'}}
+                    }}},
+                },
+                { -- top row, used for destination biomes (aka biomes you can go to at any given time)
+                    n = G.UIT.R,
+                    config = {
+                        padding = 0.1,
+                    },
+                    nodes = destination_biome_nodes
+                },
+                { -- top row, used for destination biomes (aka biomes you can go to at any given time)
+                    n = G.UIT.R, config={align = "cm"},
+                    nodes = {
+                        G.UIDEF.wgrop_biome_select_individual(G.GAME.round_resets.blind_biome)
+                    }
+                },
+            })
         }
     }
 end
@@ -88,8 +118,15 @@ function update_wgrop_biometree()
         end
         G.cb_wgrop_biome_selection = UIBox{
             definition = G.UIDEF.wgrop_full_biome_selection(),
-            config = {align="bm", offset = {x=0,y=-5.5},major = G.hand, bond = 'Weak'}
+            config = {align="bm", offset = {x=0,y=2},major = G.hand, bond = 'Weak'}
         }
+        G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = (function()
+            G.cb_wgrop_biome_selection.alignment.offset.y = -8
+            return true
+        end)
+        }))
     G.STATE_COMPLETE = true
     end
     if G.buttons then G.buttons:remove(); G.buttons = nil end

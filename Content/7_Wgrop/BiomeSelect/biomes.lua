@@ -122,6 +122,7 @@ function CBWG.get_new_biome(new_biome)
         end
     end
     local _, biome = pseudorandom_element(eligible_biomes, pseudoseed('biome'))
+    biome = biome or "wgrop_city"
     return biome
 end
 
