@@ -15,7 +15,7 @@ SMODS.Consumable {
     },
     loc_vars = function(self, info_queue, card)
         if G.GAME.cbean_combo_index then
-        return { vars = { ( card.ability.extra.multbase * (1 + (#G.GAME.cbean_combo_index - 1)/10 ))}}
+        return { vars = { ( card.ability.extra.multbase * (1 + (#G.GAME.cbean_combo_index)/10 ))}}
         else
             return { vars = { card.ability.extra.multbase}}
         end
