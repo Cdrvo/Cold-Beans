@@ -40,7 +40,13 @@ G.UIDEF.wgrop_biome_select_individual = function ( biome_key )
                     { -- first row, for adding select button
                         n = G.UIT.R,
                         nodes = {
-                            -- select button goes here
+                        {n=G.UIT.R, config={align = "cm", minw = 2, minh = 1, r=0.15,colour = G.C.ORANGE, ref_table = biome_key, button = 'select_biome', hover = true,shadow = true}, nodes = {
+                          {n=G.UIT.R, config={align = "cm", padding = 0.07, focus_args = {button = 'x', orientation = 'cr'}, func = 'set_button_pip'}, nodes={
+                            {n=G.UIT.R, config={align = "cm", maxw = 1.3}, nodes={
+                              {n=G.UIT.T, config={text = localize('k_select_biome'), scale = 0.4, colour = G.C.WHITE, shadow = true}},
+                            }},
+                          }}
+                        }},
                         }
                     },
                     { -- second row, for adding biome modifiers etc. 
@@ -118,7 +124,7 @@ function update_wgrop_biometree()
         end
         G.cb_wgrop_biome_selection = UIBox{
             definition = G.UIDEF.wgrop_full_biome_selection(),
-            config = {align="bm", offset = {x=0,y=2},major = G.hand, bond = 'Weak'}
+            config = {align="bm", offset = {x=0,y=G.ROOM.T.y + 15},major = G.hand, bond = 'Weak'}
         }
         G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
@@ -130,4 +136,26 @@ function update_wgrop_biometree()
     G.STATE_COMPLETE = true
     end
     if G.buttons then G.buttons:remove(); G.buttons = nil end
+end
+
+G.FUNCS.select_biome = function(e)
+    stop_use()
+    local biome = e.config.ref_table
+    if G.cb_wgrop_biome_selection then
+    G.GAME.round_resets.blind_biome = biome
+        e.config.button = nil
+        G.cb_wgrop_biome_selection.alignment.offset.y = G.ROOM.T.y + 15
+        G.cb_wgrop_biome_selection.alignment.offset.x = 0
+        G.E_MANAGER:add_event(Event({
+          trigger = 'immediate',
+          func = function()
+            G.STATE = G.STATES.SHOP
+              G.STATE_COMPLETE = false
+            return true
+          end
+        }))
+        G.VIBRATION = G.VIBRATION + 1
+    end
+      reset_blinds()
+      delay(0.6)
 end
