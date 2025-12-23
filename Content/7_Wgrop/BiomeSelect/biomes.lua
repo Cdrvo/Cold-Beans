@@ -218,6 +218,9 @@ SMODS.injectItems = function()
     for k, v in pairs(BLIND_MASTER) do 
         for _, w in pairs(BIOME_BLINDS) do if w == v then goto continue end end
         table.insert(G['P_BIOME_POOLS']['default'], v)
+        for key, value in pairs(G['P_BIOME_POOLS']) do
+            table.insert(G['P_BIOME_POOLS'][key], v)
+        end
         ::continue::
     end
 
