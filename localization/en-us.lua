@@ -4866,8 +4866,8 @@ return {
 				},
 				wgrop_graveyard = {
 					text = {
-						"Enter the Realm",
-						"of Ghosts and Mystery",
+						"Destroyed Cards",
+						"persist after death",
 					},
 				},
 				wgrop_volcanic = {
