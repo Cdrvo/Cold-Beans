@@ -946,6 +946,43 @@ return {
 						"Nothing"
 					},
 				},
+			},
+			c_cbean_wgrop_blue_rose_closer = {
+				name = {
+					"Blue Rose Closer",
+					"{{X:blue,C:white,s:0.7}Ultimate{}",
+				},
+				text = {
+					{
+						"Scored cards are",
+						"retriggered {C:attention}#1#{} time{C:inactive}(s){}",
+						"and give {C:white,X:chips}X#2#{} {C:blue}Chips",
+						"Boosted by current combo",
+						"length when used"
+					},
+					{
+						"Combos Into:",
+						"Nothing"
+					},
+				},
+			},
+			c_cbean_wgrop_party_poppers = {
+				name = {
+					"Party Poppers!",
+					"{X:purple,C:white,s:0.7}Special{}",
+				},
+				text = {
+					{
+						"Scored cards either give",
+						"{C:chips}+#1# Chips{}, {C:mult}+#2# Mult{}",
+						"or {C:money}$#3#{} to {C:money}$#4#{}"
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}",
+					},
+				},
 			}
 		},
 		yma_keys = {
