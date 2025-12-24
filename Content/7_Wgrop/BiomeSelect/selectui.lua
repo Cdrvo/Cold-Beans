@@ -143,13 +143,21 @@ G.FUNCS.select_biome = function(e)
     stop_use()
     local biome = e.config.ref_table
     if G.cb_wgrop_biome_selection then
-    G.GAME.round_resets.blind_biome = biome
+    G.GAME.round_resets.blind_biome = biome 
+    G.E_MANAGER:add_event(Event({
+          trigger = 'before', delay = 0.2,
+          func = function()
         e.config.button = nil
         G.cb_wgrop_biome_selection.alignment.offset.y = G.ROOM.T.y + 15
         G.cb_wgrop_biome_selection.alignment.offset.x = 0
+        return true
+        end
+    }))
         G.E_MANAGER:add_event(Event({
           trigger = 'immediate',
           func = function()
+            G.cb_wgrop_biome_selection:remove()
+            G.cb_wgrop_biome_selection = nil
             G.STATE = G.STATES.SHOP
               G.STATE_COMPLETE = false
             return true
