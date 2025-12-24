@@ -163,6 +163,8 @@ G.FUNCS.select_biome = function(e)
             return true
           end
         }))
+          play_sound('timpani', 0.8)
+          play_sound('generic1')
         G.VIBRATION = G.VIBRATION + 1
     end
       reset_blinds()
