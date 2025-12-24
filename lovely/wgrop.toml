@@ -86,7 +86,7 @@ add = false
 end'''
 match_indent = true
 
-# modify pool
+# modify prompt box
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
@@ -126,12 +126,14 @@ payload = '''local shop_sign = Sprite(0, 0, 4.4, 2.2,
             {n=G.UIT.R, config={align = "cm"}, nodes={
               {n=G.UIT.O, config={object = shop_sign}}
             }},
-            {n=G.UIT.R, config={align = "cm"}, nodes={
+            not (G.GAME.used_vouchers["v_retcon"] or G.GAME.used_vouchers["v_directors_cut"]) and {n=G.UIT.R, config={align = "cm"}, nodes={
             {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_blind_1'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.5, pop_in = 0.5, maxw = 5}), id = 'prompt_dynatext1'}}
             }},
-            {n=G.UIT.R, config={align = "cm"}, nodes={
+            not (G.GAME.used_vouchers["v_retcon"] or G.GAME.used_vouchers["v_directors_cut"]) and {n=G.UIT.R, config={align = "cm"}, nodes={
             {n=G.UIT.O, config={object = DynaText({string = localize('ph_choose_blind_2'), colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5, silent = true}), id = 'prompt_dynatext2'}}
             }},
+            (G.GAME.used_vouchers["v_retcon"] or G.GAME.used_vouchers["v_directors_cut"]) and
+            UIBox_button({label = {localize('b_reroll_boss'), localize('$')..'10'}, button = "reroll_boss", func = 'reroll_boss_button'}) or nil
           }},
         }},
       config = {

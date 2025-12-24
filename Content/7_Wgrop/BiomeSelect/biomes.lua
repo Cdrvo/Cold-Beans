@@ -55,7 +55,7 @@ CBWG.ColdBeans_Biome {
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_desert",
-    blinds = {["bl_wheel"] = true, ["bl_mark"] = true, ["bl_final_acorn"] = true, ["bl_cbean_colon_pot"] = true},
+    blinds = {["bl_wheel"] = true, ["bl_mark"] = true, ["bl_hook"] = true, ["bl_manacle"] = true, ["bl_window"] = true, ["bl_final_acorn"] = true, ["bl_cbean_colon_pot"] = true},
     cards = {["j_greedy_joker"] = true, ["j_dusk"] = true, ["j_delayed_grat"] = true, ["j_obelisk"] = true, ["j_hallucination"] = true, ["j_fortune_teller"] = true, ["j_bull"] = true, ["j_cartomancer"] = true, ["j_bootstraps"] = true, ["j_cbean_wgrop_gunslinger"] = true, ["j_cbean_wgrop_oasis"] = true, ["j_cbean_wgrop_glass_spire"] = true, ["j_mystic_summit"] = true, ["j_rough_gem"] = true}
 }
 
@@ -64,7 +64,7 @@ CBWG.ColdBeans_Biome {
     config = {},
     atlas = 'wgrop_biomes',
     key = "wgrop_forest",
-    blinds = {["bl_ox"] = true, ["bl_plant"] = true, ["bl_serpent"] = true, ["bl_final_leaf"] = true, ["bl_cbean_colon_treasure"] = true, ["bl_cbean_colon_seed"] = true, ["bl_cbean_colon_compass"] = true, ["bl_cbean_colon_outcrop"] = true},
+    blinds = {["bl_ox"] = true, ["bl_plant"] = true, ["bl_club"] = true,  ["bl_serpent"] = true, ["bl_final_leaf"] = true, ["bl_cbean_colon_treasure"] = true, ["bl_cbean_colon_seed"] = true, ["bl_cbean_colon_compass"] = true, ["bl_cbean_colon_outcrop"] = true},
     cards = {["j_gluttenous_joker"] = true, ["j_stencil"] = true, ["j_ceremonial"] = true, ["j_marble"] = true, ["j_scary_face"] = true, ["j_gros_michel"] = true, ["j_egg"] = true, ["j_sixth_sense"] = true, ["j_hiker"] = true, ["j_faceless"] = true, ["j_green_joker"] = true, ["j_cavendish"] = true, ["j_midas_mask"] = true, ["j_erosion"] = true, ["j_ancient"] = true, ["j_campfire"] = true, ["j_flower_pot"] = true, ["j_idol"] = true, ["j_hit_the_road"] = true, ["j_cbean_colon_square_packing"] = true, ["j_cbean_pboys_watermelon"] = true, ["j_cbean_nameteam_bottomofthebarrel"] = true, ["j_golden"] = true, ["j_arrowhead"] = true}
 }
 
