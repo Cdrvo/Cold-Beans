@@ -4850,6 +4850,45 @@ return {
 					},
 				},
 			},
+			Biome = {
+				--Wgropping it
+				wgrop_desert = {
+					text = {
+						"Enter the Realm",
+						"of Mummies and Cowboys",
+					},
+				},
+				wgrop_forest = {
+					text = {
+						"Enter the Realm",
+						"of Magicks and Trees",
+					},
+				},
+				wgrop_graveyard = {
+					text = {
+						"Enter the Realm",
+						"of Ghosts and Mystery",
+					},
+				},
+				wgrop_volcanic = {
+					text = {
+						"Enter the Realm",
+						"of Fire and Stone",
+					},
+				},
+				wgrop_glaciers = {
+					text = {
+						"Enter the Realm",
+						"of Stars and Snow",
+					},
+				},
+				wgrop_city = {
+					text = {
+						"Enter the Realm",
+						"of People and Industry",
+					},
+				},
+			},
 		},
 		misc = {
 			achievement_descriptions = {},
@@ -4878,6 +4917,7 @@ return {
 				ph_choose_biome_1 = "Choose your",
 				ph_choose_biome_2 = "Destination",
 				k_select_biome  = "Select",
+				b_reroll  = "Reroll",
 				cbean_stationery_accepts = {
 					"Only accepts Jokers",
 					"with {C:attention}1 or more{} of the",
