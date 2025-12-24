@@ -4885,8 +4885,8 @@ return {
 				},
 				wgrop_city = {
 					text = {
-						"Enter the Realm",
-						"of People and Industry",
+						"Constant taxes, but",
+						"plenty to see and do",
 					},
 				},
 			},
