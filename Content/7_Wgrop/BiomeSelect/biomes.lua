@@ -234,6 +234,9 @@ function CBWG.in_pool(key)
     for k, v in ipairs(G.P_CENTER_POOLS[G.GAME.round_resets.blind_biome]) do
         if v.key == key then return true end
     end
+    for k, v in ipairs(G.P_CENTER_POOLS['default']) do
+        if v.key == key then return true end
+    end
 end
 
 local injectitems_ref = SMODS.injectItems
@@ -275,9 +278,6 @@ SMODS.injectItems = function()
     for k, v in pairs(CARD_MASTER) do 
         for _, w in pairs(BIOME_CARDS) do if w == v then goto continue end end
         table.insert(G.P_CENTER_POOLS['default'], v)
-        for key, value in pairs(G['P_BIOMES']) do
-            table.insert(G.P_CENTER_POOLS[key], v)
-        end
         ::continue::
     end
 end
