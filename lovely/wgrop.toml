@@ -157,3 +157,14 @@ payload = '''local shop_sign = Sprite(0, 0, 4.4, 2.2,
       end)
     }))'''
 match_indent = true
+
+# add biome calculate
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''-- TARGET: add your own individual scoring targets'''
+position = "before"
+payload = '''
+        if CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome] then t[#t + 1] = { object = CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome], scored_card = G.GAME.blind.children.animatedSprite } end
+'''
+match_indent = true
