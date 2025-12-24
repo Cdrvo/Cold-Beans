@@ -39,11 +39,14 @@ G.UIDEF.wgrop_biome_select_individual = function ( biome_key )
                 nodes = {
                     { -- first row, for adding select button
                         n = G.UIT.R,
+                        config = {
+                            align = "cm"
+                        },
                         nodes = {
-                        {n=G.UIT.R, config={align = "cm", minw = 2, minh = 1, r=0.15,colour = G.C.ORANGE, ref_table = biome_key, button = 'select_biome', hover = true,shadow = true}, nodes = {
+                        {n=G.UIT.R, config={align = "cm", minw = 2.7, minh = 0.6, r=0.15,colour = G.C.ORANGE, ref_table = biome_key, button = 'select_biome', hover = true,shadow = true}, nodes = {
                           {n=G.UIT.R, config={align = "cm", padding = 0.07, focus_args = {button = 'x', orientation = 'cr'}, func = 'set_button_pip'}, nodes={
-                            {n=G.UIT.R, config={align = "cm", maxw = 1.3}, nodes={
-                              {n=G.UIT.T, config={text = localize('k_select_biome'), scale = 0.4, colour = G.C.WHITE, shadow = true}},
+                            {n=G.UIT.R, config={align = "cm"}, nodes={
+                              {n=G.UIT.T, config={text = localize('k_select_biome'), scale = 0.45, colour = G.C.WHITE, shadow = true}},
                             }},
                           }}
                         }},
