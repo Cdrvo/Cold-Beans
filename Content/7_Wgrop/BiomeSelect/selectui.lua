@@ -1,15 +1,13 @@
 G.STATES.BIOMETREE = 9223376854775807
 function CBWG.get_blind_modifier_ui(biome_key) 
-    return {
-        {
-            n = G.UIT.T,
-            config = {
-                text = biome_key,
-                scale = 0.5,
-                colour = G.C.WHITE
-            }
-        }
-    }
+    local biome_text = {}
+    local loc_target = localize{type = 'raw_descriptions', key = biome_key, set = 'Biome'}
+    if loc_target then 
+      for k, v in ipairs(loc_target) do
+        biome_text[#biome_text + 1] = {n=G.UIT.R, config={align = "cm"}, nodes={{n=G.UIT.T, config={text = v, scale = 0.35, shadow = true, colour = G.C.WHITE}}}}
+      end
+    end
+    return biome_text
 end
 G.UIDEF.wgrop_biome_select_individual = function ( biome_key )
     local biome_modifiers = CBWG.get_blind_modifier_ui(biome_key) 
