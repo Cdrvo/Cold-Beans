@@ -126,7 +126,12 @@ CBWG.ColdBeans_Biome {
     blinds = {["bl_arm"] = true, ["bl_fish"] = true, ["bl_water"] = true, ["bl_final_bell"] = true,["bl_cbean_colon_island"] = true, ["bl_cbean_colon_astro"] = true, ["bl_cbean_colon_sinker"] = true},
     cards = {["j_cbean_0chill_thorn_ring"] = true, ["j_mystic_summit"] = true, ["j_supernova"] = true, ["j_space"] = true, ["j_ice_cream"] = true, ["j_splash"] = true, ["j_blue_joker"] = true, ["j_constellation"] = true, ["j_cloud_9"] = true, ["j_rocket"] = true, ["j_castle"] = true, ["j_satellite"] = true, ["j_astronomer"] = true, ["j_cbean_pboys_yellow_snow"] = true, ["j_cbean_yma_seeing_stars"] = true, ["j_cbean_yma_well_wrapped"] = true, ["j_cbean_nameteam_hollyjollyjoker"] = true, ["j_cbean_nameteam_tipoftheiceberg"] = true, ["j_onyx_agate"] = true},
     calculate = function(self, context)
-        
+        if context.setting_blind then
+            G.E_MANAGER:add_event(Event({func = function()
+                ease_discard(-1, nil, true)
+                ease_hands_played(2)
+            return true end }))
+        end
     end
 }
 

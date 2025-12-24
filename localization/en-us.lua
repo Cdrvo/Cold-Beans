@@ -4878,8 +4878,9 @@ return {
 				},
 				wgrop_glaciers = {
 					text = {
-						"Enter the Realm",
-						"of Stars and Snow",
+						"The snow reduces your",
+						"vision, so keep your",
+						"hands warm",
 					},
 				},
 				wgrop_city = {
