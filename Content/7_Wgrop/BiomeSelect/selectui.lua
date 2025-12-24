@@ -27,18 +27,21 @@ G.UIDEF.wgrop_biome_select_individual = function ( biome_key )
         },
         nodes = {
             { -- biome title card thanks gud
-                n = G.UIT.C, config={align = "cm"},
+                n = G.UIT.C, config={align = "cm", padding = 0.07},
                 nodes = {
-              {     n=G.UIT.O, config={object = biome_card}}
-                }
-            },
-            { -- the fuckin piece of shit
-                n = G.UIT.C,
-                nodes = {
-                    { -- first row, for adding select button
+                    { -- first row, for biome title card. 
                         n = G.UIT.R,
                         config = {
                             align = "cm"
+                        },
+                        nodes = {
+                            {n=G.UIT.O, config={object = biome_card}},
+                        }
+                    },
+                    { -- second row, for adding select button
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
                         },
                         nodes = {
                         {n=G.UIT.R, config={align = "cm", minw = 2.7, minh = 0.6, r=0.15,colour = G.C.ORANGE, ref_table = biome_key, button = 'select_biome', hover = true,shadow = true}, nodes = {
@@ -50,8 +53,11 @@ G.UIDEF.wgrop_biome_select_individual = function ( biome_key )
                         }},
                         }
                     },
-                    { -- second row, for adding biome modifiers etc. 
+                    { -- third row, for adding biome modifiers etc. 
                         n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                        },
                         nodes = {
                             { -- adding a column so that it doesn't die midwau
                                 n = G.UIT.C,
@@ -68,9 +74,9 @@ end
 
 G.UIDEF.wgrop_full_biome_selection = function ()
     local destination_biome_nodes = {}
-    for i = 1, 2 do
-        table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(CBWG.get_new_biome(true)))
-    end
+    table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(CBWG.get_new_biome(true)))
+    table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(G.GAME.round_resets.blind_biome))
+    table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(CBWG.get_new_biome(true)))
     return {
         n = G.UIT.ROOT,
         config = {
@@ -100,12 +106,6 @@ G.UIDEF.wgrop_full_biome_selection = function ()
                         padding = 0.1,
                     },
                     nodes = destination_biome_nodes
-                },
-                { -- top row, used for destination biomes (aka biomes you can go to at any given time)
-                    n = G.UIT.R, config={align = "cm"},
-                    nodes = {
-                        G.UIDEF.wgrop_biome_select_individual(G.GAME.round_resets.blind_biome)
-                    }
                 },
             })
         }
