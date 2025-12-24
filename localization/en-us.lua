@@ -1539,7 +1539,41 @@ return {
 					{"{C:inactive}Currently{} {C:white,X:red}X#2#{}"}
 				},
 			},
-
+			m_cbean_wgrop_coarse = {
+				name = "Coarse Card",
+				text = {
+					"For every {C:money}$#1#{} of",
+					"{C:attention}Joker{} sell value",
+					"This gains {C:white,X:chips}X#3#{} {C:blue}Chips{}",
+					"{C:inactive}Currently{} {C:white,X:chips}X#2#{}"
+				}
+			},
+			m_cbean_wgrop_graffiti = {
+				name = "Graffiti Card",
+				text = {
+					{"Take {C:dark_edition}#1#%{} of current",
+					"{C:mult}Mult{}, {C:chips}Chips{}, and",
+					"and {C:dark_edition}#1#%{} of",
+					"{C:money}Starting Money{}"},
+					{"{C:green}#2#{} in {C:green}#3#{} chance to",
+					"create a random {C:attention}Tag{}"},
+					{"Scoring increases {C:dark_edition}Tax{}",
+				    "by {C:dark_edition}#4#%{}",
+					"{C:inactive}[Resets after scoring]{}"}
+				}
+			},
+			m_cbean_wgrop_magma = {
+				name = "Magma Card",
+				text = {
+					
+					{"Turn {C:attention}#1#{} {C:green}random{} card",
+					"held in hand into ",
+					"{C:attention}Stone{}, {C:attention}Glass{}, or",
+				     "{C:attention}Steel{} when scoring"},
+					{"{C:red}Destroy{} this card",
+				     "after scoring"}
+				}
+			}
 		},
 		Joker = {
 
@@ -2415,6 +2449,47 @@ return {
 					"the start of the hand when",
 					"destroying one"},
 					{"{C:inactive}Currently{} {C:white,X:mult}X#2#{}"}
+				}
+			},
+			j_cbean_wgrop_oasis = {
+				name = "Oasis",
+				text = {
+					"Retrigger {C:attention}Enhanced{} cards {C:attention}#2#{}",
+					"time{C:inactive}(s){} for every {C:attention}#1#{}",
+					"{C:attention}Unenhanced{} cards in hand"
+				}
+			},
+			j_cbean_wgrop_glass_spire = {
+				name = "Glass Spire",
+				text = {
+					"When {C:attention}Glass{} cards",
+					" are {C:red}destroyed{}",
+					"add a {C:attention}Coarse{} copy",
+					"of it to your hand"
+				}
+			},
+			j_cbean_wgrop_scorched_hands = {
+				name = "Scorched Hands",
+				text = {
+					{"Discarded cards have",
+					"a {C:green}#1#{} in {C:green}#2#{} chance to",
+					"be {C:red}destroyed{}"},
+					{"{C:attention}Unenhanced{} cards",
+				     "destroyed this way",
+					"give {C:money}$#3#{}",
+					"{C:attention}Enhanced{} cards give",
+				    "{C:money}$#4#{} instead"}
+				}
+			},
+			j_cbean_wgrop_starry_reflection = {
+				name = "Starry Reflection",
+				text = {
+					{"Score {C:chips}Chips{} equal to",
+				     "{C:dark_edition}#1#%{} of {C:attention}base{}",
+					 "poker hand's {C:blue}Chips{}"},
+					{"Increase {C:dark_edition}percentage{} by",
+				     "{C:dark_edition}#2#%{} when {C:attention}selling{}",
+					 "a {C:planet}Planet{} card"}
 				}
 			}
         },
@@ -4772,45 +4847,6 @@ return {
 						"You may now {C:attention}steal",
 						"consumables from",
 						"{C:attention}Booster{} packs",
-					},
-				},
-			},
-			Biome = {
-				--Wgropping it
-				wgrop_desert = {
-					text = {
-						"Enter the Realm",
-						"of Mummies and Cowboys",
-					},
-				},
-				wgrop_forest = {
-					text = {
-						"Enter the Realm",
-						"of Magicks and Trees",
-					},
-				},
-				wgrop_graveyard = {
-					text = {
-						"Enter the Realm",
-						"of Ghosts and Mystery",
-					},
-				},
-				wgrop_volcanic = {
-					text = {
-						"Enter the Realm",
-						"of Fire and Stone",
-					},
-				},
-				wgrop_glaciers = {
-					text = {
-						"Enter the Realm",
-						"of Stars and Snow",
-					},
-				},
-				wgrop_city = {
-					text = {
-						"Enter the Realm",
-						"of People and Industry",
 					},
 				},
 			},
