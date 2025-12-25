@@ -97,18 +97,20 @@ CBWG.ColdBeans_Biome {
             local cardsdestroyed = SMODS.shallow_copy(context.removed)
             if #cardsdestroyed > 0 then
                 for i, v in ipairs(cardsdestroyed) do
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.3,
-                        func = function()
-                                local copy = copy_card(v)
-                                G.hand:emplace(copy)
-                                copy:set_ability('m_cbean_wgrop_pale_remnant')
-                                card_eval_status_text(copy, 'extra', nil, nil, nil, {message =('!'), colour = G.C.ATTENTION})
-                                table.insert(G.playing_cards, copy)
-                            return true
-                        end
-                    }))
+                    if SMODS.pseudorandom_probability(v, pseudoseed("graveyard"), 1, 3, 'graveyard') then
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.3,
+                            func = function()
+                                    local copy = copy_card(v)
+                                    G.hand:emplace(copy)
+                                    copy:set_ability('m_cbean_wgrop_pale_remnant')
+                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =('!'), colour = G.C.ATTENTION})
+                                    table.insert(G.playing_cards, copy)
+                                return true
+                            end
+                        }))
+                    end
                 end
             end
         end
