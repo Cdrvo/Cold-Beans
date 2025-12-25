@@ -63,6 +63,28 @@ CBWG.ColdBeans_Biome {
     cards = {["j_greedy_joker"] = true, ["j_dusk"] = true, ["j_delayed_grat"] = true, ["j_obelisk"] = true, ["j_hallucination"] = true, ["j_fortune_teller"] = true, ["j_bull"] = true, ["j_cartomancer"] = true, ["j_bootstraps"] = true, ["j_cbean_wgrop_gunslinger"] = true, ["j_cbean_wgrop_oasis"] = true, ["j_cbean_wgrop_glass_spire"] = true, ["j_mystic_summit"] = true, ["j_rough_gem"] = true},
     calculate = function(self, context)
 
+    end,
+    enter = function(self, calc)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                if G.jokers then
+                    G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+                end
+                return true
+            end,
+        }))
+        SMODS.change_booster_limit(1)
+    end,
+    exit = function(self, calc)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                if G.jokers then
+                    G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+                end
+                return true
+            end,
+        }))
+        SMODS.change_booster_limit(-1)
     end
 }
 
@@ -78,7 +100,7 @@ CBWG.ColdBeans_Biome {
             local other_card = context.other_card
             context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + 5
             if SMODS.pseudorandom_probability(other_card, pseudoseed("forest"), 1, 3, 'forest') then
-                assert(SMODS.modify_rank(G.hand.highlighted[i], 1))
+                assert(SMODS.modify_rank(other_card, 1))
             end
             return {
                 message = localize('k_upgrade_ex'),

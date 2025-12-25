@@ -1563,7 +1563,6 @@ return {
 			m_cbean_wgrop_magma = {
 				name = "Magma Card",
 				text = {
-					
 					{"Turn {C:attention}#1#{} {C:green}random{} card",
 					"held in hand into ",
 					"{C:attention}Stone{}, {C:attention}Glass{}, or",
@@ -4889,8 +4888,9 @@ return {
 				--Wgropping it
 				wgrop_desert = {
 					text = {
-						"Enter the Realm",
-						"of Mummies and Cowboys",
+						"You can carry less",
+						"but packed plenty",
+						"of resources",
 					},
 				},
 				wgrop_forest = {
@@ -4901,7 +4901,7 @@ return {
 				},
 				wgrop_graveyard = {
 					text = {
-						"Destroyed Cards",
+						"Destroyed Cards may",
 						"persist after death",
 					},
 				},
