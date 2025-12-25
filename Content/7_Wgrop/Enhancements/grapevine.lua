@@ -5,7 +5,7 @@ SMODS.Enhancement {
     atlas = 'wgrop_enhancement_atlas',
     config = {
         extra = {
-            upgrade_mult = 2,
+            upgrade_mult = 4,
         }
     },
     loc_vars = function(self, info_queue, card)
