@@ -47,6 +47,10 @@ CBWG.ColdBeans_Biome = SMODS.ObjectType:extend{
             table.remove(G.P_BIOME_POOLS[self.key], blind)
         end
         if blind.pools then blind.pools[self.key] = nil end
+    end,
+    enter = function(self)
+    end,
+    exit = function(self)
     end
 }
 
@@ -113,8 +117,7 @@ CBWG.ColdBeans_Biome {
     blinds = {["bl_needle"] = true, ["bl_flint"] = true,["bl_mouth"] = true,["bl_head"] = true, ["bl_final_heart"] = true, ["bl_cbean_colon_folly"] = true},
     cards = {["j_rough_gem"] = true, ["j_golden"] = true, ["j_arrowhead"] = true, ["j_onyx_agate"] = true, ["j_madness"] = true, ["j_bloodstone"] = true, ["j_lusty"] = true, ["j_half"] = true, ["j_chaos"] = true, ["j_abstract"] = true, ["j_stone"] = true, ["j_glass"] = true, ["j_burnt"] = true, ["j_cbean_pboys_molotov"] = true, ["j_cbean_yma_charred_fool"] = true,},
     calculate = function(self, context)
-        
-    end
+    end,
 }
 
 
@@ -126,12 +129,22 @@ CBWG.ColdBeans_Biome {
     blinds = {["bl_arm"] = true, ["bl_fish"] = true, ["bl_water"] = true, ["bl_final_bell"] = true,["bl_cbean_colon_island"] = true, ["bl_cbean_colon_astro"] = true, ["bl_cbean_colon_sinker"] = true},
     cards = {["j_cbean_0chill_thorn_ring"] = true, ["j_mystic_summit"] = true, ["j_supernova"] = true, ["j_space"] = true, ["j_ice_cream"] = true, ["j_splash"] = true, ["j_blue_joker"] = true, ["j_constellation"] = true, ["j_cloud_9"] = true, ["j_rocket"] = true, ["j_castle"] = true, ["j_satellite"] = true, ["j_astronomer"] = true, ["j_cbean_pboys_yellow_snow"] = true, ["j_cbean_yma_seeing_stars"] = true, ["j_cbean_yma_well_wrapped"] = true, ["j_cbean_nameteam_hollyjollyjoker"] = true, ["j_cbean_nameteam_tipoftheiceberg"] = true, ["j_onyx_agate"] = true},
     calculate = function(self, context)
-        if context.setting_blind then
-            G.E_MANAGER:add_event(Event({func = function()
-                ease_discard(-1, nil, true)
-                ease_hands_played(2)
-            return true end }))
+    end,
+    enter = function(self, calc)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + 2
+        if calc then
+            ease_discard(-1)
+            ease_hands_played(2)
         end
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
+    end,
+    exit = function(self, calc)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
+        if calc then
+            ease_discard(1)
+            ease_hands_played(-2)
+        end
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - 2
     end
 }
 
@@ -146,6 +159,12 @@ CBWG.ColdBeans_Biome {
         if context.after then
             ease_dollars(-1, true)
         end
+    end,
+    enter = function(self)
+        change_shop_size(1)
+    end,
+    exit = function(self)
+        change_shop_size(-1)
     end
 }
 -- ante 1 blinds have been removed as they get ignored and only the wall appears on ante 1
