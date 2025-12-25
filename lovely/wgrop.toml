@@ -72,7 +72,8 @@ match_indent = true
 target = "game.lua"
 pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
 position = "after"
-payload = '''self.GAME.round_resets.blind_biome = CBWG.get_new_biome(false) --Sets a random biome at start of game'''
+payload = '''self.GAME.round_resets.blind_biome = CBWG.get_new_biome(false) --Sets a random biome at start of game
+CBWG.ColdBeans_Biomes[self.GAME.round_resets.blind_biome]:enter(false)'''
 match_indent = true
 
 # modify pool
