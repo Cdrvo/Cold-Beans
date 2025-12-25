@@ -4860,8 +4860,8 @@ return {
 				},
 				wgrop_forest = {
 					text = {
-						"Enter the Realm",
-						"of Magicks and Trees",
+						"At the end of the day,",
+						"everything grows",
 					},
 				},
 				wgrop_graveyard = {
