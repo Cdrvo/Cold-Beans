@@ -74,7 +74,14 @@ CBWG.ColdBeans_Biome {
     blinds = {["bl_ox"] = true, ["bl_plant"] = true, ["bl_club"] = true,  ["bl_serpent"] = true, ["bl_final_leaf"] = true, ["bl_cbean_colon_treasure"] = true, ["bl_cbean_colon_seed"] = true, ["bl_cbean_colon_compass"] = true, ["bl_cbean_colon_outcrop"] = true},
     cards = {["j_gluttenous_joker"] = true, ["j_stencil"] = true, ["j_ceremonial"] = true, ["j_marble"] = true, ["j_scary_face"] = true, ["j_gros_michel"] = true, ["j_egg"] = true, ["j_sixth_sense"] = true, ["j_hiker"] = true, ["j_faceless"] = true, ["j_green_joker"] = true, ["j_cavendish"] = true, ["j_midas_mask"] = true, ["j_erosion"] = true, ["j_ancient"] = true, ["j_campfire"] = true, ["j_flower_pot"] = true, ["j_idol"] = true, ["j_hit_the_road"] = true, ["j_cbean_colon_square_packing"] = true, ["j_cbean_pboys_watermelon"] = true, ["j_cbean_nameteam_bottomofthebarrel"] = true, ["j_golden"] = true, ["j_arrowhead"] = true},
     calculate = function(self, context)
-        
+        if context.end_of_round and context.individual and context.cardarea == G.hand then
+            local other_card = context.other_card
+            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + 5
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.CHIPS
+            }
+        end
     end
 }
 
