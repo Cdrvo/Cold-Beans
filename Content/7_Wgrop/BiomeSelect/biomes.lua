@@ -118,6 +118,14 @@ CBWG.ColdBeans_Biome {
     cards = {["j_rough_gem"] = true, ["j_golden"] = true, ["j_arrowhead"] = true, ["j_onyx_agate"] = true, ["j_madness"] = true, ["j_bloodstone"] = true, ["j_lusty"] = true, ["j_half"] = true, ["j_chaos"] = true, ["j_abstract"] = true, ["j_stone"] = true, ["j_glass"] = true, ["j_burnt"] = true, ["j_cbean_pboys_molotov"] = true, ["j_cbean_yma_charred_fool"] = true,},
     calculate = function(self, context)
     end,
+    enter = function(self, calc)
+        G.GAME.modifiers.volcanic_no_money = true
+        G.GAME.modifiers.volcanic_money = 2
+    end,
+    exit = function(self, calc)
+        G.GAME.modifiers.volcanic_no_money = false
+        G.GAME.modifiers.volcanic_money = 0
+    end
 }
 
 
