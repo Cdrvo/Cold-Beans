@@ -2491,6 +2491,27 @@ return {
 				     "{C:dark_edition}#2#%{} when {C:attention}selling{}",
 					 "a {C:planet}Planet{} card"}
 				}
+			},
+			j_cbean_wgrop_stop_sign = {
+				name = "Stop Sign",
+				text = {
+					{
+					"If the first {C:blue}hand{}",
+				    "scores {C:attention}more{} than the",
+					"current {C:attention}Blind Requirement{}",
+				    "take {C:attention}half{} of {C:dark_edition}percentage{}",
+				    "of {C:attention}overscoring{} between",
+					"{C:attention}Blind Requirement{} and",
+					"the {C:attention}overscoring{}",
+			      	},
+					{
+					"The next {C:attention}selected{} Blind",
+				    "gains the {C:dark_edition}percentage{}",
+					"of the {C:attention}Blind Requirement{}",
+				    "as {C:purple}Score{}",
+				    },
+					{"{C:inactive}Currently{} {C:dark_edition}#1#%{}"}
+				}
 			}
         },
         Other = {
