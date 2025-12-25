@@ -1,7 +1,7 @@
 SMODS.Joker{
     key = 'wgrop_starry_reflection',
     atlas = 'wgrop_joker_atlas',
-    rarity = 1,
+    rarity = 2,
     cost = 6,
     unlocked = true,
     discovered = true,
@@ -11,8 +11,8 @@ SMODS.Joker{
     pos = {x = 0, y = 2},
     config = {
         extra = {
-            percentage = 150,
-            incper = 10
+            percentage = 50,
+            incper = 5
         }
     },
 
