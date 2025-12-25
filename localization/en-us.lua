@@ -4872,8 +4872,8 @@ return {
 				},
 				wgrop_volcanic = {
 					text = {
-						"Enter the Realm",
-						"of Fire and Stone",
+						"Only discards have",
+						"value in this land",
 					},
 				},
 				wgrop_glaciers = {
