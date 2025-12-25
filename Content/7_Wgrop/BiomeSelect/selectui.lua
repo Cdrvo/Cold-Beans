@@ -143,6 +143,7 @@ G.FUNCS.select_biome = function(e)
     stop_use()
     local biome = e.config.ref_table
     if G.cb_wgrop_biome_selection then
+    CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome]:exit(true)
     G.GAME.round_resets.blind_biome = biome 
     G.E_MANAGER:add_event(Event({
           trigger = 'before', delay = 0.2,
@@ -163,6 +164,7 @@ G.FUNCS.select_biome = function(e)
             return true
           end
         }))
+        CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome]:enter(true)
           play_sound('timpani', 0.8)
           play_sound('generic1')
         G.VIBRATION = G.VIBRATION + 1
