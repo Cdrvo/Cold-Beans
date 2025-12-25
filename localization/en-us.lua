@@ -1552,14 +1552,12 @@ return {
 				name = "Graffiti Card",
 				text = {
 					{"Take {C:dark_edition}#1#%{} of current",
-					"{C:mult}Mult{}, {C:chips}Chips{}, and",
-					"and {C:dark_edition}#1#%{} of",
-					"{C:money}Starting Money{}"},
+					"{C:mult}Mult{} and {C:chips}Chips{}"},
 					{"{C:green}#2#{} in {C:green}#3#{} chance to",
 					"create a random {C:attention}Tag{}"},
 					{"Scoring increases {C:dark_edition}Tax{}",
 				    "by {C:dark_edition}#4#%{}",
-					"{C:inactive}[Resets after scoring]{}"}
+					"{C:inactive,s:0.95}[Resets at end of round]{}"}
 				}
 			},
 			m_cbean_wgrop_magma = {
@@ -1572,6 +1570,23 @@ return {
 				     "{C:attention}Steel{} when scoring"},
 					{"{C:red}Destroy{} this card",
 				     "after scoring"}
+				}
+			},
+			m_cbean_wgrop_ice = {
+				name = "Ice Card",
+				text = {
+					
+					"Its empty.",
+				    "Perhaps you should",
+				    "check it later."
+				}
+			},
+			m_cbean_wgrop_grapevine = {
+				name = "Grapevine Card",
+				text = {
+					"Its empty.",
+				    "Perhaps you should",
+				    "check it later."
 				}
 			}
 		},
