@@ -77,12 +77,15 @@ CBWG.ColdBeans_Biome {
         if context.end_of_round and context.individual and context.cardarea == G.hand then
             local other_card = context.other_card
             context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + 5
+            if SMODS.pseudorandom_probability(other_card, pseudoseed("forest"), 1, 3, 'forest') then
+                assert(SMODS.modify_rank(G.hand.highlighted[i], 1))
+            end
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.CHIPS
             }
         end
-    end
+    end,
 }
 
 CBWG.ColdBeans_Biome {
