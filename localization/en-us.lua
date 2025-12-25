@@ -1575,18 +1575,17 @@ return {
 			m_cbean_wgrop_ice = {
 				name = "Ice Card",
 				text = {
-					
-					"Its empty.",
-				    "Perhaps you should",
-				    "check it later."
+					"{C:white,X:blue}X#1#{} Chips for each",
+					"hand played this round",
+					"{C:inactive}(Currently: {X:chips,C:white}X#2#{C:inactive} Chips)"
 				}
 			},
 			m_cbean_wgrop_grapevine = {
 				name = "Grapevine Card",
 				text = {
-					"Its empty.",
-				    "Perhaps you should",
-				    "check it later."
+					"Gains {C:mult}+#1#{} Mult",
+				    "when held in hand",
+				    "at end of round"
 				}
 			}
 		},
