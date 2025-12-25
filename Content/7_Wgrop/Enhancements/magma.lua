@@ -71,5 +71,12 @@ SMODS.Enhancement {
                 end
             }))
         end
-    end
+    end,
+    beans_credits = {
+        team = {"wgrop"
+        },
+        idea = "Tje.tsu",
+        art =  "Tje.tsu",
+        code = "Tje.tsu",
+    }
 }

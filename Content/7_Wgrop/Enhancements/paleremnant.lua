@@ -26,12 +26,12 @@ SMODS.Enhancement {
                 xmult = card.ability.cxm
             }
         end
-        beans_credits = {
-            team = {"wgrop"
-            },
-            idea = "Tje.tsu",
-            art =  "Tje.tsu",
-            code = "Tje.tsu",
-        }
-    end
+    end,
+    beans_credits = {
+        team = {"wgrop"
+        },
+        idea = "Tje.tsu",
+        art =  "Tje.tsu",
+        code = "Tje.tsu",
+    }
 }
