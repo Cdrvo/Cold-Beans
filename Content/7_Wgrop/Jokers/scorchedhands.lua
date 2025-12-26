@@ -50,7 +50,7 @@ SMODS.Joker{
     team = {"wgrop"
     },
     idea = "Tje.tsu",
-    art =  "Tje.tsu",
+    art =  "AstralLuna",
     code = "Tje.tsu",
     }
 }
