@@ -20,7 +20,7 @@
       }
     },
   
-    atlas = 'pboys_tarots_atlas', pos = { x = 0, y = 0 },
+    atlas = 'wgrop_tarot_atlas', pos = { x = 0, y = 0 },
       config = { max_highlighted = 2, extra = "m_cbean_wgrop_thistled"},
       update = function(self, card, dt)
         if card.ability.extra ~= CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome] then
