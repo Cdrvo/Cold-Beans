@@ -77,7 +77,7 @@ CBWG.ColdBeans_Biome {
                 return true
             end
         }))
-        SMODS.change_booster_limit(1)
+        SMODS.change_booster_limit(2)
     end,
     exit = function(self, calc)
         G.E_MANAGER:add_event(Event({
@@ -86,7 +86,7 @@ CBWG.ColdBeans_Biome {
                 return true
             end
         }))
-        SMODS.change_booster_limit(-1)
+        SMODS.change_booster_limit(-2)
     end
 }
 
