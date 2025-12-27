@@ -23,8 +23,8 @@ SMODS.Joker{
             }
         }
     end,
-    calculate = function(self, card, context)
-        if context.after then
+    calculate = function(self, card, context) --for the future
+    --[[    if context.after then
             G.GAME.wgrop_stopsign_blindwasskipped = false
             card.ability.extra.percentage = 0
             G.GAME.wgrop_stopsign_blindwillbeskipped = false
@@ -78,7 +78,7 @@ SMODS.Joker{
         end
         if context.starting_shop then
             G.FUNCS.draw_from_hand_to_discard()    
-        end
+        end]]
     end,
 
     beans_credits = {

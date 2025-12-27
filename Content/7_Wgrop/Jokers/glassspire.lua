@@ -29,7 +29,7 @@ SMODS.Joker{
             local glassbeenremoved = {}
             for _, removed_card in ipairs(cardsdestroyed) do
                 print(SMODS.get_enhancements(removed_card))
-                if SMODS.get_enhancements(removed_card)['m_glass'] == true then 
+                if SMODS.get_enhancements(removed_card)['m_glass'] == true or SMODS.get_enhancements(removed_card)['m_cbean_yma_glass_1'] or SMODS.get_enhancements(removed_card)['m_cbean_yma_glass_2'] then -- make this a table for the future #tnx :3
                     table.insert(glassbeenremoved, removed_card)
                 end
             end
