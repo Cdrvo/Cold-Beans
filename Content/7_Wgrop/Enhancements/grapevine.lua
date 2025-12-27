@@ -27,6 +27,6 @@ SMODS.Enhancement {
         },
         idea = "Garb",
         art =  "gud_username",
-        code = "Tje.tsu"
+        code = "AstraLuna"
     }
 }
