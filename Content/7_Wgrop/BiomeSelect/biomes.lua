@@ -11,12 +11,12 @@ G['P_BIOMES'] = {}
 G['P_BIOME_POOLS'] = {}
 G['P_BIOME_POOLS']['default'] = {}
 G.P_CENTER_POOLS['default'] = {}
-G.C.BLIND['wgrop_forest'] = HEX("2A9462")
-G.C.BLIND['wgrop_desert'] = HEX("FAC977")
-G.C.BLIND['wgrop_graveyard'] = HEX("8D5F7A")
-G.C.BLIND['wgrop_volcanic'] = HEX("72353C")
-G.C.BLIND['wgrop_city'] = HEX("57727D")
-G.C.BLIND['wgrop_glaciers'] = HEX("C5FFFF")
+G.C.BLIND['wgrop_forest'] = HEX("27745C")
+G.C.BLIND['wgrop_desert'] = HEX("D9A867")
+G.C.BLIND['wgrop_graveyard'] = HEX("766974")
+G.C.BLIND['wgrop_volcanic'] = HEX("782C2C")
+G.C.BLIND['wgrop_city'] = HEX("ADBBBC")
+G.C.BLIND['wgrop_glaciers'] = HEX("82BFB9")
 
 CBWG.ColdBeans_Biomes = {}
 
@@ -73,24 +73,20 @@ CBWG.ColdBeans_Biome {
     enter = function(self, calc)
         G.E_MANAGER:add_event(Event({
             func = function()
-                if G.jokers then
-                    G.jokers.config.card_limit = G.jokers.config.card_limit - 1
-                end
+                change_shop_size(-1)
                 return true
-            end,
+            end
         }))
-        SMODS.change_booster_limit(1)
+        SMODS.change_booster_limit(2)
     end,
     exit = function(self, calc)
         G.E_MANAGER:add_event(Event({
             func = function()
-                if G.jokers then
-                    G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-                end
+                change_shop_size(1)
                 return true
-            end,
+            end
         }))
-        SMODS.change_booster_limit(-1)
+        SMODS.change_booster_limit(-2)
     end
 }
 
@@ -100,7 +96,7 @@ CBWG.ColdBeans_Biome {
     atlas = 'wgrop_biomes',
     key = "wgrop_forest",
     blinds = {["bl_ox"] = true, ["bl_plant"] = true, ["bl_club"] = true,  ["bl_serpent"] = true, ["bl_final_leaf"] = true, ["bl_cbean_colon_treasure"] = true, ["bl_cbean_colon_seed"] = true, ["bl_cbean_colon_compass"] = true, ["bl_cbean_colon_outcrop"] = true},
-    cards = {["j_gluttonous_joker"] = true, ["j_stencil"] = true, ["j_ceremonial"] = true, ["j_marble"] = true, ["j_scary_face"] = true, ["j_gros_michel"] = true, ["j_egg"] = true, ["j_sixth_sense"] = true, ["j_hiker"] = true, ["j_faceless"] = true, ["j_green_joker"] = true, ["j_cavendish"] = true, ["j_midas_mask"] = true, ["j_erosion"] = true, ["j_ancient"] = true, ["j_campfire"] = true, ["j_flower_pot"] = true, ["j_idol"] = true, ["j_hit_the_road"] = true, ["j_cbean_colon_square_packing"] = true, ["j_cbean_pboys_watermelon"] = true, ["j_cbean_nameteam_bottomofthebarrel"] = true, ["j_golden"] = true, ["j_arrowhead"] = true},
+    cards = {["j_gluttenous_joker"] = true, ["j_stencil"] = true, ["j_ceremonial"] = true, ["j_marble"] = true, ["j_scary_face"] = true, ["j_gros_michel"] = true, ["j_egg"] = true, ["j_sixth_sense"] = true, ["j_hiker"] = true, ["j_faceless"] = true, ["j_green_joker"] = true, ["j_cavendish"] = true, ["j_midas_mask"] = true, ["j_erosion"] = true, ["j_ancient"] = true, ["j_campfire"] = true, ["j_flower_pot"] = true, ["j_idol"] = true, ["j_hit_the_road"] = true, ["j_cbean_colon_square_packing"] = true, ["j_cbean_pboys_watermelon"] = true, ["j_cbean_nameteam_bottomofthebarrel"] = true, ["j_golden"] = true, ["j_arrowhead"] = true},
     calculate = function(self, context)
         if context.end_of_round and context.individual and context.cardarea == G.hand then
             local other_card = context.other_card
@@ -155,7 +151,7 @@ CBWG.ColdBeans_Biome {
     atlas = 'wgrop_biomes',
     key = "wgrop_volcanic",
     blinds = {["bl_needle"] = true, ["bl_flint"] = true,["bl_mouth"] = true,["bl_head"] = true, ["bl_final_heart"] = true, ["bl_cbean_colon_folly"] = true},
-    cards = {["j_rough_gem"] = true, ["j_golden"] = true, ["j_arrowhead"] = true, ["j_onyx_agate"] = true, ["j_madness"] = true, ["j_bloodstone"] = true, ["j_lusty"] = true, ["j_half"] = true, ["j_chaos"] = true, ["j_abstract"] = true, ["j_stone"] = true, ["j_glass"] = true, ["j_burnt"] = true, ["j_cbean_pboys_molotov"] = true, ["j_cbean_yma_charred_fool"] = true,},
+    cards = {["j_rough_gem"] = true, ["j_golden"] = true, ["j_arrowhead"] = true, ["j_onyx_agate"] = true, ["j_madness"] = true, ["j_bloodstone"] = true, ["j_lusty_joker"] = true, ["j_half"] = true, ["j_chaos"] = true, ["j_abstract"] = true, ["j_stone"] = true, ["j_glass"] = true, ["j_burnt"] = true, ["j_cbean_pboys_molotov"] = true, ["j_cbean_yma_charred_fool"] = true,},
     calculate = function(self, context)
     end,
     enter = function(self, calc)
