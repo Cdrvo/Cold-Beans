@@ -94,7 +94,7 @@ target = "functions/common_events.lua"
 pattern = '''function get_current_pool(_type, _rarity, _legendary, _append)'''
 position = "after"
 payload = '''if _type == 'Joker' then
-if pseudorandom('biome') < 1*(7/10) then
+if pseudorandom('biome') < 1*(7/10) and not _legendary then
 _type = G.GAME.round_resets.blind_biome
 end
 end'''
@@ -235,5 +235,16 @@ pattern = '''table.insert(left_text, {n=G.UIT.O, config={object = DynaText({stri
 position = "at"
 payload = '''
 table.insert(left_text, {n=G.UIT.O, config={object = DynaText({string = {" "..localize{type = 'variable', key = 'remaining_discard_money', vars = {G.GAME.modifiers.money_per_discard or 0 + (G.GAME.modifiers.volcanic_money or 0)}}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, pop_in = 0, scale = 0.4*scale, silent = true})}})
+'''
+match_indent = true
+
+# add custom bg colors
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''ease_background_colour{new_colour = G.C.BLIND['Small'], contrast = 1}'''
+position = "at"
+payload = '''
+ease_background_colour{new_colour = G.C.BLIND[G.GAME.round_resets.blind_biome], contrast = 1}
 '''
 match_indent = true

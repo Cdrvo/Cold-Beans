@@ -11,6 +11,12 @@ G['P_BIOMES'] = {}
 G['P_BIOME_POOLS'] = {}
 G['P_BIOME_POOLS']['default'] = {}
 G.P_CENTER_POOLS['default'] = {}
+G.C.BLIND['wgrop_forest'] = HEX("2A9462")
+G.C.BLIND['wgrop_desert'] = HEX("FAC977")
+G.C.BLIND['wgrop_graveyard'] = HEX("8D5F7A")
+G.C.BLIND['wgrop_volcanic'] = HEX("72353C")
+G.C.BLIND['wgrop_city'] = HEX("57727D")
+G.C.BLIND['wgrop_glaciers'] = HEX("C5FFFF")
 
 CBWG.ColdBeans_Biomes = {}
 
