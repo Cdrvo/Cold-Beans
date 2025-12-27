@@ -2508,25 +2508,12 @@ return {
 			j_cbean_wgrop_stop_sign = {
 				name = "Stop Sign",
 				text = {
-					{
-					"If the first {C:blue}hand{}",
-				    "scores {C:attention}more{} than the",
-					"current {C:attention}Blind Requirement{}",
-				    "take {C:attention}half{} of {C:dark_edition}percentage{}",
-				    "of {C:attention}overscoring{} between",
-					"{C:attention}Blind Requirement{} and",
-					"the {C:attention}overscoring{}",
-			      	},
-					{
-					"The next {C:attention}selected{} Blind",
-				    "gains the {C:dark_edition}percentage{}",
-					"of the {C:attention}Blind Requirement{}",
-				    "as {C:purple}Score{}",
-				    },
-					{"{C:inactive}Currently{} {C:dark_edition}#1#%{}"}
-				}
-			}
-        },
+					"{C:inactive,s:0.75}Perhaps some things are better...{}",
+					"{C:inactive,s:0.95}Left Behind.{}"
+
+			    }
+            },
+		},
         Other = {
             undiscovered_yma_quest = {
                 name = "Not Discovered",
