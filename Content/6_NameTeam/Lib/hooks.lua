@@ -9,8 +9,8 @@ function Card:remove()
     return remove_old(self)
 end
 
-local update_hook = G.update
-function G:update(dt)
+local update_hook = Game.update
+function Game:update(dt)
 	update_hook(self, dt)
 	if not G.GAME.nteam_sticker_obtained and G.jokers then
 		for _, j in ipairs(G.jokers.cards) do
@@ -24,8 +24,8 @@ function G:update(dt)
 	end
 end
 
-local start_run_hook = G.start_run
-function G:start_run(args)
+local start_run_hook = Game.start_run
+function Game:start_run(args)
 	start_run_hook(self, args)
 	---@type integer
 	G.GAME.stationery_num_accepted = G.GAME.stationery_num_accepted or 2
