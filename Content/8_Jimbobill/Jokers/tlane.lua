@@ -1,5 +1,5 @@
 SMODS.Joker {
-    key = "tlane",
+    key = "jbill_tlane",
     blueprint_compat = true,
     atlas = "jbill_jokers",
     pos = { x = 0, y = 0 },
@@ -7,7 +7,7 @@ SMODS.Joker {
     cost = 9,
     config = { extra = { xmult = 3, type = 'Straight', retrigger = 1, ready = false } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult, localize(card.ability.extra.type, 'poker_hands') } }
+        return { vars = { card.ability.extra.xmult, localize(card.ability.extra.type, 'poker_hands') } }
     end,
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands["Straight"])then
@@ -32,7 +32,7 @@ SMODS.Joker {
         end
         if context.joker_main and card.ability.extra.ready then
             return {
-                xmult = 3
+                xmult = card.ability.extra.xmultm
             }
         end
         if context.retrigger_joker_check and context.other_card == card then
@@ -40,6 +40,12 @@ SMODS.Joker {
                 repetitions = card.ability.extra.retrigger,
             }
         end
-    end
+    end,
+    beans_credits = {
+        idea = "D.J.",
+        code = "Evgast",
+        team = "Jimbobill",
+        art = "D.J."
+    }
 }
 
