@@ -1,14 +1,27 @@
 SMODS.ConsumableType{
-    key = "Consumable2",
+    key = "Consumables2",
     primary_colour = HEX("FFD800"), 
     secondary_colour = HEX("FFD800"), 
     collection_rows = { 2, 1 },
-    shop_rate = 0
+    shop_rate = 0,
+    loc_txt = {
+        name = "Consumable^2",
+        collection = "Consumable^2",
+        undiscovered = {
+            name = "Not Discovered^2",
+            text = {
+                "Purchase this card^2",
+                "in an unseeded",
+                "run^2 to learn",
+                "what it does"
+            }
+        }
+    },
 }
 
 SMODS.Consumable {
-    key = "planet",
-    set = "Consumable2",
+    key = "jbill_planet",
+    set = "Consumables2",
     cost = 3,
     pos = { x = 0, y = 3 },
     can_use = function(self, card)
@@ -22,14 +35,12 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-    key = "spectral",
-    set = "Consumable2",
+    key = "jbill_spectral",
+    set = "Consumables2",
     cost = 3,
     pos = { x = 0, y = 3 },
     can_use = function(self, card)
-
-            return true
-
+        return true
     end,
     use = function (self, card, area)
         local cards = {}
