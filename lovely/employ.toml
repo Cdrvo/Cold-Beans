@@ -1,0 +1,78 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# I'm not gonna lie I'm quite literally just following the steps of pissboys and yma
+# Game:update
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'before'
+pattern = '''if self.STATE == self.STATES.PLAY_TAROT then'''
+payload = '''
+if self.STATE == self.STATES.EMPLOY then
+  update_jbill_employed()
+end
+
+'''
+match_indent = true
+
+# ease_background_colour_blind
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+position = 'before'
+pattern = '''elseif state == G.STATES.TAROT_PACK then'''
+payload = '''
+elseif state == G.STATES.EMPLOY then
+    ease_colour(G.C.DYN_UI.MAIN, mix_colours(G.C.RED, G.C.BLACK, 0.9))
+'''
+match_indent = true
+
+# TEMPORARY PATCH (probably not temporary)
+# some fuckery happens when loading back into run while quit during balley
+# save_run
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'at'
+pattern = '''STATE = G.STATE,'''
+payload = '''
+STATE = G.STATE == G.STATES.EMPLOY and G.STATES.SHOP or G.STATE,
+'''
+match_indent = true
+
+# Remove balley when closing the run and what not
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'after'
+pattern = '''if self.shop then self.shop:remove(); self.shop = nil end'''
+payload = '''
+if self.jbill_employed_screen then self.jbill_employed_screen:remove(); self.jbill_employed_screen = nil end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = '''G.shop = nil'''
+payload = '''
+if G.jbill_employed_screen then
+  G.jbill_employed_screen:remove()
+  G.jbill_employed_screen = nil
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "-- TARGET: add your own CardAreas for joker evaluation"
+position = 'before'
+match_indent = true
+payload = '''
+if G.jbill_employed_area then table.insert(t, G.jbill_employed_area) end
+'''
