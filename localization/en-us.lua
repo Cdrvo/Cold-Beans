@@ -1289,6 +1289,69 @@ return {
 				},
 			},
 		},
+		Consumables2 = {
+			c_cbean_jbill_planet = {
+				name = "A Planet",
+				text = {
+					"{C:attention}Upgrade{} last played hand"
+				},
+			},
+			c_cbean_jbill_spectral = {
+				name = "A Spectral",
+				text = {
+					"{C:red}Destroys{} half of the Cards",
+					"{C:attention}held in hand{}",
+					"Gives random {C:attention}enhancements{}",
+					"to remaining Cards"
+				},
+			},
+		},
+		Employed = {
+			empl_cbean_chicot = {
+				name = "Chicot",
+				text = {
+					"Chicot will pay you {C:green}J#1#{}",
+					"for beating a {C:attention}CEO Blind{}",
+					"He {C:red}isn't{} going to count",
+					"the amount you've beaten,",
+					"so {C:attention}check on him{} regularly"
+				}
+			},
+			empl_cbean_perkeo = {
+				name = "Perkeo",
+				text = {
+					"Perkeo will {C:attention}copy{} a",
+					"selected {C:attention}Consumable{}",
+					"for {C:green}J#1#{}"
+				}
+			},
+			empl_cbean_canio = {
+				name = "Canio",
+				text = {
+					"Canio will {C:red}destroy{} a",
+					"{C:attention}Playing Card{} of your choice",
+					"for {C:green}J#1#{}"
+				}
+			},
+			empl_cbean_yorick = {
+				name = "Yorick",
+				text = {
+					"Yorick will apply",
+					"{C:attention}Banished{} sticker to three",
+					"{C:attention}Playing Cards{} of your choice",
+					"for {C:green}J#1#"
+				}
+			},
+			empl_cbean_triboulet = {
+				name = "Triboulet",
+				text = {
+					"Triboulet will apply",
+					"{C:attention}Jaded{} sticker to two",
+					"{C:attention}Playing Cards{} of your choice",
+					"for {C:green}J#1#"
+				}
+			}
+		},
 		yma_quest = {
 			q_cbean_yma_credit_card = {
 				name = {
@@ -2510,9 +2573,25 @@ return {
 				text = {
 					"{C:inactive,s:0.75}Perhaps some things are better...{}",
 					"{C:inactive,s:0.95}Left Behind.{}"
-
 			    }
-            },
+			},--jokers jbill pokers woah woah jokercards yo jokers yo jbill 
+			j_cbean_jbill_tlane = {
+				name = "Triple Lane",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult when",
+					"Playing a {C:attention}#2#{} with an {C:attention}Ace{} of a {C:attention}Five{}",
+					"{C:attention}Retriggers{} if the hand contains both ranks"
+				}
+			},
+			j_cbean_jbill_elephant = {
+				name = "Wonderful Elephant",
+				text = {
+					"Has 100 fake {C:attention}Achievements{} for you to complete!",
+					"{C:mult}+1{} Mult for each {C:attention}Achievement{} completed",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+					"{C:inactive,s:0.8}(First trigger of each fake Achievement triggers an actual counterpart)" --Not implemented at the moment of writing
+				}
+			},
 		},
         Other = {
             undiscovered_yma_quest = {
@@ -3097,6 +3176,20 @@ return {
 					"{C:white,X:purple}X3{} Blind requirement",
         },
             },
+			--Jbill stickers
+			cbean_jaded = {
+        		name = "Jaded",
+				text = {"Considered a {C:attention}Face Card{}"} 
+    		}, 
+			cbean_banished = {
+        		name = "Banished",
+				text = {
+					"{C:red}Discards{} itself when drawn",
+                	"Draws a new {C:attention}Card{}",
+                	"{C:attention}Removes{} this sticker",
+                	"after beating a {C:attention}CEO{} Blind"
+				} 
+    		},
 			-- Stake Stickers
 			cbean_nameteam_sticker = {
 				name = "NTeam Sticker",
@@ -4063,6 +4156,15 @@ return {
 						"selected cards to",
 						"{C:attention}#2#s",
 					},
+				},
+				--Jbill tarot
+				c_cbean_jbill_currency = {
+					name = "The Currency",
+					text = {
+                    	"Enhances {C:attention}#1#{}",
+                    	"selected cards to",
+                    	"{C:attention}#2#s",
+                	},
 				},
 				-- yma consumable upgrades
 				c_cbean_yma_magician_level1 = {
@@ -5082,6 +5184,9 @@ return {
 				cbean_violet_vessel_sticker = "Violet Vessel",
 				cbean_crimson_heart_sticker = "Crimson Heart",
 				cbean_man = "Man",
+
+				cbean_jaded = "Jaded",
+				cbean_banished = "Banished",
 			},
 			poker_hand_descriptions = {
 				["cbean_sdown_antistraight"] = {
