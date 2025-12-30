@@ -108,6 +108,9 @@ function Controller:L_cursor_press(x, y)
             G.FUNCS.show_yma_dreamland()
 		elseif G.yma_mainstreet_stationery and G.yma_mainstreet_stationery.states.collide.is and yma_can_access_location('stationery') then
             G.FUNCS.show_stationery()
+        --Evil ass Jbill employment gimmick appears!
+        elseif G.jbill_employed and G.jbill_employed.states.collide.is then
+            G.FUNCS.show_employ()
         end
 	end
 end
@@ -133,6 +136,10 @@ function G.UIDEF.yma_main_street()
     G.yma_mainstreet_stationery = UIBox{
         definition = G.UIDEF.stationery_sprite(),
         config = {align='cm', offset = {x=0,y=0}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+    } 
+    G.jbill_employed = UIBox{
+        definition = G.UIDEF.employsprite(),
+        config = {align='cm', offset = {x=0.1,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
     
     local table = {}
@@ -153,7 +160,10 @@ function G.UIDEF.yma_main_street()
     table2[#table2+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_stationery}},
         }}
-    
+    table2[#table2+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+            {n=G.UIT.O, config={object = G.jbill_employed}},
+    }}
+
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.L_BLACK}, nodes={
@@ -204,6 +214,16 @@ function G.UIDEF.dreamlandsprite()
 
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_hell}},
+    }}
+    return t
+end
+
+function G.UIDEF.employsprite()
+  --for now chicot is taking backalley sign, because he's kinda an asshole and we need a placeholder
+	local sprite_employ = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"], { x = 0, y = 0 }) or nil
+
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+            {n=G.UIT.O, config={object = sprite_employ}},
     }}
     return t
 end
