@@ -2578,9 +2578,10 @@ return {
 			j_cbean_jbill_tlane = {
 				name = "Triple Lane",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult when",
-					"Playing a {C:attention}#2#{} with an {C:attention}Ace{} of a {C:attention}Five{}",
-					"{C:attention}Retriggers{} if the hand contains both ranks"
+					"X3 mult if poker hand",
+					"contains an {C:attention}Ace{} and a {C:attention}#3#{}",
+					"X3 chips if poker hand",
+					"contains a {C:attention}5{} and a {C:attention}#3#{}"
 				}
 			},
 			j_cbean_jbill_elephant = {
