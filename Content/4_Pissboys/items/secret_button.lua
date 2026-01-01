@@ -27,9 +27,17 @@ G.FUNCS.can_switch = function(e)
     text=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_stationery'
+  elseif G.STATE == G.STATES.EMPLOY then
+    text=localize('k_cbean_aexit_ex')
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_employ'
   elseif G.STATE == G.STATES.SELECTING_HAND and G.PISSMAX and G.PISSMAX > 0 and G.hand.highlighted and #G.hand.highlighted > 0 then
 			text=localize('k_cbean_piss_ex')
 			e.config.button = 'piss_in_hand'
+			e.config.colour = G.C.YELLOW
+  elseif not G.GAME.booster_leaked and SMODS.OPENED_BOOSTER and next(SMODS.find_card("j_cbean_jbill_leak")) then
+			text=localize('k_jbill_leak')
+			e.config.button = 'leak_booster'
 			e.config.colour = G.C.YELLOW
   else 
 		e.config.colour = G.C.L_BLACK

@@ -20,16 +20,45 @@ SMODS.ConsumableType{
 }
 
 SMODS.Consumable {
+    key = "jbill_tarot",
+    set = "Consumables2",
+    atlas = "jbill_consume2",
+    pos = { x = 0, y = 0 },
+    config = { max_highlighted = 3, mod_conv = "m_cbean_jbill_bean" },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize{ type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    beans_credits = {
+        idea = "Evgast",
+        code = "Evgast",
+        team = "Jimbobill",
+        art = "D.J."
+    }
+}
+
+
+SMODS.Consumable {
     key = "jbill_planet",
     set = "Consumables2",
+    atlas = "jbill_consume2",
     cost = 3,
-    pos = { x = 0, y = 3 },
+    pos = { x = 1, y = 0 },
     can_use = function(self, card)
         if G.GAME.last_hand_played ~= nil then
             return true
         end
     end,
     use = function (self, card, area)
+        local _handname, _played = 'High Card', -1
+        for hand_key, hand in pairs(G.GAME.hands) do
+            if hand.played > _played then
+                _played = hand.played
+                _handname = hand_key
+            end
+        end
+        local most_played = _handname --yes that is completely copied from vremade lol. I thought there was a global for that
+        SMODS.smart_level_up_hand(card, most_played, nil, 1)
         SMODS.smart_level_up_hand(card, G.GAME.last_hand_played, nil, 1)
     end,
 }
@@ -37,8 +66,9 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "jbill_spectral",
     set = "Consumables2",
+    atlas = "jbill_consume2",
     cost = 3,
-    pos = { x = 0, y = 3 },
+    pos = { x = 2, y = 0 },
     can_use = function(self, card)
         return true
     end,
