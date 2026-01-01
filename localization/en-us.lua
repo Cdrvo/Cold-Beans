@@ -1290,14 +1290,23 @@ return {
 			},
 		},
 		Consumables2 = {
+			c_cbean_jbill_tarot = {
+					name = "Tarot",
+					text = {
+                    	"Enhances {C:attention}#1#{}",
+                    	"selected cards to",
+                    	"{C:attention}#2#s",
+                	},
+				},
 			c_cbean_jbill_planet = {
-				name = "A Planet",
+				name = "Planet",
 				text = {
-					"{C:attention}Upgrade{} last played hand"
+					"Upgrades {C:attention}last played hand{}",
+					"and {C:attention}most played hand{}"
 				},
 			},
 			c_cbean_jbill_spectral = {
-				name = "A Spectral",
+				name = "Spectral",
 				text = {
 					"{C:red}Destroys{} half of the Cards",
 					"{C:attention}held in hand{}",
@@ -1648,6 +1657,23 @@ return {
 					"Gains {C:mult}+#1#{} Mult",
 				    "when held in hand",
 				    "at end of round"
+				}
+			},
+			--Jbill enhance
+			m_cbean_jbill_banknote = {
+				name = "Banknote",
+				text = {
+					"{C:money}$#1#{}",
+					"{C:red}Ranked Down{} when scored",
+					"Banknote {C:attention}2s{} are {C:red}ripped{}",
+					"on scoring"
+				}
+			},
+			m_cbean_jbill_bean = {
+				name = "Bean Card",
+				text = {
+					"{C:attention}+#1#{} hand size",
+					"while held in hand"
 				}
 			}
 		},
@@ -2491,7 +2517,7 @@ return {
                 }
             },
             j_cbean_nameteam_chuckmcgill = {
-                name = "{s:0.9}Charles “Chuck” McGill{}",
+                name = "{s:0.9}Charles Chuck McGill{}",
                 text =
                 {
                     "Gives {C:white,X:mult}X#1#{} Mult if",
@@ -2591,6 +2617,30 @@ return {
 					"{C:mult}+1{} Mult for each {C:attention}Achievement{} completed",
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
 					"{C:inactive,s:0.8}(First trigger of each fake Achievement triggers an actual counterpart)" --Not implemented at the moment of writing
+				}
+			},
+			j_cbean_jbill_spill = {
+				name = "Spill the Beans",
+				text = {
+					"When selecting a {C:attention}Small Blind{}",
+					"adds #1# {C:attention}Bean Cards{} in {C:attention}Deck{}"
+				}
+			},
+			j_cbean_jbill_pizzazzy = {
+				name = "Pizzazzy Joker",
+				text = {
+					"Gives {C:mult}Scrabble Value{}",
+					"of {C:attention}Joker{} to the left in Mult",
+					"{C:inactive,s:0.8}(Mult of each letter is sent individually)"
+				}
+			},
+			j_cbean_jbill_leak = {
+				name = "Jimboleaks",
+				text = {
+					"Can't take {C:attention}Booster Pack{} cards",
+					"until they're {C:money}Leaked{}",
+					"Skipping {C:attention}Booster Pack{} before {C:money}Leaking{}",
+					"refunds it"
 				}
 			},
 		},
@@ -3212,7 +3262,112 @@ return {
 				name = "Plant Sticker",
 				text = { "Used this Joker", "to win on {C:attention}Plant", "{C:attention}Stake{} difficulty" },
             },
-            },
+			--Pizzazzy
+			cbean_pizzazzy_a = {
+				name = "a",
+				text = {"{C:mult}+1{}"}
+			},
+			cbean_pizzazzy_b = {
+				name = "b",
+				text = {"{C:mult}+3{}"}
+			},
+        	cbean_pizzazzy_c = {
+				name = "c",
+				text = {"{C:mult}+3{}"}
+			},
+        	cbean_pizzazzy_d = {
+				name = "d",
+				text = {"{C:mult}+2{}"}
+			},
+        	cbean_pizzazzy_e = {
+				name = "e",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_f = {
+				name = "f",
+				text = {"{C:mult}+4{}"}
+			},
+        	cbean_pizzazzy_g = {
+				name = "g",
+				text = {"{C:mult}+2{}"}
+			},
+        	cbean_pizzazzy_h = {
+				name = "h",
+				text = {"{C:mult}+4{}"}
+			},
+        	cbean_pizzazzy_i = {
+				name = "i",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_j = {
+				name = "j",
+				text = {"{C:mult}+8{}"}
+			},
+        	cbean_pizzazzy_k = {
+				name = "k",
+				text = {"{C:mult}+5{}"}
+			},
+        	cbean_pizzazzy_l = {
+				name = "l",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_m = {
+				name = "m",
+				text = {"{C:mult}+3{}"}
+			},
+        	cbean_pizzazzy_n = {
+				name = "n",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_o = {
+				name = "o",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_p = {
+				name = "p",
+				text = {"{C:mult}+3{}"}
+			},
+        	cbean_pizzazzy_q = {
+				name = "q",
+				text = {"{C:mult}+10{}"}
+			},
+        	cbean_pizzazzy_r = {
+				name = "r",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_s = {
+				name = "s",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_t = {
+				name = "t",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_u = {
+				name = "u",
+				text = {"{C:mult}+1{}"}
+			},
+        	cbean_pizzazzy_v = {
+				name = "v",
+				text = {"{C:mult}+4{}"}
+			},
+			cbean_pizzazzy_w = {
+				name = "w",
+				text = {"{C:mult}+4{}"}
+			},
+        	cbean_pizzazzy_x = {
+				name = "x",
+				text = {"{C:mult}+8{}"}
+			},
+        	cbean_pizzazzy_y = {
+				name = "y",
+				text = {"{C:mult}+4{}"}
+			},
+        	cbean_pizzazzy_z = {
+				name = "z",
+				text = {"{C:mult}+10{}"}
+			},
+        },
 		Planet = {
 			c_cbean_sdown_gay_planet = {
 				name = "Salacia",
@@ -5127,6 +5282,7 @@ return {
 				k_cbean_nteam_danger = "Danger!",
 				k_cbean_nteam_randomized = "Randomized!",
 				k_cbean_unknown = "Unknown",
+				k_jbill_leak = "Leak!"
 			},
 			high_scores = {},
 			labels = {
