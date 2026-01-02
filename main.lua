@@ -39,6 +39,7 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
+	
 	if context.after then
         G.GAME.cbean_combo_index = {}
         G.GAME.cbean_combo_unique_hand = {}
@@ -79,6 +80,17 @@ ColdBeans.calculate = function(mod, context)
 			end
 		end
 	end
+	if G.SETTINGS.language == "en_us" then
+		G.pizzazy = true
+	else
+		G.pizzazy = false
+	end
+	if context.open_booster and next(SMODS.find_card("j_cbean_jbill_leak")) then
+		G.GAME.booster_leaked = false
+        G.GAME.refund = context.card.cost
+        G.GAME.real_choices = G.GAME.pack_choices
+        G.GAME.pack_choices = 0
+    end
 	-- dunno this, but I'm needing this after
     local haspost = false;
     local results = {}
