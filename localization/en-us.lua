@@ -1314,6 +1314,48 @@ return {
 					"to remaining Cards"
 				},
 			},
+			c_cbean_jbill_blessing = {
+				name = "Blessing",
+				text = {
+					"{C:attention}Scored{} Cards gain {C:mult}+#1#{} Mult",
+					"{C:inactive}({C:attention}#2#{} {C:inactive}triggers remaining)"
+				},
+			},
+			c_cbean_jbill_zodiac = {
+				name = "Chinese Zodiac",
+				text = {
+					"Turn {C:attention}3{} Selected cards into",
+					"the rank of {C:attention}Rightmost{} one"
+				},
+			},
+			c_cbean_jbill_combo = {
+				name = "Chinese Zodiac",
+				text = {
+					"Creates a {X:green,C:white}Starter{} and a {X:red,C:white}Finisher{}",
+				},
+			},
+			c_cbean_jbill_key = { 
+				name = "Key",
+				text = {
+					"When entering shop,",
+					"add a {C:yma_keys}Key{} to it",
+					"{C:inactive}(Used up on beating a {C:attention}CEO Blind{}{C:inactive})"
+				},
+			},
+			c_cbean_jbill_sheet = {
+				name = "Sticker Sheet",
+				text = {
+					"Applies {C:attention}Sticker^2{} to",
+					"{C:attention}1{} selected {C:attention}Joker{}"
+				},
+			},
+			c_cbean_jbill_meta = {
+				name = "Consumable^2",
+				text = {
+					"Creates a {C:money}Consumable^2{} for the set",
+					"of {C:attention}Consumable{} to the left"
+				},
+			},
 		},
 		Employed = {
 			empl_cbean_chicot = {
@@ -1672,7 +1714,7 @@ return {
 			m_cbean_jbill_bean = {
 				name = "Bean Card",
 				text = {
-					"{C:attention}+#1#{} hand size",
+					"{C:dark_edition}+#1#{} hand size",
 					"while held in hand"
 				}
 			}
@@ -2517,7 +2559,7 @@ return {
                 }
             },
             j_cbean_nameteam_chuckmcgill = {
-                name = "{s:0.9}Charles Chuck McGill{}",
+                name = '{s:0.9}Charles "Chuck" McGill{}',
                 text =
                 {
                     "Gives {C:white,X:mult}X#1#{} Mult if",
@@ -2604,9 +2646,9 @@ return {
 			j_cbean_jbill_tlane = {
 				name = "Triple Lane",
 				text = {
-					"X3 mult if poker hand",
+					"{X:mult,C:white}X3{} mult if poker hand",
 					"contains an {C:attention}Ace{} and a {C:attention}#3#{}",
-					"X3 chips if poker hand",
+					"{X:chips,C:white}X3{} chips if poker hand",
 					"contains a {C:attention}5{} and a {C:attention}#3#{}"
 				}
 			},
@@ -2631,7 +2673,8 @@ return {
 				text = {
 					"Gives {C:mult}Scrabble Value{}",
 					"of {C:attention}Joker{} to the left in Mult",
-					"{C:inactive,s:0.8}(Mult of each letter is sent individually)"
+					"{C:inactive,s:0.8}(Mult of each letter is sent individually)",
+					"{C:inactive,s:0.8}(Appears when chosen language is English)"
 				}
 			},
 			j_cbean_jbill_leak = {
@@ -2641,6 +2684,21 @@ return {
 					"until they're {C:money}Leaked{}",
 					"Skipping {C:attention}Booster Pack{} before {C:money}Leaking{}",
 					"refunds it"
+				}
+			},
+			j_cbean_jbill_redbull = {
+				name = "RedBull 67",
+				text = {
+					"{C:red}+#1#{} Discards",
+					"Self-destructs if more than {C:hands}#2#{}",
+					"hands is played"
+				}
+			},
+			j_cbean_jbill_palte = {
+				name = "My Palte ToT",
+				text = {
+					"{C:attention}Blind Requirements{} are {C:red}Hidden{}",
+					"{X:mult,C:white}X#1#{} Mult"
 				}
 			},
 		},
@@ -2828,6 +2886,35 @@ return {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
+				},
+            },
+			--Meta packs
+			p_cbean_meta_pack1 = {
+                name = "Meta Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				},
+            },
+			p_cbean_meta_pack2 = {
+                name = "Meta Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				},
+            },
+			p_cbean_meta_jumbo = {
+                name = "Jumbo Meta Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				},
+            },
+			p_cbean_meta_mega = {
+                name = "Mega Meta Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:money}Consumable^2{} cards"
 				},
             },
             --Seals
@@ -3241,6 +3328,10 @@ return {
                 	"after beating a {C:attention}CEO{} Blind"
 				} 
     		},
+			cbean_stick2 = {
+        		name = "Sticker^2",
+				text = {"{C:dark_edition}+0.5{} Consumable slots"} 
+    		}, 
 			-- Stake Stickers
 			cbean_nameteam_sticker = {
 				name = "NTeam Sticker",
@@ -3263,108 +3354,32 @@ return {
 				text = { "Used this Joker", "to win on {C:attention}Plant", "{C:attention}Stake{} difficulty" },
             },
 			--Pizzazzy
-			cbean_pizzazzy_a = {
-				name = "a",
+			cbean_pizzazzy_a_u = {
+				name = "A, E, I, L, N, O, R, S, T, U",
 				text = {"{C:mult}+1{}"}
 			},
-			cbean_pizzazzy_b = {
-				name = "b",
-				text = {"{C:mult}+3{}"}
-			},
-        	cbean_pizzazzy_c = {
-				name = "c",
-				text = {"{C:mult}+3{}"}
-			},
-        	cbean_pizzazzy_d = {
-				name = "d",
+			cbean_pizzazzy_d_g = {
+				name = "D, G",
 				text = {"{C:mult}+2{}"}
 			},
-        	cbean_pizzazzy_e = {
-				name = "e",
-				text = {"{C:mult}+1{}"}
+        	cbean_pizzazzy_b_p = {
+				name = "B, C, M, P",
+				text = {"{C:mult}+3{}"}
 			},
-        	cbean_pizzazzy_f = {
-				name = "f",
+        	cbean_pizzazzy_f_y = {
+				name = "F, H, V, W, Y",
 				text = {"{C:mult}+4{}"}
-			},
-        	cbean_pizzazzy_g = {
-				name = "g",
-				text = {"{C:mult}+2{}"}
-			},
-        	cbean_pizzazzy_h = {
-				name = "h",
-				text = {"{C:mult}+4{}"}
-			},
-        	cbean_pizzazzy_i = {
-				name = "i",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_j = {
-				name = "j",
-				text = {"{C:mult}+8{}"}
 			},
         	cbean_pizzazzy_k = {
 				name = "k",
 				text = {"{C:mult}+5{}"}
 			},
-        	cbean_pizzazzy_l = {
-				name = "l",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_m = {
-				name = "m",
-				text = {"{C:mult}+3{}"}
-			},
-        	cbean_pizzazzy_n = {
-				name = "n",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_o = {
-				name = "o",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_p = {
-				name = "p",
-				text = {"{C:mult}+3{}"}
-			},
-        	cbean_pizzazzy_q = {
-				name = "q",
-				text = {"{C:mult}+10{}"}
-			},
-        	cbean_pizzazzy_r = {
-				name = "r",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_s = {
-				name = "s",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_t = {
-				name = "t",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_u = {
-				name = "u",
-				text = {"{C:mult}+1{}"}
-			},
-        	cbean_pizzazzy_v = {
-				name = "v",
-				text = {"{C:mult}+4{}"}
-			},
-			cbean_pizzazzy_w = {
-				name = "w",
-				text = {"{C:mult}+4{}"}
-			},
-        	cbean_pizzazzy_x = {
-				name = "x",
+        	cbean_pizzazzy_j_x = {
+				name = "J, X",
 				text = {"{C:mult}+8{}"}
 			},
-        	cbean_pizzazzy_y = {
-				name = "y",
-				text = {"{C:mult}+4{}"}
-			},
-        	cbean_pizzazzy_z = {
-				name = "z",
+        	cbean_pizzazzy_q_z = {
+				name = "m",
 				text = {"{C:mult}+10{}"}
 			},
         },
@@ -5172,8 +5187,211 @@ return {
 			},
 		},
 		misc = {
-			achievement_descriptions = {},
-			achievement_names = {},
+			achievement_descriptions = {
+				ach_cbean_highlight = "Highlight a playing card",
+				ach_cbean_highlight2 = "Highlight 2 playing cards", 
+				ach_cbean_highlight3 = "Highlight 3 playing cards", 
+				ach_cbean_highlight4 = "Highlight 4 playing cards",
+				ach_cbean_highlight5 = "Highlight 5 playing cards",
+            	ach_cbean_play = "Read the name, dummy", 
+				ach_cbean_play1 = "Play a hand containing only 1 card", 
+				ach_cbean_play2 = "Play a hand containing only 2 cards", 
+				ach_cbean_play3 = "Play a hand containing only 3 cards",
+				ach_cbean_play4 = "Play a hand containing only 4 cards",
+				ach_cbean_play5 = "Play a hand containing 5 cards",
+            	ach_cbean_discard = "Discard a hand containing only 1 card", 
+				ach_cbean_discard2 = "Discard a hand containing only 2 cards", 
+				ach_cbean_discard3 = "Discard a hand containing only 3 cards",
+				ach_cbean_discard4 = "Discard a hand containing only 4 cards",
+				ach_cbean_discard5 = "Discard a hand containing 5 cards",
+				ach_cbean_yorick = "Discard 23 cards in total",
+				ach_cbean_playhigh = "Play a high card",
+            	ach_cbean_playpair = "Play a pair",
+				ach_cbean_playtwopair = "Play two pair",
+				ach_cbean_playthree = "Play three of a kind",
+				ach_cbean_playfour = "Play four of a kind",
+				ach_cbean_playflush = "Play a flush",
+				ach_cbean_playstraight = "Play a straight",
+				ach_cbean_playfstraight = "Play a straight flush",
+				ach_cbean_playgay = "Play a gay",
+				ach_cbean_playgayflush = "Play a gay flush",
+				ach_cbean_playbob = "Play a bobtail",
+				ach_cbean_playhouse = "Play a full house",
+				ach_cbean_playsecret= "Play a secret hand (House Rules not included)",
+				ach_cbean_playunscoring = "Play a hand with 1 unscoring card",
+				ach_cbean_playunscoring2 = "Play a hand with 2 unscoring cards",
+				ach_cbean_playunscoring3 = "Play a hand with 3 unscoring cards",
+				ach_cbean_playunscoring4 = "Play a hand with 4 unscoring cards",
+				ach_cbean_six7 = "Highlight 6-7 in that order",
+				ach_cbean_meaning = "Highlight 4-2 in that order",
+				ach_cbean_nice = "Highlight 6-9 in that order",
+				ach_cbean_nine10 = "Highlight 2-1 in that order",
+				ach_cbean_leet = "Highlight 1-3-3-7 in that order",
+				ach_cbean_boob = "Highlight 8-A-A-8 in that order",
+				ach_cbean_four20 = "Highlight 4-2-0 in that order",
+				ach_cbean_pi = "Highlight 3-1-4 in that order",
+				ach_cbean_sparta = "Highlight 3-A-A in that order",
+				ach_cbean_math = "Highlight 2-5-3 in that order",
+				ach_cbean_math2 = "Highlight 4-5 in that order",
+				ach_cbean_homestuck = "Highlight 4-1-3 in that order",
+				ach_cbean_nend = "Highlight 8-8-8 in that order",
+				ach_cbean_bhack = "Press B, stupid!",
+				ach_cbean_konami = "Use the Konami Code",
+             	ach_cbean_teeny_blind = "Beat a teeny blind",
+				ach_cbean_small_blind = "Beat a small blind",
+				ach_cbean_big_blind = "Beat a big blind",
+				ach_cbean_boss_blind = "Beat a boss blind",
+				ach_cbean_ceo_blind = "Beat a CEO blind",
+				ach_cbean_beaten1 = "Beat a blind",
+				ach_cbean_beaten3 = "Beat 3 blinds",
+				ach_cbean_beaten6 = "Beat 6 blinds",
+				ach_cbean_tenprocent = "Wonderful Elephant reaches 10 mult!",
+				ach_cbean_thirtyprocent = "Wonderful Elephant reaches 30 mult!",
+				ach_cbean_halfway_mark = "Wonderful Elephant reaches 50 mult!",
+				ach_cbean_seventyprocent = "Wonderful Elephant reaches 70 mult!",
+				ach_cbean_ninetyprocent = "Wonderful Elephant reaches 90 mult!",
+				ach_cbean_slot1 = "Have the Wonderful Elephant in your first joker slot",
+				ach_cbean_slot2 = "Have the Wonderful Elephant in your second joker slot",
+				ach_cbean_slot3 = "Have the Wonderful Elephant in your third joker slot",
+				ach_cbean_slot4 = "Have the Wonderful Elephant in your fourth joker slot",
+				ach_cbean_tarot = "Use a tarot",
+				ach_cbean_planet = "Use a planet",
+				ach_cbean_spectral = "Use a spectral",
+				ach_cbean_combo = "Use a combo card",
+				ach_cbean_consumesquared = "Use a consumeable^2",
+				ach_cbean_blessing = "Hold a blessing while playing a hand",
+				ach_cbean_sticker_sheet = "Use a sticker sheet",
+				ach_cbean_zodiac = "Use a zodiac card",
+				ach_cbean_keys = "Hold a key while playing a hand",
+				ach_cbean_mutemusic = "Mute music",
+				ach_cbean_maxmusic = "Max out music",
+				ach_cbean_contrast = "Enable high contrast",
+				ach_cbean_consumefull = "Fill out consumable slots",
+				ach_cbean_jokerfull = "Fill out joker slots",
+				ach_cbean_ante = "Reach a new (or not so new) Ante",
+				ach_cbean_dollars5 = "Have 5 dollars",
+				ach_cbean_dollars10 = "Have 10 dollars",
+				ach_cbean_dollars25 = "Have 25 dollars",
+				ach_cbean_dollars40 = "Have 40 dollars",
+            	ach_cbean_reroll = "Reroll shop",
+				ach_cbean_reroll5 = "Reroll shop 5 times",
+				ach_cbean_reroll10 = "Reroll shop 10 times",
+				ach_cbean_click = "Click on this Wonderful Elephant!",
+				ach_cbean_click5 = "Click on it 5 times!",
+				ach_cbean_click10 = "Click on it 10 times!",
+				ach_cbean_click20 = "Click on it 20 times!",
+				ach_cbean_click35 = "Click on it 35 times!",
+				ach_cbean_scoring1000 = "Score reaches 1000",
+				ach_cbean_scoring10000 = "Score reaches 10000",
+				ach_cbean_scoring50000 = "Score reaches 50000",
+				ach_cbean_scoring100000 = "Score reaches 100000",
+				ach_cbean_scoring200000 = "Score reaches 200000",
+				ach_cbean_complete = "Wonderful Elephant reaches 99 mult...",
+				ach_cbean_address_me = "Adressed it!"
+			},
+			achievement_names = {
+				ach_cbean_address_me = "Adress me",
+				ach_cbean_highlight = "Highlight of the Day!",
+				ach_cbean_highlight2 = "Highlight of the Two-Day!",
+				ach_cbean_highlight3 = "Highlight of The... Wednesday?",
+				ach_cbean_highlight4 = "Four of a Highlight!",
+				ach_cbean_highlight5 = "Highlight of the Week!",
+            	ach_cbean_play = "Play a Hand!",
+				ach_cbean_play1 = "Is it High?",
+				ach_cbean_play2 = "Pair of Cards",
+				ach_cbean_play3 = "Three of Cards",
+				ach_cbean_play4 = "Four of Cards",
+				ach_cbean_play5 = "All the Cards!",
+            	ach_cbean_discard = "Trash", 
+				ach_cbean_discard2 = "Waste", 
+				ach_cbean_discard3 = "Full Bin",
+				ach_cbean_discard4 = "Dump",
+				ach_cbean_discard5 = "Landfill",
+				ach_cbean_yorick = "Poor Yorick",
+				ach_cbean_playhigh = "High and Mighty?",
+            	ach_cbean_playpair = "How romantic!",
+				ach_cbean_playtwopair = "Twice romantic!",
+				ach_cbean_playthree = "Card... X3",
+				ach_cbean_playfour = "Just the four of them",
+				ach_cbean_playflush = "Not playing toilet flush sound, sorry",
+				ach_cbean_playstraight = "Are you sure?",
+				ach_cbean_playfstraight = "Pick, asshole?",
+				ach_cbean_playgay = "How queerious...",
+				ach_cbean_playgayflush = "So queer!",
+				ach_cbean_playbob = "Not the cat, not the dog",
+				ach_cbean_playhouse = "House always wins",
+				ach_cbean_playsecret= "How did you know?",
+				ach_cbean_playunscoring = "Wow, wasting",
+				ach_cbean_playunscoring2 = "Double the waste",
+				ach_cbean_playunscoring3 = "You could just give those to me y'know",
+				ach_cbean_playunscoring4 = "4-1 in favor to waster",
+				ach_cbean_six7 = "6 7",
+				ach_cbean_meaning = "The Meaning of Life",
+				ach_cbean_nice = "Nice",
+				ach_cbean_nine10 = "What's 9+10?",
+				ach_cbean_leet = "LEET",
+				ach_cbean_boob = "Boob",
+				ach_cbean_four20 = "I have no drug jokes in me",
+				ach_cbean_pi = "Pie? Where?",
+				ach_cbean_sparta = "THIS IS SPARTA",
+				ach_cbean_math = "(2*125)+3",
+				ach_cbean_math2 = "3*(30/(15-13))",
+				ach_cbean_homestuck = "Homestuck",
+				ach_cbean_nend = "The end is never the end",
+				ach_cbean_bhack = "Press B, stupid!",
+				ach_cbean_konami = "Way too much contra",
+             	ach_cbean_teeny_blind = "Baby Steps",
+				ach_cbean_small_blind = "Small step for a Joker",
+				ach_cbean_big_blind = "A Big Blind for the Jokerkind",
+				ach_cbean_boss_blind = "From space to gamble",
+				ach_cbean_ceo_blind = "Eat the rich",
+				ach_cbean_beaten1 = "YOU'RE WINNER", --Intented
+				ach_cbean_beaten3 = "Triple kill",
+				ach_cbean_beaten6 = "Six of a Blind",
+				ach_cbean_tenprocent = "10%",
+				ach_cbean_thirtyprocent = "30%",
+				ach_cbean_halfway_mark = "Halfway Mark",
+				ach_cbean_seventyprocent = "70%",
+				ach_cbean_ninetyprocent = "90%",
+				ach_cbean_slot1 = "I am the first!",
+				ach_cbean_slot2 = "Silver medal",
+				ach_cbean_slot3 = "Bronce is good enough",
+				ach_cbean_slot4 = "Fourth? FOURTH?!",
+				ach_cbean_tarot = "To the Treasure Room!",
+				ach_cbean_planet = "Stargazing... No, that's not it",
+				ach_cbean_spectral = "What even are those? Honestly?",
+				ach_cbean_combo = "Combo un-breaker",
+				ach_cbean_consumesquared = "To the To the",
+				ach_cbean_blessing = "Achoo!",
+				ach_cbean_sticker_sheet = "Stick it!",
+				ach_cbean_zodiac = "At the moment of writing it's the horse",
+				ach_cbean_keys = "I've been looking for it everywhere!",
+				ach_cbean_mutemusic = "Missing out on divine sounds",
+				ach_cbean_maxmusic = "MAX IT OUT!",
+				ach_cbean_contrast = "Makes some contrast, huh?",
+				ach_cbean_consumefull = "Full Pockets",
+				ach_cbean_jokerfull = "Full Pockers",
+				ach_cbean_ante = "Up/Down The Ante!",
+				ach_cbean_dollars5 = "Pocket money",
+				ach_cbean_dollars10 = "More money",
+				ach_cbean_dollars25 = "Money power",
+				ach_cbean_dollars40 = "Monier money",
+            	ach_cbean_reroll = "Show me more",
+				ach_cbean_reroll5 = "I said more!",
+				ach_cbean_reroll10 = "More!",
+				ach_cbean_click = "Click me!",
+				ach_cbean_click5 = "Click me more!",
+				ach_cbean_click10 = "Click me down!",
+				ach_cbean_click20 = "Click me to death!",
+				ach_cbean_click35 = "Clickaholic...",
+				ach_cbean_scoring1000 = "Low score",
+				ach_cbean_scoring10000 = "Over 9000!",
+				ach_cbean_scoring50000 = "Half a Hundred",
+				ach_cbean_scoring100000 = "Five zeroes",
+				ach_cbean_scoring200000 = "Double that",
+				ach_cbean_complete = "Wonderful completionist!",
+				
+			},
 			blind_states = {},
 			challenge_names = {
 				c_cbean_sdown_inexcusable = "Inexcusable",
@@ -5282,7 +5500,9 @@ return {
 				k_cbean_nteam_danger = "Danger!",
 				k_cbean_nteam_randomized = "Randomized!",
 				k_cbean_unknown = "Unknown",
-				k_jbill_leak = "Leak!"
+				k_jbill_leak = "Leak!",
+				k_jbill_ach = "Achievement Unlocked!",
+				k_jbill_metapack = "Meta Pack"
 			},
 			high_scores = {},
 			labels = {
@@ -5344,6 +5564,7 @@ return {
 
 				cbean_jaded = "Jaded",
 				cbean_banished = "Banished",
+				cbean_stick2 = "Sticker^2",
 			},
 			poker_hand_descriptions = {
 				["cbean_sdown_antistraight"] = {
