@@ -15,32 +15,13 @@ SMODS.Joker {
     end,
     config = { extra = { mult = 0 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_a"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_b"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_c"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_d"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_e"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_f"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_g"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_h"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_i"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_j"}
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_a_u"}
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_d_g"}
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_b_p"}
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_f_y"}
         info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_k"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_l"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_m"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_n"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_o"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_p"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_q"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_r"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_s"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_t"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_u"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_v"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_w"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_x"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_y"}
-        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_z"}
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_j_x"}
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_pizzazzy_q_z"}
         return { vars = { card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
@@ -124,4 +105,3 @@ SMODS.Joker {
         art = "ZayDerg"
     }
 }
-print(localize{ key = 'j_jolly', set = "Joker", type = "name_text" })

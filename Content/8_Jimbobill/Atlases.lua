@@ -32,3 +32,10 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+    key = "jbill_booster",
+    path = "8_Jimbobill/booster.png",
+    px = 71,
+    py = 95,
+})

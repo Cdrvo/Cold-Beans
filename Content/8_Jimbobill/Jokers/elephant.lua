@@ -1,14 +1,10 @@
-local elephant_chievo = function (card, message)
-    return {
-    }
-end
 
 SMODS.Keybind {
     key_pressed = "up",
     action = function (self)
         if G.GAME and G.GAME.konami_counter < 2 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
-            print(G.GAME.konami_counter)
+
         end
     end
 }
@@ -18,7 +14,7 @@ SMODS.Keybind {
     action = function (self)
         if (1 < G.GAME.konami_counter) and (G.GAME.konami_counter < 4) then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
-            print(G.GAME.konami_counter)
+
         end
     end
 }
@@ -28,7 +24,7 @@ SMODS.Keybind {
     action = function (self)
         if G.GAME and G.GAME.konami_counter == 4 or G.GAME.konami_counter == 6 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
-            print(G.GAME.konami_counter)
+
         end
     end
 }
@@ -38,7 +34,7 @@ SMODS.Keybind {
     action = function (self)
         if G.GAME and G.GAME.konami_counter == 5 or G.GAME.konami_counter == 7 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
-            print(G.GAME.konami_counter)
+
         end
     end
 }
@@ -49,7 +45,7 @@ SMODS.Keybind {
         if G.GAME then
             if G.GAME.konami_counter == 8 then
                 G.GAME.konami_counter = G.GAME.konami_counter + 1
-                print(G.GAME.konami_counter)
+
             end
             G.GAME.b_pressed_lmao = true
         end
@@ -61,7 +57,7 @@ SMODS.Keybind {
     action = function (self)
         if G.GAME and G.GAME.konami_counter == 9 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
-            print(G.GAME.konami_counter)
+
         end
     end
 }
@@ -88,13 +84,12 @@ SMODS.Joker {
             tenprocent = false, thirtyprocent = false, halfway_mark = false, seventyprocent = false, ninetyprocent = false,
             slot1 = false, slot2 = false, slot3 = false, slot4 = false,
             tarot = false, planet = false, spectral = false, consumesquared = false, combo = false, blessing = false, sticker_sheet = false, zodiac = false, keys = false,
-            mutemusic = false, maxmusic = false,
+            mutemusic = false, maxmusic = false, contrast = false,
             consumefull = false, jokerfull = false, ante = false,
             dollars5 = false, dollars10 = false, dollars25 = false, dollars40 = false,
             reroll = false, reroll5 = false, reroll10 = false,
             click = false, click5 = false, click10 = false, click20= false, click35 = false,
             scoring1000 = false, scoring10000 = false, scoring50000 = false, scoring100000 = false, scoring200000 = false,
-            skip_blind = false,
             complete = false,
             } },
     loc_vars = function(self, info_queue, card)
@@ -104,257 +99,291 @@ SMODS.Joker {
         if G.hand and #G.hand.highlighted > 0 and not card.ability.extra.highlight then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.highlight = true
+            unlock_achievement("ach_cbean_highlight")
             return {
-                message = "Highlight of The Day!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.hand and #G.hand.highlighted > 1 and not card.ability.extra.highlight2 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.highlight2 = true
+            unlock_achievement("ach_cbean_highlight2")
             return {
-                message = "Highlight of The Two-Day!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.hand and #G.hand.highlighted > 2 and not card.ability.extra.highlight3 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.highlight3 = true
+            unlock_achievement("ach_cbean_highlight3")
             return {
-                message = "Highlight of The... Wednesday?"
+                message = localize("k_jbill_ach")
             }
         end
         if G.hand and #G.hand.highlighted > 3 and not card.ability.extra.highlight4 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.highlight4 = true
+            unlock_achievement("ach_cbean_highlight4")
             return {
-                message = "Four of a Highlight!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.hand and #G.hand.highlighted > 4 and not card.ability.extra.highlight5 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.highlight5 = true
+            unlock_achievement("ach_cbean_highlight5")
             return {
-                message = "Highlight of The Week!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.STATE == G.STATES.HAND_PLAYED and not card.ability.extra.play then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.play = true
+            unlock_achievement("ach_cbean_play")
             return {
-                message = "Play a hand!"
+                message = localize("k_jbill_ach")
             }
             
         end
         if context.before and #context.full_hand == 1 and not card.ability.extra.play1 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.play1 = true
+            unlock_achievement("ach_cbean_play1")
             return {
-                message = "Not quite High Card"
+                message = localize("k_jbill_ach")
             }
         end
         if context.before and #context.full_hand == 2 and not card.ability.extra.play2 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.play2 = true
+            unlock_achievement("ach_cbean_play2")
             return {
-                message = "Pair of Cards"
+                message = localize("k_jbill_ach")
             }
         end
         if context.before and #context.full_hand == 3 and not card.ability.extra.play3 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.play3 = true
+            unlock_achievement("ach_cbean_play3")
             return {
-                message = "Three of a Card"
+                message = localize("k_jbill_ach")
             }
         end
         if context.before and #context.full_hand == 4 and not card.ability.extra.play4 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.play4 = true
+            unlock_achievement("ach_cbean_play4")
             return {
-                message = "Four of a Card"
+                message = localize("k_jbill_ach")
             }
         end
         if context.before and #context.full_hand == 5 and not card.ability.extra.play5 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.play5 = true
+            unlock_achievement("ach_cbean_play5")
             return {
-                message = "All Cards!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.pre_discard and #G.hand.highlighted == 1 and not card.ability.extra.discard then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.discard = true
+            unlock_achievement("ach_cbean_discard")
             return {
-                message = "Trash"
+                message = localize("k_jbill_ach")
             }
         end
         if context.pre_discard and #G.hand.highlighted == 2 and not card.ability.extra.discard2 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.discard2 = true
+            unlock_achievement("ach_cbean_discard2")
             return {
-                message = "Waste"
+                message = localize("k_jbill_ach")
             }
         end
         if context.pre_discard and #G.hand.highlighted == 3 and not card.ability.extra.discard3 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.discard3 = true
+            unlock_achievement("ach_cbean_discard3")
             return {
-                message = "Full Bin"
+                message = localize("k_jbill_ach")
             }
         end
         if context.pre_discard and #G.hand.highlighted == 4 and not card.ability.extra.discard4 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.discard4 = true
+            unlock_achievement("ach_cbean_discard4")
             return {
-                message = "Dump"
+                message = localize("k_jbill_ach")
             }
         end
         if context.pre_discard and #G.hand.highlighted == 5 and not card.ability.extra.discard5 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.discard5 = true
+            unlock_achievement("ach_cbean_discard5")
             return {
-                message = "Landfill"
+                message = localize("k_jbill_ach")
             }
         end
         if context.discard and not card.ability.extra.yorick then
             card.ability.extra.yorick_num = card.ability.extra.yorick_num - 1
             card.ability.extra.mult = card.ability.extra.mult + 1
             if card.ability.extra.yorick_num <= 0 then
-            return {
-                message = "Poor Yorick"
-            }    
+                unlock_achievement("ach_cbean_yorick")
+                return {
+                    message = localize("k_jbill_ach")
+                }    
             end
         end
         if G.STATE == G.STATES.HAND_PLAYED and context.scoring_hand and context.full_hand and #context.scoring_hand < (#context.full_hand - 1) and not card.ability.extra.playunscoring then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.playunscoring = true
+            unlock_achievement("ach_cbean_playunscoring")
             return {
-                message = "Fuck it, unscoring your card"
+                message = localize("k_jbill_ach")
             }
         end
         if G.STATE == G.STATES.HAND_PLAYED and context.scoring_hand and context.full_hand and #context.scoring_hand < (#context.full_hand - 2) and not card.ability.extra.playunscoring2 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.playunscoring2 = true
+            unlock_achievement("ach_cbean_playunscoring2")
             return {
-                message = "Double the waste"
+                message = localize("k_jbill_ach")
             }
         end
         if G.STATE == G.STATES.HAND_PLAYED and context.scoring_hand and context.full_hand and #context.scoring_hand < (#context.full_hand - 3) and not card.ability.extra.playunscoring3 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.playunscoring3 = true
+            unlock_achievement("ach_cbean_playunscoring3")
             return {
-                message = "You could just give those to me"
+                message = localize("k_jbill_ach")
             }
         end
         if G.STATE == G.STATES.HAND_PLAYED and context.scoring_hand and context.full_hand and #context.scoring_hand < (#context.full_hand - 4) and not card.ability.extra.playunscoring4 then
             card.ability.extra.mult = card.ability.extra.mult + 1
             card.ability.extra.playunscoring4 = true
+            unlock_achievement("ach_cbean_playunscoring4")
             return {
-                message = "4-1 in favor to waste"
+                message = localize("k_jbill_ach")
             }
         end
         --I didn't really sort handtypes sorgy :з
         if context.joker_main and context.scoring_name == "High Card" and not card.ability.extra.playhigh then
             card.ability.extra.playhigh = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playhigh")
             return {
                 mult = card.ability.extra.mult,
-                message = "Too weak for Pairs?!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Pair" and not card.ability.extra.playpair then
             card.ability.extra.playpair = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playpair")
             return {
                 mult = card.ability.extra.mult,
-                message = "How romantic!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Two Pair" and not card.ability.extra.playtwopair then
             card.ability.extra.playtwopair = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playtwopair")
             return {
                 mult = card.ability.extra.mult,
-                message = "How romantic! Twice!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Three of a Kind" and not card.ability.extra.playthree then
             card.ability.extra.playthree = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playthree")
             return {
                 mult = card.ability.extra.mult,
-                message = "Card... X3"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Four of a Kind" and not card.ability.extra.playfour then
             card.ability.extra.playfour = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playfour")
             return {
                 mult = card.ability.extra.mult,
-                message = "Just the Four of them!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Full House" and not card.ability.extra.playhouse then
             card.ability.extra.playhouse = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playhouse")
             return {
                 mult = card.ability.extra.mult,
-                message = "The house always wins"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Flush"  and not card.ability.extra.playflush then
             card.ability.extra.playflush = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playflush")
             return {
                 mult = card.ability.extra.mult,
-                message = "I don't want to play toilet flush sorry"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "cbean_sdown_bobtail" and not card.ability.extra.playbob then
             card.ability.extra.playbob = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playbob")
             return {
                 mult = card.ability.extra.mult,
-                message = "Not the cat, nor the dog"
+                message = localize("k_jbill_ach")
             }
         end 
         if context.joker_main and context.scoring_name == "Straight" and not card.ability.extra.playstraight then
             card.ability.extra.playstraight = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playstraight")
             return {
                 mult = card.ability.extra.mult,
-                message = "Are you sure?"
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "cbean_sdown_antistraight" and not card.ability.extra.playgay then
             card.ability.extra.playgay = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playgay")
             return {
                 mult = card.ability.extra.mult,
-                message = "How queerious..."
+                message = localize("k_jbill_ach")
             }
         end
         if context.joker_main and context.scoring_name == "Straight Flush" and not card.ability.extra.playfstraight then
             card.ability.extra.playfstraight = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playfstraight")
             return {
                 mult = card.ability.extra.mult,
-                message = "Bitch, pick??"
+                message = localize("k_jbill_ach")
             }
         end 
         if context.joker_main and context.scoring_name == "cbean_sdown_antistraight_flush" and not card.ability.extra.playfgay then
             card.ability.extra.playfgay = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playfgay")
             return {
                 mult = card.ability.extra.mult,
-                message = "So queer!"
+                message = localize("k_jbill_ach")
             }
         end 
         --Not incuding the house rules because including them as a separate category would be an asshole move and they aren't exactly treated as secret hands
         if context.joker_main and context.scoring_name == "Flush Five" or context.scoring_name == 'Flush House' or context.scoring_name == 'Five of a Kind' and not card.ability.extra.playfstraight then
             card.ability.extra.playfstraight = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_playsecret")
             return {
                 mult = card.ability.extra.mult,
-                message = "How did you know???"
+                message = localize("k_jbill_ach")
             }
         end
         --HANDS TYPES ARE OVER
@@ -362,106 +391,121 @@ SMODS.Joker {
         if context.full_hand and #context.full_hand == 2 and context.full_hand[1]:get_id() == 6 and context.full_hand[2]:get_id() == 7 and not card.ability.extra.six7 then
             card.ability.extra.six7 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_six7")
             return {
-                message = "6 7"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 2 and context.full_hand[1]:get_id() == 6 and context.full_hand[2]:get_id() == 9 and not card.ability.extra.nice then
             card.ability.extra.nice = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_nice")
             return {
-                message = "Nice"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 2 and context.full_hand[1]:get_id() == 4 and context.full_hand[2]:get_id() == 2 and not card.ability.extra.meaning then
             card.ability.extra.meaning = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_meaning")
             return {
-                message = "The Meaning of Life"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 2 and context.full_hand[1]:get_id() == 2 and context.full_hand[2]:get_id() == 1 and not card.ability.extra.nine10 then
             card.ability.extra.nine10 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_nine10")
             return {
-                message = "9 + 10"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 4 and context.full_hand[1]:get_id() == 1 and context.full_hand[2]:get_id() == 3 and context.full_hand[2]:get_id() == 3 and context.full_hand[2]:get_id() == 7 and not card.ability.extra.leet then
             card.ability.extra.leet = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_leet")
             return {
-                message = "LEET"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 4 and context.full_hand[1]:get_id() == 8 and context.full_hand[2]:get_id() == 14 and context.full_hand[2]:get_id() == 14 and context.full_hand[2]:get_id() == 8 and not card.ability.extra.boob then
             card.ability.extra.boob = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_boob")
             return {
-                message = "Boob"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 4 and context.full_hand[2]:get_id() == 2 and context.full_hand[2]:get_id() == 14 and not card.ability.extra.four20 then
             card.ability.extra.four20 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_four20")
             return {
-                message = "I don't have any drug Jokes in me"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 3 and context.full_hand[2]:get_id() == 1 and context.full_hand[2]:get_id() == 4 and not card.ability.extra.pi then
             card.ability.extra.pi = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_pi")
             return {
-                message = "Pie? Where?"
+                message = localize("k_jbill_ach")
             }
         end
-        if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 3 and context.full_hand[2]:get_id() == 0 and context.full_hand[3]:get_id() == 0 and not card.ability.extra.sparta then
+        if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 3 and context.full_hand[2]:get_id() == 14 and context.full_hand[3]:get_id() == 14 and not card.ability.extra.sparta then
             card.ability.extra.sparta = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_sparta")
             return {
-                message = "THIS IS SPARTA"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 2 and context.full_hand[2]:get_id() == 5 and context.full_hand[3]:get_id() == 3 and not card.ability.extra.math then
             card.ability.extra.math = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_math")
             return {
-                message = "(2*125)+3"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 2 and context.full_hand[1]:get_id() == 4 and context.full_hand[2]:get_id() == 5 and not card.ability.extra.math2 then
             card.ability.extra.math2 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_math2")
             return {
-                message = "3*(30/(15-13))"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 4 and context.full_hand[2]:get_id() == 1 and context.full_hand[4]:get_id() == 3 and not card.ability.extra.homestuck then
             card.ability.extra.homestuck = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_homestuck")
             return {
-                message = "Homestuck number"
+                message = localize("k_jbill_ach")
             }
         end
         if context.full_hand and #context.full_hand == 3 and context.full_hand[1]:get_id() == 8 and context.full_hand[2]:get_id() == 8 and context.full_hand[3]:get_id() == 8 and not card.ability.extra.nend then
             card.ability.extra.nend = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_nend")
             return {
-                message = "The end is never the end"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.b_pressed_lmao and not card.ability.extra.bhack then
             card.ability.extra.bhack = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_bhack")
             return {
-                message = "Press the B button, stupid!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.konami_counter == 10 and not card.ability.extra.konami then
             card.ability.extra.konami = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_konami")
             return {
-                message = "Way Too Much Contra"
+                message = localize("k_jbill_ach")
             }
         end
         if context.end_of_round and context.game_over == false and context.main_eval then
@@ -469,262 +513,291 @@ SMODS.Joker {
             if G.GAME.blind_on_deck == "Teeny" and not card.ability.extra.teeny_blind then
                 card.ability.extra.teeny_blind = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_teeny_blind")
                 return {
-                    message = "Baby steps"
+                    message = localize("k_jbill_ach")
                 }
             end
             if G.GAME.blind_on_deck == "Small" and not card.ability.extra.small_blind then
                 card.ability.extra.small_blind = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_small_blind")
                 return {
-                    message = "Small step for a Joker"
+                    message = localize("k_jbill_ach")
                 }
             end
             if G.GAME.blind_on_deck == "Big" and not card.ability.extra.big_blind then
                 card.ability.extra.big_blind = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_big_blind")
                 return {
-                    message = "A big blind for the Jokerkind"
+                    message = localize("k_jbill_ach")
                 }
             end
             if G.GAME.blind_on_deck == "Boss" and not card.ability.extra.boss_blind then
                 card.ability.extra.boss_blind = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_boss_blind")
                 return {
-                    message =  "From space to gamble"
+                    message =  localize("k_jbill_ach")
                 }
             end
         end
         if card.ability.extra.beaten > 0 and not card.ability.extra.beaten1 then
             card.ability.extra.beaten1 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_beaten1")
             return {
-                message =  "YOU'RE WINNER" --intented grammar
+                message =  localize("k_jbill_ach")
             }
         end
         if card.ability.extra.beaten > 2 and not card.ability.extra.beaten3 then
             card.ability.extra.beaten3 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_beaten3")
             return {
-                message =  "Triple kill"
+                message =  localize("k_jbill_ach")
             }
         end
         if card.ability.extra.beaten > 2 and not card.ability.extra.beaten6 then
             card.ability.extra.beaten6 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_beaten6")
             return {
-                message =  "Six of a Blind"
+                message =  localize("k_jbill_ach")
             }
         end
         --The team :( did that thing with "CEO" and "Ceo" themselves, i'm not testing that out either lol
         if context.end_of_round and context.game_over == false and context.main_eval and G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo" and not card.ability.extra.ceo_blind then
             card.ability.extra.ceo_blind = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_ceo_blind")
             return {
-                message = "Eat the rich"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.mult >= 10 and not card.ability.extra.tenprocent then
             card.ability.extra.tenprocent = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_tenprocent")
             return {
-                message = "10%"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.mult >= 30 and not card.ability.extra.thirtyprocent then
             card.ability.extra.thirtyprocent = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_thirtyprocent")
             return {
-                message = "30%"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.mult >= 50 and not card.ability.extra.halfway_mark then
             card.ability.extra.halfway_mark = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_halfway_mark")
             return {
-                message = "Halfway mark!"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.mult >= 70 and not card.ability.extra.seventyprocent then
             card.ability.extra.seventyprocent = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_seventyprocent")
             return {
-                message = "70%"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.mult >= 90 and not card.ability.extra.ninetyprocent then
             card.ability.extra.ninetyprocent = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_ninetyprocent")
             return {
-                message = "90%"
+                message = localize("k_jbill_ach")
             }
         end
             if card == G.jokers.cards[1] and not card.ability.extra.slot1 then
                 card.ability.extra.slot1 = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_slot1")
                 return {
-                    message = "I am the first!"
+                    message = localize("k_jbill_ach")
                 }
             end
             if card == G.jokers.cards[2] and not card.ability.extra.slot2 then
                 card.ability.extra.slot2 = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_slot2")
                 return {
-                    message = "Silver medal"
+                    message = localize("k_jbill_ach")
                 }
             end
             if card == G.jokers.cards[3] and not card.ability.extra.slot3 then
                 card.ability.extra.slot3 = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_slot3")
                 return {
-                    message = "Bronce is good enough"
+                    message = localize("k_jbill_ach")
                 }
             end
             if card == G.jokers.cards[4] and not card.ability.extra.slot4 then
                 card.ability.extra.slot4 = true
                 card.ability.extra.mult = card.ability.extra.mult + 1
+                unlock_achievement("ach_cbean_slot4")
                 return {
-                    message = "Fourth?? FOURTH?!"
+                    message = localize("k_jbill_ach")
                 }
             end
-        if context.using_consumeable and context.consumeable.ability.set == 'Tarot' and not card.ability.extra.planet then
+        if context.using_consumeable and context.consumeable.ability.set == 'Tarot' and not card.ability.extra.tarot then
             card.ability.extra.tarot = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_tarot")
             return {
-               message = "To the Treasure Room!"
+               message = localize("k_jbill_ach")
             }
         end
         if context.using_consumeable and context.consumeable.ability.set == 'Planet' and not card.ability.extra.planet then
             card.ability.extra.planet = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_planet")
             return {
-               message = "Stargazing?.. No, that's wrong..."
-            }
-        end
-        if context.using_consumeable and context.consumeable.ability.set == 'Tarot' and not card.ability.extra.tarot then
-            card.ability.extra.tarot = true
-            card.ability.extra.mult = card.ability.extra.mult + 1
-            return {
-               message = "To the Treasure Room!"
+               message = localize("k_jbill_ach")
             }
         end
         if context.using_consumeable and context.consumeable.ability.set == 'Spectral' and not card.ability.extra.spectral then
             card.ability.extra.spectral = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_spectral")
             return {
-               message = "What even are those? Honestly?"
+               message = localize("k_jbill_ach")
             }
         end
         if context.using_consumeable and context.consumeable.ability.set == 'Combo' and not card.ability.extra.combo then
             card.ability.extra.combo = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_combo")
             return {
-               message = "The character from Breaking Bad?"
+               message = localize("k_jbill_ach")
             }
         end
         if context.using_consumeable and context.consumeable.ability.set == 'Consumable2' and not card.ability.extra.consumesquared then
             card.ability.extra.consumesquared = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_consumesquared")
             return {
-               message = "Whuh. What? Why are they squared?"
+               message = localize("k_jbill_ach")
             }
         end
-        if context.using_consumeable and context.consumeable.ability.set == 'sdown_czodiac' and not card.ability.extra.consumesquared then
+        if context.using_consumeable and context.consumeable.ability.set == 'sdown_czodiac' and not card.ability.extra.zodiac then
             card.ability.extra.consumesquared = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_zodiac")
             return {
-               message = "At the moment of writing it's the snake"
+               message = localize("k_jbill_ach")
             }
         end
         if context.using_consumeable and context.consumeable.ability.set == 'cbean_StickerSheet' and not card.ability.extra.stickersheet then
             card.ability.extra.stickersheet = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_sticker_sheet")
             return {
-               message = "Stick it"
+               message = localize("k_jbill_ach")
             }
         end
         if context.other_consumeable and context.other_consumeable.ability.set == "sdown_blessing" and not card.ability.extra.blessing then
             card.ability.extra.blessing = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_blessing")
             return {
-                message = "Achoo!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.other_consumeable and context.other_consumeable.ability.set == "yma_keys" and not card.ability.extra.keys then
             card.ability.extra.keys = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_keys")
             return {
-                message = "I've been looking for it everywhere!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.SETTINGS.SOUND.music_volume == 0 and not card.ability.extra.mutemusic then
             card.ability.extra.mutemusic = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_mutemusic")
             return {
-                message = "Missing out on divine sounds"
+                message = localize("k_jbill_ach")
             }
         end
         if G.SETTINGS.SOUND.music_volume == 100 and not card.ability.extra.maxmusic then
             card.ability.extra.maxmusic = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_maxmusic")
             return {
-                message = "MAX IT THE HELL OUT"
+                message = localize("k_jbill_ach")
             }
         end
         if G.SETTINGS.colourblind_option == true and not card.ability.extra.contrast then
             card.ability.extra.contrast = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_contrast")
             return {
-                message = "Makes some contrast, huh?"
+                message = localize("k_jbill_ach")
             }
         end
         if G.consumeables and #G.consumeables.cards >= G.consumeables.config.card_limit and not card.ability.extra.consumefull then
             card.ability.extra.consumefull = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_consumefull")
             return {
-                message = "Full Pockets"
+                message = localize("k_jbill_ach")
             }
         end
         if G.consumeables and #G.jokers.cards >= G.jokers.config.card_limit and not card.ability.extra.jokerfull then
             card.ability.extra.jokerfull = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_jokerfull")
             return {
-                message = "Full Pokers"
+                message = localize("k_jbill_ach")
             }
         end
         if context.ante_change and not card.ability.extra.ante then
             card.ability.extra.ante = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_ante")
             return {
-                message = "Up The Ante!"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.dollars >= 5 and not card.ability.extra.dollars5 then
             card.ability.extra.dollars5 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_dollars5")
             return {
-                message = "Pocket money"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.dollars >= 10 and not card.ability.extra.dollars10 then
             card.ability.extra.dollars10 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_dollars10")
             return {
-                message = "More money"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.dollars >= 25 and not card.ability.extra.dollars25 then
             card.ability.extra.dollars25 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_dollars25")
             return {
-                message = "Money power"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.dollars >= 40 and not card.ability.extra.dollars40 then
             card.ability.extra.dollars40 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_dollars40")
             return {
-                message = "Monier money"
+                message = localize("k_jbill_ach")
             }
         end
         if context.reroll_shop then
@@ -733,106 +806,121 @@ SMODS.Joker {
         if card.ability.extra.rolls > 0 and not card.ability.extra.reroll then
             card.ability.extra.reroll = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_reroll")
             return {
-                message = "Show me more"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.rolls > 4 and not card.ability.extra.reroll5 then
             card.ability.extra.reroll = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_reroll5")
             return {
-                message = "I said more!"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.rolls > 9 and not card.ability.extra.reroll10 then
             card.ability.extra.reroll = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_reroll10")
             return {
-                message = "More!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.jbill_clicked and card.ability.extra.clicks > 0 and not card.ability.extra.click1 then
             card.ability.extra.click1 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_click1")
             return {
-                message = "Click me!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.jbill_clicked and card.ability.extra.clicks > 4 and not card.ability.extra.click5 then
             card.ability.extra.click5 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_click5")
             return {
-                message = "Click me again!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.jbill_clicked and card.ability.extra.clicks > 9 and not card.ability.extra.click10 then
             card.ability.extra.click10 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_click10")
             return {
-                message = "Click me down!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.jbill_clicked and card.ability.extra.clicks > 19 and not card.ability.extra.click20 then
             card.ability.extra.click20 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_click20")
             return {
-                message = "Click me to death!"
+                message = localize("k_jbill_ach")
             }
         end
         if context.jbill_clicked and card.ability.extra.clicks > 34 and not card.ability.extra.click35 then
             card.ability.extra.click35 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_click35")
             return {
-                message = "Clickaholic..."
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.chips >= 1000 and not card.ability.extra.scoring1000 then
             card.ability.extra.scoring1000 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_scoring1000")
             return {
-                message = "Low score"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.chips >= 10000 and not card.ability.extra.scoring10000 then
             card.ability.extra.scoring10000 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_scoring10000")
             return {
-                message = "It's over 9000!.."
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.chips >= 50000 and not card.ability.extra.scoring50000 then
             card.ability.extra.scoring50000 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_scoring50000")
             return {
-                message = "Half a Hundred"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.chips >= 100000 and not card.ability.extra.scoring100000 then
             card.ability.extra.scoring100000 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_scoring100000")
             return {
-                message = "Five zeroes"
+                message = localize("k_jbill_ach")
             }
         end
         if G.GAME.chips >= 200000 and not card.ability.extra.scoring200000 then
             card.ability.extra.scoring200000 = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_scoring200000")
             return {
-                message = "Double that"
+                message = localize("k_jbill_ach")
             }
         end
         if card.ability.extra.mult >= 99 and not card.ability.extra.complete then
             card.ability.extra.complete = true
             card.ability.extra.mult = card.ability.extra.mult + 1
+            unlock_achievement("ach_cbean_complete")
             return {
-                message = "Wonderful Completionist!"
+                message = localize("k_jbill_ach")
             }
         end
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.mult = card.ability.extra.mult + 1
+        unlock_achievement("ach_cbean_address_me")
         return {
-            message = "Address me"
+            message = localize("k_jbill_ach")
         }
     end,
     beans_credits = {
@@ -843,4 +931,905 @@ SMODS.Joker {
     }
 }
 
+--Now to more bullshittery, I'm putting achievements HERE
+
+SMODS.Achievement {
+    key = "address_me",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "highlight",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "highlight2",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "highlight3",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "highlight4",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "highlight5",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "play",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "play1",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "play2",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "play3",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "play4",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "play5",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playhigh",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playpair",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playtwopair",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playthree",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playfour",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playflush",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playstraight",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playfstraight",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playgay",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playfgay",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playhouse",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playbob",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playsecret",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playunscoring",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playunscoring2",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playunscoring3",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "playunscoring4",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "discard",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "discard2",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "discard3",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "discard4",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "discard5",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "yorick",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "six7",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "meaning",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "nice",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "nine10",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "leet",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "boob",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "four20",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "pi",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "sparta",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "math",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "math2",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "homestuck",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "nend",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "bhack",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "konami",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "teeny_blind",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "small_blind",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "big_blind",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "boss_blind",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "ceo_blind",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "beaten1",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "beaten3",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "beaten6",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "tenprocent",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "thirtyprocent",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "halfway_mark",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "seventyprocent",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "ninetyprocent",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "slot1",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "slot2",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "slot3",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "slot4",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "tarot",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "planet",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "spectral",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "consumesquared",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "blessing",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "combo",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "sticker_sheet",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "zodiac",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "keys",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "mutemusic",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "maxmusic",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "contrast",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "consumefull",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "jokerfull",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "ante",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "dollars5",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "dollars10",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "dollars25",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "dollars40",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "reroll",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "reroll5",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "reroll10",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "click1",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "click5",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "click10",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "click20",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "click35",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "scoring1000",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "scoring10000",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "scoring50000",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "scoring100000",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "scoring200000",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
+
+SMODS.Achievement {
+    key = "complete",
+    unlock_condition = function(self, args) 
+    end,
+    hidden_name = false,
+    hidden_text = true,
+    bypass_all_unlocked = true
+}
 
