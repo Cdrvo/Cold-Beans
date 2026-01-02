@@ -1,7 +1,7 @@
 local start_run_ref = Game.start_run
 function Game:start_run(args)
     start_run_ref(self, args)
-    
+    G.GAME.xmult_in_extra = { "j_acrobat", "j_ancient", "j_baron", "j_baseball", "j_blackboard", "j_drivers_license", "j_flower_pot", "j_photograph", "j_seeing_double", "j_triboulet"}
     G.GAME.b_pressed_lmao = false
     G.GAME.konami_counter = 0
     if not G.GAME.jimbux then
