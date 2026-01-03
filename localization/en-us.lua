@@ -8,8 +8,8 @@ return {
 				name = "Urine Deck",
 				text = {
 					"All cards of a",
-					"random rank start",
-					"as Piss cards"
+					"random {C:attention}rank{} start",
+					"as {C:money}Piss{} cards",
 				}
 			},
 		},
@@ -5610,7 +5610,7 @@ return {
 			high_scores = {},
 			labels = {
 				cbean_colon_tauic = "Tauic",
-				
+
 				cbean_sdown_lunar_seal = "Lunar Seal",
 				cbean_yma_cipher_seal = "Cipher Seal",
 
