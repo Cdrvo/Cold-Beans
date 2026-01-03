@@ -4231,23 +4231,43 @@ return {
 			Stake = {
 				stake_cbean_nameteam = {
 					name = "NTeam Stake",
-					text = { "Ton of stickers added by Name Team" },
+					text = { 
+						"Ton of stickers added by",
+						"Name Team can spawn",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_consumable = {
 					name = "Consumed Stake",
-					text = { "Consumables can spawn with certain stickers" },
+					text = { 
+						"Consumables can spawn",
+						"with certain stickers",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_playingcardstake = {
 					name = "Spade of Stakes",
-					text = { "Playing Cards has a chance to gain stickers after played" },
+					text = { 
+						"Playing Cards have a chance to",
+						"gain stickers after being played",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_deck = {
 					name = "Painted Stake",
-					text = { "Decks has a 1/4 chance to gain a sticker after leaving the shop" },
+					text = { 
+						"Decks has a 1/4 chance to gain",
+						"a sticker after leaving the shop",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_blind = {
 					name = "Plant Stake",
-					text = { "After every boss blind, apply a random blind sticker to the deck" },
+					text = { 
+						"After every boss blind, apply a",
+						"random blind sticker to the deck",
+                    	"{s:0.8}Applies all previous Stakes", 
+					},
 				},
 			},
 			cbean_StickerSheet = {
