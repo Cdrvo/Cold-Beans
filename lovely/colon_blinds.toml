@@ -69,7 +69,7 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
-pattern = '''G.GAME.round_resets.blind_states[skip_to] = 'Select'''
+pattern = '''G.GAME.round_resets.blind_states[skip_to] = 'Select''''
 position = "after"
 payload = '''
 if G.GAME.round_resets.blind_states['Forced'] == "Select" then
@@ -640,3 +640,33 @@ else
 end
 
 '''
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = "G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Current'"
+position = 'after'
+match_indent = true
+payload = '''
+if G.GAME.blind_on_deck == "Teeny" then
+    G.GAME.cbean_colon_teenies_played = (G.GAME.cbean_colon_teenies_played or 0) + 1
+end
+if G.GAME.round_resets.blind and (
+    (G.GAME.round_resets.blind.key ~= "bl_cbean_upper_colon_omega")
+) and G.GAME.round_resets.blind.is_upper
+then
+    G.GAME.colon_cbean_last_upper_greek = G.GAME.round_resets.blind.key;
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "edition = poll_edition('wheel_of_fortune', nil, true, true)"
+position = 'at'
+match_indent = true
+payload = '''
+edition = poll_edition('wheel_of_fortune', nil, not self.ability.cbean_colon_tauic, true)
+'''
+

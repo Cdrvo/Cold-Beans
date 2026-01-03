@@ -213,8 +213,8 @@ return {
 			bl_cbean_upper_colon_delta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Delta",
 				text = {
-					"Retrigger all card",
-					"discarded effects",
+					"Retrigger all",
+					"discarded cards",
 				},
 			},
 			bl_cbean_lower_colon_epsilon = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -423,6 +423,68 @@ return {
 					"of times it's been played",
 				},
 			},
+			bl_cbean_lower_colon_sigma = {
+				name = "Sigma",
+				text = {
+					"Apply a random",
+					"Enhancement to all",
+					"played Unenhanced cards",
+				},
+			},
+			bl_cbean_upper_colon_sigma = {
+				name = "Sigma",
+				text = {
+					"Apply a random Enhancement,",
+					"Edition, and Seal to all",
+					"played Unenhanced cards",
+				},
+			},
+			bl_cbean_lower_colon_tau = {
+				name = "Tau",
+				text = {
+					"Create 5 Tauic Negative Wheel",
+					"of Fortunes when Blind selected",
+					"(They may apply Negative)"
+				},
+			},
+			bl_cbean_upper_colon_tau = {
+				name = "Tau",
+				text = {
+					"Create 5 Tauic Negative Wheel",
+					"of Fortunes when hand played",
+					"(They may apply Negative)"
+				},
+			},
+			bl_cbean_lower_colon_upsilon = {
+				name = "Upsilon",
+				text = {
+					"-1 Ante when Blind is selected"
+				},
+			},
+			bl_cbean_upper_colon_upsilon = {
+				name = "Upsilon",
+				text = {
+					"-1 Ante per 5 Teeny",
+					"Blinds selected this run",
+					"when Blind is selected"
+				},
+			},
+			bl_cbean_lower_colon_phi = {
+				name = "Phi",
+				text = {
+					"Duplicate one",
+					"random Joker when",
+					"Blind is selected"
+				},
+			},
+			bl_cbean_upper_colon_phi = {
+				name = "Phi",
+				text = {
+					"Duplicate 2 random",
+					"Jokers as Negative",
+					"when Blind selected"
+				},
+			},
 			bl_cbean_lower_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
 				name = "Chi",
 				text = {
@@ -437,6 +499,47 @@ return {
 					"When Blind is selected,",
 					"create 1 random {C:dark_edition}Negative{} {C:green}Uncommon{C:attention} Joker{}",
 					"and 1 random {C:dark_edition}Negative{} {C:red}Rare{C:attention} Joker{}",
+				},
+			},
+			bl_cbean_lower_colon_psi = {
+				name = "Psi",
+				text = {
+					"Create 5 Negative",
+					"Spectral Cards when",
+					"Blind is selected",
+				},
+			},
+			bl_cbean_upper_colon_psi = {
+				name = "Psi",
+				text = {
+					"Duplicate all held",
+					"consumables as Negative",
+					"twice when Blind is selected",
+				},
+			},
+			bl_cbean_lower_colon_omega = {
+				name = "Omega",
+				text = {
+					"Copies the effect of a random",
+					"lowercase Greek Blind",
+					"(Excluding Omega)"
+				},
+			},
+			bl_cbean_upper_colon_omega = {
+				name = "Omega",
+				text = {
+					"Copies the effect of the last",
+					"uppercase Greek Blind encountered",
+					"(Excluding Omega)",
+					"Currently #1#"
+				},
+			},
+			bl_cbean_upper_colon_omega_alternate = {
+				name = "Omega",
+				text = {
+					"Copies the effect of a random",
+					"uppercase Greek Blind",
+					"(Excluding Omega)"
 				},
 			},
 			bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
@@ -2942,6 +3045,12 @@ return {
 					"hand is played",
 				},
             },
+			cbean_colon_tauic = {
+				name = "Tauic",
+                text = {
+                    "Can apply {C:dark_edition}Negative{}",
+				},
+			},
             cbean_flashcard = {
                 name = "Flash Card Sticker",
                 text = {
@@ -3198,7 +3307,7 @@ return {
 					"All face cards are",
 					"drawn {C:attention}face down{}",
 				},
-                },
+			},
 			cbean_the_mouth_sticker = {
 				name = "The Mouth",
                 text = {
@@ -5506,6 +5615,8 @@ return {
 			},
 			high_scores = {},
 			labels = {
+				cbean_colon_tauic = "Tauic",
+				
 				cbean_sdown_lunar_seal = "Lunar Seal",
 				cbean_yma_cipher_seal = "Cipher Seal",
 

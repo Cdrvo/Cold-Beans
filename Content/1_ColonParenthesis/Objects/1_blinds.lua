@@ -514,6 +514,8 @@ Colonparen.GreekBlind = function (config)
 	config.lower.pos = config.lower.pos or pos;
 	config.lower.atlas = config.lower.atlas or "colon_LowercaseGreekBlind";
 	config.lower.boss_colour = config.lower.boss_colour or boss_colour;
+	config.lower.greekblind_key = key;
+	config.lower.is_lower = true;
 	local lowercase = Colonparen.LowerGreekBlind(config.lower)
 
 	config.upper.key = config.upper.key or "upper_" .. key;
@@ -522,6 +524,8 @@ Colonparen.GreekBlind = function (config)
 	config.upper.pos = config.upper.pos or pos;
 	config.upper.atlas = config.upper.atlas or "colon_UppercaseGreekBlind";
 	config.upper.boss_colour = config.upper.boss_colour or boss_colour;
+	config.upper.greekblind_key = key;
+	config.upper.is_upper = true;
 	local uppercase = Colonparen.UpperGreekBlind(config.upper)
 
 	SMODS.modify_key(config, SMODS.current_mod and SMODS.current_mod.prefix, true)
@@ -568,9 +572,33 @@ function Colonparen.callUpdateBlindVariables()
 	end
 end
 
+Colonparen.GREEK_ORDER = {bl_cbean_lower_colon_alpha = 0, bl_cbean_upper_colon_alpha = 1, bl_cbean_lower_colon_beta = 2, bl_cbean_upper_colon_beta = 3, bl_cbean_lower_colon_gamma = 4, bl_cbean_upper_colon_gamma = 5, bl_cbean_lower_colon_delta = 6, bl_cbean_upper_colon_delta = 7, bl_cbean_lower_colon_epsilon = 8, bl_cbean_upper_colon_epsilon = 9, bl_cbean_lower_colon_zeta = 10, bl_cbean_upper_colon_zeta = 11, bl_cbean_lower_colon_eta = 12, bl_cbean_upper_colon_eta = 13, bl_cbean_lower_colon_theta = 14, bl_cbean_upper_colon_theta = 15, bl_cbean_lower_colon_iota = 16, bl_cbean_upper_colon_iota = 17, bl_cbean_lower_colon_kappa = 18, bl_cbean_upper_colon_kappa = 19, bl_cbean_lower_colon_lambda = 20, bl_cbean_upper_colon_lambda = 21, bl_cbean_lower_colon_mu = 22, bl_cbean_upper_colon_mu = 23, bl_cbean_lower_colon_nu = 24, bl_cbean_upper_colon_nu = 25, bl_cbean_lower_colon_xi = 26, bl_cbean_upper_colon_xi = 27, bl_cbean_lower_colon_omicron = 28, bl_cbean_upper_colon_omicron = 29, bl_cbean_lower_colon_pi = 30, bl_cbean_upper_colon_pi = 31, bl_cbean_lower_colon_rho = 32, bl_cbean_upper_colon_rho = 33, bl_cbean_lower_colon_sigma = 34, bl_cbean_upper_colon_sigma = 35, bl_cbean_lower_colon_tau = 36, bl_cbean_upper_colon_tau = 37, bl_cbean_lower_colon_upsilon = 38, bl_cbean_upper_colon_upsilon = 39, bl_cbean_lower_colon_phi = 40, bl_cbean_upper_colon_phi = 41, bl_cbean_lower_colon_chi = 42, bl_cbean_upper_colon_chi = 43, bl_cbean_lower_colon_psi = 44, bl_cbean_upper_colon_psi = 45, bl_cbean_lower_colon_omega = 46, bl_cbean_upper_colon_omega = 47}
+
 local old_collection_pool = SMODS.collection_pool
 function SMODS.collection_pool(item, ...)
 	if item == G.P_BLINDS then
+		local typevalue = {
+			Teeny = 1,
+			Small = 2,
+			Big = 3,
+			Boss = 4,
+			Showdown = 5,
+			CEO = 6,
+			Greek = 7
+		}
+		local function get_typevalue(blind)
+			if blind.key == 'bl_small' then
+				return typevalue.Small
+			elseif blind.key == "bl_big" then
+				return typevalue.Big
+			elseif typevalue[blind.colonparen_blindtype] then
+				return typevalue[blind.colonparen_blindtype]
+			elseif blind.boss and blind.boss.showdown then
+				return typevalue.Showdown
+			else
+				return typevalue.Boss
+			end
+		end
 		local stuff = {}
 		for i, blind in pairs(Colonparen.SpecialBlinds) do
 			stuff[#stuff+1] = blind
@@ -579,8 +607,38 @@ function SMODS.collection_pool(item, ...)
 			stuff[#stuff+1] = blind
 		end
 		local tabl = old_collection_pool(stuff, ...)
-		table.sort(tabl, function(a,b) return a.order < b.order end)
-		return tabl
+		local categories = {
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{}
+		}
+		for i = 1, #tabl do
+			local val = get_typevalue(tabl[i]);
+			local list = categories[val];
+			list[#list+1] = tabl[i];
+		end
+		local newtable = {}
+		for i = 1, #categories do
+			table.sort(categories[i], function (a, b) 
+				if (Colonparen.GREEK_ORDER[a.key] and Colonparen.GREEK_ORDER[b.key]) then
+					return Colonparen.GREEK_ORDER[a.key] < Colonparen.GREEK_ORDER[b.key]
+				elseif a.greekblind_key then
+					return a.greekblind_key < b.key
+				elseif b.greekblind_key then
+					return a.key < b.greekblind_key
+				else
+					return a.key < b.key 
+				end
+			end)
+			for q, v in ipairs(categories[i]) do
+				newtable[#newtable+1] = v
+			end
+		end
+		return newtable
 	end
 	return old_collection_pool(item, ...)
 end

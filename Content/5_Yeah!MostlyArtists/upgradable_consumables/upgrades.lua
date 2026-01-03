@@ -1040,8 +1040,11 @@ SMODS.Consumable {
             local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
             local eligible_card = pseudorandom_element(editionless_jokers, 'wheel_of_fortune')
-            local edition = poll_edition('wheel_of_fortune', nil, true, true,
-                { 'e_polychrome', 'e_holo', 'e_foil' })
+            local list = { 'e_polychrome', 'e_holo', 'e_foil' };
+            if card.ability.cbean_colon_tauic then
+                list[#list+1] = "e_negative"
+            end
+            local edition = poll_edition('wheel_of_fortune', nil, false, true, list)
             eligible_card:set_edition(edition, true)
             check_for_unlock({ type = 'have_edition' })
         else
@@ -1101,8 +1104,11 @@ SMODS.Consumable {
             local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
             local eligible_card = pseudorandom_element(editionless_jokers, 'wheel_of_fortune')
-            local edition = poll_edition('wheel_of_fortune', nil, true, true,
-                { 'e_polychrome', 'e_holo', 'e_foil' })
+            local list = { 'e_polychrome', 'e_holo', 'e_foil' };
+            if card.ability.cbean_colon_tauic then
+                list[#list+1] = "e_negative"
+            end
+            local edition = poll_edition('wheel_of_fortune', nil, false, true, list)
             eligible_card:set_edition(edition, true)
             check_for_unlock({ type = 'have_edition' })
         else
@@ -1157,8 +1163,11 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
         local eligible_card = pseudorandom_element(editionless_jokers, 'wheel_of_fortune')
-        local edition = poll_edition('wheel_of_fortune', nil, true, true,
-            { 'e_polychrome', 'e_holo', 'e_foil' })
+        local list = { 'e_polychrome', 'e_holo', 'e_foil' };
+        if card.ability.cbean_colon_tauic then
+            list[#list+1] = "e_negative"
+        end
+        local edition = poll_edition('wheel_of_fortune', nil, false, true, list)
         eligible_card:set_edition(edition, true)
         check_for_unlock({ type = 'have_edition' })
     end,
@@ -1179,8 +1188,11 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
     end,
     use = function(self, card, area, copier)
-        local edition = poll_edition('wheel_of_fortune', nil, true, true,
-            { 'e_polychrome', 'e_holo', 'e_foil' })
+        local list = { 'e_polychrome', 'e_holo', 'e_foil' };
+        if card.ability.cbean_colon_tauic then
+            list[#list+1] = "e_negative"
+        end
+        local edition = poll_edition('wheel_of_fortune', nil, false, true, list)
         G.jokers.highlighted[1]:set_edition(edition, true)
         check_for_unlock({ type = 'have_edition' })
     end,
@@ -1201,7 +1213,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
     end,
     use = function(self, card, area, copier)
-        local edition = poll_edition('wheel_of_fortune', nil, true, true, G.P_CENTER_POOLS.edition)
+        local edition = poll_edition('wheel_of_fortune', nil, not card.ability.cbean_colon_tauic, true)
         G.jokers.highlighted[1]:set_edition(edition, true)
         check_for_unlock({ type = 'have_edition' })
     end,

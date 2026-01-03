@@ -8,6 +8,14 @@ Colonparen.GreekBlind{
     pos = { x = 0, y = 1 },
     lower = {
         set_blind = function(self, card, from_blind)
+            for i, area in ipairs(SMODS.get_card_areas('jokers')) do
+                for q, card in ipairs(area.cards) do
+                    Colonparen.manipulate(card, {
+                        value = 1.1,
+                        type = "X"
+                    })
+                end
+            end
         end,
         calculate = function(self, blind, context)
         end
@@ -16,13 +24,23 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.press_play then
+                for i, area in ipairs(SMODS.get_card_areas('jokers')) do
+                    for q, card in ipairs(area.cards) do
+                        Colonparen.manipulate(card, {
+                            value = 1.1,
+                            type = "X"
+                        })
+                    end
+                end
+            end
         end
     },
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
         art = "George The Rat",
-        code = "",
+        code = "jamirror",
     }
 }
 
@@ -74,19 +92,29 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.retrigger_joker_check and context.other_context.pre_discard then
+                return {
+                    repetitions = 1
+                }
+            end
         end
     },
     upper = {
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
+            if context.discard or (context.retrigger_joker_check and context.other_context.discard) then
+                return {
+                    repetitions = 1
+                }
+            end
         end
     },
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
         art = "George The Rat",
-        code = "",
+        code = "jamirror",
     }
 }
 
@@ -450,3 +478,347 @@ Colonparen.GreekBlind{
         code = "SMG9000",
     }
 }
+
+Colonparen.GreekBlind{
+    key = "colon_sigma",
+    name = "Sigma",
+    mult = 1,
+    boss_colour = HEX("6c8dde"),
+    pos = { x = 0, y = 17 },
+    lower = {
+        calculate = function(self, blind, context)
+            if context.before then
+                for _, card in ipairs(context.full_hand) do
+                    if card.config.center == G.P_CENTERS.c_base then
+                        if #G.P_CENTER_POOLS.Enhanced > 0 then
+                            local random_enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, "bl_cbean_lower_colon_sigma_enhancement")
+                            card:set_ability(random_enhancement)
+                        end
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                card:juice_up()
+                                return true
+                            end
+                        }))
+                    end
+                end
+            end
+        end
+    },
+    upper = {
+        calculate = function(self, blind, context)
+            if context.before then
+                for _, card in ipairs(context.full_hand) do
+                    if card.config.center == G.P_CENTERS.c_base then
+                        if #G.P_CENTER_POOLS.Enhanced > 0 then
+                            local random_enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, "bl_cbean_upper_colon_sigma_enhancement")
+                            card:set_ability(random_enhancement)
+                        end
+                        local edition_pool = {}
+                        for _, ed in pairs(G.P_CENTER_POOLS["Edition"]) do
+                            if ed.key and ed.key ~= "base" then
+                                table.insert(edition_pool, ed.key)
+                            end
+                        end
+                        if #edition_pool > 0 then
+                            local edition = pseudorandom_element(edition_pool, "bl_cbean_upper_colon_sigma_edition")
+                            card:set_edition(edition, true)
+                        end
+                        local random_seal = SMODS.poll_seal({ mod = 10, guaranteed = true, seed = pseudoseed("bl_cbean_upper_colon_sigma_seal") })
+                        if random_seal then
+                            card:set_seal(random_seal, true)
+                        end
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                card:juice_up()
+                                return true
+                            end
+                        }))
+                    end
+                end
+            end
+        end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "jamirror",
+    }
+}
+
+local tauic_sticker = SMODS.Sticker{
+    key = "colon_tauic",
+    badge_colour = HEX("6d6cde"),
+    atlas = "colon_LowercaseGreekBlind",
+    pos = { x = -1, y = -1 }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_tau",
+    name = "Tau",
+    mult = 1,
+    boss_colour = HEX("6d6cde"),
+    pos = { x = 0, y = 18 },
+    lower = {
+        set_blind = function (self)
+            for i = 1, 5 do
+                local card = SMODS.add_card{
+                    key = "c_wheel_of_fortune",
+                    edition = "e_negative"
+                }
+                tauic_sticker:apply(card, true)
+            end
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    upper = {
+        calculate = function(self, blind, context)
+            if context.before then
+                for i = 1, 5 do
+                    local card = SMODS.add_card{
+                        key = "c_wheel_of_fortune",
+                        edition = "e_negative"
+                    }
+                    tauic_sticker:apply(card, true)
+                end
+            end
+        end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "jamirror",
+    }
+}
+
+
+Colonparen.GreekBlind{
+    key = "colon_upsilon",
+    name = "Upsilon",
+    mult = 1,
+    boss_colour = HEX("956cde"),
+    pos = { x = 0, y = 19 },
+    lower = {
+        set_blind = function (self)
+            ease_ante(-1)
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    upper = {
+        set_blind = function (self)
+            ease_ante(-math.floor((G.GAME.cbean_colon_teenies_played or 0) / 5))
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "jamirror",
+    }
+}
+
+Colonparen.GreekBlind{
+    key = "colon_phi",
+    name = "Phi",
+    mult = 1,
+    boss_colour = HEX("a96cde"),
+    pos = { x = 0, y = 20 },
+    lower = {
+        set_blind = function (self)
+            if #G.jokers.cards > 0 then
+                local chosen_joker = pseudorandom_element(G.jokers.cards, 'colon_phi')
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.4,
+                    func = function()
+                        local copied_joker = copy_card(chosen_joker, nil, nil, nil)
+                        copied_joker:start_materialize()
+                        copied_joker:add_to_deck()
+                        G.jokers:emplace(copied_joker)
+                        return true
+                    end
+                }))
+            end
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    upper = {
+        set_blind = function (self)
+            if #G.jokers.cards > 0 then
+                local chosen_jokera = pseudorandom_element(G.jokers.cards, 'colon_phi')
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.4,
+                    func = function()
+                        local copied_joker = copy_card(chosen_jokera, nil, nil, nil)
+                        copied_joker:start_materialize()
+                        copied_joker:add_to_deck()
+                        copied_joker:set_edition("e_negative", true)
+                        G.jokers:emplace(copied_joker)
+                        return true
+                    end
+                }))
+                local chosen_jokerb = pseudorandom_element(G.jokers.cards, 'colon_phi')
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.4,
+                    func = function()
+                        local copied_joker = copy_card(chosen_jokerb, nil, nil, nil)
+                        copied_joker:start_materialize()
+                        copied_joker:add_to_deck()
+                        copied_joker:set_edition("e_negative", true)
+                        G.jokers:emplace(copied_joker)
+                        return true
+                    end
+                }))
+            end
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "jamirror",
+    }
+}
+
+
+Colonparen.GreekBlind{
+    key = "colon_psi",
+    name = "Psi",
+    mult = 1,
+    boss_colour = HEX("db6cde"),
+    pos = { x = 0, y = 22 },
+    lower = {
+        set_blind = function (self)
+            for i = 1, 5 do
+                SMODS.add_card{
+                    set = "Spectral",
+                    edition = "e_negative"
+                }
+            end
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    upper = {
+        set_blind = function (self)            
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local to_add = {}
+                    for i = 1, 2 do
+                        for i, card_to_copy in ipairs(G.consumeables.cards) do
+                            local copied_card = copy_card(card_to_copy)
+                            copied_card:set_edition("e_negative", true)
+                            to_add[#to_add+1] = copied_card;
+                        end
+                    end
+                    for i, copied_card in ipairs(to_add) do
+                        copied_card:add_to_deck()
+                        G.consumeables:emplace(copied_card)
+                    end
+                    return true
+                end
+            }))
+        end,
+        calculate = function(self, blind, context)
+        end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "jamirror",
+    }
+}
+
+
+Colonparen.GreekBlind{
+    key = "colon_omega",
+    name = "Omega",
+    mult = 1,
+    boss_colour = HEX("de6cc2"),
+    pos = { x = 0, y = 23 },
+    lower = {
+        set_blind = function (self) end,
+        calculate = function(self, blind, context)
+        end
+    },
+    upper = {
+        set_blind = function (self) end,
+        calculate = function(self, blind, context)
+        end,
+        loc_vars = function (self)
+            if not G.GAME.colon_cbean_last_upper_greek then
+                return {
+                    key = self.key .. "_alternate"
+                }
+            else
+                return {
+                    vars = {
+                        localize{set = "Blind", key = G.GAME.colon_cbean_last_upper_greek, type = "name_text" }
+                    }
+                }
+            end
+        end,
+        collection_loc_vars = function (self)
+            if not ((G.GAME or {}).colon_cbean_last_upper_greek) then
+                return {
+                    vars = {
+                        localize('k_none')
+                    }
+                }
+            else
+                return {
+                    vars = {
+                        localize{set = "Blind", key = G.GAME.colon_cbean_last_upper_greek, type = "name_text" }
+                    }
+                }
+            end
+        end
+    },
+    beans_credits = {
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "George The Rat",
+        code = "jamirror",
+    }
+}
+
+local old_set_blind = Blind.set_blind;
+function Blind:set_blind(blind, reset, silent)
+    if blind then
+        if blind.key == "bl_cbean_lower_colon_omega" then
+            local pool = {}
+            for k, v in pairs(G.P_LOWER_GREEK_BLINDS) do
+                if k ~= "bl_cbean_lower_colon_omega" then
+                    pool[#pool+1] = v
+                end
+            end
+            blind = pseudorandom_element(pool)
+        elseif blind.key == "bl_cbean_upper_colon_omega" then
+            if not G.GAME.colon_cbean_last_upper_greek then 
+                -- fallback. whatever spawn condition SHOULD prevent this but there are other ways of spawning greeks
+                local pool = {}
+                for k, v in pairs(G.P_UPPER_GREEK_BLINDS) do
+                    if k ~= "bl_cbean_upper_colon_omega" then
+                        pool[#pool+1] = v
+                    end
+                end
+                blind = pseudorandom_element(pool)
+            else
+                blind = G.P_UPPER_GREEK_BLINDS[G.GAME.colon_cbean_last_upper_greek]
+            end
+        end
+    end
+    return old_set_blind(self, blind, reset, silent)
+end
