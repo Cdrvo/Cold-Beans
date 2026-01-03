@@ -541,7 +541,7 @@ return {
 			bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
 				name = "Wee Blind",
 				text = {
-					"Very small Blind",
+					"Very small blind",
 				},
 			},
 			bl_cbean_colon_handsy = { -- George The Rat | George The Rat | jamirror
