@@ -1,5 +1,3 @@
--- OI! PRETTY MUCH ALL OF THESE ARE UNFINISHED. DW ABOUT IT BECAUSE THE SECOND RUNAROUND EXISTS FOR A REASON - jamirror ( and the rest of Team :( )
-
 Colonparen.GreekBlind{
     key = "colon_beta",
     name = "Beta",
@@ -193,14 +191,13 @@ Colonparen.GreekBlind{
         config = {
             xmult = 0.5
         },
-
         set_blind = function(self, card, from_blind)
         end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
                 if SMODS.has_enhancement(context.other_card, "m_glass") then
                     context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
-                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult +0.5
+                    context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 0.5
                 end
             end
         end

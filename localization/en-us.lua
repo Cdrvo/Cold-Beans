@@ -8,245 +8,245 @@ return {
 				name = "Urine Deck",
 				text = {
 					"All cards of a",
-					"random {C:attention}rank{} start",
-					"as {C:money}Piss{} cards",
-				},
+					"random rank start",
+					"as Piss cards"
+				}
 			},
 		},
 		Blind = {
 			bl_cbean_colon_treasure = { -- George The Rat | George The Rat | N/A
 				name = "The Treasure",
 				text = {
-					"When {C:money}${} is earned, increase",
-					"blind size by {X:purple} X0.2 {} base",
-				},
+					"When $ is earned, increase",
+					"blind size by X0.2 base"
+				}
 			},
 			bl_cbean_colon_gate = { -- George The Rat | George The Rat | Glitchkat10
 				name = "The Gate",
 				text = {
 					"Moderately",
-					"large blind",
-				},
+					"large blind"
+				}
 			},
 			bl_cbean_colon_sheet = { -- George The Rat | George The Rat | jamirror
 				name = "The Sheet",
 				text = {
 					"Debuff held #1#s",
-					"and played #2#s",
-				},
+					"and played #2#s"
+				}
 			},
 			bl_cbean_colon_stamp = { -- George The Rat | George The Rat | jamirror
 				name = "The Stamp",
 				text = {
 					"Debuff all cards",
-					"with a seal",
-				},
+					"with a seal"
+				}
 			},
 			bl_cbean_colon_salesman = { -- George The Rat | George The Rat | jamirror
 				name = "The Salesman",
 				text = {
 					"Next shop and blind",
-					"select screen is skipped",
-				},
+					"select screen is skipped"
+				}
 			},
 			bl_cbean_colon_assassination = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "The Assassination",
 				text = {
-					"Destroy leftmost Joker",
-				},
+					"Destroy leftmost Joker"
+				}
 			},
 			bl_cbean_colon_factory = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Factory",
 				text = {
 					"When a hand is drawn permanently add",
-					"a debuffed stone card to deck",
-				},
+					"a debuffed stone card to deck"
+				}
 			},
 			bl_cbean_colon_promise = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Promise",
 				text = {
 					"If blind is defeated in 1 hand",
 					"add polychrome to a random joker",
-					"else, remove all non-Negative editions",
-				},
+					"else, remove all non-Negative editions"
+				}
 			},
 			bl_cbean_colon_seed = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Seed",
 				text = {
 					"+X0.05 Base for every",
-					"card scored this round", -- I changed ante to round if changed change code
-				},
+					"card scored this round" -- I changed ante to round if changed change code
+				}
 			},
 			bl_cbean_colon_pipeline = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "The Pipeline",
 				text = {
 					"All jokers give 1.2X mult but...", -- what a jd nightmare, actually take from baseball card
-					"X0.1 mult less than the last",
-				},
+					"X0.1 mult less than the last"
+				}
 			},
 			bl_cbean_colon_button = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "The Button",
 				text = {
-					"+5 hands",
-				},
+					"+5 hands"
+				}
 			},
 			bl_cbean_colon_hole = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "The Hole",
 				text = {
-					"...",
-				},
+					"..."
+				}
 			},
 			bl_cbean_colon_curse = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Curse",
 				text = {
 					"Next 3 fought blinds have",
-					"X0.5 additional Base",
-				},
+					"X0.5 additional Base"
+				}
 			},
 			bl_cbean_colon_pot = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Pot",
 				text = {
 					"Played cards with 2 or more",
-					"modifications lose all when scored",
-				},
+					"modifications lose all when scored"
+				}
 			},
 			bl_cbean_colon_compass = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Compass",
 				text = {
 					"{X:purple}+X1{} base when",
-					"a hand is played",
-				},
+					"a hand is played"
+				}
 			},
 			bl_cbean_colon_island = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Island",
 				text = {
-					"All but 1 Joker is debuffed",
-				},
+					"All but 1 Joker is debuffed"
+				}
 			},
 			bl_cbean_sdown_folly = { -- Athebyne | TBA | Athebyne
 				name = "The Folly",
 				text = {
 					"If score exceeds requirements,",
 					"permanently add excess score",
-					"to all future blind requirements",
-				},
+					"to all future blind requirements"
+				}
 			},
 			bl_cbean_sdown_outgrowth = { -- Athebyne | TBA | TBA
 				name = "The Outcrop",
 				text = {
 					"Must play exactly 1 unscoring card",
-					"{C:inactive}(Splash-like effects still count as unscoring)",
-				},
+					"(Splash-like effects still count as unscoring)"
+				}
 			},
 			bl_cbean_sdown_rebellion = { -- Athebyne | TBA | TBA
 				name = "The Rebellion",
 				text = {
 					"Cards held in hand subtract",
-					"their chip value from Chips",
-				},
+					"their chip value from Chips"
+				}
 			},
 			bl_cbean_sdown_regression = { -- Athebyne | TBA | TBA
 				name = "The Regression",
 				text = {
 					"Played #1#s become #2#s and",
-					"played #3# become #4#",
-				},
+					"played #3# become #4#"
+				}
 			},
 			bl_cbean_sdown_sinker = { -- Athebyne | TBA | TBA
 				name = "The Sinker",
 				text = {
 					"Shuffle all joker cards",
 					"then disable the Leftmost Joker",
-					"Jokers can not be reordered",
-				},
+					"Jokers can not be reordered"
+				}
 			},
 			bl_cbean_lower_colon_alpha = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Alpha",
 				text = {
 					"Lucky cards' probabilities",
-					"are tripled",
-				},
+					"are tripled"
+				}
 			},
 			bl_cbean_upper_colon_alpha = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Alpha",
 				text = {
 					"Played lucky cards are guaranteed",
 					"to successfully trigger at least one",
-					"of their probability effects when scored",
-				},
+					"of their probability effects when scored"
+				}
 			},
 			bl_cbean_lower_colon_beta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Beta",
 				text = {
-					"Scale all Jokers",
-				},
+					"Scale all Jokers"
+				}
 			},
 			bl_cbean_upper_colon_beta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Beta",
 				text = {
 					"Scale all Jokers when",
-					"hand is played",
+					"hand is played"
 				},
 			},
 			bl_cbean_lower_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Gamma",
 				text = {
 					"Retrigger all played",
-					"cards 2 times",
-				},
+					"cards 2 times"
+				}
 			},
 			bl_cbean_upper_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Gamma",
 				text = {
 					"Retrigger all played",
 					"and held in hand",
-					"cards 3 times",
-				},
+					"cards 3 times"
+				}
 			},
 			bl_cbean_lower_colon_delta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Delta",
 				text = {
 					"Retrigger all on",
-					"discard effects",
-				},
+					"discard effects"
+				}
 			},
 			bl_cbean_upper_colon_delta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Delta",
 				text = {
 					"Retrigger all",
-					"discarded cards",
+					"discarded cards"
 				},
 			},
 			bl_cbean_lower_colon_epsilon = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Epsilon",
 				text = {
 					"All discarded cards",
-					"are destroyed",
-				},
+					"are destroyed"
+				}
 			},
 			bl_cbean_upper_colon_epsilon = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Epsilon",
 				text = {
 					"Duplicate all played cards",
 					"and add them to your hand",
-					"on first hand of round",
-				},
+					"on first hand of round"
+				}
 			},
 			bl_cbean_lower_colon_zeta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Zeta",
 				text = {
-					"Played Glass cards",
+					"Played Glass Cards",
 					"permanently gain X0.25 Mult",
-					"when scored",
+					"when scored"
 				},
 			},
 			bl_cbean_upper_colon_zeta = { -- Glitchkat10 | George The Rat | N/A
 				name = "Zeta",
 				text = {
-					"Played Glass cards permanently",
+					"Played Glass Cards permanently",
 					"gain +1 denominator to their",
 					"probability effects when scored",
-				},
+				}
 			},
 			bl_cbean_lower_colon_eta = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Eta",
@@ -254,7 +254,7 @@ return {
 					"Apply a random Enhancement,",
 					"Edition, or Seal to played",
 					"face cards when scored",
-				},
+				}
 			},
 			bl_cbean_upper_colon_eta = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Eta",
@@ -262,7 +262,7 @@ return {
 					"Apply a random Enhancement,",
 					"Edition, and Seal to played",
 					"face cards when scored",
-				},
+				}
 			},
 			bl_cbean_lower_colon_theta = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Theta",
@@ -270,7 +270,7 @@ return {
 					"Earn $10 per X1",
 					"Blind requirement",
 					"scored at end of round",
-				},
+				}
 			},
 			bl_cbean_upper_colon_theta = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Theta",
@@ -278,7 +278,7 @@ return {
 					"-1 Ante per X10",
 					"Blind requirement",
 					"scored at end of round",
-				},
+				}
 			},
 			bl_cbean_lower_colon_iota = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Iota",
@@ -286,7 +286,7 @@ return {
 					"Redeem 1 random Voucher,",
 					"create 1 random Joker, and",
 					"create 1 random consumable",
-				},
+				}
 			},
 			bl_cbean_upper_colon_iota = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Iota",
@@ -295,28 +295,28 @@ return {
 					"create 2 random Negative Jokers,",
 					"and create 2 random Negative",
 					"consumables",
-				},
+				}
 			},
 			bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Kappa",
 				text = {
 					"Permanently gain",
 					"+1 hand size",
-				},
+				}
 			},
 			bl_cbean_upper_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Kappa",
 				text = {
 					"Permanently gain +1 hand",
 					"and +1 hand size",
-				},
+				}
 			},
 			bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Lambda",
 				text = {
 					"Redeem 2 random",
 					"Tier 1 Vouchers",
-				},
+				}
 			},
 			bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Lambda",
@@ -324,7 +324,7 @@ return {
 					"Redeem 2 random Tier 1",
 					"Vouchers and their",
 					"corresponding Tier 2s",
-				},
+				}
 			},
 			bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Mu",
@@ -332,22 +332,22 @@ return {
 					"If played hand contains 3 or more",
 					"scoring cards of the same rank,",
 					"each scoring card gains +10 Mult",
-				},
+				}
 			},
 			bl_cbean_upper_colon_mu = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Mu",
 				text = {
 					"If played hand contains 3 or more",
 					"scoring cards of the same rank,",
-					"each scoring card gains X1 Mult",
-				},
+					"each scoring card gains X1 Mult"
+				}
 			},
 			bl_cbean_lower_colon_nu = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Nu",
 				text = {
 					"If played hand contains",
 					"a Flush, each card gains",
-					"+50 Chips when scored",
+					"+50 Chips when scored"
 				},
 			},
 			bl_cbean_upper_colon_nu = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -355,29 +355,29 @@ return {
 				text = {
 					"If played hand contains",
 					"a Flush, each card gains",
-					"X0.5 Mult when scored",
-				},
+					"X0.5 Mult when scored"
+				}
 			},
 			bl_cbean_lower_colon_xi = { -- Glitchkat10 | George The Rat | N/A
 				name = "Xi",
 				text = {
 					"Upgrade level of",
-					"played poker hands",
-				},
+					"played poker hands"
+				}
 			},
 			bl_cbean_upper_colon_xi = { -- Glitchkat10 | George The Rat | N/A
 				name = "Xi",
 				text = {
 					"Upgrade level of most",
 					"played poker hand 2 times",
-					"when hand is played",
-				},
+					"when hand is played"
+				}
 			},
 			bl_cbean_lower_colon_omicron = { -- Glitchkat10 | George The Rat | N/A
 				name = "Omicron",
 				text = {
 					"Played modified cards",
-					"gain +5 Mult when scored",
+					"gain +5 Mult when scored"
 				},
 			},
 			bl_cbean_upper_colon_omicron = { -- Glitchkat10 | George The Rat | RattlingSnow353
@@ -388,7 +388,7 @@ return {
 					"played cards with an Edition gain",
 					"+10 Mult when scored, and",
 					"played cards with a Seal gain",
-					"X0.2 Mult when scored",
+					"X0.2 Mult when scored"
 				},
 			},
 			bl_cbean_lower_colon_pi = { -- Glitchkat10 | George The Rat | RattlingSnow353
@@ -442,8 +442,8 @@ return {
 			bl_cbean_lower_colon_tau = {
 				name = "Tau",
 				text = {
-					"Create 5 Tauic Negative Wheel",
-					"of Fortunes when Blind selected",
+					"Create 5 Tauic Negative",
+					"Wheel of Fortunes",
 					"(They may apply Negative)"
 				},
 			},
@@ -458,7 +458,7 @@ return {
 			bl_cbean_lower_colon_upsilon = {
 				name = "Upsilon",
 				text = {
-					"-1 Ante when Blind is selected"
+					"-1 Ante"
 				},
 			},
 			bl_cbean_upper_colon_upsilon = {
@@ -466,55 +466,49 @@ return {
 				text = {
 					"-1 Ante per 5 Teeny",
 					"Blinds selected this run",
-					"when Blind is selected"
 				},
 			},
 			bl_cbean_lower_colon_phi = {
 				name = "Phi",
 				text = {
 					"Duplicate one",
-					"random Joker when",
-					"Blind is selected"
+					"random Joker when"
 				},
 			},
 			bl_cbean_upper_colon_phi = {
 				name = "Phi",
 				text = {
 					"Duplicate 2 random",
-					"Jokers as Negative",
-					"when Blind selected"
+					"Jokers as Negative"
 				},
 			},
 			bl_cbean_lower_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
 				name = "Chi",
 				text = {
-					"When Blind is selected,",
-					"create 1 random {C:dark_edition}Negative{} {C:blue}Common{C:attention} Joker{}",
-					"and 1 random {C:dark_edition}Negative{} {C:green}Uncommon{C:attention} Joker{}",
+					"Create 1 random Negative Common Joker",
+					"and 1 random Negative Uncommon Joker"
 				},
 			},
 			bl_cbean_upper_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
 				name = "Chi",
 				text = {
-					"When Blind is selected,",
-					"create 1 random {C:dark_edition}Negative{} {C:green}Uncommon{C:attention} Joker{}",
-					"and 1 random {C:dark_edition}Negative{} {C:red}Rare{C:attention} Joker{}",
+					"Create 1 random Negative Uncommon Joker",
+					"and 1 random Negative Rare Joker"
 				},
 			},
 			bl_cbean_lower_colon_psi = {
 				name = "Psi",
 				text = {
 					"Create 5 Negative",
-					"Spectral Cards when",
-					"Blind is selected",
+					"Spectral Cards"
 				},
 			},
 			bl_cbean_upper_colon_psi = {
 				name = "Psi",
 				text = {
-					"Duplicate all held",
-					"consumables as Negative",
-					"twice when Blind is selected",
+					"Duplicate all",
+					"held consumables",
+					"as Negative twice"
 				},
 			},
 			bl_cbean_lower_colon_omega = {
