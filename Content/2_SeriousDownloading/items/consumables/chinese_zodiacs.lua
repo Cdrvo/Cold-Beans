@@ -93,7 +93,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Rat',
         text = {
-            "Turn {C:attention}3{} Selected cards into an",
+            "Turn {C:attention}3{} selected cards into an",
             "{C:attention}Ace{}, {C:attention}2{}, and a {C:attention}3{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -133,7 +133,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Ox',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}2{}, {C:attention}3{}, and a {C:attention}4{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -173,7 +173,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Tiger',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}3{}, {C:attention}4{}, and a {C:attention}5{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -213,7 +213,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Rabbit',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}4{}, {C:attention}5{}, and a {C:attention}6{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -253,7 +253,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Dragon',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}5{}, {C:attention}6{}, and a {C:attention}7{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -293,7 +293,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Snake',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}6{}, {C:attention}7{}, and an {C:attention}8{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -333,7 +333,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Horse',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}7{}, {C:attention}8{}, and a {C:attention}9{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -373,7 +373,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Goat',
         text = {
-            "Turn {C:attention}3{} Selected cards into an",
+            "Turn {C:attention}3{} selected cards into an",
             "{C:attention}8{}, {C:attention}9{}, and a {C:attention}10{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -413,7 +413,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Monkey',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}9{}, {C:attention}10{}, and a {C:attention}Jack{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -453,7 +453,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Rooster',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}10{}, {C:attention}Jack{}, and a {C:attention}Queen{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -493,7 +493,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Dog',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}Jack{}, {C:attention}Queen{}, and a {C:attention}King{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }
@@ -533,7 +533,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Pig',
         text = {
-            "Turn {C:attention}3{} Selected cards into a",
+            "Turn {C:attention}3{} selected cards into a",
             "{C:attention}Queen{}, {C:attention}King{}, and an {C:attention}Ace{}, respectively",
             "{C:inactive}(Drag to rearrange)"
         }

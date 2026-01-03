@@ -669,4 +669,3 @@ match_indent = true
 payload = '''
 edition = poll_edition('wheel_of_fortune', nil, not self.ability.cbean_colon_tauic, true)
 '''
-
