@@ -15,7 +15,7 @@ SMODS.Stake {
     },
     modifiers = function()
         for k, v in pairs(SMODS.Stickers) do
-            if v.sets and v.sets["Joker"] and string.find(v.key, "cbean") then
+            if v.sets and v.sets["Joker"] and v.beans_credits and (v.beans_credits.team == "Name Team") then
                 G.GAME.modifiers["enable_" .. k] = true
             end
         end
