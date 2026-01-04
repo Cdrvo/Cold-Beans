@@ -436,7 +436,6 @@ function SMODS.injectItems(...)
     G.P_CENTERS.j_brainstorm.immutable = true
     G.P_CENTERS.j_shoot_the_moon.immutable = true
     G.P_CENTERS.j_cartomancer.immutable = true
-    G.P_CEO_BLINDS.bl_cbean_sdown_astro.boss.min = 1
     G.P_CENTERS.j_astronomer.immutable = true
     G.P_CENTERS.j_burnt.immutable = true
     G.P_CENTERS.j_chicot.immutable = true
