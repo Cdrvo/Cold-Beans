@@ -3540,7 +3540,8 @@ return {
 					text = {
 						"{C:attention}Omega{} appears next Ante when",
 						"you have 5 {C:inactive}[#1#]{} other {C:attention}Architecture",
-						"{C:attention}Cards{} in their {C:red}base form"
+						"{C:attention}Cards{} in their {C:red}base form",
+						"{C:inactive,s:0.8}(Excluding all Stylobates)"
 					}
 				},
 				
@@ -3553,6 +3554,14 @@ return {
 						"appears next Ante"
 					}
 				},
+				c_cbean_colon_stereobate_queued = {
+					name = "Stereobate",
+					text = {
+						"A random {C:legendary,E:1}Greek Blind",
+						"will appear in #1# Antes"
+					}
+				},
+
 				c_cbean_yma_archive = {
 					name = "Archive",
 					text = {
