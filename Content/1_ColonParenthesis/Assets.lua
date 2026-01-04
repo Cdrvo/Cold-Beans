@@ -66,6 +66,11 @@ SMODS.Sound ({
 })
 
 SMODS.Sound {
+	key = "zodiac_music",
+	path = "1_ColonParenthesis/chinesefixed.ogg",
+}
+
+SMODS.Sound {
 	key = "low_greekMusic",
 	path = "1_ColonParenthesis/lowercasegreek.ogg"
 }
