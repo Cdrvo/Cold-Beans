@@ -2,7 +2,7 @@ Colonparen.CEOBlind {
     key = "sdown_astro",
     name = "The Astro",
     pos = { x = 0, y = 5 },
-    boss = { min = 1 },
+    boss = { min = 2 },
     atlas = "sdown_blinds_atlas",
     mult = 3,
     boss_colour = HEX("00E5FF"),

@@ -754,11 +754,19 @@ Colonparen.GreekBlind{
         set_blind = function (self) end,
         calculate = function(self, blind, context)
         end,
-        loc_vars = function (self)
+        loc_vars = function (self, check)
             if not G.GAME.colon_cbean_last_upper_greek then
-                return {
-                    key = self.key .. "_alternate"
-                }
+                if check and check.colon_Architecture then
+                    return {
+                        vars = {
+                            localize('k_none')
+                        }
+                    }
+                else
+                    return {
+                        key = self.key .. "_alternate"
+                    }
+                end
             else
                 return {
                     vars = {

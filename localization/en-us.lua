@@ -8,8 +8,8 @@ return {
 				name = "Urine Deck",
 				text = {
 					"All cards of a",
-					"random rank start",
-					"as Piss cards"
+					"random {C:attention}rank{} start",
+					"as {C:money}Piss{} cards",
 				}
 			},
 		},
@@ -397,6 +397,7 @@ return {
 					"First scored card's",
 					"suit is transferred",
 					"to all scored cards",
+					"(Drag to rearrange)"
 				},
 			},
 			bl_cbean_upper_colon_pi = { -- Glitchkat10 | George The Rat | RattlingSnow353
@@ -405,6 +406,7 @@ return {
 					"First scored card's",
 					"rank is transferred",
 					"to all scored cards",
+					"(Drag to rearrange)"
 				},
 			},
 			bl_cbean_lower_colon_rho = { -- Glitchkat10 | George The Rat | RattlingSnow353
@@ -539,7 +541,7 @@ return {
 			bl_cbean_colon_wee = { -- George The Rat | George The Rat | jamirror
 				name = "Wee Blind",
 				text = {
-					"Very small Blind",
+					"Very small blind",
 				},
 			},
 			bl_cbean_colon_handsy = { -- George The Rat | George The Rat | jamirror
@@ -594,7 +596,7 @@ return {
 				text = {
 					"Leftmost card in first",
 					"discard is destroyed",
-					"{C:inactive}(Drag to rearrange)",
+					"(Drag to rearrange)",
 				},
 			},
 			bl_cbean_sdown_estrogen = { --Athebyne | TBA | wingedcatgirl
@@ -1009,8 +1011,8 @@ return {
 					{
 						"Turns the {C:attention}Lowest Ranking{} card",
 						"in scoring hand into an {C:attention}Ace",
-						"{C:mult}+#1# Mult{} for every {C:attention}Rank{}",
-						"inbetween {C:attention}previous rank{}",
+						"{C:mult}+#1#{} Mult for every {C:attention}Rank{}",
+						"in between {C:attention}previous rank{}",
 						"and {C:attention}Ace{} when a card is scored",
 						"{C:inactive,s:0.8}[Counts Upward]{}"
 					},
@@ -1027,10 +1029,10 @@ return {
 				},
 				text = {
 					{
-						"{C:attention}After scoring{} all cards",
-						"For every {C:mult}#1# Mult{} of",
-						"{C:attention}scored hand{} above its {C:chips}Chips{}",
-						"{C:white,X:mult}X#2#{} {C:red}Mult{} and {C:white,X:chips}X#3#{} {C:chips}Chips{}",
+						"{C:attention}After scoring{} all cards,",
+						"for every {C:mult}#1# Mult{} of",
+						"{C:attention}scored hand{} above its {C:chips}Chips{},",
+						"{C:white,X:mult}X#2#{} Mult and {C:white,X:chips}X#3#{} Chips",
 						"Boosted by current combo",
 						"length when used"
 					},
@@ -1053,7 +1055,7 @@ return {
 					{
 						"Scored cards are",
 						"retriggered {C:attention}#1#{} time{C:inactive}(s){}",
-						"and give {C:white,X:chips}X#2#{} {C:blue}Chips",
+						"and give {C:white,X:chips}X#2#{} Chips",
 						"Boosted by current combo",
 						"length when used"
 					},
@@ -1071,7 +1073,7 @@ return {
 				text = {
 					{
 						"Scored cards either give",
-						"{C:chips}+#1# Chips{}, {C:mult}+#2# Mult{}",
+						"{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult,",
 						"or {C:money}$#3#{} to {C:money}$#4#{}"
 					},
 					{
@@ -1390,10 +1392,10 @@ return {
 			c_cbean_jbill_tarot = {
 					name = "Tarot",
 					text = {
-                    	"Enhances {C:attention}#1#{}",
-                    	"selected cards to",
-                    	"{C:attention}#2#s",
-                	},
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
 				},
 			c_cbean_jbill_planet = {
 				name = "Planet",
@@ -1405,30 +1407,31 @@ return {
 			c_cbean_jbill_spectral = {
 				name = "Spectral",
 				text = {
-					"{C:red}Destroys{} half of the Cards",
-					"{C:attention}held in hand{}",
-					"Gives random {C:attention}enhancements{}",
-					"to remaining Cards"
+					"{C:red}Destroys{} half of the",
+					"cards {C:attention}held in hand{}",
+					"Gives random {C:attention}Enhancements{}",
+					"to remaining cards"
 				},
 			},
 			c_cbean_jbill_blessing = {
 				name = "Blessing",
 				text = {
-					"{C:attention}Scored{} Cards gain {C:mult}+#1#{} Mult",
+					"{C:attention}Scored{} cards gain {C:mult}+#1#{} Mult",
 					"{C:inactive}({C:attention}#2#{} {C:inactive}triggers remaining)"
 				},
 			},
 			c_cbean_jbill_zodiac = {
 				name = "Chinese Zodiac",
 				text = {
-					"Turn {C:attention}3{} Selected cards into",
-					"the rank of {C:attention}Rightmost{} one"
+					"Turn {C:attention}3{} selected cards into",
+					"the rank of {C:attention}rightmost{} one"
 				},
 			},
 			c_cbean_jbill_combo = {
-				name = "Chinese Zodiac",
+				name = "Combo",
 				text = {
-					"Creates a {X:green,C:white}Starter{} and a {X:red,C:white}Finisher{}",
+					"Creates a {X:green,C:white}Starter{}",
+					"and a {X:red,C:white}Finisher{}",
 				},
 			},
 			c_cbean_jbill_key = { 
@@ -1729,7 +1732,7 @@ return {
 				name = "Thistled Card",
 				text = {
 					{
-					    "Cannot be {C:attention}debuffed{}"
+						"Cannot be {C:attention}debuffed{}"
 					},
 					{
 						"{C:red}Destroy{} this card to",
@@ -1746,8 +1749,8 @@ return {
 					"{C:attention}rank{} when {C:attention}scored{}"},
 					{" Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
 					"for everytime it was {C:attention}scored{}",
-				    "at end of scoring"},
-					{"{C:inactive}Currently{} {C:white,X:red}X#2#{}"}
+					"at end of scoring"},
+					{"{C:inactive}(Currently{} {C:white,X:red}X#2#{C:inactive})"}
 				},
 			},
 			m_cbean_wgrop_coarse = {
@@ -1756,7 +1759,7 @@ return {
 					"For every {C:money}$#1#{} of",
 					"{C:attention}Joker{} sell value",
 					"This gains {C:white,X:chips}X#3#{} {C:blue}Chips{}",
-					"{C:inactive}Currently{} {C:white,X:chips}X#2#{}"
+					"{C:inactive}(Currently{} {C:white,X:chips}X#2#{C:inactive})"
 				}
 			},
 			m_cbean_wgrop_graffiti = {
@@ -1767,7 +1770,7 @@ return {
 					{"{C:green}#2#{} in {C:green}#3#{} chance to",
 					"create a random {C:attention}Tag{}"},
 					{"Scoring increases {C:dark_edition}Tax{}",
-				    "by {C:dark_edition}#4#%{}",
+					"by {C:dark_edition}#4#%{}",
 					"{C:inactive,s:0.95}[Resets at end of round]{}"}
 				}
 			},
@@ -1777,9 +1780,9 @@ return {
 					{"Turn {C:attention}#1#{} {C:green}random{} card",
 					"held in hand into ",
 					"{C:attention}Stone{}, {C:attention}Glass{}, or",
-				     "{C:attention}Steel{} when scoring"},
+					"{C:attention}Steel{} when scoring"},
 					{"{C:red}Destroy{} this card",
-				     "after scoring"}
+					"after scoring"}
 				}
 			},
 			m_cbean_wgrop_ice = {
@@ -1787,15 +1790,15 @@ return {
 				text = {
 					"{C:white,X:blue}X#1#{} Chips for each",
 					"hand played this round",
-					"{C:inactive}(Currently: {X:chips,C:white}X#2#{C:inactive} Chips)"
+					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)"
 				}
 			},
 			m_cbean_wgrop_grapevine = {
 				name = "Grapevine Card",
 				text = {
 					"Gains {C:mult}+#1#{} Mult",
-				    "when held in hand",
-				    "at end of round"
+					"when held in hand",
+					"at end of round"
 				}
 			},
 			--Jbill enhance
@@ -3495,18 +3498,70 @@ return {
             },
 			c_cbean_sdown_bobtail_planet = {
 				name = "Vesta",
-        },
-
-				c_cbean_0chill_house_rules_planet = {
-					name = "Haumea",
-					text = {
-						"Upgrade every House",
-						"Rules {C:legendary,E:1}poker hand",
-						"by {C:attention}1{} level",
-					},
+        	},
+			c_cbean_0chill_house_rules_planet = {
+				name = "Haumea",
+				text = {
+					"Upgrade every House",
+					"Rules {C:legendary,E:1}poker hand",
+					"by {C:attention}1{} level",
 				},
 			},
+		},
+			colon_Architecture = {
+				c_cbean_architecture_complete = {
+					name = "#1#",
+					text = {
+						"{C:attention}#2#{} will appear next Ante"
+					}
+				},
+				c_cbean_architecture_queued = {
+					name = "#1#",
+					text = {
+						"{C:attention}#2#{} will appear in #3# Antes"
+					}
+				},
+				c_cbean_architecture_BUGBUG = {
+					name = "PANIC!!!!!!!!!!!!!!!!!!!!",
+					text = {
+						"{X:mult,C:white}You{} {X:mult,C:white}Did{} {X:mult,C:white}This{} {X:mult,C:white}Wrong!"
+					}
+				},
+				c_cbean_colon_entasis = {
+					name = "Entasis",
+					text = {
+						"{C:attention}Alpha{} appears next Ante when",
+						"at least {C:attention}one third{} of the cards",
+						"in your deck are {C:attention}Lucky"
+					}
+				},
+				c_cbean_colon_stylobate = {
+					name = "Stylobate",
+					text = {
+						"{C:attention}Omega{} appears next Ante when",
+						"you have 5 {C:inactive}[#1#]{} other {C:attention}Architecture",
+						"{C:attention}Cards{} in their {C:red}base form",
+						"{C:inactive,s:0.8}(Excluding all Stylobates)"
+					}
+				},
+				
+			},
 			Spectral = {
+				c_cbean_colon_stereobate = {
+					name = "Stereobate",
+					text = {
+						"A random {C:legendary,E:1}Greek Blind",
+						"appears next Ante"
+					}
+				},
+				c_cbean_colon_stereobate_queued = {
+					name = "Stereobate",
+					text = {
+						"A random {C:legendary,E:1}Greek Blind",
+						"will appear in #1# Antes"
+					}
+				},
+
 				c_cbean_yma_archive = {
 					name = "Archive",
 					text = {
@@ -4231,23 +4286,43 @@ return {
 			Stake = {
 				stake_cbean_nameteam = {
 					name = "NTeam Stake",
-					text = { "Ton of stickers added by Name Team" },
+					text = { 
+						"Ton of stickers added by",
+						"Name Team can spawn",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_consumable = {
 					name = "Consumed Stake",
-					text = { "Consumables can spawn with certain stickers" },
+					text = { 
+						"Consumables can spawn",
+						"with certain stickers",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_playingcardstake = {
 					name = "Spade of Stakes",
-					text = { "Playing Cards has a chance to gain stickers after played" },
+					text = { 
+						"Playing Cards have a chance to",
+						"gain stickers after being played",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_deck = {
 					name = "Painted Stake",
-					text = { "Decks has a 1/4 chance to gain a sticker after leaving the shop" },
+					text = { 
+						"Decks has a 1/4 chance to gain",
+						"a sticker after leaving the shop",
+                    	"{s:0.8}Applies all previous Stakes",
+					},
 				},
 				stake_cbean_blind = {
 					name = "Plant Stake",
-					text = { "After every boss blind, apply a random blind sticker to the deck" },
+					text = { 
+						"After every boss blind, apply a",
+						"random blind sticker to the deck",
+                    	"{s:0.8}Applies all previous Stakes", 
+					},
 				},
 			},
 			cbean_StickerSheet = {
@@ -5296,20 +5371,20 @@ return {
 				ach_cbean_highlight3 = "Highlight 3 playing cards", 
 				ach_cbean_highlight4 = "Highlight 4 playing cards",
 				ach_cbean_highlight5 = "Highlight 5 playing cards",
-            	ach_cbean_play = "Read the name, dummy", 
+				ach_cbean_play = "Read the name, dummy", 
 				ach_cbean_play1 = "Play a hand containing only 1 card", 
 				ach_cbean_play2 = "Play a hand containing only 2 cards", 
 				ach_cbean_play3 = "Play a hand containing only 3 cards",
 				ach_cbean_play4 = "Play a hand containing only 4 cards",
 				ach_cbean_play5 = "Play a hand containing 5 cards",
-            	ach_cbean_discard = "Discard a hand containing only 1 card", 
+				ach_cbean_discard = "Discard a hand containing only 1 card", 
 				ach_cbean_discard2 = "Discard a hand containing only 2 cards", 
 				ach_cbean_discard3 = "Discard a hand containing only 3 cards",
 				ach_cbean_discard4 = "Discard a hand containing only 4 cards",
 				ach_cbean_discard5 = "Discard a hand containing 5 cards",
 				ach_cbean_yorick = "Discard 23 cards in total",
 				ach_cbean_playhigh = "Play a high card",
-            	ach_cbean_playpair = "Play a pair",
+				ach_cbean_playpair = "Play a pair",
 				ach_cbean_playtwopair = "Play two pair",
 				ach_cbean_playthree = "Play three of a kind",
 				ach_cbean_playfour = "Play four of a kind",
@@ -5340,7 +5415,7 @@ return {
 				ach_cbean_nend = "Highlight 8-8-8 in that order",
 				ach_cbean_bhack = "Press B, stupid!",
 				ach_cbean_konami = "Use the Konami Code",
-             	ach_cbean_teeny_blind = "Beat a teeny blind",
+				ach_cbean_teeny_blind = "Beat a teeny blind",
 				ach_cbean_small_blind = "Beat a small blind",
 				ach_cbean_big_blind = "Beat a big blind",
 				ach_cbean_boss_blind = "Beat a boss blind",
@@ -5376,7 +5451,7 @@ return {
 				ach_cbean_dollars10 = "Have 10 dollars",
 				ach_cbean_dollars25 = "Have 25 dollars",
 				ach_cbean_dollars40 = "Have 40 dollars",
-            	ach_cbean_reroll = "Reroll shop",
+				ach_cbean_reroll = "Reroll shop",
 				ach_cbean_reroll5 = "Reroll shop 5 times",
 				ach_cbean_reroll10 = "Reroll shop 10 times",
 				ach_cbean_click = "Click on this Wonderful Elephant!",
@@ -5399,20 +5474,20 @@ return {
 				ach_cbean_highlight3 = "Highlight of The... Wednesday?",
 				ach_cbean_highlight4 = "Four of a Highlight!",
 				ach_cbean_highlight5 = "Highlight of the Week!",
-            	ach_cbean_play = "Play a Hand!",
+				ach_cbean_play = "Play a Hand!",
 				ach_cbean_play1 = "Is it High?",
 				ach_cbean_play2 = "Pair of Cards",
 				ach_cbean_play3 = "Three of Cards",
 				ach_cbean_play4 = "Four of Cards",
 				ach_cbean_play5 = "All the Cards!",
-            	ach_cbean_discard = "Trash", 
+				ach_cbean_discard = "Trash", 
 				ach_cbean_discard2 = "Waste", 
 				ach_cbean_discard3 = "Full Bin",
 				ach_cbean_discard4 = "Dump",
 				ach_cbean_discard5 = "Landfill",
 				ach_cbean_yorick = "Poor Yorick",
 				ach_cbean_playhigh = "High and Mighty?",
-            	ach_cbean_playpair = "How romantic!",
+				ach_cbean_playpair = "How romantic!",
 				ach_cbean_playtwopair = "Twice romantic!",
 				ach_cbean_playthree = "Card... X3",
 				ach_cbean_playfour = "Just the four of them",
@@ -5443,12 +5518,12 @@ return {
 				ach_cbean_nend = "The end is never the end",
 				ach_cbean_bhack = "Press B, stupid!",
 				ach_cbean_konami = "Way too much contra",
-             	ach_cbean_teeny_blind = "Baby Steps",
+				ach_cbean_teeny_blind = "Baby Steps",
 				ach_cbean_small_blind = "Small step for a Joker",
 				ach_cbean_big_blind = "A Big Blind for the Jokerkind",
 				ach_cbean_boss_blind = "From space to gamble",
 				ach_cbean_ceo_blind = "Eat the rich",
-				ach_cbean_beaten1 = "YOU'RE WINNER", --Intented
+				ach_cbean_beaten1 = "YOU'RE WINNER", -- Intended
 				ach_cbean_beaten3 = "Triple kill",
 				ach_cbean_beaten6 = "Six of a Blind",
 				ach_cbean_tenprocent = "10%",
@@ -5479,7 +5554,7 @@ return {
 				ach_cbean_dollars10 = "More money",
 				ach_cbean_dollars25 = "Money power",
 				ach_cbean_dollars40 = "Monier money",
-            	ach_cbean_reroll = "Show me more",
+				ach_cbean_reroll = "Show me more",
 				ach_cbean_reroll5 = "I said more!",
 				ach_cbean_reroll10 = "More!",
 				ach_cbean_click = "Click me!",
@@ -5564,6 +5639,15 @@ return {
 				k_cbean_yma_keypack = "Key Pack",
 				cbean_0chill_blind_weakend = "Blind Weakened!",
 				cbean_0chill_blind_strengthened = "Blind Strengthened!",
+
+				k_colon_architecture = "Architecture",
+				ph_no_colon_architecture = "No architecture in progress",
+				ph_colon_architecture_started = "Architecture in progress",
+				k_cbean_colon_started_ex = "In Progress!",
+				k_cbean_colon_completed_ex = "Constructed!",
+				k_cbean_colon_queued_ex = "Queued!",
+				b_colon_architecture_cards = "Architecture Cards",
+
 				k_yma_keys = "Keys",
 				b_yma_keys_cards = "Keys",
 				k_yma_key_plus_use = "Use",
@@ -5610,7 +5694,7 @@ return {
 			high_scores = {},
 			labels = {
 				cbean_colon_tauic = "Tauic",
-				
+
 				cbean_sdown_lunar_seal = "Lunar Seal",
 				cbean_yma_cipher_seal = "Cipher Seal",
 

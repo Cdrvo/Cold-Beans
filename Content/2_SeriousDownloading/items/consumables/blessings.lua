@@ -681,7 +681,7 @@ SMODS.Consumable {
         name = 'The Blessing of Nyx',
         text = {
             "When you get a consumable card,",
-            "add {C:dark_edition}Negative{} to it",
+            "apply {C:dark_edition}Negative{} to it",
             "{C:inactive}({C:attention}#1#{C:inactive} cards left)"
         }
     },
@@ -743,8 +743,8 @@ SMODS.Consumable {
     loc_txt = {
         name = 'The Blessing of Hera',
         text = {
-            "The next {C:attention}Booster Pack{}",
-            "you open has {C:attention}+1{} card option and choice",
+            "The next {C:attention}Booster Pack{} you",
+            "open has {C:attention}+1{} card option and choice",
             "{C:inactive}({C:attention}#1#{C:inactive} packs left)"
         }
     },

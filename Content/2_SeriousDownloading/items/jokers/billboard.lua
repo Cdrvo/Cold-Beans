@@ -16,10 +16,10 @@ SMODS.Joker {
     loc_txt = {
         name = 'Billboard',
         text = {
-            "{C:attention}+1{} Hand Size per",
+            "{C:attention}+1{} hand size per",
             "{C:attention}10{} cards above {C:attention}#1#{}",
             "in your full deck",
-            "{C:inactive}(Currently {C:attention}+#2#{C:inactive} Hand Size)"
+            "{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size)"
         }
     },
     calculate = function(self, card, context)
