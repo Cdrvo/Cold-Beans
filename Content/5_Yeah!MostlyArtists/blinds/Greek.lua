@@ -117,8 +117,6 @@ Colonparen.GreekBlind{
     boss_colour = HEX("76de6c"),
     pos = { x = 0, y = 7 },
     lower = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             --I changed it to per 1x instead of per 0.1X (since 0.1x is guaranteed $100 minimum) - RattlingSnow353
             if context.end_of_round and not context.blueprint and context.main_eval then
@@ -138,8 +136,6 @@ Colonparen.GreekBlind{
         end
     },
     upper = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.end_of_round and not context.blueprint and context.main_eval then
                 local val = get_blind_amount(G.GAME.round_resets.ante)*10*G.GAME.starting_params.ante_scaling
@@ -204,8 +200,6 @@ Colonparen.GreekBlind{
                     end)
                 }))
             end
-        end,
-        calculate = function(self, blind, context)
         end
     },
     upper = {
@@ -235,8 +229,6 @@ Colonparen.GreekBlind{
                     end)
                 }))
             end
-        end,
-        calculate = function(self, blind, context)
         end
     },
     beans_credits = {
@@ -280,8 +272,6 @@ Colonparen.GreekBlind{
     boss_colour = HEX("6cdec6"),
     pos = { x = 0, y = 11 },
     lower = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
                 local same_ranks = {}
@@ -304,8 +294,6 @@ Colonparen.GreekBlind{
         end,
     },
     upper = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
                 local same_ranks = {}
@@ -351,7 +339,7 @@ Colonparen.GreekBlind{
                     card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
                 end
             end
-        end,
+        end
     },
     upper = {
         calculate = function(self, blind, context)
@@ -376,7 +364,7 @@ Colonparen.GreekBlind{
                     card_eval_status_text(context.other_card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
                 end
             end
-        end,
+        end
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
@@ -453,7 +441,7 @@ Colonparen.GreekBlind{
                     end
                 }
             end
-        end,
+        end
     },
     upper = {
         calculate = function(self, blind, context)
@@ -516,7 +504,7 @@ Colonparen.GreekBlind{
                     end
                 }
             end
-        end,
+        end
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
@@ -550,7 +538,7 @@ Colonparen.GreekBlind{
                     end
                 end
             end
-        end,
+        end
     },
     upper = {
         set_blind = function(self, card, from_blind)
@@ -565,7 +553,7 @@ Colonparen.GreekBlind{
             update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(most_played_hand, 'poker_hands'),chips = G.GAME.hands[most_played_hand].chips, mult = G.GAME.hands[most_played_hand].mult, level=G.GAME.hands[most_played_hand].level})
             level_up_hand(nil, most_played_hand, nil, val)
             update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
-        end,
+        end
     },
     beans_credits = {
         team = ":( / Yeah! Mostly Artists",
