@@ -669,3 +669,44 @@ match_indent = true
 payload = '''
 edition = poll_edition('wheel_of_fortune', nil, not self.ability.cbean_colon_tauic, true)
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = "G.GAME.stake > 1 and {"
+position = 'before'
+match_indent = true
+payload = '''
+{
+    label = localize('k_colon_architecture'),
+    tab_definition_function = G.UIDEF.cbean_colon_started_arch,
+},
+'''
+
+
+# Arch cardarea
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+match_indent = true
+position = 'before'
+pattern = 'self.deck = CardArea('
+payload = '''self.cbean_colon_arch = CardArea(
+    G.discard.T.x, G.discard.T.y,
+    G.discard.T.w, G.discard.T.h,
+    { type = "discard", card_limit = 1e308 }
+)
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = "elseif card.ability.consumeable then"
+position = 'before'
+match_indent = true
+payload = '''elseif card.ability.colon_Architecture then
+    delay(0.1)
+    draw_card(G.hand, G.play, 1, 'up', true, card, nil, true) 
+    G.GAME.round_scores.cards_purchased.amt = G.GAME.round_scores.cards_purchased.amt + 1
+    e.config.ref_table:start_arch()
+'''

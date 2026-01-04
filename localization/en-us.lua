@@ -3498,18 +3498,61 @@ return {
             },
 			c_cbean_sdown_bobtail_planet = {
 				name = "Vesta",
-        },
-
-				c_cbean_0chill_house_rules_planet = {
-					name = "Haumea",
-					text = {
-						"Upgrade every House",
-						"Rules {C:legendary,E:1}poker hand",
-						"by {C:attention}1{} level",
-					},
+        	},
+			c_cbean_0chill_house_rules_planet = {
+				name = "Haumea",
+				text = {
+					"Upgrade every House",
+					"Rules {C:legendary,E:1}poker hand",
+					"by {C:attention}1{} level",
 				},
 			},
+		},
+			colon_Architecture = {
+				c_cbean_architecture_complete = {
+					name = "#1#",
+					text = {
+						"{C:attention}#2#{} will appear next Ante"
+					}
+				},
+				c_cbean_architecture_queued = {
+					name = "#1#",
+					text = {
+						"{C:attention}#2#{} will appear in #3# Antes"
+					}
+				},
+				c_cbean_architecture_BUGBUG = {
+					name = "PANIC!!!!!!!!!!!!!!!!!!!!",
+					text = {
+						"{X:mult,C:white}You{} {X:mult,C:white}Did{} {X:mult,C:white}This{} {X:mult,C:white}Wrong!"
+					}
+				},
+				c_cbean_colon_entasis = {
+					name = "Entasis",
+					text = {
+						"{C:attention}Alpha{} appears next Ante when",
+						"at least {C:attention}one third{} of the cards",
+						"in your deck are {C:attention}Lucky"
+					}
+				},
+				c_cbean_colon_stylobate = {
+					name = "Stylobate",
+					text = {
+						"{C:attention}Omega{} appears next Ante when",
+						"you have 5 {C:inactive}[#1#]{} other {C:attention}Architecture",
+						"{C:attention}Cards{} in their {C:red}base form"
+					}
+				},
+				
+			},
 			Spectral = {
+				c_cbean_colon_stereobate = {
+					name = "Stereobate",
+					text = {
+						"A random {C:legendary,E:1}Greek Blind",
+						"appears next Ante"
+					}
+				},
 				c_cbean_yma_archive = {
 					name = "Archive",
 					text = {
@@ -5587,6 +5630,15 @@ return {
 				k_cbean_yma_keypack = "Key Pack",
 				cbean_0chill_blind_weakend = "Blind Weakened!",
 				cbean_0chill_blind_strengthened = "Blind Strengthened!",
+
+				k_colon_architecture = "Architecture",
+				ph_no_colon_architecture = "No architecture in progress",
+				ph_colon_architecture_started = "Architecture in progress",
+				k_cbean_colon_started_ex = "In Progress!",
+				k_cbean_colon_completed_ex = "Constructed!",
+				k_cbean_colon_queued_ex = "Queued!",
+				b_colon_architecture_cards = "Architecture Cards",
+
 				k_yma_keys = "Keys",
 				b_yma_keys_cards = "Keys",
 				k_yma_key_plus_use = "Use",

@@ -89,12 +89,19 @@ SMODS.Font {
 
 -- object types because fuck you again again
 
+SMODS.Atlas({
+	key = "colon_Architecture",
+	path = "1_ColonParenthesis/Architecture.png",
+	px = 71,
+	py = 95,
+})
+
 --commented out by Athebyne of team SeriousDownloading so it doesn't show up in the collection
---[[ SMODS.ConsumableType({
-    key = "Blessing",
-    primary_colour = { 0.765, 0.565, 0.341, 1 },
-    secondary_colour = { 0.574, 0.424, 0.256, 1 },
+SMODS.ConsumableType({
+    key = "colon_Architecture",
+    primary_colour = HEX('a6b48b'),
+    secondary_colour = HEX('e8dfc4'),
     collection_rows = { 5, 5 },
     shop_rate = 0,
-    default = "c_cbean_colon_taa_marbuta"
-}) ]]--
+    default = "c_cbean_colon_stylobate"
+})
