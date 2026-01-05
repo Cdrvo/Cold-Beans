@@ -3,6 +3,7 @@ SMODS.Booster {
     weight = 0.3,
     kind = 'colon_Architecture',
     cost = 4,
+    atlas = "colon_Boosters",
     pos = { x = 0, y = 0 },
     config = { extra = 2, choose = 1 },
     group_key = "k_colon_architecture_pack", 
@@ -29,6 +30,7 @@ SMODS.Booster {
 SMODS.Booster {
     key = "colon_architecture_normal_2",
     weight = 0.3,
+    atlas = "colon_Boosters",
     kind = 'colon_Architecture', -- You can also use Spectral if you want it to belong to the vanilla kind
     cost = 4,
     pos = { x = 1, y = 0 },
@@ -57,6 +59,7 @@ SMODS.Booster {
 SMODS.Booster {
     key = "colon_architecture_jumbo_1",
     weight = 0.3,
+    atlas = "colon_Boosters",
     kind = 'colon_Architecture', -- You can also use Spectral if you want it to belong to the vanilla kind
     cost = 6,
     pos = { x = 2, y = 0 },
@@ -86,6 +89,7 @@ SMODS.Booster {
     weight = 0.07,
     kind = 'colon_Architecture', -- You can also use Spectral if you want it to belong to the vanilla kind
     cost = 8,
+    atlas = "colon_Boosters",
     pos = { x = 3, y = 0 },
     config = { extra = 4, choose = 2 },
     group_key = "k_colon_architecture_pack", 

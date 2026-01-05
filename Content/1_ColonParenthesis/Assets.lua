@@ -43,6 +43,20 @@ SMODS.Atlas({
 	frames = 21,
 })
 
+SMODS.Atlas({
+	key = "colon_Architecture",
+	path = "1_ColonParenthesis/Architecture.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
+	key = "colon_Boosters",
+	path = "1_ColonParenthesis/Boosters.png",
+	px = 71,
+	py = 95,
+})
+
 -- Sounds also yes this is same file fuck you
 
 SMODS.Sound ({
@@ -93,13 +107,6 @@ SMODS.Font {
 }
 
 -- object types because fuck you again again
-
-SMODS.Atlas({
-	key = "colon_Architecture",
-	path = "1_ColonParenthesis/Architecture.png",
-	px = 71,
-	py = 95,
-})
 
 SMODS.ConsumableType({
     key = "colon_Architecture",
