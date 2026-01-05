@@ -101,12 +101,11 @@ SMODS.Atlas({
 	py = 95,
 })
 
---commented out by Athebyne of team SeriousDownloading so it doesn't show up in the collection
 SMODS.ConsumableType({
     key = "colon_Architecture",
     primary_colour = HEX('a6b48b'),
     secondary_colour = HEX('e8dfc4'),
-    collection_rows = { 5, 5 },
+    collection_rows = { 4, 4 },
     shop_rate = 0,
     default = "c_cbean_colon_stylobate"
 })

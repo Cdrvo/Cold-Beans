@@ -9,12 +9,15 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.discards } }
     end,
+    pools = {
+        Food = true
+    },
     calculate = function(self, card, context)
         if context.setting_blind then
 		    ease_discard(card.ability.extra.discards)
 	    end
         if G.GAME.current_round.hands_played and G.GAME.current_round.hands_played > card.ability.extra.hands then
-            card:start_dissolve()
+            SMODS.destroy_cards(card)
         end
     end,
     beans_credits = {

@@ -195,7 +195,7 @@ Colonparen.GreekBlind{
         end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
-                if SMODS.has_enhancement(context.other_card, "m_glass") then
+                if card.config.center.key == "m_glass" then
                     context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
                     context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + 0.5
                 end
@@ -207,8 +207,8 @@ Colonparen.GreekBlind{
         end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
-                if SMODS.has_enhancement(context.other_card, "m_glass") then
-                    card.ability.extra = card.ability.extra + 1
+                if card.config.center.key == "m_glass" then
+                    context.other_card.ability.extra = context.other_card.ability.extra + 1
                 end
             end
         end

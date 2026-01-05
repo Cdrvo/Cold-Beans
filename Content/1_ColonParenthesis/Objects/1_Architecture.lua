@@ -1,7 +1,9 @@
 function Colonparen.Architecture(config)
     config = config or {}
     config.set = config.set or "colon_Architecture"
-    config.config = config.config or {}
+    if not config.config then
+        config.config = {}
+    end
     config.config.colon_Architecture = true
     config.config.colonparen_state = 0;
     if not config.atlas then
@@ -17,12 +19,12 @@ function Colonparen.Architecture(config)
         local ret = old_loc_vars(self, info_queue, card) or {}
         local greek = Colonparen.GreekBlinds[self.greek_blind]
         if not greek then return ret end;
-        if card.ability.colonparen_state == 2 then
+        if (card.ability.colonparen_state == 2) and (not card:in_collection()) then
             G.GAME.cbean_colonparen_queue = G.GAME.cbean_colonparen_queue or {}
             local name = localize{type = 'name_text', key = self.key, set = self.set}
             local greekname = localize{type = 'name_text', key = greek.lowercase.key, set = 'Blind', vars = {}}
             if G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue] == card.ability.colonparen_archid then
-                return {
+                ret = {
                     key = "c_cbean_architecture_complete",
                     vars = {
                         name,
@@ -30,10 +32,11 @@ function Colonparen.Architecture(config)
                     }
                 }
             else
+                local any_done = false;
                 for i, ID in ipairs(G.GAME.cbean_colonparen_queue) do
                     if ID == card.ability.colonparen_archid then
                         local amount_away = #G.GAME.cbean_colonparen_queue - i + 1;
-                        return {
+                        ret = {
                             key = "c_cbean_architecture_queued",
                             vars = {
                                 name,
@@ -41,11 +44,19 @@ function Colonparen.Architecture(config)
                                 number_format(amount_away)
                             }
                         }
+                        any_done = true
+                        break
                     end
                 end
-                return {
-                    key = "c_cbean_architecture_BUGBUG"
-                }
+                if not any_done then
+                    ret = {
+                        key = "c_cbean_architecture_complete",
+                        vars = {
+                            name,
+                            greekname
+                        }
+                    }
+                end
             end
         end
 
@@ -134,9 +145,23 @@ function Colonparen.Architecture(config)
         return true
     end
     if not config.spawn then
-        config.spawn = function (self)
+        config.spawn = function (self, card)
             Colonparen.spawnGreekBlind(card.config.center.greek_blind)
         end
+    end
+    local old_set_ability = config.set_ability or function () end
+    config.set_ability = function(self, card, initial, delay_sprites)
+        if self.config.colon_Architecture then
+            local eval = self:evaluate_completion(card) or {}
+            if eval.colonparen_complete then
+                card.ability.colonparen_state = 2;
+            elseif eval.colonparen_in_progress then
+                card.ability.colonparen_state = 1;
+            elseif eval.colonparen_base then
+                card.ability.colonparen_state = 0;
+            end
+        end
+        old_set_ability(self, card, initial, delay_sprites)
     end
     SMODS.Consumable(config)
 end
@@ -159,7 +184,11 @@ Card.set_sprites = function (self, ...)
 end
 
 ColdBeans.OnCalculate(function (mod, context)
-    if context.ante_change and context.ante_end then
+    if context.playing_card_added or context.remove_playing_cards then
+        SMODS.calculate_context{
+            cbean_colonparen_modify_deck = true
+        }
+    elseif context.ante_change and context.ante_end then
         G.GAME.cbean_colonparen_queue = G.GAME.cbean_colonparen_queue or {}
         if #G.GAME.cbean_colonparen_queue > 0 then
             local ID = G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue];
@@ -192,10 +221,22 @@ function Card:start_arch()
         G.GAME.cbean_colon_started_arch[self.config.center_key] = true
         local top_dynatext = nil
         local bot_dynatext = nil
+
+        local eval = center:evaluate_completion(self) or {}
+        if eval.colonparen_complete then
+            self.ability.colonparen_state = 2;
+        elseif eval.colonparen_in_progress then
+            self.ability.colonparen_state = 1;
+        elseif eval.colonparen_base then
+            self.ability.colonparen_state = 0;
+        end
+        self:set_sprites(center)
+
+        SMODS.trigger_effects({eval, post}, card_to_save)
         
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                 local redeem_text = localize('k_cbean_colon_started_ex');
-                if center.immediate_complete then
+                if self.ability.colonparen_state == 2 then
                     redeem_text = localize('k_cbean_colon_completed_ex')
                 end
                 top_dynatext = DynaText({string = localize{type = 'name_text', set = self.config.center.set, key = self.config.center.key}, colours = {G.C.WHITE}, rotate = 1,shadow = true, bump = true,float=true, scale = 0.9, pop_in = 0.6/G.SPEEDFACTOR, pop_in_rate = 1.5*G.SPEEDFACTOR})
@@ -222,7 +263,7 @@ function Card:start_arch()
         end
 
         local card_to_save = copy_card(self)
-        if center.immediate_complete then
+        if self.ability.colonparen_state == 2 then
             card_to_save.ability.colonparen_state = 2;
             G.GAME.cbean_colonparen_queue = G.GAME.cbean_colonparen_queue or {};
             local lastid = 0;
@@ -239,6 +280,10 @@ function Card:start_arch()
         SMODS.calculate_context{
             cbean_colonparen_gain_arch = true
         }
+
+        local eval, post = eval_card(card_to_save, {buying_card = true, buying_self = true, card = card_to_save}) -- buying_card left for back compat, buying_self recommended to use
+        SMODS.trigger_effects({eval, post}, card_to_save)
+
 
         SMODS.enh_cache:clear()
 
@@ -426,11 +471,6 @@ local old_calc = Card.calculate_joker
 function Card:calculate_joker(...)
     if self.ability and (
         (self.ability.colonparen_state == 2)
-        or (
-            self.ability 
-            and self.ability.colon_Architecture
-            and (self.area ~= G.cbean_colon_arch)
-        )
     ) then
         return -- no more calculate for you...
     end
@@ -441,44 +481,63 @@ SMODS.other_calculation_keys[#SMODS.other_calculation_keys+1] = 'colonparen_in_p
 SMODS.other_calculation_keys[#SMODS.other_calculation_keys+1] = 'colonparen_base'
 local calculate_individual_effect = SMODS.calculate_individual_effect;
 SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
-    if scored_card.area == G.cbean_colon_arch then
+    local old_scored = scored_card;
+    if scored_card or effect.colonparen_card then
+        scored_card = effect.colonparen_card or scored_card;
+        local center = scored_card.config.center;
+        
         if (key == 'colonparen_complete') and (scored_card.ability and scored_card.ability.colon_Architecture) then
-            G.E_MANAGER:add_event(Event({trigger = 'immediate', func = function()
-                local center = scored_card.config.center;
-                scored_card.ability.colonparen_state = 2;
-                for i = 1, #G.cbean_colon_arch.cards do 
-                    if G.cbean_colon_arch.cards[i] == scored_card then
-                        table.remove(G.cbean_colon_arch.cards, i)
-                        G.cbean_colon_arch.cards[#G.cbean_colon_arch.cards+1] = scored_card
-                        break
+            if scored_card.area == G.cbean_colon_arch then
+                G.E_MANAGER:add_event(Event({trigger = 'immediate', func = function()
+                    scored_card.ability.colonparen_state = 2;
+                    for i = 1, #G.cbean_colon_arch.cards do 
+                        if G.cbean_colon_arch.cards[i] == scored_card then
+                            table.remove(G.cbean_colon_arch.cards, i)
+                            G.cbean_colon_arch.cards[#G.cbean_colon_arch.cards+1] = scored_card
+                            break
+                        end
                     end
-                end
-                scored_card:set_sprites(center)
-                delay(0.1)
-                draw_card(G.hand, G.play, 1, 'up', true, card, nil, true) 
-                G.GAME.round_scores.cards_purchased.amt = G.GAME.round_scores.cards_purchased.amt + 1
-                scored_card:complete_arch()
-                G.GAME.cbean_colonparen_queue = G.GAME.cbean_colonparen_queue or {}
-                local lastid = 0;
-                if G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue] then
-                    lastid = G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue]
-                end
-                G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue+1] = lastid + 1;
-                scored_card.ability.colonparen_archid = lastid + 1;
-                return true
-            end}))
+                    scored_card:set_sprites(center)
+                    delay(0.1)
+                    scored_card:complete_arch()
+                    G.GAME.cbean_colonparen_queue = G.GAME.cbean_colonparen_queue or {}
+                    local lastid = 0;
+                    if G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue] then
+                        lastid = G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue]
+                    end
+                    G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue+1] = lastid + 1;
+                    scored_card.ability.colonparen_archid = lastid + 1;
+                    return true
+                end}))
+            else
+                scored_card.ability.colonparen_state = 2;
+                scored_card:set_sprites()
+            end
         elseif key == 'colonparen_in_progress' then
             scored_card.ability.colonparen_state = 1;
-            scored_card:set_sprites(center)
+            scored_card:set_sprites()
         elseif key == 'colonparen_base' then
             scored_card.ability.colonparen_state = 0;
-            scored_card:set_sprites(center)
+            scored_card:set_sprites()
         end
     end
-	return calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+
+    return calculate_individual_effect(effect, old_scored, key, amount, from_edition)
 end
 
 local old_moveable_move = Moveable.move;
 function Moveable:move(...)
     return old_moveable_move(self, ...)
+end
+
+local set_ability = Card.set_ability;
+function Card:set_ability(...)
+    set_ability(self, ...)
+    if not G.CONTROLLER.locks.load then
+        if self.playing_card then
+            SMODS.calculate_context{
+                cbean_colonparen_modify_deck = true
+            }
+        end
+    end
 end

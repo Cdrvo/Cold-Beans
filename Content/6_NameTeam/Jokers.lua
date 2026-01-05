@@ -896,6 +896,9 @@ SMODS.Joker {
         { xrange = { first = 7, last = 11 }, y = 2, t = 0.1 },
         { xrange = { first = 0, last = 2 },  y = 3, t = 0.1 }
     },
+    pools = {
+        Food = true
+    },
     pos_extra = { x = 3, y = 3 },
     cbean_anim_extra = {
         { x = 3, y = 3, t = 0.075 },

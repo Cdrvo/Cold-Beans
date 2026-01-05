@@ -3527,12 +3527,13 @@ return {
 						"{X:mult,C:white}You{} {X:mult,C:white}Did{} {X:mult,C:white}This{} {X:mult,C:white}Wrong!"
 					}
 				},
+				
 				c_cbean_colon_entasis = {
 					name = "Entasis",
 					text = {
 						"{C:attention}Alpha{} appears next Ante when",
-						"at least {C:attention}one third{} of the cards",
-						"in your deck are {C:attention}Lucky"
+						"at least {C:attention}33%{} {C:inactive}[#1#%]{} of the cards",
+						"in your full deck are {C:attention}Lucky"
 					}
 				},
 				c_cbean_colon_stylobate = {
@@ -3544,7 +3545,188 @@ return {
 						"{C:inactive,s:0.8}(Excluding all Stylobates)"
 					}
 				},
-				
+				c_cbean_colon_raking = {
+					name = "Raking",
+					text = {
+						"{C:attention}Beta{} appears next Ante when",
+						"a {C:attention}Food Joker{} is {C:red}destroyed"
+					}
+				},
+				c_cbean_colon_abacus = {
+					name = "Abacus",
+					text = {
+						"{C:attention}Gamma{} appears next Ante when",
+						"{C:attention}20{} {C:inactive}[#1#]{} {C:red}unscoring cards{} are played"
+					}
+				},
+				c_cbean_colon_flute = {
+					name = "Flute",
+					text = {
+						"{C:attention}Delta{} appears next Ante",
+						"when {C:attention}5{} {C:inactive}[#1#]{} or more {C:red}discards",
+						"are used in {C:attention}one round"
+					}
+				},
+				c_cbean_colon_necking = {
+					name = "Necking",
+					text = {
+						"{C:attention}Epsilon{} appears next Ante",
+						"when you win within {C:attention}5%{} of",
+						"the {C:red}Blind requirement"
+					}
+				},
+				c_cbean_colon_volute = {
+					name = "Volute",
+					text = {
+						"{C:attention}Zeta{} appears next Ante when {C:attention}5 Glass",
+						"{C:attention}cards{} are all {C:red}discarded{} at the same time"
+					}
+				},
+				c_cbean_colon_acanthus_leaf = {
+					name = "Acanthus Leaf",
+					text = {
+						"{C:attention}Eta{} appears next Ante when",
+						"{C:attention}4{} {C:inactive}[#1#]{} {C:attention}#2#s{} have been {C:red}destroyed"
+					}
+				},
+				c_cbean_colon_cornice = {
+					name = "Cornice",
+					text = {
+						"{C:attention}Theta{} appears next Ante when",
+						"a {C:attention}winning hand{} is {C:red}discarded"
+					}
+				},
+				c_cbean_colon_frieze = {
+					name = "Frieze",
+					text = {
+						"{C:attention}Iota{} appears next Ante when",
+						"{C:attention}50{} {C:inactive}[#1#]{} items are {C:attention}purchased"
+					}
+				},
+				c_cbean_colon_fillet = {
+					name = "Fillet",
+					text = {
+						"{C:attention}Kappa{} appears next Ante when",
+						"the {C:red}final hand{} of round is",
+						"used {C:attention}3{} {C:inactive}[#1#]{} rounds in a row"
+					}
+				},
+				c_cbean_colon_boss = {
+					name = "Boss",
+					text = {
+						"{C:attention}Lambda{} appears next Ante",
+						"when {C:red}#1#{} is redeemed"
+					}
+				},
+				c_cbean_colon_triglyph = {
+					name = "Triglyph",
+					text = {
+						"{C:attention}Mu{} appears next Ante when",
+						"you {C:red}discard{} {C:attention}#1# 10{} {C:inactive}[#2#]{} times"
+					}
+				},
+				c_cbean_colon_metope = {
+					name = "Metope",
+					text = {
+						"{C:attention}Nu{} appears next Ante when you",
+						"play a {C:attention}Flush{} of {V:1}#1#{} {C:attention}3{} {C:inactive}[#2#]{} times"
+					}
+				},
+				c_cbean_colon_shaft = {
+					name = "Shaft",
+					text = {
+						"{C:attention}Xi{} appears next Ante when",
+						"your {C:attention}greatest leveled",
+						"poker hand is {C:red}#1#"
+					}
+				},
+				c_cbean_colon_rosette = {
+					name = "Rosette",
+					text = {
+						"{C:attention}Omicron{} appears next Ante",
+						"when your deck does not",
+						"change for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
+					}
+				},
+				c_cbean_colon_drum = {
+					name = "Drum",
+					text = {
+						"{C:attention}Pi{} appears next Ante when {C:attention}1 Flush House{} {C:inactive}[#1#]{},",
+						"{C:attention}Five of a Kind{} {C:inactive}[#2#]{}, and {C:attention}Flush Five{} {C:inactive}[#3#]",
+						"each has been {C:red}discarded"
+					}
+				},
+				c_cbean_colon_architrave = {
+					name = "Architrave",
+					text = {
+						"{C:attention}Rho{} appears next Ante when",
+						"{C:attention}#1#{} is not played {C:attention}10{} {C:inactive}[#2#]{} times"
+					}
+				},
+				c_cbean_colon_echinus = {
+					name = "Echinus",
+					text = {
+						"{C:attention}Sigma{} appears next Ante when",
+						"your deck contains {C:attention}at least one",
+						"card of {C:attention}every vanilla Enhancement",
+						"{C:inactive,s:0.8}(You need #1#)"
+					}
+				},
+				c_cbean_colon_echinus_nil = {
+					name = "Echinus",
+					text = {
+						"{C:attention}Sigma{} appears next Ante when",
+						"your deck contains {C:attention}at least one",
+						"card of {C:attention}every vanilla Enhancement"
+					}
+				},
+				c_cbean_colon_echinus_multiple = {
+					name = "Echinus",
+					text = {
+						"{C:attention}Sigma{} appears next Ante when",
+						"your deck contains {C:attention}at least one",
+						"card of {C:attention}every vanilla Enhancement",
+						"{C:inactive,s:0.6}(You need #1# and #2#)"
+					}
+				},
+				c_cbean_colon_molding = {
+					name = "Molding",
+					text = {
+						"{C:attention}Tau{} appears next Ante when",
+						"The Wheel of Fortune {C:tarot}Nopes!",
+						"{C:attention}8{} {C:inactive}[#1#]{} times in a row"
+					}
+				},
+				c_cbean_colon_pediment = {
+					name = "Pediment",
+					text = {
+						"{C:attention}Upsilon{} appears next Ante when all",
+						"possible Blinds are {C:red}skipped for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
+					}
+				},
+				c_cbean_colon_base = {
+					name = "Base",
+					text = {
+						"{C:attention}Phi{} appears next Ante when at",
+						"least {C:attention}5{} of the same Joker are",
+						"owned {C:red}simultaneously"
+					}
+				},
+				c_cbean_colon_dentil = {
+					name = "Dentil",
+					text = {
+						"{C:attention}Chi appears next Ante when",
+						"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#],",
+						"{C:green}Uncommon{} {C:inactive}[#2#]{} and {C:red}Rare{} {C:inactive}[#3#]{} Jokers"
+					}
+				},
+				c_cbean_colon_captial = {
+					name = "Captial",
+					text = {
+						"{C:attention}Psi{} appears next Ante when",
+						"{C:attention}5{} {C:inactive}[#1#]{} {C:spectral}Spectral{} Packs are {C:red}skipped"
+					}
+				},
 			},
 			Spectral = {
 				c_cbean_colon_stereobate = {
