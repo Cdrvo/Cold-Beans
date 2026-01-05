@@ -725,7 +725,7 @@ Colonparen.Architecture {
                 newtable[#newtable+1] = { k, v }
             end
             table.sort(newtable, function (a, b) return a[2] > b[2] end)
-            print(newtable)
+            --print(newtable)
 
             card.ability.extra.rank = newtable[1][1]
         end
@@ -748,7 +748,7 @@ Colonparen.Architecture {
             newtable[#newtable+1] = { k, v }
         end
         table.sort(newtable, function (a, b) return a[2] > b[2] end)
-        print(newtable)
+        --print(newtable)
 
         local maximum = newtable[1][2];
         for i = 2, #newtable do
@@ -843,7 +843,7 @@ Colonparen.Architecture {
                 newtable[#newtable+1] = { k, v }
             end
             table.sort(newtable, function (a, b) return a[2] < b[2] end)
-            print(newtable)
+            --print(newtable)
 
             card.ability.extra.suit = newtable[1][1]
         end
