@@ -3593,7 +3593,7 @@ return {
 					name = "Cornice",
 					text = {
 						"{C:attention}Theta{} appears next Ante when",
-						"a {C:attention}winning hand{} is {C:red}discarded"
+						"a hand thats {C:attention}on fire{} is {C:red}discarded"
 					}
 				},
 				c_cbean_colon_frieze = {
@@ -5758,6 +5758,13 @@ return {
 			},
 			collabs = {},
 			dictionary = {
+				cbean_colon_random_face = "(Random face card)",
+				cbean_colon_random_achievable_tier2 = "(Random T2 in pool)",
+				cbean_colon_most_rank_in_deck = "(Most common rank in deck)",
+				cbean_colon_least_suit_in_deck = "(Least common suit in deck)",
+				cbean_colon_least_leveled = "(Least leveled poker hand)",
+				cbean_colon_most_played = "(Most played poker hand)",
+
 				sheet_most_held = "(Most held rank)",
 				sheet_most_played = "(Most played rank)",
 				regression_most_rank = "(Most common rank)",

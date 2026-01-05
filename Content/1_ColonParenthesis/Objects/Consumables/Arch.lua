@@ -423,10 +423,16 @@ Colonparen.Architecture {
         end
     end,
     loc_vars = function (self, info_queue, card)
+        local rank_text;
+        if card:in_collection() then
+            rank_text = localize('cbean_colon_random_face')
+        else
+            rank_text = localize((card.ability.extra.rank or "King"), 'ranks')
+        end
         return {
             vars = {
                 card.ability.extra.amount,
-                localize((card.ability.extra.rank or "King"), 'ranks')
+                rank_text
             }
         }
     end,
@@ -611,12 +617,18 @@ Colonparen.Architecture {
     },
     loc_vars = function (self, info_queue, card)
         local voucher = (card.ability.extra or 'v_illusion');
-        if card.ability.colonparen_state ~= 2 then
-            info_queue[#info_queue+1] = G.P_CENTERS[voucher]
+        local voucher_name;
+        if not card:in_collection() then
+            if card.ability.colonparen_state ~= 2 then
+                info_queue[#info_queue+1] = G.P_CENTERS[voucher]
+            end
+            voucher_name = localize{type = 'name_text', key = voucher, set = 'Voucher'}
+        else
+            voucher_name = localize('cbean_colon_random_achievable_tier2')
         end
         return {
             vars = {
-                localize{type = 'name_text', key = voucher, set = 'Voucher'}
+                voucher_name
             }
         }
     end,
@@ -684,9 +696,15 @@ Colonparen.Architecture {
         },
     },
     loc_vars = function (self, info_queue, card)
+        local rank_text;
+        if not card:in_collection() then
+            rank_text = localize(card.ability.extra.rank or '2', 'ranks')
+        else
+            rank_text = localize('cbean_colon_most_rank_in_deck')
+        end
         return {
             vars = {
-                localize(card.ability.extra.rank or '2', 'ranks'),
+                rank_text,
                 card.ability.extra.count
             }
         }
@@ -790,12 +808,21 @@ Colonparen.Architecture {
         },
     },
     loc_vars = function (self, info_queue, card)
+        local suit_text;
+        local colour;
+        if not card:in_collection() then
+            suit_text = localize(card.ability.extra.suit or 'Hearts', 'suits_plural')
+            colour = G.C.SUITS[card.ability.extra.suit or 'Hearts'];
+        else
+            suit_text = localize('cbean_colon_least_suit_in_deck')
+            colour = G.C.FILTER;
+        end
         return {
             vars = {
-                localize(card.ability.extra.suit or 'Hearts', 'suits_plural'),
+                suit_text,
                 card.ability.extra.count,
                 colours = {
-                    G.C.SUITS[card.ability.extra.suit or 'Hearts'], -- colour text formatted with {V:1}
+                    colour, -- colour text formatted with {V:1}
                 },
             }
         }
@@ -898,9 +925,15 @@ Colonparen.Architecture {
         extra = nil,
     },
     loc_vars = function (self, info_queue, card)
+        local hand_text;
+        if not card:in_collection() then
+            hand_text = localize(card.ability.extra or 'High Card', 'poker_hands')
+        else
+            hand_text = localize('cbean_colon_least_leveled')
+        end
         return {
             vars = {
-                localize(card.ability.extra or 'High Card', 'poker_hands'),
+                hand_text,
             }
         }
     end,
@@ -1130,9 +1163,15 @@ Colonparen.Architecture {
         },
     },
     loc_vars = function (self, info_queue, card)
+        local hand_text;
+        if not card:in_collection() then
+            hand_text = localize(card.ability.extra.hand or 'High Card', 'poker_hands')
+        else
+            hand_text = localize('cbean_colon_most_played')
+        end
         return {
             vars = {
-                localize(card.ability.extra.hand or 'High Card', 'poker_hands'),
+                hand_text,
                 card.ability.extra.count
             }
         }
