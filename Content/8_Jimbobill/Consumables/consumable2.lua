@@ -360,16 +360,7 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.4,
             func = function()
-                for key, state in pairs(G.GAME.round_resets.blind_states) do
-                    if (state == 'Select') or (state == 'Current') then
-                        if G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and (G.GAME.blind.config.blind.key == (G.GAME.round_resets.blind_choices[key])) then
-                            Colonparen.changeBlind(nextlist[key], pseudorandom_element(G.P_TEENY_BLINDS, pseudoseed("colon_arch")).key)
-                        else
-                            Colonparen.changeBlind(key, pseudorandom_element(G.P_TEENY_BLINDS, pseudoseed("colon_arch")).key)
-                        end
-                        return true
-                    end
-                end
+                Colonparen.set_upcoming_blind(pseudorandom_element(G.P_TEENY_BLINDS, pseudoseed("colon_arch")).key);
                 return true
             end
         }))
