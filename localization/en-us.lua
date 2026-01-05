@@ -1401,7 +1401,7 @@ return {
 					name = "Architecture",
 					text = {
 						"The next {C:attention}Blind{} this Ante",
-						"becomes a {C:attention}Teeny Blind",
+						"becomes a random {C:attention}Teeny Blind",
 						"{C:inactive,s:0.8}(May only be used one time per Ante)",
 					},
 				},
