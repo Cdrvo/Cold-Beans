@@ -2812,6 +2812,14 @@ return {
 					"learn what it does",
 				},
             },
+            undiscovered_colon_Architecture = {
+                name = "Not Discovered",
+                text = {
+                    "Find in an",
+                    "unseeded run to",
+					"learn what it does",
+				},
+            },
             undiscovered_yma_keys = {
 				name = "Unknown Key Card",
                 text = {
@@ -2832,6 +2840,30 @@ return {
                 text = {
                     "Count as a {C:attention}Piss{}",
 					"{C:attention}releated{} Joker",
+				},
+            },
+            p_cbean_colon_architecture_normal = {
+                name = "Construction Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
+					"be used immediately",
+				},
+            },
+            p_cbean_colon_architecture_jumbo = {
+                name = "Jumbo Construction Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
+					"be used immediately",
+				},
+            },
+            p_cbean_colon_architecture_mega = {
+                name = "Mega Construction Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
+					"be used immediately",
 				},
             },
             --Zodiacs
@@ -5758,6 +5790,8 @@ return {
 			},
 			collabs = {},
 			dictionary = {
+				k_colon_architecture_pack = "Architecture Pack",
+				
 				cbean_colon_random_face = "(Random face card)",
 				cbean_colon_random_achievable_tier2 = "(Random T2 in pool)",
 				cbean_colon_most_rank_in_deck = "(Most common rank in deck)",

@@ -219,6 +219,11 @@ function Card:start_arch()
 
         self.states.hover.can = false
         G.GAME.cbean_colon_started_arch[self.config.center_key] = true
+        G.GAME.cbean_colon_banned_arch = G.GAME.cbean_colon_banned_arch or {}
+        G.GAME.cbean_colon_banned_arch[#G.GAME.cbean_colon_banned_arch+1] = true
+        while (#G.GAME.cbean_colon_banned_arch > 15) do
+            table.remove(G.GAME.cbean_colon_banned_arch, 0)
+        end
         local top_dynatext = nil
         local bot_dynatext = nil
 
