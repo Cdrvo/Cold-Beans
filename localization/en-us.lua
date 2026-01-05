@@ -474,7 +474,7 @@ return {
 				name = "Phi",
 				text = {
 					"Duplicate one",
-					"random Joker when"
+					"random Joker"
 				},
 			},
 			bl_cbean_upper_colon_phi = {
@@ -4710,7 +4710,15 @@ return {
 					},
 				},
 			},
-			Tag = {},
+			Tag = {
+				tag_cbean_colon_construction = {
+					name = 'Construction Tag',
+					text = {
+						"Gives a free",
+						"{C:attention}Mega Construction Pack"
+					}
+				}
+			},
 			Tarot = {
 				c_cbean_pboys_river = {
 					name = "The River",
