@@ -576,7 +576,13 @@ Colonparen.GREEK_ORDER = {bl_cbean_lower_colon_alpha = 0, bl_cbean_upper_colon_a
 
 local old_collection_pool = SMODS.collection_pool
 function SMODS.collection_pool(item, ...)
-	if item == G.P_BLINDS then
+	if item == G.P_CENTER_POOLS.colon_Architecture then
+		table.sort(item, function (a, b) 
+			a = Colonparen.GREEK_ORDER[((Colonparen.GreekBlinds[a.greek_blind] or {}).lowercase or {}).key] or 0;
+			b = Colonparen.GREEK_ORDER[((Colonparen.GreekBlinds[b.greek_blind] or {}).lowercase or {}).key] or 0;
+			return a < b
+		end)
+	elseif item == G.P_BLINDS then
 		local typevalue = {
 			Teeny = 1,
 			Small = 2,
