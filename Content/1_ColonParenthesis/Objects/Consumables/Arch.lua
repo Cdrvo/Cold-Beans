@@ -1,3 +1,11 @@
+
+-- uh how does this work again
+SMODS.UndiscoveredSprite {
+    key = 'colon_Architecture',
+    atlas = "colon_Architecture",
+    pos = { x = 0, y = 0 },
+}
+
 Colonparen.Architecture {
     key = 'colon_stereobate',
     done_pos = { x = 2, y = 0 },

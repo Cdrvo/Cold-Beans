@@ -2812,10 +2812,10 @@ return {
 					"learn what it does",
 				},
             },
-            undiscovered_colon_Architecture = {
+            undiscovered_colon_architecture = {
                 name = "Not Discovered",
                 text = {
-                    "Find in an",
+                    "Obtain this card in an",
                     "unseeded run to",
 					"learn what it does",
 				},
