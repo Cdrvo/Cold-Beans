@@ -3560,8 +3560,8 @@ return {
 					}
 				},
 				
-				c_cbean_colon_entasis = {
-					name = "Entasis",
+				c_cbean_colon_corinthian_capital = {
+					name = "Corinthian Capital",
 					text = {
 						"{C:attention}Alpha{} appears next Ante when",
 						"at least {C:attention}33%{} {C:inactive}[#1#%]{} of the cards",
@@ -3752,8 +3752,8 @@ return {
 						"{C:green}Uncommon{} {C:inactive}[#2#]{} and {C:red}Rare{} {C:inactive}[#3#]{} Jokers"
 					}
 				},
-				c_cbean_colon_captial = {
-					name = "Captial",
+				c_cbean_colon_ionic_captial = {
+					name = "Ionic Capital",
 					text = {
 						"{C:attention}Psi{} appears next Ante when",
 						"{C:attention}5{} {C:inactive}[#1#]{} {C:spectral}Spectral{} Packs are {C:red}skipped"

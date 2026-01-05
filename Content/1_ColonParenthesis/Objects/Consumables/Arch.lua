@@ -98,7 +98,7 @@ Colonparen.Architecture {
 
 
 Colonparen.Architecture {
-    key = 'colon_entasis',
+    key = 'colon_corinthian_capital',
     base_pos = { x = 0, y = 0 },
     progress_pos = { x = 1, y = 0 },
     done_pos = { x = 2, y = 0 },
@@ -1618,7 +1618,7 @@ Colonparen.Architecture {
 
 
 Colonparen.Architecture {
-    key = 'colon_captial',
+    key = 'colon_ionic_captial',
     base_pos = { x = 0, y = 0 },
     progress_pos = { x = 1, y = 0 },
     done_pos = { x = 2, y = 0 },
