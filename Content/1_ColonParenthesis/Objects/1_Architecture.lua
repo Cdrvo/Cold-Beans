@@ -338,6 +338,11 @@ function Card:functional_complete_arch()
                     }
             return true end }))
         --G.GAME.current_round.voucher = nil
+
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 3, func = function()
+            self:remove()
+            return true end }))
+            
         delay(0.6)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 2.6, func = function()
             top_dynatext:pop_out(4)
@@ -350,10 +355,6 @@ function Card:functional_complete_arch()
             self.children.bot_disp:remove()
             self.children.bot_disp = nil
         return true end }))
-
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 3, func = function()
-            self:remove()
-            return true end }))
         
     end
 end
@@ -441,7 +442,7 @@ function Card:complete_arch()
 
     if not card.from_area then card.from_area = card.area end
         delay(0.1)
-        draw_card(G.hand, G.play, 1, 'up', true, card, nil, true) 
+        draw_card(G.hand, G.colonparen_arch_anim, 1, 'up', true, card, nil, true) 
         G.GAME.round_scores.cards_purchased.amt = G.GAME.round_scores.cards_purchased.amt + 1
         card:functional_complete_arch()
         G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.2,

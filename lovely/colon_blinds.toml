@@ -706,7 +706,38 @@ position = 'before'
 match_indent = true
 payload = '''elseif card.ability.colon_Architecture then
     delay(0.1)
-    draw_card(G.hand, G.play, 1, 'up', true, card, nil, true) 
+    draw_card(G.hand, G.colonparen_arch_anim, 1, 'up', true, card, nil, true) 
     G.GAME.round_scores.cards_purchased.amt = G.GAME.round_scores.cards_purchased.amt + 1
     e.config.ref_table:start_arch()
 '''
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self.play = CardArea("
+position = "before"
+match_indent = true
+payload = '''
+    self.colonparen_arch_anim = CardArea(
+        0, 0,
+        CAI.play_W,CAI.play_H, 
+        {card_limit = 5, type = 'play', negative_info = 'playing_card'})
+'''
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.play.T.x = G.hand.T.x + (G.hand.T.w - G.play.T.w)/2"
+position = "before"
+match_indent = true
+payload = '''
+
+G.colonparen_arch_anim.T.x = G.hand.T.x + (G.hand.T.w - G.colonparen_arch_anim.T.w)/2
+G.colonparen_arch_anim.T.y = G.hand.T.y - 3.6
+
+G.colonparen_arch_anim:hard_set_VT()
+
+'''
+
