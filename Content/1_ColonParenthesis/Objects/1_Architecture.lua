@@ -189,6 +189,7 @@ ColdBeans.OnCalculate(function (mod, context)
             cbean_colonparen_modify_deck = true
         }
     elseif context.ante_change and context.ante_end then
+        G.GAME.cbean_jbill_arch_nope = false;
         G.GAME.cbean_colonparen_queue = G.GAME.cbean_colonparen_queue or {}
         if #G.GAME.cbean_colonparen_queue > 0 then
             local ID = G.GAME.cbean_colonparen_queue[#G.GAME.cbean_colonparen_queue];

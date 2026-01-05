@@ -1397,6 +1397,14 @@ return {
 						"{C:attention}#2#s",
 					},
 				},
+			c_cbean_colon_arch = {
+					name = "Architecture",
+					text = {
+						"The next {C:attention}Blind{} this Ante",
+						"becomes a {C:attention}Teeny Blind",
+						"{C:inactive,s:0.8}(May only be used one time per Ante)",
+					},
+				},
 			c_cbean_jbill_planet = {
 				name = "Planet",
 				text = {

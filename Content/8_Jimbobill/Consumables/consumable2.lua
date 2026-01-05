@@ -2,7 +2,7 @@ SMODS.ConsumableType{
     key = "Consumables2",
     primary_colour = HEX("FFD800"), 
     secondary_colour = HEX("FFD800"), 
-    collection_rows = { 5, 4 },
+    collection_rows = { 5, 5 },
     shop_rate = 0,
     loc_txt = {
         name = "Consumable^2",
@@ -337,5 +337,63 @@ SMODS.Consumable {
         code = "Evgast",
         team = "Jimbobill",
         art = "D.J."
+    }
+}
+
+
+SMODS.Consumable {
+    key = "colon_arch",
+    set = "Consumables2",
+    corresponding_set = "Tarot",
+    atlas = "jbill_consume2",
+    pos = { x = 5, y = 0 },
+    config = { },
+    use = function ()
+        local nextlist = {
+            Teeny = 'Small',
+            Small = 'Big',
+            Big = 'Boss',
+            Boss = 'CEO'
+        }
+        G.GAME.cbean_jbill_arch_nope = true;
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                for key, state in pairs(G.GAME.round_resets.blind_states) do
+                    if (state == 'Select') or (state == 'Current') then
+                        if G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and (G.GAME.blind.config.blind.key == (G.GAME.round_resets.blind_choices[key])) then
+                            Colonparen.changeBlind(nextlist[key], pseudorandom_element(G.P_TEENY_BLINDS, pseudoseed("colon_arch")).key)
+                        else
+                            Colonparen.changeBlind(key, pseudorandom_element(G.P_TEENY_BLINDS, pseudoseed("colon_arch")).key)
+                        end
+                        return true
+                    end
+                end
+                return true
+            end
+        }))
+    end,
+    can_use = function ()
+        if G.GAME.cbean_jbill_arch_nope then return false end;
+        local nextlist = {
+            Teeny = 'Small',
+            Small = 'Big',
+            Big = 'Boss',
+            Boss = 'CEO'
+        }
+        for key, state in pairs(G.GAME.round_resets.blind_states) do
+            if (state == 'Select') or (state == 'Current') then
+                if not nextlist[key] then return false end;
+                return true
+            end
+        end
+        return 
+    end,
+    beans_credits = {
+        idea = "jamirror",
+        code = "jamirror",
+        team = ":(",
+        art = "jamirror"
     }
 }
