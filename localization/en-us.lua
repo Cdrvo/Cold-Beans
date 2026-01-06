@@ -4725,7 +4725,14 @@ return {
 						"Gives a free",
 						"{C:attention}Mega Construction Pack"
 					}
-				}
+				},
+				tag_cbean_colon_ceoreroll = {
+					name = 'CEO Tag',
+					text = {
+						"Reroll the",
+						"{C:attention}CEO Blind"
+					}
+				},
 			},
 			Tarot = {
 				c_cbean_pboys_river = {

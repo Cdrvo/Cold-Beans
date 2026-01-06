@@ -57,6 +57,14 @@ SMODS.Atlas({
 	py = 95,
 })
 
+SMODS.Atlas({
+	key = "colon_Tags",
+	path = "1_ColonParenthesis/Tags.png",
+    px = 34,
+    py = 34
+})
+
+
 -- Sounds also yes this is same file fuck you
 
 SMODS.Sound ({

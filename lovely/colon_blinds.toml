@@ -331,7 +331,7 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
-pattern = '''G.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
+pattern = '''if not G.blind_select_opts then'''
 position = "after"
 payload = '''G.GAME.round_resets.blind_choices.Teeny = Colonparen.get_new_blind('Teeny')
 G.GAME.round_resets.blind_choices.Small = Colonparen.get_new_blind('Small')

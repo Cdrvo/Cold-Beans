@@ -1,17 +1,17 @@
 
 SMODS.Tag {
     key = 'colon_construction',
-    --atlas = 'sdown_tags',
-    pos = { x = 0, y = 0 },
+    atlas = 'colon_Tags',
+    pos = { x = 1, y = 0 },
     discovered = false,
     loc_vars = function(self, info_queue)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_colon_architecture_mega_1
     end,
     beans_credits = {
-        team = "SeriousDownloading",
-        idea = "Athebyne",
-        art = "Crabus",
-        code = "Athebyne",
+        team = ":(",
+        idea = "Glitchkat10",
+        art = "jamirror",
+        code = "jamirror",
     },
     apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
