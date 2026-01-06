@@ -360,7 +360,7 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.4,
             func = function()
-                Colonparen.set_upcoming_blind(pseudorandom_element(G.P_TEENY_BLINDS, pseudoseed("colon_arch")).key);
+                Colonparen.set_upcoming_blind(Colonparen.get_new_blind('Teeny'));
                 return true
             end
         }))

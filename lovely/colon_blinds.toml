@@ -10,7 +10,7 @@ pattern = '''G.blind_select = UIBox{'''
 position = "before"
 payload = '''
 local colonparen_blindselect_offset;
-if G.GAME.round_resets.blind_states['Forced'] == "Select" then
+if (G.GAME.round_resets.blind_states['Forced'] == "Select") or (G.GAME.round_resets.blind_choices.CEO == "bl_cbean_colon_magnetar") then
     colonparen_blindselect_offset = 0
 elseif G.GAME.round_resets.blind_states['Teeny'] == "Select" then
     colonparen_blindselect_offset = 5
@@ -38,7 +38,7 @@ target = "game.lua"
 pattern = '''G.blind_select.alignment.offset.x = 0'''
 position = "at"
 payload = '''
-if G.GAME.round_resets.blind_states['Forced'] == "Select" then
+if (G.GAME.round_resets.blind_states['Forced'] == "Select") or (G.GAME.round_resets.blind_choices.CEO == "bl_cbean_colon_magnetar") then
     G.blind_select.alignment.offset.x = 0
 elseif G.GAME.round_resets.blind_states['Teeny'] == "Select" then
     G.blind_select.alignment.offset.x = 5
@@ -55,7 +55,7 @@ target = "functions/button_callbacks.lua"
 pattern = '''G.blind_select.alignment.offset.x = 0'''
 position = "at"
 payload = '''
-if G.GAME.round_resets.blind_states['Forced'] == "Select" then
+if (G.GAME.round_resets.blind_states['Forced'] == "Select") or (G.GAME.round_resets.blind_choices.CEO == "bl_cbean_colon_magnetar") then
     G.blind_select.alignment.offset.x = 0
 elseif G.GAME.round_resets.blind_states['Teeny'] == "Select" then
     G.blind_select.alignment.offset.x = 5
@@ -72,7 +72,7 @@ target = "functions/button_callbacks.lua"
 pattern = '''G.GAME.round_resets.blind_states[skip_to] = 'Select''''
 position = "after"
 payload = '''
-if G.GAME.round_resets.blind_states['Forced'] == "Select" then
+if (G.GAME.round_resets.blind_states['Forced'] == "Select") or (G.GAME.round_resets.blind_choices.CEO == "bl_cbean_colon_magnetar") then
     G.blind_select.alignment.offset.x = 0
 elseif G.GAME.round_resets.blind_states['Teeny'] == "Select" then
     G.blind_select.alignment.offset.x = 5
@@ -143,6 +143,18 @@ if (G.GAME.round_resets.force_blind) or (G.GAME.round_resets.blind_choices["Forc
     }}
     G.GAME.round_resets.force_blind = nil
     return t 
+end
+if G.GAME.round_resets.blind_choices.CEO == "bl_cbean_colon_magnetar" then
+    -- devious shit incoming
+    G.GAME.round_resets.blind_states['CEO'] = "Select"
+    G.GAME.round_resets.loc_blind_states.CEO = "Select"
+    G.GAME.blind_on_deck = "CEO"
+    G.blind_select_opts.ceo = G.GAME.round_resets.blind_states['CEO'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('CEO')},false,get_blind_main_colour('CEO'), mix_colours(G.C.BLACK, get_blind_main_colour('CEO'), 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
+    return {n=G.UIT.ROOT, config = {align = 'tm',minw = width, r = 0.15, colour = G.C.CLEAR}, nodes={
+        {n=G.UIT.R, config={align = "cm", padding = 0.5}, nodes={
+            G.GAME.round_resets.blind_states['CEO'] ~= 'Hide' and {n=G.UIT.O, config={align = "cm", object = G.blind_select_opts.ceo}} or nil,
+        }}
+    }}
 end
 G.blind_select_opts.teeny = G.GAME.round_resets.blind_states['Teeny'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Teeny')},false,get_blind_main_colour('Teeny'))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
 G.blind_select_opts.ceo = G.GAME.round_resets.blind_states['CEO'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('CEO')},false,get_blind_main_colour('CEO'), mix_colours(G.C.BLACK, get_blind_main_colour('CEO'), 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
@@ -740,4 +752,3 @@ G.colonparen_arch_anim.T.y = G.hand.T.y - 3.6
 G.colonparen_arch_anim:hard_set_VT()
 
 '''
-

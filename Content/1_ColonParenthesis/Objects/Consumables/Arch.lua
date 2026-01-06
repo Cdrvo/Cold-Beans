@@ -1534,7 +1534,7 @@ Colonparen.Architecture {
 
 
 Colonparen.Architecture {
-    key = 'colon_dentil',
+    key = 'colon_entablazure',
     base_pos = { x = 0, y = 0 },
     progress_pos = { x = 1, y = 0 },
     done_pos = { x = 2, y = 0 },

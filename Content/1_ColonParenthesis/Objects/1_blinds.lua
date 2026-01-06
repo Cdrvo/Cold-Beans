@@ -62,11 +62,11 @@ function reset_blinds()
 			CEO = {},
 			Forced = {}
 		}
-		G.GAME.round_resets.blind_choices.Boss = Colonparen.get_new_blind('Boss')
-		G.GAME.round_resets.blind_choices.Teeny = Colonparen.get_new_blind('Teeny')
-		G.GAME.round_resets.blind_choices.Small = Colonparen.get_new_blind('Small')
-		G.GAME.round_resets.blind_choices.Big = Colonparen.get_new_blind('Big')
-		G.GAME.round_resets.blind_choices.CEO = Colonparen.get_new_blind('CEO')
+		G.GAME.round_resets.blind_choices.Boss = Colonparen.get_new_blind('Boss', true)
+		G.GAME.round_resets.blind_choices.Teeny = Colonparen.get_new_blind('Teeny', true)
+		G.GAME.round_resets.blind_choices.Small = Colonparen.get_new_blind('Small', true)
+		G.GAME.round_resets.blind_choices.Big = Colonparen.get_new_blind('Big', true)
+		G.GAME.round_resets.blind_choices.CEO = Colonparen.get_new_blind('CEO', true)
 
         G.GAME.round_resets.boss_rerolled = false
     elseif G.GAME.round_resets.blind_choices[G.GAME.blind_on_deck] == 'bl_cbean_colon_salesman' then
@@ -248,7 +248,10 @@ end
 
 --why did you use Type as a variable what are you doing
 local type_ = type
-function Colonparen.get_new_blind(type)
+function Colonparen.get_new_blind(type, startofante)
+	if type == "CEO" then
+		return "bl_cbean_colon_magnetar"
+	end
 	--Okay, this seems super redundant but I can't seem to work out how to get the modifier to already prescribe blinds?
 	if G.GAME.modifiers.cbean_sdown_all_blinds_are then
 		return G.GAME.modifiers.cbean_sdown_all_blinds_are
@@ -278,7 +281,7 @@ function Colonparen.get_new_blind(type)
 							(
 								((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
 								(v.boss.showdown or false)
-							) and v:in_pool()
+							) and v:in_pool(startofante)
 						then
 							eligible_bosses[k] = res and true or nil
 						end

@@ -14,6 +14,27 @@ return {
 			},
 		},
 		Blind = {
+			bl_cbean_colon_eclipse = {
+				name = "Entrepreneur of the Eclipse",
+				text = {
+					"Three quarters of your",
+					"deck are unable to be drawn"
+				}
+			},
+			bl_cbean_colon_magnetar = {
+				name = "Monopolist of the Magnetar",
+				text = {
+					"Only Blind this Ante"
+				}
+			},
+			bl_cbean_colon_izar = {
+				name = "Investor of the Izar",
+				text = {
+					"Gains X0.1 Base for",
+					"each time played hand",
+					"has been played this run"
+				}
+			},
 			bl_cbean_colon_treasure = { -- George The Rat | George The Rat | N/A
 				name = "The Treasure",
 				text = {
@@ -3752,8 +3773,8 @@ return {
 						"owned {C:red}simultaneously"
 					}
 				},
-				c_cbean_colon_dentil = {
-					name = "Dentil",
+				c_cbean_colon_entablazure = {
+					name = "Entablazure",
 					text = {
 						"{C:attention}Chi appears next Ante when",
 						"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#],",

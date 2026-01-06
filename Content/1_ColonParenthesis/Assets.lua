@@ -44,6 +44,15 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "colon_CEshOwdown",
+	atlas_table = "ANIMATION_ATLAS",
+	path = "1_ColonParenthesis/CEOShowdown.png",
+	px = 34,
+	py = 34,
+	frames = 21,
+})
+
+SMODS.Atlas({
 	key = "colon_Architecture",
 	path = "1_ColonParenthesis/Architecture.png",
 	px = 71,
