@@ -35,6 +35,20 @@ return {
 					"has been played this run"
 				}
 			},
+			bl_cbean_colon_corona = {
+				name = "Capitalist of the Corona",
+				text = {
+					"Debuff all Jokers when Blind selected",
+					"Undebuff 1 Joker after a hand is played"
+				}
+			},
+			bl_cbean_colon_satellite = {
+				name = "Speculator of the Satellite",
+				text = {
+					"#1# in #2# chance to decrease Base",
+					"by X1 when hand or discard is used"
+				}
+			},
 			bl_cbean_colon_treasure = { -- George The Rat | George The Rat | N/A
 				name = "The Treasure",
 				text = {

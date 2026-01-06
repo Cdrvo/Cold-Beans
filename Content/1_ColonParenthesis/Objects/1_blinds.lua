@@ -249,9 +249,6 @@ end
 --why did you use Type as a variable what are you doing
 local type_ = type
 function Colonparen.get_new_blind(type, startofante)
-	if type == "CEO" then
-		return "bl_cbean_colon_magnetar"
-	end
 	--Okay, this seems super redundant but I can't seem to work out how to get the modifier to already prescribe blinds?
 	if G.GAME.modifiers.cbean_sdown_all_blinds_are then
 		return G.GAME.modifiers.cbean_sdown_all_blinds_are
@@ -593,13 +590,16 @@ function SMODS.collection_pool(item, ...)
 			Boss = 4,
 			Showdown = 5,
 			CEO = 6,
-			Greek = 7
+			CEOShowdown = 7,
+			Greek = 8
 		}
 		local function get_typevalue(blind)
 			if blind.key == 'bl_small' then
 				return typevalue.Small
 			elseif blind.key == "bl_big" then
 				return typevalue.Big
+			elseif (blind.colonparen_blindtype == "CEO") and blind.boss.showdown then
+				return typevalue.CEOShowdown
 			elseif typevalue[blind.colonparen_blindtype] then
 				return typevalue[blind.colonparen_blindtype]
 			elseif blind.boss and blind.boss.showdown then
@@ -617,6 +617,7 @@ function SMODS.collection_pool(item, ...)
 		end
 		local tabl = old_collection_pool(stuff, ...)
 		local categories = {
+			{},
 			{},
 			{},
 			{},

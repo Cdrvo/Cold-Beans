@@ -316,6 +316,8 @@ SMODS.injectItems = function()
     injectitems_ref()
     BLIND_MASTER = {}
     BIOME_BLINDS = {}
+    
+    if not G.P_CENTER_POOLS['default'] then G.P_CENTER_POOLS['default'] = {} end
 
     for k, v in pairs(G['P_BIOME_POOLS']) do
         for _, w in pairs(v) do table.insert(BIOME_BLINDS, w) end
