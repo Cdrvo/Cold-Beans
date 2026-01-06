@@ -615,6 +615,7 @@ function SMODS.collection_pool(item, ...)
 		for i, blind in pairs(item) do
 			stuff[#stuff+1] = blind
 		end
+		
 		local tabl = old_collection_pool(stuff, ...)
 		local categories = {
 			{},
@@ -626,6 +627,7 @@ function SMODS.collection_pool(item, ...)
 			{},
 			{}
 		}
+
 		for i = 1, #tabl do
 			local val = get_typevalue(tabl[i]);
 			local list = categories[val];
