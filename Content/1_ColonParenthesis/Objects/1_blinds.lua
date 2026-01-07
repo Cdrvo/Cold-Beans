@@ -572,6 +572,30 @@ function Colonparen.callUpdateBlindVariables()
 	end
 end
 
+local old_draw = AnimatedSprite.draw_self
+function AnimatedSprite:draw_self(...)
+	if self.atlas and (self.atlas.name == "cbean_colon_CEshOwdown") then
+		G.cbean_colon_shared_WINGS.T = copy_table(self.T);
+		G.cbean_colon_shared_WINGS.VT = copy_table(self.VT);
+		local change = (48/34);
+		G.cbean_colon_shared_WINGS.T.w = G.cbean_colon_shared_WINGS.T.w * change
+		G.cbean_colon_shared_WINGS.T.h = G.cbean_colon_shared_WINGS.T.h * change
+		G.cbean_colon_shared_WINGS.VT.w = G.cbean_colon_shared_WINGS.VT.w * change
+		G.cbean_colon_shared_WINGS.VT.h = G.cbean_colon_shared_WINGS.VT.h * change
+		local offsetx = (7/48) * G.cbean_colon_shared_WINGS.T.w;
+		local offsety = (7/48) * G.cbean_colon_shared_WINGS.T.h;
+		G.cbean_colon_shared_WINGS.T.x = G.cbean_colon_shared_WINGS.T.x - offsetx
+		G.cbean_colon_shared_WINGS.T.y = G.cbean_colon_shared_WINGS.T.y - offsety
+		G.cbean_colon_shared_WINGS.VT.x = G.cbean_colon_shared_WINGS.VT.x - offsetx
+		G.cbean_colon_shared_WINGS.VT.y = G.cbean_colon_shared_WINGS.VT.y - offsety
+		print("OI M8")
+		G.cbean_colon_shared_WINGS:draw_self(...)
+	end
+	return old_draw(self, ...)
+end
+
+
+-- hardcoding stuff is fun
 Colonparen.GREEK_ORDER = {bl_cbean_lower_colon_alpha = 0, bl_cbean_upper_colon_alpha = 1, bl_cbean_lower_colon_beta = 2, bl_cbean_upper_colon_beta = 3, bl_cbean_lower_colon_gamma = 4, bl_cbean_upper_colon_gamma = 5, bl_cbean_lower_colon_delta = 6, bl_cbean_upper_colon_delta = 7, bl_cbean_lower_colon_epsilon = 8, bl_cbean_upper_colon_epsilon = 9, bl_cbean_lower_colon_zeta = 10, bl_cbean_upper_colon_zeta = 11, bl_cbean_lower_colon_eta = 12, bl_cbean_upper_colon_eta = 13, bl_cbean_lower_colon_theta = 14, bl_cbean_upper_colon_theta = 15, bl_cbean_lower_colon_iota = 16, bl_cbean_upper_colon_iota = 17, bl_cbean_lower_colon_kappa = 18, bl_cbean_upper_colon_kappa = 19, bl_cbean_lower_colon_lambda = 20, bl_cbean_upper_colon_lambda = 21, bl_cbean_lower_colon_mu = 22, bl_cbean_upper_colon_mu = 23, bl_cbean_lower_colon_nu = 24, bl_cbean_upper_colon_nu = 25, bl_cbean_lower_colon_xi = 26, bl_cbean_upper_colon_xi = 27, bl_cbean_lower_colon_omicron = 28, bl_cbean_upper_colon_omicron = 29, bl_cbean_lower_colon_pi = 30, bl_cbean_upper_colon_pi = 31, bl_cbean_lower_colon_rho = 32, bl_cbean_upper_colon_rho = 33, bl_cbean_lower_colon_sigma = 34, bl_cbean_upper_colon_sigma = 35, bl_cbean_lower_colon_tau = 36, bl_cbean_upper_colon_tau = 37, bl_cbean_lower_colon_upsilon = 38, bl_cbean_upper_colon_upsilon = 39, bl_cbean_lower_colon_phi = 40, bl_cbean_upper_colon_phi = 41, bl_cbean_lower_colon_chi = 42, bl_cbean_upper_colon_chi = 43, bl_cbean_lower_colon_psi = 44, bl_cbean_upper_colon_psi = 45, bl_cbean_lower_colon_omega = 46, bl_cbean_upper_colon_omega = 47}
 
 local old_collection_pool = SMODS.collection_pool
@@ -615,7 +639,7 @@ function SMODS.collection_pool(item, ...)
 		for i, blind in pairs(item) do
 			stuff[#stuff+1] = blind
 		end
-		
+
 		local tabl = old_collection_pool(stuff, ...)
 		local categories = {
 			{},

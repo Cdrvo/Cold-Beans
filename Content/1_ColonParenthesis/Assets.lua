@@ -74,6 +74,19 @@ SMODS.Atlas({
 })
 
 
+SMODS.Atlas({
+	key = "colon_WingsOfACEO",
+	path = "1_ColonParenthesis/WingsOfACEO.png",
+    px = 48,
+    py = 48,
+	inject = function (...)
+		local value = SMODS.Atlas.inject(...);
+		G.cbean_colon_shared_WINGS = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["cbean_colon_WingsOfACEO"], { x = 0, y = 0 })
+		return value
+	end
+})
+
+
 -- Sounds also yes this is same file fuck you
 
 SMODS.Sound ({

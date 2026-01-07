@@ -1,7 +1,3 @@
-function Colonparen.isBlind(key)
-    return G.GAME and G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and (G.GAME.blind.config.blind.key == key)
-end
-
 Colonparen.CEOBlind{
     key = "colon_eclipse",
     name = "Entrepreneur of the Eclipse",
@@ -21,7 +17,7 @@ Colonparen.CEOBlind{
 local old_update = CardArea.update;
 function CardArea:update(...)
     old_update(self, ...)
-    if (self == G.deck) and Colonparen.isBlind('bl_cbean_colon_eclipse') then
+    if (self == G.deck) and SMODS.is_active_blind('bl_cbean_colon_eclipse') then
         local new_limit = math.floor((self.config.card_limits.total_slots / 4));
         self.config.card_count = (#self.cards) - self.config.card_limits.total_slots + new_limit;
         self.config.card_limits.total_slots = new_limit;
@@ -30,7 +26,7 @@ end
 
 local old_handle_card_limit = CardArea.handle_card_limit;
 local function screw_with_cards()
-    if Colonparen.isBlind('bl_cbean_colon_eclipse') then
+    if SMODS.is_active_blind('bl_cbean_colon_eclipse') then
         local new_cards = {}
         for i = 1, math.max(0, G.deck.config.card_count) do
             new_cards[#new_cards+1] = G.deck.cards[i]
@@ -40,7 +36,7 @@ local function screw_with_cards()
     end
 end
 local function unscrew_with_cards()
-    if Colonparen.isBlind('bl_cbean_colon_eclipse') and G.deck.SCREWED_CARDS_COLONBEAN then
+    if SMODS.is_active_blind('bl_cbean_colon_eclipse') and G.deck.SCREWED_CARDS_COLONBEAN then
         G.deck.cards = G.deck.SCREWED_CARDS_COLONBEAN;
         G.deck.SCREWED_CARDS_COLONBEAN = nil;
     end
@@ -73,7 +69,7 @@ function G.FUNCS.draw_from_deck_to_hand(...)
         end
         G.deck.GASLIGHT = (G.deck.GASLIGHT or 0) + 1;
     end
-    if Colonparen.isBlind('bl_cbean_colon_eclipse') then
+    if SMODS.is_active_blind('bl_cbean_colon_eclipse') then
         if not (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
             (#G.hand.cards == 0) and (#G.deck.cards == 0) then 
             G.STATE = G.STATES.GAME_OVER; G.STATE_COMPLETE = false 
