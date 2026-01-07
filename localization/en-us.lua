@@ -2882,7 +2882,7 @@ return {
                 name = "Piss Joker",
                 text = {
                     "Count as a {C:attention}Piss{}",
-					"{C:attention}releated{} Joker",
+					"{C:attention}related{} Joker",
 				},
             },
             p_cbean_colon_architecture_normal = {
