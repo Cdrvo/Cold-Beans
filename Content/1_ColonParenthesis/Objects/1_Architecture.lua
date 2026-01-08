@@ -153,6 +153,9 @@ function Colonparen.Architecture(config)
     config.set_ability = function(self, card, initial, delay_sprites)
         if self.config.colon_Architecture then
             local eval = self:evaluate_completion(card) or {}
+            if type(eval) ~= 'table' then
+                return old_set_ability(self, card, initial, delay_sprites)
+            end
             if eval.colonparen_complete then
                 card.ability.colonparen_state = 2;
             elseif eval.colonparen_in_progress then

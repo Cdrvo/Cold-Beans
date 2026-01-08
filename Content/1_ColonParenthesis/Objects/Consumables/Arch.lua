@@ -21,7 +21,9 @@ Colonparen.Architecture {
     },
 
     evaluate_completion = function ()
-        return true
+        return {
+            colonparen_complete = true
+        }
     end,
     spawn = function (self, card)
         local greek = pseudorandom_element(Colonparen.GreekBlinds, pseudoseed("colon_stereobate"))
