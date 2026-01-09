@@ -10,7 +10,7 @@ SMODS.PokerHand{
     visible = function (self)
         local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
         local clicked
-        if G.jokers.highlighted then
+        if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
                 if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
             end
