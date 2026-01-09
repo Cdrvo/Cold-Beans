@@ -1,11 +1,3 @@
-house_rules_hands = {
-    "cbean_0chill_fibonacci",
-    "cbean_0chill_fibonacci_flush",
-    "cbean_0chill_house_rules",
-    "cbean_0chill_proceed",
-    "cbean_wgrop_thorny_boquete"
-}
-
 SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
     key = '0chill_house_rules_planet',
     set = 'Planet',
@@ -57,8 +49,11 @@ SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
         }))
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+1' })
         delay(1.3)
-        for i, hand in pairs(house_rules_hands) do
-            SMODS.smart_level_up_hand(card, hand, true)
+        for i, hand in pairs(G.GAME.hands) do
+            if v.cb_house_rules then --This flag is set on the SMODS.PokerHand
+                SMODS.smart_level_up_hand(card, hand, true)
+            end
+            
         end
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
             { mult = 0, chips = 0, handname = '', level = '' })

@@ -5,7 +5,19 @@ SMODS.PokerHand{
     l_mult = 3,
     chips = 50,
     mult = 4,
-    visible = false,
+    cb_house_rules = true,
+    visible = function (self)
+        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local clicked
+        if G.jokers.highlighted then
+            for _,v in ipairs(G.jokers.highlighted) do
+                if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
+            end
+        end
+        local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
+
+        return joker and (played or clicked)
+    end,
     example = {
         { "S_4", true },
         { "D_6", true },
@@ -28,7 +40,19 @@ SMODS.PokerHand{
     l_mult = 4,
     chips = 70,
     mult = 5,
-    visible = false,
+    cb_house_rules = true,
+    visible = function (self)
+        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local clicked
+        if G.jokers.highlighted then
+            for _,v in ipairs(G.jokers.highlighted) do
+                if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
+            end
+        end
+        local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
+
+        return joker and (played or clicked)
+    end,
     example = {
         { "S_4", true },
         { "S_6", true },

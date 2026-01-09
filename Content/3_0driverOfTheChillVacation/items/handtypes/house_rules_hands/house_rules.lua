@@ -38,7 +38,13 @@ SMODS.PokerHand{
     mult = 4,
     l_chips = 3,
     l_mult = 1,
-    visible = false,
+    cb_house_rules = true,
+    visible = function (self)
+        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
+
+        return joker or played
+    end,
     example = {
         { "D_J", true },
         { "H_4", true },
