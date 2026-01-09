@@ -1868,9 +1868,10 @@ return {
 				name = "Frozen",
 				text = {
 					"Can't be clicked",
-					"{C:chips}+#2#{} chips when held",
 					"{C:green}1 in #1#{} chance to",
-					"thaw when hand is played"
+					"thaw when hand is played,",
+					"otherwise gains {C:chips}+#2#{}",
+					"permanent chips when held"
 				},
 			}
 		},

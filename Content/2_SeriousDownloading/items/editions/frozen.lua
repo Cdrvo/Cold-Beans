@@ -15,7 +15,7 @@ SMODS.Edition{
     config = {
         extra = {
             odds = 3,
-            h_chips = 15
+            h_chips = 5
         }
     },
     loc_vars = function (self, info_queue, card)
@@ -26,16 +26,15 @@ SMODS.Edition{
             }
         }
     end,
+    on_apply = function (card)
+        card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + self.config.extra.h_chips
+    end,
     calculate = function (self, card, context)
-        if context.main_scoring and context.cardarea == G.hand then
-            return {
-                chips = self.config.extra.h_chips
-            }
-        end
-        
         if context.after then
             if SMODS.pseudorandom_probability(card, "cb_sd_frozen_thaw", 1, self.config.extra.odds) then
                 card:set_edition()
+            else
+                card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + self.config.extra.h_chips
             end
         end
     end,
