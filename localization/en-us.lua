@@ -1862,6 +1862,19 @@ return {
 				}
 			}
 		},
+
+		Edition = {
+			e_cbean_sd_frozen = {
+				name = "Frozen",
+				text = {
+					"Can't be clicked",
+					"{C:chips}+#2#{} chips when held",
+					"{C:green}1 in #1#{} chance to",
+					"thaw when hand is played"
+				},
+			}
+		},
+		
 		Joker = {
 
 			-- Common
@@ -2145,6 +2158,15 @@ return {
 						"are {C:red}debuffed{}",
 					},
 				},
+			},
+
+			j_cbean_sd_overchilled = {
+				name = "Overchilled Beans",
+				text = {
+					"When round begins, add a Frozen",
+					"Bean playing card to your hand",
+					"{C:inactive,s:0.8}Ah, shoot, they were supposed to be COOL..."
+				}
 			},
 
 			--Rare
@@ -5975,6 +5997,8 @@ return {
 			high_scores = {},
 			labels = {
 				cbean_colon_tauic = "Tauic",
+
+				cbean_sd_frozen = "Frozen",
 
 				cbean_sdown_lunar_seal = "Lunar Seal",
 				cbean_yma_cipher_seal = "Cipher Seal",
