@@ -17,6 +17,17 @@ local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*S
 '''
 match_indent = true
 
+# and freeze it because Why Not Lol
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''replace_card.ambient_tilt = 0.0'''
+position = "after"
+payload = ''' 
+replace_card:set_edition("e_cbean_sd_frozen")
+'''
+match_indent = true
+
     # colours
 [[patches]]
 [patches.pattern]
