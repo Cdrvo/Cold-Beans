@@ -36,12 +36,20 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.first_hand_drawn or context.forcetrigger then
-            SMODS.add_card{
-                set = "Playing Card",
-                enhancement = "m_cbean_jbill_bean",
-                edition = "e_cbean_sd_frozen",
-                area = G.hand
-            }
+            G.E_MANAGER:add_event(Event{
+                func = function ()
+                    play_sound("cbean_sd_iceshock")
+                    SMODS.add_card{
+                        set = "Playing Card",
+                        enhancement = "m_cbean_jbill_bean",
+                        edition = "e_cbean_sd_frozen",
+                        area = G.hand
+                    }
+                    return true
+                end,
+                trigger = "before",
+                delay = 1.25
+            })
         end
     end,
     beans_credits = {
