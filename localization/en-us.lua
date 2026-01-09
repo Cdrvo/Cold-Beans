@@ -6051,6 +6051,28 @@ return {
 				},
 
 				--House Rules Hands
+				["cbean_sdown_sacrifice"] = {
+					"A hand that contains five cards that have not been played before",
+					"Must have {C:attention}House Rules{} and {C:attention}Obelisk{} to play",
+				},
+
+				["cbean_sdown_8r8k"] = {
+					"A hand that contains at least two 8s, with at least one of them being Lucky",
+					"Must have {C:attention}House Rules{} and {C:attention}8 Ball{} to play",
+				},
+
+				--how would a normal description even work what would you call this.
+				--"5 cards with no two having consecutive ranks. with consecutive ranks" how do you even describe it
+				["cbean_sdown_pansexual"] = {
+					"A hand that somehow contains both a Straight and a Gay",
+					"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
+				},
+
+				["cbean_sdown_pansexual_flush"] = {
+					"A hand that somehow contains a Straight a Gay and a Flush",
+					"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
+				},
+
 				["cbean_0chill_fibonacci"] = {
 					"A hand that contains an 8, 5, 3, 2, and an Ace",
 					"Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play",
@@ -6095,13 +6117,17 @@ return {
 				["cbean_sdown_bobtail"] = "Bobtail", -- Athebyne | N/A | Athebyne
 
 				--House Rules Hands
+				["cbean_sdown_sacrifice"] = "HR Sacrifice",
+				["cbean_sdown_8r8k"] = "HR Lucky 8r8k",
+				["cbean_sdown_pansexual"] = "HR Pansexual",
+				["cbean_sdown_pansexual_flush"] = "HR Pansexual Flush",
 				["cbean_0chill_fibonacci"] = "HR Fibonacci",
 				["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
 				["cbean_0chill_house_rules"] = "HR House Rules",
 				["cbean_0chill_proceed"] = "HR PROCEED",
 				["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
 				["cbean_0chill_jackpot"] = "HR Jackpot!",
-				["cbean_wgrop_thorny_boquete"] = "HR Thorny Boquete",
+				["cbean_wgrop_thorny_boquete"] = "HR Thorny Bouquet",
 			},
 			quips = {
 				cbean_pboys_hi_1 = {

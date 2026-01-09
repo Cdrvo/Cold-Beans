@@ -32,10 +32,15 @@ function SMODS.is_poker_hand_visible(handname)
                 and (G.jokers.highlighted[1].config.center.key == 'j_cbean_0chill_house_rules')
                 and
                 (
+                    handname == 'cbean_sdown_sacrifice' or
+                    handname == 'cbean_sdown_pansexual' or
+                    handname == 'cbean_sdown_pansexual_flush' or
+                    handname == 'cbean_sdown_8r8k' or
                     handname == 'cbean_0chill_fibonacci' or 
                     handname == 'cbean_0chill_fibonacci_flush' or
                     handname == 'cbean_0chill_deer_in_headlights' or
                     handname == 'cbean_0chill_proceed' or
+                    handname == 'cbean_0chill_jackpot' or
                     handname == 'cbean_wgrop_thorny_boquete'
                 ))
                 
@@ -53,11 +58,18 @@ function SMODS.is_poker_hand_visible(handname)
     if  
         ((#SMODS.find_card('j_cbean_0chill_house_rules') < 1) and
         (
+            handname == 'cbean_sdown_sacrifice' or
+            handname == 'cbean_sdown_pansexual' or
+            handname == 'cbean_sdown_pansexual_flush' or
+            handname == 'cbean_sdown_8r8k' or
             handname == 'cbean_0chill_fibonacci' or 
             handname == 'cbean_0chill_fibonacci_flush' or
             handname == 'cbean_0chill_proceed' or
             handname == 'cbean_0chill_deer_in_headlights' or
-            handname == 'cbean_0chill_house_rules'
+            handname == 'cbean_0chill_house_rules' or
+            handname == 'cbean_0chill_jackpot' or
+            handname == 'cbean_wgrop_thorny_boquete'
+
         )) 
     then 
         return false
