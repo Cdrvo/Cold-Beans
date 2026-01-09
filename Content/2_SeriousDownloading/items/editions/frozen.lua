@@ -27,7 +27,7 @@ SMODS.Edition{
         }
     end,
     on_apply = function (card)
-        card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + self.config.extra.h_chips
+        card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + 5
     end,
     calculate = function (self, card, context)
         if context.after then
