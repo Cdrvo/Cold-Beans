@@ -16,7 +16,11 @@ ColdBeans.OnCalculate = function (cb)
 end
 
 SMODS.current_mod.optional_features = {
-  retrigger_joker = true
+  retrigger_joker = true,
+  cardareas = {
+	deck = true,
+	discard = true
+  }
 }
 
 local function GetJokers()
