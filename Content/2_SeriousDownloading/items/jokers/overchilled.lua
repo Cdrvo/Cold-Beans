@@ -3,7 +3,7 @@ SMODS.Joker {
     name = "Overchilled Beans",
     atlas = 'sdown_joker_atlas',
     pos = {
-        x = 2,
+        x = 3,
         y = 0
     },
     rarity = 2,
