@@ -58,7 +58,7 @@ SMODS.Joker {
             end
         end
     end,
-    cost = 6,
+    cost = 7,
     rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
