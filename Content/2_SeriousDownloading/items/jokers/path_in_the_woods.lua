@@ -18,7 +18,7 @@ SMODS.Joker {
         }
     },
     calculate = function(self, card, context)
-        if context.scoring_hand and #context.scoring_hand > 0 then
+        if context.before and context.scoring_hand and #context.scoring_hand > 0 then
             local all_enhancements = get_current_pool("Enhanced")
             local valid_enhancements = {}
             -- Loop through the original list of all enhancements
@@ -28,17 +28,37 @@ SMODS.Joker {
                 end
             end
             for k, v in ipairs(context.scoring_hand) do
-                if v:get_id() == 12 and not v.debuff and v.config.center == G.P_CENTERS.c_base then
+                if v:get_id() == 12 and not v.debuff then
                     if SMODS.pseudorandom_probability(card, 'path_in_the_woods', 1, card.ability.extra.odds) then
+                        G.E_MANAGER:add_event(Event{
+                            func = function()
+                                v:set_edition(SMODS.poll_edition({guaranteed = true, no_negative = true, key = "path_in_the_woods"}))
+                                return true
+                            end
+                        })
                         --random edition
                     else
+                        G.E_MANAGER:add_event(Event{
+                            func = function()
+                                v:set_ability(G.P_CENTERS[pseudorandom_element(valid_enhancements,'path_in_the_woods')])
+                                return true
+                            end
+                        })
                         --random enhancement
                     end
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            if v and not v.removed then
+                                v:juice_up()
+                            end
+                            return true
+                        end
+                    }))
                 end
             end
         end
     end,
-    cost = 6,
+    cost = 7,
     rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
