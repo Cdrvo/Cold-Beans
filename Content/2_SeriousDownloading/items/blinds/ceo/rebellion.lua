@@ -15,12 +15,12 @@ Colonparen.CEOBlind {
                         playing_card:juice_up()
                         SMODS.calculate_effect({message = '-'..playing_card:get_chip_bonus(),colour = G.C.CHIPS }, playing_card)
                         hand_chips = mod_chips(hand_chips - playing_card:get_chip_bonus())
-                        --i am losing my mind why is update_hand_text like this
-                        if hand_chips < 0 then
+                        --no longer need to do this because of latest smods
+                        --[[if hand_chips < 0 then
                             local neg_chips = hand_chips * -1
                             update_hand_text({ sound = 'chips2', modded = true }, { chips = '-​'..tostring(neg_chips)})
                         end
-                        else update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips})
+                        else update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips})--]]
                     end
                 end
             end
