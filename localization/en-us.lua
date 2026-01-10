@@ -6077,6 +6077,7 @@ return {
 
 				--House Rules Hands
 				["cbean_sdown_sacrifice"] = {
+					"(BUGGED, DOESN'T WORK RIGHT NOW)",
 					"A hand that contains five cards that have not been played before",
 					"Must have {C:attention}House Rules{} and {C:attention}Obelisk{} to play",
 				},
@@ -6096,6 +6097,38 @@ return {
 				["cbean_sdown_pansexual_flush"] = {
 					"A hand that somehow contains a Straight a Gay and a Flush",
 					"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
+				},
+
+				["cbean_sdown_stone_hand"] = {
+					"Daring today, aren't we?",
+					"Must have {C:attention}House Rules{} and {C:attention}Marble Joker or Stone Joker{} to play",
+				},
+
+				["cbean_sdown_true_home"] = {
+					"(NOT YET IMPLEMENTED)",
+					"Three cards with a matching rank and suit, and two cards with a different matching rank and suit",
+					"Must have {C:attention}House Rules{} and {C:attention}Seeing Double or {}",
+					"{C:attention}Diamond Shape With a Dot Inside{} to play",
+				},
+
+				["cbean_sdown_67"] = {
+					"A 6 and a 7. They may be played with up to 3 other unscored cards",
+					"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
+				},
+
+				["cbean_sdown_flush_67"] = {
+					"A 6 and a 7 sharing the same suit. They may be played with up to 3 other unscored cards",
+					"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
+				},
+
+				["cbean_sdown_flush_two"] = {
+					"2 cards that share the same rank and suit. They may be played with up to 3 other unscored cards",
+					"Must have {C:attention}House Rules{} and {C:attention}Jolly Joker or Sly Joker or The Duo{} to play",
+				},
+
+				["cbean_sdown_flush_three"] = {
+					"3 cards that share the same rank and suit. They may be played with up to 2 other unscored cards",
+					"Must have {C:attention}House Rules{} and {C:attention}Zany Joker or Wily Joker or The Trio{} to play",
 				},
 
 				["cbean_0chill_fibonacci"] = {
@@ -6146,6 +6179,12 @@ return {
 				["cbean_sdown_8r8k"] = "HR Lucky 8r8k",
 				["cbean_sdown_pansexual"] = "HR Pansexual",
 				["cbean_sdown_pansexual_flush"] = "HR Pansexual Flush",
+				["cbean_sdown_stone_hand"] = "HR Yet Another 5 Stone Cards Hand",
+				["cbean_sdown_true_home"] = "HR True Home",
+				["cbean_sdown_67"] = "HR 67",
+				["cbean_sdown_flush_67"] = "HR Flush 67",
+				["cbean_sdown_flush_two"] = "HR Flush Tuah",
+				["cbean_sdown_flush_three"] = "HR Flush Threeah",
 				["cbean_0chill_fibonacci"] = "HR Fibonacci",
 				["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
 				["cbean_0chill_house_rules"] = "HR House Rules",

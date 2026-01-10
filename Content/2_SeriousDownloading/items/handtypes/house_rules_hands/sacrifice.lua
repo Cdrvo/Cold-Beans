@@ -6,6 +6,8 @@ SMODS.PokerHandPart {
         if #hand < 5 then return {} end
         local is_unplayed = true
         for _, card in ipairs(hand) do
+            --todo: this doesn't really work because being a part of this hand increments times played and makes
+            --the card no longer valid for the hand. move this calculation so that the hand can actually be played (somehow?)
             if card.base.times_played > 0 then is_unplayed = false end
         end
         if is_unplayed then return {hand} else return {} end
