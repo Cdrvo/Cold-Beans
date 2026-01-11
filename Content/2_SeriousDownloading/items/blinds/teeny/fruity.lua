@@ -3,7 +3,7 @@ Colonparen.TeenyBlind{
     atlas = "sdown_blinds_atlas",
     pos = {
         x = 0,
-        y = 9,
+        y = 10,
     },
     mult = 0.75,
     dollars = 2,
