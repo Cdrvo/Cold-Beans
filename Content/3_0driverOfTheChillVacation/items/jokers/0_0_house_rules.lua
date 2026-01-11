@@ -28,3 +28,8 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
         code = "MarioFan597",
     }
 }
+
+--heyo its me Athebyne. we're starting to get quite a few house rule hands (and i hope we get even more, i unfortunately
+--didn't do as many as I wanted to..) might be a good idea to make all hands always visible if you can play them
+--instead of that only happening to HR House Rules?
+--also might be fun to have a challenge that makes you have every HR hand available, but regular hands no longer work
