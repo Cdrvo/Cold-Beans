@@ -626,7 +626,7 @@ return {
 					"$#1# when scored",
 				},
 			},
-			bl_cbean_sdown_chaffed = { --Athebyne | TBA | wingedcatgirl
+			bl_cbean_sdown_chaffed = { --Athebyne | Slipstream | wingedcatgirl
 				name = "Chaffed Blind",
 				text = {
 					"Leftmost card in first",
@@ -634,11 +634,18 @@ return {
 					"(Drag to rearrange)",
 				},
 			},
-			bl_cbean_sdown_estrogen = { --Athebyne | TBA | wingedcatgirl
+			bl_cbean_sdown_estrogen = { --Athebyne | Slipstream | wingedcatgirl
 				name = "Estrogen",
 				text = {
 					"Discarded face cards",
 					"become Queens",
+				},
+			},
+			bl_cbean_sdown_fruity = { --Athebyne | Slipstream | Athebyne
+				name = "Fruity Blind",
+				text = {
+					"If played hand contains a Gay,",
+					"#1# in #2# chance to give a scored card Polychrome",
 				},
 			},
 		},
