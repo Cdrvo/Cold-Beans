@@ -530,7 +530,7 @@ YMA.SideQuests.quest {
             end
         end
 
-        if card.ability.extra.packs_left <= 0 then
+        if card.ability.extra.packs_left <= 0 and context.ending_booster then
             card.ability.extra.packs_left = card.ability.extra.unique_packs
 			local voucher_key = get_next_voucher_key(true)
 			
