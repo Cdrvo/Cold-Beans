@@ -16,8 +16,9 @@ SMODS.Joker {
     loc_txt = {
         name = 'Nesting Doll',
         text = {
-            "Retrigger all played cards used in scoring",
-            "if hand contains a {C:attention}Two Pair{}",
+            "Retrigger all played cards",
+            "used in scoring if hand",
+            "contains a {C:attention}Two Pair{}",
         }
     },
     calculate = function(self, card, context)

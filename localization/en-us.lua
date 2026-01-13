@@ -1215,7 +1215,7 @@ return {
 			c_cbean_yma_enigma = {
 				name = "Enigma Key",
 				text = {
-					"{C:attention}consumable{} pool is",
+					"{C:attention}Consumable{} pool is",
 					"randomized",
 					"{C:inactive}(Uses ?/? blinds)",
 				},
@@ -1996,10 +1996,12 @@ return {
 			j_cbean_colon_rna = { -- bitter and George The Rat | N/A | bitter
 				name = "RNA",
 				text = {
-					"If {C:attention}first hand{} of round has only {C:attention}1",
-					"add a permanent copy with a random enhancement",
-					"to deck and draw to {C:attention}hand",
-					"{C:inactive}(Copy will not have any {C:dark_edition}editions{C:inactive} or {C:attention}seals{C:inactive})",
+					"If {C:attention}first hand{} of round",
+					"has only {C:attention}1{} card, add",
+					"a permanent copy with",
+					"random enhancement to",
+					"deck and draw it to {C:attention}hand{}",
+					"{C:inactive,s:0.8}(Copy won't have an {C:dark_edition,s:0.8}edition{C:inactive,s:0.8} or {C:attention,s:0.8}seal{C:inactive,s:0.8})",
 				},
 			},
 			j_cbean_colon_shadow = { -- Glitchkat10 | N/A | N/A
@@ -2209,8 +2211,8 @@ return {
 				name = "Asgore's Truck",
 				text = {
 					{
-						"Destroys scored {C:attention}King{} cards",
-						"in played hand",
+						"Destroys scored {C:attention}King{}",
+						"cards in played hand",
 					},
 					{
 						"This Joker gains {X:mult,C:white}X#1#{} Mult for",
@@ -2220,6 +2222,7 @@ return {
 					},
 				},
 			},
+
 			j_cbean_0chill_chum = {
 				name = "Chumblock",
 				text = {
@@ -2233,6 +2236,7 @@ return {
 					},
 				},
 			},
+
 			j_cbean_0chill_lone_warrior = {
 				name = "Lone Warrior",
 				text = {
@@ -2415,7 +2419,8 @@ return {
             j_cbean_yma_born_salesman = {
                 name = "Born Salesman",
                 text = {
-					"{C:money}Shop{} and {C:attention}Pack{} based {C:yma_keys}Keys",
+					"{C:money}Shop{} and {C:attention}Pack{}",
+					"based {C:yma_keys}Keys",
 					"take no {C:dark_edition}space",
 				},
             },
@@ -2430,8 +2435,8 @@ return {
             j_cbean_yma_joker_vision = {
                 name = "Joker Vision",
                 text = {
-					"Leftmost {C:combo}Combo{} card {C:attention}retriggers{}",
-					"twice",
+					"Leftmost {C:combo}Combo{} card",
+					"{C:attention}retriggers{} twice",
 				},
             },
             j_cbean_yma_set_of_dice = {
@@ -2759,11 +2764,11 @@ return {
                 name = "Withering Memory",
                 text = {
 					{
-					"Scored {C:attention}Dark Suits{} give {C:white,X:chips}X#1#{}",
+					"Scored {C:attention}Dark Suits{} give {C:white,X:chips}X#1#{} Chips",
 					"if a {C:attention}Light Suit{} is scored {C:attention}beforehand{}",
 					},
 					{
-						"Scored {C:attention}Light Suits{} give {C:white,X:mult}X#2#{}",
+						"Scored {C:attention}Light Suits{} give {C:white,X:mult}X#2#{} Mult",
 						"if a {C:attention}Dark Suit{} is scored {C:attention}beforehand{}",
 					}
 				},
@@ -2867,8 +2872,8 @@ return {
 				text = {
 					"Can't take {C:attention}Booster Pack{} cards",
 					"until they're {C:money}Leaked{}",
-					"Skipping {C:attention}Booster Pack{} before {C:money}Leaking{}",
-					"refunds it"
+					"Skipping {C:attention}Booster Pack{} before",
+					"{C:money}Leaking{} refunds it"
 				}
 			},
 			j_cbean_jbill_redbull = {
@@ -2882,8 +2887,13 @@ return {
 			j_cbean_jbill_palte = {
 				name = "My Palte ToT",
 				text = {
-					"{C:attention}Blind Requirements{} are {C:red}Hidden{}",
-					"{X:mult,C:white}X#1#{} Mult"
+					{
+						"{C:attention}Blind Requirements{}",
+						"are {C:red}Hidden{}"
+					},
+					{
+						"{X:mult,C:white}X#1#{} Mult"
+					},
 				}
 			},
 		},
@@ -6297,24 +6307,24 @@ return {
 				},
 				cbean_pboys_tutorial_2 = {
 					"You can {C:attention}bet{}",
-					"your money here",
-				},
+					"your money here.",
+				}, --Reworded the tutorial a bit -0chill
 				cbean_pboys_tutorial_3 = {
-					"Then i will {C:attention}swap{} cups",
-					"and you have to",
-					"{C:attention}choose{} the right one",
+					"Find the {C:attention}ball{}",
+					"I'll hide after I",
+					"{C:attention}shuffle{} these cups."
 				},
 				cbean_pboys_tutorial_4 = {
-					"The correct cup will",
-					"{C:attention}double{} the bet",
+					"Choosing the correct cup",
+					"will {C:attention}double{} the bet.",
 				},
 				cbean_pboys_tutorial_5 = {
 					"Otherwise you will",
-					"{C:attention}lose{} everything",
+					"{C:attention}lose{} everything.",
 				},
 				cbean_pboys_tutorial_6 = {
-					"The higher the bet, the more",
-					"{C:attention}difficult{} it becomes",
+					"The higher the bet, the",
+					"{C:attention}faster{} I'll shuffle.",
 				},
 				cbean_pboys_tutorial_7 = {
 					"{C:attention}Good luck!",

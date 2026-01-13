@@ -13,8 +13,11 @@ SMODS.Joker {
     loc_txt = {
         name = 'Path in the Woods',
         text = {
-            "Played {C:attention}Queens{} lose their {C:attention}Enhancement{} and gain a random non-rankless {C:attention}Enhancement{}",
-            "{C:green}#1# in #2# chance{} to gain an {C:edition}Edition{} instead"
+            "Played {C:attention}Queens{} lose their",
+            "{C:attention}Enhancement{} and gain a",
+            "random non-rankless {C:attention}Enhancement{}",
+            "{C:green}#1# in #2# chance{} to gain"
+            "an {C:dark_edition}Edition{} instead"
         }
     },
     calculate = function(self, card, context)
