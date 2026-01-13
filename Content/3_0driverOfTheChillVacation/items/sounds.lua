@@ -12,3 +12,7 @@ SMODS.Sound{
     key = "0chill_asgore",
     path = "3_0driverOfTheChillVacation/asgore.ogg"
 }
+SMODS.Sound{
+    key = "0chill_chum_infect",
+    path = "3_0driverOfTheChillVacation/chum.mp3"
+}

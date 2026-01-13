@@ -2220,7 +2220,19 @@ return {
 					},
 				},
 			},
-
+			j_cbean_0chill_chum = {
+				name = "Chumblock",
+				text = {
+					{
+						"Its so over."
+					},
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+						"Turns adjacent Jokers into Chumblock's",
+						"Destroys itself when triggered."
+					},
+				},
+			},
 			j_cbean_0chill_lone_warrior = {
 				name = "Lone Warrior",
 				text = {
