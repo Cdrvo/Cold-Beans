@@ -18,17 +18,18 @@ for k, v in pairs(combo_table) do
     end
 end
 
--- SMODS.current_mod.calculate = function(self,context)
---     if context.after then
---         G.GAME.cbean_combo_index = {}
---         G.GAME.cbean_combo_unique_hand = {}
---         G.GAME.cbean_combos_used_turn = 0
---     end
---     if context.end_of_round then
---         G.GAME.cbean_combo_unique_round = {}
---     end
--- end
-
+--[[
+SMODS.current_mod.calculate = function(self,context)
+    if context.after then
+        G.GAME.cbean_combo_index = {}
+        G.GAME.cbean_combo_unique_hand = {}
+        G.GAME.cbean_combos_used_turn = 0
+    end
+    if context.end_of_round then
+        G.GAME.cbean_combo_unique_round = {}
+    end
+end
+]]--
 
 ---Functions (By MarioFan597)
 
@@ -97,11 +98,7 @@ end
 function CanUncombo(card) --Checks if the card can uncombo.
     if G.GAME.cbean_combo_index then
         if card.ability.immutable.sequence == #G.GAME.cbean_combo_index then
-            if ComboUniqueCheck(card) then
-                return true
-            else
-                return false
-            end
+            return true
         else
             return false
         end
