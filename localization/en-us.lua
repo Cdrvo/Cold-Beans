@@ -3144,6 +3144,35 @@ return {
                     "{C:attention}#2# {C:money}Consumable^2{} cards"
 				},
             },
+			--Combo Packs
+			p_cbean_combo_booster_standard1 = {
+                name = "Standard Combo Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+				},
+            },
+			p_cbean_combo_booster_standard2 = {
+                name = "Standard Combo Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+				},
+            },
+			p_cbean_combo_booster_special1 = {
+                name = "Special Combo Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+				},
+            },
+			p_cbean_combo_booster_ultimate1 = {
+                name = "Ultimate Combo Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+				},
+            },
             --Seals
             cbean_yma_cipher_seal = {
                 name = "Cipher Seal",
@@ -5900,6 +5929,8 @@ return {
 			},
 			collabs = {},
 			dictionary = {
+				k_cbean_0chill_combopack = "Combo Pack",
+
 				k_colon_architecture_pack = "Architecture Pack",
 				
 				cbean_colon_random_face = "(Random face card)",
