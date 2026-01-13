@@ -1291,6 +1291,7 @@ return {
 				name = "Key to Hell",
 				text = {
 					"{C:attention}Grants{} access to {C:red}Hell",
+					"in the {C:attention}Street{}",
 					"{C:inactive}(Uses #1#/#2# shops)",
 				},
 			},
@@ -1332,8 +1333,8 @@ return {
 				name = "Music Box Key",
 				text = {
 					{
-						"{C:attention}Jokers{} are shuffled each",
-						"{C:blue}hand{}",
+						"{C:attention}Jokers{} are shuffled",
+						"each {C:blue}hand{}",
 					},
 					{
 						"Leftmost {C:attention}Joker",
@@ -1360,8 +1361,8 @@ return {
 			c_cbean_yma_shadow = {
 				name = "Shadow Key",
 				text = {
-					"{C:combo}Combo{} cards can be used",
-					"{C:attention}twice",
+					"{C:combo}Combo{} cards can",
+					"be used {C:attention}twice",
 					"{C:inactive}(Uses #1#/#2#)",
 				},
 			},
@@ -1593,8 +1594,8 @@ return {
 					"{C:dark_edition,s:0.7}Side Quest{}",
 				},
 				text = {
-					"Score a hand full of {C:attention}Enhanced{} cards",
-					"to create {C:attention}Vampire{}",
+					"Score a hand full of {C:attention}Enhanced{}",
+					"cards to create {C:attention}Vampire{}",
 				},
 			},
 			q_cbean_yma_wheel = {
@@ -6311,8 +6312,8 @@ return {
 				}, --Reworded the tutorial a bit -0chill
 				cbean_pboys_tutorial_3 = {
 					"Find the {C:attention}ball{}",
-					"I'll hide after I",
-					"{C:attention}shuffle{} these cups."
+					"after I {C:attention}shuffle{}",
+					"these cups."
 				},
 				cbean_pboys_tutorial_4 = {
 					"Choosing the correct cup",
