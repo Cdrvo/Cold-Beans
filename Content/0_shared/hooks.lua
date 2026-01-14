@@ -20,6 +20,19 @@ function Card:can_sell_card(context)
     return cant_sell_combo(self, context)
 end
 
+--Prevents using combos outside of a blind since they wouldn't do anything anyways
+local cant_use_combo = Card.can_use_consumeable
+function Card:can_use_consumeable(context)
+    if self.ability then
+        if self.ability.set == 'Combo' then
+            if not G.GAME.blind.in_blind then
+                return false
+            end
+        end
+    end
+    return cant_use_combo(self, context)
+end
+
 --Pissboys
 --[Placeholder] allows over-discard on non-final hands
 local over_discard = G.FUNCS.can_discard
