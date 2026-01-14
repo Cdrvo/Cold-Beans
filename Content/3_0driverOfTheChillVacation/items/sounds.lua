@@ -14,5 +14,5 @@ SMODS.Sound{
 }
 SMODS.Sound{
     key = "0chill_chum_infect",
-    path = "3_0driverOfTheChillVacation/chum.mp3"
+    path = "3_0driverOfTheChillVacation/chum.ogg"
 }

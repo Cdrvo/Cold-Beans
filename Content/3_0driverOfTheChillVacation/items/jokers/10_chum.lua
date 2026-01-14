@@ -23,16 +23,16 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     end,
 
     calculate = function(self, card, context)
-        local current_index
-
-        for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i] == card then
-                current_index = i
-                break
-            end
-        end
-
         if context.joker_main then
+            local current_index
+
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    current_index = i
+                    break
+            end
+            end
+
             SMODS.destroy_cards(card)
             G.jokers.cards[current_index - 1]:set_ability("j_cbean_0chill_chum")
             G.jokers.cards[current_index + 1]:set_ability("j_cbean_0chill_chum")
