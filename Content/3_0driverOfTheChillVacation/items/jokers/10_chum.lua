@@ -17,11 +17,6 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             } 
         }
     end,
-
-    update = function(self, card, dt)
-    play_sound('cbean_0chill_chum_infect')
-    end,
-
     calculate = function(self, card, context)
         if context.joker_main then
             local current_index
@@ -34,6 +29,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             end
 
             SMODS.destroy_cards(card)
+            play_sound('cbean_0chill_chum_infect')
             G.jokers.cards[current_index - 1]:set_ability("j_cbean_0chill_chum")
             G.jokers.cards[current_index + 1]:set_ability("j_cbean_0chill_chum")
             return {
