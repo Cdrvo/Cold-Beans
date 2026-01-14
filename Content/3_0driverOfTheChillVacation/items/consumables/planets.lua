@@ -50,11 +50,11 @@ SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+1' })
         delay(1.3)
         for i, hand in pairs(G.GAME.hands) do
-            if v.cb_house_rules then --This flag is set on the SMODS.PokerHand
-                SMODS.smart_level_up_hand(card, hand, true)
+            if hand.cb_house_rules then --This flag is set on the SMODS.PokerHand
+                SMODS.smart_level_up_hand(card, hand.key, true)
             end
-            
         end
+        print(hand_count)
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
             { mult = 0, chips = 0, handname = '', level = '' })
     end,

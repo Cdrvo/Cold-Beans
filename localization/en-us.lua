@@ -2881,8 +2881,8 @@ return {
 				name = "RedBull 67",
 				text = {
 					"{C:red}+#1#{} Discards",
-					"Self-destructs if more than {C:hands}#2#{}",
-					"hands is played"
+					"Self-destructs if more than",
+					"{C:hands}#2#{} hands are played"
 				}
 			},
 			j_cbean_jbill_palte = {
@@ -6144,7 +6144,8 @@ return {
 				},
 
 				["cbean_sdown_8r8k"] = {
-					"A hand that contains at least two 8s, with at least one of them being Lucky",
+					"A hand that contains at least two 8s,",
+					"with at least one of them being Lucky",
 					"Must have {C:attention}House Rules{} and {C:attention}8 Ball{} to play",
 				},
 
@@ -6178,17 +6179,20 @@ return {
 				},
 
 				["cbean_sdown_flush_67"] = {
-					"A 6 and a 7 sharing the same suit. They may be played with up to 3 other unscored cards",
+					"A 6 and a 7 sharing the same suit",
+					"They may be played with up to 3 other unscored cards",
 					"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
 				},
 
 				["cbean_sdown_flush_two"] = {
-					"2 cards that share the same rank and suit. They may be played with up to 3 other unscored cards",
+					"2 cards that share the same rank and suit",
+					"They may be played with up to 3 other unscored cards",
 					"Must have {C:attention}House Rules{} and {C:attention}Jolly Joker or Sly Joker or The Duo{} to play",
 				},
 
 				["cbean_sdown_flush_three"] = {
-					"3 cards that share the same rank and suit. They may be played with up to 2 other unscored cards",
+					"3 cards that share the same rank and suit",
+					"They may be played with up to 2 other unscored cards",
 					"Must have {C:attention}House Rules{} and {C:attention}Zany Joker or Wily Joker or The Trio{} to play",
 				},
 
