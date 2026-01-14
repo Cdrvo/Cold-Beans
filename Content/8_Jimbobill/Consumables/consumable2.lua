@@ -1,7 +1,8 @@
 SMODS.ConsumableType{
     key = "Consumables2",
     primary_colour = HEX("FFD800"), 
-    secondary_colour = HEX("FFD800"), 
+    secondary_colour = HEX("FFD800"),
+    text_colour = HEX('4f6367'), --0chill here. Making the text black for readabiity 
     collection_rows = { 5, 5 },
     shop_rate = 0,
     loc_txt = {

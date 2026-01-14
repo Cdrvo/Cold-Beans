@@ -142,6 +142,7 @@ SMODS.ConsumableType({
     key = "colon_Architecture",
     primary_colour = HEX('a6b48b'),
     secondary_colour = HEX('e8dfc4'),
+    text_colour = HEX('4f6367'), --0chill here. Making the text black for readabiity
     collection_rows = { 4, 4 },
     shop_rate = 0,
     default = "c_cbean_colon_stylobate"
