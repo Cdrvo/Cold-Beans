@@ -30,8 +30,8 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
 
             SMODS.destroy_cards(card)
             play_sound('cbean_0chill_chum_infect')
-            G.jokers.cards[current_index - 1]:set_ability("j_cbean_0chill_chum")
-            G.jokers.cards[current_index + 1]:set_ability("j_cbean_0chill_chum")
+            if G.jokers.cards[current_index - 1] then G.jokers.cards[current_index - 1]:set_ability("j_cbean_0chill_chum")
+            if G.jokers.cards[current_index + 1] then G.jokers.cards[current_index + 1]:set_ability("j_cbean_0chill_chum")
             return {
                 x_mult = card.ability.immutable.xmult
             }
