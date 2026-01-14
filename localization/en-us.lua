@@ -3147,28 +3147,28 @@ return {
             },
 			--Combo Packs
 			p_cbean_combo_booster_standard1 = {
-                name = "Standard Combo Pack",
+                name = "Jimbattle: Standard Edition",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
 				},
             },
 			p_cbean_combo_booster_standard2 = {
-                name = "Standard Combo Pack",
+                name = "Jimbattle: Standard Edition",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
 				},
             },
 			p_cbean_combo_booster_special1 = {
-                name = "Special Combo Pack",
+                name = "Jimbattle: Special Edition",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
 				},
             },
 			p_cbean_combo_booster_ultimate1 = {
-                name = "Ultimate Combo Pack",
+                name = "Jimbattle: Ultimate Edition",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
