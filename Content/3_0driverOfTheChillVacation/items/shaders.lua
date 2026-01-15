@@ -1,0 +1,1 @@
+SMODS.Shader{ key = 'frozen', path = 'frozen.fs' }

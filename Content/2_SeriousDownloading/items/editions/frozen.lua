@@ -8,7 +8,7 @@ end
 
 SMODS.Edition{
     key = "sd_frozen",
-    shader = false,
+    shader = 'frozen',  --Inspector_B from the 0-drivers group here, I added a shader to frozen cause it look pretty.
     sound = {
         sound = "cbean_sd_frozen"
     },
