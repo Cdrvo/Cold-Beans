@@ -3,30 +3,21 @@
 SMODS.PokerHandPart { --Modifed from Potassium Remake
     key = "0chill_jackpot",
     func = function (hand)
-        if #hand < 3 then return {} end
+         if #hand >= 3 then
+            local seven_count = 0
+            local eligible_cards = {}
 
-        local track_ranks = {}
+            for i, card in ipairs(hand) do
+                if card:get_id() == 7 and card:is_suit("Hearts") then 
+                    seven_count = seven_count + 1
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+            end
 
-        for _,card in ipairs(hand) do
-            local rank = card:get_id()
-            track_ranks[rank] = track_ranks[rank] or {}
-            table.insert(track_ranks[rank], card)
+            if seven_count >= 3  then
+                return {eligible_cards}
+            end
         end
-
-        if not (
-            -- A rank is not tracked if the rank is not in the hand
-            track_ranks[7]     
-            and track_ranks[7] 
-            and track_ranks[7] 
-        ) then return {} end
-
-        local scoring_cards = SMODS.merge_lists{
-            track_ranks[7],
-            track_ranks[7],
-            track_ranks[7], 
-        }
-
-        return {scoring_cards}
     end
 }
 

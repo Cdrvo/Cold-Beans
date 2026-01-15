@@ -3,53 +3,21 @@
 SMODS.PokerHandPart { --Modifed from Potassium Remake
     key = "0chill_proceed",
     func = function (hand)
-        if #hand < 5 then return {} end
+         if #hand >= 5 then
+            local nine_count = 0
+            local eligible_cards = {}
 
-        local track_ranks = {}
+            for i, card in ipairs(hand) do
+                if card:get_id() == 9 and card:is_suit("Hearts") then 
+                    nine_count = nine_count + 1
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+            end
 
-        for _,card in ipairs(hand) do
-            local rank = card:get_id()
-            track_ranks[rank] = track_ranks[rank] or {}
-            table.insert(track_ranks[rank], card)
+            if nine_count >= 5  then
+                return {eligible_cards}
+            end
         end
-
-        --[[
-        local track_suits = {}
-
-        for _,card in ipairs(hand) do
-            local suit = card.suit
-            track_suits[suit] = track_suits[suit] or {}
-            table.insert(track_suits[suit], card)
-        end
-        ]]
-        
-        local scoring_cards = SMODS.merge_lists{
-            track_ranks[9],
-            track_ranks[9],
-            track_ranks[9],
-            track_ranks[9],
-            track_ranks[9]
-
-        }
-        
-
-        if not (
-            -- A rank is not tracked if the rank is not in the hand
-            track_ranks[9]     
-            and track_ranks[9] 
-            and track_ranks[9] 
-            and track_ranks[9]
-            and track_ranks[9]
-            --[[
-            and track_suits["Hearts"]
-            and track_suits["Hearts"]
-            and track_suits["Hearts"]
-            and track_suits["Hearts"]
-            and track_suits["Hearts"]
-            ]]
-        ) then return {} end
-
-        return {scoring_cards}
     end
 }
 
