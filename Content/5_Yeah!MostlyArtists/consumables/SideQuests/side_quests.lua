@@ -616,4 +616,46 @@ YMA.SideQuests.quest {
     }
 }
 
+--0Chill
+
+YMA.SideQuests.quest {
+    key = "0chill_warrior",
+    order = 13,
+    rarity = 3,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_0chill_lone_warrior
+        return {
+            vars = {
+                card.ability.extra.combo_total,
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 2, y = 3 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+
+    config = {
+        extra = {
+            combo_total = 4,     
+        },
+    },
+    calculate = function(self, card, context)
+        if context.before then
+            if (G.GAME.cbean_combo_index and #G.GAME.cbean_combo_index or 0) >= card.ability.extra.combo_total then
+                YMA.complete_quest(card, "Joker", "j_cbean_0chill_lone_warrior")
+            end
+        end
+    end,
+    beans_credits = {
+        team = {"0 Drivers of",
+                "The Chill Vaction" },
+        idea = "MarioFan597",
+        art = "MarioFan597",
+        code = "MarioFan597",
+    }
+}
+
 -- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 12)

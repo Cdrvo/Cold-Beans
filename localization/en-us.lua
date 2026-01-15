@@ -1554,6 +1554,8 @@ return {
 				}
 			}
 		},
+
+		--Sidequests
 		yma_quest = {
 			q_cbean_yma_credit_card = {
 				name = {
@@ -1689,6 +1691,17 @@ return {
 					"without {C:attention}rerolling{}",
 					"to get {C:attention}5{} free {C:green}Rerollls{}",
 					"in the next {C:attention}shop{}",
+				},
+			},
+			q_cbean_0chill_warrior = {
+				name = {
+					"Lone Warrior",
+					"{C:dark_edition,s:0.7}Side Quest{}",
+				},
+				text = {
+					"Use {C:attention}#1#{} or more {C:combo}Combo{} cards",
+					"at once in a turn",
+					"to create {C:attention}Lone Warrior{}",
 				},
 			},
 		},
@@ -2412,8 +2425,8 @@ return {
             j_cbean_yma_the_jest_around = {
                 name = "The Jest Around",
                 text = {
-					"{X:mult,C:white}X#1#{} Mult per {C:combo}Combo{} card",
-					"being used",
+					"{X:mult,C:white}X#1#{} Mult for current",
+					"{C:combo}Combo{} length",
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
 				},
             },
