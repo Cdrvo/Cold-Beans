@@ -25,3 +25,10 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+    key = "0chill_combo_booster_atlas",
+    path = "3_0driverOfTheChillVacation/jimbattlers.png",
+    px = 71,
+    py = 95,
+})

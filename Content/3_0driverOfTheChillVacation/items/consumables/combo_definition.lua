@@ -185,7 +185,7 @@ SMODS.ConsumableType {
     key = 'Combo',
     default = 'c_cbean_0chill_standing_punch',
     primary_colour = HEX('E89A35'), --placeholder for now, we can update these once we know what we want to do.
-    secondary_colour = HEX('BA6900'), --placeholder for now, we can update these once we know what we want to do.
+    secondary_colour = HEX('E91E63'), --placeholder for now, we can update these once we know what we want to do.
     collection_rows = { 6, 6 },
     shop_rate = 1,
     loc_txt = {

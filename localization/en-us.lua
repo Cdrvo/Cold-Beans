@@ -2242,7 +2242,7 @@ return {
 				name = "Lone Warrior",
 				text = {
 					"Gains {X:mult,C:white}X#2#{} Mult",
-					"for each {C:attention}Combo{} card",
+					"for each {C:combo}Combo{} card",
 					"used this run",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive} Mult)",
 				},
@@ -3017,7 +3017,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
-					"take",
+					"to take with you",
 				},
             },
             p_cbean_blessing_normal2 = {
@@ -3025,7 +3025,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
-					"take",
+					"to take with you",
 				},
             },
             p_cbean_blessing_jumbo = {
@@ -3033,7 +3033,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
-					"take",
+					"to take with you",
 				},
             },
             p_cbean_blessing_mega = {
@@ -3041,7 +3041,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
-					"take",
+					"to take with you",
 				},
             },
             cbean_combo_starter = { --Explains if card can be used to start a combo
@@ -3151,6 +3151,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+                    "to take with you"
 				},
             },
 			p_cbean_combo_booster_standard2 = {
@@ -3158,6 +3159,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+                    "to take with you"
 				},
             },
 			p_cbean_combo_booster_special1 = {
@@ -3165,6 +3167,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+                    "to take with you"
 				},
             },
 			p_cbean_combo_booster_ultimate1 = {
@@ -3172,6 +3175,7 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {C:combo,E:1}Combo{} cards",
+                    "to take with you"
 				},
             },
             --Seals
