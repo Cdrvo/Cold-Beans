@@ -29,7 +29,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             "The Chill Vacation"
         },
         idea = "ChapitalChirp",
-        art =  "N/A",
+        art =  "Monachrome",
         code = "MarioFan597",
     }
 }
