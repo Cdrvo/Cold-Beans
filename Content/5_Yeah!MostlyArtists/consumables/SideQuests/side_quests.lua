@@ -1,3 +1,5 @@
+--0chill added some art for some duplicate sidequests. Noted which is ours since we couldn't make our own for some reason.
+
 YMA.SideQuests.quest {
     key = "yma_credit_card",
     order = 1,
@@ -14,7 +16,7 @@ YMA.SideQuests.quest {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 2 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
 
@@ -41,9 +43,11 @@ YMA.SideQuests.quest {
         end
     end,
     beans_credits = {
-        team = { "Yeah! Mostly Artists" },
+        team = { "Yeah! Mostly Artists/",
+                "0 Drivers of",
+                "The Chill Vaction" },
         idea = "cloudzXIII",
-        art = "FirstTry",
+        art = "MarioFan597",
         code = "cloudzXIII",
     }
 }
@@ -63,7 +67,7 @@ YMA.SideQuests.quest {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 0, y = 1 },
+    pos = { x = 3, y = 2 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
     config = {
@@ -77,9 +81,11 @@ YMA.SideQuests.quest {
         end
     end,
     beans_credits = {
-        team = { "Yeah! Mostly Artists" },
+        team = { "Yeah! Mostly Artists/",
+                "0 Drivers of",
+                "The Chill Vaction" },
         idea = "cloudzXIII",
-        art = "FirstTry",
+        art = "MarioFan597",
         code = "cloudzXIII",
     }
 }
@@ -100,7 +106,7 @@ YMA.SideQuests.quest {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 1, y = 1 },
+    pos = { x = 2, y = 2 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
     config = {
@@ -126,9 +132,11 @@ YMA.SideQuests.quest {
         end
     end,
     beans_credits = {
-        team = { "Yeah! Mostly Artists" },
+        team = { "Yeah! Mostly Artists/",
+                "0 Drivers of",
+                "The Chill Vaction" },
         idea = "Flynn",
-        art = "FirstTry",
+        art = "MarioFan597",
         code = "cloudzXIII",
     }
 }
@@ -347,7 +355,7 @@ YMA.SideQuests.quest {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 1, y = 0 },
+    pos = { x = 0, y = 3 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
     config = {
@@ -383,9 +391,11 @@ YMA.SideQuests.quest {
         end
     end,
     beans_credits = {
-        team = { "Yeah! Mostly Artists" },
+        team = { "Yeah! Mostly Artists/",
+                "0 Drivers of",
+                "The Chill Vaction" },
         idea = "cloudzXIII",
-        art = "FirstTry",
+        art = "MarioFan597",
         code = "cloudzXIII",
     }
 }
@@ -405,7 +415,7 @@ YMA.SideQuests.quest {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 1, y = 1 },
+    pos = { x = 1, y = 3 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
     config = {
@@ -430,9 +440,11 @@ YMA.SideQuests.quest {
         end
     end,
     beans_credits = {
-        team = { "Yeah! Mostly Artists" },
+        team = { "Yeah! Mostly Artists/",
+                "0 Drivers of",
+                "The Chill Vaction" },
         idea = "cloudzXIII",
-        art = "FirstTry",
+        art = "MarioFan597",
         code = "cloudzXIII",
     }
 }
