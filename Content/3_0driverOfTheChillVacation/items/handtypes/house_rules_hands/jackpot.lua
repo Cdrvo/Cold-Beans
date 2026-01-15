@@ -8,9 +8,11 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
             local eligible_cards = {}
 
             for i, card in ipairs(hand) do
-                if card:get_id() == 7 and card:is_suit("Hearts") then 
+                if card:get_id() == 7 then 
                     seven_count = seven_count + 1
-                    eligible_cards[#eligible_cards + 1] = card
+                    if seven_count <= 3 then
+                        eligible_cards[#eligible_cards + 1] = card
+                    end
                 end
             end
 
@@ -33,7 +35,9 @@ SMODS.PokerHand{
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
-                if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
+                if v.config.center.key == "j_cbean_0chill_house_rules" then 
+                    clicked = true 
+                end
             end
         end
         local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
@@ -44,6 +48,8 @@ SMODS.PokerHand{
         { "S_7", true },
         { "D_7", true },
         { "H_7", true },
+        { "C_3", false },
+        { "H_K", false }
     },
     evaluate = function(parts, hand)
         if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_oops') > 0) then --Checks if house rules and required joker are owned

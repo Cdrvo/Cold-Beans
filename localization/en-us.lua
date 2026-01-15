@@ -6217,13 +6217,24 @@ return {
 				},
 
 				["cbean_0chill_deer_in_headlights"] = {
-					"A hand that contains 5 kings",
+					"A hand that contains only 1 King and no other cards",
 					"Must have {C:attention}House Rules{} and {C:attention}Asgore's Truck{} to play",
 					"{C:inactive}Driving in my truck, right after a beer...",
 				},
 
+				["cbean_0chill_favorite_year"] = {
+					"EV3RY BUDDY 'S FAVORITE [[Number 1 Rated Hand1997]]",
+					"Must have {C:attention}House Rules{} and {C:attention}Big Shot{} to play",
+				},
+
+				["cbean_0chill_favorite_year_flush"] = {
+					"A hand containing a [FAVORITE] Year and a Flush",
+					"Must have {C:attention}House Rules{} and {C:attention}Big Shot{} to play",
+					"{C:inactive}Sighting 1997",
+				},
+
 				["cbean_0chill_jackpot"] = {
-					"A hand that contains 3 sevens",
+					"A hand that contains three 7s",
 					"Must have {C:attention}House Rules{} and {C:attention}Oops! All 6s{} to play",
 				},
 
@@ -6259,6 +6270,8 @@ return {
 				["cbean_0chill_house_rules"] = "HR House Rules",
 				["cbean_0chill_proceed"] = "HR PROCEED",
 				["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
+				["cbean_0chill_favorite_year"] = "HR [Favorite] Year",
+				["cbean_0chill_favorite_year_flush"] = "HR [Favorite] Year Flush",
 				["cbean_0chill_jackpot"] = "HR Jackpot!",
 				["cbean_wgrop_thorny_boquete"] = "HR Thorny Bouquet",
 			},
