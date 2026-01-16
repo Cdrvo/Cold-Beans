@@ -3973,6 +3973,17 @@ return {
 						},
 					},
 				},
+				c_cbean_0chill_for_all = {
+					name = {
+						"For All",
+					},
+					text = {
+							"For all consumables,",
+							"there is a booster pack",
+							"{C:inactive}(Except stickers because",
+							"{C:inactive}they don't have one yet)"
+					},
+				},
 				-- yma upgraded spectrals
 				c_cbean_yma_familiar_level1 = {
 					name = {
@@ -4867,6 +4878,27 @@ return {
 						"{C:attention}CEO Blind"
 					}
 				},
+				tag_cbean_0chill_combo = {
+			        name = 'Turbo Tag',
+			        text = {
+			            "Gives a free",
+			            "{C:combo}Jimbattle: Ultimate Edition Pack"
+			        }
+			    },
+			    tag_cbean_0chill_squared = {
+			        name = 'Power Tag',
+			        text = {
+			            "Gives a free",
+			            "{C:money}Mega Meta Pack"
+			        }
+			    },
+			    tag_cbean_0chill_key = {
+			        name = 'Keychain Tag',
+			        text = {
+			            "Gives a free",
+			            "{C:yma_keys}Mega Key Pack"
+			        }
+			    },
 			},
 			Tarot = {
 				c_cbean_pboys_river = {
