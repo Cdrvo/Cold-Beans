@@ -6,9 +6,6 @@ SMODS.Consumable {
     atlas = '0chill_spectral_atlas',
     cost = 8,
     pos = { x = 3, y = 0},
-    loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
-    end,
     can_use = function(self, card)
         return true
     end,
