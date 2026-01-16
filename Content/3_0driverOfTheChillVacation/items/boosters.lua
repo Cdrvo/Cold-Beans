@@ -14,11 +14,12 @@ SMODS.Booster {
     },
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
-    atlas = "0chill_combo_atlas",
+    atlas = "0chill_combo_booster_atlas",
     weight = 4,
     pos = { x = 0, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "Combo",
@@ -29,7 +30,7 @@ SMODS.Booster {
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("BA000E"))
-        ease_background_colour({ new_colour = HEX('BA000E'), special_colour = HEX("F1C100"), contrast = 2 })
+        ease_background_colour({ new_colour = HEX('E91E63'), special_colour = HEX("4f6367"), contrast = 2 })
     end
 }
 
@@ -49,11 +50,12 @@ SMODS.Booster {
     },
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
-    atlas = "0chill_combo_atlas",
+    atlas = "0chill_combo_booster_atlas",
     weight = 4,
-    pos = { x = 0, y = 1 },
+    pos = { x = 1, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "Combo",
@@ -64,7 +66,7 @@ SMODS.Booster {
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("BA000E"))
-        ease_background_colour({ new_colour = HEX('BA000E'), special_colour = HEX("F1C100"), contrast = 2 })
+        ease_background_colour({ new_colour = HEX('E91E63'), special_colour = HEX("4f6367"), contrast = 2 })
     end
 }
 
@@ -84,11 +86,12 @@ SMODS.Booster {
     },
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
-    atlas = "0chill_combo_atlas",
+    atlas = "0chill_combo_booster_atlas",
     weight = 4,
-    pos = { x = 0, y = 2 },
+    pos = { x = 2, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "Combo",
@@ -99,7 +102,7 @@ SMODS.Booster {
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("BA000E"))
-        ease_background_colour({ new_colour = HEX('BA000E'), special_colour = HEX("F1C100"), contrast = 2 })
+        ease_background_colour({ new_colour = HEX('E91E63'), special_colour = HEX("4f6367"), contrast = 2 })
     end
 }
 
@@ -119,11 +122,12 @@ SMODS.Booster {
     },
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
-    atlas = "0chill_combo_atlas",
+    atlas = "0chill_combo_booster_atlas",
     weight = 4,
-    pos = { x = 0, y = 3 },
+    pos = { x = 3, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
+    select_card = "consumeables",
     create_card = function(self, card, i)
         return {
             set = "Combo",
@@ -134,6 +138,6 @@ SMODS.Booster {
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("BA000E"))
-        ease_background_colour({ new_colour = HEX('BA000E'), special_colour = HEX("F1C100"), contrast = 2 })
+        ease_background_colour({ new_colour = HEX('E91E63'), special_colour = HEX("4f6367"), contrast = 2 })
     end
 }
