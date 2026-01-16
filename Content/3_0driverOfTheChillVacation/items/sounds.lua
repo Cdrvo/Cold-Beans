@@ -16,3 +16,17 @@ SMODS.Sound{
     key = "0chill_chum_infect",
     path = "3_0driverOfTheChillVacation/chum.ogg"
 }
+
+--Music by Cmykl
+SMODS.Sound ({
+    volume = 1,
+    pitch = 1,
+    key = "music_combo_pack",
+    path = "3_0driverOfTheChillVacation/music_combo_pack.ogg",
+    select_music_track = function(self)
+        return (G.booster_pack
+                    and not G.booster_pack.REMOVED
+                    and SMODS.OPENED_BOOSTER
+                    and SMODS.OPENED_BOOSTER.config.center.kind == "0chill_combo") and 100
+    end
+})
