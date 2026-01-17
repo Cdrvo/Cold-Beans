@@ -19,10 +19,13 @@ SMODS.Joker {
             CapitalChirp_mult = 4,
             CapitalChirp_num = 1,
             CapitalChirp_denom = 39,
-            restruct_mult = 1.605835806
+            restruct_mult = 1.605835806,
         },
     },
-    loc_vars = function(self, info_queue, card) --Modifed From Yeah! Mostly artist Joker
+    loc_vars = function(self, info_queue, card) --Modifed From Yeah! Mostly artist Joker 
+         if card.ability.immutable.member == 3 then
+            info_queue[#info_queue + 1] = { key = 'tag_cbean_0chill_combo', set = 'Tag' }
+        end
         if card.ability.immutable.member == 4 then
             info_queue[#info_queue + 1] = G.P_CENTERS.e_cbean_sd_frozen
             info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
@@ -91,18 +94,17 @@ SMODS.Joker {
             end
         end
 
-        --[[
-        if context.final_scoring_step and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 0 then --Mario's effect
+        if context.final_scoring_step and (hand_chips * mult > G.GAME.blind.chips) and not card.debuff and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 3 then --Mario Effect
+            print("Here")
             G.E_MANAGER:add_event(Event({
-                func = function()
-                    if to_big(G.ARGS.score_intensity.earned_score) >= to_big(G.ARGS.score_intensity.required_score) and to_big(G.ARGS.score_intensity.required_score) > to_big(0) then
-                        card.ability.extra.flame = true
-                    end
+                func = (function()
+                    add_tag(Tag('tag_cbean_0chill_combo'))
+                    play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                    play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
                     return true
-                end
+                end)
             }))
         end
-        ]]
 
         if context.main and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 4 then --restruct1225's Effect
             return {

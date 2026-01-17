@@ -2356,6 +2356,21 @@ return {
 				},
 			},
 
+			j_cbean_0chill_vacation_member3 = {
+				name = {"Chill Vacation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer"},
+				text = {
+					{
+						"Can be used as a {X:green,C:white}Starter{} Card",
+						"in a {C:combo}Combo{} and changes",
+						"effect each use"	
+					},
+					{
+						"If score catches fire,",
+						"get a {C:combo}Turbo{} tag"
+					}
+				},
+			},
+
 			j_cbean_0chill_vacation_member4 = {
 				name = {"Chill Vaction", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe"},
 				text = {
