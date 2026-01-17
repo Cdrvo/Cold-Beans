@@ -2184,10 +2184,27 @@ return {
 				},
 			},
 
-			j_cbean_sd_overchilled = {
+			j_cbean_0chill_noelle = {
+				name = "Noelle",
+				text = {
+					{
+						"Adds {C:dark_edition}Frozen{} to",
+						"a random held card when",
+						"a {C:attention}Blind{} is defeated"
+					},
+					{
+						"Instead adds {C:dark_edition}Frozen{}",
+						"to every held card and",
+						"makes {C:dark_edition}Frozen{} cards clickable",
+						"if you have {C:attention}Thorn Ring{}"
+					},
+				},
+			},
+
+			j_cbean_sd_overchilled = { --I think this one got misplaced
 				name = "Overchilled Beans",
 				text = {
-					"When round begins, add a Frozen",
+					"When round begins, add a {C:dark_edition}Frozen{}",
 					"Bean playing card to your hand",
 					"{C:inactive,s:0.8}Ah, shoot, they were supposed to be COOL..."
 				}

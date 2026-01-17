@@ -1,6 +1,6 @@
 local click = Card.click
 function Card:click()
-    if self.edition and self.edition.type == "cbean_sd_frozen" then
+    if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) then
         return nil
     end
     return click(self)

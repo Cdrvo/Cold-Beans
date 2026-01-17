@@ -39,7 +39,6 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             end
         end
     end,
-
     calculate = function(self, card, context)
         if context.joker_main then
             return {
@@ -49,6 +48,9 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     end,
 
     add_to_deck = function(self, card, from_debuff)
+        if #SMODS.find_card('j_cbean_0chill_noelle') > 0 then
+            play_sound('cbean_0chill_ominous')
+        end
         play_sound('cbean_0chill_thorn_ring_equip')
         card.children.center:set_sprite_pos({x = 1, y = 0})
         G.hand:change_size(-card.ability.immutable.hand_size)

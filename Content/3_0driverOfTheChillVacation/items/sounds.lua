@@ -17,6 +17,16 @@ SMODS.Sound{
     path = "3_0driverOfTheChillVacation/chum.ogg"
 }
 
+SMODS.Sound{
+    key = "0chill_ominous",
+    path = "3_0driverOfTheChillVacation/snd_ominous.ogg"
+}
+
+SMODS.Sound{
+    key = "0chill_snowgrave",
+    path = "3_0driverOfTheChillVacation/snd_snowgrave.ogg"
+}
+
 --Music by Cmykl
 SMODS.Sound ({
     volume = 1,
