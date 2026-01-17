@@ -1,7 +1,7 @@
 SMODS.Joker { 
     key = "0chill_noelle", 
     atlas = "0chill_joker_atlas",
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 3 },
     rarity = 3,
     order = 1,
     blueprint_compat = true,
@@ -11,7 +11,24 @@ SMODS.Joker {
         info_queue[#info_queue+1] = G.P_CENTERS.m_cbean_wgrop_ice
         info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_0chill_thorn_ring
     end,
+
+    load = function(self, card, card_table, other_card)
+        if #SMODS.find_card('j_cbean_0chill_thorn_ring') > 0 then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card.children.center:set_sprite_pos({x = 2, y = 3})
+                    return true
+                end
+            }))
+        end
+    end,
+
     calculate = function(self, card, context)
+        if context.setting_blind and #SMODS.find_card('j_cbean_0chill_thorn_ring') > 0 then
+            card.children.center:set_sprite_pos({x = 2, y = 3})
+        elseif context.setting_blind then
+            card.children.center:set_sprite_pos({x = 1, y = 3})
+        end
         if context.end_of_round and context.cardarea == G.jokers and (#G.hand.cards >= 1) then
             if (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0) then
                 G.E_MANAGER:add_event(Event({
@@ -55,7 +72,7 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         if #SMODS.find_card('j_cbean_0chill_thorn_ring') > 0 then
             play_sound('cbean_0chill_ominous')
-            --card.children.center:set_sprite_pos({x = 1, y = 0})
+            card.children.center:set_sprite_pos({x = 2, y = 3})
         end
     end,
     beans_credits = {
