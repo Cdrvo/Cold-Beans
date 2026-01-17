@@ -161,10 +161,10 @@ SMODS.Joker {
                         trigger = "after",
                         delay = 1.25,
                         func = function()
-                            local temp_select = 2
-                            --repeat 
-                               --temp_select = math.random(0,5)
-                            --until temp_select ~= card.ability.immutable.member
+                            local temp_select = 0
+                            repeat 
+                               temp_select = math.random(0,5)
+                            until temp_select ~= card.ability.immutable.member
                             card.ability.immutable.member = temp_select
                             card.children.center:set_sprite_pos({x = card.ability.immutable.member, y = 4})
                             return true
