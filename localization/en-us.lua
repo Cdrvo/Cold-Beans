@@ -2356,6 +2356,21 @@ return {
 				},
 			},
 
+			j_cbean_0chill_vacation_member2 = {
+				name = {"Chill Vacation", "{s:0.7}InspectorB:{} {X:red,C:white,s:0.7}Gluten Ray"},
+				text = {
+					{
+						"Can be used as a {X:green,C:white}Starter{} Card",
+						"in a {C:combo}Combo{} and changes",
+						"effect each use"	
+					},
+					{
+						"Each scored King and 2 earns {C:money}$#8#{}",
+						"Otherwise scored cards earn {C:money}$#7#{}",
+					}
+				},
+			},
+
 			j_cbean_0chill_vacation_member3 = {
 				name = {"Chill Vacation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer"},
 				text = {

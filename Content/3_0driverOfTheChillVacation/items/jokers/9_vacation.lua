@@ -18,8 +18,11 @@ SMODS.Joker {
             cmykl_mult = 1.5,
             CapitalChirp_mult = 4,
             CapitalChirp_num = 1,
-            CapitalChirp_denom = 39,
+            CapitalChirp_denom = 39,           
             restruct_mult = 1.605835806,
+            InspectorB_dollars = 0,
+            InspectorB_dollar_small = 1,
+            InspectorB_dollar_large = 3,
         },
     },
     loc_vars = function(self, info_queue, card) --Modifed From Yeah! Mostly artist Joker 
@@ -38,7 +41,10 @@ SMODS.Joker {
                 card.ability.extra.CapitalChirp_mult,
                 card.ability.extra.CapitalChirp_num,
                 card.ability.extra.CapitalChirp_denom,
-                card.ability.extra.restruct_mult
+                card.ability.extra.restruct_mult,
+                card.ability.extra.InspectorB_dollars,
+                card.ability.extra.InspectorB_dollar_small,
+                card.ability.extra.InspectorB_dollar_large
             }
         }
     end,
@@ -94,7 +100,20 @@ SMODS.Joker {
             end
         end
 
-        if context.final_scoring_step and (hand_chips * mult > G.GAME.blind.chips) and not card.debuff and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 3 then --Mario Effect
+        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 2 then --InspectorB's Effect
+            card.ability.extra.InspectorB_dollars = 0
+            if context.other_card:get_id() == 2 or context.other_card:get_id() == 13 then
+                card.ability.extra.InspectorB_dollars = card.ability.extra.InspectorB_dollars + card.ability.extra.InspectorB_dollar_large
+            else
+                card.ability.extra.InspectorB_dollars = card.ability.extra.InspectorB_dollars + card.ability.extra.InspectorB_dollar_small
+            end
+            return {
+                dollars = card.ability.extra.InspectorB_dollars
+            }
+        end
+
+        if context.final_scoring_step and (hand_chips * mult > G.GAME.blind.chips) and not card.debuff and card.ability.immutable.sequence > 0 --MarioFan597's Effect
+        and card.ability.immutable.member == 3 then 
             print("Here")
             G.E_MANAGER:add_event(Event({
                 func = (function()
@@ -142,10 +161,10 @@ SMODS.Joker {
                         trigger = "after",
                         delay = 1.25,
                         func = function()
-                            local temp_select = 0
-                            repeat 
-                               temp_select = math.random(0,5)
-                            until temp_select ~= card.ability.immutable.member
+                            local temp_select = 2
+                            --repeat 
+                               --temp_select = math.random(0,5)
+                            --until temp_select ~= card.ability.immutable.member
                             card.ability.immutable.member = temp_select
                             card.children.center:set_sprite_pos({x = card.ability.immutable.member, y = 4})
                             return true
@@ -338,6 +357,7 @@ G.FUNCS.can_use_combo = function(e)
         e.config.button = nil
     end
 end
+
 
 G.FUNCS.can_combo = function(e)
     print("Tried Selecting Combo")
