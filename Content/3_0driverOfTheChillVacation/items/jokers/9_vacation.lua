@@ -15,7 +15,10 @@ SMODS.Joker {
             member = 0, --Keeps track of which effect is active
         },
         extra = {
-            cmykl_mult = 1.25
+            cmykl_mult = 1.25,
+            CapitalChirp_mult = 4,
+            CapitalChirp_num = 1,
+            CapitalChirp_denom = 39
         },
     },
     loc_vars = function(self, info_queue, card) --Modifed From Yeah! Mostly artist Joker
@@ -26,7 +29,10 @@ SMODS.Joker {
         return {
             key = self.key .. '_member' .. tostring(card.ability.immutable.member),
             vars = {
-                card.ability.extra.cmykl_mult
+                card.ability.extra.cmykl_mult,
+                card.ability.extra.CapitalChirp_mult,
+                card.ability.extra.CapitalChirp_num,
+                card.ability.extra.CapitalChirp_denom,
             }
         }
     end,
@@ -49,6 +55,33 @@ SMODS.Joker {
             end
         end
 
+        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 1 then --Capital Chirps's Effect
+            if context.other_card:is_suit('Hearts') then
+                if SMODS.pseudorandom_probability(card, "0drivers4ever", card.ability.extra.CapitalChirp_num, card.ability.extra.CapitalChirp_denom) then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'before',
+                        delay = 0.0,
+                        func = function()
+                            play_sound("timpani")
+                            local new_card = SMODS.create_card({set = 'Planet', area = G.consumables, edition = 'e_negative'})
+                            new_card:add_to_deck()
+                            G.consumeables:emplace(new_card)
+                            G.GAME.consumeable_buffer = 0
+                            new_card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
+
+                if (card.ability.extra.CapitalChirp_num <= 39) then
+                    card.ability.extra.CapitalChirp_num = card.ability.extra.CapitalChirp_num + 1
+                end
+                return {
+                    mult = card.ability.extra.CapitalChirp_mult
+                }
+            end
+        end
+
         if context.after and not context.blueprint and card.ability.immutable.sequence > 0 then 
             --Makes sure it is a different person then last time
             G.E_MANAGER:add_event(Event({
@@ -57,7 +90,7 @@ SMODS.Joker {
                         func = function()
                             local temp_select = 0
                             repeat 
-                               temp_select = math.random(0,5)
+                              temp_select = math.random(0,5)
                             until temp_select ~= card.ability.immutable.member
                             card.ability.immutable.member = temp_select
                             card.children.center:set_sprite_pos({x = card.ability.immutable.member, y = 4})
@@ -74,6 +107,7 @@ SMODS.Joker {
 
         end
     end,
+    
     beans_credits = {
         team = {"0 Driver Of",
             "The Chill Vacation"

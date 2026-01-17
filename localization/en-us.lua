@@ -2325,7 +2325,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member0 = {
-				name = {"Chill Vaction", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
+				name = {"Chill Vacation", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2335,6 +2335,23 @@ return {
 					{
 						"Each played Ace has",
 						"{X:mult,C:white}X#1#{} Mult when scored",
+					}
+				},
+			},
+
+			j_cbean_0chill_vacation_member1 = {
+				name = {"Chill Vacation", "{s:0.7}Capital Chirp:{} {X:red,C:white,s:0.7}Alien Invasion"},
+				text = {
+					{
+						"Can be used as a {X:green,C:white}Starter{} Card",
+						"in a {C:combo}Combo{} and changes",
+						"effect each use"	
+					},
+					{
+						"Each scored Hearts card grants {C:mult}+#2#{} Mult",
+						"and has a {C:green}#3# in #4#{} chance to",
+						"create a random {C:dark_edition}Negative{} {C:planet}Planet{} card",
+						"{C:inactive}Odds improve by 1 per card{}"
 					}
 				},
 			},
