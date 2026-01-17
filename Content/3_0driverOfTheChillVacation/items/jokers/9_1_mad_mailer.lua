@@ -13,6 +13,7 @@ SMODS.Joker {
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = SMODS.Stickers["cbean_mailed"]
+        info_queue[#info_queue + 1] = SMODS.Stickers["cbean_hooking"]
         return { 
             vars = { 
                 card.ability.extra.money,
@@ -28,6 +29,7 @@ SMODS.Joker {
         if context.pre_discard and not context.blueprint and
             G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 and not G.hand.highlighted[1].ability.cbean_mailed then
             context.full_hand[1]:add_sticker("cbean_mailed", true)
+            context.full_hand[1]:add_sticker("cbean_hooking", true)
             return {
                 dollars = card.ability.extra.money,
                 delay = 0.45

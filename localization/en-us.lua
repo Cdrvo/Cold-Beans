@@ -2297,9 +2297,9 @@ return {
 				name = "The Mad Mailer",
 				text = 
 					{
-						"If {C:attention}first discard of round",
-						"has only {C:attention}1{} card, earn {C:money}$#1#{}",
-						"and apply {C:attention}Mailed{} to it",
+						"If {C:attention}first discard{} of round",
+						"has only {C:attention}1{} card, earn {C:money}$#1#{} and",
+						"apply {C:attention}Mailed{} and {C:attention}Hooking{} to it",
 						"{C:inactive}(Must not already have Mailed)"
 					},
 			},
