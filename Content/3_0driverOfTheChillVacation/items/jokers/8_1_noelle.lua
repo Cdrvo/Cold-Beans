@@ -2,12 +2,13 @@ SMODS.Joker {
     key = "0chill_noelle", 
     atlas = "0chill_joker_atlas",
     pos = { x = 0, y = 0 },
-    rarity = 2,
+    rarity = 3,
     order = 1,
     blueprint_compat = true,
     cost = 8,
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_cbean_sd_frozen
+        info_queue[#info_queue+1] = G.P_CENTERS.m_cbean_wgrop_ice
         info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_0chill_thorn_ring
     end,
     calculate = function(self, card, context)
@@ -19,6 +20,7 @@ SMODS.Joker {
                         func = function()
                             play_sound("cbean_0chill_snowgrave")
                             for k, v in pairs(G.hand.cards) do
+                                v:set_ability("m_cbean_wgrop_ice")
                                 v:set_edition("e_cbean_sd_frozen")
                                 v:juice_up(0.5, 0.5)
                             end

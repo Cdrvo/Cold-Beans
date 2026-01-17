@@ -368,26 +368,29 @@ YMA.SideQuests.quest {
     calculate = function(self, card, context)
         if card.ability.extra.rounds_remaining > 0 and context.pseudorandom_result and context.result and context.identifier == "wheel_of_fortune" then
             card.ability.extra.rounds_remaining = card.ability.extra.rounds
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                func = function()
-                    local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
-                    local eligible_card = pseudorandom_element(editionless_jokers, 'yma_wheel_of_fortune')
-                    eligible_card:set_edition('e_negative', true)
-                    return true
-                end
-            }))
-            YMA.complete_quest(card, nil, nil, false)
-        end
-        if card.ability.extra.rounds_remaining <= 0 then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    func = function()
+                        local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+                        if #editionless_jokers > 0 then
+                            local eligible_card = pseudorandom_element(editionless_jokers, 'yma_wheel_of_fortune')
+                            eligible_card:set_edition('e_negative', true)
+                        end
+                        return true
+                    end
+                }))
             YMA.complete_quest(card, nil, nil, false)
         end
         if context.end_of_round and context.main_eval and not context.blueprint then
-            card.ability.extra.rounds_remaining = card.ability.extra.rounds_remaining - 1
-            return {
-                message = (card.ability.extra.rounds_remaining .. "!"),
-                colour = G.C.FILTER
-            }
+            if card.ability.extra.rounds_remaining <= 1 then
+                YMA.complete_quest(card, nil, nil, false)
+            else
+                card.ability.extra.rounds_remaining = card.ability.extra.rounds_remaining - 1
+                return {
+                    message = (card.ability.extra.rounds_remaining .. "!"),
+                    colour = G.C.FILTER
+                }
+            end
         end
     end,
     beans_credits = {
