@@ -2365,7 +2365,7 @@ return {
 						"effect each use"	
 					},
 					{
-						"{X:mult,C:white}X#4#{} Mult",
+						"{X:mult,C:white}X#5#{} Mult",
 					},
 					{
 						"Turns {C:dark_edition}Frozen{} cards held in hand",
