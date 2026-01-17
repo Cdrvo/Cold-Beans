@@ -2324,6 +2324,21 @@ return {
 				},
 			},
 
+			j_cbean_0chill_vacation_member0 = {
+				name = {"Chill Vaction", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
+				text = {
+					{
+						"Can be used as a {X:green,C:white}Starter{} Card",
+						"in a {C:combo}Combo{} and changes",
+						"effect each use"	
+					},
+					{
+						"Each played Ace has",
+						"{X:mult,C:white}X#1#{} Mult when scored",
+					}
+				},
+			},
+
 			--Pissboys
 
 			j_cbean_pboys_molotov = {
@@ -6046,6 +6061,7 @@ return {
 				regression_least_suit = "(Least common suit)s",
 				demeter_random_rank = "[Rank]",
 				sdown_czodiac_add = "+1 Zodiac",
+				k_cbean_0chill_formation_ex = "Formation Change!",
 				k_dispelled_ex = "Dispelled!",
 				k_strengthened_ex = "Strengthened!",
 				k_cbean_sdown_czodiacpack = "Zodiac Pack",
