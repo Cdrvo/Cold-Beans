@@ -15,16 +15,18 @@ SMODS.Joker {
             member = 0, --Keeps track of which effect is active
         },
         extra = {
-            cmykl_mult = 1.25,
+            cmykl_mult = 1.5,
             CapitalChirp_mult = 4,
             CapitalChirp_num = 1,
-            CapitalChirp_denom = 39
+            CapitalChirp_denom = 39,
+            restruct_mult = 1.605835806
         },
     },
     loc_vars = function(self, info_queue, card) --Modifed From Yeah! Mostly artist Joker
-        --if card.ability.immutable_memeber == 0 then
-            --info_queue[#info_queue + 1] = { key = 'tag_buffoon', set = 'Tag' }
-        --end
+        if card.ability.immutable.member == 4 then
+            info_queue[#info_queue + 1] = G.P_CENTERS.e_cbean_sd_frozen
+            info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+        end
         info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
         return {
             key = self.key .. '_member' .. tostring(card.ability.immutable.member),
@@ -33,6 +35,7 @@ SMODS.Joker {
                 card.ability.extra.CapitalChirp_mult,
                 card.ability.extra.CapitalChirp_num,
                 card.ability.extra.CapitalChirp_denom,
+                card.ability.extra.restruct_mult
             }
         }
     end,
@@ -48,7 +51,13 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 0 then --Cmykl's Effect
-            if context.other_card:get_id() == 14 then
+        local temp_rank = 1
+            for i = 1, #context.scoring_hand do
+                if temp_rank <= context.scoring_hand[i]:get_id()  then
+                    temp_rank = context.scoring_hand[i]:get_id()
+                end
+            end
+            if context.other_card:get_id() == temp_rank then
                 return {
                     xmult = card.ability.extra.cmykl_mult
                 }
@@ -82,6 +91,49 @@ SMODS.Joker {
             end
         end
 
+        --[[
+        if context.final_scoring_step and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 0 then --Mario's effect
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    if to_big(G.ARGS.score_intensity.earned_score) >= to_big(G.ARGS.score_intensity.required_score) and to_big(G.ARGS.score_intensity.required_score) > to_big(0) then
+                        card.ability.extra.flame = true
+                    end
+                    return true
+                end
+            }))
+        end
+        ]]
+
+        if context.main and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 4 then --restruct1225's Effect
+            return {
+                xmult = card.ability.extra.cmykl_mult
+            }
+        end
+        
+        if context.after and context.cardarea == G.jokers and (#G.hand.cards >= 1) and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 4 then --Still restruct's effect
+            local eligiblecards = {} --Modifed from cryptid sus
+            for k, v in pairs(G.hand.cards) do
+                if v.edition and v.edition.cbean_sd_frozen then
+                    print(v)
+                    table.insert(eligiblecards, v)
+                end
+            end
+            if #eligiblecards > 0 then
+                G.E_MANAGER:add_event(Event({
+                    trigger = "before",
+                    delay = 1.25,
+                    func = function()
+                        for k, v in pairs(eligiblecards) do
+                            v:set_ability('m_steel', nil, true)
+                            card:juice_up(0.5, 0.5)
+                        end
+                        play_sound("cbean_0chill_pipe")
+                        return true
+                    end,
+                }))                    
+            end
+        end
+
         if context.after and not context.blueprint and card.ability.immutable.sequence > 0 then 
             --Makes sure it is a different person then last time
             G.E_MANAGER:add_event(Event({
@@ -90,7 +142,7 @@ SMODS.Joker {
                         func = function()
                             local temp_select = 0
                             repeat 
-                              temp_select = math.random(0,5)
+                               temp_select = math.random(0,5)
                             until temp_select ~= card.ability.immutable.member
                             card.ability.immutable.member = temp_select
                             card.children.center:set_sprite_pos({x = card.ability.immutable.member, y = 4})
@@ -107,15 +159,14 @@ SMODS.Joker {
 
         end
     end,
-    
     beans_credits = {
         team = {"0 Driver Of",
             "The Chill Vacation"
         },
-        idea = {"restruct"},
-        art =  "Monachrome",
-        code = {"restruct",
-        "MarioFan597"},
+        idea = {"Everyone"},
+        art =  "cmykl",
+        code = {"MarioFan597",
+        "Inspector"},
     }
 }
 

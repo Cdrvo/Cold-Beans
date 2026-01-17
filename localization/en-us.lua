@@ -2325,7 +2325,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member0 = {
-				name = {"Chill Vacation", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
+				name = {"Chill Vaction", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2333,7 +2333,7 @@ return {
 						"effect each use"	
 					},
 					{
-						"Each played Ace has",
+						"Highest rank card has",
 						"{X:mult,C:white}X#1#{} Mult when scored",
 					}
 				},
@@ -2352,6 +2352,24 @@ return {
 						"and has a {C:green}#3# in #4#{} chance to",
 						"create a random {C:dark_edition}Negative{} {C:planet}Planet{} card",
 						"{C:inactive}Odds improve by 1 per card{}"
+					}
+				},
+			},
+
+			j_cbean_0chill_vacation_member4 = {
+				name = {"Chill Vaction", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe"},
+				text = {
+					{
+						"Can be used as a {X:green,C:white}Starter{} Card",
+						"in a {C:combo}Combo{} and changes",
+						"effect each use"	
+					},
+					{
+						"{X:mult,C:white}X#4#{} Mult",
+					},
+					{
+						"Turns {C:dark_edition}Frozen{} cards held in hand",
+						"into {C:attention}Steel Cards{}"
 					}
 				},
 			},
