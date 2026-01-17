@@ -2184,23 +2184,6 @@ return {
 				},
 			},
 
-			j_cbean_0chill_noelle = {
-				name = "Noelle",
-				text = {
-					{
-						"Adds {C:dark_edition}Frozen{} to",
-						"a random held card when",
-						"a {C:attention}Blind{} is defeated"
-					},
-					{
-						"Instead adds {C:dark_edition}Frozen{}",
-						"to every held card and",
-						"makes {C:dark_edition}Frozen{} cards clickable",
-						"if you have {C:attention}Thorn Ring{}"
-					},
-				},
-			},
-
 			j_cbean_sd_overchilled = { --I think this one got misplaced
 				name = "Overchilled Beans",
 				text = {
@@ -2291,6 +2274,34 @@ return {
 						"{C:inactive}(Indicated with an HR)",
 					},
 				},
+			},
+
+			j_cbean_0chill_noelle = {
+				name = "Noelle",
+				text = {
+					{
+						"Adds {C:dark_edition}Frozen{} to",
+						"a random held card when",
+						"a {C:attention}Blind{} is defeated"
+					},
+					{
+						"Instead affects every held",
+						"card, also makes them {C:attention}Ice Cards{},",
+						"and allows {C:dark_edition}Frozen{} cards to be",
+						"clicked if you have {C:attention}Thorn Ring{}"
+					},
+				},
+			},
+
+			j_cbean_0chill_mad_mailer = {
+				name = "The Mad Mailer",
+				text = 
+					{
+						"If {C:attention}first discard of round",
+						"has only {C:attention}1{} card, earn {C:money}$#1#{}",
+						"and apply {C:attention}Mailed{} to it",
+						"{C:inactive}(Must not already have Mailed)"
+					},
 			},
 
 			--Pissboys
