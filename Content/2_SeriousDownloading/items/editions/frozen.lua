@@ -31,10 +31,18 @@ SMODS.Edition{
     end,
     calculate = function (self, card, context)
         if context.after then
-            if SMODS.pseudorandom_probability(card, "cb_sd_frozen_thaw", 1, self.config.extra.odds) then
+            if SMODS.pseudorandom_probability(card, "cb_sd_frozen_thaw", 1, self.config.extra.odds) and (#SMODS.find_card('j_cbean_0chill_permafrost') < 1) then
                 card:set_edition()
+                return {
+                    message = 'Thawed!',
+                    colour = G.C.BLUE
+                }  
             else
                 card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + self.config.extra.h_chips
+                return {
+                    message = 'Still Chill!',
+                    colour = G.C.BLUE
+                }  
             end
         end
     end,

@@ -2304,6 +2304,26 @@ return {
 					},
 			},
 
+			j_cbean_0chill_chill_vacation = {
+				name = "Chill Vacation",
+				text = {
+					{
+						"Adds {C:dark_edition}Frozen{} to",
+						"all other Jokers when sold",
+						"{C:inactive,E:1,s:2}Let's all just chill out..."
+					},
+				},
+			},
+
+			j_cbean_0chill_permafrost = {
+				name = "Permafrost",
+				text = {
+					{
+						"{C:dark_edition}Frozen{} cards will not thaw"
+					},
+				},
+			},
+
 			--Pissboys
 
 			j_cbean_pboys_molotov = {

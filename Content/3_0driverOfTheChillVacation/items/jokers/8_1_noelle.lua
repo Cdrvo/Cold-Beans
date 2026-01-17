@@ -35,7 +35,7 @@ SMODS.Joker {
                     end
                 end
                 if #eligiblecards > 0 then
-                    --you just lost the game
+                    --you just lost the game  --f*** you
                     local eligible_card = pseudorandom_element(eligiblecards, pseudoseed("1997 Kromer"))
                     G.E_MANAGER:add_event(Event({
                         trigger = "before",
