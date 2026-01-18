@@ -72,7 +72,7 @@ SMODS.Booster {
 
 SMODS.Booster {
     key = "combo_booster_special1",
-    config = { extra = 5, choose = 1 },
+    config = { extra = 5, choose = 2 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,
@@ -108,7 +108,7 @@ SMODS.Booster {
 
 SMODS.Booster {
     key = "combo_booster_ultimate1",
-    config = { extra = 5, choose = 2 },
+    config = { extra = 9, choose = 3 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("BA000E")} } }
     end,

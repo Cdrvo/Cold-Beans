@@ -59,7 +59,10 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 0 then --Cmykl's Effect
+        if context.individual
+        and context.cardarea == G.play
+        and card.ability.immutable.sequence > 0
+        and card.ability.immutable.member == 0 then --Cmykl's Effect
         local temp_rank = 1
             for i = 1, #context.scoring_hand do
                 if temp_rank <= context.scoring_hand[i]:get_id()  then
@@ -73,7 +76,10 @@ SMODS.Joker {
             end
         end
 
-        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 1 then --Capital Chirps's Effect
+        if context.individual
+        and context.cardarea == G.play
+        and card.ability.immutable.sequence > 0
+        and card.ability.immutable.member == 1 then --Capital Chirps's Effect
             if context.other_card:is_suit('Hearts') then
                 if SMODS.pseudorandom_probability(card, "0drivers4ever", card.ability.extra.CapitalChirp_num, card.ability.extra.CapitalChirp_denom) then
                     G.E_MANAGER:add_event(Event({
@@ -100,7 +106,10 @@ SMODS.Joker {
             end
         end
 
-        if context.individual and context.cardarea == G.play and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 2 then --InspectorB's Effect
+        if context.individual
+        and context.cardarea == G.play
+        and card.ability.immutable.sequence > 0
+        and card.ability.immutable.member == 2 then --InspectorB's Effect
             card.ability.extra.InspectorB_dollars = 0
             if context.other_card:get_id() == 2 or context.other_card:get_id() == 13 then
                 card.ability.extra.InspectorB_dollars = card.ability.extra.InspectorB_dollars + card.ability.extra.InspectorB_dollar_large
@@ -112,8 +121,10 @@ SMODS.Joker {
             }
         end
 
-        if context.final_scoring_step and (hand_chips * mult > G.GAME.blind.chips) and not card.debuff and card.ability.immutable.sequence > 0 --MarioFan597's Effect
-        and card.ability.immutable.member == 3 then 
+        if context.final_scoring_step
+        and (hand_chips * mult > G.GAME.blind.chips)
+        and not card.debuff and card.ability.immutable.sequence > 0 
+        and card.ability.immutable.member == 3 then --MarioFan597's Effect
             print("Here")
             G.E_MANAGER:add_event(Event({
                 func = (function()
@@ -125,13 +136,19 @@ SMODS.Joker {
             }))
         end
 
-        if context.main and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 4 then --restruct1225's Effect
+        if context.main
+        and card.ability.immutable.sequence > 0
+        and card.ability.immutable.member == 4 then --restruct1225's Effect
             return {
                 xmult = card.ability.extra.cmykl_mult
             }
         end
         
-        if context.after and context.cardarea == G.jokers and (#G.hand.cards >= 1) and card.ability.immutable.sequence > 0 and card.ability.immutable.member == 4 then --Still restruct's effect
+        if context.after
+        and context.cardarea == G.jokers
+        and (#G.hand.cards >= 1)
+        and card.ability.immutable.sequence > 0
+        and card.ability.immutable.member == 4 then --Still restruct's effect
             local eligiblecards = {} --Modifed from cryptid sus
             for k, v in pairs(G.hand.cards) do
                 if v.edition and v.edition.cbean_sd_frozen then
@@ -155,15 +172,49 @@ SMODS.Joker {
             end
         end
 
+        if context.after
+        and context.scoring_hand
+        and card.ability.immutable.sequence > 0
+        and card.ability.immutable.member == 5 then -- Monachrome's effect
+
+            local scored = {}
+
+            -- Track which cards scored
+            for _, c in ipairs(context.scoring_hand) do
+                scored[c] = true
+            end
+
+            -- Take a snapshot of played cards
+            local to_check = {}
+            for _, c in ipairs(G.play.cards) do
+                table.insert(to_check, c)
+            end
+
+            -- Destroy unscored played cards
+            G.E_MANAGER:add_event(Event({
+                trigger = "before",
+                delay = 0,
+                func = function()
+                    for _, c in ipairs(to_check) do
+                        if not scored[c] then
+                            c:start_dissolve()
+                            c:remove()
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+
         if context.after and not context.blueprint and card.ability.immutable.sequence > 0 then 
             --Makes sure it is a different person then last time
             G.E_MANAGER:add_event(Event({
                         trigger = "after",
                         delay = 1.25,
                         func = function()
-                            local temp_select = 0
+                            local temp_select = 5
                             repeat 
-                               temp_select = math.random(0,5)
+                                temp_select = math.random(0,5)
                             until temp_select ~= card.ability.immutable.member
                             card.ability.immutable.member = temp_select
                             card.children.center:set_sprite_pos({x = card.ability.immutable.member, y = 4})
@@ -360,11 +411,11 @@ end
 
 
 G.FUNCS.can_combo = function(e)
-    print("Tried Selecting Combo")
+    --print("Tried Selecting Combo")
     SelectCombo(e.config.ref_table)
 end
 
 G.FUNCS.can_uncombo = function(e)
-    print("Tried Unselecting Combo")
+    --print("Tried Unselecting Combo")
     UnselectCombo(e.config.ref_table)
 end

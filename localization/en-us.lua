@@ -2325,7 +2325,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member0 = {
-				name = {"Chill Vaction", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
+				name = {"Chill Formation", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2340,7 +2340,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member1 = {
-				name = {"Chill Vacation", "{s:0.7}Capital Chirp:{} {X:red,C:white,s:0.7}Alien Invasion"},
+				name = {"Chill Formation", "{s:0.7}Capital Chirp:{} {X:red,C:white,s:0.7}Alien Invasion"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2357,7 +2357,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member2 = {
-				name = {"Chill Vacation", "{s:0.7}InspectorB:{} {X:red,C:white,s:0.7}Gluten Ray"},
+				name = {"Chill Formation", "{s:0.7}InspectorB:{} {X:red,C:white,s:0.7}Gluten Ray"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2372,7 +2372,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member3 = {
-				name = {"Chill Vacation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer"},
+				name = {"Chill Formation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2387,7 +2387,7 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member4 = {
-				name = {"Chill Vaction", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe"},
+				name = {"Chill Formation", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
@@ -2400,6 +2400,20 @@ return {
 					{
 						"Turns {C:dark_edition}Frozen{} cards held in hand",
 						"into {C:attention}Steel Cards{}"
+					}
+				},
+			},
+
+			j_cbean_0chill_vacation_member5 = {
+				name = {"Chill Formation", "{s:0.7}Monachrome:{} {X:tarot,C:white,s:0.7}Smoke and Mirrors"},
+				text = {
+					{
+						"Can be used as a {X:green,C:white}Starter{} Card",
+						"in a {C:combo}Combo{} and changes",
+						"effect each use"	
+					},
+					{
+						"{C:red}Destroys{} unscored played cards"
 					}
 				},
 			},
