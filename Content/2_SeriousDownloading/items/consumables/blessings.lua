@@ -24,6 +24,15 @@ SMODS.ConsumableType {
     },
 }
 
+-- Hi, HuyTheKiller from Pissboys here
+-- I just don't like undiscovered sprites not being used or being used inappropriately ;p
+SMODS.UndiscoveredSprite {
+    key = 'sdown_blessing',
+    atlas = "blessing_atlas",
+    pos = { x = 0, y = 3 },
+    no_overlay = true
+}
+
 SMODS.Consumable {
     key = 'sdown_ares',
     set = 'sdown_blessing',

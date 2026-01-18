@@ -202,3 +202,12 @@ SMODS.ConsumableType {
         }
     },
 }
+
+-- Hi, HuyTheKiller from Pissboys here
+-- I just don't like undiscovered sprites not being used or being used inappropriately ;p
+SMODS.UndiscoveredSprite {
+    key = 'Combo',
+    atlas = "0chill_combo_atlas",
+    pos = { x = 6, y = 4 },
+    no_overlay = true
+}

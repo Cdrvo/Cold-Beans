@@ -5,6 +5,7 @@ SMODS.UndiscoveredSprite {
     key = 'colon_Architecture',
     atlas = "colon_Architecture",
     pos = { x = 3, y = 0 },
+    no_overlay = true
 }
 
 Colonparen.Architecture {

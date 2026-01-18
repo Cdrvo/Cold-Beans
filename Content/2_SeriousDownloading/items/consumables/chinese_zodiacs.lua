@@ -24,10 +24,12 @@ SMODS.ConsumableType {
 }
 
 -- uh how does this work again
+-- don't worry, I got your back ;P (HuyTheKiller from Pissboys)
 SMODS.UndiscoveredSprite {
     key = 'sdown_czodiac',
-    atlas = 'Consumables',
-    pos = { x = 3, y = 2 },
+    atlas = 'czodiac_atlas',
+    pos = { x = 0, y = 3 },
+    no_overlay = true
 }
 
 function CZodiacUse(card, rank1, rank2, rank3)
