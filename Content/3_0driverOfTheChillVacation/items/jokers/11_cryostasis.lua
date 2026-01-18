@@ -1,5 +1,5 @@
 SMODS.Joker {  -- Modified from Cryptid's Cotton Candy
-    key = "0chill_chill_vacation", 
+    key = "0chill_cryostasis", 
     atlas = "0chill_joker_atlas",
     pos = { x = 3, y = 3 },
     rarity = 2,

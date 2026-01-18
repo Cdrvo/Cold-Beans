@@ -2304,7 +2304,7 @@ return {
 					},
 			},
 
-			j_cbean_0chill_chill_vacation = {
+			j_cbean_0chill_cryostasis = {
 				name = "Cryostasis",
 				text = {
 					{
