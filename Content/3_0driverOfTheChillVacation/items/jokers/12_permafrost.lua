@@ -10,7 +10,7 @@ SMODS.Joker {
             "The Chill Vacation"
         },
         idea = "Inspector_B",
-        art =  "TBA",
+        art =  "MarioFan597",
         code = "Inspector_B",
     }
 }
