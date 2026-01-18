@@ -7,7 +7,9 @@ SMODS.Joker {
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
-
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_cbean_olympus', set = 'Tag'}
+    end,
     calculate = function(self,card,context)
         if context.blind_defeated then
             G.E_MANAGER:add_event(Event({
@@ -24,7 +26,7 @@ SMODS.Joker {
             "The Chill Vacation"
         },
         idea = "MarioFan597",
-        art =  "cmykl",
+        art =  "MarioFan597",
         code = "Inspector_B",
     }
 }
