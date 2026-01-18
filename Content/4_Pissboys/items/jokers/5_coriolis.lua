@@ -27,14 +27,18 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
                 end
             end
             if is_first_card then
+				context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chips
+				context.other_card.ability.perma_mult = is_first_card == is_last_card and ((context.other_card.ability.perma_mult or 0) + card.ability.extra.mult) or (context.other_card.ability.perma_mult or 0)
                 return {
-					chips = card.ability.extra.chips,
-					mult = card.ability.extra.mult * (is_first_card == is_last_card and 1 or 0)
+					message = localize('k_upgrade_ex'),
+					colour = is_first_card == is_last_card and G.C.PURPLE or G.C.CHIPS
 				}
             elseif is_last_card then
+				context.other_card.ability.perma_mult =  (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
                 return {
-                    mult = card.ability.extra.mult
-                }
+					message = localize('k_upgrade_ex'),
+					colour = G.C.MULT
+				}
             end
         end
     end,
