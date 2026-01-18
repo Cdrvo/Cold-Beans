@@ -173,7 +173,7 @@ end
 local old_set_sprites = Card.set_sprites;
 Card.set_sprites = function (self, ...)
     local done = old_set_sprites(self, ...)
-    if self.ability and self.ability.colonparen_state then
+    if self.ability and self.ability.colonparen_state and self.config.center.discovered then
         local state = self.ability.colonparen_state;
         if state == 2 then
             self.children.center:set_sprite_pos(self.config.center.done_pos or self.config.center.progress_pos or self.config.center.base_pos or self.config.center.pos)

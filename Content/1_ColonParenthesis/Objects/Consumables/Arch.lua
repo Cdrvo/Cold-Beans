@@ -1,9 +1,10 @@
 
 -- uh how does this work again
+-- don't worry, I got your back ;P (HuyTheKiller from Pissboys)
 SMODS.UndiscoveredSprite {
     key = 'colon_Architecture',
     atlas = "colon_Architecture",
-    pos = { x = 0, y = 0 },
+    pos = { x = 3, y = 0 },
 }
 
 Colonparen.Architecture {
