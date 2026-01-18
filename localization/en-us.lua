@@ -2420,6 +2420,16 @@ return {
 				},
 			},
 
+			j_cbean_0chill_zagreus = {
+				name = {"Zagreus"},
+				text = {
+					{
+					"Create an {C:dark_edition, E:2}Olympus Tag{}",
+					"after defeating a blind"
+					}
+				}
+			},
+
 			--Pissboys
 
 			j_cbean_pboys_molotov = {
