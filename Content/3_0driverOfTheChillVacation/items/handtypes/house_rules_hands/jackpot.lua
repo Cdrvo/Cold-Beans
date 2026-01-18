@@ -52,7 +52,7 @@ SMODS.PokerHand{
         { "H_K", false }
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_oops') > 0) then --Checks if house rules and required joker are owned
+        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and ((#SMODS.find_card('j_oops') > 0) or (#SMODS.find_card('j_cbean_0chill_nat20') > 0) or (#SMODS.find_card('j_cbean_yma_set_of_dice') > 0)) then --Checks if house rules and required joker are owned
             return parts.cbean_0chill_jackpot
         end
     end

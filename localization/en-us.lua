@@ -6435,7 +6435,8 @@ return {
 
 				["cbean_0chill_jackpot"] = {
 					"A hand that contains three 7s",
-					"Must have {C:attention}House Rules{} and {C:attention}Oops! All 6s{} to play",
+					"Must have {C:attention}House Rules{} and ether {C:attention}Oops! All 6s{},",
+					"{C:attention}Nat 20{}, or {C:attention}Set of Dice{} to play",
 				},
 
 				["cbean_0chill_house_rules"] = {
