@@ -171,7 +171,7 @@ CBWG.ColdBeans_Biome {
     atlas = 'wgrop_biomes',
     key = "wgrop_glaciers",
     blinds = {["bl_arm"] = true, ["bl_fish"] = true, ["bl_water"] = true, ["bl_final_bell"] = true,["bl_cbean_colon_island"] = true, ["bl_cbean_sdown_astro"] = true, ["bl_cbean_sdown_sinker"] = true},
-    cards = {["j_cbean_0chill_thorn_ring"] = true, ["j_cbean_0chill_noelle"] = true, ["j_cbean_sd_overchilled"] = true, ["j_mystic_summit"] = true, ["j_supernova"] = true, ["j_space"] = true, ["j_ice_cream"] = true, ["j_splash"] = true, ["j_blue_joker"] = true, ["j_constellation"] = true, ["j_cloud_9"] = true, ["j_rocket"] = true, ["j_castle"] = true, ["j_satellite"] = true, ["j_astronomer"] = true, ["j_cbean_pboys_yellow_snow"] = true, ["j_cbean_yma_seeing_stars"] = true, ["j_cbean_yma_well_wrapped"] = true, ["j_cbean_nameteam_hollyjollyjoker"] = true, ["j_cbean_nameteam_tipoftheiceberg"] = true, ["j_onyx_agate"] = true},
+    cards = {["j_cbean_0chill_thorn_ring"] = true, ["j_cbean_0chill_noelle"] = true, ["j_cbean_0chill_cryostasis"] = true, ["j_cbean_0chill_permafrost"] = true, ["j_cbean_sd_overchilled"] = true, ["j_mystic_summit"] = true, ["j_supernova"] = true, ["j_space"] = true, ["j_ice_cream"] = true, ["j_splash"] = true, ["j_blue_joker"] = true, ["j_constellation"] = true, ["j_cloud_9"] = true, ["j_rocket"] = true, ["j_castle"] = true, ["j_satellite"] = true, ["j_astronomer"] = true, ["j_cbean_pboys_yellow_snow"] = true, ["j_cbean_yma_seeing_stars"] = true, ["j_cbean_yma_well_wrapped"] = true, ["j_cbean_nameteam_hollyjollyjoker"] = true, ["j_cbean_nameteam_tipoftheiceberg"] = true, ["j_onyx_agate"] = true},
     calculate = function(self, context)
     end,
     enter = function(self, calc)
