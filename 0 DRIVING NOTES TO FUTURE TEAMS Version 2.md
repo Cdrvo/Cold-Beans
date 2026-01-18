@@ -18,5 +18,3 @@ I feel like a couple of our Jokers like The Mad Mailman and Noelle might not be 
 It was fun working on this project and I really hope the teams have enjoyed what we added to this project. I for one have really enjoyed my time working on this.
 
 Until next time - MarioFan597
-
-\- cmykl, 0 driver of the chill vacation
