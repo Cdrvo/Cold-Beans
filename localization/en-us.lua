@@ -2305,12 +2305,14 @@ return {
 			},
 
 			j_cbean_0chill_chill_vacation = {
-				name = "Chill Vacation",
+				name = "Cryostasis",
 				text = {
 					{
 						"Adds {C:dark_edition}Frozen{} to",
 						"all other Jokers when sold",
-						"{C:inactive,E:1,s:2}Let's all just chill out..."
+						"{C:inactive,E:1,s:2}Let's all just chill out...",
+						"{C:inactive}and take responsibility"
+
 					},
 				},
 			},

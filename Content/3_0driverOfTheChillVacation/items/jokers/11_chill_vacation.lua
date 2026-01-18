@@ -1,7 +1,7 @@
 SMODS.Joker {  -- Modified from Cryptid's Cotton Candy
     key = "0chill_chill_vacation", 
     atlas = "0chill_joker_atlas",
-    pos = { x = 0, y = 2 },
+    pos = { x = 3, y = 3 },
     rarity = 2,
     order = 3,
     blueprint_compat = true,

@@ -1,7 +1,7 @@
 SMODS.Joker { 
     key = "0chill_permafrost", 
     atlas = "0chill_joker_atlas",
-    pos = { x = 2, y = 0 },
+    pos = { x = 3, y = 2},
     rarity = 1,
     blueprint_compat = true,
     cost = 3,
