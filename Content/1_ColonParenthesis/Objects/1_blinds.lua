@@ -588,7 +588,7 @@ function AnimatedSprite:draw_self(...)
 		G.cbean_colon_shared_WINGS.T.y = G.cbean_colon_shared_WINGS.T.y - offsety
 		G.cbean_colon_shared_WINGS.VT.x = G.cbean_colon_shared_WINGS.VT.x - offsetx
 		G.cbean_colon_shared_WINGS.VT.y = G.cbean_colon_shared_WINGS.VT.y - offsety
-		print("OI M8")
+		-- print("OI M8")
 		G.cbean_colon_shared_WINGS:draw_self(...)
 	end
 	return old_draw(self, ...)
