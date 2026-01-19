@@ -2472,8 +2472,8 @@ return {
 				name = "Coriolis Effect",
 				text = {
 					"If played hand contains a {C:attention}#3#{},",
-					"first card permament gain {C:chips}+#1#{} Chips,",
-					"last card permament gain {C:mult}+#2#{} Mult",
+					"first card permamently gains {C:chips}+#1#{} Chips,",
+					"last card permamently gains {C:mult}+#2#{} Mult",
 				},
 			},
 
