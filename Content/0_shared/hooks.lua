@@ -194,3 +194,15 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
   end
   return ref
 end
+
+-- One of Daily deck's effect: only allows modded jokers to appear
+-- (ignoring take_ownership on vanilla jokers, at least I think so)
+local add_to_pool_ref = SMODS.add_to_pool
+function SMODS.add_to_pool(prototype_obj, args)
+    local add, options = add_to_pool_ref(prototype_obj, args)
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
+    and CBEAN_DATE_TABLE.wday == 5 and prototype_obj.set == "Joker" then
+        return prototype_obj.original_mod and add or false, options
+    end
+    return add, options
+end

@@ -1,0 +1,80 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 15
+
+# Move seed generation to be before Back:apply and Stake.modifiers() so that both methods can use the seed and true pseudorandom numbers
+# (Copied over from CardSleeves as a fallback if it's not installed)
+# (Actually copied over from Sagatro ;P) - HuyTheKiller
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if not saveTable then
+    if args.seed then self.GAME.seeded = true end
+    self.GAME.pseudorandom.seed = args.seed or (not (G.SETTINGS.tutorial_complete or G.SETTINGS.tutorial_progress.completed_parts['big_blind']) and "TUTORIAL") or generate_starting_seed()
+end
+
+for k, v in pairs(self.GAME.pseudorandom) do if v == 0 then self.GAME.pseudorandom[k] = pseudohash(k..self.GAME.pseudorandom.seed) end end
+self.GAME.pseudorandom.hashed_seed = pseudohash(self.GAME.pseudorandom.seed)
+'''
+match_indent = true
+position = "at"
+payload = '''
+-- moved this code to earlier in the function (by Cold Beans)
+--[[
+if not saveTable then
+    if args.seed then self.GAME.seeded = true end
+    self.GAME.pseudorandom.seed = args.seed or (not (G.SETTINGS.tutorial_complete or G.SETTINGS.tutorial_progress.completed_parts['big_blind']) and "TUTORIAL") or generate_starting_seed()
+end
+
+for k, v in pairs(self.GAME.pseudorandom) do if v == 0 then self.GAME.pseudorandom[k] = pseudohash(k..self.GAME.pseudorandom.seed) end end
+self.GAME.pseudorandom.hashed_seed = pseudohash(self.GAME.pseudorandom.seed)
+--]]
+'''
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''self.GAME.selected_back_key = selected_back'''
+match_indent = true
+position = "after"
+payload = '''
+
+if not CardSleeves then
+    if not saveTable then
+        if args.seed then self.GAME.seeded = true end
+        self.GAME.pseudorandom.seed = args.seed or (not (G.SETTINGS.tutorial_complete or G.SETTINGS.tutorial_progress.completed_parts["big_blind"]) and "TUTORIAL") or generate_starting_seed()
+    end
+    for k, v in pairs(self.GAME.pseudorandom) do if v == 0 then self.GAME.pseudorandom[k] = pseudohash(k..self.GAME.pseudorandom.seed) end end
+    self.GAME.pseudorandom.hashed_seed = pseudohash(self.GAME.pseudorandom.seed)
+end
+'''
+
+# Force-set daily deck seed
+[[patches]]
+[patches.regex]
+target = 'game.lua'
+position = 'after'
+line_prepend = "$indent"
+pattern = '''(?<indent>[\t ]*)self\.GAME\.pseudorandom\.seed =.*generate_starting_seed\(\)\n'''
+payload = '''
+if self.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily" then
+    self.GAME.pseudorandom.seed = tostring(CBEAN_SESSION_DATE)
+end
+'''
+match_indent = true
+
+# Make sure card-rate modifying vouchers do not take effect on daily deck's 7th effect
+[[patches]]
+[patches.regex]
+target = 'card.lua'
+position = 'at'
+pattern = '''(?<indent>[\t ]*)(?<cont>G\.GAME\..*_rate = .*center_table\.extra)'''
+line_prepend = "$indent"
+payload = '''
+if G.GAME.selected_back.effect.center.key ~= "b_cbean_pboys_daily" or CBEAN_DATE_TABLE.wday ~= 7 then
+    $cont
+end
+'''
+match_indent = true
