@@ -83,9 +83,8 @@ function Blind:save()
 end
 local yma_blind_load_ref = Blind.load
 function Blind:load(blindTable)
-    local ret = yma_blind_load_ref(self, blindTable)
+    yma_blind_load_ref(self, blindTable)
     self.original_chips = blindTable.original_chips
-    return blindTable
 end
 
 --All cards selectable with Engima Key
