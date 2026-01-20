@@ -354,7 +354,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "colon_arch",
     set = "Consumables2",
-    corresponding_set = "Tarot",
+    corresponding_set = "colon_Architecture",
     atlas = "jbill_consume2",
     pos = { x = 5, y = 0 },
     config = { },
