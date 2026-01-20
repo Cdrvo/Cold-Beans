@@ -15,7 +15,7 @@ return {
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
+					"Seed is set to {C:attention}DDMMYYYY",
 					"Random {C:attention}deck effect{} based",
 					"on day of the week",
 				},
@@ -23,7 +23,7 @@ return {
 			b_cbean_pboys_daily1 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
+					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect: Start with",
 					"a random {C:attention}Voucher{}",
 				},
@@ -31,7 +31,7 @@ return {
 			b_cbean_pboys_daily2 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
+					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect: Start with a",
 					"random {C:attention}Tag{} and {C:tarot}Tarot{} card",
 				},
@@ -39,7 +39,7 @@ return {
 			b_cbean_pboys_daily3 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
+					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect: A random visible",
 					"{C:attention}poker hand{} starts at {C:attention}lvl.5",
 				},
@@ -47,15 +47,15 @@ return {
 			b_cbean_pboys_daily4 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
-					"Today's effect: Remove 6 random",
+					"Seed is set to {C:attention}DDMMYYYY",
+					"Today's effect: Remove {C:attention}6{} random",
 					"{C:attention}ranks{} from starting deck",
 				},
 			},
 			b_cbean_pboys_daily5 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
+					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect:",
 					"Only {C:attention}modded",
 					"jokers can appear",
@@ -64,17 +64,17 @@ return {
 			b_cbean_pboys_daily6 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
+					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect: {C:attention}+2{} and {C:red}-1{} to",
-					"two of the following: hand size,",
+					"{C:attention}two{} of the following: hand size,",
 					"joker slot, consumable slot",
 				},
 			},
 			b_cbean_pboys_daily7 = {
 				name = "Daily Deck",
 				text = {
-					"Seed is set to DDMMYYYY",
-					"Today's effect: Only 1 to 3",
+					"Seed is set to {C:attention}DDMMYYYY",
+					"Today's effect: Only {C:attention}1{} to {C:attention}3",
 					"{C:attention}card types{} can appear in shop",
 					"at an equal rate",
 					"{C:inactive}(excluding Booster Packs)",
