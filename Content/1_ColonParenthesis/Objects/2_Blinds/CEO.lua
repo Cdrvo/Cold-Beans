@@ -187,8 +187,10 @@ Colonparen.CEOBlind{
     loc_vars = function (self)
         return {
             vars = {
-                localize(Colonparen.blind_variables.most_held, 'ranks'),
-                localize(Colonparen.blind_variables.most_played, 'ranks'),
+                localize(Colonparen.blind_variables.most_held or 'sheet_most_held',
+                Colonparen.blind_variables.most_held and 'ranks' or nil),
+                localize(Colonparen.blind_variables.most_played or 'sheet_most_played',
+                Colonparen.blind_variables.most_played and 'ranks' or nil),
             }
         }
     end,
