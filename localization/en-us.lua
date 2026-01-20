@@ -80,6 +80,13 @@ return {
 					"{C:inactive}(excluding Booster Packs)",
 				},
 			},
+			b_cbean_pboys_athena = {
+				name = "Athena Deck",
+				text = {
+					"Start run with",
+					"{C:sdown_blessing,T:v_cbean_sdown_amphora}#1#{} and {C:sdown_blessing,T:v_cbean_yma_krater}#2#{}",
+				},
+			},
 		},
 		Blind = {
 			bl_cbean_colon_eclipse = {

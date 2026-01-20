@@ -143,3 +143,23 @@ SMODS.Back {
         code = "HuyTheKiller",
     }
 }
+
+SMODS.Back{
+    key = "pboys_athena",
+    atlas = "pboys_decks",
+    pos = {x = 0, y = 0},
+    config = {vouchers = {'v_cbean_sdown_amphora', 'v_cbean_yma_krater'}},
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {localize{type = 'name_text', key = self.config.vouchers[1], set = 'Voucher'},
+                localize { type = 'name_text', key = self.config.vouchers[2], set = 'Voucher'},
+            }
+        }
+    end,
+    beans_credits = {
+        team = "Pissboys",
+        idea = "FlameThrowerFIM",
+        art = "FlameThrowerFIM",
+        code = "HuyTheKiller",
+    }
+}
