@@ -180,8 +180,9 @@ Colonparen.CEOBlind{
 	atlas = "colon_CEOBlind",
     mult = 3,
 	boss_colour = HEX("459373"),
-    config = {
-        most_held = function () return G.GAME.colonparen_most_held_rank or 'Ace' end,
+    config = {},
+    colon_blind_variables = {
+        most_held = function() return G.GAME.colonparen_most_held_rank or 'Ace' end,
         most_played = function() return G.GAME.colonparen_most_played_rank or '2' end,
     },
     loc_vars = function (self)
