@@ -206,13 +206,15 @@ Colonparen.CEOBlind{
         if context.debuff_card 
         and context.debuff_card.base then
             if context.debuff_card.area == G.play then
-                if context.debuff_card.base.value == Colonparen.blind_variables.most_played then
+                if context.debuff_card.base.value
+                and context.debuff_card.base.value == Colonparen.blind_variables.most_played then
                     return {
                         debuff = true
                     }
                 end
             else
-                if context.debuff_card.base.value == Colonparen.blind_variables.most_held then
+                if context.debuff_card.base.value
+                and context.debuff_card.base.value == Colonparen.blind_variables.most_held then
                     return {
                         debuff = true
                     }
