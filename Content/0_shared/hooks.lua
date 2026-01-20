@@ -205,3 +205,9 @@ function SMODS.add_to_pool(prototype_obj, args)
     end
     return add, options
 end
+
+local hud_blind = create_UIBox_HUD_blind
+function create_UIBox_HUD_blind()
+    Colonparen.blind_variables = G.GAME.colon_blind_variables[G.GAME.blind_on_deck]
+    return hud_blind()
+end
