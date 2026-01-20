@@ -63,7 +63,6 @@ if self.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily" then
     self.GAME.pseudorandom.seed = tostring(CBEAN_SESSION_DATE)
 end
 '''
-match_indent = true
 
 # Make sure card-rate modifying vouchers do not take effect on daily deck's 7th effect
 [[patches]]
@@ -73,8 +72,9 @@ position = 'at'
 pattern = '''(?<indent>[\t ]*)(?<cont>G\.GAME\..*_rate = .*center_table\.extra)'''
 line_prepend = "$indent"
 payload = '''
-if G.GAME.selected_back.effect.center.key ~= "b_cbean_pboys_daily" or CBEAN_DATE_TABLE.wday ~= 7 then
+if G.GAME.selected_back.effect.center.key ~= "b_cbean_pboys_daily" or CBEAN_DATE_TABLE.wday ~= 7
+or center_table.name == 'Hone' or center_table.name == 'Glow Up' then
+    -- weird regex hack to exclude Hone and Glow Up
     $cont
 end
 '''
-match_indent = true
