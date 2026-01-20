@@ -124,7 +124,7 @@ Colonparen.Architecture {
     greek_blind = "cbean_colon_alpha",
     
     progress = function (self)
-        if not G.playing_cards then
+        if not next(G.playing_cards or {}) then
             return 0
         end
 
@@ -723,7 +723,7 @@ Colonparen.Architecture {
     end,
     greek_blind = "cbean_colon_mu",
     set_ability = function (self, card, initial, delay_sprites)
-        if G.playing_cards and (not card.ability.extra.rank) then
+        if next(G.playing_cards or {}) and (not card.ability.extra.rank) then
             local count = {}
             for i = 1, #G.playing_cards do
                 local card = G.playing_cards[i];
@@ -841,7 +841,7 @@ Colonparen.Architecture {
     end,
     greek_blind = "cbean_colon_nu",
     set_ability = function (self, card, initial, delay_sprites)
-        if G.playing_cards and (not card.ability.extra.suit) then
+        if next(G.playing_cards or {}) and (not card.ability.extra.suit) then
             local count = {}
             for i = 1, #G.playing_cards do
                 local card = G.playing_cards[i];
@@ -1258,7 +1258,7 @@ Colonparen.Architecture {
         code = "jamirror",
     },
     get_applicable_count = function (self)
-        if not G.playing_cards then
+        if not next(G.playing_cards or {}) then
             return 0, {
                 m_bonus = true,
                 m_mult = true,
@@ -1281,7 +1281,7 @@ Colonparen.Architecture {
             m_gold = true,
             m_lucky = true
         }
-        if G.playing_cards then
+        if next(G.playing_cards or {}) then
             for i = 1, #G.playing_cards do
                 for q, _ in pairs(needed) do
                     if SMODS.has_enhancement(G.playing_cards[i], q) then
