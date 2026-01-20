@@ -2,52 +2,47 @@
 SMODS.current_mod.reset_game_globals = function(run_start)
   if run_start then 
     G.PISSMAX = 1
+	G.SECRET_BUTTON = localize('k_cbean_unique_ex')
   end
 end
 
 G.FUNCS.can_switch = function(e)
-  local text = localize('k_cbean_unique_ex')
+  G.SECRET_BUTTON = localize('k_cbean_unique_ex')
   
   if G.STATE == G.STATES.MAIN_STREET then
-	  text=localize('k_cbean_aexit_ex')
+	  G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_yma_main_street'
   elseif G.STATE == G.STATES.SHOP then
-	  text=localize('k_cbean_yma_street')
+	  G.SECRET_BUTTON=localize('k_cbean_yma_street')
 	  e.config.colour = G.C.GREEN
 	  e.config.button = 'show_yma_main_street'
   elseif G.STATE == G.STATES.BALLEY then
-	  text=localize('k_cbean_aexit_ex')
+	  G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_balley'
   elseif yma_state_function_events(e) then
-      text = localize('k_cbean_aexit_ex')
+      G.SECRET_BUTTON = localize('k_cbean_aexit_ex')
       yma_state_function_events(e) 
   elseif G.STATE == G.STATES.STATIONERY then
-    text=localize('k_cbean_aexit_ex')
+      G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_stationery'
   elseif G.STATE == G.STATES.EMPLOY then
-    text=localize('k_cbean_aexit_ex')
+      G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_employ'
   elseif G.STATE == G.STATES.SELECTING_HAND and G.PISSMAX and G.PISSMAX > 0 and G.hand.highlighted and #G.hand.highlighted > 0 then
-			text=localize('k_cbean_piss_ex')
+			G.SECRET_BUTTON=localize('k_cbean_piss_ex')
 			e.config.button = 'piss_in_hand'
 			e.config.colour = G.C.YELLOW
   elseif not G.GAME.booster_leaked and SMODS.OPENED_BOOSTER and next(SMODS.find_card("j_cbean_jbill_leak")) then
-			text=localize('k_jbill_leak')
+			G.SECRET_BUTTON=localize('k_jbill_leak')
 			e.config.button = 'leak_booster'
 			e.config.colour = G.C.YELLOW
   else 
 		e.config.colour = G.C.L_BLACK
 		e.config.button = nil
-  end
-  if e.children[1].config.text ~= text then
-	e.children[1].config.text = text
-	if not (G.STATE == G.STATES.SELECTING_HAND) then
-		e.children[1].UIBox:recalculate()
-	end
   end
 end
 
@@ -116,7 +111,8 @@ function create_UIBox_HUD()
       {
         n = G.UIT.T,
         config = {
-          text = localize('k_cbean_unique_ex'),
+          ref_table = G,
+		  ref_value = "SECRET_BUTTON",
           scale = 0.5,
           colour = G.C.WHITE,
           shadow = true
