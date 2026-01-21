@@ -208,6 +208,6 @@ end
 
 local hud_blind = create_UIBox_HUD_blind
 function create_UIBox_HUD_blind()
-    Colonparen.blind_variables = G.GAME.colon_blind_variables[G.GAME.blind_on_deck]
+    Colonparen.blind_variables = (G.GAME.colon_blind_variables or {})[G.GAME.blind_on_deck or "Teeny"] or {}
     return hud_blind()
 end
