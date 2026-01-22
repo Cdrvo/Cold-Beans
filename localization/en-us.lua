@@ -2619,7 +2619,7 @@ return {
 			},
 
 			j_cbean_pboys_flame = {
-				name = "Flame Coke",
+				name = "Flama Cola",
 				text = {
 					"Last played {C:attention}Ace{} or {C:attention}10",
 					"gives {X:mult,C:white}X#1#{} Mult",
@@ -2628,7 +2628,7 @@ return {
 			},
 
 			j_cbean_pboys_breuhh = {
-				name = "Breuhh Energy",
+				name = "Breuhh Brew",
 				text = {
 					"Currently no effect",
 					"Feel free to give it one!",
