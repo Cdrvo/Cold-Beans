@@ -52,6 +52,14 @@ SMODS.Joker{
             print(glassbeenremoved)
         end
     end,
+	in_pool = function(self, args) -- from VanillaRemade
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_glass') then
+                return true
+            end
+        end
+        return false
+    end,
     beans_credits = {
     team = {"wgrop"
     },

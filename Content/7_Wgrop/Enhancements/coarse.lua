@@ -18,7 +18,7 @@ SMODS.Enhancement {
             end
             card.ability.xchips = 1+(dollar*card.ability.xcs)
         end
-        if context.main_scoring then
+        if context.main_scoring and context.cardarea == G.play then
             return {
                 xchips = card.ability.xchips
             }
