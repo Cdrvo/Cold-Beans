@@ -402,7 +402,7 @@ function NAMETEAM.mult_value(table, value)
 			if
 			v ~= 0 and (v ~= 1 or (name ~= "x_chips" and name ~= "x_mult"))
 			then
-				new_table[k] = v * 2
+				new_table[k] = v * (value or 2)
 			else
 				new_table[k] = v
 			end
