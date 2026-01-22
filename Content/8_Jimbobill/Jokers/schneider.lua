@@ -30,9 +30,10 @@ SMODS.Joker {
                 if context.ante_change and compatible then
                     right.ability.extra = right.ability.extra + card.ability.extra.xmult_gain
                 end
-                if tonumber(right.ability.extra) == nil and compatible == false and contex.ante_change then
+                if tonumber(right.ability.extra) == nil and compatible == false and context.ante_change then
                     return {
-                        message = "Nope"
+                        colour = G.C.PURPLE,
+                        message = localize("k_nope")
                     }
                 end
             elseif right.ability.Xmult then
