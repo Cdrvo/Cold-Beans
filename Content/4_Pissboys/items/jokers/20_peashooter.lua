@@ -40,7 +40,7 @@ SMODS.Joker {
 		if other_joker and not other_joker.peashooter_life then
 			other_joker.peashooter_life = 3
 		end
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and other_joker and other_joker.peashooter_life then
 			other_joker.peashooter_life = other_joker.peashooter_life - 1
 			if other_joker.peashooter_life >= 2 then
 				return {
