@@ -2845,7 +2845,7 @@ return {
                 text = {
                     "Played cards with {C:clubs}Clubs{}",
                     "suit give {C:money}$#1#{} if played",
-					"hand contains a {C:attention}Pair{}",
+					"hand contains a {C:attention}#2#{}",
 				},
             },
             j_cbean_nameteam_stachenscarfen = {

@@ -75,9 +75,9 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "nameteam_hollyjollyjoker",
-    config = { extra = { money = 2 } },
+    config = { extra = { money = 2, type = 'Pair' } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.money } }
+        return { vars = { card.ability.extra.money, localize(card.ability.extra.type, 'poker_hands') } }
     end,
     rarity = 2,
     atlas = 'NAMETEAM_Jokers',
@@ -96,8 +96,10 @@ SMODS.Joker {
     },
 
     calculate = function(self, card, context)
-        if context.individual and context.other_card:is_suit("Clubs") and next(context.poker_hands["Pair"]) then
-            return { dollars = card.ability.extra.money }
+        if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") then
+			if next(context.poker_hands[card.ability.extra.type]) then
+				return { dollars = card.ability.extra.money }
+			end
         end
     end
 }
