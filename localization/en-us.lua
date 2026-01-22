@@ -4971,7 +4971,7 @@ return {
 					name = "Eternal",
 					text = {
 						{
-							"Applies {C:eternal}Eternal{} to",
+							"Applies {C:attention}Eternal{} to",
 							"a random {C:attention}Joker{}",
 						},
 						{
@@ -4997,7 +4997,7 @@ return {
 					name = "Rental",
 					text = {
 						{
-							"Applies {C:rental}Rental{} to",
+							"Applies {C:attention}Rental{} to",
 							"a random {C:attention}Joker{}",
 						},
 						{
@@ -5048,8 +5048,8 @@ return {
 					name = "Misprinted",
 					text = {
 						{
-							"Applies {C:attention}Misprinted{} to {C:attention}1{}",
-							"selected {C:attention}playing card{}",
+							"Applies {C:attention}Misprinted{} to",
+							"{C:attention}1{} selected {C:attention}Joker{}",
 						},
 						{
 							"Creates a",
@@ -5073,8 +5073,8 @@ return {
 						},
 						{
 							"Applies {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
-							"{C:dark_edition}Polychrome{} edition",
-							"to the same Joker",
+							"{C:dark_edition}Polychrome{} edition to",
+							"the same {C:attention}playing card{}",
 						},
 					},
 				},
