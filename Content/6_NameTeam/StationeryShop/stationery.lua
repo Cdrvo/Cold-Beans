@@ -452,7 +452,6 @@ G.FUNCS.show_stationery = function(e)
 	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATE)
-	G.HP_JTEM_DELIVERY_VISIBLE = true
 	sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_NAMETEAM_stationery"]
 	G.hand.states.visible = false
 	sign_sprite.states.visible = true
@@ -478,7 +477,6 @@ G.FUNCS.hide_stationery = function(e)
 		local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 		local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 		ease_background_colour_blind(G.STATES.MAIN_STREET)
-		G.HP_JTEM_DELIVERY_VISIBLE = true
 		sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
 		sign_sprite.states.visible = false
 		sign_text = DynaText({
