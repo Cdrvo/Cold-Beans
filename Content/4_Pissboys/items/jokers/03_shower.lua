@@ -29,6 +29,42 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             }
         end
     end,
+	joker_display_def = function(JokerDisplay)
+        return {
+			text = {
+				{ ref_table = "card.joker_display_values", ref_value = "count",   retrigger_type = "mult" },
+				{ text = "x",                              scale = 0.35 },
+				{ text = "$",                              colour = G.C.GOLD },
+				{ ref_table = "card.ability.extra",        ref_value = "dollars", colour = G.C.GOLD },
+			},
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "piss_name" },
+                { text = ")" },
+            },
+            calc_function = function(card)
+				local count = 0
+                local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                if text ~= 'Unknown' then
+                    for _, scoring_card in pairs(scoring_hand) do
+                        if SMODS.has_enhancement(scoring_card, "m_cbean_pboys_piss") then
+                            count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                        end
+                    end
+                end
+				local playing_hand = next(G.play.cards)
+				for _, playing_card in ipairs(G.hand.cards) do
+					if playing_hand or not playing_card.highlighted then
+						if playing_card.facing and not (playing_card.facing == 'back') and SMODS.has_enhancement(playing_card, 'm_cbean_pboys_piss') then
+							count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+						end
+					end
+				end
+				card.joker_display_values.count = count
+                card.joker_display_values.piss_name = localize{type = "name_text", set = "Enhanced", key = "m_cbean_pboys_piss", nodes = {}}
+            end,
+        }
+    end,
     in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(playing_card, 'm_cbean_pboys_piss') then

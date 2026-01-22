@@ -4,7 +4,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     pos = { x = 5, y = 0 },
     rarity = 1,
     order = 6,
-    blueprint_compat = false,
+    blueprint_compat = true,
     cost = 6,
     config = { extra = { odds = 3, mult = 3 } },
     loc_vars = function(self, info_queue, card)
@@ -31,6 +31,32 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             end
         end
         return false
+    end,
+	joker_display_def = function(JokerDisplay)
+			return {
+				text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" }
+			},
+			text_config = { colour = G.C.MULT },
+			extra = {
+				{
+					{ text = "(" },
+					{ ref_table = "card.joker_display_values", ref_value = "odds" },
+					{ text = ")" },
+				}
+			},
+			extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "piss_name" },
+                { text = ")" },
+            },
+            calc_function = function(card)
+				card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+                card.joker_display_values.piss_name = localize{type = "name_text", set = "Enhanced", key = "m_cbean_pboys_piss", nodes = {}}
+            end,
+        }
     end,
     beans_credits = {
         team = {"Pissboys",

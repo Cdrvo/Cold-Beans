@@ -2630,9 +2630,9 @@ return {
 			j_cbean_pboys_breuhh = {
 				name = "Breuhh Brew",
 				text = {
-					"Currently no effect",
-					"Feel free to give it one!",
-					"- {C:attention}HuyTheKiller{} the coder",
+					"Add between {C:attention}1{} and {C:attention}10{} to",
+					"{C:mult}Mult{}. Lose {C:chips}Chips{} equal",
+					"to the amount added",
 				},
 			},
 
@@ -2677,6 +2677,15 @@ return {
 				text = {
 					"Receive {C:attention}#1#%{} of lost money",
 					"in {C:attention}Back Alley{} minigame",
+				},
+			},
+			
+			j_cbean_pboys_peashooter = {
+				name = "Peashooter",
+				text = {
+					"Copies ability of",
+                    "{C:attention}Zombie{} to the right",
+					"{C:attention}Zombie{} have #1# lives...", 
 				},
 			},
 
@@ -6381,6 +6390,9 @@ return {
 				k_yma_key_faded = "Faded",
 				k_yma_transform = "Transformed!",
 				k_yma_tag = "Tag!",
+				k_cbean_peashooter_1 = "Armless Zombie",
+				k_cbean_peashooter_2 = "Headless Zombie",
+				k_cbean_peashooter_3 = "Dead Zombie",
 				k_cbean_burned = "Burned!",
 				k_cbean_piss_ex = "Piss!",
 				k_cbean_mash_ex = "Mash!",

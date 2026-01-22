@@ -51,6 +51,18 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             }
         end
     end,
+	joker_display_def = function(JokerDisplay)
+        return {
+            reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "active" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				card.joker_display_values.active = (G.GAME and G.GAME.current_round.hands_played == 0 and localize("jdis_active") or localize("jdis_inactive"))
+			end,
+        }
+    end,
     beans_credits = {
         team = {"Pissboys",
         },

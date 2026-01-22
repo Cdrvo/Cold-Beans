@@ -42,6 +42,35 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             end
         end
     end,
+	joker_display_def = function(JokerDisplay)
+        return {
+            text = {
+			  { text = "+", colour = G.C.CHIPS },
+			  { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "chips", colour = G.C.CHIPS },
+			  { text = "/"}, 
+			  { text = "+", colour = G.C.MULT },
+			  { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT },
+			},
+			text_config = { colour = G.C.UI.TEXT_INACTIVE },
+            reminder_text = {
+                { text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+				{ text = ")" },
+			},
+            calc_function = function(card)
+                local mult = 0
+				local chips = 0
+				local _, poker_hands, _ = JokerDisplay.evaluate_hand()
+				if poker_hands[card.ability.extra.type] and next(poker_hands[card.ability.extra.type]) then
+					mult = card.ability.extra.mult
+					chips = card.ability.extra.chips
+				end
+				card.joker_display_values.mult = mult
+				card.joker_display_values.chips = chips
+				card.joker_display_values.localized_text = localize(card.ability.extra.type, 'poker_hands')
+            end
+        }
+    end,
     beans_credits = {
         team = {"Pissboys",
         },

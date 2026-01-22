@@ -4,7 +4,7 @@ SMODS.Joker {
     pos = { x = 9, y = 1 },
     rarity = 1,
     order = 19,
-    blueprint_compat = true,
+    blueprint_compat = false,
     cost = 5,
     config = {extra = {percent = 0.4}},
     loc_vars = function(self, info_queue, card)

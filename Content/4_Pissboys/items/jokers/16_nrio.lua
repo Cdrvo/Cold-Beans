@@ -6,7 +6,7 @@ SMODS.Joker {
     order = 16,
     blueprint_compat = false,
     cost = 5,
-    config = {type = "Full House", extra = {dollars = 0, dollar_mod = 1}},
+    config = {type = "Full House", extra = {dollars = 1, dollar_mod = 1}}, -- i think money shouldnt start at 0
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.dollars, card.ability.extra.dollar_mod, localize(card.ability.type, "poker_hands")}}
     end,

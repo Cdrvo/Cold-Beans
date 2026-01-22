@@ -25,6 +25,18 @@ SMODS.Joker {
             end
         end
     end,
+	joker_display_def = function(JokerDisplay)
+        return { 
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "piss_name" },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                card.joker_display_values.piss_name = localize{type = "name_text", set = "Enhanced", key = "m_cbean_pboys_piss", nodes = {}}
+            end,
+        }
+    end,
     beans_credits = {
         team = {"Pissboys",
         },
