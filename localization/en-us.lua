@@ -2645,6 +2645,15 @@ return {
 				},
 			},
 
+			j_cbean_pboys_nrio = {
+				name = "Crocodile Soda",
+				text = {
+					"Earn {C:money}$#1#{} at end of round",
+					"Payout increases by {C:money}$#2#{} if",
+					"played hand contains a {C:attention}#3#{}",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
