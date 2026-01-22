@@ -2618,6 +2618,15 @@ return {
 				},
 			},
 
+			j_cbean_pboys_flame = {
+				name = "FlameThrowerFIM",
+				text = {
+					"Last played {C:attention}Ace{} or {C:attention}10",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"when scored",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
