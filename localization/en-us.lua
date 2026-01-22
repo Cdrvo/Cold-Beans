@@ -1142,7 +1142,7 @@ return {
 			c_cbean_wgrop_let_the_people_rejoice = {
 				name = {
 					"Let The People Rejoice",
-					"{{X:blue,C:white,s:0.7}Ultimate{}",
+					"{X:blue,C:white,s:0.7}Ultimate{}",
 				},
 				text = {
 					{
@@ -1166,7 +1166,7 @@ return {
 			c_cbean_wgrop_blue_rose_closer = {
 				name = {
 					"Blue Rose Closer",
-					"{{X:blue,C:white,s:0.7}Ultimate{}",
+					"{X:blue,C:white,s:0.7}Ultimate{}",
 				},
 				text = {
 					{
