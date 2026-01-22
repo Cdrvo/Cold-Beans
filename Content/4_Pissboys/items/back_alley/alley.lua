@@ -237,6 +237,34 @@ function update_balley()
 									r_bond = 'Strong',
 									major = G.ajoker,
 				}
+				if not G.SHOP_SIGN then
+					local shop_sign = AnimatedSprite(0,0, 4.4, 2.2, G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"])
+					shop_sign:define_draw_steps({
+						{shader = 'dissolve', shadow_height = 0.05},
+						{shader = 'dissolve'}
+					})
+					G.SHOP_SIGN = UIBox{
+						definition = 
+							{n=G.UIT.ROOT, config = {colour = G.C.DYN_UI.MAIN, emboss = 0.05, align = 'cm', r = 0.1, padding = 0.1}, nodes={
+								{n=G.UIT.R, config={align = "cm", padding = 0.1, minw = 4.72, minh = 3.1, colour = G.C.DYN_UI.DARK, r = 0.1}, nodes={
+									{n=G.UIT.R, config={align = "cm"}, nodes={
+										{n=G.UIT.O, config={object = shop_sign}}
+									}},
+									{n=G.UIT.R, config={align = "cm"}, nodes={
+										{n=G.UIT.O, config={object = DynaText({string = {localize('ph_improve_run')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})}}
+									}},
+								}},
+							}},
+						config = {
+							align="cm",
+							offset = {x=0,y=0},
+							major = G.HUD:get_UIE_by_ID('row_blind'),
+							bond = 'Weak'
+						}
+					}
+					G.current_betmoney = 0
+					G.hand.states.visible = false
+				end
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.2,
