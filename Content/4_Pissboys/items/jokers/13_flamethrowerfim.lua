@@ -3,7 +3,7 @@ SMODS.Joker {
     atlas = "pboys_joker_atlas",
     pos = { x = 3, y = 1 },
     rarity = 1,
-    order = 12,
+    order = 13,
     blueprint_compat = true,
     cost = 6,
     config = {extra = {xmult = 2}},
