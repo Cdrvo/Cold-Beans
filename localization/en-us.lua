@@ -2663,6 +2663,15 @@ return {
 				},
 			},
 
+			j_cbean_pboys_pumpkinman = {
+				name = "Pumpkin Shake",
+				text = {
+					"Played {C:attention}Gold{} cards give",
+					"{C:mult}+#1#{} Mult and {C:money}$#2#{}",
+					"when scored",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
