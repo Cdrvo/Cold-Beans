@@ -132,9 +132,13 @@ SMODS.Back {
                 end
             }))
         end
+        G.GAME.run_back_pos = self.pos
+        G.GAME.run_wday = tostring(CBEAN_DATE_TABLE.wday)
     end,
     loc_vars = function(self, info_queue, back)
-        return {key = "b_cbean_pboys_daily"..CBEAN_DATE_TABLE.wday}
+        local ret = {key = "b_cbean_pboys_daily"}
+        ret.key = ret.key..(G.run_setup_overlay and CBEAN_DATE_TABLE.wday or G.GAME.run_wday or CBEAN_DATE_TABLE.wday)
+        return ret
     end,
     beans_credits = {
         team = "Pissboys",

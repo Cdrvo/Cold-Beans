@@ -85,6 +85,7 @@ end
 
 local game_update = Game.update
 function Game:update(dt)
+	if not G.OVERLAY_MENU then G.run_setup_overlay = nil end
     if G.num and G.MODE and G.cups and #G.cups and G.GAME then
 		local speed_cup = dt * 5 * G.MODE or 0.625
 			for key, ad in pairs(G.cups) do

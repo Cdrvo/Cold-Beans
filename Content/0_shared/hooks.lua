@@ -206,6 +206,13 @@ function SMODS.add_to_pool(prototype_obj, args)
     return add, options
 end
 
+local run_setup = G.UIDEF.run_setup
+function G.UIDEF.run_setup(from_game_over)
+    local ret = run_setup(from_game_over)
+    G.run_setup_overlay = true
+    return ret
+end
+
 local hud_blind = create_UIBox_HUD_blind
 function create_UIBox_HUD_blind()
     Colonparen.blind_variables = (G.GAME.colon_blind_variables or {})[G.GAME.blind_on_deck or "Teeny"] or {}
