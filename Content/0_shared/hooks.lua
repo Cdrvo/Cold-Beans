@@ -230,3 +230,10 @@ function create_UIBox_HUD_blind()
     Colonparen.blind_variables = (G.GAME.colon_blind_variables or {})[G.GAME.blind_on_deck or "Teeny"] or {}
     return hud_blind()
 end
+
+local igo = Game.init_game_object
+function Game:init_game_object()
+    local ret = igo(self)
+    ret.current_round.gfs_card = {rank = "Ace"}
+    return ret
+end

@@ -2636,6 +2636,15 @@ return {
 				},
 			},
 
+			j_cbean_pboys_gfs = {
+				name = "Liquid GFS",
+				text = {
+					"Each {C:attention}#2#{} held in hand",
+					"gives {C:mult}+#1#{} Mult",
+					"{s:0.8}rank changes every round",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
