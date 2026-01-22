@@ -2672,6 +2672,14 @@ return {
 				},
 			},
 
+			j_cbean_pboys_ihaveagun = {
+				name = "I HAVE A GUN!",
+				text = {
+					"Receive {C:attention}#1#%{} of lost money",
+					"in {C:attention}Back Alley{} minigame",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
@@ -6398,7 +6406,8 @@ return {
 				k_cbean_unknown = "Unknown",
 				k_jbill_leak = "Leak!",
 				k_jbill_ach = "Achievement Unlocked!",
-				k_jbill_metapack = "Meta Pack"
+				k_jbill_metapack = "Meta Pack",
+				k_ihaveagun_ex = "I HAVE A GUN!",
 			},
 			high_scores = {},
 			labels = {

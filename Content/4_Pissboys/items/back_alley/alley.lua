@@ -162,6 +162,10 @@ function Controller:L_cursor_press(x, y)
 					}
 				  else
 					ease_dollars(-G.current_betmoney)
+					for _, v in ipairs(SMODS.find_card("j_cbean_pboys_ihaveagun")) do
+						SMODS.calculate_effect({message = localize("k_ihaveagun_ex")}, v)
+						ease_dollars(math.floor(v.ability.extra.percent*G.current_betmoney))
+					end
 					G.ajoker.definition.nodes[1].config.object.sprite_pos.x = 4
 					G.ajoker.config.speech_bubble_align = {align= 'bm', offset = {x=0,y=0},parent = G.ajoker}
 					G.ajoker.children.speech_bubble = 
