@@ -3,7 +3,7 @@ SMODS.Joker {
     atlas = "pboys_joker_atlas",
     pos = { x = 4, y = 1 },
     rarity = 1,
-    order = 12,
+    order = 14,
     blueprint_compat = true,
     cost = 5,
     config = {extra = {}},
@@ -18,6 +18,6 @@ SMODS.Joker {
         },
         idea = "[Insert name]",
         art = "FlameThrowerFIM",
-        code = "HuyTheKiller",
+        code = "[Insert name]",
     }
 }
