@@ -6,18 +6,24 @@ SMODS.Joker {
     order = 14,
     blueprint_compat = true,
     cost = 5,
-    config = {extra = {}},
+    config = {extra = {mult_min = 1, mult_max = 10}},
     loc_vars = function(self, info_queue, card)
-        return {vars = {}}
+        return {vars = {card.ability.extra.mult_min, card.ability.extra.mult_max}}
     end,
     calculate = function(self, card, context)
-        -- we couldn't gather ideas in time, feel free to make one yourself
+        if context.initial_scoring_step then
+			local possible_value = math.min(pseudorandom("streamer_donate", card.ability.extra.mult_min, card.ability.extra.mult_max),hand_chips)
+            return {
+                mult = possible_value,
+				chips = -possible_value,
+            }
+        end
     end,
     beans_credits = {
         team = {"Pissboys",
         },
-        idea = "[Insert name]",
+        idea = "Nrio_Modder",
         art = "FlameThrowerFIM",
-        code = "[Insert name]",
+        code = "Nrio_Modder",
     }
 }
