@@ -45,6 +45,36 @@ G.FUNCS.can_discard = function(e)
     end
 end
 
+--One of Daily deck's effect: only allows modded jokers to appear
+--(ignoring take_ownership on vanilla jokers, at least I think so)
+local add_to_pool_ref = SMODS.add_to_pool
+function SMODS.add_to_pool(prototype_obj, args)
+    local add, options = add_to_pool_ref(prototype_obj, args)
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
+    and CBEAN_DATE_TABLE.wday == 5 and prototype_obj.set == "Joker" then
+        return prototype_obj.original_mod and add or false, options
+    end
+    return add, options
+end
+
+--Hook to make sure daily deck in run setup overlay snaps to today's effect
+local run_setup = G.UIDEF.run_setup
+function G.UIDEF.run_setup(from_game_over)
+    local ret = run_setup(from_game_over)
+    G.run_setup_overlay = true
+    return ret
+end
+
+--Steamer's effect: if Aura is duplicated, send custom context (Aura farming go brrrrrr)
+local copy_card_ref = copy_card
+function copy_card(other, new_card, card_scale, playing_card, strip_edition)
+    local card = copy_card_ref(other, new_card, card_scale, playing_card, strip_edition)
+    if card.config.center_key == "c_aura" then
+        SMODS.calculate_context{cbean_streamer_hype = true}
+    end
+    return card
+end
+
 --Yeah! Mostly artists
 --Disallows cheatery with certern Keys
 local is_eternal_ref = SMODS.is_eternal
@@ -194,25 +224,7 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
   return ref
 end
 
--- One of Daily deck's effect: only allows modded jokers to appear
--- (ignoring take_ownership on vanilla jokers, at least I think so)
-local add_to_pool_ref = SMODS.add_to_pool
-function SMODS.add_to_pool(prototype_obj, args)
-    local add, options = add_to_pool_ref(prototype_obj, args)
-    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
-    and CBEAN_DATE_TABLE.wday == 5 and prototype_obj.set == "Joker" then
-        return prototype_obj.original_mod and add or false, options
-    end
-    return add, options
-end
-
-local run_setup = G.UIDEF.run_setup
-function G.UIDEF.run_setup(from_game_over)
-    local ret = run_setup(from_game_over)
-    G.run_setup_overlay = true
-    return ret
-end
-
+--Hook to prevent crash with loading The Sheet
 local hud_blind = create_UIBox_HUD_blind
 function create_UIBox_HUD_blind()
     Colonparen.blind_variables = (G.GAME.colon_blind_variables or {})[G.GAME.blind_on_deck or "Teeny"] or {}

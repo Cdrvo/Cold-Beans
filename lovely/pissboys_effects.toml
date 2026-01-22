@@ -19,3 +19,27 @@ else
 end
 '''
 match_indent = true
+
+# Steamer's effect: if Booster Pack contains a Rare Joker, send custom context
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+for k, v in ipairs(pack_cards) do
+    G.pack_cards:emplace(v)
+end
+'''
+position = "at"
+payload = '''
+local has_rare = false
+for k, v in ipairs(pack_cards) do
+    if v:is_rarity(3) then
+        has_rare = true
+    end
+    G.pack_cards:emplace(v)
+end
+if next(SMODS.find_card("j_cbean_pboys_streamer")) and has_rare then
+    SMODS.calculate_context{cbean_streamer_hype = true}
+end
+'''
+match_indent = true

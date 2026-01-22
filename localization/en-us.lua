@@ -2607,6 +2607,17 @@ return {
 				},
 			},
 
+			j_cbean_pboys_streamer = {
+				name = "Streamer",
+				text = {
+					"Earn between {C:money}$#1#{} and {C:money}$#2#{}",
+					"on using a {C:attention}consumable{}, beating",
+					"blind with {C:attention}one{} hand, {C:attention}Booster",
+					"{C:attention}Pack{} contains a {C:attention}Rare{} Joker",
+					"and duplicating {C:spectral}#3#{}",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
