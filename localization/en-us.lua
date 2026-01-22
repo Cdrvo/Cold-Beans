@@ -2654,6 +2654,15 @@ return {
 				},
 			},
 
+			j_cbean_pboys_huythekiller = {
+				name = "HuyTheWatter",
+				text = {
+					"{C:attention}Retrigger{} first scoring card",
+					"{C:attention}#1#{} times, reduce by {C:attention}1{} for",
+					"every {C:attention}Piss{} card in scoring hand",
+				},
+			},
+
             --THe Cold Bean
             j_cbean_coldbean = { -- yo mama
                 name = "Cold Bean",
