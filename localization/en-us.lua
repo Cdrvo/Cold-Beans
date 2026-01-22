@@ -2619,11 +2619,20 @@ return {
 			},
 
 			j_cbean_pboys_flame = {
-				name = "FlameThrowerFIM",
+				name = "Flame Coke",
 				text = {
 					"Last played {C:attention}Ace{} or {C:attention}10",
 					"gives {X:mult,C:white}X#1#{} Mult",
 					"when scored",
+				},
+			},
+
+			j_cbean_pboys_breuhh = {
+				name = "Breuhh Energy",
+				text = {
+					"Currently no effect",
+					"Feel free to give it one!",
+					"- {C:attention}HuyTheKiller{} the coder",
 				},
 			},
 
