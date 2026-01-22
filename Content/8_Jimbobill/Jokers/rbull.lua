@@ -7,7 +7,7 @@ SMODS.Joker {
     cost = 5,
     config = { extra = { discards = 67, hands = 1 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.discards } }
+        return { vars = { card.ability.extra.discards, card.ability.extra.hands } }
     end,
     pools = {
         Food = true
