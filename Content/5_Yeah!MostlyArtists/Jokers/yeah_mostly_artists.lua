@@ -138,6 +138,7 @@ SMODS.Joker {
                 end
             end
         elseif pos == 4 then -- RattlingSnow353: +25 chips, Every 2 hands played, transform into a random key
+            card.children.center:set_sprite_pos(card.ability.extra.pos_override)
             if context.joker_main then
                 return {
                     chips = card.ability.extra.chips
