@@ -1508,21 +1508,21 @@ return {
 		},
 		Consumables2 = {
 			c_cbean_jbill_tarot = {
-					name = "Tarot",
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
+				name = "Tarot",
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
 				},
+			},
 			c_cbean_colon_arch = {
-					name = "Architecture",
-					text = {
-						"The next {C:attention}Blind{} this Ante",
-						"is a random {C:attention}Teeny Blind",
-						"{C:inactive,s:0.8}(May only be used one time per Ante)",
-					},
+				name = "Architecture",
+				text = {
+					"The next {C:attention}Blind{} this Ante",
+					"is a random {C:attention}Teeny Blind",
+					"{C:inactive,s:0.8}(May only be used one time per Ante)",
 				},
+			},
 			c_cbean_jbill_planet = {
 				name = "Planet",
 				text = {
@@ -1560,7 +1560,7 @@ return {
 					"and a {X:red,C:white}Finisher{}",
 				},
 			},
-			c_cbean_jbill_key = { 
+			c_cbean_jbill_key = {
 				name = "Key",
 				text = {
 					"When entering shop,",
@@ -1878,18 +1878,18 @@ return {
 						"turn it into a",
 						"{C:attention}Pale Remnant Card{}"
 					}
-					
+
 				},
 			},
 			m_cbean_wgrop_pale_remnant = {
 				name = "Pale Remnant",
 				text = {
-					{"{C:attention}Decrease{} this card's",
-					"{C:attention}rank{} when {C:attention}scored{}"},
-					{" Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
-					"for everytime it was {C:attention}scored{}",
-					"at end of scoring"},
-					{"{C:inactive}(Currently{} {C:white,X:red}X#2#{C:inactive})"}
+					{ "{C:attention}Decrease{} this card's",
+						"{C:attention}rank{} when {C:attention}scored{}" },
+					{ " Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
+						"for everytime it was {C:attention}scored{}",
+						"at end of scoring" },
+					{ "{C:inactive}(Currently{} {C:white,X:red}X#2#{C:inactive})" }
 				},
 			},
 			m_cbean_wgrop_coarse = {
@@ -1904,24 +1904,24 @@ return {
 			m_cbean_wgrop_graffiti = {
 				name = "Graffiti Card",
 				text = {
-					{"Take {C:dark_edition}#1#%{} of current",
-					"{C:mult}Mult{} and {C:chips}Chips{}"},
-					{"{C:green}#2#{} in {C:green}#3#{} chance to",
-					"create a random {C:attention}Tag{}"},
-					{"Scoring increases {C:dark_edition}Tax{}",
-					"by {C:dark_edition}#4#%{}",
-					"{C:inactive,s:0.95}[Resets at end of round]{}"}
+					{ "Take {C:dark_edition}#1#%{} of current",
+						"{C:mult}Mult{} and {C:chips}Chips{}" },
+					{ "{C:green}#2#{} in {C:green}#3#{} chance to",
+						"create a random {C:attention}Tag{}" },
+					{ "Scoring increases {C:dark_edition}Tax{}",
+						"by {C:dark_edition}#4#%{}",
+						"{C:inactive,s:0.95}[Resets at end of round]{}" }
 				}
 			},
 			m_cbean_wgrop_magma = {
 				name = "Magma Card",
 				text = {
-					{"Turn {C:attention}#1#{} {C:green}random{} card",
-					"held in hand into ",
-					"{C:attention}Stone{}, {C:attention}Glass{}, or",
-					"{C:attention}Steel{} when scoring"},
-					{"{C:red}Destroy{} this card",
-					"after scoring"}
+					{ "Turn {C:attention}#1#{} {C:green}random{} card",
+						"held in hand into ",
+						"{C:attention}Stone{}, {C:attention}Glass{}, or",
+						"{C:attention}Steel{} when scoring" },
+					{ "{C:red}Destroy{} this card",
+						"after scoring" }
 				}
 			},
 			m_cbean_wgrop_ice = {
@@ -1971,7 +1971,7 @@ return {
 				},
 			}
 		},
-		
+
 		Joker = {
 
 			-- Common
@@ -2370,13 +2370,13 @@ return {
 
 			j_cbean_0chill_mad_mailer = {
 				name = "The Mad Mailer",
-				text = 
-					{
-						"If {C:attention}first discard{} of round",
-						"has only {C:attention}1{} card, earn {C:money}$#1#{} and",
-						"apply {C:attention}Mailed{} and {C:attention}Hooking{} to it",
-						"{C:inactive}(Must not already have Mailed)"
-					},
+				text =
+				{
+					"If {C:attention}first discard{} of round",
+					"has only {C:attention}1{} card, earn {C:money}$#1#{} and",
+					"apply {C:attention}Mailed{} and {C:attention}Hooking{} to it",
+					"{C:inactive}(Must not already have Mailed)"
+				},
 			},
 
 			j_cbean_0chill_cryostasis = {
@@ -2402,12 +2402,12 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member0 = {
-				name = {"Chill Formation", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot"},
+				name = { "Chill Formation", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"Highest rank card has",
@@ -2417,12 +2417,12 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member1 = {
-				name = {"Chill Formation", "{s:0.7}Capital Chirp:{} {X:red,C:white,s:0.7}Alien Invasion"},
+				name = { "Chill Formation", "{s:0.7}Capital Chirp:{} {X:red,C:white,s:0.7}Alien Invasion" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"Each scored Hearts card grants {C:mult}+#2#{} Mult",
@@ -2434,12 +2434,12 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member2 = {
-				name = {"Chill Formation", "{s:0.7}InspectorB:{} {X:red,C:white,s:0.7}Gluten Ray"},
+				name = { "Chill Formation", "{s:0.7}InspectorB:{} {X:red,C:white,s:0.7}Gluten Ray" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"Each scored King and 2 earns {C:money}$#8#{}",
@@ -2449,12 +2449,12 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member3 = {
-				name = {"Chill Formation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer"},
+				name = { "Chill Formation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"If score catches fire,",
@@ -2464,12 +2464,12 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member4 = {
-				name = {"Chill Formation", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe"},
+				name = { "Chill Formation", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"{X:mult,C:white}X#5#{} Mult",
@@ -2482,12 +2482,12 @@ return {
 			},
 
 			j_cbean_0chill_vacation_member5 = {
-				name = {"Chill Formation", "{s:0.7}Monachrome:{} {X:tarot,C:white,s:0.7}Smoke and Mirrors"},
+				name = { "Chill Formation", "{s:0.7}Monachrome:{} {X:tarot,C:white,s:0.7}Smoke and Mirrors" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"{C:red}Destroys{} unscored played cards"
@@ -2496,11 +2496,11 @@ return {
 			},
 
 			j_cbean_0chill_zagreus = {
-				name = {"Zagreus"},
+				name = { "Zagreus" },
 				text = {
 					{
-					"Create an {C:dark_edition, E:2}Olympus Tag{}",
-					"after defeating a blind"
+						"Create an {C:dark_edition, E:2}Olympus Tag{}",
+						"after defeating a blind"
 					}
 				}
 			},
@@ -2679,435 +2679,437 @@ return {
 					"in {C:attention}Back Alley{} minigame",
 				},
 			},
-			
+
 			j_cbean_pboys_peashooter = {
 				name = "Peashooter",
 				text = {
 					"Copies ability of",
-                    "{C:attention}Zombie{} to the right",
-					"{C:attention}Zombie{} have #1# lives...", 
+					"{C:attention}Zombie{} to the right",
+					"{C:attention}Zombie{} have #1# lives...",
 				},
 			},
 
-            --THe Cold Bean
-            j_cbean_coldbean = { -- yo mama
-                name = "Cold Bean",
-                text = {
-                    "{E:1,C:attention}you werent meant to see this....",
-                    "({X:mult,C:white}X#1#{} Mult)",
-                },
-            },
-            --Yeah! Mostly Artists
-            j_cbean_yma_charred_fool = {
-                name = "Charred Fool",
-                text = {
-                    "Upgrade every held",
-                    "{C:tarot}Tarot{} card",
+			--THe Cold Bean
+			j_cbean_coldbean = { -- yo mama
+				name = "Cold Bean",
+				text = {
+					"{E:1,C:attention}you werent meant to see this....",
+					"({X:mult,C:white}X#1#{} Mult)",
+				},
+			},
+			--Yeah! Mostly Artists
+			j_cbean_yma_charred_fool = {
+				name = "Charred Fool",
+				text = {
+					"Upgrade every held",
+					"{C:tarot}Tarot{} card",
 					"at end of round",
 				},
-            },
-            j_cbean_yma_edward = {
-                name = "Exponentiation Edward",
-                text = {
-                    "{X:dark_edition,C:white}^#1#{} Mult",
+			},
+			j_cbean_yma_edward = {
+				name = "Exponentiation Edward",
+				text = {
+					"{X:dark_edition,C:white}^#1#{} Mult",
 				},
-            },
-            j_cbean_yma_manny = {
-                name = "Multiplication Manny",
-                text = {
-                    "{X:mult,C:white}X#1#{} Mult",
+			},
+			j_cbean_yma_manny = {
+				name = "Multiplication Manny",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
 				},
-            },
-            j_cbean_yma_seeing_stars = {
-                name = "Seeing Stars",
-                text = {
-                    "Only {C:planet}Planet{} related",
-                    "Jokers can appear",
+			},
+			j_cbean_yma_seeing_stars = {
+				name = "Seeing Stars",
+				text = {
+					"Only {C:planet}Planet{} related",
+					"Jokers can appear",
 				},
-            },
-            j_cbean_yma_key_ring = {
-                name = "Spare Key",
-                text = {
+			},
+			j_cbean_yma_key_ring = {
+				name = "Spare Key",
+				text = {
 					"When a {C:yma_keys}Key{} breaks",
 					"have a {C:green}chance{} to get a",
 					"fresh {C:attention}copy{} of it",
 				},
-            },
-            j_cbean_yma_the_jest_around = {
-                name = "The Jest Around",
-                text = {
+			},
+			j_cbean_yma_the_jest_around = {
+				name = "The Jest Around",
+				text = {
 					"{X:mult,C:white}X#1#{} Mult for current",
 					"{C:combo}Combo{} length",
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
 				},
-            },
-            j_cbean_yma_born_salesman = {
-                name = "Born Salesman",
-                text = {
+			},
+			j_cbean_yma_born_salesman = {
+				name = "Born Salesman",
+				text = {
 					"{C:money}Shop{} and {C:attention}Pack{}",
 					"based {C:yma_keys}Keys",
 					"take no {C:dark_edition}space",
 				},
-            },
-            j_cbean_yma_well_wrapped = {
-                name = "Well Wrapped",
-                text = {
+			},
+			j_cbean_yma_well_wrapped = {
+				name = "Well Wrapped",
+				text = {
 					"When this {C:attention}Joker{} is {C:red}destroyed",
 					"{C:green}#1# in #2#{} chance to create",
 					"The Soul",
 				},
-            },
-            j_cbean_yma_joker_vision = {
-                name = "Joker Vision",
-                text = {
+			},
+			j_cbean_yma_joker_vision = {
+				name = "Joker Vision",
+				text = {
 					"Leftmost {C:combo}Combo{} card",
 					"{C:attention}retriggers{} twice",
 				},
-            },
-            j_cbean_yma_set_of_dice = {
-                name = "Set of Dice",
-                text = {
+			},
+			j_cbean_yma_set_of_dice = {
+				name = "Set of Dice",
+				text = {
 					"{C:green}Probability{} is {C:attention}guaranteed",
 					"for all {C:attention}#1#",
-                    "resets after each {C:attention}Blind{}",
+					"resets after each {C:attention}Blind{}",
 				},
-            },
-            j_cbean_yma_yeah_mostly_artists_form0 = {
-                name = {
-                    "FirstTry",
+			},
+			j_cbean_yma_yeah_mostly_artists_form0 = {
+				name = {
+					"FirstTry",
 					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
-                },
-                text = {
-                    {
-                        "When a {C:attention}Blind{} is selected,",
-                        "this Joker changes into",
-                        "a random {C:legendary}Form{}",
-                    },
-                    {
-                        "{C:green}#1# in #2#{} chance",
-                        "for cards {C:attention}held in hand{}",
+				},
+				text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
+						"{C:green}#1# in #2#{} chance",
+						"for cards {C:attention}held in hand{}",
 						"to create a {C:attention}Buffoon Tag{}",
 					},
 				},
-            },
-            j_cbean_yma_yeah_mostly_artists_form1 = {
-                name = {
-                    "Flynn",
+			},
+			j_cbean_yma_yeah_mostly_artists_form1 = {
+				name = {
+					"Flynn",
 					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
-                },
-                text = {
-                    {
-                        "When a {C:attention}Blind{} is selected,",
-                        "this Joker changes into",
-                        "a random {C:legendary}Form{}",
-                    },
-                    {
-                        "Cards held in hand",
+				},
+				text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
+						"Cards held in hand",
 						"permanently gain {C:mult}+#4#{} mult",
 					},
 				},
-            },
-            j_cbean_yma_yeah_mostly_artists_form2 = {
-                name = {
-                    "Rainstar",
+			},
+			j_cbean_yma_yeah_mostly_artists_form2 = {
+				name = {
+					"Rainstar",
 					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
-                },
-                text = {
-                    {
-                        "When a {C:attention}Blind{} is selected,",
-                        "this Joker changes into",
-                        "a random {C:legendary}Form{}",
-                    },
-                    {
-                        "If played hand contains",
-                        "a {C:attention}#3#{}, convert",
-                        "all cards held in hand into",
-                        "the {C:attention}suit{} of first played card",
+				},
+				text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
+						"If played hand contains",
+						"a {C:attention}#3#{}, convert",
+						"all cards held in hand into",
+						"the {C:attention}suit{} of first played card",
 					},
 				},
-            },
-            j_cbean_yma_yeah_mostly_artists_form3 = {
-                name = {
-                    "cloudzXIII",
+			},
+			j_cbean_yma_yeah_mostly_artists_form3 = {
+				name = {
+					"cloudzXIII",
 					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
-                },
-                text = {
-                    {
-                        "When a {C:attention}Blind{} is selected,",
-                        "this Joker changes into",
-                        "a random {C:legendary}Form{}",
-                    },
-                    {
-                        "If played hand contains",
-                        "a card with an {C:attention}Enhancement{},",
-                        "enhance a random",
-                        "card held in hand",
+				},
+				text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
+						"If played hand contains",
+						"a card with an {C:attention}Enhancement{},",
+						"enhance a random",
+						"card held in hand",
 					},
 				},
-            },
-            j_cbean_yma_yeah_mostly_artists_form4 = {
-                name = {
-                    "RattlingSnow353",
+			},
+			j_cbean_yma_yeah_mostly_artists_form4 = {
+				name = {
+					"RattlingSnow353",
 					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
-                },
-                text = {
-                    {
-                        "When a {C:attention}Blind{} is selected,",
-                        "this Joker changes into",
-                        "a random {C:legendary}Form{}",
-                    },
-                    {
+				},
+				text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
+						"{C:chips}+#5#{} Chips",
+						"Every {C:attention}2{} hands played,",
+						"transform into a random {C:attention}Key{}"
+					},
+				},
+			},
+			j_cbean_yma_yeah_mostly_artists_form5 = {
+				name = {
+					"Lyre",
+					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
+				},
+				text = {
+					{
+						"When a {C:attention}Blind{} is selected,",
+						"this Joker changes into",
+						"a random {C:legendary}Form{}",
+					},
+					{
 						"(no effect)",
 					},
 				},
-            },
-            j_cbean_yma_yeah_mostly_artists_form5 = {
-                name = {
-                    "Lyre",
-					"{C:legendary,s:0.7}Yeah! Mostly Artists{}",
-                },
-                text = {
-                    {
-                        "When a {C:attention}Blind{} is selected,",
-                        "this Joker changes into",
-                        "a random {C:legendary}Form{}",
-                    },
-                    {
-						"(no effect)",
-					},
-				},
-            },
-            --Name Team
-            j_cbean_nameteam_stickerbomb = {
-                name = {
+			},
+			--Name Team
+			j_cbean_nameteam_stickerbomb = {
+				name = {
 					"Stickerbomb",
-                },
-                text = {
-                    "{C:mult}+#1#{} Mult per {C:attention}Sticker",
-                    "currently applied",
-                    "on any card or deck",
+				},
+				text = {
+					"{C:mult}+#1#{} Mult per {C:attention}Sticker",
+					"currently applied",
+					"on any card or deck",
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
 				},
-            },
-            j_cbean_nameteam_sticker_collection = {
-                name = {
+			},
+			j_cbean_nameteam_sticker_collection = {
+				name = {
 					"Sticker Collection",
-                },
-                text = {
-                    "{X:mult,C:white}X#1#{} Mult per unique",
-                    "{C:attention}Sticker{} currently applied",
-                    "on any card or deck",
+				},
+				text = {
+					"{X:mult,C:white}X#1#{} Mult per unique",
+					"{C:attention}Sticker{} currently applied",
+					"on any card or deck",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 				},
-            },
-            j_cbean_nameteam_topsyturvy = {
-                name = "Topsy Turvy",
-                text = {
-                    "Played {C:attention}3s{} give {C:chips}+#1#{}",
-                    "Chips when scored,",
-                    "played {C:attention}2s{} give {C:chips}+#2#{}",
+			},
+			j_cbean_nameteam_topsyturvy = {
+				name = "Topsy Turvy",
+				text = {
+					"Played {C:attention}3s{} give {C:chips}+#1#{}",
+					"Chips when scored,",
+					"played {C:attention}2s{} give {C:chips}+#2#{}",
 					"Chips when scored",
 				},
-            },
-            j_cbean_nameteam_bettercreditcard = {
-                name = "Better Credit Card",
-                text = {
-                    {
-                        "Go up to",
+			},
+			j_cbean_nameteam_bettercreditcard = {
+				name = "Better Credit Card",
+				text = {
+					{
+						"Go up to",
 						"{C:red}-$#1#{} in debt",
-                    },
-                    {
-                        "Sell this {C:attention}Joker{}",
+					},
+					{
+						"Sell this {C:attention}Joker{}",
 						"to {C:red}nullify{} debt",
 					},
 				},
-            },
-            j_cbean_nameteam_hollyjollyjoker = {
-                name = "Holly Jolly Joker",
-                text = {
-                    "Played cards with {C:clubs}Clubs{}",
-                    "suit give {C:money}$#1#{} if played",
+			},
+			j_cbean_nameteam_hollyjollyjoker = {
+				name = "Holly Jolly Joker",
+				text = {
+					"Played cards with {C:clubs}Clubs{}",
+					"suit give {C:money}$#1#{} if played",
 					"hand contains a {C:attention}#2#{}",
 				},
-            },
-            j_cbean_nameteam_stachenscarfen = {
-                name = "Stachenscarfen",
-                text = {
-                    "All spawned {C:attention}Jokers{}",
+			},
+			j_cbean_nameteam_stachenscarfen = {
+				name = "Stachenscarfen",
+				text = {
+					"All spawned {C:attention}Jokers{}",
 					"are {C:green}Uncommon{}",
 				},
-            },
-            j_cbean_nameteam_manface = {
-                name = "Man Face",
-                text = {
-                    "When {C:attention}round{} begins,",
-                    "applies {C:attention}Man{} to one",
-                    "random {C:attention}non-Man{}",
+			},
+			j_cbean_nameteam_manface = {
+				name = "Man Face",
+				text = {
+					"When {C:attention}round{} begins,",
+					"applies {C:attention}Man{} to one",
+					"random {C:attention}non-Man{}",
 					"card in your hand",
 				},
-            },
-            j_cbean_nameteam_jimboss = {
-                name = "Jimboss",
-                text = {
-                    "Disables current {C:attention}Boss{}",
-                    "or {E:1,C:money}CEO Blind{} on",
+			},
+			j_cbean_nameteam_jimboss = {
+				name = "Jimboss",
+				text = {
+					"Disables current {C:attention}Boss{}",
+					"or {E:1,C:money}CEO Blind{} on",
 					"{C:attention}third{} hand of round",
 				},
-            },
-            j_cbean_nameteam_alecwatson = {
-                name = {
-                    "Alec Watson",
+			},
+			j_cbean_nameteam_alecwatson = {
+				name = {
+					"Alec Watson",
 					"{s:0.7}[Technology Connections]{}",
-                },
-                text = {
-                    "When a {C:attention}consumable{} is",
-                    "purchased, creates a",
-                    "{C:attention}second copy{} of it",
+				},
+				text = {
+					"When a {C:attention}consumable{} is",
+					"purchased, creates a",
+					"{C:attention}second copy{} of it",
 					"{C:inactive}(Must have room){}",
 				},
-            },
-            j_cbean_nameteam_diamondshapewithadotinside = {
-                name = "{s:0.9}Diamond Shape With a Dot Inside{}",
-                text = {
-                    "Played {C:diamonds}Diamonds{} give",
-                    "{C:mult}+#1#{} Mult when scored",
-                    "if played hand contains",
+			},
+			j_cbean_nameteam_diamondshapewithadotinside = {
+				name = "{s:0.9}Diamond Shape With a Dot Inside{}",
+				text = {
+					"Played {C:diamonds}Diamonds{} give",
+					"{C:mult}+#1#{} Mult when scored",
+					"if played hand contains",
 					"a {C:red}non-Diamond{}",
 				},
-            },
-            j_cbean_nameteam_giveway = {
-                name = "Give Way",
-                text = {
-                    "{C:white,X:mult}X#1#{} Mult",
+			},
+			j_cbean_nameteam_giveway = {
+				name = "Give Way",
+				text = {
+					"{C:white,X:mult}X#1#{} Mult",
 					"before scoring",
 				},
-            },
-            j_cbean_nameteam_ghostimage = {
-                name = "Ghost Image",
-                text = {
-                    "Upgrades a random",
-                    "poker hand by {C:attention}#1#{}",
-                    "level when using",
+			},
+			j_cbean_nameteam_ghostimage = {
+				name = "Ghost Image",
+				text = {
+					"Upgrades a random",
+					"poker hand by {C:attention}#1#{}",
+					"level when using",
 					"a {C:planet}Planet{} card",
 				},
-            },
-            j_cbean_nameteam_tipoftheiceberg = {
-                name = "Tip of the Iceberg",
-                text = {
-                    "Gains {C:chips}+#1#{} Chips for each",
-                    "card {C:attention}purchased{} from the",
-                    "shop before {C:green}rerolling{}",
+			},
+			j_cbean_nameteam_tipoftheiceberg = {
+				name = "Tip of the Iceberg",
+				text = {
+					"Gains {C:chips}+#1#{} Chips for each",
+					"card {C:attention}purchased{} from the",
+					"shop before {C:green}rerolling{}",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips){}",
 				},
-            },
-            j_cbean_nameteam_bottomofthebarrel = {
-                name = "Bottom of the Barrel",
-                text = {
-                    "Gains {C:mult}+#1#{} Mult for each",
-                    "card {C:attention}purchased{} from the",
-                    "shop after all {C:green}rerolls{}",
+			},
+			j_cbean_nameteam_bottomofthebarrel = {
+				name = "Bottom of the Barrel",
+				text = {
+					"Gains {C:mult}+#1#{} Mult for each",
+					"card {C:attention}purchased{} from the",
+					"shop after all {C:green}rerolls{}",
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}",
 				},
-            },
-            j_cbean_nameteam_halfbodyjoker = {
-                name = "Half-body Joker",
-                text = {
-                    "Cards held in hand",
+			},
+			j_cbean_nameteam_halfbodyjoker = {
+				name = "Half-body Joker",
+				text = {
+					"Cards held in hand",
 					"give {C:mult}+#1#{} Mult",
 				},
-            },
-            j_cbean_nameteam_teenyweenyjoker = {
-                name = "{s:0.6}Teeny Weeny Joker{}",
-                text = {
-                    "{s:0.8}Gains {C:mult,s:0.8}+#1#{s:0.8} Mult if all",
-                    "{s:0.8}played cards are {C:attention,s:0.8}2s{}",
+			},
+			j_cbean_nameteam_teenyweenyjoker = {
+				name = "{s:0.6}Teeny Weeny Joker{}",
+				text = {
+					"{s:0.8}Gains {C:mult,s:0.8}+#1#{s:0.8} Mult if all",
+					"{s:0.8}played cards are {C:attention,s:0.8}2s{}",
 					"{C:inactive,s:0.8}(Currently {C:mult,s:0.8}+#2#{C:inactive,s:0.8} Mult){}",
 				},
-            },
-            j_cbean_nameteam_presidenthathaway = {
-                name = "President Hathaway",
-                text = {
-                    {
-                        "Played {C:attention}Kings{} of",
-                        "{C:spades}Spades{} give {C:white,X:mult}X#1#{} Mult",
+			},
+			j_cbean_nameteam_presidenthathaway = {
+				name = "President Hathaway",
+				text = {
+					{
+						"Played {C:attention}Kings{} of",
+						"{C:spades}Spades{} give {C:white,X:mult}X#1#{} Mult",
 						"when scored",
-                    },
-                    {
-                        "{C:red,E:1}Lose the run{} if this",
+					},
+					{
+						"{C:red,E:1}Lose the run{} if this",
 						"Joker is {C:red}destroyed{}",
 					},
 				},
-            },
-            j_cbean_nameteam_collager = {
-                name = "Collager",
+			},
+			j_cbean_nameteam_collager = {
+				name = "Collager",
 				text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "{C:red}destroys{} a random {C:tarot}Tarot{} card",
-                    "If successful, creates",
+					"When {C:attention}Blind{} is selected,",
+					"{C:red}destroys{} a random {C:tarot}Tarot{} card",
+					"If successful, creates",
 					"a {C:stickersheet}Sticker Sheet{}",
 				},
-            },
-            j_cbean_nameteam_theworldshardestjoker = {
-                name = "The World's Hardest Joker",
+			},
+			j_cbean_nameteam_theworldshardestjoker = {
+				name = "The World's Hardest Joker",
 				text = {
-                    "Play {C:attention}#1#{} {C:inactive}[#2#]{} consecutive",
-                    "{C:attention}Straight Flushes{} to create",
-                    "a copy of {C:spectral}The Soul{}",
+					"Play {C:attention}#1#{} {C:inactive}[#2#]{} consecutive",
+					"{C:attention}Straight Flushes{} to create",
+					"a copy of {C:spectral}The Soul{}",
 					"{C:inactive}(Must have room){}",
-                }
-            },
-            j_cbean_nameteam_coffeemug = {
-                name = "Coffee Mug",
-                text =
-                {
-                    "Retriggers all played",
-                    "cards with {C:attention}Stickers{}",
-                    "{C:attention}#1#{} times for {C:attention}#2#{} hands"
-                }
-            },
-            j_cbean_nameteam_poorphotography = {
-                name = "Poor Photography",
-                text =
-                {
-                    "Leftmost {C:attention}face{} card held",
-                    "in hand gives {C:white,X:mult}X#1#{} Mult"
-                }
-            },
-            j_cbean_nameteam_chuckmcgill = {
-                name = '{s:0.9}Charles "Chuck" McGill{}',
-                text =
-                {
-                    "Gives {C:white,X:mult}X#1#{} Mult if",
-                    "played hand is not",
-                    "the {C:attention}previous hand{}",
-                    "{C:inactive}(Previous hand: {C:attention}#2#{C:inactive}){}"
-                }
-            },
+				}
+			},
+			j_cbean_nameteam_coffeemug = {
+				name = "Coffee Mug",
+				text =
+				{
+					"Retriggers all played",
+					"cards with {C:attention}Stickers{}",
+					"{C:attention}#1#{} times for {C:attention}#2#{} hands"
+				}
+			},
+			j_cbean_nameteam_poorphotography = {
+				name = "Poor Photography",
+				text =
+				{
+					"Leftmost {C:attention}face{} card held",
+					"in hand gives {C:white,X:mult}X#1#{} Mult"
+				}
+			},
+			j_cbean_nameteam_chuckmcgill = {
+				name = '{s:0.9}Charles "Chuck" McGill{}',
+				text =
+				{
+					"Gives {C:white,X:mult}X#1#{} Mult if",
+					"played hand is not",
+					"the {C:attention}previous hand{}",
+					"{C:inactive}(Previous hand: {C:attention}#2#{C:inactive}){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
-                name = "Withering Memory",
-                text = {
+				name = "Withering Memory",
+				text = {
 					{
-					"Scored {C:attention}Dark Suits{} give {C:white,X:chips}X#1#{} Chips",
-					"if a {C:attention}Light Suit{} is scored {C:attention}beforehand{}",
+						"Scored {C:attention}Dark Suits{} give {C:white,X:chips}X#1#{} Chips",
+						"if a {C:attention}Light Suit{} is scored {C:attention}beforehand{}",
 					},
 					{
 						"Scored {C:attention}Light Suits{} give {C:white,X:mult}X#2#{} Mult",
 						"if a {C:attention}Dark Suit{} is scored {C:attention}beforehand{}",
 					}
 				},
-            },
+			},
 			j_cbean_wgrop_jhett_the_poltergeist = {
 				name = "Jhett the Poltergeist",
 				text = {
-					{"{C:red}Destroy{} all {C:attention}Pale Remnant{} cards",
-					"in {C:attnetion}Hand{} after scoring"},
-					{"Gain {C:white,X:red}X#1#{} {C:attention}for every{} held",
-				    "{C:attention}Pale Remnant{} card at",
-					"the start of the hand when",
-					"destroying one"},
-					{"{C:inactive}Currently{} {C:white,X:mult}X#2#{}"}
+					{ "{C:red}Destroy{} all {C:attention}Pale Remnant{} cards",
+						"in {C:attnetion}Hand{} after scoring" },
+					{ "Gain {C:white,X:red}X#1#{} {C:attention}for every{} held",
+						"{C:attention}Pale Remnant{} card at",
+						"the start of the hand when",
+						"destroying one" },
+					{ "{C:inactive}Currently{} {C:white,X:mult}X#2#{}" }
 				}
 			},
 			j_cbean_wgrop_oasis = {
@@ -3130,25 +3132,25 @@ return {
 			j_cbean_wgrop_scorched_hands = {
 				name = "Scorched Hands",
 				text = {
-					{"Discarded cards have",
-					"a {C:green}#1#{} in {C:green}#2#{} chance to",
-					"be {C:red}destroyed{}"},
-					{"{C:attention}Unenhanced{} cards",
-				     "destroyed this way",
-					"give {C:money}$#3#{}",
-					"{C:attention}Enhanced{} cards give",
-				    "{C:money}$#4#{} instead"}
+					{ "Discarded cards have",
+						"a {C:green}#1#{} in {C:green}#2#{} chance to",
+						"be {C:red}destroyed{}" },
+					{ "{C:attention}Unenhanced{} cards",
+						"destroyed this way",
+						"give {C:money}$#3#{}",
+						"{C:attention}Enhanced{} cards give",
+						"{C:money}$#4#{} instead" }
 				}
 			},
 			j_cbean_wgrop_starry_reflection = {
 				name = "Starry Reflection",
 				text = {
-					{"Score {C:chips}Chips{} equal to",
-				     "{C:dark_edition}#1#%{} of {C:attention}base{}",
-					 "poker hand's {C:blue}Chips{}"},
-					{"Increase {C:dark_edition}percentage{} by",
-				     "{C:dark_edition}#2#%{} when {C:attention}selling{}",
-					 "a {C:planet}Planet{} card"}
+					{ "Score {C:chips}Chips{} equal to",
+						"{C:dark_edition}#1#%{} of {C:attention}base{}",
+						"poker hand's {C:blue}Chips{}" },
+					{ "Increase {C:dark_edition}percentage{} by",
+						"{C:dark_edition}#2#%{} when {C:attention}selling{}",
+						"a {C:planet}Planet{} card" }
 				}
 			},
 			j_cbean_wgrop_stop_sign = {
@@ -3156,8 +3158,8 @@ return {
 				text = {
 					"{C:inactive,s:0.75}Perhaps some things are better...{}",
 					"{C:inactive,s:0.95}Left Behind.{}"
-			    }
-			},--jokers jbill pokers woah woah jokercards yo jokers yo jbill 
+				}
+			}, --jokers jbill pokers woah woah jokercards yo jokers yo jbill
 			j_cbean_jbill_tlane = {
 				name = "Triple Lane",
 				text = {
@@ -3222,471 +3224,471 @@ return {
 				}
 			},
 		},
-        Other = {
-            undiscovered_yma_quest = {
-                name = "Not Discovered",
-                text = {
-                    "Complete Side",
-                    "Quests in an",
-                    "unseeded run to",
+		Other = {
+			undiscovered_yma_quest = {
+				name = "Not Discovered",
+				text = {
+					"Complete Side",
+					"Quests in an",
+					"unseeded run to",
 					"learn what it does",
 				},
-            },
-            undiscovered_colon_architecture = {
-                name = "Not Discovered",
-                text = {
-                    "Obtain this card in an",
-                    "unseeded run to",
+			},
+			undiscovered_colon_architecture = {
+				name = "Not Discovered",
+				text = {
+					"Obtain this card in an",
+					"unseeded run to",
 					"learn what it does",
 				},
-            },
-            undiscovered_yma_keys = {
+			},
+			undiscovered_yma_keys = {
 				name = "Unknown Key Card",
-                text = {
+				text = {
 					"Find this card in an unseeded",
 					"run to find out what it does",
 				},
-            },
-            undiscovered_cbean_stickersheet = {
-                name = "Not Discovered",
-                text = {
-                    "Obtain this card in",
-                    "an unseeded run to",
-                    "learn what it does",
+			},
+			undiscovered_cbean_stickersheet = {
+				name = "Not Discovered",
+				text = {
+					"Obtain this card in",
+					"an unseeded run to",
+					"learn what it does",
 				},
-            },
-            k_cbean_pissjoker = {
-                name = "Piss Joker",
-                text = {
-                    "Count as a {C:attention}Piss{}",
+			},
+			k_cbean_pissjoker = {
+				name = "Piss Joker",
+				text = {
+					"Count as a {C:attention}Piss{}",
 					"{C:attention}related{} Joker",
 				},
-            },
-            p_cbean_colon_architecture_normal = {
-                name = "Construction Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
+			},
+			p_cbean_colon_architecture_normal = {
+				name = "Construction Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_colon_architecture_jumbo = {
-                name = "Jumbo Construction Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
+			},
+			p_cbean_colon_architecture_jumbo = {
+				name = "Jumbo Construction Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_colon_architecture_mega = {
-                name = "Mega Construction Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
+			},
+			p_cbean_colon_architecture_mega = {
+				name = "Mega Construction Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:colon_Architecture}Architecture{} cards to",
 					"be used immediately",
 				},
-            },
-            --Zodiacs
-            p_cbean_czodiac_normal1 = {
-                name = "Zodiac Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+			},
+			--Zodiacs
+			p_cbean_czodiac_normal1 = {
+				name = "Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_czodiac_normal2 = {
-                name = "Zodiac Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+			},
+			p_cbean_czodiac_normal2 = {
+				name = "Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_czodiac_jumbo1 = {
-                name = "Jumbo Zodiac Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+			},
+			p_cbean_czodiac_jumbo1 = {
+				name = "Jumbo Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_czodiac_jumbo2 = {
-                name = "Jumbo Zodiac Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+			},
+			p_cbean_czodiac_jumbo2 = {
+				name = "Jumbo Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_czodiac_mega1 = {
-                name = "Mega Zodiac Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+			},
+			p_cbean_czodiac_mega1 = {
+				name = "Mega Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_czodiac_mega2 = {
-                name = "Mega Zodiac Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+			},
+			p_cbean_czodiac_mega2 = {
+				name = "Mega Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
 					"be used immediately",
 				},
-            },
-            --Blessings
-            p_cbean_blessing_normal1 = {
-                name = "Pantheon Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
+			},
+			--Blessings
+			p_cbean_blessing_normal1 = {
+				name = "Pantheon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
 					"to take with you",
 				},
-            },
-            p_cbean_blessing_normal2 = {
-                name = "Pantheon Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
+			},
+			p_cbean_blessing_normal2 = {
+				name = "Pantheon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
 					"to take with you",
 				},
-            },
-            p_cbean_blessing_jumbo = {
-                name = "Jumbo Pantheon Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
+			},
+			p_cbean_blessing_jumbo = {
+				name = "Jumbo Pantheon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
 					"to take with you",
 				},
-            },
-            p_cbean_blessing_mega = {
-                name = "Mega Pantheon Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
+			},
+			p_cbean_blessing_mega = {
+				name = "Mega Pantheon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_blessing}Blessing{} cards",
 					"to take with you",
 				},
-            },
-            cbean_combo_starter = { --Explains if card can be used to start a combo
-                name = "Combo Starter",
-                text = {
-                    "This card can be used",
+			},
+			cbean_combo_starter = { --Explains if card can be used to start a combo
+				name = "Combo Starter",
+				text = {
+					"This card can be used",
 					"to start a combo",
-                },
-            },
-            --Keys
-            p_cbean_yma_key_normal1 = {
-                name = "Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+				},
+			},
+			--Keys
+			p_cbean_yma_key_normal1 = {
+				name = "Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_normal2 = {
-                name = "Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_normal2 = {
+				name = "Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_normal3 = {
-                name = "Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_normal3 = {
+				name = "Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_normal4 = {
-                name = "Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_normal4 = {
+				name = "Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_jumbo1 = {
-                name = "Jumbo Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_jumbo1 = {
+				name = "Jumbo Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_jumbo2 = {
-                name = "Jumbo Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_jumbo2 = {
+				name = "Jumbo Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_mega1 = {
-                name = "Mega Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_mega1 = {
+				name = "Mega Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
-            p_cbean_yma_key_mega2 = {
-                name = "Mega Key Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:yma_keys}Key{} cards to",
+			},
+			p_cbean_yma_key_mega2 = {
+				name = "Mega Key Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:yma_keys}Key{} cards to",
 					"be used immediately",
 				},
-            },
+			},
 			--Meta packs
 			p_cbean_meta_pack1 = {
-                name = "Meta Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				name = "Meta Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:money}Consumable^2{} cards"
 				},
-            },
+			},
 			p_cbean_meta_pack2 = {
-                name = "Meta Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				name = "Meta Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:money}Consumable^2{} cards"
 				},
-            },
+			},
 			p_cbean_meta_jumbo = {
-                name = "Jumbo Meta Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				name = "Jumbo Meta Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:money}Consumable^2{} cards"
 				},
-            },
+			},
 			p_cbean_meta_mega = {
-                name = "Mega Meta Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:money}Consumable^2{} cards"
+				name = "Mega Meta Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:money}Consumable^2{} cards"
 				},
-            },
+			},
 			--Combo Packs
 			p_cbean_combo_booster_standard1 = {
-                name = "Jimbattle: Standard Edition",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
-                    "to take with you"
+				name = "Jimbattle: Standard Edition",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:combo,E:1}Combo{} cards",
+					"to take with you"
 				},
-            },
+			},
 			p_cbean_combo_booster_standard2 = {
-                name = "Jimbattle: Standard Edition",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
-                    "to take with you"
+				name = "Jimbattle: Standard Edition",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:combo,E:1}Combo{} cards",
+					"to take with you"
 				},
-            },
+			},
 			p_cbean_combo_booster_special1 = {
-                name = "Jimbattle: Special Edition",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
-                    "to take with you"
+				name = "Jimbattle: Special Edition",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:combo,E:1}Combo{} cards",
+					"to take with you"
 				},
-            },
+			},
 			p_cbean_combo_booster_ultimate1 = {
-                name = "Jimbattle: Ultimate Edition",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:combo,E:1}Combo{} cards",
-                    "to take with you"
+				name = "Jimbattle: Ultimate Edition",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:combo,E:1}Combo{} cards",
+					"to take with you"
 				},
-            },
-            --Seals
-            cbean_yma_cipher_seal = {
-                name = "Cipher Seal",
-                text = {
+			},
+			--Seals
+			cbean_yma_cipher_seal = {
+				name = "Cipher Seal",
+				text = {
 					"{C:green}#1# in #2#{} chance to {C:attention}polish",
 					"a random {C:yma_keys}Key{} when this",
 					"card is {C:attention}scored",
 				},
-            },
-            -- Name Team Stickers
-            cbean_mailed = {
-                name = "Mailed Sticker",
-                text = {
-                    "{C:red}-$2{} when",
+			},
+			-- Name Team Stickers
+			cbean_mailed = {
+				name = "Mailed Sticker",
+				text = {
+					"{C:red}-$2{} when",
 					"{C:red}discarded{}",
 				},
-            },
-            cbean_hooking = {
-                name = "Hooking Sticker",
-                text = {
-                    "{C:red}Discarded{} if held",
-                    "in hand when",
+			},
+			cbean_hooking = {
+				name = "Hooking Sticker",
+				text = {
+					"{C:red}Discarded{} if held",
+					"in hand when",
 					"hand is played",
 				},
-            },
+			},
 			cbean_colon_tauic = {
 				name = "Tauic",
-                text = {
-                    "Can apply {C:dark_edition}Negative{}",
+				text = {
+					"Can apply {C:dark_edition}Negative{}",
 				},
 			},
-            cbean_flashcard = {
-                name = "Flash Card Sticker",
-                text = {
-                    "{C:attention}Replace{} this card",
-                    "with another card of",
-                    "the same {C:attention}rarity{} when",
+			cbean_flashcard = {
+				name = "Flash Card Sticker",
+				text = {
+					"{C:attention}Replace{} this card",
+					"with another card of",
+					"the same {C:attention}rarity{} when",
 					"{C:green}rerolling{} the shop",
 				},
-            },
-            cbean_frowning = {
-                name = "Frowning Sticker",
-                text = {
-                    "{C:red}Debuffed{} if played",
-                    "hand contains",
+			},
+			cbean_frowning = {
+				name = "Frowning Sticker",
+				text = {
+					"{C:red}Debuffed{} if played",
+					"hand contains",
 					"any {C:attention}face{} cards",
 				},
-            },
-            cbean_plasma = {
-                name = "Plasma Sticker",
-                text = {
-                    "{X:purple,C:white}X2{} Blind size",
-                    "Balances {C:attention}10%{} of {C:blue}Chips",
-                    "and {C:red}Mult{} when",
+			},
+			cbean_plasma = {
+				name = "Plasma Sticker",
+				text = {
+					"{X:purple,C:white}X2{} Blind size",
+					"Balances {C:attention}10%{} of {C:blue}Chips",
+					"and {C:red}Mult{} when",
 					"calculating final score",
 				},
-            },
-            cbean_painted = {
-                name = "Painted Sticker",
-                text = {
-                    "{C:attention}+1{} hand size",
+			},
+			cbean_painted = {
+				name = "Painted Sticker",
+				text = {
+					"{C:attention}+1{} hand size",
 					"{C:red}-1{} Joker slot",
 				},
-            },
-            cbean_black = {
-                name = "Black Sticker",
-                text = {
-                    "{C:blue}-1{} hand",
-                    "every round",
-                    "{C:attention}Jokers{} are {C:attention}10X{} more",
+			},
+			cbean_black = {
+				name = "Black Sticker",
+				text = {
+					"{C:blue}-1{} hand",
+					"every round",
+					"{C:attention}Jokers{} are {C:attention}10X{} more",
 					"likely to be {C:dark_edition}Negative{}",
 				},
-            },
-            cbean_heavy = {
-                name = "Heavy Sticker",
-                text = {
-                    "{C:red}-1{} hand size",
-                    "while held in",
+			},
+			cbean_heavy = {
+				name = "Heavy Sticker",
+				text = {
+					"{C:red}-1{} hand size",
+					"while held in",
 					"consumable slots",
 				},
-            },
-            cbean_dangerous = {
-                name = "Dangerous Sticker",
-                text = {
-                    "When used, {C:green}#1# in #2#{}",
-                    "chance for the next",
-                    "selected Blind to",
+			},
+			cbean_dangerous = {
+				name = "Dangerous Sticker",
+				text = {
+					"When used, {C:green}#1# in #2#{}",
+					"chance for the next",
+					"selected Blind to",
 					"have {X:purple,C:white}X2{} Blind size",
 				},
-            },
-            cbean_shield = {
-                name = "Shield Sticker",
-                text = {
-                    "{C:green}Prevents{} the",
-                    "{C:red}destruction{} of this",
+			},
+			cbean_shield = {
+				name = "Shield Sticker",
+				text = {
+					"{C:green}Prevents{} the",
+					"{C:red}destruction{} of this",
 					"card {C:attention}once{}",
 				},
-            },
-            cbean_man = {
-                name = "Man Sticker",
-                text = {
+			},
+			cbean_man = {
+				name = "Man Sticker",
+				text = {
 					"Cannot be {C:red}debuffed{}",
 				},
-            },
-            cbean_minuscule = {
-                name = "Minuscule Sticker",
-                text = {
+			},
+			cbean_minuscule = {
+				name = "Minuscule Sticker",
+				text = {
 					"Fills {C:dark_edition}0.5{} slots",
 				},
-            },
-            cbean_shuffle = {
-                name = "Shuffle Sticker",
-                text = {
-                    "When a hand is {C:attention}played{},",
+			},
+			cbean_shuffle = {
+				name = "Shuffle Sticker",
+				text = {
+					"When a hand is {C:attention}played{},",
 					"randomizes this {C:attention}Joker's position",
 				},
-            },
-            cbean_nebula = {
-                name = "Nebula Sticker",
-                text = {
-                    "{C:red}-1{} consumable Slot, create a {C:dark_edition}Negative",
-                    "{C:planet}Planet{} card for most played hand when ",
+			},
+			cbean_nebula = {
+				name = "Nebula Sticker",
+				text = {
+					"{C:red}-1{} consumable Slot, create a {C:dark_edition}Negative",
+					"{C:planet}Planet{} card for most played hand when ",
 					"{C:attention}Small Blind{} is selected ",
 				},
-            },
-            cbean_green = {
-                name = "Green Sticker",
-                text = {
-                    "Earn no {C:attention}Interest",
-                    "Earn an additional {C:money}$1",
-                    "per remaining {C:blue}Hand{} and",
+			},
+			cbean_green = {
+				name = "Green Sticker",
+				text = {
+					"Earn no {C:attention}Interest",
+					"Earn an additional {C:money}$1",
+					"per remaining {C:blue}Hand{} and",
 					"{C:red}Discard{} at end of round",
 				},
-            },
-            cbean_brainrot = {
-                name = "Brainrot Sticker",
-                text = {
-                    "If {C:attention}6{} and {C:attention}7{}",
-                    "are {C:attention}scored{} together",
+			},
+			cbean_brainrot = {
+				name = "Brainrot Sticker",
+				text = {
+					"If {C:attention}6{} and {C:attention}7{}",
+					"are {C:attention}scored{} together",
 					"{C:attention}retrigger{} this card",
 				},
-            },
-            cbean_egg = {
-                name = "Egg Sticker",
-                text = {
-                    "Gains {C:money}$2{} of {C:attention}sell value",
-                    "at end of round",
+			},
+			cbean_egg = {
+				name = "Egg Sticker",
+				text = {
+					"Gains {C:money}$2{} of {C:attention}sell value",
+					"at end of round",
 				},
-            },
-            cbean_hungry = {
-                name = "Hungry Sticker",
-                text = {
-                    "When a {C:attention}Blind{} is selected",
-                    "{C:red}consumes{} the card",
+			},
+			cbean_hungry = {
+				name = "Hungry Sticker",
+				text = {
+					"When a {C:attention}Blind{} is selected",
+					"{C:red}consumes{} the card",
 					"next to it",
 				},
-            },
-            cbean_barren = {
-                name = "Barren Sticker",
-                text = {
-                    "Card {C:red}cannot",
-                    "have an",
+			},
+			cbean_barren = {
+				name = "Barren Sticker",
+				text = {
+					"Card {C:red}cannot",
+					"have an",
 					"enhancement",
 				},
-            },
-            cbean_spore = {
-                name = "Spore Sticker",
-                text = {
-                    "When a {C:attention}Blind{}",
-                    "is set gives",
-                    "a {C:dark_edition}Random{} sticker",
-                    "to a card in the",
+			},
+			cbean_spore = {
+				name = "Spore Sticker",
+				text = {
+					"When a {C:attention}Blind{}",
+					"is set gives",
+					"a {C:dark_edition}Random{} sticker",
+					"to a card in the",
 					"same area",
 				},
-            },
-            cbean_healing = {
-                name = "Healing Sticker",
-                text = {
-                    "When a {C:attention}Blind{}",
-                    "is set removes",
-                    "a {C:dark_edition}Random{} negative",
-                    "sticker from a card",
+			},
+			cbean_healing = {
+				name = "Healing Sticker",
+				text = {
+					"When a {C:attention}Blind{}",
+					"is set removes",
+					"a {C:dark_edition}Random{} negative",
+					"sticker from a card",
 					"in the same area",
 				},
-            },
+			},
 			cbean_misprinted = {
 				name = "Misprinted Sticker",
 				text = {
@@ -3704,13 +3706,13 @@ return {
 					"is halved",
 				},
 			},
-            cbean_square = {
+			cbean_square = {
 				name = "Square Sticker",
 				text = {
 					"Can only trigger",
-                    "if played hand",
-                    "has exactly 4",
-                    "cards"
+					"if played hand",
+					"has exactly 4",
+					"cards"
 				},
 			},
 
@@ -3792,198 +3794,198 @@ return {
 			},
 			cbean_the_mouth_sticker = {
 				name = "The Mouth",
-                text = {
+				text = {
 					"Play only {C:attention}1{} hand",
 					"type every round",
-                },
-            },
+				},
+			},
 			cbean_the_ox_sticker = {
 				name = "The Ox",
-                text = {
+				text = {
 					"Playing a {C:attention}#1#{}",
 					"sets money to {C:red}$0{}",
-                },
-            },
+				},
+			},
 			cbean_the_pillar_sticker = {
 				name = "The Pillar",
-                text = {
+				text = {
 					"Cards played previously",
 					"this {C:attention}Ante{} are {C:red}debuffed{}",
-                },
-            },
+				},
+			},
 			cbean_the_needle_sticker = {
 				name = "The Needle",
-                text = {
+				text = {
 					"Play only {C:attention}1{}",
 					"hand per round",
 					"Blind sizes are {C:attention}halved{}",
-                },
-            },
+				},
+			},
 			cbean_the_plant_sticker = {
 				name = "The Plant",
-                text = {
+				text = {
 					"During any {C:attention}Blind{},",
 					"all {C:attention}face{} cards",
 					"are {C:red}debuffed{}",
-                },
-            },
+				},
+			},
 			cbean_the_psychic_sticker = {
 				name = "The Psychic",
-                text = {
+				text = {
 					"Must play {C:attention}5{}",
 					"or more cards",
-                },
-            },
+				},
+			},
 			cbean_the_serpent_sticker = {
 				name = "The Serpent",
-                text = {
+				text = {
 					"After {C:blue}Play{} or {C:red}Discard{},",
 					"always draw {C:attention}3{} cards",
-                },
-            },
+				},
+			},
 			cbean_the_tooth_sticker = {
 				name = "The Tooth",
-                text = {
+				text = {
 					"Lose {C:red}$1{} per",
 					"card played",
-                },
-            },
+				},
+			},
 			cbean_the_water_sticker = {
 				name = "The Water",
-                text = {
+				text = {
 					"When {C:attention}Blind{} is selected,",
 					"lose all {C:red}discards{}",
-                },
-            },
+				},
+			},
 			cbean_the_wheel_sticker = {
 				name = "The Wheel",
-                text = {
+				text = {
 					"{C:green}#1# in #2#{} cards get",
 					"drawn {C:attention}face down{}",
-                },
-            },
+				},
+			},
 			cbean_the_window_sticker = {
 				name = "The Window",
-                text = {
+				text = {
 					"During any {C:attention}Blind{},",
 					"all {C:diamonds}Diamond{} cards",
 					"are {C:red}debuffed{}",
-                },
-            },
+				},
+			},
 			cbean_verdant_leaf_sticker = {
 				name = "Verdant Leaf",
-                text = {
+				text = {
 					"All cards {C:red}debuffed{}",
 					"until {C:attention}1{} Joker {C:money}sold{}",
-                },
-            },
+				},
+			},
 			cbean_cerulean_bell_sticker = {
 				name = "Cerulean Bell",
-                text = {
+				text = {
 					"Forces {C:attention}1{} card to",
 					"always be {C:attention}selected{}",
-                },
-            },
+				},
+			},
 			cbean_amber_acorn_sticker = {
 				name = "Amber Acorn",
-                text = {
+				text = {
 					"{C:attention}Flips{} and {C:attention,E:1}shuffles{}",
 					"all Joker cards",
-                },
-            },
+				},
+			},
 			cbean_crimson_heart_sticker = {
 				name = "Crimson Heart",
 				text = {
 					"One random Joker",
 					"{C:red}disabled{} every hand",
-        },
-    },
+				},
+			},
 			cbean_violet_vessel_sticker = {
 				name = "Violet Vessel",
 				text = {
 					"When {C:attention}Blind{} is selected,",
 					"{C:white,X:purple}X3{} Blind requirement",
-        },
-            },
+				},
+			},
 			--Jbill stickers
 			cbean_jaded = {
-        		name = "Jaded",
-				text = {"Considered a {C:attention}Face Card{}"} 
-    		}, 
+				name = "Jaded",
+				text = { "Considered a {C:attention}Face Card{}" }
+			},
 			cbean_banished = {
-        		name = "Banished",
+				name = "Banished",
 				text = {
 					"{C:red}Discards{} itself when drawn",
-                	"Draws a new {C:attention}Card{}",
-                	"{C:attention}Removes{} this sticker",
-                	"after beating a {C:attention}CEO{} Blind"
-				} 
-    		},
+					"Draws a new {C:attention}Card{}",
+					"{C:attention}Removes{} this sticker",
+					"after beating a {C:attention}CEO{} Blind"
+				}
+			},
 			cbean_stick2 = {
-        		name = "Sticker^2",
-				text = {"{C:dark_edition}+0.5{} Consumable slots"} 
-    		}, 
+				name = "Sticker^2",
+				text = { "{C:dark_edition}+0.5{} Consumable slots" }
+			},
 			-- Stake Stickers
 			cbean_nameteam_sticker = {
 				name = "NTeam Sticker",
 				text = { "Used this Joker", "to win on {C:attention}NTeam", "{C:attention}stake{} difficulty" },
-            },
+			},
 			cbean_consumable_sticker = {
 				name = "Consumed Sticker",
 				text = { "Used this Joker", "to win on {C:attention}Consumed", "{C:attention}stake{} difficulty" },
-            },
+			},
 			cbean_playingcardstake_sticker = {
 				name = "Spade of Stickers",
 				text = { "Used this Joker", "to win on {C:attention}Spade of Stakes", "difficulty" },
-            },
+			},
 			cbean_deck_sticker = {
 				name = "Painted Sticker",
 				text = { "Used this Joker", "to win on {C:attention}Painted", "{C:attention}Stake{} difficulty" },
-            },
+			},
 			cbean_blind_sticker = {
 				name = "Plant Sticker",
 				text = { "Used this Joker", "to win on {C:attention}Plant", "{C:attention}Stake{} difficulty" },
-            },
+			},
 			--Pizzazzy
 			cbean_pizzazzy_a_u = {
 				name = "A, E, I, L, N, O, R, S, T, U",
-				text = {"{C:mult}+1{}"}
+				text = { "{C:mult}+1{}" }
 			},
 			cbean_pizzazzy_d_g = {
 				name = "D, G",
-				text = {"{C:mult}+2{}"}
+				text = { "{C:mult}+2{}" }
 			},
-        	cbean_pizzazzy_b_p = {
+			cbean_pizzazzy_b_p = {
 				name = "B, C, M, P",
-				text = {"{C:mult}+3{}"}
+				text = { "{C:mult}+3{}" }
 			},
-        	cbean_pizzazzy_f_y = {
+			cbean_pizzazzy_f_y = {
 				name = "F, H, V, W, Y",
-				text = {"{C:mult}+4{}"}
+				text = { "{C:mult}+4{}" }
 			},
-        	cbean_pizzazzy_k = {
+			cbean_pizzazzy_k = {
 				name = "k",
-				text = {"{C:mult}+5{}"}
+				text = { "{C:mult}+5{}" }
 			},
-        	cbean_pizzazzy_j_x = {
+			cbean_pizzazzy_j_x = {
 				name = "J, X",
-				text = {"{C:mult}+8{}"}
+				text = { "{C:mult}+8{}" }
 			},
-        	cbean_pizzazzy_q_z = {
+			cbean_pizzazzy_q_z = {
 				name = "m",
-				text = {"{C:mult}+10{}"}
+				text = { "{C:mult}+10{}" }
 			},
-        },
+		},
 		Planet = {
 			c_cbean_sdown_gay_planet = {
 				name = "Salacia",
-            },
+			},
 			c_cbean_sdown_gayflush_planet = {
 				name = "Orcus",
-            },
+			},
 			c_cbean_sdown_bobtail_planet = {
 				name = "Vesta",
-        	},
+			},
 			c_cbean_0chill_house_rules_planet = {
 				name = "Haumea",
 				text = {
@@ -3993,2841 +3995,2841 @@ return {
 				},
 			},
 		},
-			colon_Architecture = {
-				c_cbean_architecture_complete = {
-					name = "#1#",
-					text = {
-						"{C:attention}#2#{} will appear next Ante"
-					}
-				},
-				c_cbean_architecture_queued = {
-					name = "#1#",
-					text = {
-						"{C:attention}#2#{} will appear in #3# Antes"
-					}
-				},
-				c_cbean_architecture_BUGBUG = {
-					name = "PANIC!!!!!!!!!!!!!!!!!!!!",
-					text = {
-						"{X:mult,C:white}You{} {X:mult,C:white}Did{} {X:mult,C:white}This{} {X:mult,C:white}Wrong!"
-					}
-				},
-				
-				c_cbean_colon_corinthian_capital = {
-					name = "Corinthian Capital",
-					text = {
-						"{C:attention}Alpha{} appears next Ante when",
-						"at least {C:attention}33%{} {C:inactive}[#1#%]{} of the cards",
-						"in your full deck are {C:attention}Lucky"
-					}
-				},
-				c_cbean_colon_stylobate = {
-					name = "Stylobate",
-					text = {
-						"{C:attention}Omega{} appears next Ante when",
-						"you have 5 {C:inactive}[#1#]{} other {C:attention}Architecture",
-						"{C:attention}Cards{} in their {C:red}base form",
-						"{C:inactive,s:0.8}(Excluding all Stylobates)"
-					}
-				},
-				c_cbean_colon_raking = {
-					name = "Raking",
-					text = {
-						"{C:attention}Beta{} appears next Ante when",
-						"a {C:attention}Food Joker{} is {C:red}destroyed"
-					}
-				},
-				c_cbean_colon_abacus = {
-					name = "Abacus",
-					text = {
-						"{C:attention}Gamma{} appears next Ante when",
-						"{C:attention}20{} {C:inactive}[#1#]{} {C:red}unscoring cards{} are played"
-					}
-				},
-				c_cbean_colon_flute = {
-					name = "Flute",
-					text = {
-						"{C:attention}Delta{} appears next Ante",
-						"when {C:attention}5{} {C:inactive}[#1#]{} or more {C:red}discards",
-						"are used in {C:attention}one round"
-					}
-				},
-				c_cbean_colon_necking = {
-					name = "Necking",
-					text = {
-						"{C:attention}Epsilon{} appears next Ante",
-						"when you win within {C:attention}5%{} of",
-						"the {C:red}Blind requirement"
-					}
-				},
-				c_cbean_colon_volute = {
-					name = "Volute",
-					text = {
-						"{C:attention}Zeta{} appears next Ante when {C:attention}5 Glass",
-						"{C:attention}cards{} are all {C:red}discarded{} at the same time"
-					}
-				},
-				c_cbean_colon_acanthus_leaf = {
-					name = "Acanthus Leaf",
-					text = {
-						"{C:attention}Eta{} appears next Ante when",
-						"{C:attention}4{} {C:inactive}[#1#]{} {C:attention}#2#s{} have been {C:red}destroyed"
-					}
-				},
-				c_cbean_colon_cornice = {
-					name = "Cornice",
-					text = {
-						"{C:attention}Theta{} appears next Ante when",
-						"a hand thats {C:attention}on fire{} is {C:red}discarded"
-					}
-				},
-				c_cbean_colon_frieze = {
-					name = "Frieze",
-					text = {
-						"{C:attention}Iota{} appears next Ante when",
-						"{C:attention}50{} {C:inactive}[#1#]{} items are {C:attention}purchased"
-					}
-				},
-				c_cbean_colon_fillet = {
-					name = "Fillet",
-					text = {
-						"{C:attention}Kappa{} appears next Ante when",
-						"the {C:red}final hand{} of round is",
-						"used {C:attention}3{} {C:inactive}[#1#]{} rounds in a row"
-					}
-				},
-				c_cbean_colon_boss = {
-					name = "Boss",
-					text = {
-						"{C:attention}Lambda{} appears next Ante",
-						"when {C:red}#1#{} is redeemed"
-					}
-				},
-				c_cbean_colon_triglyph = {
-					name = "Triglyph",
-					text = {
-						"{C:attention}Mu{} appears next Ante when",
-						"you {C:red}discard{} {C:attention}#1# 10{} {C:inactive}[#2#]{} times"
-					}
-				},
-				c_cbean_colon_metope = {
-					name = "Metope",
-					text = {
-						"{C:attention}Nu{} appears next Ante when you",
-						"play a {C:attention}Flush{} of {V:1}#1#{} {C:attention}3{} {C:inactive}[#2#]{} times"
-					}
-				},
-				c_cbean_colon_shaft = {
-					name = "Shaft",
-					text = {
-						"{C:attention}Xi{} appears next Ante when",
-						"your {C:attention}greatest leveled",
-						"poker hand is {C:red}#1#"
-					}
-				},
-				c_cbean_colon_rosette = {
-					name = "Rosette",
-					text = {
-						"{C:attention}Omicron{} appears next Ante",
-						"when your deck does not",
-						"change for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
-					}
-				},
-				c_cbean_colon_drum = {
-					name = "Drum",
-					text = {
-						"{C:attention}Pi{} appears next Ante when {C:attention}1 Flush House{} {C:inactive}[#1#]{},",
-						"{C:attention}Five of a Kind{} {C:inactive}[#2#]{}, and {C:attention}Flush Five{} {C:inactive}[#3#]",
-						"each has been {C:red}discarded"
-					}
-				},
-				c_cbean_colon_architrave = {
-					name = "Architrave",
-					text = {
-						"{C:attention}Rho{} appears next Ante when",
-						"{C:attention}#1#{} is not played {C:attention}10{} {C:inactive}[#2#]{} times"
-					}
-				},
-				c_cbean_colon_echinus = {
-					name = "Echinus",
-					text = {
-						"{C:attention}Sigma{} appears next Ante when",
-						"your deck contains {C:attention}at least one",
-						"card of {C:attention}every vanilla Enhancement",
-						"{C:inactive,s:0.8}(You need #1#)"
-					}
-				},
-				c_cbean_colon_echinus_nil = {
-					name = "Echinus",
-					text = {
-						"{C:attention}Sigma{} appears next Ante when",
-						"your deck contains {C:attention}at least one",
-						"card of {C:attention}every vanilla Enhancement"
-					}
-				},
-				c_cbean_colon_echinus_multiple = {
-					name = "Echinus",
-					text = {
-						"{C:attention}Sigma{} appears next Ante when",
-						"your deck contains {C:attention}at least one",
-						"card of {C:attention}every vanilla Enhancement",
-						"{C:inactive,s:0.6}(You need #1# and #2#)"
-					}
-				},
-				c_cbean_colon_molding = {
-					name = "Molding",
-					text = {
-						"{C:attention}Tau{} appears next Ante when",
-						"The Wheel of Fortune {C:tarot}Nopes!",
-						"{C:attention}8{} {C:inactive}[#1#]{} times in a row"
-					}
-				},
-				c_cbean_colon_pediment = {
-					name = "Pediment",
-					text = {
-						"{C:attention}Upsilon{} appears next Ante when all",
-						"possible Blinds are {C:red}skipped for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
-					}
-				},
-				c_cbean_colon_base = {
-					name = "Base",
-					text = {
-						"{C:attention}Phi{} appears next Ante when at",
-						"least {C:attention}5{} of the same Joker are",
-						"owned {C:red}simultaneously"
-					}
-				},
-				c_cbean_colon_entablazure = {
-					name = "Entablazure",
-					text = {
-						"{C:attention}Chi appears next Ante when",
-						"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#],",
-						"{C:green}Uncommon{} {C:inactive}[#2#]{} and {C:red}Rare{} {C:inactive}[#3#]{} Jokers"
-					}
-				},
-				c_cbean_colon_ionic_captial = {
-					name = "Ionic Capital",
-					text = {
-						"{C:attention}Psi{} appears next Ante when",
-						"{C:attention}5{} {C:inactive}[#1#]{} {C:spectral}Spectral{} Packs are {C:red}skipped"
-					}
-				},
+		colon_Architecture = {
+			c_cbean_architecture_complete = {
+				name = "#1#",
+				text = {
+					"{C:attention}#2#{} will appear next Ante"
+				}
 			},
-			Spectral = {
-				c_cbean_colon_stereobate = {
-					name = "Stereobate",
-					text = {
-						"A random {C:legendary,E:1}Greek Blind",
-						"appears next Ante"
-					}
-				},
-				c_cbean_colon_stereobate_queued = {
-					name = "Stereobate",
-					text = {
-						"A random {C:legendary,E:1}Greek Blind",
-						"will appear in #1# Antes"
-					}
-				},
+			c_cbean_architecture_queued = {
+				name = "#1#",
+				text = {
+					"{C:attention}#2#{} will appear in #3# Antes"
+				}
+			},
+			c_cbean_architecture_BUGBUG = {
+				name = "PANIC!!!!!!!!!!!!!!!!!!!!",
+				text = {
+					"{X:mult,C:white}You{} {X:mult,C:white}Did{} {X:mult,C:white}This{} {X:mult,C:white}Wrong!"
+				}
+			},
 
-				c_cbean_yma_archive = {
-					name = "Archive",
-					text = {
-						"Add a {V:1}#2#",
-						"to {C:attention}#1#{} selected",
-						"card in your hand",
-					},
-				},
-				c_cbean_yma_omega = {
-					name = "Omega Key",
-					text = {
-						"{C:attention}Create{} a random {C:dark_edition}Negative{} {C:yma_keys}Key{}",
-						"when {C:blue}hand{} is played",
-						"{C:inactive}(Uses #1#/#2# hands)",
-					},
-				},
-				c_cbean_0chill_qilin = {
-					name = "The Qilin",
-					text = {
-						"Turn at least {C:attention}2{} selected cards",
-						"into the rank of the {C:attention}leftmost{}",
-						"selected card and {C:dark_edition}Negative{}",
-						"{C:inactive}(Drag to rearrange)",
-					},
-				},
-				c_cbean_0chill_cronus = {
-					name = "The Blessing of Cronus",
-					text = {
-						{
-							"Prevents {C:attention}Blessings{} from",
-							"using charges each round",
-							"{C:inactive}({C:attention}#1#{C:inactive} rounds left)",
-						},
-						{
-							"Gains {C:attention}#2#{} charges when",
-							"a blessing is {C:attention}sold{}",
-						},
-					},
-				},
-				c_cbean_0chill_nope_from_above = {
-					name = {
-						"Nope! From Above",
-						"{X:dark_edition,C:white,s:0.7}Universal{}",
-					},
-					text = {
-						{
-							"Counts as {C:dark_edition}#1#{} Combo cards",
-						},
-						{
-							"Combos Into:",
-							"{C:dark_edition}Anything",
-							"{C:inactive}(Even if stated otherwise)",
-						},
-					},
-				},
-				c_cbean_0chill_for_all = {
-					name = {
-						"For All",
-					},
-					text = {
-							"For all consumables,",
-							"there is a booster pack",
-							"{C:inactive}(Except stickers because",
-							"{C:inactive}they don't have one yet)"
-					},
-				},
-				-- yma upgraded spectrals
-				c_cbean_yma_familiar_level1 = {
-					name = {
-						"Familiar",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced face",
-						"{C:attention}cards{} to your hand",
-					},
-				},
-				c_cbean_yma_familiar_level2 = {
-					name = {
-						"Familiar",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced face",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}Face cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-					},
-				},
-				c_cbean_yma_familiar_level3 = {
-					name = {
-						"Familiar",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced face",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}Face cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_familiar_level4 = {
-					name = {
-						"Familiar",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} selected",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced face",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}Face cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_familiar_level5 = {
-					name = {
-						"Familiar",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} selected",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced face",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}Face cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_grim_level1 = {
-					name = {
-						"Grim",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced Aces",
-						"to your hand",
-					},
-				},
-				c_cbean_yma_grim_level2 = {
-					name = {
-						"Grim",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced Aces",
-						"to your hand",
-						"Created {C:attention}Aces{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-					},
-				},
-				c_cbean_yma_grim_level3 = {
-					name = {
-						"Grim",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced Aces",
-						"to your hand",
-						"Created {C:attention}Aces{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_grim_level4 = {
-					name = {
-						"Grim",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} selected",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced Aces",
-						"to your hand",
-						"Created {C:attention}Aces{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_grim_level5 = {
-					name = {
-						"Grim",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} selected",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced Aces",
-						"to your hand",
-						"Created {C:attention}Aces{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_incantation_level1 = {
-					name = {
-						"Incantation",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced numbered",
-						"{C:attention}cards{} to your hand",
-					},
-				},
-				c_cbean_yma_incantation_level2 = {
-					name = {
-						"Incantation",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced numbered",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}numbered cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-					},
-				},
-				c_cbean_yma_incantation_level3 = {
-					name = {
-						"Incantation",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} random",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced numbered",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}numbered cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_incantation_level4 = {
-					name = {
-						"Incantation",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} selected",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced numbered",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}numbered cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_incantation_level5 = {
-					name = {
-						"Incantation",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Destroy {C:attention}#1#{} selected",
-						"card in your hand, add",
-						"{C:attention}#2#{} random {C:attention}Enhanced numbered",
-						"{C:attention}cards{} to your hand",
-						"Created {C:attention}numbered cards{} have a",
-						"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
-						"and/or an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_talisman_level1 = {
-					name = {
-						"Talisman",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Add a {C:attention}Gold Seal{}",
-						"to {C:attention}#1#{} selected",
-						"card in your hand",
-					},
-				},
-				c_cbean_yma_talisman_level2 = {
-					name = {
-						"Talisman",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Add a {C:attention}Gold Seal{}",
-						"to {C:attention}#1#{} selected",
-						"card in your hand",
-						"When held, retrigger all",
-						"{C:attention}Gold Sealed cards{} once",
-					},
-				},
-				c_cbean_yma_talisman_level3 = {
-					name = {
-						"Talisman",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Add a {C:attention}Gold Seal{}",
-						"to {C:attention}#1#{} selected",
-						"card in your hand",
-						"When held, retrigger all",
-						"{C:attention}Gold Sealed cards{} once",
-						"and they give {C:money}+$1{} for every",
-						"{C:attention}Gold Sealed card{} in deck",
-					},
-				},
-				c_cbean_yma_talisman_level4 = {
-					name = {
-						"Talisman",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Add a {C:attention}Gold Seal{}",
-						"to {C:attention}#1#{} selected",
-						"card in your hand",
-						"When held, retrigger all",
-						"{C:attention}Gold Sealed cards{} once",
-						"and they give {C:money}+$1{} for every",
-						"{C:attention}Gold Sealed card{} in deck",
-					},
-				},
-				c_cbean_yma_talisman_level5 = {
-					name = {
-						"Talisman",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Add a {C:attention}Gold Seal{}",
-						"to {C:attention}#1#{} selected",
-						"card in your hand",
-						"When held, retrigger all",
-						"{C:attention}Gold Sealed cards{} once,",
-						"they give {C:money}+$1{} for every",
-						"{C:attention}Gold Sealed card{} in deck,",
-						"and gives {C:money}+$6{} for every",
-						"{C:attention}Gold Sealed card{} that {C:attention}hasn't{}",
-						"been played",
-					},
-				},
-				c_cbean_yma_wraith_level1 = {
-					name = {
-						"Wraith",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Creates a random",
-						"{C:red}Rare{C:attention} Joker{},",
-						"sets money to {C:money}$10",
-					},
-				},
-				c_cbean_yma_wraith_level2 = {
-					name = {
-						"Wraith",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Creates a random",
-						"{C:red}Rare{C:attention} Joker{},",
-						"with a random {C:dark_edition}Edition{},",
-						"sets money to {C:money}$10",
-					},
-				},
-				c_cbean_yma_wraith_level3 = {
-					name = {
-						"Wraith",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Creates a random",
-						"{C:red}Rare{C:attention} Joker{},",
-						"with a random {C:dark_edition}Edition{},",
-						"and a {C:dark_edition}Negative{},{C:attention} Perishable{},",
-						"{C:red}Rare{} {C:attention} Joker",
-						"sets money to {C:money}$10",
-					},
-				},
-				c_cbean_yma_wraith_level4 = {
-					name = {
-						"Wraith",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Creates a random",
-						"{C:red}Rare{C:attention} Joker{},",
-						"with a random {C:dark_edition}Edition{},",
-						"and a {C:dark_edition}Negative{},{C:attention} Perishable{},",
-						"{C:red}Rare{} {C:attention} Joker",
-					},
-				},
-				c_cbean_yma_wraith_level5 = {
-					name = {
-						"Wraith",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Creates {C:attention}2{} random",
-						"{C:dark_edition}Negative{} {C:red}Rare{C:attention} Jokers{}",
-					},
-				},
-				c_cbean_yma_sigil_level1 = {
-					name = {
-						"Sigil",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Converts all cards",
-						"in hand to the {C:attention}suit",
-						"of the selected {C:attention}card",
-					},
-				},
-				c_cbean_yma_sigil_level2 = {
-					name = {
-						"Sigil",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Converts all cards",
-						"in hand to the {C:attention}suit",
-						"of the selected {C:attention}card",
-						"They additionally gain the same,",
-						"{C:attention}random Enhancement",
-					},
-				},
-				c_cbean_yma_sigil_level3 = {
-					name = {
-						"Sigil",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Converts all cards",
-						"in hand to the {C:attention}suit",
-						"of the selected {C:attention}card",
-						"They additionally gain the same,",
-						"{C:attention}random Enhancement {}and {C:attention}Seal",
-					},
-				},
-				c_cbean_yma_sigil_level4 = {
-					name = {
-						"Sigil",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Converts up to {C:attention}10{} cards and all cards",
-						"in hand to the {C:attention}suit",
-						"of the selected {C:attention}card",
-						"They additionally gain the same,",
-						"{C:attention}random Enhancement {}and {C:attention}Seal",
-					},
-				},
-				c_cbean_yma_sigil_level5 = {
-					name = {
-						"Sigil",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Converts up to {C:attention}10{} cards and all cards",
-						"in hand to the {C:attention}suit",
-						"of the selected {C:attention}card",
-						"They additionally gain the same,",
-						"{C:attention}random Enhancement {}, {C:attention}Seal",
-						"and {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_ectoplasm_level1 = {
-					name = {
-						"Ectoplasm",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Add {C:dark_edition}Negative{} to",
-						"a random {C:attention}Joker,",
-						"{C:red}-#1#{} hand size",
-					},
-				},
-				c_cbean_yma_ectoplasm_level2 = {
-					name = {
-						"Ectoplasm",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Add {C:dark_edition}Negative{} to",
-						"a random {C:attention}Joker,",
-						"and a random {C:attention}consumable{},",
-						"{C:red}-#1#{} hand size",
-					},
-				},
-				c_cbean_yma_ectoplasm_level3 = {
-					name = {
-						"Ectoplasm",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Add {C:dark_edition}Negative{} to",
-						"a random {C:attention}Joker,",
-						"a random {C:attention}consumable{} and",
-						"{C:attention}3{} random {C:attention}Playing Cards{},",
-						"in your deck,",
-						"{C:red}-#1#{} hand size",
-					},
-				},
-				c_cbean_yma_ectoplasm_level4 = {
-					name = {
-						"Ectoplasm",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Add {C:dark_edition}Negative{} to",
-						"a selected {C:attention}Joker,",
-						"a random {C:attention}consumable{} and",
-						"{C:attention}3{} random {C:attention}Playing Cards{},",
-						"in your deck,",
-						"{C:red}-#1#{} hand size",
-					},
-				},
-				c_cbean_yma_ectoplasm_level5 = {
-					name = {
-						"Ectoplasm",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Add {C:dark_edition}Negative{} to",
-						"a selected {C:attention}Joker,",
-						"a random {C:attention}consumable{} and",
-						"{C:attention}3{} random {C:attention}Playing Cards{},",
-						"in your deck and in your hand",
-					},
-				},
-				c_cbean_yma_immolate_level1 = {
-					name = {
-						"Immolate",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Destroys {C:attention}#1#{} random",
-						"cards and {C:attention}#3#{} selected card in hand,",
-						"gain {C:money}$#2#",
-					},
-				},
-				c_cbean_yma_immolate_level2 = {
-					name = {
-						"Immolate",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Destroys {C:attention}#1#{} random",
-						"cards and {C:attention}#3#{} selected cards in hand,",
-						"gain {C:money}$#2#",
-					},
-				},
-				c_cbean_yma_immolate_level3 = {
-					name = {
-						"Immolate",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Destroys {C:attention}#1#{} random",
-						"cards and {C:attention}#3#{} selected cards in hand,",
-						"gain {C:money}$#2#",
-					},
-				},
-				c_cbean_yma_immolate_level4 = {
-					name = {
-						"Immolate",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Destroys {C:attention}#3#{} selected cards in hand,",
-						"gain {C:money}$#2#",
-					},
-				},
-				c_cbean_yma_immolate_level5 = {
-					name = {
-						"Immolate",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Destroys {C:attention}up to #3#{} selected cards in hand,",
-						"gain {C:money}$#2#",
-					},
-				},
-				c_cbean_yma_soul_level1 = {
-					name = {
-						"The Soul",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Creates a",
-						"{C:legendary,E:1}Legendary{} Joker",
-						"Created Joker has {X:money,C:white}X2.5{} sell value",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_soul_level2 = {
-					name = {
-						"The Soul",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Creates a",
-						"{C:legendary,E:1}Legendary{} Joker",
-						"Created Joker has {X:money,C:white}X2.5{} sell value",
-						"and always appears with an {C:dark_edition}Edition{}",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_soul_level3 = {
-					name = {
-						"The Soul",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Creates a",
-						"{C:legendary,E:1}Legendary{} Joker",
-						"Created Joker has {X:money,C:white}X2.5{} sell value",
-						"and an {C:dark_edition}Edition{}",
-					},
-				},
-				c_cbean_yma_soul_level4 = {
-					name = {
-						"The Soul",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Creates a",
-						"{C:legendary,E:1}Legendary{} Joker",
-						"Created Joker has {X:money,C:white}X2.5{} sell value",
-						"and {C:dark_edition}Negative{}",
-					},
-				},
-				c_cbean_yma_soul_level5 = {
-					name = {
-						"The Soul",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Creates a",
-						"{C:legendary,E:1}Legendary{} Joker",
-						"Created Joker has {X:money,C:white}X2.5{} sell value",
-						"and {C:dark_edition}Negative{}",
-						"Creates another joker,",
-						"{C:green}Fixed 50% chance{} to either be",
-						"another {C:legendary,E:1}Legendary{} or a {C:rare}Rare{}",
-					},
-				},
-				c_cbean_yma_black_hole_level1 = {
-					name = {
-						"Black Hole",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Upgrade every",
-						"{C:legendary,E:1}poker hand",
-						"by {C:attention}2{} levels",
-					},
-				},
-				c_cbean_yma_black_hole_level2 = {
-					name = {
-						"Black Hole",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Upgrade every",
-						"{C:legendary,E:1}poker hand",
-						"by {C:attention}2{} levels",
-						"Upgrades the {C:attention}3 most played Poker Hands{}",
-						"by {C:attention}3{} levels",
-					},
-				},
-				c_cbean_yma_black_hole_level3 = {
-					name = {
-						"Black Hole",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Upgrade every",
-						"{C:legendary,E:1}poker hand",
-						"by {C:attention}2{} levels plus",
-						"the level of the {C:attention}lowest",
-						"{C:attention}level Poker Hand",
-						"Upgrades the {C:attention}3 most played Poker Hands{}",
-						"by {C:attention}3{} levels",
-					},
-				},
-				c_cbean_yma_black_hole_level4 = {
-					name = {
-						"Black Hole",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Upgrade every",
-						"{C:legendary,E:1}poker hand",
-						"by {C:attention}2{} levels plus",
-						"the level of the {C:attention}lowest",
-						"{C:attention}level Poker Hand",
-						"Upgrades the {C:attention}3 most played Poker Hands{}",
-						"by {C:attention}3{} levels",
-						"{C:attention}Doubles{} Chips & Mult of all",
-						"{C:attention}Poker Hands{}",
-					},
-				},
-				c_cbean_yma_black_hole_level5 = {
-					name = {
-						"Black Hole",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Upgrade every",
-						"{C:legendary,E:1}poker hand",
-						"by {C:attention}2{} levels plus",
-						"the level of the {C:attention}lowest",
-						"{C:attention}level Poker Hand",
-						"Upgrades the {C:attention}3 most played Poker Hands{}",
-						"by {C:attention}3{} levels",
-						"{C:attention}Doubles{} Chips, Mult",
-						"Level Chips & Level Mult of all",
-						"{C:attention}Poker Hands{}",
-					},
-				},
+			c_cbean_colon_corinthian_capital = {
+				name = "Corinthian Capital",
+				text = {
+					"{C:attention}Alpha{} appears next Ante when",
+					"at least {C:attention}33%{} {C:inactive}[#1#%]{} of the cards",
+					"in your full deck are {C:attention}Lucky"
+				}
 			},
-			Stake = {
-				stake_cbean_nameteam = {
-					name = "NTeam Stake",
-					text = { 
-						"Ton of stickers added by",
-						"Name Team can spawn",
-                    	"{s:0.8}Applies all previous Stakes",
-					},
-				},
-				stake_cbean_consumable = {
-					name = "Consumed Stake",
-					text = { 
-						"Consumables can spawn",
-						"with certain stickers",
-                    	"{s:0.8}Applies all previous Stakes",
-					},
-				},
-				stake_cbean_playingcardstake = {
-					name = "Spade of Stakes",
-					text = { 
-						"Playing Cards have a chance to",
-						"gain stickers after being played",
-                    	"{s:0.8}Applies all previous Stakes",
-					},
-				},
-				stake_cbean_deck = {
-					name = "Painted Stake",
-					text = { 
-						"Decks has a 1/4 chance to gain",
-						"a sticker after leaving the shop",
-                    	"{s:0.8}Applies all previous Stakes",
-					},
-				},
-				stake_cbean_blind = {
-					name = "Plant Stake",
-					text = { 
-						"After every boss blind, apply a",
-						"random blind sticker to the deck",
-                    	"{s:0.8}Applies all previous Stakes", 
-					},
-				},
+			c_cbean_colon_stylobate = {
+				name = "Stylobate",
+				text = {
+					"{C:attention}Omega{} appears next Ante when",
+					"you have 5 {C:inactive}[#1#]{} other {C:attention}Architecture",
+					"{C:attention}Cards{} in their {C:red}base form",
+					"{C:inactive,s:0.8}(Excluding all Stylobates)"
+				}
 			},
-			cbean_StickerSheet = {
-				c_cbean_plasma_sheet = {
-					name = "Plasma",
-					text = {
-						{
-							"Applies {C:dark_edition}Plasma{} to",
-							"your {C:attention}Deck{}",
-						},
-					},
-				},
-				c_cbean_black_sheet = {
-					name = "Black",
-					text = {
-						{
-							"Applies {C:dark_edition}Black{} to",
-							"your {C:attention}Deck{}",
-						},
-					},
-				},
-				c_cbean_painted_sheet = {
-					name = "Painted",
-					text = {
-						{
-							"Applies {C:dark_edition}Painted{} to",
-							"your {C:attention}Deck{}",
-						},
-					},
-				},
-				c_cbean_nebula_sheet = {
-					name = "Nebula",
-					text = {
-						{
-							"Applies {C:dark_edition}Nebula{} to",
-							"your {C:attention}Deck{}",
-						},
-					},
-				},
-				c_cbean_green_sheet = {
-					name = "Green",
-					text = {
-						{
-							"Applies {C:dark_edition}Green{} to",
-							"your {C:attention}Deck{}",
-						},
-					},
-				},
-				c_cbean_eternal_sheet = {
-					name = "Eternal",
-					text = {
-						{
-							"Applies {C:attention}Eternal{} to",
-							"a random {C:attention}Joker{}",
-						},
-						{
-							"Creates a free",
-							"{C:attention}Voucher Tag{}",
-						},
-					},
-				},
-				c_cbean_perishable_sheet = {
-					name = "Perishable",
-					text = {
-						{
-							"Applies {C:attention}Perishable{} to",
-							"a random {C:attention}Joker{}",
-						},
-						{
-							"Applies {C:dark_edition}Negative{} to",
-							"the same {C:attention}Joker{}",
-						},
-					},
-				},
-				c_cbean_rental_sheet = {
-					name = "Rental",
-					text = {
-						{
-							"Applies {C:attention}Rental{} to",
-							"a random {C:attention}Joker{}",
-						},
-						{
-							"Gives {C:money}$20",
-						},
-					},
-				},
-				c_cbean_mailed_sheet = {
-					name = "Mailed",
-					text = {
-						{
-							"Applies {C:attention}Mailed{} to {C:attention}1{}",
-							"selected playing card",
-						},
-						{
-							"Adds a {C:tarot}Purple{} seal",
-							"to the same {C:attention}playing card{}",
-						},
-					},
-				},
-				c_cbean_flashcard_sheet = {
-					name = "Flash Card",
-					text = {
-						{
-							"Applies {C:attention}Flash Card{} to",
-							"{C:attention}1{} selected {C:attention}Joker{}",
-						},
-						{
-							"Next {C:attention}5{} rerolls",
-							"cost {C:attention}$3{} more",
-						},
-					},
-				},
-				c_cbean_frowning_sheet = {
-					name = "Frowning",
-					text = {
-						{
-							"Applies {C:attention}Frowning{} to {C:attention}1{}",
-							"selected {C:attention}playing card{}",
-						},
-						{
-							"Creates a random",
-							"{C:attention}Enhanced face card{}",
-						},
-					},
-				},
-                c_cbean_misprinted_sheet = {
-					name = "Misprinted",
-					text = {
-						{
-							"Applies {C:attention}Misprinted{} to",
-							"{C:attention}1{} selected {C:attention}Joker{}",
-						},
-						{
-							"Creates a",
-							"{C:dark_edition}Negative{} {C:attention}Misprint{}",
-						},
-					},
-				},
-				c_cbean_shield_sheet = {
-					name = "Shield",
-					text = {
-						"Applies {C:attention}Shield{} to",
-						"{C:attention}1{} selected {C:attention}Joker{}",
-					},
-				},
-				c_cbean_heavy_sheet = {
-					name = "Heavy",
-					text = {
-						{
-							"Applies {C:attention}Heavy{} to",
-							"{C:attention}1{} selected card",
-						},
-						{
-							"Applies {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
-							"{C:dark_edition}Polychrome{} edition to",
-							"the same {C:attention}playing card{}",
-						},
-					},
-				},
-				c_cbean_hungry_sheet = {
-					name = "Hungry",
-					text = {
-						{
-							"Applies {C:attention}Hungry{} to",
-							"a random Joker",
-						},
-						{
-							"Values of said {C:attention}Joker",
-							"are multiplied by {C:attention}x1.5",
-						},
-					},
-				},
+			c_cbean_colon_raking = {
+				name = "Raking",
+				text = {
+					"{C:attention}Beta{} appears next Ante when",
+					"a {C:attention}Food Joker{} is {C:red}destroyed"
+				}
 			},
-			Tag = {
-				tag_cbean_colon_construction = {
-					name = 'Construction Tag',
-					text = {
-						"Gives a free",
-						"{C:attention}Mega Construction Pack"
-					}
-				},
-				tag_cbean_colon_ceoreroll = {
-					name = 'CEO Tag',
-					text = {
-						"Reroll the",
-						"{C:attention}CEO Blind"
-					}
-				},
-				tag_cbean_0chill_combo = {
-			        name = 'Turbo Tag',
-			        text = {
-			            "Gives a free",
-			            "{C:combo}Jimbattle: Ultimate Edition Pack"
-			        }
-			    },
-			    tag_cbean_0chill_squared = {
-			        name = 'Power Tag',
-			        text = {
-			            "Gives a free",
-			            "{C:money}Mega Meta Pack"
-			        }
-			    },
-			    tag_cbean_0chill_key = {
-			        name = 'Keychain Tag',
-			        text = {
-			            "Gives a free",
-			            "{C:yma_keys}Mega Key Pack"
-			        }
-			    },
+			c_cbean_colon_abacus = {
+				name = "Abacus",
+				text = {
+					"{C:attention}Gamma{} appears next Ante when",
+					"{C:attention}20{} {C:inactive}[#1#]{} {C:red}unscoring cards{} are played"
+				}
 			},
-			Tarot = {
-				c_cbean_pboys_river = {
-					name = "The River",
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				--Jbill tarot
-				c_cbean_jbill_currency = {
-					name = "The Currency",
-					text = {
-                    	"Enhances {C:attention}#1#{}",
-                    	"selected cards to",
-                    	"{C:attention}#2#s",
-                	},
-				},
-				-- yma consumable upgrades
-				c_cbean_yma_magician_level1 = {
-					name = {
-						"The Magician",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_magician_level2 = {
-					name = {
-						"The Magician",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_magician_level3 = {
-					name = {
-						"The Magician",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_magician_level4 = {
-					name = {
-						"The Magician",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Lucky cards{} have {C:green}double odds{}",
-					},
-				},
-				c_cbean_yma_magician_level5 = {
-					name = {
-						"The Magician",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Lucky cards{} have {C:green}triple odds{}",
-					},
-				},
-				c_cbean_yma_high_priestess_level1 = {
-					name = {
-						"The High Priestess",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Creates up to {C:attention}#1#",
-						"random {C:planet}Planet{} cards",
-						"One of those {C:planet}Planet{} cards",
-						"is guranteed to be your",
-						"{C:attention}Highest played hand's{}",
-						"{C:planet}Planet{} card",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_high_priestess_level2 = {
-					name = {
-						"The High Priestess",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Creates up to {C:attention}#1#",
-						"random {C:planet}Planet{} cards",
-						"One of those {C:planet}Planet{} cards",
-						"is guranteed to be your",
-						"{C:attention}Highest played hand's{}",
-						"{C:planet}Planet{} card",
-						"{C:inactive}(Must have at least 2 slots)",
-					},
-				},
-				c_cbean_yma_high_priestess_level3 = {
-					name = {
-						"The High Priestess",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Creates up to {C:attention}#1#",
-						"random {C:planet}Planet{} cards",
-						"Two of those {C:planet}Planet{} cards",
-						"are guranteed to be your",
-						"{C:attention}Highest played hand's{}",
-						"{C:planet}Planet{} card",
-						"{C:inactive}(Must have at least 2 slots)",
-					},
-				},
-				c_cbean_yma_high_priestess_level4 = {
-					name = {
-						"The High Priestess",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Creates up to {C:attention}#1#",
-						"random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
-						"Two of those {C:planet}Planet{} cards",
-						"are guranteed to be your",
-						"{C:attention}Highest played hand's{}",
-						"{C:planet}Planet{} card",
-					},
-				},
-				c_cbean_yma_high_priestess_level5 = {
-					name = {
-						"The High Priestess",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Creates up to {C:attention}#1#",
-						"random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
-						"of your {C:attention}Highest played hand's{}",
-						"{C:planet}Planet{} card",
-					},
-				},
-				c_cbean_yma_empress_level1 = {
-					name = {
-						"The Empress",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_empress_level2 = {
-					name = {
-						"The Empress",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_empress_level3 = {
-					name = {
-						"The Empress",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_empress_level4 = {
-					name = {
-						"The Empress",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Mult{} cards give {C:mult}+4{}",
-						"extra Mult",
-					},
-				},
-				c_cbean_yma_empress_level5 = {
-					name = {
-						"The Empress",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Mult{} cards give {C:mult}+4{}",
-						"extra Mult, plus an additional",
-						"{C:attention}5%{} of your current Mult",
-					},
-				},
-				c_cbean_yma_heirophant_level1 = {
-					name = {
-						"The Hierophant",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_heirophant_level2 = {
-					name = {
-						"The Hierophant",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_heirophant_level3 = {
-					name = {
-						"The Hierophant",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_heirophant_level4 = {
-					name = {
-						"The Hierophant",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Bonus{} cards give {C:chips}+20{}",
-						"extra Chips",
-					},
-				},
-				c_cbean_yma_heirophant_level5 = {
-					name = {
-						"The Hierophant",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Bonus{} cards give {C:chips}+20{}",
-						"extra Chips, plus an additional",
-						"{C:attention}5%{} of your current Chips",
-					},
-				},
-				c_cbean_yma_chariot_level1 = {
-					name = {
-						"The Chariot",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_chariot_level2 = {
-					name = {
-						"The Chariot",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_chariot_level3 = {
-					name = {
-						"The Chariot",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_chariot_level4 = {
-					name = {
-						"The Chariot",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Steel Cards{} give",
-						"{X:mult,C:white}+X0.5{} more Mult",
-					},
-				},
-				c_cbean_yma_chariot_level5 = {
-					name = {
-						"The Chariot",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Steel Cards{} give",
-						"{X:mult,C:white}+X0.5{} more Mult and",
-						"work {C:attention}when played{}",
-					},
-				},
-				c_cbean_yma_justice_level1 = {
-					name = {
-						"Justice",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_justice_level2 = {
-					name = {
-						"Justice",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_justice_level3 = {
-					name = {
-						"Justice",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-					},
-				},
-				c_cbean_yma_justice_level4 = {
-					name = {
-						"Justice",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Glass Cards{} are",
-						"{C:attention}half as likely{} to {C:attention}break",
-					},
-				},
-				c_cbean_yma_justice_level5 = {
-					name = {
-						"Justice",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Enhances {C:attention}#1#{}",
-						"selected cards to",
-						"{C:attention}#2#s",
-						"Created {C:attention}Glass Cards{} are",
-						"{C:attention}half as likely{} to {C:attention}break",
-						"and give {X:mult,C:white}+X1{} more Mult",
-					},
-				},
-				c_cbean_yma_hermit_level1 = {
-					name = {
-						"The Hermit",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-						"{C:inactive}(Max of $#1#){}",
-					},
-				},
-				c_cbean_yma_hermit_level2 = {
-					name = {
-						"The Hermit",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-						"{C:inactive}(Max of $#1#){}",
-					},
-				},
-				c_cbean_yma_hermit_level3 = {
-					name = {
-						"The Hermit",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-						"{C:inactive}(Max of $#1#){}",
-					},
-				},
-				c_cbean_yma_hermit_level4 = {
-					name = {
-						"The Hermit",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
-						"{C:inactive}(Max of $#1#){}",
-					},
-				},
-				c_cbean_yma_hermit_level5 = {
-					name = {
-						"The Hermit",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Earn {C:money}$#2#{}, then {C:money}triples{} it",
-						"{C:inactive}(Max of $#1#){}",
-					},
-				},
-				c_cbean_yma_wheel_of_fortune_level1 = {
-					name = {
-						"The Wheel of Fortune",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"{C:green}#1# in #2#{} chance to add",
-						"{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
-						"{C:dark_edition}Polychrome{} edition",
-						"to a random {C:attention}Joker",
-					},
-				},
-				c_cbean_yma_wheel_of_fortune_level2 = {
-					name = {
-						"The Wheel of Fortune",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"{C:green}#1# in #2#{} chance to add",
-						"{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
-						"{C:dark_edition}Polychrome{} edition",
-						"to a random {C:attention}Joker",
-					},
-				},
-				c_cbean_yma_wheel_of_fortune_level3 = {
-					name = {
-						"The Wheel of Fortune",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
-						"{C:dark_edition}Polychrome{} edition",
-						"to a random {C:attention}Joker",
-					},
-				},
-				c_cbean_yma_wheel_of_fortune_level4 = {
-					name = {
-						"The Wheel of Fortune",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
-						"{C:dark_edition}Polychrome{} edition",
-						"to the selected {C:attention}Joker",
-					},
-				},
-				c_cbean_yma_wheel_of_fortune_level5 = {
-					name = {
-						"The Wheel of Fortune",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Adds any edition",
-						"to the selected {C:attention}Joker",
-					},
-				},
-				c_cbean_yma_star_level1 = {
-					name = {
-						"The Star",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_star_level2 = {
-					name = {
-						"The Star",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_star_level3 = {
-					name = {
-						"The Star",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Gold Cards{}",
-					},
-				},
-				c_cbean_yma_star_level4 = {
-					name = {
-						"The Star",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Gold Cards{}",
-						"and have {C:attention}Blue Seals{}",
-					},
-				},
-				c_cbean_yma_star_level5 = {
-					name = {
-						"The Star",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Gold Cards{}",
-						"and have {C:attention}Blue Seals{} and {C:dark_edition}Negative{}",
-					},
-				},
-				c_cbean_yma_moon_level1 = {
-					name = {
-						"The Moon",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_moon_level2 = {
-					name = {
-						"The Moon",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_moon_level3 = {
-					name = {
-						"The Moon",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Glass Cards{}",
-					},
-				},
-				c_cbean_yma_moon_level4 = {
-					name = {
-						"The Moon",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Glass Cards{}",
-						"and have {C:attention}Purple Seals{}",
-					},
-				},
-				c_cbean_yma_moon_level5 = {
-					name = {
-						"The Moon",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Glass Cards{}",
-						"and have {C:attention}Purple Seals{} and {C:dark_edition}Foil{}",
-					},
-				},
-				c_cbean_yma_sun_level1 = {
-					name = {
-						"The Sun",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_sun_level2 = {
-					name = {
-						"The Sun",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_sun_level3 = {
-					name = {
-						"The Sun",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Steel Cards{}",
-					},
-				},
-				c_cbean_yma_sun_level4 = {
-					name = {
-						"The Sun",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Steel Cards{}",
-						"and have {C:attention}Red Seals{}",
-					},
-				},
-				c_cbean_yma_sun_level5 = {
-					name = {
-						"The Sun",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Steel Cards{}",
-						"and have {C:attention}Red Seals{} and {C:dark_edition}Polychrome{}",
-					},
-				},
-				c_cbean_yma_world_level1 = {
-					name = {
-						"The World",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_world_level2 = {
-					name = {
-						"The World",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-					},
-				},
-				c_cbean_yma_world_level3 = {
-					name = {
-						"The World",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Lucky Cards{}",
-					},
-				},
-				c_cbean_yma_world_level4 = {
-					name = {
-						"The World",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Lucky Cards{}",
-						"and have {C:attention}Gold Seals{}",
-					},
-				},
-				c_cbean_yma_world_level5 = {
-					name = {
-						"The World",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Converts up to",
-						"{C:attention}#1#{} selected cards",
-						"to {V:1}#2#{}",
-						"Converted cards also become {C:attention}Lucky Cards{}",
-						"and have {C:attention}Gold Seals{} and {C:dark_edition}Holographic{}",
-					},
-				},
-				c_cbean_yma_judgement_level1 = {
-					name = {
-						"Judgement",
-						"{C:attention,s:0.7}Level 1{}",
-					},
-					text = {
-						"Creates a random",
-						"{C:attention}Joker{} card",
-						"{C:green}#1# in #2#{} chance to",
-						"create a {C:attention}Buffoon Tag{}",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_judgement_level2 = {
-					name = {
-						"Judgement",
-						"{C:attention,s:0.7}Level 2{}",
-					},
-					text = {
-						"Creates a random",
-						"{C:attention}Joker{} card",
-						"and a {C:attention}Buffoon Tag{}",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_judgement_level3 = {
-					name = {
-						"Judgement",
-						"{C:attention,s:0.7}Level 3{}",
-					},
-					text = {
-						"Creates 2 random",
-						"{C:attention}Jokers{} and a",
-						"{C:attention}Buffoon Tag{}",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_judgement_level4 = {
-					name = {
-						"Judgement",
-						"{C:attention,s:0.7}Level 4{}",
-					},
-					text = {
-						"Creates 2 random",
-						"{C:attention}Jokers{} and a",
-						"{C:attention}Buffoon Tag{}",
-						"{C:green}#1# in #2#{} chance to",
-						"create a random {C:attention}Non-Common Joker{}",
-						"{C:inactive}(Must have room)",
-					},
-				},
-				c_cbean_yma_judgement_level5 = {
-					name = {
-						"Judgement",
-						"{C:attention,s:0.7}Level 5{}",
-					},
-					text = {
-						"Creates 2 random",
-						"{C:attention}Jokers{} and a",
-						"{C:attention}Buffoon Tag{}",
-						"{C:green}#1# in #2#{} chance to",
-						"create a random {C:attention}Non-Common Joker{}",
-						"{C:inactive}(Must have room)",
-					},
-				},
+			c_cbean_colon_flute = {
+				name = "Flute",
+				text = {
+					"{C:attention}Delta{} appears next Ante",
+					"when {C:attention}5{} {C:inactive}[#1#]{} or more {C:red}discards",
+					"are used in {C:attention}one round"
+				}
 			},
-			Voucher = {
-				--Yeah! Mostly Artists
-				v_cbean_yma_special_deal = {
-					name = "Special Deal",
-					text = {
-						"{C:attention}Booster{} Packs have",
-						"{C:attention}#1#{} extra option",
-						"to choose from",
-					},
-				},
-				v_cbean_yma_krater = {
-					name = "Krater",
-					text = {
-						"{C:attention}Praying{} becomes",
-						"more {C:attention}effective",
-					},
-				},
-				v_cbean_yma_grand_theft = {
-					name = "Grand Theft",
-					text = {
-						"You may now {C:attention}steal",
-						"consumables from",
-						"{C:attention}Booster{} packs",
-					},
-				},
+			c_cbean_colon_necking = {
+				name = "Necking",
+				text = {
+					"{C:attention}Epsilon{} appears next Ante",
+					"when you win within {C:attention}5%{} of",
+					"the {C:red}Blind requirement"
+				}
 			},
-			Biome = {
-				--Wgropping it
-				wgrop_desert = {
-					text = {
-						"You can carry less",
-						"but packed plenty",
-						"of resources",
-					},
-				},
-				wgrop_forest = {
-					text = {
-						"At the end of the day,",
-						"everything grows",
-					},
-				},
-				wgrop_graveyard = {
-					text = {
-						"Destroyed Cards may",
-						"persist after death",
-					},
-				},
-				wgrop_volcanic = {
-					text = {
-						"Only discards have",
-						"value in this land",
-					},
-				},
-				wgrop_glaciers = {
-					text = {
-						"The snow reduces your",
-						"vision, so keep your",
-						"hands warm",
-					},
-				},
-				wgrop_city = {
-					text = {
-						"Constant taxes, but",
-						"plenty to see and do",
-					},
-				},
+			c_cbean_colon_volute = {
+				name = "Volute",
+				text = {
+					"{C:attention}Zeta{} appears next Ante when {C:attention}5 Glass",
+					"{C:attention}cards{} are all {C:red}discarded{} at the same time"
+				}
+			},
+			c_cbean_colon_acanthus_leaf = {
+				name = "Acanthus Leaf",
+				text = {
+					"{C:attention}Eta{} appears next Ante when",
+					"{C:attention}4{} {C:inactive}[#1#]{} {C:attention}#2#s{} have been {C:red}destroyed"
+				}
+			},
+			c_cbean_colon_cornice = {
+				name = "Cornice",
+				text = {
+					"{C:attention}Theta{} appears next Ante when",
+					"a hand thats {C:attention}on fire{} is {C:red}discarded"
+				}
+			},
+			c_cbean_colon_frieze = {
+				name = "Frieze",
+				text = {
+					"{C:attention}Iota{} appears next Ante when",
+					"{C:attention}50{} {C:inactive}[#1#]{} items are {C:attention}purchased"
+				}
+			},
+			c_cbean_colon_fillet = {
+				name = "Fillet",
+				text = {
+					"{C:attention}Kappa{} appears next Ante when",
+					"the {C:red}final hand{} of round is",
+					"used {C:attention}3{} {C:inactive}[#1#]{} rounds in a row"
+				}
+			},
+			c_cbean_colon_boss = {
+				name = "Boss",
+				text = {
+					"{C:attention}Lambda{} appears next Ante",
+					"when {C:red}#1#{} is redeemed"
+				}
+			},
+			c_cbean_colon_triglyph = {
+				name = "Triglyph",
+				text = {
+					"{C:attention}Mu{} appears next Ante when",
+					"you {C:red}discard{} {C:attention}#1# 10{} {C:inactive}[#2#]{} times"
+				}
+			},
+			c_cbean_colon_metope = {
+				name = "Metope",
+				text = {
+					"{C:attention}Nu{} appears next Ante when you",
+					"play a {C:attention}Flush{} of {V:1}#1#{} {C:attention}3{} {C:inactive}[#2#]{} times"
+				}
+			},
+			c_cbean_colon_shaft = {
+				name = "Shaft",
+				text = {
+					"{C:attention}Xi{} appears next Ante when",
+					"your {C:attention}greatest leveled",
+					"poker hand is {C:red}#1#"
+				}
+			},
+			c_cbean_colon_rosette = {
+				name = "Rosette",
+				text = {
+					"{C:attention}Omicron{} appears next Ante",
+					"when your deck does not",
+					"change for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
+				}
+			},
+			c_cbean_colon_drum = {
+				name = "Drum",
+				text = {
+					"{C:attention}Pi{} appears next Ante when {C:attention}1 Flush House{} {C:inactive}[#1#]{},",
+					"{C:attention}Five of a Kind{} {C:inactive}[#2#]{}, and {C:attention}Flush Five{} {C:inactive}[#3#]",
+					"each has been {C:red}discarded"
+				}
+			},
+			c_cbean_colon_architrave = {
+				name = "Architrave",
+				text = {
+					"{C:attention}Rho{} appears next Ante when",
+					"{C:attention}#1#{} is not played {C:attention}10{} {C:inactive}[#2#]{} times"
+				}
+			},
+			c_cbean_colon_echinus = {
+				name = "Echinus",
+				text = {
+					"{C:attention}Sigma{} appears next Ante when",
+					"your deck contains {C:attention}at least one",
+					"card of {C:attention}every vanilla Enhancement",
+					"{C:inactive,s:0.8}(You need #1#)"
+				}
+			},
+			c_cbean_colon_echinus_nil = {
+				name = "Echinus",
+				text = {
+					"{C:attention}Sigma{} appears next Ante when",
+					"your deck contains {C:attention}at least one",
+					"card of {C:attention}every vanilla Enhancement"
+				}
+			},
+			c_cbean_colon_echinus_multiple = {
+				name = "Echinus",
+				text = {
+					"{C:attention}Sigma{} appears next Ante when",
+					"your deck contains {C:attention}at least one",
+					"card of {C:attention}every vanilla Enhancement",
+					"{C:inactive,s:0.6}(You need #1# and #2#)"
+				}
+			},
+			c_cbean_colon_molding = {
+				name = "Molding",
+				text = {
+					"{C:attention}Tau{} appears next Ante when",
+					"The Wheel of Fortune {C:tarot}Nopes!",
+					"{C:attention}8{} {C:inactive}[#1#]{} times in a row"
+				}
+			},
+			c_cbean_colon_pediment = {
+				name = "Pediment",
+				text = {
+					"{C:attention}Upsilon{} appears next Ante when all",
+					"possible Blinds are {C:red}skipped for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
+				}
+			},
+			c_cbean_colon_base = {
+				name = "Base",
+				text = {
+					"{C:attention}Phi{} appears next Ante when at",
+					"least {C:attention}5{} of the same Joker are",
+					"owned {C:red}simultaneously"
+				}
+			},
+			c_cbean_colon_entablazure = {
+				name = "Entablazure",
+				text = {
+					"{C:attention}Chi appears next Ante when",
+					"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#],",
+					"{C:green}Uncommon{} {C:inactive}[#2#]{} and {C:red}Rare{} {C:inactive}[#3#]{} Jokers"
+				}
+			},
+			c_cbean_colon_ionic_captial = {
+				name = "Ionic Capital",
+				text = {
+					"{C:attention}Psi{} appears next Ante when",
+					"{C:attention}5{} {C:inactive}[#1#]{} {C:spectral}Spectral{} Packs are {C:red}skipped"
+				}
 			},
 		},
-		misc = {
-			achievement_descriptions = {
-				ach_cbean_highlight = "Highlight a playing card",
-				ach_cbean_highlight2 = "Highlight 2 playing cards", 
-				ach_cbean_highlight3 = "Highlight 3 playing cards", 
-				ach_cbean_highlight4 = "Highlight 4 playing cards",
-				ach_cbean_highlight5 = "Highlight 5 playing cards",
-				ach_cbean_play = "Read the name, dummy", 
-				ach_cbean_play1 = "Play a hand containing only 1 card", 
-				ach_cbean_play2 = "Play a hand containing only 2 cards", 
-				ach_cbean_play3 = "Play a hand containing only 3 cards",
-				ach_cbean_play4 = "Play a hand containing only 4 cards",
-				ach_cbean_play5 = "Play a hand containing 5 cards",
-				ach_cbean_discard = "Discard a hand containing only 1 card", 
-				ach_cbean_discard2 = "Discard a hand containing only 2 cards", 
-				ach_cbean_discard3 = "Discard a hand containing only 3 cards",
-				ach_cbean_discard4 = "Discard a hand containing only 4 cards",
-				ach_cbean_discard5 = "Discard a hand containing 5 cards",
-				ach_cbean_yorick = "Discard 23 cards in total",
-				ach_cbean_playhigh = "Play a high card",
-				ach_cbean_playpair = "Play a pair",
-				ach_cbean_playtwopair = "Play two pair",
-				ach_cbean_playthree = "Play three of a kind",
-				ach_cbean_playfour = "Play four of a kind",
-				ach_cbean_playflush = "Play a flush",
-				ach_cbean_playstraight = "Play a straight",
-				ach_cbean_playfstraight = "Play a straight flush",
-				ach_cbean_playgay = "Play a gay",
-				ach_cbean_playgayflush = "Play a gay flush",
-				ach_cbean_playbob = "Play a bobtail",
-				ach_cbean_playhouse = "Play a full house",
-				ach_cbean_playsecret= "Play a secret hand (House Rules not included)",
-				ach_cbean_playunscoring = "Play a hand with 1 unscoring card",
-				ach_cbean_playunscoring2 = "Play a hand with 2 unscoring cards",
-				ach_cbean_playunscoring3 = "Play a hand with 3 unscoring cards",
-				ach_cbean_playunscoring4 = "Play a hand with 4 unscoring cards",
-				ach_cbean_six7 = "Highlight 6-7 in that order",
-				ach_cbean_meaning = "Highlight 4-2 in that order",
-				ach_cbean_nice = "Highlight 6-9 in that order",
-				ach_cbean_nine10 = "Highlight 2-1 in that order",
-				ach_cbean_leet = "Highlight 1-3-3-7 in that order",
-				ach_cbean_boob = "Highlight 8-A-A-8 in that order",
-				ach_cbean_four20 = "Highlight 4-2-0 in that order",
-				ach_cbean_pi = "Highlight 3-1-4 in that order",
-				ach_cbean_sparta = "Highlight 3-A-A in that order",
-				ach_cbean_math = "Highlight 2-5-3 in that order",
-				ach_cbean_math2 = "Highlight 4-5 in that order",
-				ach_cbean_homestuck = "Highlight 4-1-3 in that order",
-				ach_cbean_nend = "Highlight 8-8-8 in that order",
-				ach_cbean_bhack = "Press B, stupid!",
-				ach_cbean_konami = "Use the Konami Code",
-				ach_cbean_teeny_blind = "Beat a teeny blind",
-				ach_cbean_small_blind = "Beat a small blind",
-				ach_cbean_big_blind = "Beat a big blind",
-				ach_cbean_boss_blind = "Beat a boss blind",
-				ach_cbean_ceo_blind = "Beat a CEO blind",
-				ach_cbean_beaten1 = "Beat a blind",
-				ach_cbean_beaten3 = "Beat 3 blinds",
-				ach_cbean_beaten6 = "Beat 6 blinds",
-				ach_cbean_tenprocent = "Wonderful Elephant reaches 10 mult!",
-				ach_cbean_thirtyprocent = "Wonderful Elephant reaches 30 mult!",
-				ach_cbean_halfway_mark = "Wonderful Elephant reaches 50 mult!",
-				ach_cbean_seventyprocent = "Wonderful Elephant reaches 70 mult!",
-				ach_cbean_ninetyprocent = "Wonderful Elephant reaches 90 mult!",
-				ach_cbean_slot1 = "Have the Wonderful Elephant in your first joker slot",
-				ach_cbean_slot2 = "Have the Wonderful Elephant in your second joker slot",
-				ach_cbean_slot3 = "Have the Wonderful Elephant in your third joker slot",
-				ach_cbean_slot4 = "Have the Wonderful Elephant in your fourth joker slot",
-				ach_cbean_tarot = "Use a tarot",
-				ach_cbean_planet = "Use a planet",
-				ach_cbean_spectral = "Use a spectral",
-				ach_cbean_combo = "Use a combo card",
-				ach_cbean_consumesquared = "Use a consumeable^2",
-				ach_cbean_blessing = "Hold a blessing while playing a hand",
-				ach_cbean_sticker_sheet = "Use a sticker sheet",
-				ach_cbean_zodiac = "Use a zodiac card",
-				ach_cbean_keys = "Hold a key while playing a hand",
-				ach_cbean_mutemusic = "Mute music",
-				ach_cbean_maxmusic = "Max out music",
-				ach_cbean_contrast = "Enable high contrast",
-				ach_cbean_consumefull = "Fill out consumable slots",
-				ach_cbean_jokerfull = "Fill out joker slots",
-				ach_cbean_ante = "Reach a new (or not so new) Ante",
-				ach_cbean_dollars5 = "Have 5 dollars",
-				ach_cbean_dollars10 = "Have 10 dollars",
-				ach_cbean_dollars25 = "Have 25 dollars",
-				ach_cbean_dollars40 = "Have 40 dollars",
-				ach_cbean_reroll = "Reroll shop",
-				ach_cbean_reroll5 = "Reroll shop 5 times",
-				ach_cbean_reroll10 = "Reroll shop 10 times",
-				ach_cbean_click = "Click on this Wonderful Elephant!",
-				ach_cbean_click5 = "Click on it 5 times!",
-				ach_cbean_click10 = "Click on it 10 times!",
-				ach_cbean_click20 = "Click on it 20 times!",
-				ach_cbean_click35 = "Click on it 35 times!",
-				ach_cbean_scoring1000 = "Score reaches 1000",
-				ach_cbean_scoring10000 = "Score reaches 10000",
-				ach_cbean_scoring50000 = "Score reaches 50000",
-				ach_cbean_scoring100000 = "Score reaches 100000",
-				ach_cbean_scoring200000 = "Score reaches 200000",
-				ach_cbean_complete = "Wonderful Elephant reaches 99 mult...",
-				ach_cbean_address_me = "Adressed it!"
+		Spectral = {
+			c_cbean_colon_stereobate = {
+				name = "Stereobate",
+				text = {
+					"A random {C:legendary,E:1}Greek Blind",
+					"appears next Ante"
+				}
 			},
-			achievement_names = {
-				ach_cbean_address_me = "Adress me",
-				ach_cbean_highlight = "Highlight of the Day!",
-				ach_cbean_highlight2 = "Highlight of the Two-Day!",
-				ach_cbean_highlight3 = "Highlight of The... Wednesday?",
-				ach_cbean_highlight4 = "Four of a Highlight!",
-				ach_cbean_highlight5 = "Highlight of the Week!",
-				ach_cbean_play = "Play a Hand!",
-				ach_cbean_play1 = "Is it High?",
-				ach_cbean_play2 = "Pair of Cards",
-				ach_cbean_play3 = "Three of Cards",
-				ach_cbean_play4 = "Four of Cards",
-				ach_cbean_play5 = "All the Cards!",
-				ach_cbean_discard = "Trash", 
-				ach_cbean_discard2 = "Waste", 
-				ach_cbean_discard3 = "Full Bin",
-				ach_cbean_discard4 = "Dump",
-				ach_cbean_discard5 = "Landfill",
-				ach_cbean_yorick = "Poor Yorick",
-				ach_cbean_playhigh = "High and Mighty?",
-				ach_cbean_playpair = "How romantic!",
-				ach_cbean_playtwopair = "Twice romantic!",
-				ach_cbean_playthree = "Card... X3",
-				ach_cbean_playfour = "Just the four of them",
-				ach_cbean_playflush = "Not playing toilet flush sound, sorry",
-				ach_cbean_playstraight = "Are you sure?",
-				ach_cbean_playfstraight = "Pick, asshole?",
-				ach_cbean_playgay = "How queerious...",
-				ach_cbean_playgayflush = "So queer!",
-				ach_cbean_playbob = "Not the cat, not the dog",
-				ach_cbean_playhouse = "House always wins",
-				ach_cbean_playsecret= "How did you know?",
-				ach_cbean_playunscoring = "Wow, wasting",
-				ach_cbean_playunscoring2 = "Double the waste",
-				ach_cbean_playunscoring3 = "You could just give those to me y'know",
-				ach_cbean_playunscoring4 = "4-1 in favor to waster",
-				ach_cbean_six7 = "6 7",
-				ach_cbean_meaning = "The Meaning of Life",
-				ach_cbean_nice = "Nice",
-				ach_cbean_nine10 = "What's 9+10?",
-				ach_cbean_leet = "LEET",
-				ach_cbean_boob = "Boob",
-				ach_cbean_four20 = "I have no drug jokes in me",
-				ach_cbean_pi = "Pie? Where?",
-				ach_cbean_sparta = "THIS IS SPARTA",
-				ach_cbean_math = "(2*125)+3",
-				ach_cbean_math2 = "3*(30/(15-13))",
-				ach_cbean_homestuck = "Homestuck",
-				ach_cbean_nend = "The end is never the end",
-				ach_cbean_bhack = "Press B, stupid!",
-				ach_cbean_konami = "Way too much contra",
-				ach_cbean_teeny_blind = "Baby Steps",
-				ach_cbean_small_blind = "Small step for a Joker",
-				ach_cbean_big_blind = "A Big Blind for the Jokerkind",
-				ach_cbean_boss_blind = "From space to gamble",
-				ach_cbean_ceo_blind = "Eat the rich",
-				ach_cbean_beaten1 = "YOU'RE WINNER", -- Intended
-				ach_cbean_beaten3 = "Triple kill",
-				ach_cbean_beaten6 = "Six of a Blind",
-				ach_cbean_tenprocent = "10%",
-				ach_cbean_thirtyprocent = "30%",
-				ach_cbean_halfway_mark = "Halfway Mark",
-				ach_cbean_seventyprocent = "70%",
-				ach_cbean_ninetyprocent = "90%",
-				ach_cbean_slot1 = "I am the first!",
-				ach_cbean_slot2 = "Silver medal",
-				ach_cbean_slot3 = "Bronce is good enough",
-				ach_cbean_slot4 = "Fourth? FOURTH?!",
-				ach_cbean_tarot = "To the Treasure Room!",
-				ach_cbean_planet = "Stargazing... No, that's not it",
-				ach_cbean_spectral = "What even are those? Honestly?",
-				ach_cbean_combo = "Combo un-breaker",
-				ach_cbean_consumesquared = "To the To the",
-				ach_cbean_blessing = "Achoo!",
-				ach_cbean_sticker_sheet = "Stick it!",
-				ach_cbean_zodiac = "At the moment of writing it's the horse",
-				ach_cbean_keys = "I've been looking for it everywhere!",
-				ach_cbean_mutemusic = "Missing out on divine sounds",
-				ach_cbean_maxmusic = "MAX IT OUT!",
-				ach_cbean_contrast = "Makes some contrast, huh?",
-				ach_cbean_consumefull = "Full Pockets",
-				ach_cbean_jokerfull = "Full Pockers",
-				ach_cbean_ante = "Up/Down The Ante!",
-				ach_cbean_dollars5 = "Pocket money",
-				ach_cbean_dollars10 = "More money",
-				ach_cbean_dollars25 = "Money power",
-				ach_cbean_dollars40 = "Monier money",
-				ach_cbean_reroll = "Show me more",
-				ach_cbean_reroll5 = "I said more!",
-				ach_cbean_reroll10 = "More!",
-				ach_cbean_click = "Click me!",
-				ach_cbean_click5 = "Click me more!",
-				ach_cbean_click10 = "Click me down!",
-				ach_cbean_click20 = "Click me to death!",
-				ach_cbean_click35 = "Clickaholic...",
-				ach_cbean_scoring1000 = "Low score",
-				ach_cbean_scoring10000 = "Over 9000!",
-				ach_cbean_scoring50000 = "Half a Hundred",
-				ach_cbean_scoring100000 = "Five zeroes",
-				ach_cbean_scoring200000 = "Double that",
-				ach_cbean_complete = "Wonderful completionist!",
-				
+			c_cbean_colon_stereobate_queued = {
+				name = "Stereobate",
+				text = {
+					"A random {C:legendary,E:1}Greek Blind",
+					"will appear in #1# Antes"
+				}
 			},
-			blind_states = {},
-			challenge_names = {
-				c_cbean_sdown_inexcusable = "Inexcusable",
-			},
-			collabs = {},
-			dictionary = {
-				k_cbean_0chill_combopack = "Combo Pack",
 
-				k_colon_architecture_pack = "Architecture Pack",
-				
-				cbean_colon_random_face = "(Random face card)",
-				cbean_colon_random_achievable_tier2 = "(Random T2 in pool)",
-				cbean_colon_most_rank_in_deck = "(Most common rank in deck)",
-				cbean_colon_least_suit_in_deck = "(Least common suit in deck)",
-				cbean_colon_least_leveled = "(Least leveled poker hand)",
-				cbean_colon_most_played = "(Most played poker hand)",
-
-				sheet_most_held = "(Most held rank)",
-				sheet_most_played = "(Most played rank)",
-				regression_most_rank = "(Most common rank)",
-				regression_least_rank = "(Least common rank)",
-				regression_most_suit = "(Most common suit)s",
-				regression_least_suit = "(Least common suit)s",
-				demeter_random_rank = "[Rank]",
-				sdown_czodiac_add = "+1 Zodiac",
-				k_cbean_0chill_formation_ex = "Formation Change!",
-				k_dispelled_ex = "Dispelled!",
-				k_strengthened_ex = "Strengthened!",
-				k_cbean_sdown_czodiacpack = "Zodiac Pack",
-				k_cbean_sdown_blessingpack = "Pantheon Pack",
-				ph_alley_wager = "Care to make a wager?",
-				ph_graveyard = "Where the dead sleeps",
-				ph_stationery = "We trade Stickers!",
-				ph_choose_biome_1 = "Choose your",
-				ph_choose_biome_2 = "Destination",
-				k_select_biome  = "Select",
-				b_reroll  = "Reroll",
-				cbean_stationery_accepts = {
-					"Only accepts Jokers",
-					"with {C:attention}1 or more{} of the",
-					"{C:attention}Stickers{} listed below:",
+			c_cbean_yma_archive = {
+				name = "Archive",
+				text = {
+					"Add a {V:1}#2#",
+					"to {C:attention}#1#{} selected",
+					"card in your hand",
 				},
-				cbean_stationery_gives = {
-					"In exchange for the",
-					"listed {C:attention}Stickers{}, will",
-					"give the following:",
+			},
+			c_cbean_yma_omega = {
+				name = "Omega Key",
+				text = {
+					"{C:attention}Create{} a random {C:dark_edition}Negative{} {C:yma_keys}Key{}",
+					"when {C:blue}hand{} is played",
+					"{C:inactive}(Uses #1#/#2# hands)",
 				},
-				cbean_stationery_name = {
-					"{f:cbean_fancy,s:2}Dr. Cattlebury{}",
-					"{C:inactive}(Full name: Bentley",
-					"{C:inactive}Reed Cattlebury)",
+			},
+			c_cbean_0chill_qilin = {
+				name = "The Qilin",
+				text = {
+					"Turn at least {C:attention}2{} selected cards",
+					"into the rank of the {C:attention}leftmost{}",
+					"selected card and {C:dark_edition}Negative{}",
+					"{C:inactive}(Drag to rearrange)",
 				},
-				--#region Stationery rewards
-				cbean_reward_money = {
-					"Earn {C:money}$#1#{}",
+			},
+			c_cbean_0chill_cronus = {
+				name = "The Blessing of Cronus",
+				text = {
+					{
+						"Prevents {C:attention}Blessings{} from",
+						"using charges each round",
+						"{C:inactive}({C:attention}#1#{C:inactive} rounds left)",
+					},
+					{
+						"Gains {C:attention}#2#{} charges when",
+						"a blessing is {C:attention}sold{}",
+					},
 				},
-				cbean_reward_joker_edition = {
-					"Creates a random Joker",
-					"with a random {C:dark_edition}Edition{}",
+			},
+			c_cbean_0chill_nope_from_above = {
+				name = {
+					"Nope! From Above",
+					"{X:dark_edition,C:white,s:0.7}Universal{}",
+				},
+				text = {
+					{
+						"Counts as {C:dark_edition}#1#{} Combo cards",
+					},
+					{
+						"Combos Into:",
+						"{C:dark_edition}Anything",
+						"{C:inactive}(Even if stated otherwise)",
+					},
+				},
+			},
+			c_cbean_0chill_for_all = {
+				name = {
+					"For All",
+				},
+				text = {
+					"For all consumables,",
+					"there is a booster pack",
+					"{C:inactive}(Except stickers because",
+					"{C:inactive}they don't have one yet)"
+				},
+			},
+			-- yma upgraded spectrals
+			c_cbean_yma_familiar_level1 = {
+				name = {
+					"Familiar",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced face",
+					"{C:attention}cards{} to your hand",
+				},
+			},
+			c_cbean_yma_familiar_level2 = {
+				name = {
+					"Familiar",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced face",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}Face cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+				},
+			},
+			c_cbean_yma_familiar_level3 = {
+				name = {
+					"Familiar",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced face",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}Face cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_familiar_level4 = {
+				name = {
+					"Familiar",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} selected",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced face",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}Face cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_familiar_level5 = {
+				name = {
+					"Familiar",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} selected",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced face",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}Face cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_grim_level1 = {
+				name = {
+					"Grim",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced Aces",
+					"to your hand",
+				},
+			},
+			c_cbean_yma_grim_level2 = {
+				name = {
+					"Grim",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced Aces",
+					"to your hand",
+					"Created {C:attention}Aces{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+				},
+			},
+			c_cbean_yma_grim_level3 = {
+				name = {
+					"Grim",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced Aces",
+					"to your hand",
+					"Created {C:attention}Aces{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_grim_level4 = {
+				name = {
+					"Grim",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} selected",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced Aces",
+					"to your hand",
+					"Created {C:attention}Aces{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_grim_level5 = {
+				name = {
+					"Grim",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} selected",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced Aces",
+					"to your hand",
+					"Created {C:attention}Aces{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_incantation_level1 = {
+				name = {
+					"Incantation",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced numbered",
+					"{C:attention}cards{} to your hand",
+				},
+			},
+			c_cbean_yma_incantation_level2 = {
+				name = {
+					"Incantation",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced numbered",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}numbered cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+				},
+			},
+			c_cbean_yma_incantation_level3 = {
+				name = {
+					"Incantation",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} random",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced numbered",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}numbered cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_incantation_level4 = {
+				name = {
+					"Incantation",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} selected",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced numbered",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}numbered cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_incantation_level5 = {
+				name = {
+					"Incantation",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Destroy {C:attention}#1#{} selected",
+					"card in your hand, add",
+					"{C:attention}#2#{} random {C:attention}Enhanced numbered",
+					"{C:attention}cards{} to your hand",
+					"Created {C:attention}numbered cards{} have a",
+					"{C:green}#3# in #4#{} chance to spawn with a {C:attention}Seal{}",
+					"and/or an {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_talisman_level1 = {
+				name = {
+					"Talisman",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Add a {C:attention}Gold Seal{}",
+					"to {C:attention}#1#{} selected",
+					"card in your hand",
+				},
+			},
+			c_cbean_yma_talisman_level2 = {
+				name = {
+					"Talisman",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Add a {C:attention}Gold Seal{}",
+					"to {C:attention}#1#{} selected",
+					"card in your hand",
+					"When held, retrigger all",
+					"{C:attention}Gold Sealed cards{} once",
+				},
+			},
+			c_cbean_yma_talisman_level3 = {
+				name = {
+					"Talisman",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Add a {C:attention}Gold Seal{}",
+					"to {C:attention}#1#{} selected",
+					"card in your hand",
+					"When held, retrigger all",
+					"{C:attention}Gold Sealed cards{} once",
+					"and they give {C:money}+$1{} for every",
+					"{C:attention}Gold Sealed card{} in deck",
+				},
+			},
+			c_cbean_yma_talisman_level4 = {
+				name = {
+					"Talisman",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Add a {C:attention}Gold Seal{}",
+					"to {C:attention}#1#{} selected",
+					"card in your hand",
+					"When held, retrigger all",
+					"{C:attention}Gold Sealed cards{} once",
+					"and they give {C:money}+$1{} for every",
+					"{C:attention}Gold Sealed card{} in deck",
+				},
+			},
+			c_cbean_yma_talisman_level5 = {
+				name = {
+					"Talisman",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Add a {C:attention}Gold Seal{}",
+					"to {C:attention}#1#{} selected",
+					"card in your hand",
+					"When held, retrigger all",
+					"{C:attention}Gold Sealed cards{} once,",
+					"they give {C:money}+$1{} for every",
+					"{C:attention}Gold Sealed card{} in deck,",
+					"and gives {C:money}+$6{} for every",
+					"{C:attention}Gold Sealed card{} that {C:attention}hasn't{}",
+					"been played",
+				},
+			},
+			c_cbean_yma_wraith_level1 = {
+				name = {
+					"Wraith",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Creates a random",
+					"{C:red}Rare{C:attention} Joker{},",
+					"sets money to {C:money}$10",
+				},
+			},
+			c_cbean_yma_wraith_level2 = {
+				name = {
+					"Wraith",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Creates a random",
+					"{C:red}Rare{C:attention} Joker{},",
+					"with a random {C:dark_edition}Edition{},",
+					"sets money to {C:money}$10",
+				},
+			},
+			c_cbean_yma_wraith_level3 = {
+				name = {
+					"Wraith",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Creates a random",
+					"{C:red}Rare{C:attention} Joker{},",
+					"with a random {C:dark_edition}Edition{},",
+					"and a {C:dark_edition}Negative{},{C:attention} Perishable{},",
+					"{C:red}Rare{} {C:attention} Joker",
+					"sets money to {C:money}$10",
+				},
+			},
+			c_cbean_yma_wraith_level4 = {
+				name = {
+					"Wraith",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Creates a random",
+					"{C:red}Rare{C:attention} Joker{},",
+					"with a random {C:dark_edition}Edition{},",
+					"and a {C:dark_edition}Negative{},{C:attention} Perishable{},",
+					"{C:red}Rare{} {C:attention} Joker",
+				},
+			},
+			c_cbean_yma_wraith_level5 = {
+				name = {
+					"Wraith",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Creates {C:attention}2{} random",
+					"{C:dark_edition}Negative{} {C:red}Rare{C:attention} Jokers{}",
+				},
+			},
+			c_cbean_yma_sigil_level1 = {
+				name = {
+					"Sigil",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Converts all cards",
+					"in hand to the {C:attention}suit",
+					"of the selected {C:attention}card",
+				},
+			},
+			c_cbean_yma_sigil_level2 = {
+				name = {
+					"Sigil",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Converts all cards",
+					"in hand to the {C:attention}suit",
+					"of the selected {C:attention}card",
+					"They additionally gain the same,",
+					"{C:attention}random Enhancement",
+				},
+			},
+			c_cbean_yma_sigil_level3 = {
+				name = {
+					"Sigil",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Converts all cards",
+					"in hand to the {C:attention}suit",
+					"of the selected {C:attention}card",
+					"They additionally gain the same,",
+					"{C:attention}random Enhancement {}and {C:attention}Seal",
+				},
+			},
+			c_cbean_yma_sigil_level4 = {
+				name = {
+					"Sigil",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Converts up to {C:attention}10{} cards and all cards",
+					"in hand to the {C:attention}suit",
+					"of the selected {C:attention}card",
+					"They additionally gain the same,",
+					"{C:attention}random Enhancement {}and {C:attention}Seal",
+				},
+			},
+			c_cbean_yma_sigil_level5 = {
+				name = {
+					"Sigil",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Converts up to {C:attention}10{} cards and all cards",
+					"in hand to the {C:attention}suit",
+					"of the selected {C:attention}card",
+					"They additionally gain the same,",
+					"{C:attention}random Enhancement {}, {C:attention}Seal",
+					"and {C:dark_edition}Edition{}",
+				},
+			},
+			c_cbean_yma_ectoplasm_level1 = {
+				name = {
+					"Ectoplasm",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Add {C:dark_edition}Negative{} to",
+					"a random {C:attention}Joker,",
+					"{C:red}-#1#{} hand size",
+				},
+			},
+			c_cbean_yma_ectoplasm_level2 = {
+				name = {
+					"Ectoplasm",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Add {C:dark_edition}Negative{} to",
+					"a random {C:attention}Joker,",
+					"and a random {C:attention}consumable{},",
+					"{C:red}-#1#{} hand size",
+				},
+			},
+			c_cbean_yma_ectoplasm_level3 = {
+				name = {
+					"Ectoplasm",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Add {C:dark_edition}Negative{} to",
+					"a random {C:attention}Joker,",
+					"a random {C:attention}consumable{} and",
+					"{C:attention}3{} random {C:attention}Playing Cards{},",
+					"in your deck,",
+					"{C:red}-#1#{} hand size",
+				},
+			},
+			c_cbean_yma_ectoplasm_level4 = {
+				name = {
+					"Ectoplasm",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Add {C:dark_edition}Negative{} to",
+					"a selected {C:attention}Joker,",
+					"a random {C:attention}consumable{} and",
+					"{C:attention}3{} random {C:attention}Playing Cards{},",
+					"in your deck,",
+					"{C:red}-#1#{} hand size",
+				},
+			},
+			c_cbean_yma_ectoplasm_level5 = {
+				name = {
+					"Ectoplasm",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Add {C:dark_edition}Negative{} to",
+					"a selected {C:attention}Joker,",
+					"a random {C:attention}consumable{} and",
+					"{C:attention}3{} random {C:attention}Playing Cards{},",
+					"in your deck and in your hand",
+				},
+			},
+			c_cbean_yma_immolate_level1 = {
+				name = {
+					"Immolate",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Destroys {C:attention}#1#{} random",
+					"cards and {C:attention}#3#{} selected card in hand,",
+					"gain {C:money}$#2#",
+				},
+			},
+			c_cbean_yma_immolate_level2 = {
+				name = {
+					"Immolate",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Destroys {C:attention}#1#{} random",
+					"cards and {C:attention}#3#{} selected cards in hand,",
+					"gain {C:money}$#2#",
+				},
+			},
+			c_cbean_yma_immolate_level3 = {
+				name = {
+					"Immolate",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Destroys {C:attention}#1#{} random",
+					"cards and {C:attention}#3#{} selected cards in hand,",
+					"gain {C:money}$#2#",
+				},
+			},
+			c_cbean_yma_immolate_level4 = {
+				name = {
+					"Immolate",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Destroys {C:attention}#3#{} selected cards in hand,",
+					"gain {C:money}$#2#",
+				},
+			},
+			c_cbean_yma_immolate_level5 = {
+				name = {
+					"Immolate",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Destroys {C:attention}up to #3#{} selected cards in hand,",
+					"gain {C:money}$#2#",
+				},
+			},
+			c_cbean_yma_soul_level1 = {
+				name = {
+					"The Soul",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Creates a",
+					"{C:legendary,E:1}Legendary{} Joker",
+					"Created Joker has {X:money,C:white}X2.5{} sell value",
 					"{C:inactive}(Must have room)",
 				},
-				cbean_reward_shield = {
-					"Applies {V:1,T:cbean_shield}Shield{} to",
-					"selected Joker",
-				},
-				cbean_reward_plasma = {
-					"Applies {V:1,T:cbean_plasma}Plasma{} to",
-					"current Deck",
-				},
-				cbean_reward_black = {
-					"Applies {V:1,T:cbean_black}Black{} to",
-					"current Deck",
-				},
-				cbean_reward_painted = {
-					"Applies {V:1,T:cbean_painted}Painted{} to",
-					"current Deck",
-				},
-				--#endregion
-				k_cbean_yma_keypack = "Key Pack",
-				cbean_0chill_blind_weakend = "Blind Weakened!",
-				cbean_0chill_blind_strengthened = "Blind Strengthened!",
-
-				k_colon_architecture = "Architecture",
-				ph_no_colon_architecture = "No architecture in progress",
-				ph_colon_architecture_started = "Architecture in progress",
-				k_cbean_colon_started_ex = "In Progress!",
-				k_cbean_colon_completed_ex = "Constructed!",
-				k_cbean_colon_queued_ex = "Queued!",
-				b_colon_architecture_cards = "Architecture Cards",
-
-				k_yma_keys = "Keys",
-				b_yma_keys_cards = "Keys",
-				k_yma_key_plus_use = "Use",
-				k_cbean_yma_street = "Street",
-				k_hell_sac = "Sacrifice",
-				k_yma_chance_to_fail_key = "(Chance to break)",
-				k_yma_chance_to_fail_belssing = "(Chance to fail)",
-				k_yma_polish = "Polish",
-				k_yma_pray = "Pray",
-				k_yma_pray_fail = "Unanswered",
-				k_yma_polish_fail = "Salvaged",
-				k_yma_key_broke = "Broken",
-				k_yma_dreamland_upgrade = "Upgrade",
-				k_yma_key_faded = "Faded",
-				k_yma_transform = "Transformed!",
-				k_yma_tag = "Tag!",
-				k_cbean_peashooter_1 = "Armless Zombie",
-				k_cbean_peashooter_2 = "Headless Zombie",
-				k_cbean_peashooter_3 = "Dead Zombie",
-				k_cbean_burned = "Burned!",
-				k_cbean_piss_ex = "Piss!",
-				k_cbean_mash_ex = "Mash!",
-				k_cbean_pboys_abet = "Bet",
-				k_cbean_unique_ex = "???",
-				k_cbean_balley_ex = "Alley!",
-				k_cbean_aexit_ex = "Exit",
-				k_cbean_pboys_arule = "Choose a Cup",
-				k_cbean_pboys_aplus = "+",
-				k_cbean_pboys_aminus = "-",
-				k_cbean_nteam_doubled = "Doubled!",
-				k_cbean_nteam_tripled = "Tripled!",
-				k_cbean_nteam_halved = "Halved!",
-				cbean_disable_animations = "Disable Joker Animations",
-				k_cbean_stickersheet = "Sticker Sheet",
-				b_cbean_stickersheet_cards = "Sticker Sheets",
-				b_nteam_exchange = "Exchange",
-				k_plus_stickersheet = "+1 Sticker Sheet",
-				k_plus_soul = "+The Soul",
-				k_cbean_nteam_uhoh = "Uh oh!",
-				k_cbean_nteam_danger = "Danger!",
-				k_cbean_nteam_randomized = "Randomized!",
-				k_cbean_unknown = "Unknown",
-				k_jbill_leak = "Leak!",
-				k_jbill_ach = "Achievement Unlocked!",
-				k_jbill_metapack = "Meta Pack",
-				k_ihaveagun_ex = "I HAVE A GUN!",
 			},
-			high_scores = {},
-			labels = {
-				cbean_colon_tauic = "Tauic",
-
-				cbean_sd_frozen = "Frozen",
-
-				cbean_sdown_lunar_seal = "Lunar Seal",
-				cbean_yma_cipher_seal = "Cipher Seal",
-
-				cbean_mailed = "Mailed",
-				cbean_hooking = "Hooking",
-				cbean_flashcard = "Flash Card",
-				cbean_frowning = "Frowning",
-				cbean_plasma = "Plasma",
-				cbean_painted = "Painted",
-				cbean_black = "Black",
-				cbean_egg = "Egg",
-				cbean_minuscule = "Minuscule",
-				cbean_shuffle = "Shuffle",
-				cbean_green = "Green",
-				cbean_dangerous = "Dangerous",
-				cbean_heavy = "Heavy",
-				cbean_shield = "Shield",
-				cbean_nebula = "Nebula",
-				cbean_brainrot = "Brainrot",
-				cbean_hungry = "Hungry",
-				cbean_barren = "Barren",
-				cbean_spore = "Spore",
-				cbean_healing = "Healing",
-				cbean_misprinted = "Misprinted",
-				cbean_poor = "Poor",
-                cbean_square = "Square",
-                
-
-				cbean_the_arm_sticker = "The Arm",
-				cbean_the_club_sticker = "The Club",
-				cbean_the_eye_sticker = "The Eye",
-				cbean_the_fish_sticker = "The Fish",
-				cbean_the_flint_sticker = "The Flint",
-				cbean_the_goad_sticker = "The Goad",
-				cbean_the_head_sticker = "The Head",
-				cbean_the_wall_sticker = "The Wall",
-				cbean_the_manacle_sticker = "The Manacle",
-				cbean_the_mark_sticker = "The Mark",
-				cbean_the_mouth_sticker = "The Mouth",
-				cbean_the_ox_sticker = "The Ox",
-				cbean_the_pillar_sticker = "The Pillar",
-				cbean_the_needle_sticker = "The Needle",
-				cbean_the_plant_sticker = "The Plant",
-				cbean_the_psychic_sticker = "The Psychic",
-				cbean_the_serpent_sticker = "The Serpent",
-				cbean_the_tooth_sticker = "The Tooth",
-				cbean_the_water_sticker = "The Water",
-				cbean_the_wheel_sticker = "The Wheel",
-				cbean_the_window_sticker = "The Window",
-				cbean_verdant_leaf_sticker = "Verdant Leaf",
-				cbean_amber_acorn_sticker = "Amber Acorn",
-				cbean_cerulean_bell_sticker = "Cerulean Bell",
-				cbean_violet_vessel_sticker = "Violet Vessel",
-				cbean_crimson_heart_sticker = "Crimson Heart",
-				cbean_man = "Man",
-
-				cbean_jaded = "Jaded",
-				cbean_banished = "Banished",
-				cbean_stick2 = "Sticker^2",
-			},
-			poker_hand_descriptions = {
-				["cbean_sdown_antistraight"] = {
-					"5 cards, with no two cards having the same",
-					"or consecutive ranks",
+			c_cbean_yma_soul_level2 = {
+				name = {
+					"The Soul",
+					"{C:attention,s:0.7}Level 2{}",
 				},
-				["cbean_sdown_antistraight_flush"] = {
-					"5 cards, all sharing the same suit, with no two cards",
-					"having the same or consecutive ranks",
-				},
-				["cbean_sdown_bobtail"] = {
-					"4 cards in a row (consecutive ranks) with",
-					"all cards sharing the same suit",
-				},
-
-				--House Rules Hands
-				["cbean_sdown_sacrifice"] = {
-					"(BUGGED, DOESN'T WORK RIGHT NOW)",
-					"A hand that contains five cards that have not been played before",
-					"Must have {C:attention}House Rules{} and {C:attention}Obelisk{} to play",
-				},
-
-				["cbean_sdown_8r8k"] = {
-					"A hand that contains at least two 8s,",
-					"with at least one of them being Lucky",
-					"Must have {C:attention}House Rules{} and {C:attention}8 Ball{} to play",
-				},
-
-				--how would a normal description even work what would you call this.
-				--"5 cards with no two having consecutive ranks. with consecutive ranks" how do you even describe it
-				["cbean_sdown_pansexual"] = {
-					"A hand that somehow contains both a Straight and a Gay",
-					"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
-				},
-
-				["cbean_sdown_pansexual_flush"] = {
-					"A hand that somehow contains a Straight a Gay and a Flush",
-					"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
-				},
-
-				["cbean_sdown_stone_hand"] = {
-					"Daring today, aren't we?",
-					"Must have {C:attention}House Rules{} and {C:attention}Marble Joker or Stone Joker{} to play",
-				},
-
-				["cbean_sdown_true_home"] = {
-					"(NOT YET IMPLEMENTED)",
-					"Three cards with a matching rank and suit, and two cards with a different matching rank and suit",
-					"Must have {C:attention}House Rules{} and {C:attention}Seeing Double or {}",
-					"{C:attention}Diamond Shape With a Dot Inside{} to play",
-				},
-
-				["cbean_sdown_67"] = {
-					"A 6 and a 7. They may be played with up to 3 other unscored cards",
-					"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
-				},
-
-				["cbean_sdown_flush_67"] = {
-					"A 6 and a 7 sharing the same suit",
-					"They may be played with up to 3 other unscored cards",
-					"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
-				},
-
-				["cbean_sdown_flush_two"] = {
-					"2 cards that share the same rank and suit",
-					"They may be played with up to 3 other unscored cards",
-					"Must have {C:attention}House Rules{} and {C:attention}Jolly Joker or Sly Joker or The Duo{} to play",
-				},
-
-				["cbean_sdown_flush_three"] = {
-					"3 cards that share the same rank and suit",
-					"They may be played with up to 2 other unscored cards",
-					"Must have {C:attention}House Rules{} and {C:attention}Zany Joker or Wily Joker or The Trio{} to play",
-				},
-
-				["cbean_0chill_fibonacci"] = {
-					"A hand that contains an 8, 5, 3, 2, and an Ace",
-					"Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play",
-				},
-
-				["cbean_0chill_fibonacci_flush"] = {
-					"A hand that contains an 8, 5, 3, 2,",
-					"and an Ace sharing the same suit",
-					"Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play",
-				},
-
-				["cbean_0chill_proceed"] = {
-					"PROCEED",
-					"Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play",
-				},
-
-				["cbean_0chill_deer_in_headlights"] = {
-					"A hand that contains only 1 King and no other cards",
-					"Must have {C:attention}House Rules{} and {C:attention}Asgore's Truck{} to play",
-					"{C:inactive}Driving in my truck, right after a beer...",
-				},
-
-				["cbean_0chill_favorite_year"] = {
-					"EV3RY BUDDY 'S FAVORITE [[Number 1 Rated Hand1997]]",
-					"Must have {C:attention}House Rules{} and {C:attention}Big Shot{} to play",
-				},
-
-				["cbean_0chill_favorite_year_flush"] = {
-					"A hand containing a [FAVORITE] Year and a Flush",
-					"Must have {C:attention}House Rules{} and {C:attention}Big Shot{} to play",
-					"{C:inactive}Sighting 1997",
-				},
-
-				["cbean_0chill_jackpot"] = {
-					"A hand that contains three 7s",
-					"Must have {C:attention}House Rules{} and ether {C:attention}Oops! All 6s{},",
-					"{C:attention}Nat 20{}, or {C:attention}Set of Dice{} to play",
-				},
-
-				["cbean_0chill_house_rules"] = {
-					"A hand that contains an Jack, 4, 3, 1,",
-					"Must have {C:attention}House Rules{} to play",
-				},
-				["cbean_wgrop_thorny_boquete"] = {
-					"A hand that contains either",
-					"{C:attention}3{} Light Suits and {C:attention}2{} Dark Suits or",
-					"{C:attention}2{} Light Suits and {C:attention}3{} Dark Suits",
-					"Must have {C:attention}House Rules{} and {C:attention}Withering Memory{} to play"
+				text = {
+					"Creates a",
+					"{C:legendary,E:1}Legendary{} Joker",
+					"Created Joker has {X:money,C:white}X2.5{} sell value",
+					"and always appears with an {C:dark_edition}Edition{}",
+					"{C:inactive}(Must have room)",
 				},
 			},
-			poker_hands = {
-				["cbean_sdown_antistraight"] = "Gay", -- Athebyne | N/A | Athebyne
-				["cbean_sdown_antistraight_flush"] = "Gay Flush", -- Athebyne | N/A | Athebyne
-				["cbean_sdown_bobtail"] = "Bobtail", -- Athebyne | N/A | Athebyne
-
-				--House Rules Hands
-				["cbean_sdown_sacrifice"] = "HR Sacrifice",
-				["cbean_sdown_8r8k"] = "HR Lucky 8r8k",
-				["cbean_sdown_pansexual"] = "HR Pansexual",
-				["cbean_sdown_pansexual_flush"] = "HR Pansexual Flush",
-				["cbean_sdown_stone_hand"] = "HR Yet Another 5 Stone Cards Hand",
-				["cbean_sdown_true_home"] = "HR True Home",
-				["cbean_sdown_67"] = "HR 67",
-				["cbean_sdown_flush_67"] = "HR Flush 67",
-				["cbean_sdown_flush_two"] = "HR Flush Tuah",
-				["cbean_sdown_flush_three"] = "HR Flush Threeah",
-				["cbean_0chill_fibonacci"] = "HR Fibonacci",
-				["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
-				["cbean_0chill_house_rules"] = "HR House Rules",
-				["cbean_0chill_proceed"] = "HR PROCEED",
-				["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
-				["cbean_0chill_favorite_year"] = "HR [Favorite] Year",
-				["cbean_0chill_favorite_year_flush"] = "HR [Favorite] Year Flush",
-				["cbean_0chill_jackpot"] = "HR Jackpot!",
-				["cbean_wgrop_thorny_boquete"] = "HR Thorny Bouquet",
-			},
-			quips = {
-				cbean_pboys_hi_1 = {
-					"I hope you'll",
-					"be interested",
-					"in my game!",
+			c_cbean_yma_soul_level3 = {
+				name = {
+					"The Soul",
+					"{C:attention,s:0.7}Level 3{}",
 				},
-				cbean_pboys_hi_2 = {
-					"Hello there!",
-				},
-				cbean_pboys_hi_3 = {
-					"Let's play a game!",
-				},
-				cbean_pboys_hi_4 = {
-					"Top of the",
-					"morning to you!",
-				},
-				cbean_pboys_hi_5 = {
-					"Hello traveler!",
-				},
-				cbean_pboys_hi_6 = {
-					"Hi, I hope you",
-					"brought good",
-					"luck with you!",
-				},
-				cbean_pboys_hi_7 = {
-					"Welcome back alley!",
-				},
-				cbean_pboys_win_1 = {
-					"{C:dark_edition}YOU WIN!",
-					"{C:inactive}sadly...",
-				},
-				cbean_pboys_win_2 = {
-					"My disappearing",
-					"trick didn't work...",
-				},
-				cbean_pboys_win_3 = {
-					"It was",
-					"beginner's luck!",
-				},
-				cbean_pboys_win_4 = {
-					"I need to shuffle",
-					"{S:1.1,C:attention,E:2}faster",
-				},
-				cbean_pboys_win_5 = {
-					"You won?",
-					"{C:inactive}oh man",
-				},
-				cbean_pboys_win_6 = {
-					"My debts are growing",
-				},
-				cbean_pboys_win_7 = {
-					"...",
-				},
-				cbean_pboys_lose_1 = {
-					"Better luck",
-					"next time",
-				},
-				cbean_pboys_lose_2 = {
-					"99 percent of",
-					"gamblers stop right",
-					"before winning big",
-				},
-				cbean_pboys_lose_3 = {
-					"You cant stop",
-					"losing",
-				},
-				cbean_pboys_lose_4 = {
-					"Wheel of fortune",
-					"probably never",
-					"works for you!",
-				},
-				cbean_pboys_lose_5 = {
-					"Wait, Did I win?",
-				},
-				cbean_pboys_lose_6 = {
-					"Money Money Money",
-				},
-				cbean_pboys_lose_7 = {
-					"!!!",
-				},
-				cbean_pboys_tutorial_1 = {
-					"This is {C:attention}Back Alley!",
-				},
-				cbean_pboys_tutorial_2 = {
-					"You can {C:attention}bet{}",
-					"your money here.",
-				}, --Reworded the tutorial a bit -0chill
-				cbean_pboys_tutorial_3 = {
-					"Find the {C:attention}ball{}",
-					"after I {C:attention}shuffle{}",
-					"these cups."
-				},
-				cbean_pboys_tutorial_4 = {
-					"Choosing the correct cup",
-					"will {C:attention}double{} the bet.",
-				},
-				cbean_pboys_tutorial_5 = {
-					"Otherwise you will",
-					"{C:attention}lose{} everything.",
-				},
-				cbean_pboys_tutorial_6 = {
-					"The higher the bet, the",
-					"{C:attention}faster{} I'll shuffle.",
-				},
-				cbean_pboys_tutorial_7 = {
-					"{C:attention}Good luck!",
-				},
-				cbean_nteam_tutorial_0 = {
-					"Click me to progress",
-					"through the tutorial of",
-					"the {C:attention}Stationery Shop{}",
-					"{C:inactive}(0/10)",
-				},
-				cbean_nteam_tutorial_1 = {
-					"Welcome to the {C:attention}Stationery",
-					"{C:attention}Shop{}, where you can trade",
-					"{C:attention}Stickers{} for various rewards.",
-					"{C:inactive}(1/10)",
-				},
-				cbean_nteam_tutorial_2 = {
-					"First, select exactly",
-					"{C:attention}1{} Joker to begin the",
-					"exchange process.",
-					"{C:inactive}(2/10)",
-				},
-				cbean_nteam_tutorial_3 = {
-					"If the selected Joker",
-					"has {C:attention}1 or more{} of the",
-					"{C:attention}Stickers{} listed to the right...",
-					"{C:inactive}(3/10)",
-				},
-				cbean_nteam_tutorial_4 = {
-					"...you can press the",
-					"{C:attention}Exchange{} button to remove",
-					"all listed {C:attention}Stickers{} and...",
-					"{C:inactive}(4/10)",
-				},
-				cbean_nteam_tutorial_5 = {
-					"...receive all the",
-					"rewards listed below",
-					"the accepted {C:attention}Stickers{}.",
-					"{C:inactive}(5/10)",
-				},
-				cbean_nteam_tutorial_6 = {
-					"If a reward states",
-					"that a {C:attention}Sticker{} will be",
-					"applied and the listed...",
-					"{C:inactive}(6/10)",
-				},
-				cbean_nteam_tutorial_7 = {
-					"...target(s) already has",
-					"that {C:attention}Sticker{}, then the",
-					"{C:attention}Sticker{} won't be reapplied.",
-					"{C:inactive}(7/10)",
-				},
-				cbean_nteam_tutorial_8 = {
-					"Exchanging {C:attention}Stickers",
-					"in the {C:attention}Stationery",
-					"{C:attention}Shop{} will reroll...",
-					"{C:inactive}(8/10)",
-				},
-				cbean_nteam_tutorial_9 = {
-					"the {C:attention}Stickers{} this",
-					"Shop accepts and",
-					"all given rewards.",
-					"{C:inactive}(9/10)",
-				},
-				cbean_nteam_tutorial_10 = {
-					"You can also spend",
-					"{C:money}money{} to reroll the",
-					"{C:attention}Stationery Shop{}.",
-					"{C:inactive}(10/10)",
+				text = {
+					"Creates a",
+					"{C:legendary,E:1}Legendary{} Joker",
+					"Created Joker has {X:money,C:white}X2.5{} sell value",
+					"and an {C:dark_edition}Edition{}",
 				},
 			},
-			ranks = {},
-			suits_plural = {},
-			suits_singular = {},
-			tutorial = {},
-			v_dictionary = {
-				coldbean_team = { "Team: #1#" },
-				coldbean_idea = { "Idea: #1#" },
-				coldbean_art = { "Art: #1#" },
-				coldbean_code = { "Code: #1#" },
-				a_burned_cards = "#1# Cards",
+			c_cbean_yma_soul_level4 = {
+				name = {
+					"The Soul",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Creates a",
+					"{C:legendary,E:1}Legendary{} Joker",
+					"Created Joker has {X:money,C:white}X2.5{} sell value",
+					"and {C:dark_edition}Negative{}",
+				},
 			},
-			v_text = {
-				--TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
-				--be that modifiable if nobody else uses this. In which case who cares tbh.
-				ch_c_cbean_sdown_all_blinds_are = {
-					"{C:attention}All Blinds{} are {C:attention}The Folly",
+			c_cbean_yma_soul_level5 = {
+				name = {
+					"The Soul",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Creates a",
+					"{C:legendary,E:1}Legendary{} Joker",
+					"Created Joker has {X:money,C:white}X2.5{} sell value",
+					"and {C:dark_edition}Negative{}",
+					"Creates another joker,",
+					"{C:green}Fixed 50% chance{} to either be",
+					"another {C:legendary,E:1}Legendary{} or a {C:rare}Rare{}",
+				},
+			},
+			c_cbean_yma_black_hole_level1 = {
+				name = {
+					"Black Hole",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Upgrade every",
+					"{C:legendary,E:1}poker hand",
+					"by {C:attention}2{} levels",
+				},
+			},
+			c_cbean_yma_black_hole_level2 = {
+				name = {
+					"Black Hole",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Upgrade every",
+					"{C:legendary,E:1}poker hand",
+					"by {C:attention}2{} levels",
+					"Upgrades the {C:attention}3 most played Poker Hands{}",
+					"by {C:attention}3{} levels",
+				},
+			},
+			c_cbean_yma_black_hole_level3 = {
+				name = {
+					"Black Hole",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Upgrade every",
+					"{C:legendary,E:1}poker hand",
+					"by {C:attention}2{} levels plus",
+					"the level of the {C:attention}lowest",
+					"{C:attention}level Poker Hand",
+					"Upgrades the {C:attention}3 most played Poker Hands{}",
+					"by {C:attention}3{} levels",
+				},
+			},
+			c_cbean_yma_black_hole_level4 = {
+				name = {
+					"Black Hole",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Upgrade every",
+					"{C:legendary,E:1}poker hand",
+					"by {C:attention}2{} levels plus",
+					"the level of the {C:attention}lowest",
+					"{C:attention}level Poker Hand",
+					"Upgrades the {C:attention}3 most played Poker Hands{}",
+					"by {C:attention}3{} levels",
+					"{C:attention}Doubles{} Chips & Mult of all",
+					"{C:attention}Poker Hands{}",
+				},
+			},
+			c_cbean_yma_black_hole_level5 = {
+				name = {
+					"Black Hole",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Upgrade every",
+					"{C:legendary,E:1}poker hand",
+					"by {C:attention}2{} levels plus",
+					"the level of the {C:attention}lowest",
+					"{C:attention}level Poker Hand",
+					"Upgrades the {C:attention}3 most played Poker Hands{}",
+					"by {C:attention}3{} levels",
+					"{C:attention}Doubles{} Chips, Mult",
+					"Level Chips & Level Mult of all",
+					"{C:attention}Poker Hands{}",
 				},
 			},
 		},
+		Stake = {
+			stake_cbean_nameteam = {
+				name = "NTeam Stake",
+				text = {
+					"Ton of stickers added by",
+					"Name Team can spawn",
+					"{s:0.8}Applies all previous Stakes",
+				},
+			},
+			stake_cbean_consumable = {
+				name = "Consumed Stake",
+				text = {
+					"Consumables can spawn",
+					"with certain stickers",
+					"{s:0.8}Applies all previous Stakes",
+				},
+			},
+			stake_cbean_playingcardstake = {
+				name = "Spade of Stakes",
+				text = {
+					"Playing Cards have a chance to",
+					"gain stickers after being played",
+					"{s:0.8}Applies all previous Stakes",
+				},
+			},
+			stake_cbean_deck = {
+				name = "Painted Stake",
+				text = {
+					"Decks has a 1/4 chance to gain",
+					"a sticker after leaving the shop",
+					"{s:0.8}Applies all previous Stakes",
+				},
+			},
+			stake_cbean_blind = {
+				name = "Plant Stake",
+				text = {
+					"After every boss blind, apply a",
+					"random blind sticker to the deck",
+					"{s:0.8}Applies all previous Stakes",
+				},
+			},
+		},
+		cbean_StickerSheet = {
+			c_cbean_plasma_sheet = {
+				name = "Plasma",
+				text = {
+					{
+						"Applies {C:dark_edition}Plasma{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_black_sheet = {
+				name = "Black",
+				text = {
+					{
+						"Applies {C:dark_edition}Black{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_painted_sheet = {
+				name = "Painted",
+				text = {
+					{
+						"Applies {C:dark_edition}Painted{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_nebula_sheet = {
+				name = "Nebula",
+				text = {
+					{
+						"Applies {C:dark_edition}Nebula{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_green_sheet = {
+				name = "Green",
+				text = {
+					{
+						"Applies {C:dark_edition}Green{} to",
+						"your {C:attention}Deck{}",
+					},
+				},
+			},
+			c_cbean_eternal_sheet = {
+				name = "Eternal",
+				text = {
+					{
+						"Applies {C:attention}Eternal{} to",
+						"a random {C:attention}Joker{}",
+					},
+					{
+						"Creates a free",
+						"{C:attention}Voucher Tag{}",
+					},
+				},
+			},
+			c_cbean_perishable_sheet = {
+				name = "Perishable",
+				text = {
+					{
+						"Applies {C:attention}Perishable{} to",
+						"a random {C:attention}Joker{}",
+					},
+					{
+						"Applies {C:dark_edition}Negative{} to",
+						"the same {C:attention}Joker{}",
+					},
+				},
+			},
+			c_cbean_rental_sheet = {
+				name = "Rental",
+				text = {
+					{
+						"Applies {C:attention}Rental{} to",
+						"a random {C:attention}Joker{}",
+					},
+					{
+						"Gives {C:money}$20",
+					},
+				},
+			},
+			c_cbean_mailed_sheet = {
+				name = "Mailed",
+				text = {
+					{
+						"Applies {C:attention}Mailed{} to {C:attention}1{}",
+						"selected playing card",
+					},
+					{
+						"Adds a {C:tarot}Purple{} seal",
+						"to the same {C:attention}playing card{}",
+					},
+				},
+			},
+			c_cbean_flashcard_sheet = {
+				name = "Flash Card",
+				text = {
+					{
+						"Applies {C:attention}Flash Card{} to",
+						"{C:attention}1{} selected {C:attention}Joker{}",
+					},
+					{
+						"Next {C:attention}5{} rerolls",
+						"cost {C:attention}$3{} more",
+					},
+				},
+			},
+			c_cbean_frowning_sheet = {
+				name = "Frowning",
+				text = {
+					{
+						"Applies {C:attention}Frowning{} to {C:attention}1{}",
+						"selected {C:attention}playing card{}",
+					},
+					{
+						"Creates a random",
+						"{C:attention}Enhanced face card{}",
+					},
+				},
+			},
+			c_cbean_misprinted_sheet = {
+				name = "Misprinted",
+				text = {
+					{
+						"Applies {C:attention}Misprinted{} to",
+						"{C:attention}1{} selected {C:attention}Joker{}",
+					},
+					{
+						"Creates a",
+						"{C:dark_edition}Negative{} {C:attention}Misprint{}",
+					},
+				},
+			},
+			c_cbean_shield_sheet = {
+				name = "Shield",
+				text = {
+					"Applies {C:attention}Shield{} to",
+					"{C:attention}1{} selected {C:attention}Joker{}",
+				},
+			},
+			c_cbean_heavy_sheet = {
+				name = "Heavy",
+				text = {
+					{
+						"Applies {C:attention}Heavy{} to",
+						"{C:attention}1{} selected card",
+					},
+					{
+						"Applies {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+						"{C:dark_edition}Polychrome{} edition to",
+						"the same {C:attention}playing card{}",
+					},
+				},
+			},
+			c_cbean_hungry_sheet = {
+				name = "Hungry",
+				text = {
+					{
+						"Applies {C:attention}Hungry{} to",
+						"a random Joker",
+					},
+					{
+						"Values of said {C:attention}Joker",
+						"are multiplied by {C:attention}x1.5",
+					},
+				},
+			},
+		},
+		Tag = {
+			tag_cbean_colon_construction = {
+				name = 'Construction Tag',
+				text = {
+					"Gives a free",
+					"{C:attention}Mega Construction Pack"
+				}
+			},
+			tag_cbean_colon_ceoreroll = {
+				name = 'CEO Tag',
+				text = {
+					"Reroll the",
+					"{C:attention}CEO Blind"
+				}
+			},
+			tag_cbean_0chill_combo = {
+				name = 'Turbo Tag',
+				text = {
+					"Gives a free",
+					"{C:combo}Jimbattle: Ultimate Edition Pack"
+				}
+			},
+			tag_cbean_0chill_squared = {
+				name = 'Power Tag',
+				text = {
+					"Gives a free",
+					"{C:money}Mega Meta Pack"
+				}
+			},
+			tag_cbean_0chill_key = {
+				name = 'Keychain Tag',
+				text = {
+					"Gives a free",
+					"{C:yma_keys}Mega Key Pack"
+				}
+			},
+		},
+		Tarot = {
+			c_cbean_pboys_river = {
+				name = "The River",
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			--Jbill tarot
+			c_cbean_jbill_currency = {
+				name = "The Currency",
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			-- yma consumable upgrades
+			c_cbean_yma_magician_level1 = {
+				name = {
+					"The Magician",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_magician_level2 = {
+				name = {
+					"The Magician",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_magician_level3 = {
+				name = {
+					"The Magician",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_magician_level4 = {
+				name = {
+					"The Magician",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Lucky cards{} have {C:green}double odds{}",
+				},
+			},
+			c_cbean_yma_magician_level5 = {
+				name = {
+					"The Magician",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Lucky cards{} have {C:green}triple odds{}",
+				},
+			},
+			c_cbean_yma_high_priestess_level1 = {
+				name = {
+					"The High Priestess",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Creates up to {C:attention}#1#",
+					"random {C:planet}Planet{} cards",
+					"One of those {C:planet}Planet{} cards",
+					"is guranteed to be your",
+					"{C:attention}Highest played hand's{}",
+					"{C:planet}Planet{} card",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			c_cbean_yma_high_priestess_level2 = {
+				name = {
+					"The High Priestess",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Creates up to {C:attention}#1#",
+					"random {C:planet}Planet{} cards",
+					"One of those {C:planet}Planet{} cards",
+					"is guranteed to be your",
+					"{C:attention}Highest played hand's{}",
+					"{C:planet}Planet{} card",
+					"{C:inactive}(Must have at least 2 slots)",
+				},
+			},
+			c_cbean_yma_high_priestess_level3 = {
+				name = {
+					"The High Priestess",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Creates up to {C:attention}#1#",
+					"random {C:planet}Planet{} cards",
+					"Two of those {C:planet}Planet{} cards",
+					"are guranteed to be your",
+					"{C:attention}Highest played hand's{}",
+					"{C:planet}Planet{} card",
+					"{C:inactive}(Must have at least 2 slots)",
+				},
+			},
+			c_cbean_yma_high_priestess_level4 = {
+				name = {
+					"The High Priestess",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Creates up to {C:attention}#1#",
+					"random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
+					"Two of those {C:planet}Planet{} cards",
+					"are guranteed to be your",
+					"{C:attention}Highest played hand's{}",
+					"{C:planet}Planet{} card",
+				},
+			},
+			c_cbean_yma_high_priestess_level5 = {
+				name = {
+					"The High Priestess",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Creates up to {C:attention}#1#",
+					"random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
+					"of your {C:attention}Highest played hand's{}",
+					"{C:planet}Planet{} card",
+				},
+			},
+			c_cbean_yma_empress_level1 = {
+				name = {
+					"The Empress",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_empress_level2 = {
+				name = {
+					"The Empress",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_empress_level3 = {
+				name = {
+					"The Empress",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_empress_level4 = {
+				name = {
+					"The Empress",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Mult{} cards give {C:mult}+4{}",
+					"extra Mult",
+				},
+			},
+			c_cbean_yma_empress_level5 = {
+				name = {
+					"The Empress",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Mult{} cards give {C:mult}+4{}",
+					"extra Mult, plus an additional",
+					"{C:attention}5%{} of your current Mult",
+				},
+			},
+			c_cbean_yma_heirophant_level1 = {
+				name = {
+					"The Hierophant",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_heirophant_level2 = {
+				name = {
+					"The Hierophant",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_heirophant_level3 = {
+				name = {
+					"The Hierophant",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_heirophant_level4 = {
+				name = {
+					"The Hierophant",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Bonus{} cards give {C:chips}+20{}",
+					"extra Chips",
+				},
+			},
+			c_cbean_yma_heirophant_level5 = {
+				name = {
+					"The Hierophant",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Bonus{} cards give {C:chips}+20{}",
+					"extra Chips, plus an additional",
+					"{C:attention}5%{} of your current Chips",
+				},
+			},
+			c_cbean_yma_chariot_level1 = {
+				name = {
+					"The Chariot",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_chariot_level2 = {
+				name = {
+					"The Chariot",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_chariot_level3 = {
+				name = {
+					"The Chariot",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_chariot_level4 = {
+				name = {
+					"The Chariot",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Steel Cards{} give",
+					"{X:mult,C:white}+X0.5{} more Mult",
+				},
+			},
+			c_cbean_yma_chariot_level5 = {
+				name = {
+					"The Chariot",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Steel Cards{} give",
+					"{X:mult,C:white}+X0.5{} more Mult and",
+					"work {C:attention}when played{}",
+				},
+			},
+			c_cbean_yma_justice_level1 = {
+				name = {
+					"Justice",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_justice_level2 = {
+				name = {
+					"Justice",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_justice_level3 = {
+				name = {
+					"Justice",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+				},
+			},
+			c_cbean_yma_justice_level4 = {
+				name = {
+					"Justice",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Glass Cards{} are",
+					"{C:attention}half as likely{} to {C:attention}break",
+				},
+			},
+			c_cbean_yma_justice_level5 = {
+				name = {
+					"Justice",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Enhances {C:attention}#1#{}",
+					"selected cards to",
+					"{C:attention}#2#s",
+					"Created {C:attention}Glass Cards{} are",
+					"{C:attention}half as likely{} to {C:attention}break",
+					"and give {X:mult,C:white}+X1{} more Mult",
+				},
+			},
+			c_cbean_yma_hermit_level1 = {
+				name = {
+					"The Hermit",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"{C:inactive}(Max of $#1#){}",
+				},
+			},
+			c_cbean_yma_hermit_level2 = {
+				name = {
+					"The Hermit",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"{C:inactive}(Max of $#1#){}",
+				},
+			},
+			c_cbean_yma_hermit_level3 = {
+				name = {
+					"The Hermit",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"{C:inactive}(Max of $#1#){}",
+				},
+			},
+			c_cbean_yma_hermit_level4 = {
+				name = {
+					"The Hermit",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"{C:inactive}(Max of $#1#){}",
+				},
+			},
+			c_cbean_yma_hermit_level5 = {
+				name = {
+					"The Hermit",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Earn {C:money}$#2#{}, then {C:money}triples{} it",
+					"{C:inactive}(Max of $#1#){}",
+				},
+			},
+			c_cbean_yma_wheel_of_fortune_level1 = {
+				name = {
+					"The Wheel of Fortune",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to add",
+					"{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+					"{C:dark_edition}Polychrome{} edition",
+					"to a random {C:attention}Joker",
+				},
+			},
+			c_cbean_yma_wheel_of_fortune_level2 = {
+				name = {
+					"The Wheel of Fortune",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to add",
+					"{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+					"{C:dark_edition}Polychrome{} edition",
+					"to a random {C:attention}Joker",
+				},
+			},
+			c_cbean_yma_wheel_of_fortune_level3 = {
+				name = {
+					"The Wheel of Fortune",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+					"{C:dark_edition}Polychrome{} edition",
+					"to a random {C:attention}Joker",
+				},
+			},
+			c_cbean_yma_wheel_of_fortune_level4 = {
+				name = {
+					"The Wheel of Fortune",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Adds {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+					"{C:dark_edition}Polychrome{} edition",
+					"to the selected {C:attention}Joker",
+				},
+			},
+			c_cbean_yma_wheel_of_fortune_level5 = {
+				name = {
+					"The Wheel of Fortune",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Adds any edition",
+					"to the selected {C:attention}Joker",
+				},
+			},
+			c_cbean_yma_star_level1 = {
+				name = {
+					"The Star",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_star_level2 = {
+				name = {
+					"The Star",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_star_level3 = {
+				name = {
+					"The Star",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Gold Cards{}",
+				},
+			},
+			c_cbean_yma_star_level4 = {
+				name = {
+					"The Star",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Gold Cards{}",
+					"and have {C:attention}Blue Seals{}",
+				},
+			},
+			c_cbean_yma_star_level5 = {
+				name = {
+					"The Star",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Gold Cards{}",
+					"and have {C:attention}Blue Seals{} and {C:dark_edition}Negative{}",
+				},
+			},
+			c_cbean_yma_moon_level1 = {
+				name = {
+					"The Moon",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_moon_level2 = {
+				name = {
+					"The Moon",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_moon_level3 = {
+				name = {
+					"The Moon",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Glass Cards{}",
+				},
+			},
+			c_cbean_yma_moon_level4 = {
+				name = {
+					"The Moon",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Glass Cards{}",
+					"and have {C:attention}Purple Seals{}",
+				},
+			},
+			c_cbean_yma_moon_level5 = {
+				name = {
+					"The Moon",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Glass Cards{}",
+					"and have {C:attention}Purple Seals{} and {C:dark_edition}Foil{}",
+				},
+			},
+			c_cbean_yma_sun_level1 = {
+				name = {
+					"The Sun",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_sun_level2 = {
+				name = {
+					"The Sun",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_sun_level3 = {
+				name = {
+					"The Sun",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Steel Cards{}",
+				},
+			},
+			c_cbean_yma_sun_level4 = {
+				name = {
+					"The Sun",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Steel Cards{}",
+					"and have {C:attention}Red Seals{}",
+				},
+			},
+			c_cbean_yma_sun_level5 = {
+				name = {
+					"The Sun",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Steel Cards{}",
+					"and have {C:attention}Red Seals{} and {C:dark_edition}Polychrome{}",
+				},
+			},
+			c_cbean_yma_world_level1 = {
+				name = {
+					"The World",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_world_level2 = {
+				name = {
+					"The World",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+				},
+			},
+			c_cbean_yma_world_level3 = {
+				name = {
+					"The World",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Lucky Cards{}",
+				},
+			},
+			c_cbean_yma_world_level4 = {
+				name = {
+					"The World",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Lucky Cards{}",
+					"and have {C:attention}Gold Seals{}",
+				},
+			},
+			c_cbean_yma_world_level5 = {
+				name = {
+					"The World",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Converts up to",
+					"{C:attention}#1#{} selected cards",
+					"to {V:1}#2#{}",
+					"Converted cards also become {C:attention}Lucky Cards{}",
+					"and have {C:attention}Gold Seals{} and {C:dark_edition}Holographic{}",
+				},
+			},
+			c_cbean_yma_judgement_level1 = {
+				name = {
+					"Judgement",
+					"{C:attention,s:0.7}Level 1{}",
+				},
+				text = {
+					"Creates a random",
+					"{C:attention}Joker{} card",
+					"{C:green}#1# in #2#{} chance to",
+					"create a {C:attention}Buffoon Tag{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			c_cbean_yma_judgement_level2 = {
+				name = {
+					"Judgement",
+					"{C:attention,s:0.7}Level 2{}",
+				},
+				text = {
+					"Creates a random",
+					"{C:attention}Joker{} card",
+					"and a {C:attention}Buffoon Tag{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			c_cbean_yma_judgement_level3 = {
+				name = {
+					"Judgement",
+					"{C:attention,s:0.7}Level 3{}",
+				},
+				text = {
+					"Creates 2 random",
+					"{C:attention}Jokers{} and a",
+					"{C:attention}Buffoon Tag{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			c_cbean_yma_judgement_level4 = {
+				name = {
+					"Judgement",
+					"{C:attention,s:0.7}Level 4{}",
+				},
+				text = {
+					"Creates 2 random",
+					"{C:attention}Jokers{} and a",
+					"{C:attention}Buffoon Tag{}",
+					"{C:green}#1# in #2#{} chance to",
+					"create a random {C:attention}Non-Common Joker{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			c_cbean_yma_judgement_level5 = {
+				name = {
+					"Judgement",
+					"{C:attention,s:0.7}Level 5{}",
+				},
+				text = {
+					"Creates 2 random",
+					"{C:attention}Jokers{} and a",
+					"{C:attention}Buffoon Tag{}",
+					"{C:green}#1# in #2#{} chance to",
+					"create a random {C:attention}Non-Common Joker{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+		},
+		Voucher = {
+			--Yeah! Mostly Artists
+			v_cbean_yma_special_deal = {
+				name = "Special Deal",
+				text = {
+					"{C:attention}Booster{} Packs have",
+					"{C:attention}#1#{} extra option",
+					"to choose from",
+				},
+			},
+			v_cbean_yma_krater = {
+				name = "Krater",
+				text = {
+					"{C:attention}Praying{} becomes",
+					"more {C:attention}effective",
+				},
+			},
+			v_cbean_yma_grand_theft = {
+				name = "Grand Theft",
+				text = {
+					"You may now {C:attention}steal",
+					"consumables from",
+					"{C:attention}Booster{} packs",
+				},
+			},
+		},
+		Biome = {
+			--Wgropping it
+			wgrop_desert = {
+				text = {
+					"You can carry less",
+					"but packed plenty",
+					"of resources",
+				},
+			},
+			wgrop_forest = {
+				text = {
+					"At the end of the day,",
+					"everything grows",
+				},
+			},
+			wgrop_graveyard = {
+				text = {
+					"Destroyed Cards may",
+					"persist after death",
+				},
+			},
+			wgrop_volcanic = {
+				text = {
+					"Only discards have",
+					"value in this land",
+				},
+			},
+			wgrop_glaciers = {
+				text = {
+					"The snow reduces your",
+					"vision, so keep your",
+					"hands warm",
+				},
+			},
+			wgrop_city = {
+				text = {
+					"Constant taxes, but",
+					"plenty to see and do",
+				},
+			},
+		},
+	},
+	misc = {
+		achievement_descriptions = {
+			ach_cbean_highlight = "Highlight a playing card",
+			ach_cbean_highlight2 = "Highlight 2 playing cards",
+			ach_cbean_highlight3 = "Highlight 3 playing cards",
+			ach_cbean_highlight4 = "Highlight 4 playing cards",
+			ach_cbean_highlight5 = "Highlight 5 playing cards",
+			ach_cbean_play = "Read the name, dummy",
+			ach_cbean_play1 = "Play a hand containing only 1 card",
+			ach_cbean_play2 = "Play a hand containing only 2 cards",
+			ach_cbean_play3 = "Play a hand containing only 3 cards",
+			ach_cbean_play4 = "Play a hand containing only 4 cards",
+			ach_cbean_play5 = "Play a hand containing 5 cards",
+			ach_cbean_discard = "Discard a hand containing only 1 card",
+			ach_cbean_discard2 = "Discard a hand containing only 2 cards",
+			ach_cbean_discard3 = "Discard a hand containing only 3 cards",
+			ach_cbean_discard4 = "Discard a hand containing only 4 cards",
+			ach_cbean_discard5 = "Discard a hand containing 5 cards",
+			ach_cbean_yorick = "Discard 23 cards in total",
+			ach_cbean_playhigh = "Play a high card",
+			ach_cbean_playpair = "Play a pair",
+			ach_cbean_playtwopair = "Play two pair",
+			ach_cbean_playthree = "Play three of a kind",
+			ach_cbean_playfour = "Play four of a kind",
+			ach_cbean_playflush = "Play a flush",
+			ach_cbean_playstraight = "Play a straight",
+			ach_cbean_playfstraight = "Play a straight flush",
+			ach_cbean_playgay = "Play a gay",
+			ach_cbean_playgayflush = "Play a gay flush",
+			ach_cbean_playbob = "Play a bobtail",
+			ach_cbean_playhouse = "Play a full house",
+			ach_cbean_playsecret = "Play a secret hand (House Rules not included)",
+			ach_cbean_playunscoring = "Play a hand with 1 unscoring card",
+			ach_cbean_playunscoring2 = "Play a hand with 2 unscoring cards",
+			ach_cbean_playunscoring3 = "Play a hand with 3 unscoring cards",
+			ach_cbean_playunscoring4 = "Play a hand with 4 unscoring cards",
+			ach_cbean_six7 = "Highlight 6-7 in that order",
+			ach_cbean_meaning = "Highlight 4-2 in that order",
+			ach_cbean_nice = "Highlight 6-9 in that order",
+			ach_cbean_nine10 = "Highlight 2-1 in that order",
+			ach_cbean_leet = "Highlight 1-3-3-7 in that order",
+			ach_cbean_boob = "Highlight 8-A-A-8 in that order",
+			ach_cbean_four20 = "Highlight 4-2-0 in that order",
+			ach_cbean_pi = "Highlight 3-1-4 in that order",
+			ach_cbean_sparta = "Highlight 3-A-A in that order",
+			ach_cbean_math = "Highlight 2-5-3 in that order",
+			ach_cbean_math2 = "Highlight 4-5 in that order",
+			ach_cbean_homestuck = "Highlight 4-1-3 in that order",
+			ach_cbean_nend = "Highlight 8-8-8 in that order",
+			ach_cbean_bhack = "Press B, stupid!",
+			ach_cbean_konami = "Use the Konami Code",
+			ach_cbean_teeny_blind = "Beat a teeny blind",
+			ach_cbean_small_blind = "Beat a small blind",
+			ach_cbean_big_blind = "Beat a big blind",
+			ach_cbean_boss_blind = "Beat a boss blind",
+			ach_cbean_ceo_blind = "Beat a CEO blind",
+			ach_cbean_beaten1 = "Beat a blind",
+			ach_cbean_beaten3 = "Beat 3 blinds",
+			ach_cbean_beaten6 = "Beat 6 blinds",
+			ach_cbean_tenprocent = "Wonderful Elephant reaches 10 mult!",
+			ach_cbean_thirtyprocent = "Wonderful Elephant reaches 30 mult!",
+			ach_cbean_halfway_mark = "Wonderful Elephant reaches 50 mult!",
+			ach_cbean_seventyprocent = "Wonderful Elephant reaches 70 mult!",
+			ach_cbean_ninetyprocent = "Wonderful Elephant reaches 90 mult!",
+			ach_cbean_slot1 = "Have the Wonderful Elephant in your first joker slot",
+			ach_cbean_slot2 = "Have the Wonderful Elephant in your second joker slot",
+			ach_cbean_slot3 = "Have the Wonderful Elephant in your third joker slot",
+			ach_cbean_slot4 = "Have the Wonderful Elephant in your fourth joker slot",
+			ach_cbean_tarot = "Use a tarot",
+			ach_cbean_planet = "Use a planet",
+			ach_cbean_spectral = "Use a spectral",
+			ach_cbean_combo = "Use a combo card",
+			ach_cbean_consumesquared = "Use a consumeable^2",
+			ach_cbean_blessing = "Hold a blessing while playing a hand",
+			ach_cbean_sticker_sheet = "Use a sticker sheet",
+			ach_cbean_zodiac = "Use a zodiac card",
+			ach_cbean_keys = "Hold a key while playing a hand",
+			ach_cbean_mutemusic = "Mute music",
+			ach_cbean_maxmusic = "Max out music",
+			ach_cbean_contrast = "Enable high contrast",
+			ach_cbean_consumefull = "Fill out consumable slots",
+			ach_cbean_jokerfull = "Fill out joker slots",
+			ach_cbean_ante = "Reach a new (or not so new) Ante",
+			ach_cbean_dollars5 = "Have 5 dollars",
+			ach_cbean_dollars10 = "Have 10 dollars",
+			ach_cbean_dollars25 = "Have 25 dollars",
+			ach_cbean_dollars40 = "Have 40 dollars",
+			ach_cbean_reroll = "Reroll shop",
+			ach_cbean_reroll5 = "Reroll shop 5 times",
+			ach_cbean_reroll10 = "Reroll shop 10 times",
+			ach_cbean_click = "Click on this Wonderful Elephant!",
+			ach_cbean_click5 = "Click on it 5 times!",
+			ach_cbean_click10 = "Click on it 10 times!",
+			ach_cbean_click20 = "Click on it 20 times!",
+			ach_cbean_click35 = "Click on it 35 times!",
+			ach_cbean_scoring1000 = "Score reaches 1000",
+			ach_cbean_scoring10000 = "Score reaches 10000",
+			ach_cbean_scoring50000 = "Score reaches 50000",
+			ach_cbean_scoring100000 = "Score reaches 100000",
+			ach_cbean_scoring200000 = "Score reaches 200000",
+			ach_cbean_complete = "Wonderful Elephant reaches 99 mult...",
+			ach_cbean_address_me = "Adressed it!"
+		},
+		achievement_names = {
+			ach_cbean_address_me = "Adress me",
+			ach_cbean_highlight = "Highlight of the Day!",
+			ach_cbean_highlight2 = "Highlight of the Two-Day!",
+			ach_cbean_highlight3 = "Highlight of The... Wednesday?",
+			ach_cbean_highlight4 = "Four of a Highlight!",
+			ach_cbean_highlight5 = "Highlight of the Week!",
+			ach_cbean_play = "Play a Hand!",
+			ach_cbean_play1 = "Is it High?",
+			ach_cbean_play2 = "Pair of Cards",
+			ach_cbean_play3 = "Three of Cards",
+			ach_cbean_play4 = "Four of Cards",
+			ach_cbean_play5 = "All the Cards!",
+			ach_cbean_discard = "Trash",
+			ach_cbean_discard2 = "Waste",
+			ach_cbean_discard3 = "Full Bin",
+			ach_cbean_discard4 = "Dump",
+			ach_cbean_discard5 = "Landfill",
+			ach_cbean_yorick = "Poor Yorick",
+			ach_cbean_playhigh = "High and Mighty?",
+			ach_cbean_playpair = "How romantic!",
+			ach_cbean_playtwopair = "Twice romantic!",
+			ach_cbean_playthree = "Card... X3",
+			ach_cbean_playfour = "Just the four of them",
+			ach_cbean_playflush = "Not playing toilet flush sound, sorry",
+			ach_cbean_playstraight = "Are you sure?",
+			ach_cbean_playfstraight = "Pick, asshole?",
+			ach_cbean_playgay = "How queerious...",
+			ach_cbean_playgayflush = "So queer!",
+			ach_cbean_playbob = "Not the cat, not the dog",
+			ach_cbean_playhouse = "House always wins",
+			ach_cbean_playsecret = "How did you know?",
+			ach_cbean_playunscoring = "Wow, wasting",
+			ach_cbean_playunscoring2 = "Double the waste",
+			ach_cbean_playunscoring3 = "You could just give those to me y'know",
+			ach_cbean_playunscoring4 = "4-1 in favor to waster",
+			ach_cbean_six7 = "6 7",
+			ach_cbean_meaning = "The Meaning of Life",
+			ach_cbean_nice = "Nice",
+			ach_cbean_nine10 = "What's 9+10?",
+			ach_cbean_leet = "LEET",
+			ach_cbean_boob = "Boob",
+			ach_cbean_four20 = "I have no drug jokes in me",
+			ach_cbean_pi = "Pie? Where?",
+			ach_cbean_sparta = "THIS IS SPARTA",
+			ach_cbean_math = "(2*125)+3",
+			ach_cbean_math2 = "3*(30/(15-13))",
+			ach_cbean_homestuck = "Homestuck",
+			ach_cbean_nend = "The end is never the end",
+			ach_cbean_bhack = "Press B, stupid!",
+			ach_cbean_konami = "Way too much contra",
+			ach_cbean_teeny_blind = "Baby Steps",
+			ach_cbean_small_blind = "Small step for a Joker",
+			ach_cbean_big_blind = "A Big Blind for the Jokerkind",
+			ach_cbean_boss_blind = "From space to gamble",
+			ach_cbean_ceo_blind = "Eat the rich",
+			ach_cbean_beaten1 = "YOU'RE WINNER", -- Intended
+			ach_cbean_beaten3 = "Triple kill",
+			ach_cbean_beaten6 = "Six of a Blind",
+			ach_cbean_tenprocent = "10%",
+			ach_cbean_thirtyprocent = "30%",
+			ach_cbean_halfway_mark = "Halfway Mark",
+			ach_cbean_seventyprocent = "70%",
+			ach_cbean_ninetyprocent = "90%",
+			ach_cbean_slot1 = "I am the first!",
+			ach_cbean_slot2 = "Silver medal",
+			ach_cbean_slot3 = "Bronce is good enough",
+			ach_cbean_slot4 = "Fourth? FOURTH?!",
+			ach_cbean_tarot = "To the Treasure Room!",
+			ach_cbean_planet = "Stargazing... No, that's not it",
+			ach_cbean_spectral = "What even are those? Honestly?",
+			ach_cbean_combo = "Combo un-breaker",
+			ach_cbean_consumesquared = "To the To the",
+			ach_cbean_blessing = "Achoo!",
+			ach_cbean_sticker_sheet = "Stick it!",
+			ach_cbean_zodiac = "At the moment of writing it's the horse",
+			ach_cbean_keys = "I've been looking for it everywhere!",
+			ach_cbean_mutemusic = "Missing out on divine sounds",
+			ach_cbean_maxmusic = "MAX IT OUT!",
+			ach_cbean_contrast = "Makes some contrast, huh?",
+			ach_cbean_consumefull = "Full Pockets",
+			ach_cbean_jokerfull = "Full Pockers",
+			ach_cbean_ante = "Up/Down The Ante!",
+			ach_cbean_dollars5 = "Pocket money",
+			ach_cbean_dollars10 = "More money",
+			ach_cbean_dollars25 = "Money power",
+			ach_cbean_dollars40 = "Monier money",
+			ach_cbean_reroll = "Show me more",
+			ach_cbean_reroll5 = "I said more!",
+			ach_cbean_reroll10 = "More!",
+			ach_cbean_click = "Click me!",
+			ach_cbean_click5 = "Click me more!",
+			ach_cbean_click10 = "Click me down!",
+			ach_cbean_click20 = "Click me to death!",
+			ach_cbean_click35 = "Clickaholic...",
+			ach_cbean_scoring1000 = "Low score",
+			ach_cbean_scoring10000 = "Over 9000!",
+			ach_cbean_scoring50000 = "Half a Hundred",
+			ach_cbean_scoring100000 = "Five zeroes",
+			ach_cbean_scoring200000 = "Double that",
+			ach_cbean_complete = "Wonderful completionist!",
+
+		},
+		blind_states = {},
+		challenge_names = {
+			c_cbean_sdown_inexcusable = "Inexcusable",
+		},
+		collabs = {},
+		dictionary = {
+			k_cbean_0chill_combopack            = "Combo Pack",
+
+			k_colon_architecture_pack           = "Architecture Pack",
+
+			cbean_colon_random_face             = "(Random face card)",
+			cbean_colon_random_achievable_tier2 = "(Random T2 in pool)",
+			cbean_colon_most_rank_in_deck       = "(Most common rank in deck)",
+			cbean_colon_least_suit_in_deck      = "(Least common suit in deck)",
+			cbean_colon_least_leveled           = "(Least leveled poker hand)",
+			cbean_colon_most_played             = "(Most played poker hand)",
+
+			sheet_most_held                     = "(Most held rank)",
+			sheet_most_played                   = "(Most played rank)",
+			regression_most_rank                = "(Most common rank)",
+			regression_least_rank               = "(Least common rank)",
+			regression_most_suit                = "(Most common suit)s",
+			regression_least_suit               = "(Least common suit)s",
+			demeter_random_rank                 = "[Rank]",
+			sdown_czodiac_add                   = "+1 Zodiac",
+			k_cbean_0chill_formation_ex         = "Formation Change!",
+			k_dispelled_ex                      = "Dispelled!",
+			k_strengthened_ex                   = "Strengthened!",
+			k_cbean_sdown_czodiacpack           = "Zodiac Pack",
+			k_cbean_sdown_blessingpack          = "Pantheon Pack",
+			ph_alley_wager                      = "Care to make a wager?",
+			ph_graveyard                        = "Where the dead sleeps",
+			ph_stationery                       = "We trade Stickers!",
+			ph_choose_biome_1                   = "Choose your",
+			ph_choose_biome_2                   = "Destination",
+			k_select_biome                      = "Select",
+			b_reroll                            = "Reroll",
+			cbean_stationery_accepts            = {
+				"Only accepts Jokers",
+				"with {C:attention}1 or more{} of the",
+				"{C:attention}Stickers{} listed below:",
+			},
+			cbean_stationery_gives              = {
+				"In exchange for the",
+				"listed {C:attention}Stickers{}, will",
+				"give the following:",
+			},
+			cbean_stationery_name               = {
+				"{f:cbean_fancy,s:2}Dr. Cattlebury{}",
+				"{C:inactive}(Full name: Bentley",
+				"{C:inactive}Reed Cattlebury)",
+			},
+			--#region Stationery rewards
+			cbean_reward_money                  = {
+				"Earn {C:money}$#1#{}",
+			},
+			cbean_reward_joker_edition          = {
+				"Creates a random Joker",
+				"with a random {C:dark_edition}Edition{}",
+				"{C:inactive}(Must have room)",
+			},
+			cbean_reward_shield                 = {
+				"Applies {V:1,T:cbean_shield}Shield{} to",
+				"selected Joker",
+			},
+			cbean_reward_plasma                 = {
+				"Applies {V:1,T:cbean_plasma}Plasma{} to",
+				"current Deck",
+			},
+			cbean_reward_black                  = {
+				"Applies {V:1,T:cbean_black}Black{} to",
+				"current Deck",
+			},
+			cbean_reward_painted                = {
+				"Applies {V:1,T:cbean_painted}Painted{} to",
+				"current Deck",
+			},
+			--#endregion
+			k_cbean_yma_keypack                 = "Key Pack",
+			cbean_0chill_blind_weakend          = "Blind Weakened!",
+			cbean_0chill_blind_strengthened     = "Blind Strengthened!",
+
+			k_colon_architecture                = "Architecture",
+			ph_no_colon_architecture            = "No architecture in progress",
+			ph_colon_architecture_started       = "Architecture in progress",
+			k_cbean_colon_started_ex            = "In Progress!",
+			k_cbean_colon_completed_ex          = "Constructed!",
+			k_cbean_colon_queued_ex             = "Queued!",
+			b_colon_architecture_cards          = "Architecture Cards",
+
+			k_yma_keys                          = "Keys",
+			b_yma_keys_cards                    = "Keys",
+			k_yma_key_plus_use                  = "Use",
+			k_cbean_yma_street                  = "Street",
+			k_hell_sac                          = "Sacrifice",
+			k_yma_chance_to_fail_key            = "(Chance to break)",
+			k_yma_chance_to_fail_belssing       = "(Chance to fail)",
+			k_yma_polish                        = "Polish",
+			k_yma_pray                          = "Pray",
+			k_yma_pray_fail                     = "Unanswered",
+			k_yma_polish_fail                   = "Salvaged",
+			k_yma_key_broke                     = "Broken",
+			k_yma_dreamland_upgrade             = "Upgrade",
+			k_yma_key_faded                     = "Faded",
+			k_yma_transform                     = "Transformed!",
+			k_yma_tag                           = "Tag!",
+			k_cbean_peashooter_1                = "Armless Zombie",
+			k_cbean_peashooter_2                = "Headless Zombie",
+			k_cbean_peashooter_3                = "Dead Zombie",
+			k_cbean_burned                      = "Burned!",
+			k_cbean_piss_ex                     = "Piss!",
+			k_cbean_mash_ex                     = "Mash!",
+			k_cbean_pboys_abet                  = "Bet",
+			k_cbean_unique_ex                   = "???",
+			k_cbean_balley_ex                   = "Alley!",
+			k_cbean_aexit_ex                    = "Exit",
+			k_cbean_pboys_arule                 = "Choose a Cup",
+			k_cbean_pboys_aplus                 = "+",
+			k_cbean_pboys_aminus                = "-",
+			k_cbean_nteam_doubled               = "Doubled!",
+			k_cbean_nteam_tripled               = "Tripled!",
+			k_cbean_nteam_halved                = "Halved!",
+			cbean_disable_animations            = "Disable Joker Animations",
+			k_cbean_stickersheet                = "Sticker Sheet",
+			b_cbean_stickersheet_cards          = "Sticker Sheets",
+			b_nteam_exchange                    = "Exchange",
+			k_plus_stickersheet                 = "+1 Sticker Sheet",
+			k_plus_soul                         = "+The Soul",
+			k_cbean_nteam_uhoh                  = "Uh oh!",
+			k_cbean_nteam_danger                = "Danger!",
+			k_cbean_nteam_randomized            = "Randomized!",
+			k_cbean_unknown                     = "Unknown",
+			k_jbill_leak                        = "Leak!",
+			k_jbill_ach                         = "Achievement Unlocked!",
+			k_jbill_metapack                    = "Meta Pack",
+			k_ihaveagun_ex                      = "I HAVE A GUN!",
+		},
+		high_scores = {},
+		labels = {
+			cbean_colon_tauic = "Tauic",
+
+			cbean_sd_frozen = "Frozen",
+
+			cbean_sdown_lunar_seal = "Lunar Seal",
+			cbean_yma_cipher_seal = "Cipher Seal",
+
+			cbean_mailed = "Mailed",
+			cbean_hooking = "Hooking",
+			cbean_flashcard = "Flash Card",
+			cbean_frowning = "Frowning",
+			cbean_plasma = "Plasma",
+			cbean_painted = "Painted",
+			cbean_black = "Black",
+			cbean_egg = "Egg",
+			cbean_minuscule = "Minuscule",
+			cbean_shuffle = "Shuffle",
+			cbean_green = "Green",
+			cbean_dangerous = "Dangerous",
+			cbean_heavy = "Heavy",
+			cbean_shield = "Shield",
+			cbean_nebula = "Nebula",
+			cbean_brainrot = "Brainrot",
+			cbean_hungry = "Hungry",
+			cbean_barren = "Barren",
+			cbean_spore = "Spore",
+			cbean_healing = "Healing",
+			cbean_misprinted = "Misprinted",
+			cbean_poor = "Poor",
+			cbean_square = "Square",
+
+
+			cbean_the_arm_sticker = "The Arm",
+			cbean_the_club_sticker = "The Club",
+			cbean_the_eye_sticker = "The Eye",
+			cbean_the_fish_sticker = "The Fish",
+			cbean_the_flint_sticker = "The Flint",
+			cbean_the_goad_sticker = "The Goad",
+			cbean_the_head_sticker = "The Head",
+			cbean_the_wall_sticker = "The Wall",
+			cbean_the_manacle_sticker = "The Manacle",
+			cbean_the_mark_sticker = "The Mark",
+			cbean_the_mouth_sticker = "The Mouth",
+			cbean_the_ox_sticker = "The Ox",
+			cbean_the_pillar_sticker = "The Pillar",
+			cbean_the_needle_sticker = "The Needle",
+			cbean_the_plant_sticker = "The Plant",
+			cbean_the_psychic_sticker = "The Psychic",
+			cbean_the_serpent_sticker = "The Serpent",
+			cbean_the_tooth_sticker = "The Tooth",
+			cbean_the_water_sticker = "The Water",
+			cbean_the_wheel_sticker = "The Wheel",
+			cbean_the_window_sticker = "The Window",
+			cbean_verdant_leaf_sticker = "Verdant Leaf",
+			cbean_amber_acorn_sticker = "Amber Acorn",
+			cbean_cerulean_bell_sticker = "Cerulean Bell",
+			cbean_violet_vessel_sticker = "Violet Vessel",
+			cbean_crimson_heart_sticker = "Crimson Heart",
+			cbean_man = "Man",
+
+			cbean_jaded = "Jaded",
+			cbean_banished = "Banished",
+			cbean_stick2 = "Sticker^2",
+		},
+		poker_hand_descriptions = {
+			["cbean_sdown_antistraight"] = {
+				"5 cards, with no two cards having the same",
+				"or consecutive ranks",
+			},
+			["cbean_sdown_antistraight_flush"] = {
+				"5 cards, all sharing the same suit, with no two cards",
+				"having the same or consecutive ranks",
+			},
+			["cbean_sdown_bobtail"] = {
+				"4 cards in a row (consecutive ranks) with",
+				"all cards sharing the same suit",
+			},
+
+			--House Rules Hands
+			["cbean_sdown_sacrifice"] = {
+				"(BUGGED, DOESN'T WORK RIGHT NOW)",
+				"A hand that contains five cards that have not been played before",
+				"Must have {C:attention}House Rules{} and {C:attention}Obelisk{} to play",
+			},
+
+			["cbean_sdown_8r8k"] = {
+				"A hand that contains at least two 8s,",
+				"with at least one of them being Lucky",
+				"Must have {C:attention}House Rules{} and {C:attention}8 Ball{} to play",
+			},
+
+			--how would a normal description even work what would you call this.
+			--"5 cards with no two having consecutive ranks. with consecutive ranks" how do you even describe it
+			["cbean_sdown_pansexual"] = {
+				"A hand that somehow contains both a Straight and a Gay",
+				"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
+			},
+
+			["cbean_sdown_pansexual_flush"] = {
+				"A hand that somehow contains a Straight a Gay and a Flush",
+				"Must have {C:attention}House Rules{} and {C:attention}Shortcut{} to play",
+			},
+
+			["cbean_sdown_stone_hand"] = {
+				"Daring today, aren't we?",
+				"Must have {C:attention}House Rules{} and {C:attention}Marble Joker or Stone Joker{} to play",
+			},
+
+			["cbean_sdown_true_home"] = {
+				"(NOT YET IMPLEMENTED)",
+				"Three cards with a matching rank and suit, and two cards with a different matching rank and suit",
+				"Must have {C:attention}House Rules{} and {C:attention}Seeing Double or {}",
+				"{C:attention}Diamond Shape With a Dot Inside{} to play",
+			},
+
+			["cbean_sdown_67"] = {
+				"A 6 and a 7. They may be played with up to 3 other unscored cards",
+				"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
+			},
+
+			["cbean_sdown_flush_67"] = {
+				"A 6 and a 7 sharing the same suit",
+				"They may be played with up to 3 other unscored cards",
+				"Must have {C:attention}House Rules{} and {C:attention}Sixth Sense or Mu Cube{} to play",
+			},
+
+			["cbean_sdown_flush_two"] = {
+				"2 cards that share the same rank and suit",
+				"They may be played with up to 3 other unscored cards",
+				"Must have {C:attention}House Rules{} and {C:attention}Jolly Joker or Sly Joker or The Duo{} to play",
+			},
+
+			["cbean_sdown_flush_three"] = {
+				"3 cards that share the same rank and suit",
+				"They may be played with up to 2 other unscored cards",
+				"Must have {C:attention}House Rules{} and {C:attention}Zany Joker or Wily Joker or The Trio{} to play",
+			},
+
+			["cbean_0chill_fibonacci"] = {
+				"A hand that contains an 8, 5, 3, 2, and an Ace",
+				"Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play",
+			},
+
+			["cbean_0chill_fibonacci_flush"] = {
+				"A hand that contains an 8, 5, 3, 2,",
+				"and an Ace sharing the same suit",
+				"Must have {C:attention}House Rules{} and {C:attention}Fibonacci{} to play",
+			},
+
+			["cbean_0chill_proceed"] = {
+				"PROCEED",
+				"Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play",
+			},
+
+			["cbean_0chill_deer_in_headlights"] = {
+				"A hand that contains only 1 King and no other cards",
+				"Must have {C:attention}House Rules{} and {C:attention}Asgore's Truck{} to play",
+				"{C:inactive}Driving in my truck, right after a beer...",
+			},
+
+			["cbean_0chill_favorite_year"] = {
+				"EV3RY BUDDY 'S FAVORITE [[Number 1 Rated Hand1997]]",
+				"Must have {C:attention}House Rules{} and {C:attention}Big Shot{} to play",
+			},
+
+			["cbean_0chill_favorite_year_flush"] = {
+				"A hand containing a [FAVORITE] Year and a Flush",
+				"Must have {C:attention}House Rules{} and {C:attention}Big Shot{} to play",
+				"{C:inactive}Sighting 1997",
+			},
+
+			["cbean_0chill_jackpot"] = {
+				"A hand that contains three 7s",
+				"Must have {C:attention}House Rules{} and ether {C:attention}Oops! All 6s{},",
+				"{C:attention}Nat 20{}, or {C:attention}Set of Dice{} to play",
+			},
+
+			["cbean_0chill_house_rules"] = {
+				"A hand that contains an Jack, 4, 3, 1,",
+				"Must have {C:attention}House Rules{} to play",
+			},
+			["cbean_wgrop_thorny_boquete"] = {
+				"A hand that contains either",
+				"{C:attention}3{} Light Suits and {C:attention}2{} Dark Suits or",
+				"{C:attention}2{} Light Suits and {C:attention}3{} Dark Suits",
+				"Must have {C:attention}House Rules{} and {C:attention}Withering Memory{} to play"
+			},
+		},
+		poker_hands = {
+			["cbean_sdown_antistraight"] = "Gay",    -- Athebyne | N/A | Athebyne
+			["cbean_sdown_antistraight_flush"] = "Gay Flush", -- Athebyne | N/A | Athebyne
+			["cbean_sdown_bobtail"] = "Bobtail",     -- Athebyne | N/A | Athebyne
+
+			--House Rules Hands
+			["cbean_sdown_sacrifice"] = "HR Sacrifice",
+			["cbean_sdown_8r8k"] = "HR Lucky 8r8k",
+			["cbean_sdown_pansexual"] = "HR Pansexual",
+			["cbean_sdown_pansexual_flush"] = "HR Pansexual Flush",
+			["cbean_sdown_stone_hand"] = "HR Yet Another 5 Stone Cards Hand",
+			["cbean_sdown_true_home"] = "HR True Home",
+			["cbean_sdown_67"] = "HR 67",
+			["cbean_sdown_flush_67"] = "HR Flush 67",
+			["cbean_sdown_flush_two"] = "HR Flush Tuah",
+			["cbean_sdown_flush_three"] = "HR Flush Threeah",
+			["cbean_0chill_fibonacci"] = "HR Fibonacci",
+			["cbean_0chill_fibonacci_flush"] = "HR Fibonacci Flush",
+			["cbean_0chill_house_rules"] = "HR House Rules",
+			["cbean_0chill_proceed"] = "HR PROCEED",
+			["cbean_0chill_deer_in_headlights"] = "HR Deer in Headlights",
+			["cbean_0chill_favorite_year"] = "HR [Favorite] Year",
+			["cbean_0chill_favorite_year_flush"] = "HR [Favorite] Year Flush",
+			["cbean_0chill_jackpot"] = "HR Jackpot!",
+			["cbean_wgrop_thorny_boquete"] = "HR Thorny Bouquet",
+		},
+		quips = {
+			cbean_pboys_hi_1 = {
+				"I hope you'll",
+				"be interested",
+				"in my game!",
+			},
+			cbean_pboys_hi_2 = {
+				"Hello there!",
+			},
+			cbean_pboys_hi_3 = {
+				"Let's play a game!",
+			},
+			cbean_pboys_hi_4 = {
+				"Top of the",
+				"morning to you!",
+			},
+			cbean_pboys_hi_5 = {
+				"Hello traveler!",
+			},
+			cbean_pboys_hi_6 = {
+				"Hi, I hope you",
+				"brought good",
+				"luck with you!",
+			},
+			cbean_pboys_hi_7 = {
+				"Welcome back alley!",
+			},
+			cbean_pboys_win_1 = {
+				"{C:dark_edition}YOU WIN!",
+				"{C:inactive}sadly...",
+			},
+			cbean_pboys_win_2 = {
+				"My disappearing",
+				"trick didn't work...",
+			},
+			cbean_pboys_win_3 = {
+				"It was",
+				"beginner's luck!",
+			},
+			cbean_pboys_win_4 = {
+				"I need to shuffle",
+				"{S:1.1,C:attention,E:2}faster",
+			},
+			cbean_pboys_win_5 = {
+				"You won?",
+				"{C:inactive}oh man",
+			},
+			cbean_pboys_win_6 = {
+				"My debts are growing",
+			},
+			cbean_pboys_win_7 = {
+				"...",
+			},
+			cbean_pboys_lose_1 = {
+				"Better luck",
+				"next time",
+			},
+			cbean_pboys_lose_2 = {
+				"99 percent of",
+				"gamblers stop right",
+				"before winning big",
+			},
+			cbean_pboys_lose_3 = {
+				"You cant stop",
+				"losing",
+			},
+			cbean_pboys_lose_4 = {
+				"Wheel of fortune",
+				"probably never",
+				"works for you!",
+			},
+			cbean_pboys_lose_5 = {
+				"Wait, Did I win?",
+			},
+			cbean_pboys_lose_6 = {
+				"Money Money Money",
+			},
+			cbean_pboys_lose_7 = {
+				"!!!",
+			},
+			cbean_pboys_tutorial_1 = {
+				"This is {C:attention}Back Alley!",
+			},
+			cbean_pboys_tutorial_2 = {
+				"You can {C:attention}bet{}",
+				"your money here.",
+			}, --Reworded the tutorial a bit -0chill
+			cbean_pboys_tutorial_3 = {
+				"Find the {C:attention}ball{}",
+				"after I {C:attention}shuffle{}",
+				"these cups."
+			},
+			cbean_pboys_tutorial_4 = {
+				"Choosing the correct cup",
+				"will {C:attention}double{} the bet.",
+			},
+			cbean_pboys_tutorial_5 = {
+				"Otherwise you will",
+				"{C:attention}lose{} everything.",
+			},
+			cbean_pboys_tutorial_6 = {
+				"The higher the bet, the",
+				"{C:attention}faster{} I'll shuffle.",
+			},
+			cbean_pboys_tutorial_7 = {
+				"{C:attention}Good luck!",
+			},
+			cbean_nteam_tutorial_0 = {
+				"Click me to progress",
+				"through the tutorial of",
+				"the {C:attention}Stationery Shop{}",
+				"{C:inactive}(0/10)",
+			},
+			cbean_nteam_tutorial_1 = {
+				"Welcome to the {C:attention}Stationery",
+				"{C:attention}Shop{}, where you can trade",
+				"{C:attention}Stickers{} for various rewards.",
+				"{C:inactive}(1/10)",
+			},
+			cbean_nteam_tutorial_2 = {
+				"First, select exactly",
+				"{C:attention}1{} Joker to begin the",
+				"exchange process.",
+				"{C:inactive}(2/10)",
+			},
+			cbean_nteam_tutorial_3 = {
+				"If the selected Joker",
+				"has {C:attention}1 or more{} of the",
+				"{C:attention}Stickers{} listed to the right...",
+				"{C:inactive}(3/10)",
+			},
+			cbean_nteam_tutorial_4 = {
+				"...you can press the",
+				"{C:attention}Exchange{} button to remove",
+				"all listed {C:attention}Stickers{} and...",
+				"{C:inactive}(4/10)",
+			},
+			cbean_nteam_tutorial_5 = {
+				"...receive all the",
+				"rewards listed below",
+				"the accepted {C:attention}Stickers{}.",
+				"{C:inactive}(5/10)",
+			},
+			cbean_nteam_tutorial_6 = {
+				"If a reward states",
+				"that a {C:attention}Sticker{} will be",
+				"applied and the listed...",
+				"{C:inactive}(6/10)",
+			},
+			cbean_nteam_tutorial_7 = {
+				"...target(s) already has",
+				"that {C:attention}Sticker{}, then the",
+				"{C:attention}Sticker{} won't be reapplied.",
+				"{C:inactive}(7/10)",
+			},
+			cbean_nteam_tutorial_8 = {
+				"Exchanging {C:attention}Stickers",
+				"in the {C:attention}Stationery",
+				"{C:attention}Shop{} will reroll...",
+				"{C:inactive}(8/10)",
+			},
+			cbean_nteam_tutorial_9 = {
+				"the {C:attention}Stickers{} this",
+				"Shop accepts and",
+				"all given rewards.",
+				"{C:inactive}(9/10)",
+			},
+			cbean_nteam_tutorial_10 = {
+				"You can also spend",
+				"{C:money}money{} to reroll the",
+				"{C:attention}Stationery Shop{}.",
+				"{C:inactive}(10/10)",
+			},
+		},
+		ranks = {},
+		suits_plural = {},
+		suits_singular = {},
+		tutorial = {},
+		v_dictionary = {
+			coldbean_team = { "Team: #1#" },
+			coldbean_idea = { "Idea: #1#" },
+			coldbean_art = { "Art: #1#" },
+			coldbean_code = { "Code: #1#" },
+			a_burned_cards = "#1# Cards",
+		},
+		v_text = {
+			--TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
+			--be that modifiable if nobody else uses this. In which case who cares tbh.
+			ch_c_cbean_sdown_all_blinds_are = {
+				"{C:attention}All Blinds{} are {C:attention}The Folly",
+			},
+		},
+	},
 }

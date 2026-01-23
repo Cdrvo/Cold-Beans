@@ -34,7 +34,7 @@ elseif _type == 'Joker' and next(SMODS.find_card("j_cbean_yma_seeing_stars")) th
 '''
 
 # Before before context
-[[patches]] 
+[[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
 pattern = '''
@@ -70,7 +70,7 @@ match_indent = true
 
 
 # Resets temporary consumeable cards
-[[patches]] 
+[[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = "-- TARGET: evaluate your own general effects"
@@ -105,6 +105,21 @@ if context.cardarea == G.jokers then
             SMODS.calculate_effect({message = localize('k_yma_key_faded') }, v)
         end
     end
+    for k, v in pairs(G.jokers.cards) do
+        if v.ability and v.ability.yma_temp_key and context[v.ability.yma_context] then
+            local key = v.ability.yma_temp_key
+            v.ability.yma_temp_key = nil
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("k_reset"), colour = G.C.FILTER})
+                    YMA_reroll_card(v, key, v.ability.yma_temp_set, nil, nil, v.ability.yma_temp_ability_table, true)
+                    return true
+                end)
+            }))
+        end
+    end
 end
 if context.ending_shop and G.GAME.cbean.patience_quest then
     G.GAME.cbean.patience_quest = false
@@ -120,7 +135,7 @@ end
 # end
 
 # Before After context
-[[patches]] 
+[[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
 pattern = '''
@@ -238,7 +253,7 @@ cbean = {
     patience_quest = false,
 },
 '''
-match_indent = true 
+match_indent = true
 
 # [Side Quests] Makes cardarea work with calculate function
 [[patches]]
@@ -284,7 +299,7 @@ payload = '''
         G.GAME.cbean_quest_complete = false
     end
 '''
-match_indent = true 
+match_indent = true
 
 # [Side Quests] - Default Pool
 [[patches]]

@@ -17,3 +17,9 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "yma_team_atlas",
+    path = "5_Yeah!MostlyArtists/team_joker.png",
+    px = 71,
+    py = 95,
+})
