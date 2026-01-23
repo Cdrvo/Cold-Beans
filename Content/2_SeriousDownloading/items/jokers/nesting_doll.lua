@@ -5,7 +5,7 @@ SMODS.Joker {
         extra = { repetitions = 1 }
     },
     atlas = "sdown_joker_atlas",
-    pos = { x = 6, y = 0 },
+    pos = { x = 5, y = 0 },
     loc_vars = function(self, _, card)
         return {
             vars = {
@@ -39,7 +39,7 @@ SMODS.Joker {
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
-        art =  "FlameThrowerFIM",
+        art = "FlameThrowerFIM",
         code = "Athebyne",
     }
 }
