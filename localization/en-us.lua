@@ -1801,7 +1801,7 @@ return {
 					},
 					{
 						"All {C:chips}XChips{} sources are",
-						"{C:red}halfed{}"
+						"{C:red}halved{}"
 					}
 				},
 			},
@@ -6426,6 +6426,7 @@ return {
 			b_colon_architecture_cards          = "Architecture Cards",
 
 			k_yma_keys                          = "Key",
+			k_failed_ex							= "Failed",
 			k_yma_tboi_items                    = "Item",
 			b_yma_keys_cards                    = "Keys",
 			k_yma_key_plus_use                  = "Use",
