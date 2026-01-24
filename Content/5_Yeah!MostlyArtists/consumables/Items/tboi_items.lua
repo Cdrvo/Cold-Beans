@@ -86,40 +86,59 @@ YMA.TBOI_ITEMS {
     }
 }
 --Spoon Bender
---YMA.TBOI_ITEMS {
---    key = "yma_tboi_spoon_bender",
---    set = "yma_tboi_items",
---    order = 3,
---    quaility = 3,
---
---    loc_vars = function(self, info_queue, card)
---        return {
---            vars = {
---                
---            }
---        }
---    end,
---
---    atlas = 'yma_tboi_atlas',
---    pos = { x = 0, y = 0 },
---    soul_pos = { x = 6, y = 0 },
---
---    config = {
---        extra = {
---            
---        }
---    },
---
---    calculate = function(self, card, context)
---        
---    end,
---    beans_credits = {
---        team = { "Yeah! Mostly Artists" },
---        idea = "RattlingSnow353",
---        art = "RattlingSnow353",
---        code = "RattlingSnow353",
---    }
---}
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_spoon_bender",
+    set = "yma_tboi_items",
+    order = 3,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 0 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.modify_pseudorandom_result then  
+            card.ability.yma_backend_fail = true
+            if not context.result and context.trigger_obj and not context.trigger_obj.ability.yma_backend_fail then
+                card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_failed_ex'), colour = G.C.RED})
+                card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                if SMODS.pseudorandom_probability(card, 'yma_tboi_spoon_bender_1', context.numerator, context.denominator) then
+                    return {
+                        result = true
+                    }
+                else
+                    card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_failed_ex'), colour = G.C.RED})
+                    card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                    if SMODS.pseudorandom_probability(card, 'yma_tboi_spoon_bender_2', context.numerator, context.denominator) then
+                        return {
+                            result = true
+                        }
+                    end
+                end
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
 --Cricket's Head
 YMA.TBOI_ITEMS {
     key = "yma_tboi_crickets_head",
@@ -156,7 +175,9 @@ YMA.TBOI_ITEMS {
         local temp_context = context.yma
         if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
             temp_context.effects[temp_context.effect_type] = ((temp_context.effects[temp_context.effect_type] - 1) * card.ability.extra.xmult) + 1
-            temp_context.effects['message'] = localize{type='variable',key='a_xmult',vars={temp_context.effects[temp_context.effect_type]}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
+            if temp_context.effects['message'] then
+                temp_context.effects['message'] = localize{type='variable',key='a_xmult',vars={temp_context.effects[temp_context.effect_type]}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
+            end
         end
         if context.joker_main then
             return {
