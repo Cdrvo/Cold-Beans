@@ -1790,6 +1790,44 @@ return {
 					"{X:chips,C:white}X#1#{} Chips",
 				},
 			},
+			ti_cbean_yma_tboi_inner_eye = {
+				name = {
+					"The Inner Eye",
+				},
+				text = {
+					{
+						"All {C:chips}XChips{} sources trigger",
+						"two {C:attention}additional{} times"
+					},
+					{
+						"All {C:chips}XChips{} sources are",
+						"{C:red}halfed{}"
+					}
+				},
+			},
+			ti_cbean_yma_tboi_spoon_bender = {
+				name = {
+					"Spoon Bender",
+				},
+				text = {
+					"Failed {C:green}probabilitys{} retrigger",
+					"{C:attention}twice{}"
+				},
+			},
+			ti_cbean_yma_tboi_crickets_head = {
+				name = {
+					"Cricket's Head",
+				},
+				text = {
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"All other {C:mult}XMult{} sources are",
+						"multiplied by {C:red}X#1#{}"
+					}
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
