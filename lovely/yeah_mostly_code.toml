@@ -299,6 +299,16 @@ end
 '''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''SMODS.post_prob[#SMODS.post_prob+1] = {pseudorandom_result = true, result = result, trigger_obj = trigger_obj, numerator = numerator, denominator = denominator, identifier = identifier or seed}'''
+position = "before"
+payload = '''
+result = SMODS.calculate_context({modify_pseudorandom_result = true, result = result, trigger_obj = trigger_obj, numerator = numerator, denominator = denominator, identifier = identifier or seed})
+'''
+match_indent = true
+
 
 # Fixes problem of area not existing
 [[patches]]
