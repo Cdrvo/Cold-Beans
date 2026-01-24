@@ -305,10 +305,77 @@ target = '=[SMODS _ "src/utils.lua"]'
 pattern = '''SMODS.post_prob[#SMODS.post_prob+1] = {pseudorandom_result = true, result = result, trigger_obj = trigger_obj, numerator = numerator, denominator = denominator, identifier = identifier or seed}'''
 position = "before"
 payload = '''
-result = SMODS.calculate_context({modify_pseudorandom_result = true, result = result, trigger_obj = trigger_obj, numerator = numerator, denominator = denominator, identifier = identifier or seed})
+local flags = {}
+local new_result = nil
+SMODS.calculate_context({modify_pseudorandom_result = true, result = result, trigger_obj = trigger_obj, numerator = numerator, denominator = denominator, identifier = identifier or seed}, flags)
+for _, eval in pairs(flags) do
+    for key, eval2 in pairs(eval) do
+        if type(eval2) == 'table' then
+            for key2, _result in pairs(eval2) do
+                if key2 == 'new_result' then new_result = _result end
+            end
+        end
+    end
+end
+if new_result then result = new_result end
 '''
 match_indent = true
 
+[[patches]] 
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "draw_card(G.play,G.discard, it*100/play_count,'down', false, v)"
+position = "at"
+payload = '''
+local yma_to_hand = {}
+            
+if G.jokers ~= nil then
+    for _, joker in ipairs(G.jokers.cards) do
+        if joker.ability.extra and type(joker.ability.extra) == 'table' and joker.ability.extra.yma and joker.ability.extra.yma.to_hand and joker.ability.extra.yma.to_hand.cards and not joker.debuff then
+            for __, card in ipairs(joker.ability.extra.yma.to_hand.cards) do
+                table.insert(yma_to_hand, card)
+            end
+        end
+    end
+end
+
+if G.tboi_items ~= nil then
+    for _, joker in ipairs(G.tboi_items.cards) do
+        if joker.ability.extra and type(joker.ability.extra) == 'table' and joker.ability.extra.yma and joker.ability.extra.yma.to_hand and joker.ability.extra.yma.to_hand.cards and not joker.debuff then
+            for __, card in ipairs(joker.ability.extra.yma.to_hand.cards) do
+                table.insert(yma_to_hand, card)
+            end
+        end
+    end
+end
+
+if G.play ~= nil then
+    for _, play_card in ipairs(G.play.cards) do
+        if play_card.ability.extra and type(play_card.ability.extra) == 'table' and play_card.ability.extra.yma and play_card.ability.extra.yma.to_hand and play_card.ability.extra.yma.to_hand.cards and not play_card.debuff then
+            if play_card.ability.extra.yma.to_hand.cards == true then
+                table.insert(yma_to_hand, play_card)
+            end
+        end
+    end
+end
+            
+if #yma_to_hand > 0 then
+    local trigger = false
+    for _, yma_to_hand in ipairs(yma_to_hand) do
+        if v == yma_to_hand then
+            trigger = true
+        end
+    end
+    if trigger then
+        draw_card(G.play,G.hand, it*100/play_count,'up', true, v)
+    else
+        draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
+    end
+else
+    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
+end
+'''
+match_indent = true
 
 # Fixes problem of area not existing
 [[patches]]
