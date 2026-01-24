@@ -1780,6 +1780,17 @@ return {
 				},
 			},
 		},
+		--Tboi items
+		yma_tboi_items = {
+			ti_cbean_yma_tboi_sad_onion = {
+				name = {
+					"The Sad Onion",
+				},
+				text = {
+					"{X:chips,C:white}X#1#{} Chips",
+				},
+			},
+		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
 				name = "Piss Card",
@@ -6376,7 +6387,8 @@ return {
 			k_cbean_colon_queued_ex             = "Queued!",
 			b_colon_architecture_cards          = "Architecture Cards",
 
-			k_yma_keys                          = "Keys",
+			k_yma_keys                          = "Key",
+			k_yma_tboi_items                    = "Item",
 			b_yma_keys_cards                    = "Keys",
 			k_yma_key_plus_use                  = "Use",
 			k_cbean_yma_street                  = "Street",
