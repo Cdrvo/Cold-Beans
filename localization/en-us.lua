@@ -1828,6 +1828,15 @@ return {
 					}
 				},
 			},
+			ti_cbean_yma_tboi_my_reflection = {
+				name = {
+					"My Reflection",
+				},
+				text = {
+					"{C:attention}Played{} cards have a {C:green}#1# in #2#",
+					"chance to {C:attention}return{} to hand"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
@@ -3153,7 +3162,7 @@ return {
 				name = "Jhett the Poltergeist",
 				text = {
 					{ "{C:red}Destroy{} all {C:attention}Pale Remnant{} cards",
-						"in {C:attnetion}Hand{} after scoring" },
+						"in {C:attention}Hand{} after scoring" },
 					{ "Gain {C:white,X:red}X#1#{} {C:attention}for every{} held",
 						"{C:attention}Pale Remnant{} card at",
 						"the start of the hand when",
