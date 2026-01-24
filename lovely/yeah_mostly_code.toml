@@ -22,6 +22,19 @@ if next(SMODS.find_card("c_cbean_yma_enigma")) then
 end
 '''
 
+# Stop drawing
+[[patches]]
+[patches.pattern]
+target = 'cardarea.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+(self.config.type == 'deck' and self ~= G.deck) or
+'''
+payload = '''
+(self.config.type == 'tboi_items_hide') or
+'''
+
 # Pool fix for Seeing Stars
 [[patches]]
 [patches.pattern]
@@ -265,6 +278,9 @@ payload = '''
     if G.side_quests then
         table.insert(t, G.side_quests)
     end
+    if G.tboi_items then
+        table.insert(t, G.tboi_items)
+    end
     if G.dreamlands_consumeable_card_holder then
         table.insert(t, 1, G.dreamlands_consumeable_card_holder)
     end
@@ -311,3 +327,17 @@ payload = '''
 elseif _type == 'yma_quest' then _pool[#_pool + 1] = "q_cbean_yma_credit_card"
 '''
 match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "-- TARGET: evaluate your own general effects"
+position = "before"
+match_indent = true
+payload = '''
+if context.ending_shop or context.cashing_out then
+    if CM.states.slot_visible == -1 then
+        G.FUNCS.toggle_jokers_items()
+    end
+end
+'''
