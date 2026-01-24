@@ -116,16 +116,16 @@ YMA.TBOI_ITEMS {
             if not context.result and context.trigger_obj and not context.trigger_obj.ability.yma_backend_fail then
                 card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_failed_ex'), colour = G.C.RED})
                 card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
-                if SMODS.pseudorandom_probability(card, 'yma_tboi_spoon_bender_1', context.numerator, context.denominator) then
+                if pseudorandom('yma_tboi_spoon_bender_1') < context.numerator / context.denominator then
                     return {
-                        result = true
+                        new_result = true
                     }
                 else
                     card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_failed_ex'), colour = G.C.RED})
                     card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
-                    if SMODS.pseudorandom_probability(card, 'yma_tboi_spoon_bender_2', context.numerator, context.denominator) then
+                    if pseudorandom('yma_tboi_spoon_bender_2') < context.numerator / context.denominator then
                         return {
-                            result = true
+                            new_result = true
                         }
                     end
                 end
@@ -189,6 +189,59 @@ YMA.TBOI_ITEMS {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--My Reflection
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_my_reflection",
+    set = "yma_tboi_items",
+    order = 4,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_my_reflection')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 1 },
+
+    config = {
+        extra = {
+            odds = 3,
+            yma = {
+                to_hand = {
+                    cards = nil
+                }
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main and context.full_hand then
+            card.ability.extra.yma.to_hand.cards = nil
+            local cards = {}
+            local i = 1
+            for k, v in pairs(context.full_hand) do
+                if SMODS.pseudorandom_probability(card, 'yma_tboi_my_reflection'..i, 1, card.ability.extra.odds) then
+                    cards[#cards+1] = v
+                end
+                print()
+                i = i + 1
+            end
+            card.ability.extra.yma.to_hand.cards = cards
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
         art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
