@@ -819,3 +819,82 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Wire Coat Hanger
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_wire_coat_hanger",
+    set = "yma_tboi_items",
+    order = 21,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xchips,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 1 },
+
+    config = {
+        extra = {
+            xchips = 5,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Lucky Foot
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_lucky_foot",
+    set = "yma_tboi_items",
+    order = 22,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.probability,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 2 },
+
+    config = {
+        extra = {
+            probability = 1,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.mod_probability and context.trigger_obj then
+            return {
+                numerator = context.numerator + card.ability.extra.probability,
+                denominator = context.denominator
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
