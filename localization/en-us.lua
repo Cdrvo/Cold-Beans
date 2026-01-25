@@ -2050,6 +2050,29 @@ return {
 					"{C:attention}played{} cards chip vaule"
 				},
 			},
+			ti_cbean_yma_tboi_growth_hormones = {
+				name = {
+					"Growth Hormones",
+				},
+				text = {
+					{
+						"{C:green}#1# in #2#{} chance to {C:attention}retrigger",
+						"each {C:attention}played{} card"
+					},
+					{
+						"{C:dark_edition}+#3#%{} Score",
+					}
+				},
+			},
+			ti_cbean_yma_tboi_x_ray_vision = {
+				name = {
+					"X-Ray Vision",
+				},
+				text = {
+					"{C:attention}Prevents{} cards from being",
+					"{C:attention}flipped",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
