@@ -2206,7 +2206,25 @@ return {
 					"{C:attention}-#1#{} Ante, {C:mult}+#2#{} Mult"
 				},
 			},
-			
+			ti_cbean_yma_tboi_whore_babylon = {
+				name = {
+					"Whore of Babylon",
+				},
+				text = {
+					"{X:mult,C:white}X#1#{}X#3#{} Mult and {C:green}#1# in #2#{} chance",
+					"to {C:attention}retrigger{} each card on",
+					"last played {C:blue}hand"
+				},
+			},
+			ti_cbean_yma_tboi_lump_coal = {
+				name = {
+					"A Lump of Coal",
+				},
+				text = {
+					"{C:attention}Played{} cards {C:chips}Chip{} value is",
+					"multipled by their {C:attention}position",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
