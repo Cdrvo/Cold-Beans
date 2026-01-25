@@ -1715,3 +1715,89 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--The Parasite
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_parasite",
+    set = "yma_tboi_items",
+    order = 42,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 7, y = 3 },
+
+    config = {
+        extra = {
+            effect_table = {
+                ['chips'] = true,
+                ['h_chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local key = temp_context.effect_type
+            local amt = math.floor(temp_context.effects[key] / 2)
+            SMODS.calculate_individual_effect(temp_context.effects, temp_context.card, key, amt, temp_context.from_edition)
+            SMODS.calculate_individual_effect(temp_context.effects, temp_context.card, key, amt, temp_context.from_edition)
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Money = Power
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_money_power",
+    set = "yma_tboi_items",
+    order = 43,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult,
+                math.max(0,to_big(G.GAME.dollars) * card.ability.extra.xmult) + 1
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 8, y = 3 },
+
+    config = {
+        extra = {
+            xmult = 0.1,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local total = math.max(0,to_big(G.GAME.dollars) * card.ability.extra.xmult) + 1
+            return {
+                xmult = total
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
