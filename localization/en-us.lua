@@ -2164,6 +2164,31 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{} {C:inactive}Mult)",
 				},
 			},
+			ti_cbean_yma_tboi_moms_knife = {
+				name = {
+					"Mom's Knife",
+				},
+				text = {
+					{
+						"All {C:chips}XChips{} sources",
+						"are {C:attention}multiplied{} by {C:attention}#1#",
+					},
+					{
+						"All {C:chips}+Chips{} sources ",
+						"are {C:attention}divided{} by {C:attention}#2#",
+					}
+				},
+			},
+			ti_cbean_yma_tboi_dead_bird = {
+				name = {
+					"Dead Bird",
+				},
+				text = {
+					"{C:attention}Two{} random {C:attention}playing cards",
+					"are {C:attention}added{} to each {C:attention}played{}",
+					"{C:blue}hand{} after the {C:attention}first",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
