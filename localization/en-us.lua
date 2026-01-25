@@ -2013,6 +2013,25 @@ return {
 					"be {C:attention}used"
 				},
 			},
+			ti_cbean_yma_tboi_steam_sale = {
+				name = {
+					"Steam Sale",
+				},
+				text = {
+					"All cards and packs in",
+					"shop are {C:attention}#1#%{} off",
+				},
+			},
+			ti_cbean_yma_tboi_sister_maggy = {
+				name = {
+					"Sister Maggy",
+				},
+				text = {
+					"{C:attention}Two{} rankless {C:chips}Bonus{} cards",
+					"are {C:attention}added{} to each {C:attention}played",
+					"hand",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
