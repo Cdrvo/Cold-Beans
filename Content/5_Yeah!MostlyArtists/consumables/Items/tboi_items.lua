@@ -388,6 +388,72 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--The Ladder
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_ladder",
+    set = "yma_tboi_items",
+    order = 9,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 1},
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.poker_hands and context.scoring_hand then
+            local new_results = {}
+            for k, _hand in pairs(SMODS.PokerHands) do
+                if SMODS.is_poker_hand_visible(k) then
+	                new_results[#new_results+1] = {hand = k, order = _hand.order}
+                end
+            end
+            table.sort(new_results, function(a,b) return a.order > b.order end)
+            local new_results = {}
+            local hand1 = nil
+            local hand2 = nil
+            local var = context.scoring_name
+            local trigger = false
+            for k, v in pairs(new_results) do
+	            if trigger then
+		             if not hand1 then
+			            hand1 = v.hand
+		             elseif not hand2 then
+			            hand2 = v.hand
+		             end
+	            end
+	            if v.hand == var then
+		            trigger = true
+	            end
+            end
+            if hand1 and not next(context.poker_hands[hand1]) then
+                table.insert(context.poker_hands[hand1], context.scoring_hand)
+            end
+            if hand2 and not next(context.poker_hands[hand2]) then
+                table.insert(context.poker_hands[hand2], context.scoring_hand)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
 --1up!
 YMA.TBOI_ITEMS {
     key = "yma_tboi_one_up",
@@ -611,6 +677,53 @@ YMA.TBOI_ITEMS {
         ease_ante(-card.ability.extra.ante)
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Skeleton Key
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_skeleton_key",
+    set = "yma_tboi_items",
+    order = 14,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 0 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    local cardd = create_card('yma_keys',G.consumeables, nil, nil, nil, nil, nil, 'yma_tboi_skeleton_key')
+                    cardd:set_edition({ negative = true })
+                    cardd:add_to_deck()
+                    G.consumeables:emplace(cardd)
+                    return true
+                end)
+            }))
+        end
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
