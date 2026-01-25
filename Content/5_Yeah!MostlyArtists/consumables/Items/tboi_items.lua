@@ -1184,3 +1184,106 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Technology
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_technology",
+    set = "yma_tboi_items",
+    order = 30,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.x_val,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 10, y = 2 },
+
+    config = {
+        extra = {
+            x_val = 0.75,
+            effect_table = {
+                ['x_chips'] = true,
+                ['xchips'] = true,
+                ['Xchips'] = true,
+                ['Xchip_mod'] = true,
+                ['x_chip_mod'] = true
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local amt = ((temp_context.effects[temp_context.effect_type] - 1) * card.ability.extra.x_val) + 1
+            temp_context.effects[temp_context.effect_type] = 1
+            temp_context.effects['x_mult'] = amt
+            if temp_context.effects['message'] then
+                temp_context.effects['message'] = localize{type='variable',key='a_xmult',vars={amt}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Chocolate Milk
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_chocolate_milk",
+    set = "yma_tboi_items",
+    order = 31,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.x_val,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 3 },
+
+    config = {
+        extra = {
+            x_val = 0.05,
+            amt = 0,
+            effect_table = {
+                ['chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            if temp_context.card.area == G.play then
+                local key = temp_context.effect_type
+                card.ability.extra.amt = card.ability.extra.amt + (temp_context.effects[key] * card.ability.extra.x_val)
+            end
+        end
+        if context.joker_main then
+            local amt = card.ability.extra.amt + 1
+            card.ability.extra.amt = 0
+            return {
+                xchips = amt
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
