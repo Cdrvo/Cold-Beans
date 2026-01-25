@@ -2120,6 +2120,30 @@ return {
 					}
 				},
 			},
+			ti_cbean_yma_tboi_robo_baby = {
+				name = {
+					"Robo-Baby",
+				},
+				text = {
+					"{C:attention}Two{} rankless {C:red}Mult{} cards are",
+					"{C:attention}added{} to each {C:attention}played{} hand",
+				},
+			},
+			ti_cbean_yma_tboi_halo = {
+				name = {
+					"The Halo",
+				},
+				text = {
+					{
+						"{C:green}#1# in #2#{} chance to {C:attention}retrigger",
+						"each {C:attention}played{} card"
+					},
+					{
+						"{C:attention}-#3#{} Ante, {X:chips,C:white}X#4#{} Chips,",
+						"{C:dark_edition}+#5#%{} Score",
+					}
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
