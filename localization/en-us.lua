@@ -2189,6 +2189,24 @@ return {
 					"{C:blue}hand{} after the {C:attention}first",
 				},
 			},
+			ti_cbean_yma_tboi_brimstone = {
+				name = {
+					"Brimstone",
+				},
+				text = {
+					"All {C:chips}+Chips{} sources become",
+					"{C:mult}XMult{} with {X:attention,C:white}X#1#{} Values"
+				},
+			},
+			ti_cbean_yma_tboi_blood_bag = {
+				name = {
+					"Blood Bag",
+				},
+				text = {
+					"{C:attention}-#1#{} Ante, {C:mult}+#2#{} Mult"
+				},
+			},
+			
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
