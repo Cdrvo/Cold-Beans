@@ -1905,3 +1905,98 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Brimstone
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_brimstone",
+    set = "yma_tboi_items",
+    order = 46,
+    quaility = 4,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.x_val,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 11, y = 3 },
+
+    config = {
+        extra = {
+            x_val = 0.05,
+            effect_table = {
+                ['chips'] = true,
+                ['h_chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local amt = (temp_context.effects[temp_context.effect_type] * card.ability.extra.x_val) + 1
+            temp_context.effects[temp_context.effect_type] = nil
+            temp_context.effects['x_mult'] = amt
+            if temp_context.effects['message'] then
+                temp_context.effects['message'] = localize{type='variable',key='a_xmult',vars={amt}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Blood Bag
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_blood_bag",
+    set = "yma_tboi_items",
+    order = 47,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.ante,
+                card.ability.extra.mult,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 4 },
+
+    config = {
+        extra = {
+            ante = 1,
+            mult = 10,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
