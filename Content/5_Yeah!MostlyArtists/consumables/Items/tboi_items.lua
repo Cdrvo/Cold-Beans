@@ -657,3 +657,77 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Dinner
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_dinner",
+    set = "yma_tboi_items",
+    order = 17,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.ante,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 1 },
+
+    config = {
+        extra = {
+            ante = 1,
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Breakfast
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_breakfast",
+    set = "yma_tboi_items",
+    order = 18,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.ante,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 1 },
+
+    config = {
+        extra = {
+            ante = 1,
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
