@@ -1494,3 +1494,110 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Loki's Horns
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_lokis_horns",
+    set = "yma_tboi_items",
+    order = 38,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 3, y = 3 },
+
+    config = {
+        extra = {
+            odds = 4,
+            effect_table = {
+                ['chips'] = true,
+                ['h_chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local key = temp_context.effect_type
+            local amt = temp_context.effects[key]
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_lokis_horns' .. G.SEED, 1, card.ability.extra.odds, nil, true) then
+                card_eval_status_text(temp_context.card, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                SMODS.calculate_individual_effect(temp_context.effects, temp_context.card, key, amt, temp_context.from_edition)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--The Small Rock
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_small_rock",
+    set = "yma_tboi_items",
+    order = 39,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_small_rock')
+        return {
+            vars = {
+                numerator, denominator,
+                card.ability.extra.xchips,
+                card.ability.extra.score,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 3 },
+
+    config = {
+        extra = {
+            odds = 6,
+            xchips = 2,
+            score = 40,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
+        end
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+        if context.modify_scoring_hand then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_small_rock' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    remove_from_hand = true
+                }
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
