@@ -1882,6 +1882,23 @@ return {
 					"{C:mult}+#1#{} Mult, {C:dark_edition}+#2#%{} Score",
 				},
 			},
+			ti_cbean_yma_tboi_virus = {
+				name = {
+					"The Virus",
+				},
+				text = {
+					"{C:attention}Blind requirement{} drops by",
+					"{C:attention}#1#%{} after each played {C:blue}hand"
+				},
+			},
+			ti_cbean_yma_tboi_heart = {
+				name = {
+					"<3",
+				},
+				text = {
+					"{C:attention}-#1#{} Ante, Gain {C:money}$#2#"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
