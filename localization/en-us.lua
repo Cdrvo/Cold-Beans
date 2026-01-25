@@ -1837,6 +1837,14 @@ return {
 					"chance to {C:attention}return{} to hand"
 				},
 			},
+			ti_cbean_yma_tboi_steven = {
+				name = {
+					"Steven",
+				},
+				text = {
+					"{C:dark_edition}+#1#%{} Score"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
@@ -6883,6 +6891,7 @@ return {
 			coldbean_art = { "Art: #1#" },
 			coldbean_code = { "Code: #1#" },
 			a_burned_cards = "#1# Cards",
+			a_yma_plus_score = "+#1#% Score",
 		},
 		v_text = {
 			--TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
