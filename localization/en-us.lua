@@ -1932,6 +1932,24 @@ return {
 					"{C:attention}-#1#{} Ante"
 				},
 			},
+			ti_cbean_yma_tboi_wooden_spoon = {
+				name = {
+					"Wooden Spoon",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to {C:attention}retrigger",
+					"each {C:attention}played{} card"
+				},
+			},
+			ti_cbean_yma_tboi_belt = {
+				name = {
+					"The Belt",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to {C:attention}retrigger",
+					"each {C:attention}played{} card"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
