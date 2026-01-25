@@ -2102,3 +2102,122 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Technology 2
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_technology_two",
+    set = "yma_tboi_items",
+    order = 50,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 3, y = 4 },
+
+    config = {
+        extra = {
+            effect_table = {
+                ['chips'] = true,
+                ['h_chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local amt = math.floor(temp_context.effects[temp_context.effect_type] / 2)
+            temp_context.effects[temp_context.effect_type] = nil
+            temp_context.effects['mult'] = amt
+            if temp_context.effects['message'] then
+                temp_context.effects['message'] = localize{type='variable',key='a_mult',vars={amt}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Sacred Heart
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_sacred_heart",
+    set = "yma_tboi_items",
+    order = 52,
+    quaility = 4,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.ante,
+                card.ability.extra.money,
+                card.ability.extra.chips,
+                card.ability.extra.xchips,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 5, y = 4 },
+
+    config = {
+        extra = {
+            money = 5,
+            ante = 1,
+            chips = 50,
+            xchips = 2
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.modify_pseudorandom_result then  
+            card.ability.yma_backend_fail = true
+            if not context.result and context.trigger_obj and not context.trigger_obj.ability.yma_backend_fail then
+                card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_failed_ex'), colour = G.C.RED})
+                card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                if pseudorandom('yma_tboi_spoon_bender_1') < context.numerator / context.denominator then
+                    return {
+                        new_result = true
+                    }
+                else
+                    card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_failed_ex'), colour = G.C.RED})
+                    card_eval_status_text(context.trigger_obj, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                    if pseudorandom('yma_tboi_spoon_bender_2') < context.numerator / context.denominator then
+                        return {
+                            new_result = true
+                        }
+                    end
+                end
+            end
+        end
+        if context.joker_main then
+            return {
+                chips = -card.ability.extra.chips,
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        ease_dollars(card.ability.extra.money, true)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
