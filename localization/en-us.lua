@@ -1986,6 +1986,33 @@ return {
 					"{C:chips}XChips{} with {X:attention,C:white}X#1#{} Values"
 				},
 			},
+			ti_cbean_yma_tboi_charm_vampire = {
+				name = {
+					"Charm of the Vampire",
+				},
+				text = {
+					{
+						"Gain a {C:red}discard{} for the round",
+						"every {C:blue}#1#{} Hands {C:attention}used",
+						"{C:inactive}(Currently {C:attention}#2#/#1#{}{C:inactive})",
+					},
+					{
+						"Gain a {C:red}discard{} every {C:attention}#3#",
+						"blinds beaten",
+						"{C:inactive}(Currently {C:attention}#4#/#3#{}{C:inactive})",
+					}
+				},
+			},
+			ti_cbean_yma_tboi_battery = {
+				name = {
+					"The Battery",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance for the first",
+					"use of {C:attention}consumables{} to not",
+					"be {C:attention}used"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
