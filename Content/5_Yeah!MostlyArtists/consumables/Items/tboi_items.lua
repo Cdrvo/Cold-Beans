@@ -898,3 +898,99 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Cupid's Arrow
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_cupids_arrow",
+    set = "yma_tboi_items",
+    order = 23,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.percent,
+                card.ability.extra.cur_chips,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 2 },
+
+    config = {
+        extra = {
+            percent = 75,
+            cur_chips = 0
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.final_scoring_step and context.cardarea == G.tboi_items then
+            card.ability.extra.cur_chips = math.floor((hand_chips/100)*card.ability.extra.percent)
+        end
+        if context.joker_main and card.ability.extra.cur_chips > 0 then
+            return {
+                chips = card.ability.extra.cur_chips
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_reset'), colour = G.C.FILTER})
+            card.ability.extra.cur_chips = 0
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Dr. Fetus
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_dr_fetus",
+    set = "yma_tboi_items",
+    order = 24,
+    quaility = 4,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.x_val,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 2 },
+
+    config = {
+        extra = {
+            x_val = 0.1,
+            effect_table = {
+                ['chips'] = true,
+                ['h_chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local amt = (temp_context.effects[temp_context.effect_type] * card.ability.extra.x_val) + 1
+            temp_context.effects[temp_context.effect_type] = nil
+            temp_context.effects['x_chips'] = amt
+            if temp_context.effects['message'] then
+                temp_context.effects['message'] = localize{type='variable',key='a_xchips',vars={amt}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
