@@ -473,7 +473,7 @@ position = 'before'
 match_indent = true
 payload = '''
 if self.area == G.deck and self ~= nil then
-    if self.ability.yma_rankless_like_stone then
+    if self.ability.yma_disposable then
         self:start_dissolve()
     end
 end
