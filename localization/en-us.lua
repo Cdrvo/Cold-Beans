@@ -2144,6 +2144,26 @@ return {
 					}
 				},
 			},
+			ti_cbean_yma_tboi_parasite = {
+				name = {
+					"The Parasite",
+				},
+				text = {
+					"All {C:chips}+Chips{} sources trigger",
+					"two {C:attention}additional{} times with",
+					"{C:red}halved{} effects",
+				},
+			},
+			ti_cbean_yma_tboi_money_power = {
+				name = {
+					"Money = Power",
+				},
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for every {C:money}$",
+					"you have",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{} {C:inactive}Mult)",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
