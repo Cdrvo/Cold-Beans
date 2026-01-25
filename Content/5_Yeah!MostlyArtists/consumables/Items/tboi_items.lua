@@ -1155,6 +1155,63 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Magneto
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_magneto",
+    set = "yma_tboi_items",
+    order = 25,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 3, y = 2 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.starting_shop and G.shop_booster then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    juice_card:juice_up()
+                    play_sound('tarot1')
+                    for i = 1, #G.shop_booster.cards do
+                        if #G.shop_booster.cards > 0 then
+                            local booster = pseudorandom_element(G.shop_booster.cards, pseudoseed('yma_tboi_magneto'))
+                            booster.ability.couponed = true
+                            booster:set_cost() 
+                            booster:juice_up()
+                            for k, v in pairs(G.shop_booster.cards) do
+                                if v == booster then
+                                    v = nil
+                                end
+                            end
+                        end
+                    end
+                    return true
+                end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
 --Charm of the Vampire
 YMA.TBOI_ITEMS {
     key = "yma_tboi_charm_vampire",
@@ -1494,6 +1551,106 @@ YMA.TBOI_ITEMS {
                     yma_add_score(card, card.ability.extra.score)
                 return true end)
             }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Rosary
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_rosary",
+    set = "yma_tboi_items",
+    order = 33,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.total_blinds,
+                card.ability.extra.blinds,
+                card.ability.extra.xchips,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 11, y = 1 },
+
+    config = {
+        extra = {
+            total_blinds = 3,
+            blinds = 3,
+            xchips = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind and card.ability.extra.blinds > 0 then
+            local nextlist = {
+                Teeny = 'Small',
+                Small = 'Big',
+                Big = 'Boss',
+                Boss = 'CEO'
+            }
+            G.GAME.cbean_jbill_arch_nope = true;
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    Colonparen.set_upcoming_blind(Colonparen.get_new_blind('Teeny'));
+                    return true
+                end
+            }))
+            card.ability.extra.blinds = card.ability.extra.blinds - 1
+        end
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--PHD
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_phd",
+    set = "yma_tboi_items",
+    order = 34,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 11, y = 2 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.money_altered and to_big(context.amount) >= to_big(1) then
+            SMODS.ease_dollars_calc = true
+            ease_dollars(context.amount) 
+            SMODS.ease_dollars_calc = false
         end
     end,
     beans_credits = {
