@@ -2032,6 +2032,24 @@ return {
 					"hand",
 				},
 			},
+			ti_cbean_yma_tboi_technology = {
+				name = {
+					"Technology",
+				},
+				text = {
+					"All {C:chips}XChips{} sources become",
+					"{C:mult}XMult{} with {X:attention,C:white}X#1#{} Values"
+				},
+			},
+			ti_cbean_yma_tboi_chocolate_milk = {
+				name = {
+					"Chocolate Milk",
+				},
+				text = {
+					"{X:chips,C:white}X#1#{} Chips per {C:chips}+Chips{} in",
+					"{C:attention}played{} cards chip vaule"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
