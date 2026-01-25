@@ -231,13 +231,13 @@ end
 
 
 function yma_can_access_location(location)
-    if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+    if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
         return true
     end
-    if location == 'hell' and (#SMODS.find_card("c_cbean_yma_key_to_hell") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) then
+    if location == 'hell' and (#SMODS.find_card("c_cbean_yma_key_to_hell") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) then
         return true
     end
-    if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1) then
+    if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) then
         return true
     end
     if location == "stationery" and G.GAME.nteam_sticker_obtained then
