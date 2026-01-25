@@ -1886,7 +1886,7 @@ YMA.TBOI_ITEMS {
     },
 
     calculate = function(self, card, context)
-        if context.before then
+        if context.before and G.GAME.current_round.hands_played ~= 0 then
             for i = 1, 2 do
                 local _card = create_playing_card({
                 front = pseudorandom_element(G.P_CARDS, pseudoseed('yma_tboi_dead_bird')),
@@ -1992,6 +1992,108 @@ YMA.TBOI_ITEMS {
         ease_ante(-card.ability.extra.ante)
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Whore of Babylon
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_whore_babylon",
+    set = "yma_tboi_items",
+    order = 48,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_halo')
+        return {
+            vars = {
+                numerator, denominator,
+                card.ability.extra.xmult,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 4 },
+
+    config = {
+        extra = {
+            odds = 2,
+            xmult = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.repetition and context.other_card and context.other_card.area == G.play and G.GAME.current_round.hands_left == 0 then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_belt' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card, 
+                }
+            end
+        end
+        if context.joker_main and G.GAME.current_round.hands_left == 0 then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--A Lump of Coal
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_lump_coal",
+    set = "yma_tboi_items",
+    order = 49,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 4 },
+
+    config = {
+        extra = {
+             effect_table = {
+                  ['chips'] = true,
+                  ['h_chips'] = true,
+                  ['chip_mod'] = true,
+             }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            if temp_context.card.area == G.play then
+                local index = 1
+                for i = 1, #G.play.cards do
+                    if G.play.cards[i] == temp_context.card then
+                        index = i
+                    end
+                end
+                local key = temp_context.effect_type
+                temp_context.effects[key] = math.floor(temp_context.effects[key] * index)
+            end
+        end
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
