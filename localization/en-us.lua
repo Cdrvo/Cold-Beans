@@ -2073,6 +2073,30 @@ return {
 					"{C:attention}flipped",
 				},
 			},
+			ti_cbean_yma_tboi_mark = {
+				name = {
+					"The Mark",
+				},
+				text = {
+					{
+						"{C:green}#1# in #2#{} chance to gain a {C:blue}hand",
+						"for the {C:attention}round{} when",
+						"{C:attention}selecting{} a blind"
+					},
+					{
+						"{C:dark_edition}+#3#%{} Score",
+					}
+				},
+			},
+			ti_cbean_yma_tboi_dead_cat = {
+				name = {
+					"Dead Cat",
+				},
+				text = {
+					"Prevents Death {C:attention}#1#{} times,",
+					"{X:attention,C:white}X#2#{} Blind Size {C:attention}permanently",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
