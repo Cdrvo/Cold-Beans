@@ -1891,12 +1891,21 @@ return {
 					"{C:attention}#1#%{} after each played {C:blue}hand"
 				},
 			},
-			ti_cbean_yma_tboi_heart = {
+			ti_cbean_yma_tboi_dollar = {
 				name = {
-					"<3",
+					"A Dollar",
 				},
 				text = {
-					"{C:attention}-#1#{} Ante, Gain {C:money}$#2#"
+					"Gain {C:money}$#1#"
+				},
+			},
+			ti_cbean_yma_tboi_transcendence = {
+				name = {
+					"Transcendence",
+				},
+				text = {
+					"Cards {C:attention}held in hand{} give their",
+					"{C:chips}Chip{} vaules"
 				},
 			},
 		},
