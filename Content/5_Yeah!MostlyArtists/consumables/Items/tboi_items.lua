@@ -1287,3 +1287,96 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Growth Hormones
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_growth_hormones",
+    set = "yma_tboi_items",
+    order = 32,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_growth_hormones')
+        return {
+            vars = {
+                numerator, denominator,
+                card.ability.extra.score,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 5, y = 1 },
+
+    config = {
+        extra = {
+            odds = 6,
+            score = 30,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.repetition and context.other_card and context.other_card.area == G.play then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_growth_hormones' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card, 
+                }
+            end
+        end
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--X-Ray Vision
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_x_ray_vision",
+    set = "yma_tboi_items",
+    order = 35,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 3 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        for k, v in pairs(G.I.CARD) do
+            if (v.area == G.jokers or v.area == G.consumeables or v.area == G.hand or v.area == G.play) and v.facing and v.facing == 'back' then
+                v:flip()
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
