@@ -1845,6 +1845,26 @@ return {
 					"{C:dark_edition}+#1#%{} Score"
 				},
 			},
+			ti_cbean_yma_tboi_pentagram = {
+				name = {
+					"Pentagram",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to gain",
+					"access to {C:attention}all locked areas",
+					"for the rest of this {C:attention}Ante{}",
+					"after {C:attention}CEO Blind{} is defeated"
+				},
+			},
+			ti_cbean_yma_tboi_one_up = {
+				name = {
+					"1up!",
+				},
+				text = {
+					"Prevents Death",
+					"{S:1.1,C:red,E:2}self destructs{}",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
