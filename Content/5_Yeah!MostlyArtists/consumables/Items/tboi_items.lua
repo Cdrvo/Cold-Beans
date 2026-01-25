@@ -288,3 +288,105 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Pentagram
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_pentagram",
+    set = "yma_tboi_items",
+    order = 7,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_pentagram')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 8, y = 1 },
+
+    config = {
+        extra = {
+            odds = 5,
+            active = false,
+            trigger = false,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and context.beat_boss and not card.ability.extra.active and G.GAME.blind.colonparen_blindtype == 'CEO' then 
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_pentagram', 1, card.ability.extra.odds) then
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_active'), colour = G.C.FILTER})
+                G.GAME.yma_everywhere_open = true
+                card.ability.extra.active = true
+                card.ability.extra.trigger = true
+            end
+        end
+        if context.cashing_out then
+            card.ability.extra.trigger = false
+        end
+        if context.ante_end and context.ante_change and not card.ability.extra.trigger then 
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_reset'), colour = G.C.FILTER})
+            G.GAME.yma_everywhere_open = false
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--1up!
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_one_up",
+    set = "yma_tboi_items",
+    order = 10,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 7, y = 0 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.game_over then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return true
+                end
+            })) 
+            return {
+                message = localize('k_saved_ex'),
+                saved = true,
+                colour = G.C.RED
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
