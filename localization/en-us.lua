@@ -1967,6 +1967,25 @@ return {
 					"{C:green}probabilities"
 				},
 			},
+			ti_cbean_yma_tboi_cupids_arrow = {
+				name = {
+					"Cupid's Arrow",
+				},
+				text = {
+					"{C:attention}#1#%{} of scored {C:attention}Chips{} are",
+					"added to next hand",
+					"{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips)",
+				},
+			},
+			ti_cbean_yma_tboi_dr_fetus = {
+				name = {
+					"Dr. Fetus",
+				},
+				text = {
+					"All {C:chips}+Chips{} sources become",
+					"{C:chips}XChips{} with {X:attention,C:white}X#1#{} Values"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
