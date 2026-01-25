@@ -451,3 +451,50 @@ if card.ability.consumeable and card.ability.yma_keep_on_use and not select_to t
 end
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+if self.ability.set == 'Booster' and G.GAME.modifiers.booster_ante_scaling then self.cost = self.cost + G.GAME.round_resets.ante - 1 end
+'''
+payload = '''
+G.GAME.yma_discount_percent = G.GAME.yma_discount_percent or 0
+self.cost = math.floor(self.cost*(100-G.GAME.yma_discount_percent)/100)
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'if G.STAGE == G.STAGES.RUN then'
+position = 'before'
+match_indent = true
+payload = '''
+if self.area == G.deck and self ~= nil then
+    if self.ability.yma_rankless_like_stone then
+        self:start_dissolve()
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "bonus_repetitions = *"
+position = "after"
+match_indent = true
+payload = '''
+yma_rankless_like_stone = self.ability.yma_rankless_like_stone or nil,
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif specific_vars.playing_card then"
+position = "before"
+match_indent = true
+payload = '''
+elseif specific_vars.yma_rankless_like_stone then full_UI_table.name = true
+'''
