@@ -1891,6 +1891,14 @@ return {
 					"{C:attention}#1#%{} after each played {C:blue}hand"
 				},
 			},
+			ti_cbean_yma_tboi_heart = {
+				name = {
+					"<3",
+				},
+				text = {
+					"{C:attention}-#1#{} Ante, Gain {C:money}$#2#"
+				},
+			},
 			ti_cbean_yma_tboi_dollar = {
 				name = {
 					"A Dollar",
@@ -1906,6 +1914,22 @@ return {
 				text = {
 					"Cards {C:attention}held in hand{} give their",
 					"{C:chips}Chip{} vaules"
+				},
+			},
+			ti_cbean_yma_tboi_dinner = {
+				name = {
+					"Dinner",
+				},
+				text = {
+					"{C:attention}-#1#{} Ante"
+				},
+			},
+			ti_cbean_yma_tboi_breakfast = {
+				name = {
+					"Breakfast",
+				},
+				text = {
+					"{C:attention}-#1#{} Ante"
 				},
 			},
 		},
