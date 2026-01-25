@@ -340,6 +340,54 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Mom's Eye
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_moms_eye",
+    set = "yma_tboi_items",
+    order = 8,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 0 },
+
+    config = {
+        extra = {
+            odds = 4,
+            effect_table = {
+                ['mult'] = true,
+                ['h_mult'] = true,
+                ['mult_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local key = temp_context.effect_type
+            local amt = temp_context.effects[key]
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_pentagram' .. G.SEED, 1, card.ability.extra.odds, nil, true) then
+                card_eval_status_text(temp_context.card, 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                SMODS.calculate_individual_effect(temp_context.effects, temp_context.card, key, amt, temp_context.from_edition)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
 --1up!
 YMA.TBOI_ITEMS {
     key = "yma_tboi_one_up",
@@ -1516,7 +1564,7 @@ YMA.TBOI_ITEMS {
 
     config = {
         extra = {
-            odds = 4,
+            odds = 2,
             effect_table = {
                 ['chips'] = true,
                 ['h_chips'] = true,
@@ -2213,6 +2261,58 @@ YMA.TBOI_ITEMS {
         ease_ante(-card.ability.extra.ante)
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Magic 8 Ball
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_magic_ball",
+    set = "yma_tboi_items",
+    order = 53,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 4 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.spectral_rate = G.GAME.spectral_rate + 4
+        if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                        local cardd = create_card('Tarot',G.consumeables, nil, nil, nil, nil, nil, 'for')
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        G.GAME.consumeable_buffer = 0
+                    return true
+                end)}))
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_plus_tarot'), colour = G.C.PURPLE})
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.spectral_rate = G.GAME.spectral_rate - 4
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists" },

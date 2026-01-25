@@ -31,7 +31,7 @@ YMA.TBOI_ITEMS = SMODS.Center:extend({
     set = 'yma_tboi_items',
     cost = 10,
     atlas = 'yma_tboi_atlas',
-    discovered = false,
+    discovered = true,
     unlocked = true,
     pos = { x = 0, y = 0 },
     config = {},
@@ -39,9 +39,6 @@ YMA.TBOI_ITEMS = SMODS.Center:extend({
     required_params = {
         'key',
     },
-    inject = function(self)
-        SMODS.Center.inject(self)
-    end,
 })
 CM = SMODS.current_mod
 
@@ -243,3 +240,10 @@ function Card:should_hide_front()
     if self.ability and self.ability.yma_rankless_like_stone then return true end
     return should_hide_front_ref(self)
 end
+
+SMODS.UndiscoveredSprite({
+    key = 'yma_tboi_items',
+    atlas = "yma_tboi_atlas",
+    pos = { x = 8, y = 4 },
+    no_overlay = true
+})
