@@ -731,3 +731,91 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Wooden Spoon
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_wooden_spoon",
+    set = "yma_tboi_items",
+    order = 19,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_wooden_spoon')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 1 },
+
+    config = {
+        extra = {
+            odds = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.repetition and context.other_card and context.other_card.area == G.play then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_wooden_spoon' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card, 
+                }
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--The Belt
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_belt",
+    set = "yma_tboi_items",
+    order = 20,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_belt')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 3, y = 1 },
+
+    config = {
+        extra = {
+            odds = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.repetition and context.other_card and context.other_card.area == G.play then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_belt' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card, 
+                }
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
