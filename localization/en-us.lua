@@ -1865,6 +1865,23 @@ return {
 					"{S:1.1,C:red,E:2}self destructs{}",
 				},
 			},
+			ti_cbean_yma_tboi_number_one = {
+				name = {
+					"Number One",
+				},
+				text = {
+					"{X:chips,C:white}X#1#{} Chips, {X:attention,C:white}X#2#{} Blind Size",
+					"{C:attention}permanently",
+				},
+			},
+			ti_cbean_yma_tboi_blood_martyr = {
+				name = {
+					"Blood of the Martyr",
+				},
+				text = {
+					"{C:mult}+#1#{} Mult, {C:dark_edition}+#2#%{} Score",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
