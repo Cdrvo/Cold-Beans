@@ -484,3 +484,90 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--The Virus
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_virus",
+    set = "yma_tboi_items",
+    order = 13,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.blind_cut,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 0 },
+
+    config = {
+        extra = {
+            blind_cut = 10,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            yam_ease_blind_requirement(nil, -1 * math.ceil(G.GAME.blind.chips * card.ability.extra.blind_cut * 0.01))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    if G.GAME.chips - G.GAME.blind.chips >= 0 then
+                        G.STATE = G.STATES.NEW_ROUND
+                        G.STATE_COMPLETE = false
+                    end
+                    return true
+                end
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--<3
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_heart",
+    set = "yma_tboi_items",
+    order = 13,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.ante,
+                card.ability.extra.money,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 3, y = 0 },
+
+    config = {
+        extra = {
+            money = 5,
+            ante = 1,
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        ease_dollars(card.ability.extra.money, true)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
