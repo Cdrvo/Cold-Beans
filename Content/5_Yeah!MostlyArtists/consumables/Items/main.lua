@@ -205,3 +205,19 @@ function card_eval_status_text(card, ...)
     }))
     yma_card_eval_status_text(card, ...)
 end
+
+function yma_add_score(card, increase)
+    delay(0.8)
+    if (G.GAME.chips/100)*increase > 0 then
+        card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type='variable',key='a_yma_plus_score',vars={increase}},colour = G.C.DARK_EDITION})
+        G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = (function() 
+                card:juice_up(0.3,0)
+                local amt = G.GAME.chips + math.floor((G.GAME.chips/100)*increase)
+                ease_chips(amt);
+                G.GAME.chips = amt
+            return true end)
+        }))
+    end
+end

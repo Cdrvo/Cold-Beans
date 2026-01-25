@@ -197,7 +197,7 @@ YMA.TBOI_ITEMS {
 YMA.TBOI_ITEMS {
     key = "yma_tboi_my_reflection",
     set = "yma_tboi_items",
-    order = 4,
+    order = 5,
     quaility = 2,
 
     loc_vars = function(self, info_queue, card)
@@ -237,6 +237,48 @@ YMA.TBOI_ITEMS {
                 i = i + 1
             end
             card.ability.extra.yma.to_hand.cards = cards
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Steven
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_steven",
+    set = "yma_tboi_items",
+    order = 6,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.score
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 10, y = 0 },
+
+    config = {
+        extra = {
+            score = 50,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
         end
     end,
     beans_credits = {
