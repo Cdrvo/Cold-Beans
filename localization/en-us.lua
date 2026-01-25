@@ -2913,16 +2913,28 @@ return {
 					"at end of round",
 				},
 			},
+			j_cbean_yma_flerp = {
+				name = "Flerp",
+				text = {
+					"Adds a new {C:attention}Scoring Window{} called {C:attention}Flerp{}",
+					"Hands are now calculated as:",
+					"{X:dark_edition,C:white}((Chips*Flerp)*Mult)+sqrt(Flerp){}"
+				},
+			},
 			j_cbean_yma_edward = {
 				name = "Exponentiation Edward",
 				text = {
 					"{X:dark_edition,C:white}^#1#{} Mult",
+					"{C:inactive}The long lost brother to the hyperoperation brothers,",
+					"{C:inactive}none of them knew where he went after the incident."
 				},
 			},
 			j_cbean_yma_manny = {
 				name = "Multiplication Manny",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
+					"{C:inactive}The distant cousin to the hyperoperation brothers,",
+					"{C:inactive}also the only one without any arrows."
 				},
 			},
 			j_cbean_yma_seeing_stars = {
@@ -2962,6 +2974,13 @@ return {
 					"When this {C:attention}Joker{} is {C:red}destroyed",
 					"{C:green}#1# in #2#{} chance to create",
 					"The Soul",
+				},
+			},
+			j_cbean_yma_unicorn = {
+				name = "Unicorn",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult if played hand contains",
+					"all suits"
 				},
 			},
 			j_cbean_yma_joker_vision = {
