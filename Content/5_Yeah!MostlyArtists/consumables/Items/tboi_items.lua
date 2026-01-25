@@ -1170,6 +1170,7 @@ YMA.TBOI_ITEMS {
                 front = pseudorandom_element(G.P_CARDS, pseudoseed('yma_tboi_sister_maggy')),
                 center = G.P_CENTERS.m_bonus}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
                 _card.ability.yma_rankless_like_stone = true
+                _card.ability.yma_disposable = true
                 _card.base.nominal = 0
                 table.insert(context.scoring_hand, _card)
                 G.play:emplace(_card)
@@ -1633,6 +1634,7 @@ YMA.TBOI_ITEMS {
                 front = pseudorandom_element(G.P_CARDS, pseudoseed('yma_tboi_robo_baby')),
                 center = G.P_CENTERS.m_mult}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
                 _card.ability.yma_rankless_like_stone = true
+                _card.ability.yma_disposable = true
                 _card.base.nominal = 0
                 table.insert(context.scoring_hand, _card)
                 G.play:emplace(_card)
@@ -1797,6 +1799,108 @@ YMA.TBOI_ITEMS {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Mom's Knife
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_moms_knife",
+    set = "yma_tboi_items",
+    order = 44,
+    quaility = 4,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.val1,
+                card.ability.extra.val2,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 3 },
+
+    config = {
+        extra = {
+            val1 = 3,
+            val2 = 2,
+            effect_table = {
+                ['x_chips'] = true,
+                ['xchips'] = true,
+                ['Xchips'] = true,
+                ['Xchip_mod'] = true,
+                ['x_chip_mod'] = true
+            },
+            effect_table2 = {
+                ['chips'] = true,
+                ['h_chips'] = true,
+                ['chip_mod'] = true,
+            }
+        }
+    },
+
+    calculate = function(self, card, context)
+        local temp_context = context.yma
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
+            local key = temp_context.effect_type
+            temp_context.effects[key] = ((temp_context.effects[key] - 1) * card.ability.extra.val1) + 1
+        end
+        if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table2[temp_context.effect_type] then
+            local key = temp_context.effect_type
+            temp_context.effects[key] = math.floor(temp_context.effects[key] / 2)
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Dead Bird
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_dead_bird",
+    set = "yma_tboi_items",
+    order = 45,
+    quaility = 0,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 10, y = 3 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            for i = 1, 2 do
+                local _card = create_playing_card({
+                front = pseudorandom_element(G.P_CARDS, pseudoseed('yma_tboi_dead_bird')),
+                center = G.P_CENTERS.c_base}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
+                _card.ability.yma_disposable = true
+                table.insert(context.scoring_hand, _card)
+                G.play:emplace(_card)
+                _card:highlight(true)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
         art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
