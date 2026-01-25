@@ -1865,6 +1865,15 @@ return {
 					"effects to {C:attention}trigger{} again",
 				},
 			},
+			ti_cbean_yma_tboi_ladder = {
+				name = {
+					"The Ladder",
+				},
+				text = {
+					"{C:attention}Played{} hands {C:attention}contain{} the",
+					"next two {C:attention}highest{} hands",
+				},
+			},
 			ti_cbean_yma_tboi_one_up = {
 				name = {
 					"1up!",
@@ -1906,6 +1915,15 @@ return {
 				},
 				text = {
 					"{C:attention}-#1#{} Ante, Gain {C:money}$#2#"
+				},
+			},
+			ti_cbean_yma_tboi_skeleton_key = {
+				name = {
+					"Skeleton Key",
+				},
+				text = {
+					"{C:attention}Creates{} a {C:dark_edition}Negative{} {C:yma_keys}Key",
+					"when {C:attention}selecting{} a blind"
 				},
 			},
 			ti_cbean_yma_tboi_dollar = {
