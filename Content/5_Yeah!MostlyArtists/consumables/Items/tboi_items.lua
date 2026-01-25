@@ -1102,3 +1102,85 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Steam Sale
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_steam_sale",
+    set = "yma_tboi_items",
+    order = 28,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.reduce,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 8, y = 2 },
+
+    config = {
+        extra = {
+            reduce = 50,
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.yma_discount_percent = G.GAME.yma_discount_percent or 0
+        G.GAME.yma_discount_percent = G.GAME.yma_discount_percent + card.ability.extra.reduce
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Sister Maggy
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_sister_maggy",
+    set = "yma_tboi_items",
+    order = 29,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 2 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            for i = 1, 2 do
+                local _card = create_playing_card({
+                front = pseudorandom_element(G.P_CARDS, pseudoseed('yma_tboi_sister_maggy')),
+                center = G.P_CENTERS.m_bonus}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
+                _card.ability.yma_rankless_like_stone = true
+                _card.base.nominal = 0
+                table.insert(context.scoring_hand, _card)
+                G.play:emplace(_card)
+                _card:highlight(true)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}

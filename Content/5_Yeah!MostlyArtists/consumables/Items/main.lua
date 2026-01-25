@@ -230,3 +230,16 @@ function yma_add_score(card, increase)
         }))
     end
 end
+
+local has_no_rank_ref = SMODS.has_no_rank
+function SMODS.has_no_rank(card)
+    if card.base.id == nil then return true end
+    if card.ability and card.ability.yma_rankless_like_stone then return true end
+    return has_no_rank_ref(card)
+end
+
+local should_hide_front_ref = Card.should_hide_front
+function Card:should_hide_front()
+    if self.ability and self.ability.yma_rankless_like_stone then return true end
+    return should_hide_front_ref(self)
+end
