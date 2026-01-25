@@ -2013,6 +2013,15 @@ return {
 					"{C:chips}XChips{} with {X:attention,C:white}X#1#{} Values"
 				},
 			},
+			ti_cbean_yma_tboi_magneto = {
+				name = {
+					"Magneto",
+				},
+				text = {
+					"{C:attention}Booster{} packs in",
+					"the shop are {C:money}free",
+				},
+			},
 			ti_cbean_yma_tboi_charm_vampire = {
 				name = {
 					"Charm of the Vampire",
@@ -2089,6 +2098,29 @@ return {
 					{
 						"{C:dark_edition}+#3#%{} Score",
 					}
+				},
+			},
+			ti_cbean_yma_tboi_rosary = {
+				name = {
+					"Rosary",
+				},
+				text = {
+					{
+						"The next {C:attention}#1#{} blinds this {C:attention}Ante",
+						"are {C:attention}Teeny{} blinds",
+						"{C:inactive}({C:attention}#2#{} {C:inactive}Left)",
+					},
+					{
+						"{X:chips,C:white}X#3#{} Chips",
+					}
+				},
+			},
+			ti_cbean_yma_tboi_phd = {
+				name = {
+					"PHD",
+				},
+				text = {
+					"{C:attention}Doubles{} money {C:money}gain",
 				},
 			},
 			ti_cbean_yma_tboi_x_ray_vision = {
