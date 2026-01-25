@@ -1810,8 +1810,8 @@ return {
 					"Spoon Bender",
 				},
 				text = {
-					"Failed {C:green}probabilitys{} retrigger",
-					"{C:attention}twice{}"
+					"Failed {C:green}probabilitys{}",
+					"retrigger {C:attention}twice{}"
 				},
 			},
 			ti_cbean_yma_tboi_crickets_head = {
@@ -2211,7 +2211,7 @@ return {
 					"Whore of Babylon",
 				},
 				text = {
-					"{X:mult,C:white}X#1#{}X#3#{} Mult and {C:green}#1# in #2#{} chance",
+					"{X:mult,C:white}X#3#{} Mult and {C:green}#1# in #2#{} chance",
 					"to {C:attention}retrigger{} each card on",
 					"last played {C:blue}hand"
 				},
@@ -2223,6 +2223,30 @@ return {
 				text = {
 					"{C:attention}Played{} cards {C:chips}Chip{} value is",
 					"multipled by their {C:attention}position",
+				},
+			},
+			ti_cbean_yma_tboi_technology_two = {
+				name = {
+					"Technology 2",
+				},
+				text = {
+					"All {C:chips}+Chips{} sources become",
+					"{C:mult}+Mult{} with {C:mult}halved{} Values"
+				},
+			},
+			ti_cbean_yma_tboi_sacred_heart = {
+				name = {
+					"Sacred Heart",
+				},
+				text = {
+					{
+						"Failed {C:green}probabilitys{}",
+						"retrigger {C:attention}twice{}"
+					},
+					{
+						"{C:attention}-#1#{} Ante, Gain {C:money}$#2#",
+						"{C:chips}-#3#{} Chips, {X:chips,C:white}X#4#{} Chips",
+					}
 				},
 			},
 		},
