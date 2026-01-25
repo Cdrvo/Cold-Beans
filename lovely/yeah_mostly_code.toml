@@ -431,3 +431,23 @@ if context.ending_shop or context.cashing_out then
     end
 end
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = '''
+if card.ability.consumeable and not select_to then
+    local obj = card.config.center
+    if obj.keep_on_use and type(obj.keep_on_use) == 'function' then
+        nc = obj:keep_on_use(card)
+    end
+end
+'''
+payload = '''
+SMODS.calculate_context({yma = {before_using_consumeable = true, consumeable = card, area = area }})
+if card.ability.consumeable and card.ability.yma_keep_on_use and not select_to then
+    nc = true
+end
+'''
+match_indent = true
