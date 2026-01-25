@@ -1950,6 +1950,23 @@ return {
 					"each {C:attention}played{} card"
 				},
 			},
+			ti_cbean_yma_tboi_wire_coat_hanger = {
+				name = {
+					"Wire Coat Hanger",
+				},
+				text = {
+					"{X:chips,C:white}X#1#{} Chips",
+				},
+			},
+			ti_cbean_yma_tboi_lucky_foot = {
+				name = {
+					"Lucky Foot",
+				},
+				text = {
+					"{C:attention}+#1#{} to all {C:attention}listed",
+					"{C:green}probabilities"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
