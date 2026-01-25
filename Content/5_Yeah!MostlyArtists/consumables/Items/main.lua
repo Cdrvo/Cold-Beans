@@ -206,6 +206,15 @@ function card_eval_status_text(card, ...)
     yma_card_eval_status_text(card, ...)
 end
 
+local yma_get_blind_amount = get_blind_amount
+function get_blind_amount(ante)
+    local amt = yma_get_blind_amount(ante)
+    if G.GAME.yma_blind_req_increase and G.GAME.yma_blind_req_increase > 1 then
+        amt = amt * G.GAME.yma_blind_req_increase
+    end
+    return amt
+end
+
 function yma_add_score(card, increase)
     delay(0.8)
     if (G.GAME.chips/100)*increase > 0 then

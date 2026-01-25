@@ -390,3 +390,97 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Number One
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_number_one",
+    set = "yma_tboi_items",
+    order = 11,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xchips,
+                card.ability.extra.perma_blind_req + 1,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 2 },
+
+    config = {
+        extra = {
+            xchips = 10,
+            perma_blind_req = 0.5,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.yma_blind_req_increase = G.GAME.yma_blind_req_increase or 1
+        G.GAME.yma_blind_req_increase = G.GAME.yma_blind_req_increase + card.ability.extra.perma_blind_req
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Blood of the Martyr
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_blood_martyr",
+    set = "yma_tboi_items",
+    order = 12,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.mult,
+                card.ability.extra.score,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 0 },
+
+    config = {
+        extra = {
+            mult = 15,
+            score = 30,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
