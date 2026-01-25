@@ -1380,3 +1380,117 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--The Mark
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_mark",
+    set = "yma_tboi_items",
+    order = 36,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_mark')
+        return {
+            vars = {
+                numerator, denominator,
+                card.ability.extra.score,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 11, y = 0 },
+
+    config = {
+        extra = {
+            odds = 3,
+            score = 20,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
+        end
+        if context.setting_blind then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                     if SMODS.pseudorandom_probability(card, 'yma_tboi_mark' .. G.SEED, 1, card.ability.extra.odds) then
+                        ease_hands_played(1)
+                     end
+                return true end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Dead Cat
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_dead_cat",
+    set = "yma_tboi_items",
+    order = 37,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.times,
+                card.ability.extra.perma_blind_req + 1,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 3 },
+
+    config = {
+        extra = {
+            times = 9,
+            perma_blind_req = 2.5,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.game_over then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    card.ability.extra.times = card.ability.extra.times - 1
+                    if card.ability.extra.times <= 0 then
+                        SMODS.destroy_cards(card, nil, nil, true)
+                    end
+                    return true
+                end
+            })) 
+            return {
+                message = localize('k_saved_ex'),
+                saved = true,
+                colour = G.C.RED
+            }
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.yma_blind_req_increase = G.GAME.yma_blind_req_increase or 1
+        G.GAME.yma_blind_req_increase = G.GAME.yma_blind_req_increase + card.ability.extra.perma_blind_req
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
