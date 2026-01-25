@@ -2097,6 +2097,29 @@ return {
 					"{X:attention,C:white}X#2#{} Blind Size {C:attention}permanently",
 				},
 			},
+			ti_cbean_yma_tboi_lokis_horns = {
+				name = {
+					"Loki's Horns",
+				},
+				text = {
+					"{C:attention}Random{} chance for {C:chips}+Chips",
+					"effects to {C:attention}trigger{} again",
+				},
+			},
+			ti_cbean_yma_tboi_small_rock = {
+				name = {
+					"The Small Rock",
+				},
+				text = {
+					{
+						"{C:green}#1# in #2#{} chance each {C:attention}played",
+						"card {C:red}doesn't{} score"
+					},
+					{
+						"{X:chips,C:white}X#3#{} Chips, {C:dark_edition}+#4#%{} Score",
+					}
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
