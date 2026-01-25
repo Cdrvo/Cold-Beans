@@ -1856,6 +1856,15 @@ return {
 					"after {C:attention}CEO Blind{} is defeated"
 				},
 			},
+			ti_cbean_yma_tboi_moms_eye = {
+				name = {
+					"Mom's Eye",
+				},
+				text = {
+					"{C:attention}Random{} chance for {C:mult}+Mult",
+					"effects to {C:attention}trigger{} again",
+				},
+			},
 			ti_cbean_yma_tboi_one_up = {
 				name = {
 					"1up!",
@@ -2246,6 +2255,21 @@ return {
 					{
 						"{C:attention}-#1#{} Ante, Gain {C:money}$#2#",
 						"{C:chips}-#3#{} Chips, {X:chips,C:white}X#4#{} Chips",
+					}
+				},
+			},
+			ti_cbean_yma_tboi_magic_ball = {
+				name = {
+					"Magic 8 Ball",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} a random {C:tarot}Tarot{} card",
+						"{C:inactive}(Must have room){}",
+					},
+					{
+						"{C:spectral}Specrtal{} cards are more",
+						"{C:attention}common",
 					}
 				},
 			},
@@ -3724,6 +3748,14 @@ return {
 				},
 			},
 			undiscovered_colon_architecture = {
+				name = "Not Discovered",
+				text = {
+					"Obtain this card in an",
+					"unseeded run to",
+					"learn what it does",
+				},
+			},
+			undiscovered_yma_tboi_items = {
 				name = "Not Discovered",
 				text = {
 					"Obtain this card in an",
