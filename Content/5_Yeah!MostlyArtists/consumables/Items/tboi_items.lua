@@ -571,3 +571,89 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--A Dollar
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_dollar",
+    set = "yma_tboi_items",
+    order = 15,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.money,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 5, y = 0 },
+
+    config = {
+        extra = {
+            money = 50,
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        ease_dollars(card.ability.extra.money, true)
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Transcendence
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_transcendence",
+    set = "yma_tboi_items",
+    order = 16,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 10, y = 1 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.hand and not context.end_of_round then
+            local val = context.other_card:get_chip_bonus()
+            local id = context.other_card:get_id()
+            local is_numbered_card = rank and string.find(rank.key, "%d*%d?%d+") ~= nil
+            if context.other_card and to_big(val) > to_big(0) and (to_big(id) > to_big(0)) then
+                if context.other_card.debuff then
+                    return {
+                        message = localize('k_debuffed'),
+                        colour = G.C.RED,
+                    }
+                else
+                    return {
+                        h_chips = val
+                    }
+                end
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
