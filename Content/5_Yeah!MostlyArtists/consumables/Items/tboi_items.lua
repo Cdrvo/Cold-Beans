@@ -994,3 +994,111 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Charm of the Vampire
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_charm_vampire",
+    set = "yma_tboi_items",
+    order = 26,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.hand_mod,
+                card.ability.extra.cur_hand,
+                card.ability.extra.blind_req,
+                card.ability.extra.cur_blind,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 2 },
+
+    config = {
+        extra = {
+            hand_mod = 2,
+            cur_hand = 0,
+            blind_req = 13,
+            cur_blind = 0,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            card.ability.extra.cur_hand = card.ability.extra.cur_hand + 1
+            if card.ability.extra.cur_hand >= card.ability.extra.hand_mod then
+                ease_discard(1)
+                card.ability.extra.cur_hand = 0
+            end
+        end
+        if context.end_of_round and context.main_eval then
+            card.ability.extra.cur_hand = 0
+            card.ability.extra.cur_blind = card.ability.extra.cur_blind + 1
+            if card.ability.extra.cur_blind >= card.ability.extra.blind_req then
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
+                ease_discard(1)
+                card.ability.extra.cur_blind = 0
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--The Battery
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_battery",
+    set = "yma_tboi_items",
+    order = 27,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_belt')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 5, y = 2 },
+
+    config = {
+        extra = {
+            odds = 2,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.yma and context.yma.before_using_consumeable and not context.yma.consumeable.ability.yma_battery_first_used then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_battery' .. G.SEED, 1, card.ability.extra.odds) then
+                context.yma.consumeable.ability.yma_keep_on_use = true
+                context.yma.consumeable.ability.yma_battery_first_used = true
+            end
+        end
+        if context.using_consumeable and context.consumeable.ability.yma_keep_on_use then
+            SMODS.calculate_context({yma_battery = true, consumeable = context.consumeable})
+        end
+        if context.yma_battery then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    context.consumeable.ability.yma_keep_on_use = nil
+                return true end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
