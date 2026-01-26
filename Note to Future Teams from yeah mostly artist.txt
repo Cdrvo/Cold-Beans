@@ -1,3 +1,10 @@
 Hello people of the future i have news, unfortunately i was unable to program the medals that i drew because of this i am tasking you (yes you the one reading this right now) to code them and put them in game. They were going to be an additional Joker modifier, but i don't mind if you have other ideas in mind. - RattlingSnow353
 
 hello people from the future again it is i john upgradable consumables (rainstar) and ive decided im going to force each and every single one of you to make upgrades for the remaining consumables (both vanilla and cold beans ones) because a) i was a lazy ass this whole second turn and only pushed 4 jokers and a currently non functional scoring parameter, and b) i was a bit busy with finals and shit (im not forcing anybody to make these btw i just think itd be cool if they were finished before cold beans ends maybe)
+
+hii to the future, cloudzXIII here! I implemented the (A)stro ranks that RattlingSnow drew,
+* One thing which I wasn't able to get working was the "Astro" hand which is when a hand has an Ace, Star, Thorn, Royal, Omega in it,
+i would appreciate it if someone could help get it working :P (its currently commented out)
+Also
+* I also added a reroll button for Side Quests, please feel free to add more of them!
+good luck to the rest of the teams :D
