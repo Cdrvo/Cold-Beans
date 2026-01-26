@@ -6973,6 +6973,7 @@ return {
 			k_cbean_colon_queued_ex             = "Queued!",
 			b_colon_architecture_cards          = "Architecture Cards",
 
+			k_yma_tboi_chest					= "Chest",
 			k_yma_keys                          = "Key",
 			k_failed_ex							= "Failed",
 			k_yma_tboi_items                    = "Item",
