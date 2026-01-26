@@ -14,6 +14,111 @@ extern bool shadow;
 extern MY_HIGHP_OR_MEDIUMP vec4 burn_colour_1;
 extern MY_HIGHP_OR_MEDIUMP vec4 burn_colour_2;
 
+vec4 RGB(vec4 c);
+
+// [Util]
+// Transform color from RGB to HSL
+vec4 HSL(vec4 c);
+
+// GLSL Simplex noise function
+vec3 mod289(vec3 x) {
+  return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 mod289(vec4 x) {
+  return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 permute(vec4 x) {
+  return mod289(((x*34.0)+1.0)*x);
+}
+
+vec4 taylorInvSqrt(vec4 r) {
+  return 1.79284291400159 - 0.85373472095314 * r;
+}
+
+vec3 fade(vec3 t) {
+  return t*t*t*(t*(t*6.0-15.0)+10.0);
+}
+
+// Classic Perlin noise
+float cnoise(vec3 P) {
+  vec3 Pi0 = floor(P); // Integer part for indexing
+  vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
+  Pi0 = mod289(Pi0);
+  Pi1 = mod289(Pi1);
+  vec3 Pf0 = fract(P); // Fractional part for interpolation
+  vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+  vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
+  vec4 iy = vec4(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
+  vec4 iz0 = vec4(Pi0.z);
+  vec4 iz1 = vec4(Pi1.z);
+
+  vec4 ixy = permute(permute(ix) + iy);
+  vec4 ixy0 = permute(ixy + iz0);
+  vec4 ixy1 = permute(ixy + iz1);
+
+  vec4 gx0 = ixy0 * (1.0 / 7.0);
+  vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+  gx0 = fract(gx0);
+  vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
+  vec4 sz0 = step(gz0, vec4(0.0));
+  gx0 -= sz0 * (step(0.0, gx0) - 0.5);
+  gy0 -= sz0 * (step(0.0, gy0) - 0.5);
+
+  vec4 gx1 = ixy1 * (1.0 / 7.0);
+  vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+  gx1 = fract(gx1);
+  vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
+  vec4 sz1 = step(gz1, vec4(0.0));
+  gx1 -= sz1 * (step(0.0, gx1) - 0.5);
+  gy1 -= sz1 * (step(0.0, gy1) - 0.5);
+
+  vec3 g000 = vec3(gx0.x,gy0.x,gz0.x);
+  vec3 g100 = vec3(gx0.y,gy0.y,gz0.y);
+  vec3 g010 = vec3(gx0.z,gy0.z,gz0.z);
+  vec3 g110 = vec3(gx0.w,gy0.w,gz0.w);
+  vec3 g001 = vec3(gx1.x,gy1.x,gz1.x);
+  vec3 g101 = vec3(gx1.y,gy1.y,gz1.y);
+  vec3 g011 = vec3(gx1.z,gy1.z,gz1.z);
+  vec3 g111 = vec3(gx1.w,gy1.w,gz1.w);
+
+  vec4 norm0 = taylorInvSqrt(vec4(dot(g000,g000), dot(g010,g010), dot(g100,g100), dot(g110,g110)));
+  g000 *= norm0.x;
+  g010 *= norm0.y;
+  g100 *= norm0.z;
+  g110 *= norm0.w;
+  vec4 norm1 = taylorInvSqrt(vec4(dot(g001,g001), dot(g011,g011), dot(g101,g101), dot(g111,g111)));
+  g001 *= norm1.x;
+  g011 *= norm1.y;
+  g101 *= norm1.z;
+  g111 *= norm1.w;
+
+  float n000 = dot(g000, Pf0);
+  float n100 = dot(g100, vec3(Pf1.x, Pf0.yz));
+  float n010 = dot(g010, vec3(Pf0.x, Pf1.y, Pf0.z));
+  float n110 = dot(g110, vec3(Pf1.xy, Pf0.z));
+  float n001 = dot(g001, vec3(Pf0.xy, Pf1.z));
+  float n101 = dot(g101, vec3(Pf1.x, Pf0.y, Pf1.z));
+  float n011 = dot(g011, vec3(Pf0.x, Pf1.yz));
+  float n111 = dot(g111, Pf1);
+
+  vec3 fade_xyz = fade(Pf0);
+  vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
+  vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
+  float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x); 
+  return 2.2 * n_xyz;
+}
+
+vec4 lighten(vec4 colour1, vec4 colour2) {
+    vec4 result;
+    result.r = max(colour1.r, colour2.r);
+    result.g = max(colour1.g, colour2.g);
+    result.b = max(colour1.b, colour2.b);
+    result.a = max(colour1.a, colour2.a);
+    return result;
+}
+
 // Function to apply dissolve effect - This is boilerplate code that pretty much all other mods use to make shaders work.
 vec4 dissolve_mask(vec4 final_pixel, vec2 texture_coords, vec2 uv)
 {
@@ -53,45 +158,144 @@ vec4 dissolve_mask(vec4 final_pixel, vec2 texture_coords, vec2 uv)
     return vec4(shadow ? vec3(0.,0.,0.) : final_pixel.xyz, res > adjusted_dissolve ? (shadow ? final_pixel.a*0.3: final_pixel.a) : .0);
 }
 
-// This is the actual meat and potatoes of the effect. The idea is to make a shimmery blueish color spread that kinda dances.
-// Basically, MAKE SOME NOISE!!! then, MAKE IT BLUE!!!
-vec4 effect(vec4 fragColor, Image texture, vec2 texture_coords, vec2 screen_coords) {
-    vec4 originalTexColor = Texel(texture, texture_coords);
-    vec2 uv = texture_coords * image_details.xy;
-    // These lines above basically make sure the effect actual stays in the bounds as it is supposed to, and doesn't piss all over the underlying card.
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+float snoise (vec2 v)
+{
+	const vec4 C = vec4(0.211324865405187,
+				0.366025403784439,	
+				-0.577350269189626,
+				0.024390243902439);	
 
-    vec2 ice_uv = floor(uv * 6.0) / 6.0;
-    // Noise definition (I just picked random numbers after watching a youtube tutorial and it worked so idk sue me)
-    float n = sin(dot(ice_uv, vec2(13, 78))) * 43758; // Think of this code as "Give me a stable pseudo-random value for this coordinate."
-    float noise = fract(n); // This part cleans up the value to be between 0 and 1
+	vec2 i  = floor(v + dot(v, C.yy) );
+	vec2 x0 = v -   i + dot(i, C.xx);
 
-    float shimmer = 0.5 + 0.5 * sin(time * 0.8 + ice_uv.x * 3.0 + ice_uv.y * 2.0); //This sin is not the same implimentation as before.
-    // This implimentation is to create intentional smooth motion between the effects that is somewhat predictable and stable. If we just did sin(time) - 
-    // the entire shader would pulse all together, which is not the look I think we should be going for "Frozen."  We want a little bit of oscillation,
-    // but not so much that it wobbles noticeably
+	vec2 i1;
+	i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+	vec4 x12 = x0.xyxy + C.xxzz;
+	x12.xy -= i1;
 
+	i = mod289(i); 
+	vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
+		+ i.x + vec3(0.0, i1.x, 1.0 ));
 
-    //Color definitions - these get mixed to help create a spread of colors.
-    vec3 ice_dark  = vec3(0.10, 0.25, 0.45);
-    vec3 ice_mid   = vec3(0.25, 0.55, 0.85);
-    vec3 ice_light = vec3(0.75, 0.90, 1.00);
+	vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+	m = m*m ;
+	m = m*m ;
 
-    vec3 ice_color = mix(ice_dark, ice_mid, noise);
+	vec3 x = 2.0 * fract(p * C.www) - 1.0;
+	vec3 h = abs(x) - 0.5;
+	vec3 ox = floor(x + 0.5);
+	vec3 a0 = x - ox;
 
-    ice_color = mix(ice_color, ice_light, smoothstep(0.75, 1.0, noise) * 0.6);
-    ice_color += shimmer * 0.05;
+	m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
 
-    // Once we get those colors mixed, we just need to get it onto the original texture and alpha.
-    fragColor = vec4(ice_color, 0.45);
-    fragColor.a *= originalTexColor.a;
-
-    // This is for F# compiler BS
-    fragColor.rgb += frozen.x * 0.00001;
-
-    return dissolve_mask(fragColor, texture_coords, texture_coords);
+	vec3 g;
+	g.x  = a0.x  * x0.x  + h.x  * x0.y;
+	g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+	return 130.0 * dot(m, g);
 }
 
+vec3 Overlay (vec3 src, vec3 dst)
+{
+	return vec3((dst.x <= 0.5) ? (2.0 * src.x * dst.x) : (1.0 - 2.0 * (1.0 - dst.x) * (1.0 - src.x)),
+			(dst.y <= 0.5) ? (2.0 * src.y * dst.y) : (1.0 - 2.0 * (1.0 - dst.y) * (1.0 - src.y)),
+			(dst.z <= 0.5) ? (2.0 * src.z * dst.z) : (1.0 - 2.0 * (1.0 - dst.z) * (1.0 - src.z)));
+}
 
+vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
+{
+    vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.zw)/texture_details.zw;
+    vec4 pixel = Texel(texture, texture_coords);
+
+    vec4 frozen_color1 = vec4(144., 199., 230., 255.) / 255.;
+    vec4 dark_blue = vec4(131., 176., 205., 255.) / 255.;
+
+    vec2 center = vec2(0.3 * frozen.r, 1.2);
+    float dist = distance(uv, center);
+    float gradient = clamp(dist, 0.0, 1.0);
+    vec4 frozen_colour = vec4(220., 240., 253., 255.) / 255.;
+
+    vec4 blended_color = mix(dark_blue, frozen_color1, gradient);
+    vec4 lighter_blended_color = mix(mix(lighten(pixel, blended_color), blended_color, 0.8), frozen_colour, 0.2);
+
+    float avg = (pixel.r + pixel.g + pixel.b) / 3.;
+    float saturation = 2.7; 
+
+    vec4 tex = vec4(1., 1., 1., 0.1);
+    vec2 adjusted_uv = uv - vec2(0.5, 0.5);
+    adjusted_uv.x = adjusted_uv.x*texture_details.b/texture_details.a;
+
+    vec2 dir = normalize(vec2(1.0, 0.3));
+    float wave = sin(dot(adjusted_uv, dir) * 18.0 + frozen.r * 12.0); 
+    float fac = max(wave, 0.0);
+    
+    tex.rgb *= 1.0 + fac * 0.8;
+
+    float lum = (lighter_blended_color.r * 0.299 + lighter_blended_color.g * 0.587 + lighter_blended_color.b * 0.114);
+    vec3 gray = vec3(lum);
+    vec3 saturated_color = mix(gray, lighter_blended_color.rgb, saturation);
+
+    pixel = vec4(saturated_color * avg, pixel.a);
+
+    float mod = frozen.r * 2.0;
+    float shine_amount = 0.1;
+    
+    float noise = snoise(uv * vec2(1024.0 + 50.0 * 512.0, 1024.0 + 50.0 * 512.0)) * 0.5;
+    float antinoise = cnoise(vec3(uv * 30.0, 2.0 * mod)); 
+    
+    float spark = max(0.0, noise - antinoise - shine_amount); 
+
+    vec4 frozen_tint = mix(dark_blue, frozen_colour, gradient);
+    colour = lighten(mix((colour - 0.4) + (frozen_tint * spark), frozen_tint, 0.09), frozen_colour);
+
+    pixel = vec4(pixel.rgb + tex.rgb * tex.a, pixel.a);
+    
+    return dissolve_mask(pixel*colour, texture_coords, uv);
+}
+
+number hue(number s, number t, number h)
+{
+	number hs = mod(h, 1.)*6.;
+	if (hs < 1.) return (t-s) * hs + s;
+	if (hs < 3.) return t;
+	if (hs < 4.) return (t-s) * (4.-hs) + s;
+	return s;
+}
+
+vec4 RGB(vec4 c)
+{
+	if (c.y < 0.0001)
+		return vec4(vec3(c.z), c.a);
+
+	number t = (c.z < .5) ? c.y*c.z + c.z : -c.y*c.z + (c.y+c.z);
+	number s = 2.0 * c.z - t;
+	return vec4(hue(s,t,c.x + 1./3.), hue(s,t,c.x), hue(s,t,c.x - 1./3.), c.w);
+}
+
+vec4 HSL(vec4 c)
+{
+	number low = min(c.r, min(c.g, c.b));
+	number high = max(c.r, max(c.g, c.b));
+	number delta = high - low;
+	number sum = high+low;
+
+	vec4 hsl = vec4(.0, .0, .5 * sum, c.a);
+	if (delta == .0)
+		return hsl;
+
+	hsl.y = (hsl.z < .5) ? delta / sum : delta / (2.0 - sum);
+
+	if (high == c.r)
+		hsl.x = (c.g - c.b) / delta;
+	else if (high == c.g)
+		hsl.x = (c.b - c.r) / delta + 2.0;
+	else
+		hsl.x = (c.r - c.g) / delta + 4.0;
+
+	hsl.x = mod(hsl.x / 6., 1.);
+	return hsl;
+}
 
 // More boilerplate code for uniforms and vertex manipulation - All mods use something like this for their shaders
 extern MY_HIGHP_OR_MEDIUMP vec2 mouse_screen_pos;
