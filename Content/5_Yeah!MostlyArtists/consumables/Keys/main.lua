@@ -591,6 +591,13 @@ SMODS.Atlas({
     px = 34,
     py = 34,
 })
+SMODS.Atlas({
+    key = "yma_casino_slot_machine",
+    path = "5_Yeah!MostlyArtists/casino_slot_machine.png",
+    px = 202,
+    py = 160,
+})
+
 
 SMODS.ConsumableType {
     key = "yma_keys",

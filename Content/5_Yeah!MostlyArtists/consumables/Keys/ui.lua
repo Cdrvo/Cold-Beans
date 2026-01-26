@@ -348,6 +348,12 @@ function update_yma_casino()
 		                G.yma_casino_slots[key].alignment.offset.y = 0.8
                         G.yma_casino_slots[key].alignment.offset.x = G.yma_casino_slots[key].alignment.offset.x - 4.2
 	                end
+                    G.yma_casino_slot_machine = UIBox{
+                        definition = G.UIDEF.yma_get_casino_machine(),
+                        config = {align="tmi", offset = {x=1*2.5-0.75,y=G.ROOM.T.y+22}, major = G.casino_slots_holder, bond = 'Weak', draggable = true, collideable = false, can_collide = false}
+                    }
+                    G.yma_casino_slot_machine.alignment.offset.y = -4.2
+                    G.yma_casino_slot_machine.alignment.offset.x = 0.2
                 end
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
@@ -452,7 +458,7 @@ function G.UIDEF.yma_casino()
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.BLACK}, nodes={
                     {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
-                      {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 8.2}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.WHITE, emboss = 0.05, minw = 8.2}, nodes={
                           {n=G.UIT.O, config={object = G.casino_slots_holder}},
                       }},
                     }},
@@ -493,6 +499,16 @@ function G.UIDEF.yma_get_random_casino_slot()
     end
   
 	local sprite_slot = SMODS.create_sprite(0, 0, 1, 1, 'cbean_yma_casino_slots', { x = num, y = y or 0 }) or nil
+    
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, offset}, nodes={
+            {n=G.UIT.O, config={object = sprite_slot}},
+    }}
+    return t
+end
+
+function G.UIDEF.yma_get_casino_machine()
+  
+	local sprite_slot = SMODS.create_sprite(0, 0, 15, 12, 'cbean_yma_casino_slot_machine', { x = 0, y = 0 }) or nil
     
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, offset}, nodes={
             {n=G.UIT.O, config={object = sprite_slot}},
