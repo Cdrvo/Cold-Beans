@@ -185,6 +185,9 @@ end
 if self.STATE == self.STATES.TBOI_CHEST then
   update_yma_tboi_chest()
 end
+if self.STATE == self.STATES.CASINO or self.STATE == self.STATES.SPIN_CASINO then
+  update_yma_casino()
+end
 '''
 match_indent = true
 
@@ -213,6 +216,7 @@ STATE = G.STATE == G.STATES.HELL and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.MAIN_STREET and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.DREAMLAND and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.TBOI_CHEST and G.STATES.SHOP or G.STATE,
+STATE = G.STATE == G.STATES.CASINO and G.STATES.SHOP or G.STATE,
 '''
 match_indent = true
 
@@ -228,6 +232,7 @@ if self.yma_hell then self.yma_hell:remove(); self.yma_hell = nil end
 if self.main_street then self.main_street:remove(); self.main_street = nil end
 if self.yma_dreamland then self.yma_dreamland:remove(); self.yma_dreamland = nil end
 if self.yma_tboi_chest then self.yma_tboi_chest:remove(); self.yma_tboi_chest = nil end
+if self.yma_casino then self.yma_casino:remove(); self.yma_casino = nil end
 '''
 match_indent = true
 
@@ -256,6 +261,10 @@ end
 if G.yma_tboi_chest then
   G.yma_tboi_chest:remove()
   G.yma_tboi_chest = nil
+end
+if G.yma_casino then
+  G.yma_casino:remove()
+  G.yma_casino = nil
 end
 '''
 match_indent = true
@@ -599,7 +608,7 @@ pattern = "-- TARGET: evaluate your own general effects"
 position = "before"
 match_indent = true
 payload = '''
-if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype == 'CEO' then
-    G.GAME.tboi_chest_card_amt = 2
+if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype then
+    G.GAME.tboi_chest_card_amt = 3
 end
 '''
