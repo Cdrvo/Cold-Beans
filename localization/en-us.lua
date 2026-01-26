@@ -2293,6 +2293,23 @@ return {
 					"{C:mult}+Mult{} with {C:mult}halved{} Values"
 				},
 			},
+			ti_cbean_yma_tboi_ankh = {
+				name = {
+					"Ankh",
+				},
+				text = {
+					{
+						"The next {C:attention}#1#{} blinds this {C:attention}Ante",
+						"are {C:attention}Teeny{} blinds, {X:attention,C:white}X#3#{} Blind",
+						"Size {C:attention}permanently",
+						"{C:inactive}({C:attention}#2#{} {C:inactive}Left)",
+					},
+					{
+						"Prevents Death",
+						"{S:1.1,C:red,E:2}self destructs{}",
+					}
+				},
+			},
 			ti_cbean_yma_tboi_sacred_heart = {
 				name = {
 					"Sacred Heart",
@@ -2321,6 +2338,15 @@ return {
 						"{C:spectral}Specrtal{} cards are more",
 						"{C:attention}common",
 					}
+				},
+			},
+			ti_cbean_yma_tboi_birthright = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					"{C:attention}Grants{} an effect",
+					"based on the {C:attention}deck",
 				},
 			},
 		},
