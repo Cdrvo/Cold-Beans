@@ -182,6 +182,9 @@ end
 if self.STATE == self.STATES.DREAMLAND then
   update_yma_dreamland()
 end
+if self.STATE == self.STATES.TBOI_CHEST then
+  update_yma_tboi_chest()
+end
 '''
 match_indent = true
 
@@ -209,6 +212,7 @@ STATE = G.STATE == G.STATES.GRAVEYARD and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.HELL and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.MAIN_STREET and G.STATES.SHOP or G.STATE,
 STATE = G.STATE == G.STATES.DREAMLAND and G.STATES.SHOP or G.STATE,
+STATE = G.STATE == G.STATES.TBOI_CHEST and G.STATES.SHOP or G.STATE,
 '''
 match_indent = true
 
@@ -223,6 +227,7 @@ if self.graveyard then self.graveyard:remove(); self.graveyard = nil end
 if self.yma_hell then self.yma_hell:remove(); self.yma_hell = nil end
 if self.main_street then self.main_street:remove(); self.main_street = nil end
 if self.yma_dreamland then self.yma_dreamland:remove(); self.yma_dreamland = nil end
+if self.yma_tboi_chest then self.yma_tboi_chest:remove(); self.yma_tboi_chest = nil end
 '''
 match_indent = true
 
@@ -247,6 +252,10 @@ end
 if G.yma_dreamland then
   G.yma_dreamland:remove()
   G.yma_dreamland = nil
+end
+if G.yma_tboi_chest then
+  G.yma_tboi_chest:remove()
+  G.yma_tboi_chest = nil
 end
 '''
 match_indent = true
@@ -497,4 +506,100 @@ position = "before"
 match_indent = true
 payload = '''
 elseif specific_vars.yma_rankless_like_stone then full_UI_table.name = true
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+position = 'before'
+pattern = '''
+elseif card.area and card.area == G.pack_cards then
+'''
+payload = '''
+elseif card.area and card.area == G.tboi_chest_cards then
+    return {
+      n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+        {n=G.UIT.R, config={ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5*card.T.w - 0.15, maxw = 0.9*card.T.w - 0.15, minh = 0.3*card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card'}, nodes={
+          {n=G.UIT.T, config={text = localize('b_select'),colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true}}
+        }},
+    }}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+position = 'before'
+pattern = '''
+if (card.area == G.pack_cards and G.pack_cards) and not card.ability.consumeable then
+'''
+payload = '''
+if (card.area == G.tboi_chest_cards and G.tboi_chest_cards) and not card.ability.consumeable then
+    base_attach.children.use = G.UIDEF.card_focus_button{
+      card = card, parent = base_attach, type = 'select',
+      func = 'can_select_card', button = 'use_card', card_width = card_width
+    }
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'before'
+pattern = '''elseif card.ability.set == 'Joker' then '''
+payload = '''
+elseif card.ability.set == 'yma_tboi_items' then 
+    card:add_to_deck()
+    G.tboi_items:emplace(card)
+    play_sound('card1', 0.8, 0.6)
+    play_sound('generic1')
+    dont_dissolve = true
+    delay_fac = 0.2
+    SMODS.destroy_cards(G.tboi_chest_cards.cards, nil, nil, true)
+    G.STATE = prev_state
+    G.TAROT_INTERRUPT=nil
+    G.CONTROLLER.locks.use = false
+    return
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+position = 'before'
+pattern = '''
+if self.ability.consumeable or self.ability.set == 'Joker' or (self.area and self.area == G.pack_cards) then
+'''
+payload = '''
+if (self.area and self.area == G.tboi_chest_cards) then
+    if self.highlighted and self.area and self.area.config.type ~= 'shop' then
+        local x_off = (self.ability.consumeable and -0.1 or 0)
+        self.children.use_button = UIBox{
+            definition = G.UIDEF.use_and_sell_buttons(self), 
+            config = {align=
+                    ((self.area == G.jokers) or (self.area == G.consumeables)) and "cr" or
+                    "bmi"
+                , offset = 
+                    ((self.area == G.jokers) or (self.area == G.consumeables)) and {x=x_off - 0.4,y=0} or
+                    {x=0,y=0.65},
+                parent =self}
+        }
+    elseif self.children.use_button then
+        self.children.use_button:remove()
+        self.children.use_button = nil
+    end
+end
+'''
+
+[[patches]] #This being a separate file felt warranted
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "-- TARGET: evaluate your own general effects"
+position = "before"
+match_indent = true
+payload = '''
+if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype == 'CEO' then
+    G.GAME.tboi_chest_card_amt = 2
+end
 '''
