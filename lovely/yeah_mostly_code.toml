@@ -278,6 +278,7 @@ unused_discards = 0,'''
 position = 'after'
 payload = '''
 cbean = {
+    quest_reroll_cost = 5,
     quest_complete = false,
     completed_quests = {},
     destroyed_jokers = {},
@@ -611,4 +612,18 @@ payload = '''
 if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype then
     G.GAME.tboi_chest_card_amt = 3
 end
+'''
+
+# Reroll Button for Side Quests
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = 'G.playing_cards = {}'
+position = 'before'
+match_indent = true
+payload = '''
+G.yma_quest_reroll = UIBox {
+    definition = create_yma_quest_reroll_UIBox(),
+    config = { align = "cli", offset = { x = 17.64, y = -0.3 }, major = G.ROOM_ATTACH, bond = 'Weak', instance_type = 'CARD' }
+}
 '''
