@@ -7213,8 +7213,12 @@ return {
 				"{C:attention}2{} Light Suits and {C:attention}3{} Dark Suits",
 				"Must have {C:attention}House Rules{} and {C:attention}Withering Memory{} to play"
 			},
+			["cbean_yma_astro"] = {
+				"A hand that contains an Ace, Star, Thorn, Royal, and Omega",
+			},
 		},
 		poker_hands = {
+			["cbean_yma_astro"] = "Astro",
 			["cbean_sdown_antistraight"] = "Gay",    -- Athebyne | N/A | Athebyne
 			["cbean_sdown_antistraight_flush"] = "Gay Flush", -- Athebyne | N/A | Athebyne
 			["cbean_sdown_bobtail"] = "Bobtail",     -- Athebyne | N/A | Athebyne
@@ -7414,7 +7418,12 @@ return {
 				"{C:inactive}(10/10)",
 			},
 		},
-		ranks = {},
+		ranks = {
+            ["cbean_yma_s"] = "Star",
+            ["cbean_yma_t"] = "Thorn",
+            ["cbean_yma_r"] = "Royal",
+            ["cbean_yma_o"] = "Omega",
+		},
 		suits_plural = {},
 		suits_singular = {},
 		tutorial = {},
