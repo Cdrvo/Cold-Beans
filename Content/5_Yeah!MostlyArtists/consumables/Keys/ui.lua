@@ -3,6 +3,8 @@ G.STATES.GRAVEYARD = 1366468461
 G.STATES.HELL = 666384372666
 G.STATES.DREAMLAND = 7983784839784932
 G.STATES.TBOI_CHEST = 87537893475485974835
+G.STATES.CASINO = 73267246736438384328
+G.STATES.SPIN_CASINO = 35765675675675674379879
 
 G.FUNCS.show_yma_main_street = function(e)
   stop_use()
@@ -52,6 +54,7 @@ function update_main_street()
         G.yma_mainstreet_hell:recalculate()
         G.yma_mainstreet_dreamland:recalculate()
         G.yma_mainstreet_tboi_chest:recalculate()
+        G.yma_mainstreet_casino:recalculate()
         G.yma_mainstreet_stationery:recalculate()
 
         G.E_MANAGER:add_event(Event({
@@ -95,6 +98,8 @@ function Controller:L_cursor_press(x, y)
             G.FUNCS.show_yma_dreamland()
         elseif G.yma_mainstreet_tboi_chest and G.yma_mainstreet_tboi_chest.states.collide.is and yma_can_access_location('tboi_chest') then
             G.FUNCS.show_yma_tboi_chest()
+        elseif G.yma_mainstreet_casino and G.yma_mainstreet_casino.states.collide.is and yma_can_access_location('casino') then
+            G.FUNCS.show_yma_casino()
 		elseif G.yma_mainstreet_stationery and G.yma_mainstreet_stationery.states.collide.is and yma_can_access_location('stationery') then
             G.FUNCS.show_stationery()
         --Evil ass Jbill employment gimmick appears!
@@ -124,6 +129,10 @@ function G.UIDEF.yma_main_street()
     }
     G.yma_mainstreet_tboi_chest = UIBox{
         definition = G.UIDEF.tboi_chestsprite(),
+        config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+    }
+    G.yma_mainstreet_casino = UIBox{
+        definition = G.UIDEF.casinosprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
     G.yma_mainstreet_stationery = UIBox{
@@ -160,6 +169,9 @@ function G.UIDEF.yma_main_street()
     table3[#table3+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.yma_mainstreet_tboi_chest}},
         }}
+    table3[#table3+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+            {n=G.UIT.O, config={object = G.yma_mainstreet_casino}},
+        }}
 
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
@@ -167,7 +179,7 @@ function G.UIDEF.yma_main_street()
                     {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table},
                     {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table2},
                     {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table3},
-                    {n=G.UIT.R, config={align = "cm", minh = 3.5}, nodes={}},
+                    {n=G.UIT.R, config={align = "cm", minh = 1.5}, nodes={}},
                 }
               },
               
@@ -228,6 +240,20 @@ function G.UIDEF.tboi_chestsprite()
     return t
 end
 
+function G.UIDEF.casinosprite()
+  
+	local sprite_casino = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("casino") and "cbean_yma_casino_sign" or "cbean_NAMETEAM_closed"], { x = 0, y = 0 }) or nil
+    function sprite_casino:update(dt)
+		AnimatedSprite.update(self, dt)
+		self.atlas =
+			G.ANIMATION_ATLAS[yma_can_access_location("casino") and "cbean_yma_casino_sign" or "cbean_NAMETEAM_closed"]
+	end
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+            {n=G.UIT.O, config={object = sprite_casino}},
+    }}
+    return t
+end
+
 function G.UIDEF.dreamlandsprite()
   
 	local sprite_hell = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("dreamland") and "cbean_yma_dreamland_sign" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
@@ -250,6 +276,245 @@ function G.UIDEF.employsprite()
             {n=G.UIT.O, config={object = sprite_employ}},
     }}
     return t
+end
+
+G.FUNCS.show_yma_casino = function(e)
+  stop_use()
+  hide_location(G.main_street)
+  
+  G.STATE = G.STATES.CASINO
+  G.STATE_COMPLETE = false
+  
+
+  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+  ease_background_colour_blind(G.STATE)
+  sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_yma_casino_sign"]
+  G.hand.states.visible = false
+  sign_sprite.states.visible = true
+  G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+  show_location(G.yma_casino)
+end
+
+G.FUNCS.hide_yma_casino = function(e)
+    stop_use()
+	hide_location(G.yma_casino)
+	G.STATE = G.STATES.MAIN_STREET
+	G.STATE_COMPLETE = false
+    
+	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+	ease_background_colour_blind(G.STATES.MAIN_STREET)
+	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    sign_sprite.states.visible = false
+    G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+    show_location(G.main_street)
+end
+
+function update_yma_casino()
+    if not G.STATE_COMPLETE then
+        stop_use()
+        ease_background_colour_blind(G.STATES.CASINO)
+        local casino_exists = not not G.yma_casino
+        G.yma_casino = G.yma_casino or UIBox{
+            definition = G.UIDEF.yma_casino(),
+            config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+        }
+        
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.yma_casino.alignment.offset.y = -5.3
+                if not G.yma_casino_slots then
+                    for i = 1, 3 do
+                        G.yma_casino_slots = G.yma_casino_slots or {}
+                        G.yma_casino_slots_sprite_ref = G.yma_casino_slots or {}
+                        G.yma_casino_slots_sprite_ref[i-1] = G.UIDEF.yma_get_random_casino_slot()
+                        G.yma_casino_slots[i-1] = UIBox{
+                            definition = G.yma_casino_slots_sprite_ref[i-1],
+                            config = {align="tmi", offset = {x=i*2.5-0.75,y=G.ROOM.T.y+22}, major = G.casino_slots_holder, bond = 'Weak', draggable = true, collideable = true, can_collide = true}
+                        }
+                        G.yma_casino_slots[i-1].reel_phase = math.random() * 0.5
+                        G.yma_casino_slots[i-1].reel_speed = 1.0
+                        G.yma_casino_slots[i-1].stop_delay = (i - 1) * 0.35 
+                        G.yma_casino_slots[i-1].stopped = false
+                    
+                        G.yma_casino_slots[i-1].newy = 1.8
+                    end
+                    G.yma_spin_timer = 0
+                    G.yma_spin_duration = 4.5 
+                    G.yma_spin_active = false
+
+                    for key, ad in pairs(G.yma_casino_slots) do
+		                G.yma_casino_slots[key].alignment.offset.y = 0.8
+                        G.yma_casino_slots[key].alignment.offset.x = G.yma_casino_slots[key].alignment.offset.x - 4.2
+	                end
+                end
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    blockable = false,
+                    func = function()
+                        if math.abs(G.yma_casino.T.y - G.yma_casino.VT.y) < 3 then
+                            local nosave_yma_casino = nil 
+                            -- Back to shop button
+                            G.CONTROLLER:snap_to({node = G.yma_casino:get_UIE_by_ID('shop_button')})
+                            -- not loaded from save?
+                            if not nosave_yma_casino then G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end})) end
+                            return true
+                        end
+                    end}))
+                return true
+            end
+        }))
+
+
+        G.STATE_COMPLETE = true
+    end
+end
+
+local game_update = Game.update
+function Game:update(dt)
+    if G.yma_casino_slots and G.yma_spin_active and G.STATE == G.STATES.SPIN_CASINO then
+        G.yma_spin_timer = G.yma_spin_timer + dt
+
+        local t = math.min(G.yma_spin_timer / G.yma_spin_duration, 1)
+        local ease = 1 - (1 - t) * (1 - t) 
+        local global_speed = 3 - (ease * 3)
+        local score = {}
+
+        for _, slot in pairs(G.yma_casino_slots) do
+            if slot and not slot.stopped then
+                if G.yma_spin_timer >= slot.stop_delay then
+                    local speed = dt * 8 * global_speed * slot.reel_speed
+
+                    slot.config.offset.y = slot.config.offset.y + speed
+
+                    if slot.config.offset.y + slot.reel_phase > 2.4 then
+                        slot.config.offset.y = -0.8 - slot.reel_phase
+
+                        local new_def = G.UIDEF.yma_get_random_casino_slot()
+
+                        slot.definition.nodes[1].config.object.sprite_pos = new_def.nodes[1].config.object.sprite_pos
+                    end
+                end
+
+                if t >= 1 and G.yma_spin_timer >= slot.stop_delay then
+                    slot.stopped = true
+                    slot.config.offset.y = 0.8 
+                end
+            end
+        end
+
+        if t >= 1 then
+            G.yma_spin_active = false
+            for _, slot in pairs(G.yma_casino_slots) do
+                local pos = slot.definition.nodes[1].config.object.sprite_pos
+                score[yma_pos_to_symbol(pos)] = score[yma_pos_to_symbol(pos)] or 0
+                score[yma_pos_to_symbol(pos)] = score[yma_pos_to_symbol(pos)] + 1
+            end
+            G.yma_casino_roll = score
+            yma_calculate_casino(score)
+            G.STATE = G.STATES.CASINO
+        end
+    end
+
+    return game_update(self, dt)
+end
+
+function yma_pos_to_symbol(pos)
+    if pos.y == 1 then
+        return 'Joker'
+    elseif pos.x == 0 then
+        return 'Heart'
+    elseif pos.x == 1 then
+        return 'Spade'
+    elseif pos.x == 2 then
+        return 'Club'
+    elseif pos.x == 3 then
+        return 'Diamond'
+    elseif pos.x == 4 then
+        return 'Cold Bean'
+    elseif pos.x == 5 then
+        return 'Banana'
+    end
+end
+
+function G.UIDEF.yma_casino()
+    G.casino_slots_holder = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = 3, type = 'hand', highlight_limit = 2, visable = false, no_card_count = true})
+
+    G.GAME.yma_casino_spin_cost = 10
+    local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
+            UIBox_dyn_container({
+                {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.BLACK}, nodes={
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 8.2}, nodes={
+                          {n=G.UIT.O, config={object = G.casino_slots_holder}},
+                      }},
+                    }},
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                      {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+                        {n=G.UIT.R, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.RED, button = 'spin_yma_casino', func = 'can_spin_yma_casino', hover = true,shadow = true}, nodes = {
+                            {n=G.UIT.R, config={align = "cm", maxw = 2.5}, nodes={
+                                {n=G.UIT.T, config={text = localize('k_yma_spin_casino').." ("..localize('$')..G.GAME.yma_casino_spin_cost..")", scale = 0.6, colour = G.C.WHITE, shadow = true}},
+                            }},
+                        }},
+                      }},
+                    }},
+                }
+              },
+              
+              }, false)
+        }}
+    return t
+end
+
+G.FUNCS.can_spin_yma_casino = function(e)
+    e.children[1].children[1].config.text = localize('k_yma_spin_casino').." ("..localize('$')..G.GAME.yma_casino_spin_cost..")"
+    if G.yma_spin_active or to_big(G.GAME.dollars) < to_big(G.GAME.yma_casino_spin_cost) then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.RED
+        e.config.button = 'spin_yma_casino'
+    end
+end
+
+function G.UIDEF.yma_get_random_casino_slot()
+    local num = pseudorandom('slots', 0, 6)
+    local y = nil
+    if num == 6 then
+        y = 1
+        num = 0
+    end
+  
+	local sprite_slot = SMODS.create_sprite(0, 0, 1, 1, 'cbean_yma_casino_slots', { x = num, y = y or 0 }) or nil
+    
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, offset}, nodes={
+            {n=G.UIT.O, config={object = sprite_slot}},
+    }}
+    return t
+end
+
+G.FUNCS.spin_yma_casino = function(e) 
+    stop_use()
+    G.STATE = G.STATES.SPIN_CASINO
+    if not G.yma_casino_slots then return end
+    ease_dollars(-G.GAME.yma_casino_spin_cost or 10)
+
+    G.yma_spin_timer = 0
+    G.yma_spin_duration = 4.5
+    G.yma_spin_active = true
+
+    for _, slot in pairs(G.yma_casino_slots) do
+        slot.stopped = false
+        slot.reel_phase = math.random() * 0.5
+    end
+    G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end}))
 end
 
 G.FUNCS.show_yma_tboi_chest = function(e)

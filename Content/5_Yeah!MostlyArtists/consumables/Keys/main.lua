@@ -2,9 +2,10 @@ YMA = YMA or {
 
 }
 
-function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
+function YMA_reroll_card(card, key, set, append, temp_key, ability, context, instant)
     context = context or 'end_of_round'
     append = append or 'yma_reroll_card'
+    instant = instant or false
     local victim_joker = card
     local temp_table = {}
     for k, v in pairs(victim_joker.ability) do
@@ -43,62 +44,81 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context)
 
     
     local replacement_key = key or pseudorandom_element(replacement_pool, pseudoseed(append..'_replacement'))
-
-    G.E_MANAGER:add_event(Event({
-        trigger = 'after', 
-        delay = 0.4, 
-        func = function()
-            play_sound('tarot1')
-            card:juice_up(0.3, 0.5)
-            return true 
-        end 
-    }))
-    G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.15,
-        func = function() 
-            victim_joker:flip()
-            play_sound('card1', 1)
-            victim_joker:juice_up(0.5, 0.5)
-            return true 
-        end 
-    }))
-    delay(0.5)
-    G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.1,
-        func = function()
-            victim_joker:set_ability(G.P_CENTERS[replacement_key])
-            victim_joker:set_cost()
-            if ability then 
-                for k, v in pairs(ability) do
-                    victim_joker.ability[k] = v
-                end
-            else
-                victim_joker.ability = victim_joker.ability or {}
+    if instant then
+        victim_joker:set_ability(G.P_CENTERS[replacement_key])
+        victim_joker:set_cost()
+        if ability then 
+            for k, v in pairs(ability) do
+                victim_joker.ability[k] = v
             end
-            victim_joker.ability.yma_temp_key = temp_key
-            if temp_table.yma_temp_ability_table then
-                temp_table.yma_temp_ability_table = nil
-            end
-            victim_joker.ability.yma_temp_ability_table = temp_table
-            victim_joker.ability.yma_temp_set = temp_set
-            victim_joker.ability.yma_context = context
-            return true
+        else
+            victim_joker.ability = victim_joker.ability or {}
         end
-    }))
-    G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.15,
-        func = function() 
-            victim_joker:flip()
-            play_sound('tarot2', 1, 0.6)
-            victim_joker:juice_up(0.3, 0.3)
-            SMODS.calculate_context({yma = {after_reroll = true, card = victim_joker, old_card = temp_card}})
-            return true 
-        end 
-    }))
-    delay(0.5)
+        victim_joker.ability.yma_temp_key = temp_key
+        if temp_table.yma_temp_ability_table then
+            temp_table.yma_temp_ability_table = nil
+        end
+        victim_joker.ability.yma_temp_ability_table = temp_table
+        victim_joker.ability.yma_temp_set = temp_set
+        victim_joker.ability.yma_context = context
+        SMODS.calculate_context({yma = {after_reroll = true, card = victim_joker, old_card = temp_card}})
+    else
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after', 
+            delay = 0.4, 
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true 
+            end 
+        }))
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.15,
+            func = function() 
+                victim_joker:flip()
+                play_sound('card1', 1)
+                victim_joker:juice_up(0.5, 0.5)
+                return true 
+            end 
+        }))
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                victim_joker:set_ability(G.P_CENTERS[replacement_key])
+                victim_joker:set_cost()
+                if ability then 
+                    for k, v in pairs(ability) do
+                        victim_joker.ability[k] = v
+                    end
+                else
+                    victim_joker.ability = victim_joker.ability or {}
+                end
+                victim_joker.ability.yma_temp_key = temp_key
+                if temp_table.yma_temp_ability_table then
+                    temp_table.yma_temp_ability_table = nil
+                end
+                victim_joker.ability.yma_temp_ability_table = temp_table
+                victim_joker.ability.yma_temp_set = temp_set
+                victim_joker.ability.yma_context = context
+                return true
+            end
+        }))
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.15,
+            func = function() 
+                victim_joker:flip()
+                play_sound('tarot2', 1, 0.6)
+                victim_joker:juice_up(0.3, 0.3)
+                SMODS.calculate_context({yma = {after_reroll = true, card = victim_joker, old_card = temp_card}})
+                return true 
+            end 
+        }))
+        delay(0.5)
+    end
 end
 
 function yma_get_keys_of_type(type)
@@ -229,6 +249,10 @@ function yma_state_function_events(e)
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_yma_tboi_chest'
       return true
+    elseif G.STATE == G.STATES.CASINO then
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_casino'
+      return true
     end
 	return false
 end
@@ -247,8 +271,158 @@ function yma_can_access_location(location)
     if location == 'tboi_chest' and (G.GAME.tboi_chest_card_amt and G.GAME.tboi_chest_card_amt > 0 or G.GAME.tboi_chest_choiceless) then
         return true
     end
+    if location == 'casino' then
+        return true
+    end
     if location == "stationery" and G.GAME.nteam_sticker_obtained then
         return true
+    end
+end
+
+function yma_calculate_casino(score)
+    if score['Diamond'] == 2 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Diamonds") then
+                v.ability.perma_p_dollars = v.ability.perma_p_dollars or 0
+                v.ability.perma_p_dollars = v.ability.perma_p_dollars + 1
+            end
+        end
+    elseif score['Diamond'] == 3 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Diamonds") then
+                v.ability.perma_repetitions = v.ability.perma_repetitions or 0
+                v.ability.perma_repetitions = v.ability.perma_repetitions + 3
+            end
+        end
+    end
+
+    if score['Club'] == 2 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Clubs") then
+                v.ability.perma_mult = v.ability.perma_mult or 0
+                v.ability.perma_mult = v.ability.perma_mult + 7
+            end
+        end
+    elseif score['Club'] == 3 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Clubs") then
+                v.ability.perma_repetitions = v.ability.perma_repetitions or 0
+                v.ability.perma_repetitions = v.ability.perma_repetitions + 3
+            end
+        end
+    end
+
+    if score['Spade'] == 2 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Spades") then
+                v.ability.perma_bonus = v.ability.perma_bonus or 0
+                v.ability.perma_bonus = v.ability.perma_bonus + 50
+            end
+        end
+    elseif score['Spade'] == 3 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Spades") then
+                v.ability.perma_repetitions = v.ability.perma_repetitions or 0
+                v.ability.perma_repetitions = v.ability.perma_repetitions + 3
+            end
+        end
+    end
+
+    if score['Heart'] == 2 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Hearts") then
+                v.ability.perma_x_mult = v.ability.perma_x_mult or 0
+                v.ability.perma_x_mult = v.ability.perma_x_mult + 0.25
+            end
+        end
+    elseif score['Heart'] == 3 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and v:is_suit("Hearts") then
+                v.ability.perma_repetitions = v.ability.perma_repetitions or 0
+                v.ability.perma_repetitions = v.ability.perma_repetitions + 3
+            end
+        end
+    end
+
+    if score['Joker'] == 2 then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'before',
+            delay = 0.0,
+            func = (function()
+                local cardd = create_card('Joker',G.jokers, nil, 0.99, nil, nil, nil, 'yma_two_joker_casino')
+                cardd:set_edition({ negative = true })
+                cardd:add_to_deck()
+                G.jokers:emplace(cardd)
+                return true
+            end)
+        }))
+    elseif score['Joker'] == 3 then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'before',
+            delay = 0.0,
+            func = (function()
+                local cardd = create_card('Joker',G.jokers, true, nil, nil, nil, nil, 'yma_three_joker_casino')
+                cardd:add_to_deck()
+                G.jokers:emplace(cardd)
+                return true
+            end)
+        }))
+    end
+
+    if score['Banana'] == 2 then
+        for i = 1, 2 do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, 'j_gros_michel', 'yma_two_banana_casino')
+                    cardd:set_edition({ negative = true })
+                    cardd:add_to_deck()
+                    G.jokers:emplace(cardd)
+                    return true
+                end)
+            }))
+        end
+    elseif score['Banana'] == 3 then
+        for i = 1, 3 do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    local cardd = create_card('Joker',G.jokers, nil, nil, nil, nil, 'j_cavendish', 'yma_three_banana_casino')
+                    cardd:set_edition({ negative = true })
+                    cardd:add_to_deck()
+                    G.jokers:emplace(cardd)
+                    return true
+                end)
+            }))
+        end
+    end
+
+    if score['Cold Bean'] == 2 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') and SMODS.pseudorandom_probability(v, 'yma_three_beans_casino' .. G.SEED, 1, 6, nil, true) then
+                for _k, _v in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                    if _v.key == 'm_cbean_jbill_bean' then 
+                        v:set_ability(_v)
+                    end
+                end
+                v:set_edition({ cbean_sd_frozen = true })
+            end
+        end
+    elseif score['Cold Bean'] == 3 then
+        for k, v in pairs(G.I.CARD) do
+            if v.ability and (v.ability.set == 'Default' or v.ability.set == 'Enhanced') then
+                for _k, _v in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                    if _v.key == 'm_cbean_jbill_bean' then 
+                        v:set_ability(_v)
+                    end
+                end
+                v:set_edition({ cbean_sd_frozen = true })
+                v.ability.perma_h_chips = v.ability.perma_h_chips or 0
+                v.ability.perma_h_chips = v.ability.perma_h_chips + 50
+            end
+        end
     end
 end
 
@@ -411,6 +585,12 @@ SMODS.Atlas {
   px = 113,py = 57,
   frames = 4, atlas_table = 'ANIMATION_ATLAS'
 }
+SMODS.Atlas({
+    key = "yma_casino_slots",
+    path = "5_Yeah!MostlyArtists/slots_symbols.png",
+    px = 34,
+    py = 34,
+})
 
 SMODS.ConsumableType {
     key = "yma_keys",
