@@ -28,12 +28,12 @@ SMODS.ObjectType {
     end,
     -- Rarities don't seem to work
     rarities = {
-        { key = 'Common', weight = 60 },
-        { key = 'Uncommon', weight = 25 },
-        { key = 'Rare', weight = 12 },
+        { key = 'Common',    weight = 60 },
+        { key = 'Uncommon',  weight = 25 },
+        { key = 'Rare',      weight = 12 },
         { key = 'Legendary', weight = 3 },
     },
-    
+
 };
 YMA.SideQuests.quest = SMODS.Center:extend({
     class_prefix = "q",
@@ -116,7 +116,7 @@ end
 
 YMA.complete_quest = function(card, set, key, add_card)
     add_card = (add_card == nil) and true or add_card
-    G.GAME.cbean.completed_quests[#G.GAME.cbean.completed_quests+1] = card.config.center.key
+    G.GAME.cbean.completed_quests[#G.GAME.cbean.completed_quests + 1] = card.config.center.key
     if add_card then
         SMODS.add_card { set = set, key = key }
     end

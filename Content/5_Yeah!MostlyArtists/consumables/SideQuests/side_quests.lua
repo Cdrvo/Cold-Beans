@@ -44,8 +44,8 @@ YMA.SideQuests.quest {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists/",
-                "0 Drivers of",
-                "The Chill Vaction" },
+            "0 Drivers of",
+            "The Chill Vaction" },
         idea = "cloudzXIII",
         art = "MarioFan597",
         code = "cloudzXIII",
@@ -82,8 +82,8 @@ YMA.SideQuests.quest {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists/",
-                "0 Drivers of",
-                "The Chill Vaction" },
+            "0 Drivers of",
+            "The Chill Vaction" },
         idea = "cloudzXIII",
         art = "MarioFan597",
         code = "cloudzXIII",
@@ -133,8 +133,8 @@ YMA.SideQuests.quest {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists/",
-                "0 Drivers of",
-                "The Chill Vaction" },
+            "0 Drivers of",
+            "The Chill Vaction" },
         idea = "Flynn",
         art = "MarioFan597",
         code = "cloudzXIII",
@@ -253,7 +253,7 @@ YMA.SideQuests.quest {
             cup_won = false
         }
     },
-    
+
     calculate = function(self, card, context)
         if G.num and G.MODE and G.cups and #G.cups and G.GAME then
             if G.MODE >= 3 and G.STATE_CHOOSEBALL then
@@ -272,13 +272,13 @@ YMA.SideQuests.quest {
                 trigger = 'before',
                 delay = 0.0,
                 func = (function()
-                    local leg = create_card('Joker',G.jokers, true, nil, nil, nil, nil, 'yma_ghost')
+                    local leg = create_card('Joker', G.jokers, true, nil, nil, nil, nil, 'yma_ghost')
                     leg:set_edition({ negative = true })
                     leg:add_to_deck()
                     leg.ability = leg.ability or {}
                     leg.ability.yma_quest_temporary = true
                     G.jokers:emplace(leg)
-                return true
+                    return true
                 end)
             }))
         end
@@ -368,17 +368,17 @@ YMA.SideQuests.quest {
     calculate = function(self, card, context)
         if card.ability.extra.rounds_remaining > 0 and context.pseudorandom_result and context.result and context.identifier == "wheel_of_fortune" then
             card.ability.extra.rounds_remaining = card.ability.extra.rounds
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    func = function()
-                        local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
-                        if #editionless_jokers > 0 then
-                            local eligible_card = pseudorandom_element(editionless_jokers, 'yma_wheel_of_fortune')
-                            eligible_card:set_edition('e_negative', true)
-                        end
-                        return true
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = function()
+                    local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+                    if #editionless_jokers > 0 then
+                        local eligible_card = pseudorandom_element(editionless_jokers, 'yma_wheel_of_fortune')
+                        eligible_card:set_edition('e_negative', true)
                     end
-                }))
+                    return true
+                end
+            }))
             YMA.complete_quest(card, nil, nil, false)
         end
         if context.end_of_round and context.main_eval and not context.blueprint then
@@ -395,8 +395,8 @@ YMA.SideQuests.quest {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists/",
-                "0 Drivers of",
-                "The Chill Vaction" },
+            "0 Drivers of",
+            "The Chill Vaction" },
         idea = "cloudzXIII",
         art = "MarioFan597",
         code = "cloudzXIII",
@@ -429,9 +429,9 @@ YMA.SideQuests.quest {
     },
 
     calculate = function(self, card, context)
-         if context.skip_blind and not context.blueprint then
+        if context.skip_blind and not context.blueprint then
             card.ability.extra.skips_remaining = card.ability.extra.skips_remaining - 1
-             SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
+            SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
         end
         if card.ability.extra.skips_remaining <= 0 then
             card.ability.extra.skips_remaining = card.ability.extra.skips
@@ -444,8 +444,8 @@ YMA.SideQuests.quest {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists/",
-                "0 Drivers of",
-                "The Chill Vaction" },
+            "0 Drivers of",
+            "The Chill Vaction" },
         idea = "cloudzXIII",
         art = "MarioFan597",
         code = "cloudzXIII",
@@ -479,7 +479,7 @@ YMA.SideQuests.quest {
         if context.setting_blind and G.GAME.blind.boss then
             card.ability.extra.blind_triggered = false
         end
-        
+
         if G.GAME.blind.boss and G.GAME.blind.in_blind then
             if context.debuffed_hand or context.joker_main then
                 if G.GAME.blind.triggered then
@@ -545,23 +545,24 @@ YMA.SideQuests.quest {
             end
         end
 
-        if card.ability.extra.packs_left <= 0  and context.ending_booster then
+        if card.ability.extra.packs_left <= 0 and context.ending_booster then
             card.ability.extra.packs_left = card.ability.extra.unique_packs
-			local voucher_key = get_next_voucher_key(true)
-			
-			local new_card = create_card("Voucher", G.play, nil, nil, nil, nil, voucher_key, nil)
-			new_card:start_materialize()
-			new_card.cost = 0
-			new_card.from_tag = true
-			new_card:redeem()
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				delay = 0.2,
-				func = (function()
-					new_card:start_dissolve()                    
-					return true
-				end
-            )}))
+            local voucher_key = get_next_voucher_key(true)
+
+            local new_card = create_card("Voucher", G.play, nil, nil, nil, nil, voucher_key, nil)
+            new_card:start_materialize()
+            new_card.cost = 0
+            new_card.from_tag = true
+            new_card:redeem()
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = (function()
+                    new_card:start_dissolve()
+                    return true
+                end
+                )
+            }))
             YMA.complete_quest(card, nil, nil, false)
         end
     end,
@@ -642,7 +643,7 @@ YMA.SideQuests.quest {
 
     config = {
         extra = {
-            combo_total = 4,     
+            combo_total = 4,
         },
     },
     calculate = function(self, card, context)
@@ -653,12 +654,56 @@ YMA.SideQuests.quest {
         end
     end,
     beans_credits = {
-        team = {"0 Drivers of",
-                "The Chill Vaction" },
+        team = { "0 Drivers of",
+            "The Chill Vaction" },
         idea = "MarioFan597",
         art = "MarioFan597",
         code = "MarioFan597",
     }
 }
 
+YMA.SideQuests.quest {
+    order = 12,
+    key = "yma_triboulet",
+    rarity = 4,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_triboulet
+        return {
+            vars = {
+                card.ability.extra.faces,
+                card.ability.extra.faces_remaining
+            }
+        }
+    end,
+
+    atlas = 'yma_quest_atlas',
+    pos = { x = 3, y = 1 },
+    display_size = { w = 65, h = 65 },
+    pixel_size = { w = 65, h = 65 },
+    config = {
+        extra = {
+            faces = 50,
+            faces_remaining = 50
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+            SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, card)
+            card.ability.extra.faces_remaining = card.ability.extra.faces_remaining - 1
+        end
+
+        if card.ability.extra.faces_remaining <= 0 then
+            card.ability.extra.faces_remaining = card.ability.extra.faces
+            YMA.complete_quest(card, "Joker", "j_triboulet")
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
+        art = "FirstTry",
+        code = "cloudzXIII",
+    }
+}
 -- note: if you're planning on making new ones, you have to add `order = number`, the number being the next one in the sequence (in this case 12)

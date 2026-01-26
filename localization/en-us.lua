@@ -1779,6 +1779,16 @@ return {
 					"to create {C:attention}Lone Warrior{}",
 				},
 			},
+			q_cbean_yma_triboulet = {
+				name = {
+					"Triboulet",
+					"{C:dark_edition,s:0.7}Side Quest{}",
+				},
+				text = {
+					"Score {C:attention}#1#{} {C:inactive}(#2#){} {C:attention}face{} cards",
+					"to create {C:attention}Triboulet{}",
+				},
+			},
 		},
 		--Tboi items
 		yma_tboi_items = {
