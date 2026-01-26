@@ -2467,6 +2467,82 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Ankh
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_ankh",
+    set = "yma_tboi_items",
+    order = 51,
+    quaility = 0,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.total_blinds,
+                card.ability.extra.blinds,
+                card.ability.extra.perma_blind_req + 1,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 4 },
+
+    config = {
+        extra = {
+            total_blinds = 3,
+            blinds = 3,
+            perma_blind_req = 1,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind and card.ability.extra.blinds > 0 then
+            local nextlist = {
+                Teeny = 'Small',
+                Small = 'Big',
+                Big = 'Boss',
+                Boss = 'CEO'
+            }
+            G.GAME.cbean_jbill_arch_nope = true;
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    Colonparen.set_upcoming_blind(Colonparen.get_new_blind('Teeny'));
+                    return true
+                end
+            }))
+            card.ability.extra.blinds = card.ability.extra.blinds - 1
+        end
+        if context.game_over then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return true
+                end
+            })) 
+            return {
+                message = localize('k_saved_ex'),
+                saved = true,
+                colour = G.C.RED
+            }
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.yma_blind_req_increase = G.GAME.yma_blind_req_increase or 1
+        G.GAME.yma_blind_req_increase = G.GAME.yma_blind_req_increase + card.ability.extra.perma_blind_req
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
 --Sacred Heart
 YMA.TBOI_ITEMS {
     key = "yma_tboi_sacred_heart",
@@ -2587,6 +2663,196 @@ YMA.TBOI_ITEMS {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Birthright
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_birthright",
+    set = "yma_tboi_items",
+    order = 54,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 7, y = 4 },
+
+    config = {
+        extra = {
+            no_deck = false
+        }
+    },
+
+    calculate = function(self, card, context)
+        if (G.GAME.selected_back and G.GAME.selected_back.name == 'Magic Deck') then
+            if context.starting_shop and #G.shop_booster.cards >= 1 then
+                G.E_MANAGER:add_event(Event ({
+                    trigger = 'before',
+                    func = function()
+                        YMA_reroll_card(G.shop_booster.cards[1], get_pack('yma_tboi_birthright', 'Arcana').key, "Booster", 'yma_tboi_birthright')
+                        return true
+                    end 
+                }))
+            end
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Nebula Deck') then
+            if context.starting_shop and #G.shop_jokers.cards >= 1 and G.GAME.last_hand_played then
+                G.E_MANAGER:add_event(Event ({
+                    trigger = 'before',
+                    func = function()
+                        local _planet = 0
+                        for k, v in pairs(G.P_CENTER_POOLS.Planet) do
+                            if v.config.hand_type == G.GAME.last_hand_played then
+                                _planet = v.key
+                            end
+                        end
+                        if _planet == 0 then _planet = nil end
+                        YMA_reroll_card(G.shop_jokers.cards[#G.shop_jokers.cards], _planet, "Planet", 'yma_tboi_birthright')
+                        return true
+                    end 
+                }))
+            end
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Checkered Deck') then
+            if context.setting_blind then
+                for k, v in pairs(G.playing_cards) do
+                    if v:is_suit("Clubs") then
+                        v:change_suit("Spades")
+                    elseif v:is_suit("Diamonds") then
+                        v:change_suit("Hearts")
+                    end
+                end
+            end
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Anaglyph Deck') then
+            if context.setting_blind then
+                G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        add_tag(Tag('tag_double'))
+                        play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                        play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                        return true
+                   end)
+                }))
+            end
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Plasma Deck') then
+            if context.yma and context.yma.before_after then
+                return {
+                    xchips = 2,
+                    xmult = 2
+                }
+            end
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'b_cbean_nameteam_urine') then
+            if context.individual and context.cardarea == G.play then
+                if SMODS.has_enhancement(context.other_card, 'm_cbean_pboys_piss') then
+                     return {
+                         message = localize('k_again_ex'),
+                         repetitions = 2,
+                         card = card, 
+                     }
+                end
+            end
+        elseif card.ability.extra.no_deck then
+            if context.joker_main then
+                return {
+                    xchips = 5
+                }
+            end
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        if (G.GAME.selected_back and G.GAME.selected_back.name == 'Red Deck') then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards + 3
+            ease_discard(3)
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Blue Deck') then
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands + 2
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Yellow Deck') then
+            ease_dollars(60)
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Green Deck') then
+            G.GAME.modifiers.money_per_discard = G.GAME.modifiers.money_per_discard or 0
+            G.GAME.modifiers.money_per_discard = G.GAME.modifiers.money_per_discard + 3
+            G.GAME.modifiers.money_per_hand = G.GAME.modifiers.money_per_hand or 1
+            G.GAME.modifiers.money_per_hand = G.GAME.modifiers.money_per_hand + 3
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Black Deck') then
+            G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Magic Deck') then
+            local voucher_key = 'v_omen_globe'
+			
+			local new_card = create_card("Voucher", G.play, nil, nil, nil, nil, voucher_key, nil)
+			new_card:start_materialize()
+			new_card.cost = 0
+			new_card.from_tag = true
+			new_card:redeem()
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.2,
+				func = (function()
+					new_card:start_dissolve()                    
+					return true
+				end
+            )}))
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Ghost Deck') then
+            G.GAME.spectral_rate = G.GAME.spectral_rate + 4
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Abandoned Deck') then
+            local ranks = {}
+            for k, v in pairs(G.playing_cards) do
+                ranks[v:get_id()] = ranks[v:get_id()] or 0
+                ranks[v:get_id()] = ranks[v:get_id()] + 1
+            end
+            local least_vals = {}
+            for i = 1, 3 do
+                local least = 0
+                local index = nil
+                for k, v in pairs(ranks) do
+                    if not index or v < index then
+                        index = v
+                        least = k
+                    end
+                end
+                least_vals[#least_vals+1] = least
+                ranks[least] = nil
+            end
+            local card_to_destroy = {}
+            for k, v in pairs(G.playing_cards) do
+                for _k, _v in pairs(least_vals) do
+                    if v:get_id() == _v then
+                        card_to_destroy[#card_to_destroy+1] = v
+                    end
+                end
+            end
+            SMODS.destroy_cards(card_to_destroy, nil, nil, true)
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Zodiac Deck') then
+            G.GAME.spectral_rate = G.GAME.spectral_rate + G.GAME.joker_rate
+            G.GAME.joker_rate = 0
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Painted Deck') then
+            G.hand:change_size(6)
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'Erratic Deck') then
+            play_sound('tarot2')
+            for k, v in pairs(G.playing_cards) do
+                local cen_pool = {}
+                for _k, _v in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                    if _v.key ~= 'm_stone' then 
+                        cen_pool[#cen_pool+1] = _v
+                    end
+                end
+                center = pseudorandom_element(cen_pool, pseudoseed('yma_tboi_birthright'))
+                    
+                v:juice_up(0.3, 0.3)
+                v:set_ability(center)
+            end
+        else
+            card.ability.extra.no_deck = true
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "Rainstar",
         art = "RattlingSnow353",
         code = "RattlingSnow353",
     }
