@@ -189,7 +189,7 @@ function yma_hell_upgrade_card(card)
     
     local rates = {}
     for k, v in pairs(upgrades_weight) do
-        rates[#rates+1] = {type = k, val = v.weight, amt = v.amt}
+        rates[#rates+1] = {type = k, val = v.weight, amt = v.amt*5}
     end
     for _, v in ipairs(rates) do
         if polled_rate > check_rate and polled_rate <= check_rate + v.val then
@@ -225,6 +225,10 @@ function yma_state_function_events(e)
 	  e.config.colour = G.C.RED
 	  e.config.button = 'hide_yma_dreamland'
       return true
+    elseif G.STATE == G.STATES.TBOI_CHEST then
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_tboi_chest'
+      return true
     end
 	return false
 end
@@ -238,6 +242,9 @@ function yma_can_access_location(location)
         return true
     end
     if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) then
+        return true
+    end
+    if location == 'tboi_chest' and (G.GAME.tboi_chest_card_amt and G.GAME.tboi_chest_card_amt > 0 or G.GAME.tboi_chest_choiceless) then
         return true
     end
     if location == "stationery" and G.GAME.nteam_sticker_obtained then
@@ -383,6 +390,24 @@ SMODS.Atlas {
 SMODS.Atlas {
   key = "yma_graveyard_sign",
   path = "5_Yeah!MostlyArtists/graveyard_sign.png",
+  px = 113,py = 57,
+  frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
+SMODS.Atlas {
+  key = "yma_locked_sign",
+  path = "5_Yeah!MostlyArtists/locked_sign.png",
+  px = 113,py = 57,
+  frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
+SMODS.Atlas {
+  key = "yma_chest_sign",
+  path = "5_Yeah!MostlyArtists/chest_sign.png",
+  px = 113,py = 57,
+  frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
+SMODS.Atlas {
+  key = "yma_casino_sign",
+  path = "5_Yeah!MostlyArtists/casino_sign.png",
   px = 113,py = 57,
   frames = 4, atlas_table = 'ANIMATION_ATLAS'
 }

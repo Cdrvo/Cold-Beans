@@ -51,7 +51,7 @@ CM.custom_card_areas = function(game)
     game.tboi_items = CardArea(
         game.jokers.T.x, game.jokers.T.y - 4,
         game.jokers.T.w, game.jokers.T.h,
-        { card_limit = 999999999, type = 'tboi_items_hide', highlight_limit = 1, no_card_count = true, }
+        { card_limit = 999999999, type = 'tboi_items_hide', highlight_limit = 1, no_card_count = true, fixed_limit = 99 }
     )
     
     CM.states.slot_visible = 1
@@ -135,6 +135,7 @@ function CardArea:emplace(card, location, stay_flipped)
         return
     end
     if self == G.tboi_items then self:change_size(1) end
+    if self == G.tboi_chest_cards then self:change_size(1) end
     if (self == G.jokers and CM.states.slot_visible ~= 1) or (self == G.tboi_items and CM.states.slot_visible ~= -1) then
         G.FUNCS.toggle_jokers_items()
         G.E_MANAGER:add_event(Event({

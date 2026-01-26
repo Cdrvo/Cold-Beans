@@ -2,6 +2,7 @@ G.STATES.MAIN_STREET = 24783948327
 G.STATES.GRAVEYARD = 1366468461
 G.STATES.HELL = 666384372666
 G.STATES.DREAMLAND = 7983784839784932
+G.STATES.TBOI_CHEST = 87537893475485974835
 
 G.FUNCS.show_yma_main_street = function(e)
   stop_use()
@@ -47,24 +48,10 @@ function update_main_street()
             definition = G.UIDEF.yma_main_street(),
             config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
         }
-        if yma_can_access_location('graveyard') then
-            G.yma_mainstreet_graveyard.states.visible = true
-        else
-            G.yma_mainstreet_graveyard.states.visible = false
-        end
         G.yma_mainstreet_graveyard:recalculate()
-        if yma_can_access_location('hell') then
-            G.yma_mainstreet_hell.states.visible = true
-        else
-            G.yma_mainstreet_hell.states.visible = false
-        end
         G.yma_mainstreet_hell:recalculate()
-        if yma_can_access_location('dreamland') then
-            G.yma_mainstreet_dreamland.states.visible = true
-        else
-            G.yma_mainstreet_dreamland.states.visible = false
-        end
         G.yma_mainstreet_dreamland:recalculate()
+        G.yma_mainstreet_tboi_chest:recalculate()
         G.yma_mainstreet_stationery:recalculate()
 
         G.E_MANAGER:add_event(Event({
@@ -106,6 +93,8 @@ function Controller:L_cursor_press(x, y)
             G.FUNCS.show_yma_hell()
         elseif G.yma_mainstreet_dreamland and G.yma_mainstreet_dreamland.states.collide.is and yma_can_access_location('dreamland') then
             G.FUNCS.show_yma_dreamland()
+        elseif G.yma_mainstreet_tboi_chest and G.yma_mainstreet_tboi_chest.states.collide.is and yma_can_access_location('tboi_chest') then
+            G.FUNCS.show_yma_tboi_chest()
 		elseif G.yma_mainstreet_stationery and G.yma_mainstreet_stationery.states.collide.is and yma_can_access_location('stationery') then
             G.FUNCS.show_stationery()
         --Evil ass Jbill employment gimmick appears!
@@ -131,6 +120,10 @@ function G.UIDEF.yma_main_street()
     }
     G.yma_mainstreet_dreamland = UIBox{
         definition = G.UIDEF.dreamlandsprite(),
+        config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
+    }
+    G.yma_mainstreet_tboi_chest = UIBox{
+        definition = G.UIDEF.tboi_chestsprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
     G.yma_mainstreet_stationery = UIBox{
@@ -163,12 +156,17 @@ function G.UIDEF.yma_main_street()
     table2[#table2+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
             {n=G.UIT.O, config={object = G.jbill_employed}},
     }}
+    local table3 = {}
+    table3[#table3+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
+            {n=G.UIT.O, config={object = G.yma_mainstreet_tboi_chest}},
+        }}
 
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.L_BLACK}, nodes={
                     {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table},
                     {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table2},
+                    {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes=table3},
                     {n=G.UIT.R, config={align = "cm", minh = 3.5}, nodes={}},
                 }
               },
@@ -190,8 +188,12 @@ end
 
 function G.UIDEF.gravesprite()
   
-	local sprite_grave = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_yma_graveyard_sign"], { x = 0, y = 0 }) or nil
-
+	local sprite_grave = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("graveyard") and "cbean_yma_graveyard_sign" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
+    function sprite_grave:update(dt)
+		AnimatedSprite.update(self, dt)
+		self.atlas =
+			G.ANIMATION_ATLAS[yma_can_access_location("graveyard") and "cbean_yma_graveyard_sign" or "cbean_yma_locked_sign"]
+	end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_grave}},
     }}
@@ -200,18 +202,40 @@ end
 
 function G.UIDEF.hellsprite()
   
-	local sprite_hell = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_yma_hell_sign"], { x = 0, y = 0 }) or nil
-
+	local sprite_hell = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("hell") and "cbean_yma_hell_sign" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
+    function sprite_hell:update(dt)
+		AnimatedSprite.update(self, dt)
+		self.atlas =
+			G.ANIMATION_ATLAS[yma_can_access_location("hell") and "cbean_yma_hell_sign" or "cbean_yma_locked_sign"]
+	end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_hell}},
     }}
     return t
 end
 
+function G.UIDEF.tboi_chestsprite()
+  
+	local sprite_tboi_chest = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("tboi_chest") and "cbean_yma_chest_sign" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
+    function sprite_tboi_chest:update(dt)
+		AnimatedSprite.update(self, dt)
+		self.atlas =
+			G.ANIMATION_ATLAS[yma_can_access_location("tboi_chest") and "cbean_yma_chest_sign" or "cbean_yma_locked_sign"]
+	end
+    local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+            {n=G.UIT.O, config={object = sprite_tboi_chest}},
+    }}
+    return t
+end
+
 function G.UIDEF.dreamlandsprite()
   
-	local sprite_hell = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_yma_dreamland_sign"], { x = 0, y = 0 }) or nil
-
+	local sprite_hell = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("dreamland") and "cbean_yma_dreamland_sign" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
+    function sprite_hell:update(dt)
+		AnimatedSprite.update(self, dt)
+		self.atlas =
+			G.ANIMATION_ATLAS[yma_can_access_location("dreamland") and "cbean_yma_dreamland_sign" or "cbean_yma_locked_sign"]
+	end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_hell}},
     }}
@@ -225,6 +249,113 @@ function G.UIDEF.employsprite()
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_employ}},
     }}
+    return t
+end
+
+G.FUNCS.show_yma_tboi_chest = function(e)
+  stop_use()
+  hide_location(G.main_street)
+  
+  G.STATE = G.STATES.TBOI_CHEST
+  G.STATE_COMPLETE = false
+  
+
+  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+  ease_background_colour_blind(G.STATE)
+  sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_yma_chest_sign"]
+  G.hand.states.visible = false
+  sign_sprite.states.visible = true
+  G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+  show_location(G.yma_tboi_chest)
+end
+
+G.FUNCS.hide_yma_tboi_chest = function(e)
+    stop_use()
+	hide_location(G.yma_tboi_chest)
+	G.STATE = G.STATES.MAIN_STREET
+	G.STATE_COMPLETE = false
+    
+	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+	ease_background_colour_blind(G.STATES.MAIN_STREET)
+	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    sign_sprite.states.visible = false
+    G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+    show_location(G.main_street)
+end
+
+function update_yma_tboi_chest()
+    if not G.STATE_COMPLETE then
+        stop_use()
+        ease_background_colour_blind(G.STATES.TBOI_CHEST)
+        local tboi_chest_exists = not not G.yma_tboi_chest
+        G.yma_tboi_chest = G.yma_tboi_chest or UIBox{
+            definition = G.UIDEF.yma_tboi_chest(),
+            config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+        }
+        if #G.tboi_chest_cards.cards > 0 then G.GAME.tboi_chest_choiceless = true else G.GAME.tboi_chest_choiceless = false end
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.yma_tboi_chest.alignment.offset.y = -5.3
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    blockable = false,
+                    func = function()
+                        if math.abs(G.yma_tboi_chest.T.y - G.yma_tboi_chest.VT.y) < 3 then
+                            local nosave_yma_tboi_chest = nil 
+                            -- Back to shop button
+                            G.CONTROLLER:snap_to({node = G.yma_tboi_chest:get_UIE_by_ID('shop_button')})
+                            -- not loaded from save?
+                            if not nosave_yma_tboi_chest then G.E_MANAGER:add_event(Event({ func = function() save_run(); return true end})) end
+                            return true
+                        end
+                    end}))
+                return true
+            end
+        }))
+
+
+        G.STATE_COMPLETE = true
+    end
+end
+
+function G.UIDEF.yma_tboi_chest()
+    local _size = 2
+    G.tboi_chest_cards = CardArea(
+        G.ROOM.T.x + 9 + G.hand.T.x, G.hand.T.y,
+        math.max(1,math.min(_size,5))*G.CARD_W*1.1,
+        1.05*G.CARD_H,
+        {card_limit = _size, type = 'joker', highlight_limit = 1, no_card_count = true})
+    G.GAME.tboi_chest_card_amt = G.GAME.tboi_chest_card_amt or 0
+    if G.GAME.tboi_chest_card_amt > 0 then
+        for i = 1, G.GAME.tboi_chest_card_amt do
+            local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, nil, 'for')
+            cardd:add_to_deck()
+            G.tboi_chest_cards:emplace(cardd)
+        end
+        G.GAME.tboi_chest_card_amt = 0
+    end
+    local tbale = {num = 1}
+    local t = {n=G.UIT.ROOT, config = {align = 'tm', r = 0.15, colour = G.C.CLEAR, padding = 0.15}, nodes={
+        {n=G.UIT.R, config={align = "cl", colour = G.C.CLEAR,r=0.15, padding = 0.1, minh = 2, shadow = true}, nodes={
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+                {n=G.UIT.C, config={align = "cm", r=0.2, colour = G.C.CLEAR, shadow = true}, nodes={
+                    {n=G.UIT.O, config={object = G.tboi_chest_cards}},}}}}}},
+        {n=G.UIT.R, config={align = "cm"}, nodes={}},
+        {n=G.UIT.R, config={align = "tm"}, nodes={
+            {n=G.UIT.C,config={align = "tm", padding = 0.05}, nodes={
+                UIBox_dyn_container({
+                    {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 4}, nodes={
+                        {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+                            {n=G.UIT.O, config={object = DynaText({string = localize('k_yma_tboi_chest'), colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.7, maxw = 4, pop_in = 0.5})}}}},
+                        {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+                            {n=G.UIT.O, config={object = DynaText({string = {localize('k_choose')..' '}, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}},
+                            {n=G.UIT.O, config={object = DynaText({string = {{ref_table = tbale, ref_value = 'num'}}, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}}}},}}
+                }),}},
+                }}}}}}
     return t
 end
 
@@ -383,7 +514,7 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
     local card = G.dreamlands_consumeable_card_holder.highlighted[1]
     local temp, set = yma_improveable_consumable(card)
     if set == 'sdown_blessing' then
-    if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+    if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 2, nil, true) then
         card.ability.extra.times_left = card.ability.extra.times_left + 1 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
         else
@@ -396,7 +527,7 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
             end
         end
     elseif set == 'yma_keys' then
-        if SMODS.pseudorandom_probability(card, 'dreamland_improve', 1, 3, nil, true) then
+        if SMODS.pseudorandom_probability(card, 'dreamland_improve', 2, 3, nil, true) then
             if card.ability.consumeable.extra.type == 'cards' then
                 card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses + 2
                 card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 2 
@@ -405,7 +536,7 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
             card.ability.consumeable.extra.max_uses = card.ability.consumeable.extra.max_uses + 1 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
         else
-            if SMODS.pseudorandom_probability(card, 'dreamland_failed', 2, 3, nil, true) then
+            if SMODS.pseudorandom_probability(card, 'dreamland_failed', 3, 4, nil, true) then
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_polish_fail')})
             else
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_yma_key_broke')})
@@ -802,12 +933,6 @@ G.FUNCS.draw_from_card_area_to_card_area = function(card_area, card_area2)
 end
 
 G.FUNCS.draw_from_deck_to_card_area = function(card_area, amt)
-    if not (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
-        card_area.config.card_limit <= 0 and #card_area.cards == 0 then 
-        G.STATE = G.STATES.GAME_OVER; G.STATE_COMPLETE = false 
-        return true
-    end
-
     local hand_space = amt
     local cards_to_draw = {}
     if not hand_space then
@@ -826,12 +951,6 @@ G.FUNCS.draw_from_deck_to_card_area = function(card_area, amt)
             n = n + 1
         end
         hand_space = #cards_to_draw
-    end
-    if G.GAME.blind.name == 'The Serpent' and
-        not G.GAME.blind.disabled and
-        (G.GAME.current_round.hands_played > 0 or
-        G.GAME.current_round.discards_used > 0) then
-            hand_space = math.min(#G.deck.cards, 3)
     end
     local flags = SMODS.calculate_context({drawing_cards = true, amount = hand_space})
     hand_space = math.min(#G.deck.cards, flags.cards_to_draw or flags.modify or hand_space)
