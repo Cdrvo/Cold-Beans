@@ -3133,3 +3133,110 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Tooth Picks
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_tooth_picks",
+    set = "yma_tboi_items",
+    order = 61,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xchips
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 3, y = 5 },
+
+    config = {
+        extra = {
+            xchips = 5,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--SMB Super Fan
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_smb_super_fan",
+    set = "yma_tboi_items",
+    order = 62,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_smb_super_fan')
+        return {
+            vars = {
+                numerator, denominator,
+                card.ability.extra.ante,
+                card.ability.extra.xchips,
+                card.ability.extra.score,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 4, y = 5 },
+
+    config = {
+        extra = {
+            odds = 8,
+            ante = 1,
+            xchips = 1.5,
+            score = 10,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
+        end
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+        if context.repetition and context.other_card and context.other_card.area == G.play then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_smb_super_fan' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card, 
+                }
+            end
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
