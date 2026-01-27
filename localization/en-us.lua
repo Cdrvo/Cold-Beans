@@ -3832,6 +3832,23 @@ return {
 					"Mult, or {C:money}$1-2{}"
 				},
 			},
+			cbean_yma_uncommon_medal = {
+				name = "Uncommon Medal",
+				text = {
+					"Gain {C:chips}+#1#{} Chips, {C:mult}+#2#{}",
+					"Mult, or {C:green}#3# in #4#{} chance",
+					"to gain {C:money}$5"
+				},
+			},
+			cbean_yma_rare_medal = {
+				name = "Rare Medal",
+				text = {
+					"{X:chips,C:white}X#1#{} Chips, {X:mult,C:white}X#2#{} Mult",
+					"or {C:green}#3# in #4#{} chance to",
+					"create a {C:attention}random",
+					"{C:attention}consumable"
+				},
+			},
 			undiscovered_yma_quest = {
 				name = "Not Discovered",
 				text = {
