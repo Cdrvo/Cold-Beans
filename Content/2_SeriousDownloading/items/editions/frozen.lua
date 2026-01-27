@@ -11,7 +11,7 @@ end
 
 SMODS.Edition{
     key = "sd_frozen",
-    shader = 'frozen',  --Inspector_B from the 0-drivers group here, I added a shader to frozen cause it look pretty.
+    shader = 'frozen',  --Inspector_B from the 0-drivers group here, I added a shader to frozen cause it look pretty. (RattlingSnow here, I modified the shader)
     sound = {
         sound = "cbean_sd_frozen"
     },
@@ -52,7 +52,7 @@ SMODS.Edition{
     beans_credits = {
         team = "SeriousDownloading",
         idea = "mys. minty",
-        art =  "TBA",
+        art =  "RattlingSnow353",
         code = "mys. minty",
     }
 }
