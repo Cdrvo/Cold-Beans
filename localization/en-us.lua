@@ -2396,6 +2396,29 @@ return {
 					"hand in {C:attention}reverse{} order",
 				},
 			},
+			ti_cbean_yma_tboi_stem_cells = {
+				name = {
+					"Stem Cells",
+				},
+				text = {
+					"{C:attention}-#1#{} Ante"
+				},
+			},
+			ti_cbean_yma_tboi_fate = {
+				name = {
+					"Fate",
+				},
+				text = {
+					{
+						"Cards {C:attention}held in hand{} give their",
+						"{C:chips}Chip{} vaules"
+					},
+					{
+						"{C:green}#1# in #2#{} chance for {C:attention}-#3#{} Ante",
+						"after {C:attention}beating{} the {C:attention}Final{} blind"
+					}
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
