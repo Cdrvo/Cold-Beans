@@ -24,15 +24,6 @@ SMODS.current_mod.custom_collection_tabs = function()
         end
     end
 
-    local items = G.P_CENTER_POOLS["yma_tboi_items"]
-    local item_count = 0
-    local item_total = #side_quests
-    for _, item in ipairs(items) do
-        if item.discovered or (G.PROFILES[G.SETTINGS.profile] and G.PROFILES[G.SETTINGS.profile].all_unlocked) then
-            item_count = item_count + 1
-        end
-    end
-
     return {
         UIBox_button({
             button = 'your_collection_quests',
@@ -49,14 +40,17 @@ SMODS.current_mod.custom_collection_tabs = function()
         UIBox_button({
             button = 'your_collection_tboi_items',
             label = { 'Items' },
-            item_count = item_total > 0 and {
-                tally = item_count,
-                of = item_total
-            } or nil,
+            count = G.ACTIVE_MOD_UI and modsCollectionTally(G.P_CENTER_POOLS["yma_tboi_items"]),
             minw = 5,
             minh = 1,
             id = 'your_collection_tboi_items',
             focus_args = { snap_to = true }
+        }),
+        UIBox_button({
+            button = 'your_collection_yma_medals',
+            label = { 'Medals' },
+            minw = 5,
+            id = 'your_collection_yma_medals',
         })
     }
 end
@@ -73,6 +67,28 @@ G.FUNCS.your_collection_tboi_items = function()
     G.FUNCS.overlay_menu {
         definition = create_UIBox_tboi_items(),
     }
+end
+
+G.FUNCS.your_collection_yma_medals = function()
+    G.SETTINGS.paused = true
+    G.FUNCS.overlay_menu {
+        definition = create_UIBox_yma_medals(),
+    }
+end
+
+function create_UIBox_yma_medals()
+
+    return SMODS.card_collection_UIBox(G.P_CENTER_POOLS["yma_medal"], { 4, 4 }, {
+        snap_back = true,
+        hide_single_page = true,
+        collapse_single_page = true,
+        no_materialize = true,
+        center = 'j_joker',
+        back_func = 'your_collection_other_gameobjects',
+        modify_card = function(card, center)
+            card:yma_set_medal(center.key)
+        end,
+    })
 end
 
 function create_UIBox_tboi_items()
