@@ -2378,6 +2378,24 @@ return {
 					"hand",
 				},
 			},
+			ti_cbean_yma_tboi_cat_nine_tails = {
+				name = {
+					"Cat-o-nine-tails",
+				},
+				text = {
+					"{C:dark_edition}+#1#%{} Score"
+				},
+			},
+			ti_cbean_yma_tboi_harlequin_baby = {
+				name = {
+					"Harlequin Baby",
+				},
+				text = {
+					"The first two {C:attention}played cards",
+					"are {C:attention}added{} to each {C:attention}played",
+					"hand in {C:attention}reverse{} order",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
