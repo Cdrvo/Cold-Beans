@@ -3240,3 +3240,92 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Fanny Pack
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_fanny_pack",
+    set = "yma_tboi_items",
+    order = 63,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_smb_super_fan')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 5, y = 5 },
+
+    config = {
+        extra = {
+            odds = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_fanny_pack' .. G.SEED, 1, card.ability.extra.odds) then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        local cardd = create_card('Tarot',G.consumeables, nil, nil, nil, nil, nil, 'yma_tboi_fanny_pack')
+                        cardd:set_edition({ negative = true })
+                        cardd:add_to_deck()
+                        G.consumeables:emplace(cardd)
+                        return true
+                    end)
+                }))
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Rubber Cement
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_rubber_cement",
+    set = "yma_tboi_items",
+    order = 64,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 6, y = 5 },
+
+    config = {
+        extra = {
+            odds = 3,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_fanny_pack' .. G.SEED, 1, card.ability.extra.odds, nil, true) then
+                ease_hands_played(1)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
