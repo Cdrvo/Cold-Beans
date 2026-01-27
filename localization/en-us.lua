@@ -3824,6 +3824,14 @@ return {
 			},
 		},
 		Other = {
+			--Medals
+			cbean_yma_common_medal = {
+				name = "Common Medal",
+				text = {
+					"Gain {C:chips}+#1#{} Chips, {C:mult}+#2#{}",
+					"Mult, or {C:money}$1-2{}"
+				},
+			},
 			undiscovered_yma_quest = {
 				name = "Not Discovered",
 				text = {
@@ -7036,6 +7044,10 @@ return {
 		},
 		high_scores = {},
 		labels = {
+			cbean_yma_common_medal = "Common Medal",
+			cbean_yma_uncommon_medal = "Uncommon Medal",
+			cbean_yma_rare_medal = "Rare Medal",
+			cbean_yma_legendary_medal = "Legendary Medal",
 			cbean_colon_tauic = "Tauic",
 
 			cbean_sd_frozen = "Frozen",
