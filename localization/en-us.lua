@@ -3849,6 +3849,17 @@ return {
 					"{C:attention}consumable"
 				},
 			},
+			cbean_yma_legendary_medal = {
+				name = "Legendary Medal",
+				text = {
+					"Gain {X:chips,C:white}X#1#{} Chips per card played,",
+					"Gain {X:mult,C:white}X#3#{} Mult per hand played,",
+					"and create a {C:attention}random {C:dark_edition}Negative{}",
+					"{C:attention}consumable{} at the end of {C:attention}round",
+					"{C:inactive}(Currently {C:white,X:chips}X#2#{C:inactive} Chips and {C:white,X:mult}X#4#{C:inactive} Mult)",
+				},
+			},
+			--Undiscovered
 			undiscovered_yma_quest = {
 				name = "Not Discovered",
 				text = {
