@@ -3329,3 +3329,55 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Pyromaniac
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_pyromaniac",
+    set = "yma_tboi_items",
+    order = 65,
+    quaility = 4,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 7, y = 5 },
+
+    config = {
+        extra = {
+           
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.yma and context.yma.before_after then
+            card.ability.extra.temp_chips = tostring(math.floor(SMODS.calculate_round_score()))
+            if context.total_chips >= G.GAME.blind.chips then
+                
+                local vaild_cards = {}
+                for i = 1, #G.play.cards do
+                    if G.play.cards[i].edition == nil then
+                        table.insert(vaild_cards, G.play.cards[i])
+                    end
+                end
+                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                    local eligible_card = pseudorandom_element(vaild_cards, pseudoseed('yma_tboi_rubber_cement'))
+                    local edition = poll_edition('yma_tboi_rubber_cement', nil, false, true)
+                    eligible_card:set_edition(edition, true)
+                    card:juice_up(0.3, 0.5)
+                return true end }))
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
