@@ -2948,3 +2948,90 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Cat-o-nine-tails
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_cat_nine_tails",
+    set = "yma_tboi_items",
+    order = 57,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.score
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 11, y = 4 },
+
+    config = {
+        extra = {
+            score = 50,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    yma_add_score(card, card.ability.extra.score)
+                return true end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Harlequin Baby
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_harlequin_baby",
+    set = "yma_tboi_items",
+    order = 58,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 5 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            for i = 2, 1, -1 do
+                local _card = context.full_hand[i] and copy_card(context.full_hand[i])
+                if _card then
+                    _card.ability.yma_disposable = true
+                    table.insert(context.scoring_hand, _card)
+                    G.play:emplace(_card)
+                    _card:highlight(true)
+                end
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
