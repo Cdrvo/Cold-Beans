@@ -2419,6 +2419,29 @@ return {
 					}
 				},
 			},
+			ti_cbean_yma_tboi_tooth_picks = {
+				name = {
+					"Tooth Picks",
+				},
+				text = {
+					"{X:chips,C:white}X#1#{} Chips",
+				},
+			},
+			ti_cbean_yma_tboi_smb_super_fan = {
+				name = {
+					"SMB Super Fan",
+				},
+				text = {
+					{
+						"{C:green}#1# in #2#{} chance to {C:attention}retrigger",
+						"each {C:attention}played{} card"
+					},
+					{
+						"{C:attention}-#3#{} Ante, {X:chips,C:white}X#4#{} Chips,",
+						"{C:dark_edition}+#5#%{} Score",
+					}
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
