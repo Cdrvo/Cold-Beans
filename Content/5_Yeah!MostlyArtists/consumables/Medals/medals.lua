@@ -155,3 +155,64 @@ YMA.MEDAL {
         code = "RattlingSnow353",
     }
 }
+--Legendary Medal
+YMA.MEDAL {
+    key = "yma_legendary",
+    order = 4,
+    badge_colour = HEX("b26cbb"),
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.yma_medal.extra.xchips,
+                card.ability.yma_medal.extra.cur_xchips,
+                card.ability.yma_medal.extra.xmult,
+                card.ability.yma_medal.extra.cur_xmult,
+            }
+        }
+    end,
+
+    atlas = 'yma_medals_atlas',
+    pos = { x = 1, y = 0 },
+
+    config = {
+        extra = {
+            xchips = 0.01,
+            cur_xchips = 1,
+            xmult = 0.01,
+            cur_xmult = 1
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            for k, v in pairs(context.full_hand) do
+                card.ability.yma_medal.extra.cur_xchips = card.ability.yma_medal.extra.cur_xchips + card.ability.yma_medal.extra.xchips
+            end
+            card.ability.yma_medal.extra.cur_xmult = card.ability.yma_medal.extra.cur_xmult + card.ability.yma_medal.extra.xmult
+            return {
+                xchips = card.ability.yma_medal.extra.cur_xchips,
+                xmult = card.ability.yma_medal.extra.cur_xmult,
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                    local cardd = create_card('Consumeables',G.consumeables, nil, nil, nil, nil, nil, 'yma_legendary_card')
+                    cardd:set_edition({ negative = true })
+                    cardd:add_to_deck()
+                    G.consumeables:emplace(cardd)
+                    return true
+                end)
+            }))
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
