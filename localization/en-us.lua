@@ -2462,6 +2462,18 @@ return {
 					"a {C:blue}hand"
 				},
 			},
+			ti_cbean_yma_tboi_pyromaniac = {
+				name = {
+					"Pyromaniac",
+				},
+				text = {
+					"If score of {C:attention}played hand{}",
+					"exceeds the {C:attention}total blind",
+					"{C:attention}requirement{}, give a random",
+					"{C:edition}Edition{} to a card in {C:attention}played",
+					"{C:blue}hand"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
@@ -7090,7 +7102,7 @@ return {
 			},
 			cbean_reward_joker_edition          = {
 				"Creates a random Joker",
-				"with a random {C:dark_edition}Edition{}",
+				"with a random {C:edition}Edition{}",
 				"{C:inactive}(Must have room)",
 			},
 			cbean_reward_shield                 = {
