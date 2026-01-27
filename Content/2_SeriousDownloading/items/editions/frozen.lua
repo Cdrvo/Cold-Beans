@@ -1,6 +1,9 @@
 local click = Card.click
 function Card:click()
     if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) then
+        if self.area and self.area == G.deck and self.area.cards[1] == self then 
+            G.FUNCS.deck_info()
+        end
         return nil
     end
     return click(self)
