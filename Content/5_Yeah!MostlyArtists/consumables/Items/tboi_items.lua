@@ -2857,3 +2857,94 @@ YMA.TBOI_ITEMS {
         code = "RattlingSnow353",
     }
 }
+--Speed Ball
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_speed_ball",
+    set = "yma_tboi_items",
+    order = 55,
+    quaility = 2,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_speed_ball')
+        return {
+            vars = {
+                numerator, denominator,
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 9, y = 4 },
+
+    config = {
+        extra = {
+            odds = 4,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.repetition and context.other_card and context.other_card.area == G.play then
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_belt' .. G.SEED, 1, card.ability.extra.odds) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card, 
+                }
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Ghost Baby
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_ghost_baby",
+    set = "yma_tboi_items",
+    order = 56,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 10, y = 4 },
+
+    config = {
+        extra = {
+            
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.before then
+            for i = 1, 2 do
+                local _card = create_playing_card({
+                front = pseudorandom_element(G.P_CARDS, pseudoseed('yma_tboi_ghost_baby')),
+                center = G.P_CENTERS.m_cbean_wgrop_coarse}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
+                _card.ability.yma_rankless_like_stone = true
+                _card.ability.yma_disposable = true
+                _card.base.nominal = 0
+                table.insert(context.scoring_hand, _card)
+                G.play:emplace(_card)
+                _card:highlight(true)
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
