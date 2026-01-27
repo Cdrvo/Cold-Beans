@@ -2359,6 +2359,25 @@ return {
 					"based on the {C:attention}deck",
 				},
 			},
+			ti_cbean_yma_tboi_speed_ball = {
+				name = {
+					"Speed Ball",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to {C:attention}retrigger",
+					"each {C:attention}played{} card"
+				},
+			},
+			ti_cbean_yma_tboi_ghost_baby = {
+				name = {
+					"Ghost Baby",
+				},
+				text = {
+					"{C:attention}Two{} rankless {C:yma_keys}Coarse{} cards",
+					"are {C:attention}added{} to each {C:attention}played",
+					"hand",
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
