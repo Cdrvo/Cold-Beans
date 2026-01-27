@@ -2442,6 +2442,26 @@ return {
 					}
 				},
 			},
+			ti_cbean_yma_tboi_fanny_pack = {
+				name = {
+					"Fanny Pack",
+				},
+				text = {
+					"{C:green}#1# in #2#{} chance to {C:attention}create{} a",
+					"{C:dark_edition}Negative{} {C:tarot}Tarot{} card when",
+					"playing a {C:blue}hand"
+				},
+			},
+			ti_cbean_yma_tboi_rubber_cement = {
+				name = {
+					"Rubber Cement",
+				},
+				text = {
+					"{C:green}Chance{} to gain a {C:blue}hand{} for",
+					"the {C:attention}round{} when {C:attention}playing",
+					"a {C:blue}hand"
+				},
+			},
 		},
 		Enhanced = {
 			m_cbean_pboys_piss = {
