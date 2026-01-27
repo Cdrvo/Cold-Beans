@@ -317,7 +317,7 @@ YMA.TBOI_ITEMS {
     },
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval and context.beat_boss and not card.ability.extra.active and G.GAME.blind.colonparen_blindtype == 'CEO' then 
+        if context.end_of_round and context.main_eval and context.beat_boss and not card.ability.extra.active and G.GAME.blind.colonparen_blindtype then 
             if SMODS.pseudorandom_probability(card, 'yma_tboi_pentagram', 1, card.ability.extra.odds) then
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_active'), colour = G.C.FILTER})
                 G.GAME.yma_everywhere_open = true
@@ -3025,6 +3025,104 @@ YMA.TBOI_ITEMS {
                     G.play:emplace(_card)
                     _card:highlight(true)
                 end
+            end
+        end
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Stem Cells
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_stem_cells",
+    set = "yma_tboi_items",
+    order = 59,
+    quaility = 1,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.ante
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 5 },
+
+    config = {
+        extra = {
+            ante = 1,
+        }
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        ease_ante(-card.ability.extra.ante)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
+    end,
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "RattlingSnow353",
+        code = "RattlingSnow353",
+    }
+}
+--Fate
+YMA.TBOI_ITEMS {
+    key = "yma_tboi_fate",
+    set = "yma_tboi_items",
+    order = 60,
+    quaility = 3,
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_speed_ball')
+        return {
+            vars = {
+                numerator, denominator,
+                card.ability.extra.ante
+            }
+        }
+    end,
+
+    atlas = 'yma_tboi_atlas',
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 2, y = 5 },
+
+    config = {
+        extra = {
+            ante = 1,
+            odds = 8,
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.hand and not context.end_of_round then
+            local val = context.other_card:get_chip_bonus()
+            local id = context.other_card:get_id()
+            local is_numbered_card = rank and string.find(rank.key, "%d*%d?%d+") ~= nil
+            if context.other_card and to_big(val) > to_big(0) and (to_big(id) > to_big(0)) then
+                if context.other_card.debuff then
+                    return {
+                        message = localize('k_debuffed'),
+                        colour = G.C.RED,
+                    }
+                else
+                    return {
+                        h_chips = val
+                    }
+                end
+            end
+        end
+        if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype then 
+            if SMODS.pseudorandom_probability(card, 'yma_tboi_fate', 1, card.ability.extra.odds) then
+                ease_ante(-card.ability.extra.ante)
+                G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+                G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.ante
             end
         end
     end,
