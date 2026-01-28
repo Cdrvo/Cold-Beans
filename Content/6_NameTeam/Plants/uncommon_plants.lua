@@ -34,3 +34,33 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "wallnut",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    update = function(self,card)
+        local rr = nil
+        if card and card.area and card.area.cards and card.added_to_deck then
+            for i = 1, #card.area.cards do 
+                if card.area.cards[i] == card then
+                    rr = i
+                end
+            end
+            if rr and card.area.cards[rr+1] then
+                if card.area.cards[rr+1].debuff then card.area.cards[rr+1].debuff = nil end
+            end
+        end
+    end
+})
