@@ -190,3 +190,29 @@ SMODS.Joker({
         end
     end,
 })
+
+
+
+SMODS.Joker({
+    key = "tangle_kelp",
+    cost = 1,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds,cae.max_rouds}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.destroy_card and context.cardarea == G.play and not context.blueprint and context.destroy_card == G.play.cards[1] then
+                SMODS.debuff_card(card, true, "tangle_kelping_it")
+                return{
+                    remove = true,  
+                }
+            end
+        end
+})
