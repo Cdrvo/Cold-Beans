@@ -1684,3 +1684,47 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "infinut",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 40,
+            mult_lose = 10
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_lose}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            SMODS.calculate_effect({mult = cae.mult}, card)
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.1,
+                func = function()
+                    if cae.mult ~= 0 then
+                        cae.mult = cae.mult - cae.mult_lose
+                        NAMETEAM.msg(card, "-" .. cae.mult_lose)
+                    else
+                        cae.mult = 40
+                        NAMETEAM.msg(card, localize("k_reset"))
+                    end
+                    return true
+                end
+            }))
+        end
+    end,
+})
