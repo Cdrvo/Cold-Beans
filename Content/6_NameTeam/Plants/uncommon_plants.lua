@@ -271,3 +271,27 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "scaredy_shroom",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 20
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main and (G.jokers.cards[1] == card or G.jokers.cards[2] == card) then
+            return{
+                mult = cae.mult
+            }
+        end
+    end,
+})
