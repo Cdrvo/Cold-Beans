@@ -1521,3 +1521,46 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "endurian",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 40,
+            mult_lose = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult,cae.mult_lose}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
+        end
+        if context.cbean_destroyed and context.cbean_destroyed_card.ability.set == "Joker" then
+            SMODS.scale_card(card,{
+                ref_table = cae,
+                ref_value = "mult",
+                scalar_value = "mult_lose",
+                operation = "-",
+                scaling_message = {
+                    message = "Downgrade!",
+                    colour = G.C.MULT,
+                }
+            })
+        end
+    end,
+})
