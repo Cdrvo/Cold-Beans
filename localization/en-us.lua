@@ -6402,6 +6402,15 @@ return {
 					"{C:attention}Poker Hands{}",
 				},
 			},
+			c_cbean_nteam_mitosis_sheet = {
+				name = {
+					"Mitosis"
+				},
+				text = {
+					"Applies {C:dark_edition}Mitosis{} to {C:attention}1{}",
+					"selected playing card",
+				},
+			},
 		},
 		Stake = {
 			stake_cbean_nameteam = {
