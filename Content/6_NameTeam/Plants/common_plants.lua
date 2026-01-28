@@ -123,3 +123,39 @@ SMODS.Joker({ -- literally copypaste :D
         return false
     end
 })
+
+
+
+SMODS.Joker({
+    key = "grave_buster",
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.25
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then 
+            local card = pseudorandom_element(G.jokers.cards,pseudoseed("gravebustingggg"))
+            for k, v in pairs(SMODS.Stickers) do
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.1, -- holy crash material man
+                    func = function()
+                        if card.ability[v.key] then
+                            card:remove_sticker(v.key, true)
+                        end
+                        return true
+                    end
+                }))
+            end
+        end
+    end,
+})
