@@ -970,6 +970,7 @@ SMODS.Consumable {
         sticker_keys[#sticker_keys+1] = v.key
     end
     if G.jokers then
+      sticker_amount = sticker_amount + 1 -- account for application of spore sticker
       for k, v in ipairs(G.jokers.cards) do
         for jk, jv in pairs(v.ability) do
           if NAMETEAM.contains(sticker_keys, jk) and jv then
