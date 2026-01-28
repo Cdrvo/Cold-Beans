@@ -337,7 +337,8 @@ SMODS.Joker({
     end,
     calc_dollar_bonus = function(self,card)
         local cae = card.ability.extra
-        return pseudorandom_element({cae.dollars,cae.dollars2,cae.dollars3},pseudoseed("marry_me_gold_seed"))
+        local num = pseudorandom_element({cae.dollars,cae.dollars2,cae.dollars3},"marry_me_gold_seed")
+        return num
     end
 })
 
