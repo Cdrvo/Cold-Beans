@@ -137,3 +137,48 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "chomper",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            rounds_current = 0,
+            active = true,
+            active_this_round = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds_current}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.destroy_card and context.cardarea == G.play and not context.blueprint and cae.active then
+            if #context.scoring_hand==1 and #G.play.cards==1 then
+                cae.active = false
+                cae.active_this_round = true
+                cae.rounds_current = 2
+                return{
+                    remove = true,
+                    message = localize("k_cbean_chomp")
+                }
+            end
+        end
+        if context.end_of_round and not context.blueprint and not cae.active and context.main_eval then
+            if cae.active_this_round then
+                cae.active_this_round = false
+            else
+                if cae.rounds_current>1 then
+                    cae.rounds_current = cae.rounds_current - 1
+                else
+                    cae.rounds_current = 0
+                    cae.active = true
+                end
+            end
+        end
+    end,
+})
