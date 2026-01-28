@@ -3853,6 +3853,15 @@ return {
 					"times if it's a shroom"
 				},
 			},
+			j_cbean_plantern = {
+				name = "Plantern",
+				text = {
+					"Cards {C:red}cannot{} be flipped",
+					"{C:attention}Shows{} the next ", 
+					"{C:attention}5{} cards in deck",
+					"<-1 -- 5->"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
