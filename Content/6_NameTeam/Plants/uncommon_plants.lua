@@ -347,3 +347,34 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "threepeater",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.5,
+            chips = 30,
+            dollars = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.xmult,cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult,
+                chips = cae.chips
+            }
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        local cae = card.ability.extra
+        return cae.dollars
+    end
+})
