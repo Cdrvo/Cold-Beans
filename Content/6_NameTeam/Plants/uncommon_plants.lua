@@ -295,3 +295,26 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "ice_shroom",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 20
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.no_progress = true
+        end
+    end,
+})
