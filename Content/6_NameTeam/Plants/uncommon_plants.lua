@@ -182,3 +182,27 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "repeater",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            repetitions = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds_current}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.repetition and context.cardarea == G.play and G.GAME.current_round.hands_played == 0  then
+            return {
+                repetitions = cae.repetitions
+            }
+        end
+    end,
+})
