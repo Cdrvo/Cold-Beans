@@ -480,3 +480,51 @@ SMODS.Joker({
         end
     end,
 })
+
+
+
+SMODS.Joker({
+    key = "pumpkin",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            uses_def = 3,
+            uses = 3,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.uses_def,cae.uses}}
+    end,
+    update = function(self,card,context)
+        local cae = card.ability.extra
+        if card.added_to_deck then
+            local rr = nil
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then rr = i end
+            end
+
+            if rr and G.jokers.cards[rr-1] then
+                local acard = G.jokers.cards[rr-1]
+
+                if acard.facing and acard.facing == "back" then
+                    acard:flip()
+                    cae.uses = cae.uses - 1
+                    NAMETEAM.msg(card, "-1")
+                end
+
+                if acard.debuff then 
+                    acard.debuff = false
+                    cae.uses = cae.uses - 1
+                    NAMETEAM.msg(card, "-1")
+                end
+            end
+        end
+        if cae.uses <= 0 and not card.cbean_des then
+            card.cbean_des = true
+            SMODS.destroy_cards(card, true)
+        end
+    end
+})
