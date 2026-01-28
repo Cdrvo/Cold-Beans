@@ -282,3 +282,68 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "winter_melon",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2,
+            xmult_gain = 0.5,
+            adj_xmult = 1.5,
+            adj_xmult_default = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.adj_xmult_default,cae.xmult_gain,cae.adj_xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+
+            if card:on_the("left") then
+                SMODS.calculate_effect({xmult=cae.adj_xmult}, card:on_the("left"))
+            end
+            if card:on_the("right") then
+                SMODS.calculate_effect({xmult=cae.adj_xmult}, card:on_the("right"))
+            end
+            SMODS.calculate_context({im_bored_cbean = true})
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.im_bored_cbean and not context.blueprint then
+            SMODS.scale_card(card,{
+                ref_table = cae,
+                ref_value = "adj_xmult",
+                scalar_value = "xmult_gain"
+            })
+        end
+    end,
+    update = function(self,card)
+        if card.added_to_deck then
+            for k, v in pairs(G.jokers.cards) do
+                if v.debuffed_by_melon and v ~= card:on_the("right") and v ~= card:on_the("left") then
+                    SMODS.debuff_card(v, false, "winter_meloning")
+                    v.debuffed_by_melon = nil
+                end
+            end
+            if card:on_the("right") and not card:on_the("right").debuff then
+                SMODS.debuff_card(card:on_the("right"), true, "winter_meloning")
+                card:on_the("right").debuffed_by_melon = true
+            end
+            if card:on_the("left") and not card:on_the("left").debuff then
+               SMODS.debuff_card(card:on_the("left"), true, "winter_meloning")
+               card:on_the("left").debuffed_by_melon = true
+            end
+        end
+    end
+})
