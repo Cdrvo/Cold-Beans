@@ -59,3 +59,67 @@ SMODS.Joker({
         end
     end
 })
+
+
+
+SMODS.Joker({
+    key = "sun_shroom",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            rounds = 0,
+            rounds_max = 2,
+            dollars = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars,cae.rounds_max,cae.rounds}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_round and context.main_eval and not context.blueprint then
+            if cae.rounds<cae.rounds_max then
+                cae.rounds = cae.rounds + 1
+            else
+                card:set_ability("j_cbean_sunnier_shroom")
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self,card)
+        return card.ability.extra.dollars
+    end
+})
+
+SMODS.Joker({ -- literally copypaste :D
+    key = "sunnier_shroom",
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            dollars = 8,
+            odds = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMDOS.get_probability_vars(card,1,cae.odds,"sunflower_seedssomething")
+        return{
+            vars={num,den,cae.dollars}
+        }
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    calc_dollar_bonus = function(self,card)
+        if SMODS.pseudorandom_probability(card,"sunflower_seedsomething",1,card.ability.extra.odds) then
+            return card.ability.extra.dollars
+        end
+    end,
+    in_pool = function(self)
+        return false
+    end
+})
