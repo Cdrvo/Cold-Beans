@@ -755,24 +755,29 @@ SMODS.Joker({
 		)
 	
 		local cae = card.ability.extra
-        local carea = G.deck.cards
+        local carea = nil
+        if G.deck and G.deck.cards then
+            carea = G.deck.cards
+        end
 		
-		local card_1,card_2,card_3,card_4,card_5 = carea[#carea] and copy_card(carea[#carea]), carea[#carea-1] and copy_card(carea[#carea-1]), carea[#carea-2] and copy_card(carea[#carea-2]), carea[#carea-3] and copy_card(carea[#carea-3]), carea[#carea-4] and copy_card(carea[#carea-4]) 
-		
-        if card_1 then
-        G.next_fivcards_cbean:emplace(card_1)
-        end
-        if card_2 then
-        G.next_fivcards_cbean:emplace(card_2)
-        end
-        if card_3 then
-        G.next_fivcards_cbean:emplace(card_3)
-        end
-        if card_4 then
-        G.next_fivcards_cbean:emplace(card_4)
-        end
-        if card_5 then
-        G.next_fivcards_cbean:emplace(card_5)
+        if carea then
+            local card_1,card_2,card_3,card_4,card_5 = carea[#carea] and copy_card(carea[#carea]), carea[#carea-1] and copy_card(carea[#carea-1]), carea[#carea-2] and copy_card(carea[#carea-2]), carea[#carea-3] and copy_card(carea[#carea-3]), carea[#carea-4] and copy_card(carea[#carea-4]) 
+            
+            if card_1 then
+            G.next_fivcards_cbean:emplace(card_1)
+            end
+            if card_2 then
+            G.next_fivcards_cbean:emplace(card_2)
+            end
+            if card_3 then
+            G.next_fivcards_cbean:emplace(card_3)
+            end
+            if card_4 then
+            G.next_fivcards_cbean:emplace(card_4)
+            end
+            if card_5 then
+            G.next_fivcards_cbean:emplace(card_5)
+            end
         end
         
 		return{
