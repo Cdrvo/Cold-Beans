@@ -4448,7 +4448,7 @@ return {
 				}
 			},
 			j_cbean_nameteam_riverstyx = {
-				name = 'River Styx',
+				name = 'Sail the Styx',
 				text =
 				{
 					"Gives {C:attention}+#1#{} Joker slots",
