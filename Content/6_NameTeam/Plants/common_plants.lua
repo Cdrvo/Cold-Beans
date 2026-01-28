@@ -14,6 +14,11 @@ SMODS.Joker({
             vars={cae.blind}
         }
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.first_hand_drawn and not context.blueprint and G.GAME.blind and G.GAME.blind.chips then
@@ -30,7 +35,6 @@ SMODS.Joker({
         end
     end
 })
-
 
 SMODS.Joker({
     key = "sunflower",
@@ -50,6 +54,11 @@ SMODS.Joker({
             vars={num,den,cae.dollars}
         }
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
     end,
@@ -78,6 +87,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={cae.dollars,cae.rounds_max,cae.rounds}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.end_of_round and context.main_eval and not context.blueprint then
@@ -111,6 +125,11 @@ SMODS.Joker({ -- literally copypaste :D
             vars={num,den,cae.dollars}
         }
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
     end,
@@ -140,6 +159,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={cae.xmult}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then 
@@ -179,6 +203,11 @@ SMODS.Joker({
     add_to_deck = function(self,card,from_debuff)
         card:add_sticker("eternal", true)
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.end_of_round and context.main_eval then
@@ -206,6 +235,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={cae.rounds,cae.max_rouds}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.destroy_card and context.cardarea == G.play and not context.blueprint and context.destroy_card == G.play.cards[1] then
@@ -232,6 +266,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
@@ -264,6 +303,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={cae.mult}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.individual and context.cardarea == G.play and context.other_card == NAMETEAM.find_highest(context.scoring_hand) then
