@@ -1621,3 +1621,35 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "laser_bean",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.mult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            return{
+                mult = cae.mult*NAMETEAM.all_on(context.other_card, G.play.cards)
+            }
+        end
+    end,
+})
