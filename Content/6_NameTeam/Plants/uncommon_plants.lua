@@ -230,3 +230,44 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "fume_shroom",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.25,
+            pos = nil,
+            tab = {}
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i > cae.rr then
+                    G.jokers.cards[i].ability.fume_shroomed_cbean = true
+               end
+            end
+        end
+
+        if context.other_joker and context.other_joker.ability.fume_shroomed_cbean then
+            context.other_joker.ability.fume_shroomed_cbean  = false
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
