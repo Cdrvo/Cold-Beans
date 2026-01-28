@@ -868,7 +868,6 @@ SMODS.Consumable {
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_misprinted"]
     info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
-    info_queue[#info_queue + 1] = G.P_CENTERS.j_misprint
     return {}
   end,
   can_use = function(self, card)
