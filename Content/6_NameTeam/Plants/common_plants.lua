@@ -159,3 +159,34 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "crater",
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rounds = 0,
+            max_round = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.max_round, cae.rounds}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        card:add_sticker("eternal", true)
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_round and context.main_eval then
+            if cae.rounds<cae.max_round-1 then
+                cae.rounds=cae.rounds+1
+            else
+                SMODS.destroy_cards(card, true)
+            end
+        end
+    end,
+})
