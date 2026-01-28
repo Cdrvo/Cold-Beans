@@ -318,4 +318,36 @@ SMODS.Joker({
     end
 })
 
+SMODS.Joker({
+    key = "marigold",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            dollars = 2,
+            dollars2 = 4,
+            dollars3 = 8
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.dollars,cae.dollars2,cae.dollars3}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return pseudorandom_element({cae.dollars,cae.dollars2,cae.dollars3},pseudoseed("marry_me_gold_seed"))
+    end
+})
+
 -- Kernel Pult

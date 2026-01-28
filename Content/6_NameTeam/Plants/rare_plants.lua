@@ -175,3 +175,43 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "umbrella_leaf",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    update = function(self,card)
+        local rr = nil
+        if card and card.area and card.area.cards and card.added_to_deck then
+            for i = 1, #card.area.cards do 
+                if card.area.cards[i] == card then
+                    rr = i
+                end
+            end
+            if rr and card.area.cards[rr+1] then
+                if card.area.cards[rr+1].debuff then card.area.cards[rr+1].debuff = nil end
+                if card.area.cards[rr+1].facing and card.area.cards[rr+1].facing == "back" then card.area.cards[rr+1]:flip() end
+            end
+            if rr and card.area.cards[rr-1] then
+                if card.area.cards[rr-1].debuff then card.area.cards[rr-1].debuff = nil end
+                if card.area.cards[rr-1].facing and card.area.cards[rr-1].facing == "back" then card.area.cards[rr-1]:flip() end
+            end
+        end
+    end
+})

@@ -3880,6 +3880,14 @@ return {
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_umbrella_leaf = {
+				name = "Umbrella Leaf",
+				text = {
+					"Cards on the {C:attention}right{} and",
+					"{C:attention}left{} of this card",
+					"cannot be {C:red}Debuffed{} or {C:attention}Flipped{}"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
