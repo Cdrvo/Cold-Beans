@@ -1043,3 +1043,56 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_brodyfoxx",
+    config = { extra = { mama_ix = 1, mamas = {} } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 6, y = 8 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = {  } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        play_sound("cbean_yomama_intro", 1, 1)
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            if not card.ability.extra.mamas or #card.ability.extra.mamas <= 0 or card.ability.extra.mama_ix >= #card.ability.extra.mamas then
+                card.ability.extra.mama_ix = 1
+
+                card.ability.extra.mamas = {}
+                for i = 1, 100 do
+                    card.ability.extra.mamas[i] = string.format("%02d", i)
+                end
+
+                for i = #card.ability.extra.mamas, 2, -1 do
+                    local j = math.random(i)
+                    card.ability.extra.mamas[i], card.ability.extra.mamas[j] = card.ability.extra.mamas[j], card.ability.extra.mamas[i]
+                end
+            end
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound("cbean_yomama-"..card.ability.extra.mamas[math.min(math.max(math.floor(card.ability.extra.mama_ix), 1), #card.ability.extra.mamas)], 1, 1)
+                    card.ability.extra.mama_ix = card.ability.extra.mama_ix + 1
+                    return true
+                end
+            }))
+            return { message = localize("k_cbean_yomama") }
+        end
+    end
+}

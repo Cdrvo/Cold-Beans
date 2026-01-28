@@ -4123,6 +4123,16 @@ return {
 					"{C:inactive}(Previous hand: {C:attention}#2#{C:inactive}){}"
 				}
 			},
+			j_cbean_nameteam_brodyfoxx = {
+				name = 'Brody Foxx',
+				text =
+				{
+					{
+						"When {C:attention}Blind{} is selected,",
+						"tells a {C:attention}Yo Mama{} joke"
+					}
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -7511,7 +7521,9 @@ return {
 			k_ihaveagun_ex                      = "I HAVE A GUN!",
 
 			k_cbean_halved = "Halved!",
-			k_cbean_chomp = "Chomp!"
+			k_cbean_chomp = "Chomp!",
+
+			k_cbean_yomama = "Yo mama..."
 		},
 		high_scores = {},
 		labels = {
