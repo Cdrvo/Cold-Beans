@@ -3994,6 +3994,17 @@ return {
 					"cards are retriggered {C:attention}#1#{} times"
 				},
 			},
+			j_cbean_cob_cannon = {
+				name = "Cob Cannon",
+				text = {
+					"Store every {C:chips}Chip{} outcome",
+					"from jokers.",
+					"Return stored chips",
+					"at the {C:attention}Final Hand{}",
+					"of the round",
+					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
@@ -4232,6 +4243,16 @@ return {
 					"Gives {C:attention}+#1#{} Joker slots",
 					"after {C:attention}#2#{} {C:inactive}[#3#]{} Jokers {C:money}sold{}",
 					"{C:inactive}(Currently #4#){}"
+				}
+			},
+			j_cbean_nameteam_thelastsupper = {
+				name = 'The Last Supper',
+				text =
+				{
+					"{C:white,X:mult}X#1#{} Mult if {C:attention}full deck{}",
+					"contains exactly",
+					"{C:attention}#2#{} face cards",
+					"{C:inactive}({C:attention}#3#:#2#{C:inactive}, #4#){}"
 				}
 			},
 

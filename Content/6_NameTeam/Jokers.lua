@@ -1185,7 +1185,7 @@ SMODS.Joker {
     config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false } },
     rarity = 3,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 9, y = 8 },
+    pos = { x = 10, y = 8 },
     cost = 10,
     loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.joker_slots, card.ability.extra.target_sold, card.ability.extra.target_sold - card.ability.extra.current_sold,
@@ -1193,7 +1193,7 @@ SMODS.Joker {
     end,
     blueprint_compat = false,
     eternal_compat = true,
-    perishable_compat = true,
+    perishable_compat = false,
     pronouns = "they_them",
 
     beans_credits = {
@@ -1220,5 +1220,45 @@ SMODS.Joker {
         if card.ability.extra.slots_given then
             G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
         end
+    end
+}
+
+function last_supper_count_faces(rank)
+  local cards = {}
+  if G.playing_cards then
+    for i = 1, #G.playing_cards do
+      if not SMODS.has_no_rank(G.playing_cards[i]) and G.playing_cards[i]:is_face() then
+        cards[#cards + 1] = G.playing_cards[i]
+      end
+    end
+  end
+  return #cards
+end
+
+SMODS.Joker {
+    key = "nameteam_thelastsupper",
+    config = { extra = { xmult = 3, faces = 12 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 11, y = 8 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.xmult, card.ability.extra.faces, last_supper_count_faces(), last_supper_count_faces() == card.ability.extra.faces and localize("k_styx_active") or localize("k_styx_inactive") } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.joker_main and last_supper_count_faces() == card.ability.extra.faces then
+        return { xmult = card.ability.extra.xmult }
+      end
     end
 }
