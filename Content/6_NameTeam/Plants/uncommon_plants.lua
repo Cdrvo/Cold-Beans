@@ -1367,3 +1367,58 @@ SMODS.Joker({
         end
     end,
 })
+
+
+
+SMODS.Joker({
+    key = "stunion",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2.25
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, "debuff_by_stunion")
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.final_scoring_step then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    for k, v in pairs(context.scoring_hand) do
+                        SMODS.debuff_card(v, true, "debuff_by_stunion")
+                    end
+                    return true
+                end
+            }))
+        end
+        if context.ante_change and context.ante_end and not context.blueprint then
+            for k, v in pairs(G.playing_cards) do
+                SMODS.debuff_card(v, false, "debuff_by_stunion")
+            end
+        end
+    end,
+})
