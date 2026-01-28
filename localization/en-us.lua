@@ -3994,6 +3994,17 @@ return {
 					"cards are retriggered {C:attention}#1#{} times"
 				},
 			},
+			j_cbean_cob_cannon = {
+				name = "Cob Cannon",
+				text = {
+					"Store every {C:chips}Chip{} outcome",
+					"from jokers.",
+					"Return stored chips",
+					"at the {C:attention}Final Hand{}",
+					"of the round",
+					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

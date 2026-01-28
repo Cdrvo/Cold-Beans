@@ -1053,3 +1053,55 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "cob_cannon",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            stored_chips = 0,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.stored_chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and context.other_ret then
+            if G.GAME.current_round.hands_left >0 then
+                if context.other_ret then
+                    for k, v in pairs(context.other_ret) do
+                        if type(v) == "table" then
+                            for k, v in pairs(v) do
+                                local a = string.upper(tostring(k))
+                                if string.find(a,"CHIPS") or string.find(a,"CHIPS_MOD") or string.find(a,"CHIP_MOD") then -- i had this ready so i coyp pasted 
+                                    cae.stored_chips = cae.stored_chips + v
+                                    NAMETEAM.msg(card, "Stored: +" .. cae.stored_chips)
+                                end
+                            end
+                        end
+                    end
+                end
+            else 
+                -- 
+            end
+        end
+        if context.joker_main and not context.blueprint and G.GAME.current_round.hands_left <= 0 and cae.stored_chips > 0 then
+            return{
+                chips = cae.stored_chips
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            cae.stored_chips = 0
+            NAMETEAM.msg(card, localize("k_reset"))
+        end
+    end,
+})
