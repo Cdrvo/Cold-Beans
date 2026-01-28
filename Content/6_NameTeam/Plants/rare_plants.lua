@@ -397,3 +397,56 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "imitater",
+    cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+    if G.GAME.last_bought_joker then
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                delay = 0.1,
+                func = function()
+                    card:flip()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 1,
+                func = function()
+                    card:juice_up()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 1.2,
+                func = function()
+                    card:set_ability(G.GAME.last_bought_joker_key)
+                    card:flip()
+                    return true
+                end
+            }))
+        end
+    end,
+    in_pool = function(self)
+        return (G.GAME.last_bought_joker_key~=nil)
+    end
+})
