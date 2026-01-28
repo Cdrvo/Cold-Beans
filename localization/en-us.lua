@@ -7644,6 +7644,12 @@ return {
 			["cbean_yma_astro"] = {
 				"A hand that contains an Ace, Star, Thorn, Royal, and Omega",
 			},
+			["cbean_nteam_collection"] = {
+				"A hand that contains at least {C:attention}3{} cards with a {C:attention}Sticker",
+				"The cards must also have at least {C:attention}3{}",
+				"different {C:attention}Stickers{} among them",
+				"Must have {C:attention}House Rules{} to play"
+			},
 		},
 		poker_hands = {
 			["cbean_yma_astro"] = "Astro",
@@ -7671,6 +7677,7 @@ return {
 			["cbean_0chill_favorite_year_flush"] = "HR [Favorite] Year Flush",
 			["cbean_0chill_jackpot"] = "HR Jackpot!",
 			["cbean_wgrop_thorny_boquete"] = "HR Thorny Bouquet",
+			["cbean_nteam_collection"] = "HR Collection",
 		},
 		quips = {
 			cbean_pboys_hi_1 = {

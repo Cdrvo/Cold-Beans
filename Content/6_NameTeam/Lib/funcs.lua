@@ -483,3 +483,21 @@ function Card:on_the(direction)
 
 	return false
 end
+
+function NAMETEAM.get_all_stickers(card)
+	local keys = {}
+	for key, _ in pairs(SMODS.Stickers) do
+		if card.ability[key] then
+			keys[#keys+1] = key
+		end
+	end
+	return keys
+end
+
+function NAMETEAM.len(t)
+	local n = 0
+	for _, _ in pairs(t) do
+		n = n + 1
+	end
+	return n
+end
