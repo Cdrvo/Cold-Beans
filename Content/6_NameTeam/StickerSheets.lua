@@ -442,6 +442,69 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
+  key = "hooking_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 1 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  config = { extra = { no_of_golds = 2 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_hooking"]
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    return { vars = { card.ability.extra.no_of_golds } }
+  end,
+  can_use = function(self, card)
+    if #G.hand.highlighted == 1 then
+      if not G.hand.highlighted[1].ability.cbean_hooking then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.hand.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 2, 0.75)
+        affected_card:add_sticker("cbean_hooking", true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+
+        local done = {}
+        for i = 1, card.ability.extra.no_of_golds do
+        local candidates = {}
+        for _, v in ipairs(G.playing_cards) do
+          if #SMODS.get_enhancements(v) <= 0 and v ~= affected_card then
+            local is_valid = true
+            for __, vv in ipairs(done) do
+              if v == vv then
+                is_valid = false; break; end
+            end
+            if is_valid then
+              candidates[#candidates + 1] = v
+            end
+          end
+        end
+
+        if #candidates > 0 then
+          pseudorandom_element(candidates, pseudoseed("hooking_sheet")):set_ability("m_gold")
+        else break; end
+      end
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
   key = "flashcard_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 6 },
   draw_extra = function(self, card, layer)
@@ -606,6 +669,52 @@ SMODS.Consumable {
   end
 }
 
+SMODS.Sound({
+  key = "brainrot",
+  path = "6_NameTeam/cbean_brainrot.ogg"
+})
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "brainrot_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 5 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_brainrot"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if #G.hand.highlighted == 1 then
+      if not G.hand.highlighted[1].ability.cbean_brainrot then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.hand.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 2, 0.75)
+        play_sound("cbean_brainrot", 1, 0.65)
+        affected_card:add_sticker("cbean_brainrot", true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "heavy_sheet",
@@ -655,6 +764,45 @@ SMODS.Consumable {
       end)
     }))
     delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "dangerous_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 2 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_dangerous"]
+    return {}
+  end,
+  can_use = function(self, card)
+    return count_consumables() < G.consumeables.config.card_limit
+  end,
+  use = function(self, card, area, copier)
+    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      play_sound('timpani')
+      G.E_MANAGER:add_event(Event({
+        delay = 0.3,
+        blockable = false,
+        func = function()
+          local new_card = create_card("Spectral", G.consumables, nil, nil, nil, nil, nil, "dangeroussheet")
+          
+        play_sound("gold_seal", 1.5, 1)
+        new_card:add_sticker("cbean_dangerous", true)
+          new_card:add_to_deck()
+          G.consumeables:emplace(new_card)
+          G.GAME.consumeable_buffer = 0
+          return true
+        end
+      }))
+      SMODS.calculate_effect({ message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral }, card)
   end
 }
 
@@ -748,11 +896,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.2,
       func = function()
-        SMODS.add_card({
-          set = "Joker",
-          edition = "e_negative",
-          key = "j_misprint"
-        })
+        card:set_edition("e_negative")
         return true
       end
     }))

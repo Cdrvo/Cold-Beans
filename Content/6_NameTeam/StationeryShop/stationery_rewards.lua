@@ -118,7 +118,7 @@ end
 function NAMETEAM.poll_stationery_accepted()
 	local ret = {}
 	local pool = NAMETEAM.filter(SMODS.Sticker.obj_buffer, function(key)
-		return SMODS.Stickers[key].sets["Joker"] == true and key ~= "pinned"
+		return (SMODS.Stickers[key].sets or {})["Joker"] == true and not string.find(key, "pinned")
 	end)
 	return NAMETEAM.get_unique_pseudorandom_elements(
 		pool,
@@ -166,6 +166,9 @@ NAMETEAM.StationeryReward({
 				instant = true,
 			}, card)
 		end
+	end,
+	in_pool = function(self)
+		return #G.jokers.cards < G.jokers.config.card_limit
 	end,
 })
 
@@ -239,5 +242,25 @@ NAMETEAM.StationeryReward({
 	end,
 	in_pool = function(self)
 		return G.GAME.selected_back.ability and not G.GAME.selected_back.ability[self.config.sticker]
+	end,
+})
+
+
+NAMETEAM.StationeryReward({
+	key = "house",
+	config = { sticker = "cbean_painted" },
+	apply = function(self, card)
+		if #G.jokers.cards < G.jokers.config.card_limit then
+			SMODS.add_card({
+				key = "j_cbean_0chill_house_rules",
+			})
+			SMODS.calculate_effect({
+				message = localize("k_plus_joker"),
+				instant = true,
+			}, card)
+		end
+	end,
+	in_pool = function(self)
+		return #G.jokers.cards < G.jokers.config.card_limit
 	end,
 })

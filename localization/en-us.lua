@@ -4133,6 +4133,31 @@ return {
 					}
 				}
 			},
+			j_cbean_nameteam_theannouncement = {
+				name = 'The Announcement',
+				text =
+				{
+					{
+						"When round begins,",
+						"{C:green}#1# in #2#{} chance to add",
+						"a {C:attention}Piss{} card to your deck"
+					},
+					{
+						"Otherwise, creates a",
+						"copy of {C:tarot}The Moon{}",
+						"{C:inactive}(Must have room){}"
+					}
+				}
+			},
+			j_cbean_nameteam_riverstyx = {
+				name = 'River Styx',
+				text =
+				{
+					"Gives {C:attention}+#1#{} Joker slots",
+					"after {C:attention}#2#{} {C:inactive}[#3#]{} Jokers {C:money}sold{}",
+					"{C:inactive}(Currently #4#){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -6202,6 +6227,20 @@ return {
 					},
 				},
 			},
+			c_cbean_hooking_sheet = {
+				name = "Hooking",
+				text = {
+					{
+						"Applies {C:attention}Hooking{} to {C:attention}1{}",
+						"selected playing card",
+					},
+					{
+						"Another {C:attention}#1# unenhanced{}",
+						"cards in your deck",
+						"{C:inactive}(if any){} become {C:attention}Gold{}",
+					},
+				},
+			},
 			c_cbean_flashcard_sheet = {
 				name = "Flash Card",
 				text = {
@@ -6236,8 +6275,8 @@ return {
 						"{C:attention}1{} selected {C:attention}Joker{}",
 					},
 					{
-						"Creates a",
-						"{C:dark_edition}Negative{} {C:attention}Misprint{}",
+						"The selected {C:attention}Joker",
+						"becomes {C:dark_edition}Negative{}",
 					},
 				},
 			},
@@ -6246,6 +6285,13 @@ return {
 				text = {
 					"Applies {C:attention}Shield{} to",
 					"{C:attention}1{} selected {C:attention}Joker{}",
+				},
+			},
+			c_cbean_brainrot_sheet = {
+				name = "Brainrot",
+				text = {
+					"Applies {C:attention}Brainrot{} to {C:attention}1{}",
+					"selected {C:attention}playing card{}",
 				},
 			},
 			c_cbean_heavy_sheet = {
@@ -6260,6 +6306,14 @@ return {
 						"{C:dark_edition}Polychrome{} edition to",
 						"the same {C:attention}playing card{}",
 					},
+				},
+			},
+			c_cbean_dangerous_sheet = {
+				name = "Dangerous",
+				text = {
+					"Creates a {C:attention}Dangerous{}",
+					"{C:spectral}Spectral{} card",
+					"{C:inactive}(Must have room){}",
 				},
 			},
 			c_cbean_hungry_sheet = {
@@ -7464,6 +7518,10 @@ return {
 				"Applies {V:1,T:cbean_painted}Painted{} to",
 				"current Deck",
 			},
+			cbean_reward_house          = {
+				"Creates {C:attention,T:j_cbean_0chill_house_rules}House Rules{}",
+				"{C:inactive}(Must have room)",
+			},
 			--#endregion
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
@@ -7519,6 +7577,7 @@ return {
 			b_nteam_exchange                    = "Exchange",
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
 			k_plus_soul                         = "+The Soul",
+			k_plus_piss                         = "+1 Piss Card",
 			k_cbean_nteam_uhoh                  = "Uh oh!",
 			k_cbean_nteam_danger                = "Danger!",
 			k_cbean_nteam_randomized            = "Randomized!",
@@ -7531,7 +7590,10 @@ return {
 			k_cbean_halved = "Halved!",
 			k_cbean_chomp = "Chomp!",
 
-			k_cbean_yomama = "Yo mama..."
+			k_cbean_yomama = "Yo mama...",
+
+			k_styx_active = "active",
+			k_styx_inactive = "inactive"
 		},
 		high_scores = {},
 		labels = {

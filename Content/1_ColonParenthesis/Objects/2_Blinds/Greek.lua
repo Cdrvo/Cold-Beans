@@ -548,6 +548,9 @@ local tauic_sticker = SMODS.Sticker{
     key = "colon_tauic",
     badge_colour = HEX("6d6cde"),
     atlas = "colon_LowercaseGreekBlind",
+    sets = {
+        Consumable = true
+    },
     pos = { x = -1, y = -1 }
 }
 
