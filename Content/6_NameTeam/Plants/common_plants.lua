@@ -443,3 +443,31 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "ice_lettuce",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rounds = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult,cae.rounds}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
+        end
+    end,
+})

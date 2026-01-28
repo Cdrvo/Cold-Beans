@@ -3690,9 +3690,17 @@ return {
 			j_cbean_ice_shroom = {
 				name = "Ice Shroom",
 				text = {
-					"When {C:green}sold{}, blind will not",
-					"progress {C:attention}until{} all {C:blue}hands",
-					"are used"
+					"When {C:green}sold{}, next {C:attention}#2#{} Blinds",
+					"wont end until all",
+					"hands are used"
+				},
+			},
+			j_cbean_ice_lettuce = {
+				name = "Ice Lettuce",
+				text = {
+					"When {C:green}sold{}, next {C:attention}#2#{} Blind",
+					"wont end until all",
+					"hands are used"
 				},
 			},
 			j_cbean_doom_shroom = {

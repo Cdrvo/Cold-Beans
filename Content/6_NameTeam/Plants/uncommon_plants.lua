@@ -355,17 +355,18 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            mult = 20
+            mult = 20,
+            rounds = 3
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.mult}}
+        return{vars={cae.mult,cae.rounds}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.no_progress = true
+            NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
         end
     end,
 })
