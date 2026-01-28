@@ -29,7 +29,9 @@ SMODS.Sticker({
 			end
             local _card = NAMETEAM.random_joker(card.area.cards, card)
             local ae = NAMETEAM.poll_sticker(true, _card, false, _set)
-			_card:add_sticker(ae, true)
+			if ae then
+				_card:add_sticker(ae, true)
+			end
 		end
 	end,
 	beans_credits = {

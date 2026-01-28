@@ -3594,6 +3594,265 @@ return {
 				},
 			},
 			--Name Team
+			j_cbean_peashooter = {
+				name = "Pea Shooter",
+				text = {
+					"{C:attention}X#1#{} Blind size"
+				},
+			},
+			j_cbean_sunflower = {
+				name = "Sunflower",
+				text = {
+					"{C:green}#1# in #2#{} chance to",
+					"give {C:money}$#3#{} at the",
+					"end of a round"
+				},
+			},
+			j_cbean_wallnut = {
+				name = "Wall-Nut",
+				text = {
+					"Joker on the {C:attention}right{}",
+					"cannot be {C:red}debuffed{}"
+				},
+			},
+			j_cbean_potatomine = {
+				name = "Potato Mine",
+				text = {
+					"{C:money}Sell{} after {C:attention}#1#{C:inactive} (#2#){}",
+					"rounds to {C:attention}Half{} the current",
+					"blind's required chips"
+				},
+			},
+			j_cbean_snowpea = {
+				name = "Snow Pea",
+				text = {
+					"{C:green}#1# in #2#{} chance to",
+					"disable current blind"
+				},
+			},
+			j_cbean_repeater = {
+				name = "Repeater",
+				text = {
+					"{C:attention}Retrigger{} the first",
+					"played hand of the round"
+				},
+			},
+			j_cbean_chomper = {
+				name = "Chomper",
+				text = {
+					"If only {C:attention}1{} card",
+					"is played, {C:red}destroy{} it.",
+					"cannot destroy another card",
+					"for {C:attention}2{C:inactive} (#1#){}",
+					"roumds"
+				},
+			},
+			j_cbean_puff_shroom = {
+				name = "Puff Shroom",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult{} if this",
+					"joker is in the 2 leftmost slots"
+				},
+			},
+			j_cbean_sun_shroom = {
+				name = "Sun Shroom",
+				text = {
+					"{C:money}+$#1#{} at the",
+					"end of a round",
+					"Turns into {C:attention}Sunnier Shroom{}",
+					"after {C:attention}#2#{C:inactive} (#3#){} Rounds"
+				},
+			},
+			j_cbean_sunnier_shroom = {
+				name = "Sunnier Shroom",
+				text = {
+					"{C:green}#1# in #2#{} chance to",
+					"give {C:money}$#3#{} at the",
+					"end of a round",
+					"{C:inactive,s:0.8}(This seems familiar..)"
+				},
+			},
+			j_cbean_fume_shroom = {
+				name = "Fume Shroom",
+				text = {
+					"All {C:attention}Shrooms{} on the",
+					"right of this card",
+					"gives {X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			j_cbean_scaredy_shroom = {
+				name = "Puff Shroom",
+				text = {
+					"{C:mult}+#1#{} Mult{} if this",
+					"joker is in the 2 leftmost slots"
+				},
+			},
+			j_cbean_ice_shroom = {
+				name = "Ice Shroom",
+				text = {
+					"When {C:green}sold{}, blind will not",
+					"progress {C:attention}until{} all {C:blue}hands",
+					"are used"
+				},
+			},
+			j_cbean_doom_shroom = {
+				name = "Doom Shroom",
+				text = {
+					"Sell this joker to set",
+					"current blind's reqired chips to {C:red}0",
+					"If its a {C:attention}Boss Blind,{}",
+					"half it instead.",
+					"creates a {C:attention}Crater{}",
+					"when sold"
+				},
+			},
+			j_cbean_crater = {
+				name = "Crater",
+				text = {
+					"Is eternal",
+					"{C:red}Self-Destructs{} after",
+					"{C:attention}#1#{C:inactive} (#2#){} rounds"
+				},
+			},
+			j_cbean_squash = {
+				name = "Squash",
+				text = {
+					"{C:green}Sell{} this to {C:red}defeat",
+					"current blind.",
+					"If the current blind",
+					"is a {C:attention}Boss Blind{}, half it instead"
+				},
+			},
+			j_cbean_threepeater = {
+				name = "Threepeater",
+				text = {
+					"{C:chips}+#1#{} Chips and",
+					"{X:mult,C:white}X#2#{} Mult",
+					"{C:money}+$3#{} at the end",
+					"of a round"
+				},
+			},
+			j_cbean_tangle_kelp = {
+				name = "Tangle Kelp",
+				text = {
+					"{C:red}Destroy{} the first",
+					"played card",
+					"permanently {C:red}Debuff{} self",
+					"afterwards"
+				},
+			},
+			j_cbean_jalepeno = {
+				name = "Jalepeno",
+				text = {
+					"{C:green}Sell{} this card",
+					"to {C:red}destroy{} the next",
+					"played hand"
+				},
+			},
+			j_cbean_grave_buster = {
+				name = "Grave Buster",
+				text = {
+					"{C:green}Sell{} this card",
+					"to {C:red}remove{} all stickers",
+					"from a random card"
+				},
+			},
+			j_cbean_tallnut = {
+				name = "Tall-Nut",
+				text = {
+					"Future cards can only",
+					"have {C:attention}1{} Sticker.",
+					"Cards {C:red}cannot{} get debuffed"
+				},
+			},
+			j_cbean_spikeweed = {
+				name = "Spikeweed",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Scored cards gains {C:red}-1{} Chips",
+					"Destroy scored cards if they",
+					"stop returning chips"
+				},
+			},
+			j_cbean_blover = {
+				name = "Blover",
+				text = {
+					"Cards {C:red}cannot{} score",
+					"Gains {X:mult,C:white}X#2#{} Mult",
+					"for each card that would've scored",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_sea_shroom = {
+				name = "Sea Shroom",
+				text = {
+					"If this card is",
+					"in your leftmost joker slot",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			j_cbean_split_pea = {
+				name = "Split Pea",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"if this joker is closer to the left",
+					"{C:mult}+#2#{} Mult otherwise"
+				},
+			},
+			j_cbean_starfruit = {
+				name = "Starfruit",
+				text = {
+					"{C:red}+#5#{} Discard each round",
+					"{C:mult}+#2#{} Mult, {C:chips}+#1#{} Chips",
+					"and {X:mult,C:white}X#3#{} Mult during scoring",
+					"{C:money}+$#4#{} after every round"
+				},
+			},
+			j_cbean_pumpkin = {
+				name = "Pumpkin",
+				text = {
+					"Card to the {C:attention}left",
+					"cannot be {C:attention}flipped{} or {C:red}debuffed{}",
+					"{C:red}Self-Destructs{} after preventing",
+					"{C:attention}#1#{C:inactive} (#2#){} Flips or Debuffs"
+				},
+			},
+			j_cbean_magnet_shroom = {
+				name = "Magnet Shroom",
+				text = {
+					"Remove {C:attention}Gold{} and {C:attention}Steel{}",
+					"from scored cards.",
+					"Gain {X:mult,C:white}X#2#{} Mult per",
+					"removed enhancement",
+					"{C:money}+$#3#{} after every round",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_flower_pot = {
+				name = "Flower Pot",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult if",
+					"scored hand has one",
+					"of each suit"
+				},
+			},
+			j_cbean_cabbage_pult = {
+				name = "Cabbage Pult",
+				text = {
+					"Scored card with the",
+					"Highest rank",
+					"gives {C:mult}+#1#{} Mult",
+				},
+			},
+			j_cbean_coffee_bean = {
+				name = "Offee Bean",
+				text = {
+					"Retrigger the joker",
+					"on the right {C:attention}#1#{} time",
+					"Retrigger it {C:attention}#2#{}",
+					"times if it's a shroom"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
@@ -7185,6 +7444,9 @@ return {
 			k_jbill_ach                         = "Achievement Unlocked!",
 			k_jbill_metapack                    = "Meta Pack",
 			k_ihaveagun_ex                      = "I HAVE A GUN!",
+
+			k_cbean_halved = "Halved!",
+			k_cbean_chomp = "Chomp!"
 		},
 		high_scores = {},
 		labels = {

@@ -414,3 +414,72 @@ function NAMETEAM.mult_value(table, value)
 	return new_table
 end
 
+
+function NAMETEAM.msg(card, message, type)
+	if not type then type = "extra" end
+	card_eval_status_text(card, type, nil, nil, nil, { message = message })
+end
+
+function NAMETEAM.defeat()
+	G.E_MANAGER:add_event(Event({
+		blocking = false,
+		func = function()
+			if G.STATE == G.STATES.SELECTING_HAND then
+				G.GAME.chips = G.GAME.blind.chips
+				G.STATE = G.STATES.HAND_PLAYED
+				G.STATE_COMPLETE = true
+				end_round()
+				return true
+			end
+		end,
+	}))
+end
+
+function Card:closer_to()
+	local a,b,c = 0,0,0
+	if self.area then
+		a = #self.area.cards
+		b = a/2
+	end
+
+	for i = 1, #self.area.cards do
+		if self.area.cards[i] == self then c = i end
+	end
+
+	if c<=b then
+		return "left"
+	else
+		return "right"
+	end
+end
+
+function NAMETEAM.find_highest(area)
+	local low = 0
+	local key = nil
+	for i = 1, #area do
+		if low <= area[i].base.id then
+			low = area[i].base.id
+			key = area[i]
+		end
+	end
+	return key
+end
+
+function Card:on_the(direction)
+	local rr = nil
+	for i = 1, #self.area.cards do
+		if self.area.cards[i] == self then rr = i end
+	end
+
+	if direction == "left" then
+		if self.area.cards[rr-1] then
+			return self.area.cards[rr-1]
+		end
+	else
+		if self.area.cards[rr+1] then
+			return self.area.cards[rr+1]
+		end
+	end
+
+	return false
+end

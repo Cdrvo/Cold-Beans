@@ -19,7 +19,7 @@ SMODS.Sticker({
 		}
 	end,
     calculate = function(self, card, context)
-        if context.cbean_first and context.cardarea == G.jokers then
+        if context.cbean_first and context.cardarea == G.jokers and G.jokers.cards and #G.jokers.cards>0 then
             local old_pos = -1
             local new_pos = -1
             for k, v in ipairs(G.jokers.cards) do

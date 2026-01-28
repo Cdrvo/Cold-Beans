@@ -117,11 +117,23 @@ function Card:align_h_popup()
 end
 
 local apply_sticker_hook = Card.add_sticker
-function Card:add_sticker(sticker, bypass_check)
+function Card:add_sticker(sticker, bypass_check) -- fuck me
 	local already_had = self.ability[sticker]
-	apply_sticker_hook(self, sticker, bypass_check)
-	if not already_had and self.ability[sticker] then
-		self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
+	if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
+	if ((#SMODS.find_card("j_cbean_tallnut")==0)) then
+		apply_sticker_hook(self, sticker, bypass_check)
+		if not already_had and self.ability[sticker] then
+			if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
+			self.ability.NAMETEAM_sticker_count = self.ability.NAMETEAM_sticker_count + 1
+			self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
+		end
+	elseif self.ability.NAMETEAM_sticker_count==0 then
+		apply_sticker_hook(self, sticker, bypass_check)
+		if not already_had and self.ability[sticker] then
+			if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
+			self.ability.NAMETEAM_sticker_count = self.ability.NAMETEAM_sticker_count + 1
+			self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
+		end
 	end
 end
 
@@ -130,6 +142,9 @@ function Card:remove_sticker(sticker)
 	local already_had = self.ability[sticker]
 	remove_sticker_hook(self, sticker)
 	if already_had and not self.ability[sticker] then
+		if self.ability.NAMETEAM_sticker_count then
+			self.ability.NAMETEAM_sticker_count = self.ability.NAMETEAM_sticker_count - 1
+		end
 		self:NAMETEAM_remove_sticker_calc(SMODS.Stickers[sticker])
 	end
 end
@@ -191,4 +206,44 @@ function Card:calculate_joker(context)
 	else
         return joker_calc_cold(self, context)
     end
+end
+
+
+
+local calculate_main_scoring_old = SMODS.calculate_main_scoring
+function SMODS.calculate_main_scoring(context, scoring_hand)
+	NAMETEAM.scoring_area = context.cardarea.cards
+    for _, card in ipairs(context.cardarea.cards) do
+        local in_scoring = scoring_hand and SMODS.in_scoring(card, context.scoring_hand)
+        --add cards played to list
+        if scoring_hand and not SMODS.has_no_rank(card) and in_scoring then
+            G.GAME.cards_played[card.base.value].total = G.GAME.cards_played[card.base.value].total + 1
+            if not SMODS.has_no_suit(card) then
+                G.GAME.cards_played[card.base.value].suits[card.base.suit] = true
+            end
+        end
+        --if card is debuffed
+        if scoring_hand and card.debuff then
+            if in_scoring then 
+                G.GAME.blind.triggered = true
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = (function() SMODS.juice_up_blind();return true end)
+                }))
+                card_eval_status_text(card, 'debuff')
+            end
+        else
+            if scoring_hand then
+                if in_scoring then context.cardarea = G.play else context.cardarea = 'unscored' end
+            end
+			if (#SMODS.find_card("j_cbean_blover")>0) then
+				NAMETEAM.blover_number = #context.scoring_hand
+			else
+				SMODS.score_card(card, context)
+			end
+        end
+    end
+	if NAMETEAM.no_score_cards and not (#SMODS.find_card("j_cbean_blover")) then
+		return calculate_main_scoring_old(context, scoring_hand)
+	end
 end

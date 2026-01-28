@@ -1,0 +1,41 @@
+
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.STATE = G.STATES.NEW_ROUND"
+position = "at"
+payload = '''
+if NAMETEAM.no_progress and #G.deck.cards > 0 then
+    if G.GAME.current_round.hands_left == 1 then NAMETEAM.no_progress = false end 
+    G.STATE = G.STATES.DRAW_TO_HAND
+else
+    G.STATE = G.STATES.NEW_ROUND
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = " if G.GAME.facing_blind then G.GAME.current_round.any_hand_drawn = true end"
+position = "before"
+payload = '''
+if not NAMETEAM.reduce then NAMETEAM.reduce = 0 end
+if NAMETEAM.reduce>0 and not G.GAME.current_round.any_hand_drawn and G.GAME.blind.in_blind then
+    NAMETEAM.reduce = NAMETEAM.reduce - 1
+    if G.GAME.blind.boss then
+        G.GAME.blind.chips = G.GAME.blind.chips/(G.P_CENTERS["j_cbean_doom_shroom"].config.extra.blind)
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    else
+        G.GAME.blind.chips = 0
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    end
+    NAMETEAM.msg(G.deck.cards[1], "Doom!")
+end
+'''
+match_indent = true
