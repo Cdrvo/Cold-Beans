@@ -6210,6 +6210,20 @@ return {
 					},
 				},
 			},
+			c_cbean_hooking_sheet = {
+				name = "Hooking",
+				text = {
+					{
+						"Applies {C:attention}Hooking{} to {C:attention}1{}",
+						"selected playing card",
+					},
+					{
+						"Another {C:attention}#1# unenhanced{}",
+						"cards in your deck",
+						"{C:inactive}(if any){} become {C:attention}Gold{}",
+					},
+				},
+			},
 			c_cbean_flashcard_sheet = {
 				name = "Flash Card",
 				text = {

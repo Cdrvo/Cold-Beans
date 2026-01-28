@@ -442,6 +442,69 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
+  key = "hooking_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 1 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  config = { extra = { no_of_golds = 2 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_hooking"]
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    return { vars = { card.ability.extra.no_of_golds } }
+  end,
+  can_use = function(self, card)
+    if #G.hand.highlighted == 1 then
+      if not G.hand.highlighted[1].ability.cbean_hooking then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.hand.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 2, 0.75)
+        affected_card:add_sticker("cbean_hooking", true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+
+        local done = {}
+        for i = 1, card.ability.extra.no_of_golds do
+        local candidates = {}
+        for _, v in ipairs(G.playing_cards) do
+          if #SMODS.get_enhancements(v) <= 0 and v ~= affected_card then
+            local is_valid = true
+            for __, vv in ipairs(done) do
+              if v == vv then
+                is_valid = false; break; end
+            end
+            if is_valid then
+              candidates[#candidates + 1] = v
+            end
+          end
+        end
+
+        if #candidates > 0 then
+          pseudorandom_element(candidates, pseudoseed("hooking_sheet")):set_ability("m_gold")
+        else break; end
+      end
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
   key = "flashcard_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 6 },
   draw_extra = function(self, card, layer)
