@@ -378,3 +378,47 @@ SMODS.Joker({
         return cae.dollars
     end
 })
+
+SMODS.Joker({
+    key = "spikeweed",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult,
+            }
+        end
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+			if ((not context.other_card.ability.perma_bonus) or ((-(context.other_card.ability.perma_bonus)))<context.other_card.base.id) then
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
+
+                if -(context.other_card.base.id)>= -(context.other_card.ability.perma_bonus) then
+                    context.other_card.ability.cbean_marked = true
+                end
+				return {
+					message = "Downgrade!",
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+		end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.cbean_marked then
+            return{
+                remove = true
+            }
+        end
+    end,
+})
