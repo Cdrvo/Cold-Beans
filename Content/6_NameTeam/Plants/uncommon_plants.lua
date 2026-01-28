@@ -1422,3 +1422,58 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "pepper_pult",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 0,
+            mult_gain = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
+        end
+        if context.before and not context.blueprint then
+            for k, v in pairs(context.scoring_hand) do
+                if v.debuff then
+                    v:juice_up()
+                    v.debuff = false
+                    NAMETEAM.msg(v, "Undebuffed!")
+                    SMODS.scale_card(card,{
+                        ref_table = cae,
+                        ref_value = "mult",
+                        scalar_value = "mult_gain",
+                        scaling_message = {
+                            message = localize('k_upgrade_ex'),
+                            colour = G.C.MULT,
+                        }
+                    })
+                end
+            end
+        end
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
+        end
+    end,
+})
