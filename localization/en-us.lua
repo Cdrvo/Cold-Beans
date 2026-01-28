@@ -6258,8 +6258,8 @@ return {
 						"{C:attention}1{} selected {C:attention}Joker{}",
 					},
 					{
-						"Creates a",
-						"{C:dark_edition}Negative{} {C:attention}Misprint{}",
+						"The selected {C:attention}Joker",
+						"becomes {C:dark_edition}Negative{}",
 					},
 				},
 			},

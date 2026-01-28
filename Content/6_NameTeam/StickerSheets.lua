@@ -896,11 +896,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.2,
       func = function()
-        SMODS.add_card({
-          set = "Joker",
-          edition = "e_negative",
-          key = "j_misprint"
-        })
+        card:set_edition("e_negative")
         return true
       end
     }))
