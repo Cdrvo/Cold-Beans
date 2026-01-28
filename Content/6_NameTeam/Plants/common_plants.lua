@@ -518,3 +518,48 @@ SMODS.Joker({
         local cae = card.ability.extra
     end,
 })
+
+SMODS.Joker({
+    key = "pea_pod",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 0,
+            mult_gain = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult,cae.mult_gain}}
+    end,
+    add_to_deck = function(self,card,context)
+        SMODS.calculate_context({pea_pod_added = true, card = card})
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.pea_pod_added and context.card ~= card and not context.blueprint then
+            SMODS.destroy_cards(context.card)
+            SMODS.scale_card(card, {
+                ref_table = cae,
+                ref_value = "mult",
+                scalar_value = "mult_gain"
+            })
+        end
+
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
+        end
+    end,
+    in_pool = function(self,card)
+        return true, {allow_duplicates = true}
+    end
+})

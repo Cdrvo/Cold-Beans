@@ -4055,6 +4055,17 @@ return {
 					"scored card's suits"
 				},
 			},
+			j_cbean_pea_pod = {
+				name = "Pea Pod",
+				text = {
+					"Destroy any other",
+					"{C:attention}Pea Pod{} added to deck",
+					"Gain {C:mult}+#2#{} Mult per pea pod",
+					"destroyed.",
+					"{C:inactive,s:0.8}(Can always spawn)",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

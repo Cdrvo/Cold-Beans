@@ -48,7 +48,7 @@ end
 ColdBeans.calculate = function(mod, context)
 
 	if context.destroy_card and context.cardarea == G.play and (NAMETEAM.jal_sold and NAMETEAM.jal_sold>0) then
-		NAMETEAM.jal_sold = NAMETEAM.jal_sold - 1
+		NAMETEAM.jal_triggered = true
         return{
             remove = true
         }
@@ -58,6 +58,10 @@ ColdBeans.calculate = function(mod, context)
         G.GAME.cbean_combo_index = {}
         G.GAME.cbean_combo_unique_hand = {}
         G.GAME.cbean_combos_used_turn = 0
+		if NAMETEAM.jal_triggered then
+			NAMETEAM.jal_sold = NAMETEAM.jal_sold - 1
+			NAMETEAM.jal_triggered = false
+		end
     end
     if context.end_of_round then
         G.GAME.cbean_combo_unique_round = {}
