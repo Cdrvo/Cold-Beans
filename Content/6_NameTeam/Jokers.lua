@@ -1068,6 +1068,17 @@ SMODS.Joker {
 
     add_to_deck = function(self, card, from_debuff)
         play_sound("cbean_yomama_intro", 1, 1)
+
+        card.ability.extra.mama_ix = 1
+
+        card.ability.extra.mamas = {}
+        for i = 1, 100 do
+            card.ability.extra.mamas[i] = string.format("%02d", i)
+        end
+        for i = #card.ability.extra.mamas, 2, -1 do
+            local j = math.random(i)
+            card.ability.extra.mamas[i], card.ability.extra.mamas[j] = card.ability.extra.mamas[j], card.ability.extra.mamas[i]
+        end
     end,
     calculate = function(self, card, context)
         if context.setting_blind then
@@ -1167,4 +1178,47 @@ SMODS.Joker {
         end
     end
 end
+}
+
+SMODS.Joker {
+    key = "nameteam_riverstyx",
+    config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 9, y = 8 },
+    cost = 10,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.joker_slots, card.ability.extra.target_sold, card.ability.extra.target_sold - card.ability.extra.current_sold,
+        card.ability.extra.slots_given and localize("k_styx_active") or localize("k_styx_inactive") } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.selling_card and context.card.config.center.set == "Joker" and context.card ~= card and not card.ability.extra.slots_given then
+            card.ability.extra.current_sold = card.ability.extra.current_sold + 1
+
+            if card.ability.extra.current_sold >= card.ability.extra.target_sold then
+                card.ability.extra.slots_given = true
+                G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
+
+                return { message = localize('k_active_ex') }
+            else
+                return { message = card.ability.extra.current_sold .. '/' .. card.ability.extra.target_sold }
+            end
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if card.ability.extra.slots_given then
+            G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
+        end
+    end
 }

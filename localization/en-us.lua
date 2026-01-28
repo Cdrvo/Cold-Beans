@@ -4149,6 +4149,15 @@ return {
 					}
 				}
 			},
+			j_cbean_nameteam_riverstyx = {
+				name = 'River Styx',
+				text =
+				{
+					"Gives {C:attention}+#1#{} Joker slots",
+					"after {C:attention}#2#{} {C:inactive}[#3#]{} Jokers {C:money}sold{}",
+					"{C:inactive}(Currently #4#){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -7573,7 +7582,10 @@ return {
 			k_cbean_halved = "Halved!",
 			k_cbean_chomp = "Chomp!",
 
-			k_cbean_yomama = "Yo mama..."
+			k_cbean_yomama = "Yo mama...",
+
+			k_styx_active = "active",
+			k_styx_inactive = "inactive"
 		},
 		high_scores = {},
 		labels = {
