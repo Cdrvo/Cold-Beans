@@ -98,3 +98,42 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "snowpea",
+    cost = 5,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            odds = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMDOS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
+        return{
+            vars={num,den,cae.odds}
+        }
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.setting_blind and not context.blueprint and SMODS.pseudorandom_probability(card,"snowpea_seedssomething",1,cae.odds) then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME.blind:disable()
+                            play_sound('timpani')
+                            delay(0.4)
+                            return true
+                        end
+                    }))
+                    SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
+                    return true
+                end
+            }))
+            return nil, true
+        end
+    end,
+})
