@@ -184,7 +184,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
