@@ -598,3 +598,33 @@ SMODS.Joker({
         end
     end,
 })
+
+
+
+SMODS.Joker({
+    key = "bean",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 40
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.GAME.current_round.hands_played==0 and not G.GAME.blind.disabled then
+            G.GAME.blind.disabled = false
+            NAMETEAM.first_hand_disable = true
+        end
+    end,
+})
