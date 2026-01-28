@@ -51,6 +51,12 @@ SMODS.current_mod.custom_collection_tabs = function()
             label = { 'Medals' },
             minw = 5,
             id = 'your_collection_yma_medals',
+        }),
+        UIBox_button({
+            button = 'your_collection_cbean_biomes',
+            label = { 'Biomes' },
+            minw = 5,
+            id = 'your_collection_cbean_biomes',
         })
     }
 end

@@ -35,13 +35,21 @@ CBWG.ColdBeans_Biome = SMODS.ObjectType:extend{
             for k, v in pairs(G.P_BLINDS) do
                 if self.blinds[k] then self:inject_blind(k) end
             end
-            print(tprint(G.P_CEO_BLINDS))
+            --print(tprint(G.P_CEO_BLINDS))
             for k, v in pairs(G.P_CEO_BLINDS) do
                 if self.blinds[k] then self:inject_blind(k) end
-                print(k)
+                --print(k)
             end
         end
         CBWG.ColdBeans_Biomes[self.key] = self
+    end,
+    register = function (self)
+        if self.registered then
+            sendWarnMessage(('Detected duplicate register call on object %s'):format(self.key), self.set)
+            return
+        end
+        SMODS.ObjectType.register(self)
+        self.order = #self.obj_buffer
     end,
     inject_blind = function(self, blind)
         if blind.set ~= self.key then
