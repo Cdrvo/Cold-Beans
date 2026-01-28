@@ -5017,6 +5017,14 @@ return {
 				name = "Sticker^2",
 				text = { "{C:dark_edition}+0.5{} Consumable slots" }
 			},
+			cbean_mitosis = {
+				name = "Mitosis",
+				text = {
+                    "{C:green}#1# in #2#{} chance for",
+                    "{C:attention} Playing{} card to {C:attention}duplicate",
+					"at the end of the round"
+				}
+			},
 			-- Stake Stickers
 			cbean_nameteam_sticker = {
 				name = "NTeam Sticker",
@@ -7594,6 +7602,7 @@ return {
 			cbean_jaded = "Jaded",
 			cbean_banished = "Banished",
 			cbean_stick2 = "Sticker^2",
+			cbean_mitosis = "Mitosis",
 		},
 		poker_hand_descriptions = {
 			["cbean_sdown_antistraight"] = {
