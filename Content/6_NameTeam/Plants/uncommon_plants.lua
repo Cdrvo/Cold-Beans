@@ -637,3 +637,44 @@ SMODS.Joker({
         return cae.dollars
     end
 })
+
+
+
+-- Plantern
+
+-- Cactus
+
+SMODS.Joker({
+    key = "coffee_bean",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep1 = 1,
+            rep2 = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rep1,cae.rep2}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.retrigger_joker_check and not context.retrigger_joker and card:on_the("right") and context.other_card == card:on_the("right") then
+            if string.find(card:on_the("right").config.center.key, "shroom") then
+                return{
+                    message = localize("k_again_ex"),
+                    repetitions = cae.rep2,
+                    card = card,
+                }
+            else
+                return{
+                    message = localize("k_again_ex"),
+                    repetitions = cae.rep1,
+                    card = card,
+                }
+            end
+        end 
+    end
+})
