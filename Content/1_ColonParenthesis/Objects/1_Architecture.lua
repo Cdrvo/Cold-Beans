@@ -494,7 +494,10 @@ SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, f
     local old_scored = scored_card;
     if scored_card or effect.colonparen_card then
         scored_card = effect.colonparen_card or scored_card;
-        local center = scored_card.config.center;
+        local center = nil
+        if scored_card.config then
+            center = scored_card.config.center;
+        end
         
         if (key == 'colonparen_complete') and (scored_card.ability and scored_card.ability.colon_Architecture) then
             if scored_card.area == G.cbean_colon_arch then

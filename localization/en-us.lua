@@ -3845,7 +3845,7 @@ return {
 				},
 			},
 			j_cbean_coffee_bean = {
-				name = "Offee Bean",
+				name = "Coffee Bean",
 				text = {
 					"Retrigger the joker",
 					"on the right {C:attention}#1#{} time",
@@ -3909,6 +3909,82 @@ return {
 				text = {
 					"{C:money}+$#1#{} every hand",
 					"played"
+				},
+			},
+			j_cbean_kernel_pult= {
+				name = "Kernel Pult",
+				text = {
+					"Scored cards give",
+					"{C:mult}+#3#{} Mult.",
+					"{C:green}#1# in #2#{} chance to",
+					"debuff them until the end",
+					"of the ante"
+				},
+			},
+			j_cbean_hypno_shroom = {
+				name = "Hypno Shroom",
+				text = {
+					"Scored cards give",
+					"{C:mult}+#1#{} Mult",
+					"increase by {C:mult}+#2#{}",
+					"when a boss blind is triggered"
+				},
+			},
+			j_cbean_golden_magnet = {
+				name = "Golden Magnet",
+				text = {
+					"Cashout is {C:red}halved{}",
+					"gains {X:mult,C:white}X#2#{} Mult",
+					"per removed {C:attention}${}",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_winter_melon = {
+				name = "Winter Melon",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Adjacent cards gives {X:mult,C:white}X#2#{} Mult",
+					"but they're {C:red}debuffed{}",
+					"{C:attention}Adjecent {X:mult,C:white}XMULT{}",
+					"increases by {X:mult,C:white}X#3#{} when",
+					"this joker is triggered",
+					"{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Adjecent Xmult)"
+				},
+			},
+			j_cbean_spikerock = {
+				name = "Spikerock",
+				text = {
+					"Scored cards give {X:mult,C:white}X#1#{} Mult",
+					"but they gain {C:red}-1{} Chips",
+					"Destroy scored cards if they",
+					"stop returning chips"
+				},
+			},
+			j_cbean_imitater = {
+				name = "Imitater",
+				text = {
+					"{C:attention}Transforms{} into the",
+					"last {C:green}bought{} joker",
+					"when bought"
+				},
+			},
+			j_cbean_gloom_shroom = {
+				name = "Gloom Shroom",
+				text = {
+					"{C:attention}Adjecent{} cards give",
+					"{X:mult,C:white}X#1#{} when they are",
+					"triggered"
+				},
+			},
+			j_cbean_cattail = {
+				name = "Cattail",
+				text = {
+					"If scoring hand is",
+					"equal or larger than 2",
+					"{C:attention}First{} and {C:attention}Last{} card of the hand",
+					"will not trigger and this",
+					"card will gain {X:mult,C:white}X#2#{} mult",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
 			j_cbean_gatling_pea = {

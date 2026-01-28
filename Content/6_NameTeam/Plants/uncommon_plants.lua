@@ -131,7 +131,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        local num,den = SMDOS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
+        local num,den = SMODS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
         return{
             vars={num,den,cae.odds}
         }
@@ -819,7 +819,6 @@ SMODS.Joker({
 	},
 })
 
--- Cactus
 
 SMODS.Joker({
     key = "coffee_bean",
@@ -885,6 +884,7 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.after and NAMETEAM.cactus_number and not context.blueprint then
             for i = 1, NAMETEAM.cactus_number do
+                NAMETEAM.cactus_number = NAMETEAM.cactus_number- 1
                 SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",
