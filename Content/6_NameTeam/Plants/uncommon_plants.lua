@@ -1105,3 +1105,30 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "bloomerang",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            repetitions = 0,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.stored_chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] and #context.scoring_hand>=2 then
+            SMODS.score_card(context.scoring_hand[1], context)
+        end
+    end,
+})

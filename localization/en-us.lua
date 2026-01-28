@@ -4005,6 +4005,15 @@ return {
 					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
 				},
 			},
+			j_cbean_bloomerang = {
+				name = "Bloomerang",
+				text = {
+					"If scoring hand is",
+					"{C:attention}equal to{} or {C:attention}larger than{} 2",
+					"{C:attention]retrigger{} the first scored card",
+					"{C:green}whenever{} the last card is scored"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
