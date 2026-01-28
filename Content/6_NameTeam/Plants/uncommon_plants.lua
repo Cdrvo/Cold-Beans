@@ -585,3 +585,55 @@ SMODS.Joker({
         return cae.dollars
     end
 })
+
+
+SMODS.Joker({
+    key = "flower_pot",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 3,
+            trigger = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.initial_scoring_step then
+            local suits, suits_num, smods_suits = {},0,0
+            for k, v in pairs(SMODS.Suits) do
+                smods_suits = smods_suits + 1
+            end
+
+            for k, v in pairs(context.scoring_hand) do
+                if not suits[v.base.suit] then
+                    suits[v.base.suit] = true
+                    suits_num = suits_num + 1
+                end
+            end
+
+            if suits_num == smods_suits then
+                cae.trigger = true
+            end
+
+        end
+        if context.joker_main and cae.trigger then
+            return {
+                xmult = cae.xmult
+            }
+        end
+
+        if context.after then
+            cae.trigger = false
+        end
+    end,
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return cae.dollars
+    end
+})
