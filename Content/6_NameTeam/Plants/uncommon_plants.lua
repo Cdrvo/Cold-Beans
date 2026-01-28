@@ -1728,3 +1728,44 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "tile_turnip",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            rep = 1,
+            go = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.rep}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
+            if card:on_the("left") and context.other_card == card:on_the("left") then cae.go = true end
+        end
+        if context.retrigger_joker_check and not context.blueprint and cae.go and card:on_the("right") and context.other_card == card:on_the("right") then
+            if card:on_the("right") and context.other_card == card:on_the("right") and cae.go == true then 
+                return{
+                    repetitions = cae.rep
+                }
+            end
+        end
+        if context.after then
+            cae.go = false
+        end
+    end,
+})
