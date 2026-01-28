@@ -802,7 +802,7 @@ SMODS.Consumable {
           return true
         end
       }))
-      return { message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral }
+      SMODS.calculate_effect({ message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral }, card)
   end
 }
 
