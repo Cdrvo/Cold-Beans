@@ -4133,6 +4133,22 @@ return {
 					}
 				}
 			},
+			j_cbean_nameteam_theannouncement = {
+				name = 'The Announcement',
+				text =
+				{
+					{
+						"When round begins,",
+						"{C:green}#1# in #2#{} chance to add",
+						"a {C:attention}Piss{} card to your deck"
+					},
+					{
+						"Otherwise, creates a",
+						"copy of {C:tarot}The Moon{}",
+						"{C:inactive}(Must have room){}"
+					}
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -7511,6 +7527,7 @@ return {
 			b_nteam_exchange                    = "Exchange",
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
 			k_plus_soul                         = "+The Soul",
+			k_plus_piss                         = "+1 Piss Card",
 			k_cbean_nteam_uhoh                  = "Uh oh!",
 			k_cbean_nteam_danger                = "Danger!",
 			k_cbean_nteam_randomized            = "Randomized!",

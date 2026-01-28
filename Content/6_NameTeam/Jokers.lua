@@ -1096,3 +1096,75 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_theannouncement",
+    config = { extra = { odds = 2 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 7, y = 8 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_cbean_pboys_piss
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_moon
+    local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "theannouncement")
+    return { vars = { num, denom } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.setting_blind and not card.getting_sliced then
+            if SMODS.pseudorandom_probability(card, "theannouncement", 1, card.ability.extra.odds) then
+                local piss_card = SMODS.create_card { set = "Base", enhancement = "m_cbean_pboys_piss", area = G.discard }
+                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                piss_card.playing_card = G.playing_card
+                table.insert(G.playing_cards, piss_card)
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        piss_card:start_materialize({ G.C.SECONDARY_SET.Enhanced })
+                        G.play:emplace(piss_card)
+                        return true
+                    end
+                }))
+                return {
+                    message = localize('k_plus_piss'),
+                    colour = G.C.SECONDARY_SET.Enhanced,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.deck.config.card_limit = G.deck.config.card_limit + 1
+                                return true
+                            end
+                        }))
+                        draw_card(G.play, G.deck, 90, 'up')
+                        SMODS.calculate_context({ playing_card_added = true, cards = { piss_card } })
+                    end
+                }
+          else if count_consumables() < G.consumeables.config.card_limit then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                  func = function()
+                    local new_card = create_card("Tarot", G.consumables, nil, nil, nil, nil, 'c_moon', 'theannouncementtarot')
+                    new_card:add_to_deck()
+                    G.consumeables:emplace(new_card)
+                    G.GAME.consumeable_buffer = 0
+                    new_card:juice_up(0.3, 0.5)
+                    return true
+                  end
+            }))
+            return { message = '+1 Moon', colour = G.C.PURPLE }
+          end
+        end
+    end
+end
+}
