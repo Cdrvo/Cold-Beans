@@ -7494,6 +7494,10 @@ return {
 				"Applies {V:1,T:cbean_painted}Painted{} to",
 				"current Deck",
 			},
+			cbean_reward_house          = {
+				"Creates {C:attention,T:j_cbean_0chill_house_rules}House Rules{}",
+				"{C:inactive}(Must have room)",
+			},
 			--#endregion
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
