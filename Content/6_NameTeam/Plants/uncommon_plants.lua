@@ -1170,3 +1170,89 @@ SMODS.Joker({
 	end
     end,
 })
+
+
+SMODS.Joker({ --ehehehehehehe
+    key = "bonk_choy",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1.5,
+            lowest_card = nil,
+            lowest_id = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+	local cae = card.ability.extra
+        if context.before then
+            local cards = {
+            
+            }
+            for k, v in pairs(G.hand.cards) do
+                cards[#cards+1] = v
+            end
+            for k, v in pairs(G.play.cards) do
+                cards[#cards+1] = v
+            end
+
+            cae.lowest_card = NAMETEAM.find_lowest(cards)
+            cae.lowest_id = NAMETEAM.find_lowest(cards).base.id
+        end
+        if context.initial_scoring_step then
+            local its_in_play = false
+           
+            for k, v in pairs(context.scoring_hand) do
+                if v == cae.lowest_card then
+                    its_in_play = true
+                    if v:on_the("right") then
+                        v:on_the("right").crv_adjlowest = true
+                    end
+                    if v:on_the("left") then
+                        v:on_the("left").crv_adjlowest = true
+                    end
+                end
+            end
+
+            if not its_in_play then
+                
+                for k, v in pairs(context.scoring_hand) do
+                    if v.base.id == cae.lowest_id and not its_in_play then
+                        if v:on_the("right") then
+                            v:on_the("right").crv_adjlowest = true
+                        end
+                        if v:on_the("left") then
+                            v:on_the("left").crv_adjlowest = true
+                        end
+                       
+                        its_in_play = true
+                    end
+                end
+            end
+        end
+        if context.individual and context.cardarea == G.play then
+            if (context.other_card.crv_adjlowest) then
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.after then
+            for k, v in pairs(G.playing_cards) do
+                if v.crv_adjlowest then
+                    v.crv_adjlowest = nil
+                end
+            end
+        end
+    end,
+})
