@@ -10,6 +10,11 @@ SMODS.Joker({
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
     end,
@@ -37,6 +42,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={cae.xmult,cae.mult}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.joker_main then
@@ -71,6 +81,11 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{vars={cae.chips,cae.mult,cae.xmult,cae.dollars,cae.discards}}
     end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.setting_blind then

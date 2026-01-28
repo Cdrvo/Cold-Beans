@@ -2,6 +2,11 @@
 SMODS.Joker({
     key = "doom_shroom",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -38,6 +43,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "wallnut",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = false,
     config = {
@@ -68,6 +78,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "potatomine",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = false,
     config = {
@@ -102,6 +117,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "snowpea",
     cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = false,
     config = {
@@ -142,6 +162,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "chomper",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = false,
     config = {
@@ -186,6 +211,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "repeater",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -210,6 +240,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "puff_shroom",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -234,6 +269,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "fume_shroom",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -275,6 +315,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "scaredy_shroom",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -300,6 +345,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "ice_shroom",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -322,6 +372,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "squash",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -351,6 +406,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "threepeater",
     cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -382,6 +442,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "spikeweed",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -426,6 +491,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "sea_shroom",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -450,6 +520,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "blover",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -486,6 +561,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "pumpkin",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -532,6 +612,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "magnet_shroom",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -590,6 +675,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "flower_pot",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 2,
     blueprint_compat = true,
     config = {
@@ -647,6 +737,11 @@ SMODS.Joker({
 SMODS.Joker({
     key = "coffee_bean",
     cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
     rarity = 1,
     blueprint_compat = true,
     config = {
