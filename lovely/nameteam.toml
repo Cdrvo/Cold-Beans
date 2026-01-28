@@ -22,3 +22,72 @@ elseif G.GAME.cbean_nteam_rerolls_left == 0 then
 end
 '''
 match_indent = true
+
+# Adds stickers to everything
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+    if _type == 'Joker' then
+        if G.GAME.modifiers.all_eternal then
+            card:set_eternal(true)
+        end
+'''
+position = "before"
+payload = '''
+if G.GAME.modifiers.cbean_nteam_all_stickers then
+    sendDebugMessage("Applying sticker to ".._type, "nteam_all_stickers")
+    if _type == "Base" then
+        _type = "Default"
+    end
+    if card.config.center.consumeable then
+        _type = "Consumable"
+    end
+    local sticker_keys = {}
+    for k, v in pairs(SMODS.Stickers) do
+        if v.sets[_type] then 
+            sticker_keys[#sticker_keys+1] = v.key
+        end
+    end
+    if #sticker_keys > 0 then
+        local sticker = pseudorandom(pseudoseed('cbean_nteam_all_stickers'), 1, #sticker_keys)
+        sendDebugMessage("Found "..#sticker_keys.." applicable stickers, choosing "..sticker_keys[sticker],"nteam_all_stickers")
+        card:add_sticker(sticker_keys[sticker], true)
+    end
+end
+'''
+match_indent = true
+
+# Adds stickers to everything, deck cards edition
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+self.GAME.current_round.reroll_cost = self.GAME.base_reroll_cost
+'''
+position = "after"
+payload = '''
+if G.GAME.modifiers.cbean_nteam_all_stickers then
+    sendDebugMessage("Applying stickers to deck", "nteam_all_stickers")
+    local sticker_keys = {}
+    for k, v in pairs(SMODS.Stickers) do
+        if v.sets.Default then 
+            sticker_keys[#sticker_keys+1] = v.key
+        end
+    end
+    
+    if #sticker_keys > 0 then
+        G.E_MANAGER:add_event(Event({
+                func = function()
+                    for k, v in pairs(G.playing_cards) do
+                        local sticker = pseudorandom(pseudoseed('cbean_nteam_all_stickers'), 1, #sticker_keys)
+                        sendDebugMessage("Found "..#sticker_keys.." applicable stickers, choosing "..sticker_keys[sticker],"nteam_all_stickers")
+                        v:add_sticker(sticker_keys[sticker], true)
+                    end
+                return true
+                end
+            }))
+    end
+end
+'''
+match_indent = true

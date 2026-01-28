@@ -7047,6 +7047,7 @@ return {
 		blind_states = {},
 		challenge_names = {
 			c_cbean_sdown_inexcusable = "Inexcusable",
+			c_cbean_all_stickers = "Oops! All Stickers",
 		},
 		collabs = {},
 		dictionary = {
@@ -7606,6 +7607,15 @@ return {
 			ch_c_cbean_sdown_all_blinds_are = {
 				"{C:attention}All Blinds{} are {C:attention}The Folly",
 			},
+            ch_c_cbean_nteam_all_stickers={
+                "All Jokers, Consumeables,"
+            },
+            ch_c_cbean_nteam_all_stickers_2={
+				"and Playing Cards (including starting ones)",
+            },
+            ch_c_cbean_nteam_all_stickers_3={
+				"have Stickers",
+            },
 		},
 	},
 }
