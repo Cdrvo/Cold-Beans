@@ -422,3 +422,27 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "sea_shroom",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.75
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main and G.jokers.cards[1] == card then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
