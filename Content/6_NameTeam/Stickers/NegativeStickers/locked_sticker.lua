@@ -20,19 +20,20 @@ SMODS.Sticker({
 		}
 	end,
 	NAMETEAM_applied = function(self, card)
-		G.GAME.nteam_locked_index = G.GAME.nteam_locked_index + 1
-		card.ability.nteam_lock_link = card.ability.nteam_lock_link or {}
-		card.ability.nteam_lock_id = G.GAME.nteam_locked_index
-		card.ability.nteam_lock_link[#card.ability.nteam_lock_link + 1] = G.GAME.nteam_locked_index
+		G.GAME.nteam_locked_index = G.GAME.nteam_locked_index + 1 -- increment unique id for pairing locked cards
+		card.ability.nteam_lock_link = card.ability.nteam_lock_link or {} -- store list of ids
+		card.ability.nteam_lock_id = G.GAME.nteam_locked_index -- store the id created because of the application of the sticker
+        -- Also doubles as an indication that this was the source of the id application
+		card.ability.nteam_lock_link[#card.ability.nteam_lock_link + 1] = G.GAME.nteam_locked_index -- add to list of ids
 		local pool = {}
 		for _, c in ipairs(G.playing_cards) do
 			if c ~= card then
 				pool[#pool + 1] = c
 			end
 		end
-		local target = pseudorandom_element(pool, "lock_selection")
+		local target = pseudorandom_element(pool, "lock_selection") -- randomly pick target to give the same id
 		target.ability.nteam_lock_link = target.ability.nteam_lock_link or {}
-		target.ability.nteam_lock_link[#target.ability.nteam_lock_link + 1] = G.GAME.nteam_locked_index
+		target.ability.nteam_lock_link[#target.ability.nteam_lock_link + 1] = G.GAME.nteam_locked_index -- give target the id
 	end,
 	NAMETEAM_removed = function(self, card)
 		for _, c in ipairs(G.playing_cards) do
