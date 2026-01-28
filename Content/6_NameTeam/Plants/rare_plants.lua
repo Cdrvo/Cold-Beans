@@ -248,3 +248,37 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "golden_magnet",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.1,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.cbean_cashout and NAMETEAM.goldenmagnet_number then
+            cae.xmult = cae.xmult + (cae.xmult_gain*NAMETEAM.goldenmagnet_number)
+            NAMETEAM.msg(card, localize("k_upgrade_ex"), "mult")
+        end
+    end,
+})
