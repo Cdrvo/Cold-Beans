@@ -6517,6 +6517,13 @@ return {
 					"can't be {C:red}debuffed"
 				},
 			},
+			c_cbean_minuscule_sheet = {
+				name = "Minuscule",
+				text = {
+					"Applies {C:attention}Minuscule{} to {C:attention}1{} selected",
+					"{C:attention}Joker{} without {C:attention}Minuscule",
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_colon_construction = {
