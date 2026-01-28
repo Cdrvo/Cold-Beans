@@ -274,17 +274,8 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            local a = SMODS.create_card({key = "j_cbean_jalepeno", area = G.vouchers})
-            a.dissolve = 1
-            a:add_to_deck()
-            a.ability.extra.active = true
-            G.vouchers:emplace(a)
-        end
-        if context.destroy_card and context.cardarea == G.play and cae.active then
-            card:start_dissolve(nil, true, nil)
-            return{
-                remove = true
-            }
+            if not NAMETEAM.jal_sold then NAMETEAM.jal_sold = 0 end
+            NAMETEAM.jal_sold = NAMETEAM.jal_sold + 1
         end
     end
 })

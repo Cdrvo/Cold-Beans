@@ -46,6 +46,13 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
+
+	if context.destroy_card and context.cardarea == G.play and (NAMETEAM.jal_sold and NAMETEAM.jal_sold>0) then
+		NAMETEAM.jal_sold = NAMETEAM.jal_sold - 1
+        return{
+            remove = true
+        }
+    end
 	
 	if context.after then
         G.GAME.cbean_combo_index = {}

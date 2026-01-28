@@ -3750,7 +3750,7 @@ return {
 				},
 			},
 			j_cbean_jalepeno = {
-				name = "Jalepeno",
+				name = "Jalapeno",
 				text = {
 					"{C:green}Sell{} this card",
 					"to {C:red}destroy{} the next",
