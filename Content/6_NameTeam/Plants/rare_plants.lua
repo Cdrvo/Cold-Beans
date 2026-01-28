@@ -506,3 +506,52 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "red_stinger",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 3.5,
+            xmult_lose = 0.5,
+            rr = nil,
+            on_the_left = 0
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        if card.added_to_deck then
+            cae.on_the_left = 0
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i < cae.rr then
+                    cae.on_the_left = cae.on_the_left + 1
+               end
+            end
+        end
+        return{
+            vars={cae.xmult,cae.xmult_lose,(cae.xmult-(cae.xmult_lose*cae.on_the_left))}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult-(cae.on_the_left*cae.xmult_lose)
+            }
+        end
+    end,
+})
