@@ -3893,7 +3893,7 @@ return {
 				text = {
 					"At the end of a round",
 					"randomy gives",
-					"{C:money}+#1#{}, {C:money}+#2#{} or{C:money} +#3#"
+					"{C:money}+$#1#{}, {C:money}+$#2#{} or{C:money} +$#3#"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
