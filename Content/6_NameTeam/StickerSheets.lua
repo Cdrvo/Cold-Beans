@@ -1003,6 +1003,7 @@ SMODS.Consumable {
         trigger = 'after',
         delay = 0.4,
         func = function()
+          play_sound("gold_seal", 1.5, 1)
           affected_card:add_sticker("cbean_spore", true)
           card:juice_up(0.3, 0.5)
           affected_card:juice_up()
@@ -1060,6 +1061,7 @@ SMODS.Consumable {
         trigger = 'after',
         delay = 0.4,
         func = function()
+          play_sound("gold_seal", 1.5, 1)
           affected_card:add_sticker("cbean_shuffle", true)
           card:juice_up(0.3, 0.5)
           affected_card:juice_up()
