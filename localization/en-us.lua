@@ -6508,6 +6508,15 @@ return {
 					}
 				},
 			},
+			c_cbean_shuffle_sheet = {
+				name = "Shuffle",
+				text = {
+					"Applies {C:attention}Shuffle{} to {C:attention}1{} random",
+					"{C:attention}Joker{} without {C:attention}Shuffle",
+					"The affected {C:attention}Joker",
+					"can't be {C:red}debuffed"
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_colon_construction = {

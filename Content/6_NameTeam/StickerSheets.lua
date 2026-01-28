@@ -998,7 +998,7 @@ SMODS.Consumable {
       if not (v.ability and v.ability.cbean_spore) then candidates[#candidates + 1] = v end
     end
     if #candidates > 0 then
-      local affected_card = pseudorandom_element(candidates, pseudoseed("egg_stickersheet"))
+      local affected_card = pseudorandom_element(candidates, pseudoseed("spore_stickersheet"))
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.4,
@@ -1019,6 +1019,51 @@ SMODS.Consumable {
               end
           end
           ease_dollars(sticker_amount)
+          return true
+        end
+      }))
+      delay(0.6)
+    end
+  end
+}
+
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "shuffle_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 4 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_shuffle"]
+  end,
+  can_use = function(self, card)
+    local candidates = {}
+    for _, v in ipairs(G.jokers.cards) do
+      if not (v.ability and v.ability.cbean_shuffle) then return true end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local candidates = {}
+    for _, v in ipairs(G.jokers.cards) do
+      if not (v.ability and v.ability.cbean_shuffle) then candidates[#candidates + 1] = v end
+    end
+    if #candidates > 0 then
+      local affected_card = pseudorandom_element(candidates, pseudoseed("shuffle_sheet"))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          affected_card:add_sticker("cbean_shuffle", true)
+          card:juice_up(0.3, 0.5)
+          affected_card:juice_up()
+          SMODS.debuff_card(affected_card, 'prevent_debuff', "shuffle_sheet")
           return true
         end
       }))
