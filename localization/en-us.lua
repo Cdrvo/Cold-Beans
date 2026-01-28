@@ -6412,6 +6412,20 @@ return {
 					"{C:attention}Joker{} without {C:attention}Egg",
 				},
 			},
+			c_cbean_spore_sheet = {
+				name = "Spore",
+				text = {
+					{
+						"Applies {C:attention}Spore{} to {C:attention}1{} random",
+						"{C:attention}Joker{} without {C:attention}Spore",
+					},
+					{
+						"Earn {C:money}$#1#{} per {C:attention}Sticker",
+						"on all held {C:attention}Jokers",
+						"{C:inactive}(Will earn {C:money}$#2#{C:inactive})"
+					}
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_colon_construction = {

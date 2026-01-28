@@ -949,3 +949,80 @@ SMODS.Consumable {
     end
   end
 }
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "spore_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 4 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  config = {extra = {money_per_sticker = 4}},
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_spore"]
+    local sticker_keys = {}
+    local sticker_amount = 0
+    for k, v in pairs(SMODS.Stickers) do
+        sticker_keys[#sticker_keys+1] = v.key
+    end
+    if G.jokers then
+      for k, v in ipairs(G.jokers.cards) do
+        for jk, jv in pairs(v.ability) do
+          if NAMETEAM.contains(sticker_keys, jk) and jv then
+              sticker_amount = sticker_amount + 1
+          end
+        end
+      end
+    end
+    return {
+      vars = {
+        card.ability.extra.money_per_sticker,
+        sticker_amount * card.ability.extra.money_per_sticker
+      }
+    }
+  end,
+  can_use = function(self, card)
+    local candidates = {}
+    for _, v in ipairs(G.jokers.cards) do
+      if not (v.ability and v.ability.cbean_spore) then return true end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local candidates = {}
+    for _, v in ipairs(G.jokers.cards) do
+      if not (v.ability and v.ability.cbean_spore) then candidates[#candidates + 1] = v end
+    end
+    if #candidates > 0 then
+      local affected_card = pseudorandom_element(candidates, pseudoseed("egg_stickersheet"))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          affected_card:add_sticker("cbean_spore", true)
+          card:juice_up(0.3, 0.5)
+          affected_card:juice_up()
+          local sticker_keys = {}
+          local sticker_amount = 0
+          for k, v in pairs(SMODS.Stickers) do
+              sticker_keys[#sticker_keys+1] = v.key
+          end
+          for k, v in ipairs(G.jokers.cards) do
+              for jk, jv in pairs(v.ability) do
+                  if NAMETEAM.contains(sticker_keys, jk) and jv then
+                      sticker_amount = sticker_amount + 1
+                  end
+              end
+          end
+          ease_dollars(sticker_amount)
+          return true
+        end
+      }))
+      delay(0.6)
+    end
+  end
+}
