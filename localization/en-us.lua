@@ -6312,6 +6312,13 @@ return {
 					},
 				},
 			},
+			c_cbean_egg_sheet = {
+				name = "Egg",
+				text = {
+					"Applies {C:attention}Egg{} to {C:attention}1{} random",
+					"{C:attention}Joker{} without {C:attention}Egg",
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_colon_construction = {
