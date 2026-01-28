@@ -402,3 +402,44 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "hypno_shroom",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 3,
+            mult_gain = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            return{
+                mult = cae.mult
+            }
+        end
+         if context.debuffed_hand or context.joker_main then
+            if G.GAME.blind.triggered then
+                SMODS.scale_card(card,{
+                    ref_table = cae,
+                    ref_value = "mult",
+                    scalar_value = "mult_gain"
+                })
+            end
+        end
+    end,
+})
