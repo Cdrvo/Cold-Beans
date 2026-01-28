@@ -3681,7 +3681,7 @@ return {
 				},
 			},
 			j_cbean_scaredy_shroom = {
-				name = "Puff Shroom",
+				name = "Scaredy Shroom",
 				text = {
 					"{C:mult}+#1#{} Mult{} if this",
 					"joker is in the 2 leftmost slots"
@@ -4045,6 +4045,14 @@ return {
 					"card in hand is scored",
 					"adjecent cards give",
 					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			j_cbean_spring_bean = {
+				name = "Spring Bean",
+				text = {
+					"First played card",
+					"counts as other",
+					"scored card's suits"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {

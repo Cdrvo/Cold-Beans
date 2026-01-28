@@ -260,7 +260,8 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                 G.GAME.blind.triggered = true
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
-                    func = (function() SMODS.juice_up_blind();return true end)
+                    func = (function() SMODS.juice_up_blind()
+return true end)
                 }))
                 card_eval_status_text(card, 'debuff')
             end
@@ -328,4 +329,47 @@ function G.FUNCS.buy_from_shop(e)
 		G.GAME.last_bought_joker = card
 		G.GAME.last_bought_joker_key = card.config.center.key
 	end
+end
+
+
+function NAMETEAM.bean_spring_suit_check(card, suit)
+    if not card then
+		--check--print("no card")
+        return false
+    end
+
+    if (#SMODS.find_card("j_cbean_spring_bean") > 0) and card.area == G.play and G.play.cards[1] == card then
+		--print("inital check")
+		local suits = {}
+		for i = 1, #G.play.cards do
+			local gp = G.play.cards
+			if not suits[gp[i].base.suit] then 
+				suits[gp[i].base.suit] = true 
+				--print("inserting: " .. gp[i].base.suit)
+			end
+ 		end
+
+		for k, v in pairs(suits) do
+			--print(k, suit)
+			if k == suit then
+				return true
+			end
+		end
+	end
+    return false
+end
+
+local is_suit_old = Card.is_suit
+function Card:is_suit(suit, bypass_debuff, flush_calc)
+
+	if (#SMODS.find_card("j_cbean_spring_bean") > 0) then
+		if flush_calc then
+			return is_suit_old(self, suit, bypass_debuff, flush_calc)
+		else
+			if self == G.play.cards[1] then
+				return NAMETEAM.bean_spring_suit_check(self, suit)
+			end
+		end
+	end
+	return is_suit_old(self, suit, bypass_debuff, flush_calc)
 end
