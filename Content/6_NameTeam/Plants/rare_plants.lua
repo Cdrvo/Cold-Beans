@@ -217,7 +217,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-    key = "gatlint_pea",
+    key = "gatling_pea",
     cost = 5,
     beans_credits = {
 		code = "Revo",
@@ -228,7 +228,7 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            repetitions = 1
+            repetitions = 2
         }
     },
     loc_vars = function(self,info_queue,card)
@@ -237,10 +237,14 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.repetition and context.cardarea == G.play and G.GAME.current_round.hands_played == 0  then
-            return {
-                repetitions = cae.repetitions
-            }
+        if context.repetition and context.cardarea == G.play then
+        local coc = context.other_card
+        local csh = context.scoring_hand
+            if (csh[1] and coc == csh[1]) or (csh[1+1] and coc == csh[2]) or (csh[1+1+1] and coc == csh[3]) or (csh[1+1+1+1] and coc == csh[4]) then 
+                return {
+                    repetitions = cae.repetitions
+                }
+            end
         end
     end,
 })

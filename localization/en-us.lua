@@ -3911,6 +3911,13 @@ return {
 					"played"
 				},
 			},
+			j_cbean_gatling_pea = {
+				name = "Gatling Pea",
+				text = {
+					"First {C:attention}4{} Scored",
+					"cards are retriggered {C:attention}#1#{} times"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
