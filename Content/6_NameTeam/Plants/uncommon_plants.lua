@@ -854,3 +854,42 @@ SMODS.Joker({
         end 
     end
 })
+
+SMODS.Joker({
+    key = "cactus",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain}}
+    end,
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.after and NAMETEAM.cactus_number and not context.blueprint then
+            for i = 1, NAMETEAM.cactus_number do
+                SMODS.scale_card(card, {
+					ref_table = cae,
+					ref_value = "xmult",
+					scalar_value = "xmult_gain",
+				})
+            end
+        end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})

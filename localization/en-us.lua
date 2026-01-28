@@ -3862,6 +3862,16 @@ return {
 					"<-1 -- 5->"
 				},
 			},
+			j_cbean_cactus = {
+				name = "Cactus",
+				text = {
+					"When hand is played with more",
+					"than {C:attention}1{} scoring card,",
+					"a {C:dark_edition}random{} scoring card", 
+					"{C:red}wont{} trigger and this gains {X:mult,C:white}X#2#{} Mult",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

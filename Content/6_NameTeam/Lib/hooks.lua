@@ -212,9 +212,35 @@ end
 
 local calculate_main_scoring_old = SMODS.calculate_main_scoring
 function SMODS.calculate_main_scoring(context, scoring_hand)
-	NAMETEAM.scoring_area = context.cardarea.cards
-    for _, card in ipairs(context.cardarea.cards) do
-        local in_scoring = scoring_hand and SMODS.in_scoring(card, context.scoring_hand)
+	NAMETEAM.general_area = context.cardarea.cards
+	NAMETEAM.scoring_area = context.scoring_hand
+	if (#SMODS.find_card("j_cbean_cactus")>0) then
+		local a,b,c,d = {},0,nil,0
+		for i = 1, #NAMETEAM.scoring_area do
+			a[#a+1] = i
+		end
+		b = pseudorandom_element(a,pseudoseed("j_cbean_cactiyessir")) 
+		--[[for k, v in pairs(NAMETEAM.general_area) do
+			if v == NAMETEAM.scoring_area[b] then
+				c = v
+			end
+		end]]
+		--[[for i = 1, #NAMETEAM.general_area do
+			if NAMETEAM.general_area[i] == c then
+				d = i
+			end
+		end]]
+		if b ~= 0 and #NAMETEAM.scoring_area>1 then
+			table.remove(NAMETEAM.scoring_area, b)
+			if not NAMETEAM.cactus_number then NAMETEAM.cactus_number = 1 else NAMETEAM.cactus_number = NAMETEAM.cactus_number + 1 end
+		end
+		--[[if d ~= 0 then  -- YEETS the card lmao
+			table.remove(NAMETEAM.general_area, d)
+		end]]
+
+	end
+    for _, card in ipairs(NAMETEAM.general_area) do
+        local in_scoring = scoring_hand and SMODS.in_scoring(card, NAMETEAM.scoring_area)
         --add cards played to list
         if scoring_hand and not SMODS.has_no_rank(card) and in_scoring then
             G.GAME.cards_played[card.base.value].total = G.GAME.cards_played[card.base.value].total + 1
