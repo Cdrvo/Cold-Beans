@@ -3872,6 +3872,14 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
+			j_cbean_garlic = {
+				name = "Garlic",
+				text = {
+					"{C:attention}Shuffles{} 2 random",
+					"jokers before scoring",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
