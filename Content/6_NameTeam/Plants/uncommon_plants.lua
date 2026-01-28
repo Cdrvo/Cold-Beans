@@ -730,7 +730,88 @@ SMODS.Joker({
 
 
 
--- Plantern
+SMODS.Joker({
+    key = "plantern",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+		 if G.next_fivcards_cbean then
+			G.next_fivcards_cbean:remove()
+			G.next_fivcards_cbean = nil
+		 end
+
+		G.next_fivcards_cbean = CardArea(
+			G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2,
+			G.ROOM.T.h,
+			G.CARD_W * 2,
+			G.CARD_H * 1.1,
+			{ card_limit = 5, type = "joker", highlight_limit = 0,no_card_count = true}
+		)
+	
+		local cae = card.ability.extra
+        local carea = G.deck.cards
+		
+		local card_1,card_2,card_3,card_4,card_5 = carea[#carea] and copy_card(carea[#carea]), carea[#carea-1] and copy_card(carea[#carea-1]), carea[#carea-2] and copy_card(carea[#carea-2]), carea[#carea-3] and copy_card(carea[#carea-3]), carea[#carea-4] and copy_card(carea[#carea-4]) 
+		
+        if card_1 then
+        G.next_fivcards_cbean:emplace(card_1)
+        end
+        if card_2 then
+        G.next_fivcards_cbean:emplace(card_2)
+        end
+        if card_3 then
+        G.next_fivcards_cbean:emplace(card_3)
+        end
+        if card_4 then
+        G.next_fivcards_cbean:emplace(card_4)
+        end
+        if card_5 then
+        G.next_fivcards_cbean:emplace(card_5)
+        end
+        
+		return{
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", padding = 0.02 },
+					nodes = {
+						{ n = G.UIT.O, config = { object = G.next_fivcards_cbean } },
+					},
+				},
+			},
+			vars={cae.cj1,cae.cj2, cae.c1, cae.c2}
+		}
+	end,
+    update = function(self,card)
+        if card.added_to_deck then
+            local areas = {
+            }
+            for k, v in pairs(SMODS.get_card_areas("jokers")) do
+                areas[#areas+1] = v
+            end
+
+            areas[#areas+1] = G.hand
+
+            for k, v in pairs(areas) do
+               for _, _card in pairs(v.cards) do
+                    if _card.facing and _card.facing == "back" then
+                        _card:flip()
+                    end
+               end
+            end
+        end
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+})
 
 -- Cactus
 
