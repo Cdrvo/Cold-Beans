@@ -983,3 +983,33 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "gloom_shroom",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmukt = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmukt}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or NAMETEAM.during_scoring) then
+            if (card:on_the("right") and context.other_card == card:on_the("right")) or (card:on_the("left") and context.other_card == card:on_the("left")) then
+                -- print("KILL YOURSELF")
+                SMODS.calculate_effect({xmult = cae.xmukt}, context.other_card)
+            end
+        end
+    end,
+})
