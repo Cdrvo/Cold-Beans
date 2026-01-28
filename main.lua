@@ -19,6 +19,7 @@ end
 
 SMODS.current_mod.optional_features = {
   retrigger_joker = true,
+  post_trigger = true,
   cardareas = {
 	deck = true,
 	discard = true
@@ -54,6 +55,12 @@ ColdBeans.calculate = function(mod, context)
     if context.end_of_round then
         G.GAME.cbean_combo_unique_round = {}
     end
+	if context.destroy_card and context.cardarea == G.play and NAMETEAM.destroy and NAMETEAM.destroy>0 then
+		NAMETEAM.destroy = NAMETEAM.destroy - 1
+		return{
+			remove = true
+		}
+	end
 	if context.card_added and context.cardarea == G.jokers then
 		local jokers = GetJokers()
 		local troub, minne, trouv = jokers["j_troubadour"], jokers["j_cbean_colon_minnesang"], jokers["j_cbean_colon_trouvere"]

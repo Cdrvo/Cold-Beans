@@ -131,7 +131,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        local num,den = SMDOS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
+        local num,den = SMODS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
         return{
             vars={num,den,cae.odds}
         }
@@ -819,7 +819,6 @@ SMODS.Joker({
 	},
 })
 
--- Cactus
 
 SMODS.Joker({
     key = "coffee_bean",
@@ -885,6 +884,7 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.after and NAMETEAM.cactus_number and not context.blueprint then
             for i = 1, NAMETEAM.cactus_number do
+                NAMETEAM.cactus_number = NAMETEAM.cactus_number- 1
                 SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",
@@ -980,6 +980,76 @@ SMODS.Joker({
             return{
                 dollars = cae.dollars
             }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "gloom_shroom",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmukt = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmukt}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or NAMETEAM.during_scoring) then
+            if (card:on_the("right") and context.other_card == card:on_the("right")) or (card:on_the("left") and context.other_card == card:on_the("left")) then
+                -- print("KILL YOURSELF")
+                SMODS.calculate_effect({xmult = cae.xmukt}, context.other_card)
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "cattail",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmukt = 1,
+            xmult_gain = 0.75,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmukt,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmukt
+            }
+        end
+        if context.after and NAMETEAM.cattail_number then
+            for i = 1, NAMETEAM.cattail_number do
+                NAMETEAM.cattail_number = NAMETEAM.cattail_number - 1
+                SMODS.scale_card(card,{
+                    ref_table = cae,
+                    ref_value = "xmukt",
+                    scalar_value = "xmult_gain"
+                })
+            end
         end
     end,
 })

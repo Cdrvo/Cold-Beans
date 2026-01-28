@@ -239,6 +239,12 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 		end]]
 
 	end
+
+	if (#SMODS.find_card("j_cbean_cattail")>0) and #NAMETEAM.scoring_area>2 then
+		table.remove(NAMETEAM.scoring_area, 1)
+		table.remove(NAMETEAM.scoring_area,  #NAMETEAM.scoring_area)
+		if not NAMETEAM.cattail_number then NAMETEAM.cattail_number = 1 else NAMETEAM.cattail_number = NAMETEAM.cattail_number + 1 end
+	end
     for _, card in ipairs(NAMETEAM.general_area) do
         local in_scoring = scoring_hand and SMODS.in_scoring(card, NAMETEAM.scoring_area)
         --add cards played to list
@@ -271,5 +277,55 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
     end
 	if NAMETEAM.no_score_cards and not (#SMODS.find_card("j_cbean_blover")) then
 		return calculate_main_scoring_old(context, scoring_hand)
+	end
+end
+
+
+local gfep = G.FUNCS.evaluate_play
+function G.FUNCS.evaluate_play(e)
+	G.E_MANAGER:add_event(Event({
+		trigger = "before",
+		delay = 0,
+		func = function()
+			NAMETEAM.during_scoring = true
+			return true
+		end
+	}))
+	gfep(e)
+	G.E_MANAGER:add_event(Event({
+		trigger = "after",
+		delay = 0.2,
+		func = function()
+			NAMETEAM.during_scoring = false
+			return true
+		end
+	}))
+end
+
+local add_round_eval_row_old = add_round_eval_row
+function add_round_eval_row(config)
+	local old_dollar =	(config.dollars or 0)
+	config.dollars = (config.dollars or 0)
+	if config.dollars and config.dollars>0 then
+		config.dollars = (( (config.dollars or 0) / ((#SMODS.find_card("j_cbean_golden_magnet"))+1) ))
+		NAMETEAM.goldenmagnet_number = old_dollar - config.dollars
+	end
+	
+	return add_round_eval_row_old(config)
+end
+
+local cash_out_old = G.FUNCS.cash_out
+function G.FUNCS.cash_out(e)
+	SMODS.calculate_context({cbean_cashout = true})
+	cash_out_old(e)
+end
+
+local buy_old = G.FUNCS.buy_from_shop
+function G.FUNCS.buy_from_shop(e)
+	local card = e.config.ref_table
+	buy_old(e)
+	if card and card.ability and card.ability.set and card.ability.set == "Joker" and card.config.center.key ~= "j_cbean_imitater" then
+		G.GAME.last_bought_joker = card
+		G.GAME.last_bought_joker_key = card.config.center.key
 	end
 end

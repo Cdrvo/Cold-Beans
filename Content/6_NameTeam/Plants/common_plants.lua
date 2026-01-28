@@ -350,4 +350,96 @@ SMODS.Joker({
     end
 })
 
--- Kernel Pult
+
+SMODS.Joker({
+    key = "kernel_pult",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            odds = 4,
+            mult = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        local num,den = SMDOS.get_probability_vars(card,1,cae.odds,"sunflower_seedssomething")
+        return{
+            vars={num,den,cae.mult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            return{
+                mult = cae.mult
+            }
+        end
+        if context.final_scoring_step and context.cardarea == G.play then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    for k, v in pairs(context.scoring_hand) do
+                        if SMODS.pseudorandom_probability(card, "kernel_seedasdasd", 1 , cae.odds) then
+                            SMODS.debuff_card(v, true, "debuff_by_kernel")
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+        if context.ante_change and context.ante_end and not context.blueprint then
+            for k, v in pairs(G.playing_cards) do
+                SMODS.debuff_card(v, false, "debuff_by_kernel")
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "hypno_shroom",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 3,
+            mult_gain = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            return{
+                mult = cae.mult
+            }
+        end
+         if context.debuffed_hand or context.joker_main then
+            if G.GAME.blind.triggered then
+                SMODS.scale_card(card,{
+                    ref_table = cae,
+                    ref_value = "mult",
+                    scalar_value = "mult_gain"
+                })
+            end
+        end
+    end,
+})

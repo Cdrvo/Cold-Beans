@@ -248,3 +248,205 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "golden_magnet",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.1,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.cbean_cashout and NAMETEAM.goldenmagnet_number then
+            cae.xmult = cae.xmult + (cae.xmult_gain*NAMETEAM.goldenmagnet_number)
+            NAMETEAM.msg(card, localize("k_upgrade_ex"), "mult")
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "winter_melon",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2,
+            xmult_gain = 0.5,
+            adj_xmult = 1.5,
+            adj_xmult_default = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.adj_xmult_default,cae.xmult_gain,cae.adj_xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+
+            if card:on_the("left") then
+                SMODS.calculate_effect({xmult=cae.adj_xmult}, card:on_the("left"))
+            end
+            if card:on_the("right") then
+                SMODS.calculate_effect({xmult=cae.adj_xmult}, card:on_the("right"))
+            end
+            SMODS.calculate_context({im_bored_cbean = true})
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.im_bored_cbean and not context.blueprint then
+            SMODS.scale_card(card,{
+                ref_table = cae,
+                ref_value = "adj_xmult",
+                scalar_value = "xmult_gain"
+            })
+        end
+    end,
+    update = function(self,card)
+        if card.added_to_deck then
+            for k, v in pairs(G.jokers.cards) do
+                if v.debuffed_by_melon and v ~= card:on_the("right") and v ~= card:on_the("left") then
+                    SMODS.debuff_card(v, false, "winter_meloning")
+                    v.debuffed_by_melon = nil
+                end
+            end
+            if card:on_the("right") and not card:on_the("right").debuff then
+                SMODS.debuff_card(card:on_the("right"), true, "winter_meloning")
+                card:on_the("right").debuffed_by_melon = true
+            end
+            if card:on_the("left") and not card:on_the("left").debuff then
+               SMODS.debuff_card(card:on_the("left"), true, "winter_meloning")
+               card:on_the("left").debuffed_by_melon = true
+            end
+        end
+    end
+})
+
+SMODS.Joker({
+    key = "spikerock",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult,
+            }
+        end
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+			if ((not context.other_card.ability.perma_bonus) or ((-(context.other_card.ability.perma_bonus)))<context.other_card.base.id) then
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
+
+                if -(context.other_card.base.id)>= -(context.other_card.ability.perma_bonus) then
+                    context.other_card.ability.cbean_marked = true
+                end
+				return {
+                    xmult = cae.xmult,
+					message = "Downgrade!",
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+		end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.cbean_marked then
+            return{
+                remove = true
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "imitater",
+    cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+    if G.GAME.last_bought_joker then
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                delay = 0.1,
+                func = function()
+                    card:flip()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 1,
+                func = function()
+                    card:juice_up()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 1.2,
+                func = function()
+                    card:set_ability(G.GAME.last_bought_joker_key)
+                    card:flip()
+                    return true
+                end
+            }))
+        end
+    end,
+    in_pool = function(self)
+        return (G.GAME.last_bought_joker_key~=nil)
+    end
+})
