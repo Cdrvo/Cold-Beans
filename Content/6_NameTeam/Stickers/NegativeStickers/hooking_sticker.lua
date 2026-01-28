@@ -20,19 +20,19 @@ SMODS.Sticker({ -- fix this
 	end,
     sticker_type = "Negative",
 	calculate = function(self,card,context)
-        if context.press_play and card.area == G.hand then
+        if context.press_play and card.area == G.hand and not card.highlighted then
             local change_amnt = #G.hand.cards
-        G.E_MANAGER:add_event(Event({ func = function()
+            G.E_MANAGER:add_event(Event({ func = function()
 
-            NAMETEAM.discard_limit(change_amnt)
-            G.hand:add_to_highlighted(card, true)
-            play_sound('card1', 1)
+                NAMETEAM.discard_limit(change_amnt)
+                G.hand:add_to_highlighted(card, true)
+                play_sound('card1', 1)
 
-            if card then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+                if card then G.FUNCS.discard_cards_from_highlighted(nil, true) end
 
-            NAMETEAM.discard_limit(-change_amnt)
-        return true end 
-    })) 
+                NAMETEAM.discard_limit(-change_amnt)
+            return true end 
+            })) 
         end
     end,
     beans_credits = {

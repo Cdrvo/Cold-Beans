@@ -59,8 +59,3 @@ SMODS.PokerHandPart({
 	end,
 })
 
-ColdBeans.OnCalculate(function(mod, context)
-	if context.sticker_applied then
-		print("HI")
-	end
-end)

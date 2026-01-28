@@ -72,10 +72,11 @@ if G.GAME.modifiers.cbean_nteam_all_stickers then
     local sticker_keys = {}
     for k, v in pairs(SMODS.Stickers) do
         if v.sets.Default then 
-            sticker_keys[#sticker_keys+1] = v.key
+            if v.key ~= "rental" then
+                sticker_keys[#sticker_keys+1] = v.key
+            end
         end
     end
-    
     if #sticker_keys > 0 then
         G.E_MANAGER:add_event(Event({
                 func = function()

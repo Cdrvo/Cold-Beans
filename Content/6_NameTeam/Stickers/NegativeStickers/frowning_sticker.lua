@@ -20,7 +20,7 @@ SMODS.Sticker({
         }
     end,
     calculate = function(self, card, context)
-        if context.before then
+        if context.before and context.cardarea ~= G.deck then
             local face_found = false
             for k, v in ipairs(G.play.cards) do
                 if v:is_face() then
