@@ -528,3 +528,60 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "magnet_shroom",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.3,
+            dollars = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain,cae.dollars}}
+    end,
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            local enhanced = {}
+            for _, v in ipairs(context.scoring_hand) do
+                if v.config.center_key == "m_steel" or v.config.center_key == "m_gold" then
+                    enhanced[#enhanced + 1] = v
+                    v.vampired = true
+                    v:set_ability('c_base', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            v:juice_up()
+                            v.vampired = nil
+                            return true
+                        end
+                    }))
+                end
+            end
+
+            if #enhanced > 0 then
+                for i = 1, #enhanced do
+                    SMODS.scale_card(card,{
+                        ref_table = cae,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_gain"
+                    })
+                end 
+            end
+        end
+        if context.joker_main then
+            return {
+                xmult = cae.xmult
+            }
+        end
+    end,
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return cae.dollars
+    end
+})
