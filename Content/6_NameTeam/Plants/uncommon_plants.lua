@@ -1317,3 +1317,53 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "hot_potato",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            cards = {},
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult,cae.mult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and #G.jokers.highlighted>1 then
+            local cards = {}
+            for k, v in pairs(G.jokers.highlighted) do
+                if v ~= card then
+                    cards[#cards+1] = v
+                end
+            end
+            if #cards>0 then
+                if #cards<3 then
+                    for k, v in pairs(cards) do
+                        v.debuff = false
+                    end
+                else
+                    local card1 = pseudorandom_element(cards,pseudoseed("hottestpotatoaroundhere"))
+                    for i = 1, #cards do
+                        if cards[i] == card1 then
+                            table.remove(cards, i)
+                        end
+                    end
+                    local card2 = pseudorandom_element(cards,pseudoseed("hottestpotatoaroundhere"))
+
+                    card1.debuff = false
+                    card2.debuff = false
+                end
+            end
+        end
+    end,
+})
