@@ -30,3 +30,32 @@ SMODS.Joker({
         end
     end
 })
+
+
+SMODS.Joker({
+    key = "sunflower",
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            dollars = 8,
+            odds = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMDOS.get_probability_vars(card,1,cae.odds,"sunflower_seedssomething")
+        return{
+            vars={num,den,cae.dollars}
+        }
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    calc_dollar_bonus = function(self,card)
+        if SMODS.pseudorandom_probability(card,"sunflower_seedsomething",1,card.ability.extra.odds) then
+            return card.ability.extra.dollars
+        end
+    end
+})
