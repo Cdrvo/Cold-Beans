@@ -1263,3 +1263,57 @@ SMODS.Joker({ --ehehehehehehe
         end
     end,
 })
+
+SMODS.Joker({
+    key = "electric_reed",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            electric_reeded_num = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.electric_reeded_num}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i > cae.rr then
+                    G.jokers.cards[i].ability.electric_reeded = true
+                    if not G.jokers.cards[i].ability.extra then G.jokers.cards[i].ability.extra = {} end
+
+                    G.jokers.cards[i].ability.extra.electric_reeded_num = NAMETEAM.perc(G.jokers.cards[i]:on_the("left").ability.extra.electric_reeded_num, 75)
+
+               end
+            end
+        end
+
+        if context.joker_main then
+            return{
+                xmult = cae.electric_reeded_num
+            }
+        end
+        if context.other_joker and context.other_joker.ability.electric_reeded then
+            context.other_joker.ability.electric_reeded  = false
+            return{
+                xmult = context.other_joker.ability.extra.electric_reeded_num,
+                message_card = context.other_joker
+            }
+        end
+    end,
+})
