@@ -453,7 +453,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -468,6 +468,39 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.selling_self then
             NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "snap_dragon",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 3,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            SMODS.calculate_effect({mult=cae.mult},context.other_card)
+            if context.other_card:on_the("left") then
+                SMODS.calculate_effect({mult=cae.mult},context.other_card:on_the("left"))
+            end
+            if context.other_card:on_the("right") then
+                SMODS.calculate_effect({mult=cae.mult},context.other_card:on_the("right"))
+            end
         end
     end,
 })

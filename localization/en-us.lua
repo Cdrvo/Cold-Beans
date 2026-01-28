@@ -4022,6 +4022,31 @@ return {
 					"{C:green}whenever{} the last card is scored"
 				},
 			},
+			j_cbean_snap_dragon = {
+				name = "Snap Dragon",
+				text = {
+					"When a card is scored",
+					"It and adjecent cards",
+					"gives {C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_coconut_cannon = {
+				name = "Coconut Cannon",
+				text = {
+					"On the last hand",
+					"of the round,",
+					"retrigger adjecent jokers"
+				},
+			},
+			j_cbean_bonk_choy = {
+				name = "Bonk Choy",
+				text = {
+					"If the {C:attention}lowest{} ranked",
+					"card in hand is scored",
+					"adjecent cards give",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

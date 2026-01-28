@@ -469,6 +469,18 @@ function NAMETEAM.find_highest(area)
 	return key
 end
 
+function NAMETEAM.find_lowest(area)
+	local low = 14
+	local key = nil
+	for i = 1, #area do
+		if low >= area[i].base.id then
+			low = area[i].base.id
+			key = area[i]
+		end
+	end
+	return key
+end
+
 function Card:on_the(direction)
 	local rr = nil
 	for i = 1, #self.area.cards do
