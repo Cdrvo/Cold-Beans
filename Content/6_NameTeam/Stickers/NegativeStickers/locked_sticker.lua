@@ -36,20 +36,20 @@ SMODS.Sticker({
 		target.ability.nteam_lock_link[#target.ability.nteam_lock_link + 1] = G.GAME.nteam_locked_index -- give target the id
 	end,
 	NAMETEAM_removed = function(self, card)
-		for _, c in ipairs(G.playing_cards) do
+		for _, c in ipairs(G.playing_cards) do -- Find the other card that has the id that corresponds to the stickered card's id
 			if
 				c ~= card
 				and c.ability.nteam_lock_link
 				and NAMETEAM.contains(c.ability.nteam_lock_link, card.ability.nteam_lock_id)
 			then
-				NAMETEAM.remove_element(c.ability.nteam_lock_link, card.ability.nteam_lock_id)
-				if #c.ability.nteam_lock_link == 0 then
+				NAMETEAM.remove_element(c.ability.nteam_lock_link, card.ability.nteam_lock_id) -- remove the id from the other card
+				if #c.ability.nteam_lock_link == 0 then -- remove the link to indicate that it is no longer linked if its list of ids is empty
 					c.ability.nteam_lock_link = nil
 				end
-				break
+				break -- no need to iterate further
 			end
 		end
-		card.ability.nteam_lock_id = nil
+		card.ability.nteam_lock_id = nil -- erase the stored id
 	end,
 	beans_credits = {
 		code = "ThunderEdge",
