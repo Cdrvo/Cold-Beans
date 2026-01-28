@@ -86,7 +86,7 @@ function NAMETEAM.create_UIBox_your_collection_biomes_content(page)
 				nodes = {
 					{
 						n = G.UIT.C,
-						config = { align = "cm" },
+						config = { align = "cm", padding = 0.05 },
 						nodes = table_nodes,
 					},
 				},
