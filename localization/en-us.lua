@@ -4796,6 +4796,13 @@ return {
 					"{C:red}discarded{}",
 				},
 			},
+			cbean_unlucky = {
+				name = "Unlucky Sticker",
+				text = {
+					"{C:red}Halves{} all probabilities",
+					"{C:inactive}(ex. {C:green}2 in 5{C:inactive} -> {C:green}1 in 5{C:inactive}){}",
+				},
+			},
 			cbean_hooking = {
 				name = "Hooking Sticker",
 				text = {
@@ -7826,7 +7833,7 @@ return {
 			cbean_misprinted = "Misprinted",
 			cbean_poor = "Poor",
 			cbean_square = "Square",
-
+			cbean_unlucky = "Unlucky",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",
