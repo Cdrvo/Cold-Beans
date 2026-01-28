@@ -6270,6 +6270,13 @@ return {
 					"{C:attention}1{} selected {C:attention}Joker{}",
 				},
 			},
+			c_cbean_brainrot_sheet = {
+				name = "Brainrot",
+				text = {
+					"Applies {C:attention}Brainrot{} to {C:attention}1{}",
+					"selected {C:attention}playing card{}",
+				},
+			},
 			c_cbean_heavy_sheet = {
 				name = "Heavy",
 				text = {

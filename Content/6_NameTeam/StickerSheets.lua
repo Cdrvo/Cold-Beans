@@ -669,6 +669,52 @@ SMODS.Consumable {
   end
 }
 
+SMODS.Sound({
+  key = "brainrot",
+  path = "6_NameTeam/cbean_brainrot.ogg"
+})
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "brainrot_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 5 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_brainrot"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if #G.hand.highlighted == 1 then
+      if not G.hand.highlighted[1].ability.cbean_brainrot then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    local affected_card = G.hand.highlighted[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 2, 0.75)
+        play_sound("cbean_brainrot", 1, 0.65)
+        affected_card:add_sticker("cbean_brainrot", true)
+        card:juice_up(0.3, 0.5)
+        affected_card:juice_up()
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}
+
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "heavy_sheet",
