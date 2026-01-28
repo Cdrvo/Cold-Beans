@@ -517,3 +517,45 @@ function NAMETEAM.len(t)
 	end
 	return n
 end
+
+function NAMETEAM.perc(mod, p)
+	local per = ((mod) / (100)) * (p)
+	return (per)
+end
+
+function NAMETEAM.attention_text(_text, _hold, _major, _scale, _offset, _align)
+	attention_text({
+		scale = (_scale or 1.4), text = _text, hold = (_hold or 2), align = (_align or 'cm'), offset = (_offset or {x = 0,y = -2.7}),major = (_major or G.play)
+	})
+end
+
+function NAMETEAM.all_on(card, area, direction, ability)
+	local cae = {
+		rr = nil,
+		num = 0
+	}
+	for i = 1, #area do
+        if area[i] == card then
+            cae.rr = i
+        end
+    end
+
+    for i = 1, #area do
+		if not direction or (direction and direction ~= "left") then
+			if i > cae.rr then
+				if ability then
+					area[i].ability[ability] = true
+				end
+				cae.num = cae.num + 1
+			end
+		else
+			if i < cae.rr then
+				if ability then
+					area[i].ability[ability] = true
+				end
+				cae.num = cae.num + 1
+			end
+		end
+    end
+	return cae.num
+end

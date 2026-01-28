@@ -4066,6 +4066,156 @@ return {
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
 				},
 			},
+			j_cbean_electric_reed = {
+				name = "Electric Reed",
+				text = {
+					"This and all jokers",
+					"to the right give {X:mult,C:white}X#1#{} Mult.", 
+					"Value for each joker is",
+					"reduced by {C:attention}25%{} for each",
+					"joker to the left "
+				},
+			},
+			j_cbean_hot_potato = {
+				name = "Hot Potato",
+				text = {
+					"When {C:green}sold{}",
+					"{C:attention}undebuff{}",
+					"up to {C:attention}2{}",
+					"highlighted jokers"
+				},
+			},
+			j_cbean_robotga = {
+				name = "Robotga",
+				text = {
+					"Each scored card",
+					"gives {C:chips}+#1#{} Chips"
+				},
+			},
+			j_cbean_gold_leaf = {
+				name = "Gold Leaf",
+				text = {
+					"{C:money}+$#1#{} At the",
+					"end of a round",
+					"{C:dark_edition}+1{} Joker Slot",
+					"{C:inactive}(Cannot be negative)"
+				},
+			},
+			j_cbean_stunion = {
+				name = "Stunion",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"scored cards are debuffed",
+					"until the end of the ante"
+				},
+			},
+			j_cbean_chard_guard = {
+				name = "Chard Guard",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"First 3 scored cards",
+					"are debuffed for","the rest of the ante"
+				},
+			},
+			j_cbean_pepper_pult = {
+				name = "Pepper Pult",
+				text = {
+					"{C:attention}Undebuff{} all",
+					"debuffed cards before scoring",
+					"Gains {C:mult}+#2#{} Mult per",
+					"undebuffed card",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_bean = {
+				name = "Bean",
+				text = {
+					"When sold in a blind",
+					"disable the blind",
+					"for the first hand",
+					"of the round"
+				},
+			},
+			j_cbean_red_stinger = {
+				name = "Red Stinger",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult.",
+					"Give {X:mult,C:white}X#2#{} less mult",
+					"for every joker on the left of this card.",
+					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_AKKE = {
+				name = "AKKE",
+				text = {
+					"All jokers on the right",
+					"of this card give",
+					"{C:mult}+#1#{} Mult",
+					"if they are triggered",
+					"{C:attention}during{} scoring"
+				},
+			},
+			j_cbean_endurian = {
+				name = "Endurian",
+				text = {
+					"Lose {C:mult}-#2#{} Mult",
+					"when a card is sold",
+					"or destroyed",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_stallia = {
+				name = "Stallia",
+				text = {
+					"{C:mult}+#1#{} Mult",
+					"First 3 scored cards",
+					"are debuffed for","the rest of the ante"
+				},
+			},
+			j_cbean_laser_bean = {
+				name = "Laser Bean",
+				text = {
+					"Scored cards give",
+					"{C:mult}+2*N{} Mult.",
+					"where N is the",
+					"number of cards",
+					"on their right"
+				},
+			},
+			j_cbean_citron = {
+				name = "Citron",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"on the final hand",
+					"of the round"
+				},
+			},
+			j_cbean_infinut = {
+				name = "Infi-Nut",
+				text = {
+					"Lose {C:mult}-#2#{} Mult",
+					"when triggered.",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+					"{C:inactive}(Resets when mult hits {C:red}0{C:inactive})"
+				},
+			},
+			j_cbean_tile_turnip = {
+				name = "Tile Turnipt",
+				text = {
+					"{C:attention}Retrigger{} the card",
+					"on the right {C:attention}#1#{} Time",
+					"if the card on the left",
+					"triggeres"
+				},
+			},
+			j_cbean_EM_peach = {
+				name = "E.M. Peach",
+				text = {
+					"All playing cards are {C:red}debuffed{}",
+					"{C:red}debuffed{} cards give",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

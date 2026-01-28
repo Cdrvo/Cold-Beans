@@ -1006,11 +1006,18 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or NAMETEAM.during_scoring) then
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
             if (card:on_the("right") and context.other_card == card:on_the("right")) or (card:on_the("left") and context.other_card == card:on_the("left")) then
                 -- print("KILL YOURSELF")
-                SMODS.calculate_effect({xmult = cae.xmukt}, context.other_card)
+                context.other_card.ability.gloomy_shroomy = true
             end
+        end
+        if context.other_joker and context.other_joker.ability.gloomy_shroomy then
+            context.other_joker.ability.gloomy_shroomy  = false
+            return{
+                xmult = cae.xmukt,
+                message_card = context.other_joker
+            }
         end
     end,
 })

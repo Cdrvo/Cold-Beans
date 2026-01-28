@@ -366,6 +366,11 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, "debuff_by_kernel")
+        end
+    end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.individual and context.cardarea == G.play then
@@ -373,7 +378,7 @@ SMODS.Joker({
                 mult = cae.mult
             }
         end
-        if context.final_scoring_step and context.cardarea == G.play then
+        if context.final_scoring_step then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.01,
@@ -563,4 +568,33 @@ SMODS.Joker({
     in_pool = function(self,card)
         return true, {allow_duplicates = true}
     end
+})
+
+SMODS.Joker({
+    key = "robotga",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 40
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            return{
+                chips = cae.chips
+            }     
+        end
+    end,
 })

@@ -260,10 +260,12 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                 G.GAME.blind.triggered = true
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
-                    func = (function() SMODS.juice_up_blind()
-return true end)
+                    func = (function() SMODS.juice_up_blind() return true end)
                 }))
                 card_eval_status_text(card, 'debuff')
+				if (#SMODS.find_card("j_cbean_EM_peach")>0) then
+					SMODS.calculate_effect({xmult = 2.5}, card)
+				end
             end
         else
             if scoring_hand then
@@ -372,4 +374,21 @@ function Card:is_suit(suit, bypass_debuff, flush_calc)
 		end
 	end
 	return is_suit_old(self, suit, bypass_debuff, flush_calc)
+end
+
+local start_run_old = Game.start_run
+function Game:start_run(args)
+	start_run_old(self, args)
+	if G.jokers and G.jokers.config then
+		G.jokers.config.highlighted_limit = G.jokers.config.highlighted_limit + 4
+	end
+end
+
+
+local check_for_buy_space_old = G.FUNCS.check_for_buy_space
+G.FUNCS.check_for_buy_space = function(card)
+    if card.config.center.always_buyable then
+        return true
+    end
+    return check_for_buy_space_old(card)
 end

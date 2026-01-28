@@ -62,6 +62,11 @@ ColdBeans.calculate = function(mod, context)
 			NAMETEAM.jal_sold = NAMETEAM.jal_sold - 1
 			NAMETEAM.jal_triggered = false
 		end
+		if NAMETEAM.first_hand_disable then
+			NAMETEAM.first_hand_disable = false
+			--idk what im doing
+			G.GAME.blind.disabled = false
+		end
     end
     if context.end_of_round then
         G.GAME.cbean_combo_unique_round = {}
