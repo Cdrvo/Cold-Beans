@@ -249,3 +249,29 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "cabbage_pult",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 15
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play and context.other_card == NAMETEAM.find_highest(context.scoring_hand) then
+            return{
+                mult = cae.mult
+            }
+        end
+    end
+})
+
+-- Kernel Pult
