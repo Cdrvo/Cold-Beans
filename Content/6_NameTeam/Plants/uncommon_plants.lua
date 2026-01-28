@@ -306,7 +306,8 @@ SMODS.Joker({
         if context.other_joker and context.other_joker.ability.fume_shroomed_cbean then
             context.other_joker.ability.fume_shroomed_cbean  = false
             return{
-                xmult = cae.xmult
+                xmult = cae.xmult,
+                message_card = context.other_joker
             }
         end
     end,
@@ -886,6 +887,61 @@ SMODS.Joker({
 				})
             end
         end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "melon_pult",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2,
+            mult = 10,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            local rr = nil
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    rr = i
+                end
+            end
+
+            if G.jokers.cards[rr+1] then
+                G.jokers.cards[rr+1].ability.cbean_melon = true
+            end
+            if G.jokers.cards[rr-1] then
+                G.jokers.cards[rr-1].ability.cbean_melon = true
+            end
+        end
+
+        if context.other_joker and context.other_joker.ability.cbean_melon then
+            context.other_joker.ability.cbean_melon  = false
+            return{
+                mult = cae.mult,
+                message_card = context.other_joker
+            }
+        end
+
         if context.joker_main then
             return{
                 xmult = cae.xmult

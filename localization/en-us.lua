@@ -3896,6 +3896,14 @@ return {
 					"{C:money}+$#1#{}, {C:money}+$#2#{} or{C:money} +$#3#"
 				},
 			},
+			j_cbean_melon_pult = {
+				name = "Melon Pult",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"adjacemt jokers give",
+					"{C:mult}+#2#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
