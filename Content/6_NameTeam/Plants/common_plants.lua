@@ -216,3 +216,36 @@ SMODS.Joker({
             end
         end
 })
+
+
+SMODS.Joker({
+    key = "jalepeno",
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            active = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            local a = SMODS.create_card({key = "j_cbean_jalepeno", area = G.vouchers})
+            a.dissolve = 1
+            a:add_to_deck()
+            a.ability.extra.active = true
+            G.vouchers:emplace(a)
+        end
+        if context.destroy_card and context.cardarea == G.play and cae.active then
+            card:start_dissolve(nil, true, nil)
+            return{
+                remove = true
+            }
+        end
+    end
+})
