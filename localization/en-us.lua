@@ -3696,7 +3696,7 @@ return {
 				},
 			},
 			j_cbean_ice_lettuce = {
-				name = "Ice Lettuce",
+				name = "Iceberg Lettuce",
 				text = {
 					"When {C:green}sold{}, next {C:attention}#2#{} Blind",
 					"wont end until all",
