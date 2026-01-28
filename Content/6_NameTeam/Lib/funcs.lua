@@ -250,14 +250,18 @@ end
 function Card:NAMETEAM_remove_sticker_calc(sticker) 
 	if sticker and not self:in_collection() then
     	if sticker.NAMETEAM_removed then sticker:NAMETEAM_removed(self) end
-		SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = self})
+		if not self.nteam_hand_preview then
+			SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = self})
+		end
 	end
 end
 
 function Card:NAMETEAM_apply_sticker_calc(sticker) 
 	if sticker and not self:in_collection() then
     	if sticker.NAMETEAM_applied then sticker:NAMETEAM_applied(self) end
-		SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = self})
+		if not self.nteam_hand_preview then
+			SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = self})
+		end
 	end
 end
 

@@ -20,9 +20,9 @@ SMODS.PokerHand({
 		return joker and (played or clicked)
 	end,
 	example = {
-		{ "D_3", true },
-		{ "H_K", true },
-		{ "H_J", true },
+		{ "D_3", true, stickers = { "eternal", "cbean_hooking" } },
+		{ "H_K", true, stickers = { "cbean_mailed" } },
+		{ "H_J", true, stickers = { "rental" } },
 		{ "C_2", false },
 		{ "S_9", false },
 	},
@@ -34,27 +34,33 @@ SMODS.PokerHand({
 })
 
 SMODS.PokerHandPart({
-    key = "nteam_collection_part",
-    func = function (hand)
-        local seen = {}
-        local num_with_stickers = 0
-        local in_hand = {}
-        if #hand < 3 then
-            return {}
-        end
-        for _, card in ipairs(hand) do
-            local stickers = NAMETEAM.get_all_stickers(card)
-            if #stickers > 0 then
-                num_with_stickers = num_with_stickers + 1
-                in_hand[#in_hand+1] = card
-            end
-            for _, key in ipairs(stickers) do
-                seen[key] = true
-            end
-        end
-        if num_with_stickers < 3 or NAMETEAM.len(seen) < 3 then
-            return {}
-        end
-        return { in_hand }
-    end,
+	key = "nteam_collection_part",
+	func = function(hand)
+		local seen = {}
+		local num_with_stickers = 0
+		local in_hand = {}
+		if #hand < 3 then
+			return {}
+		end
+		for _, card in ipairs(hand) do
+			local stickers = NAMETEAM.get_all_stickers(card)
+			if #stickers > 0 then
+				num_with_stickers = num_with_stickers + 1
+				in_hand[#in_hand + 1] = card
+			end
+			for _, key in ipairs(stickers) do
+				seen[key] = true
+			end
+		end
+		if num_with_stickers < 3 or NAMETEAM.len(seen) < 3 then
+			return {}
+		end
+		return { in_hand }
+	end,
 })
+
+ColdBeans.OnCalculate(function(mod, context)
+	if context.sticker_applied then
+		print("HI")
+	end
+end)

@@ -382,4 +382,19 @@ payload = '''
 '''
 match_indent = true
 
-
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+if v.seal then card:set_seal(v.seal, true, true) end
+'''
+position = "after"
+payload = '''
+if v.stickers then
+    card.nteam_hand_preview = true
+    for _, v in ipairs(v.stickers) do
+        card:add_sticker(v, true)
+    end
+end
+'''
+match_indent = true
