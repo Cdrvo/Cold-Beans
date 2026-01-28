@@ -64,3 +64,37 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "potatomine",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            rounds = 2,
+            rounds_current = 0
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds,cae.rounds_current}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_round and context.main_eval and not context.blueprint then
+            if cae.rounds_current < cae.rounds-1 then
+                cae.rounds_current = cae.rounds_current + 1
+            elseif cae.rounds_current<cae.rounds then
+                cae.rounds_current = cae.rounds_current + 1
+                local eval = function() return cae.rounds_current==0 end
+                juice_card_until(card, eval, true)
+            end
+        end
+        if context.selling_card and cae.rounds_current>=cae.rounds then
+            NAMETEAM.msg(card, localize("k_cbean_halved"))
+            G.GAME.blind.chips = (G.GAME.blind.chips)/(2)
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) --iforgotmytalismancompatibiltiy
+        end
+    end,
+})
