@@ -3904,6 +3904,13 @@ return {
 					"{C:mult}+#2#{} Mult"
 				},
 			},
+			j_cbean_twin_sunflower = {
+				name = "Twin Sunflower",
+				text = {
+					"{C:money}+$#1#{} every hand",
+					"played"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

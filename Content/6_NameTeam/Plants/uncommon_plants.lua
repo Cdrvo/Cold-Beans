@@ -949,3 +949,32 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "twin_sunflower",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            dollars = 8
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                dollars = cae.dollars
+            }
+        end
+    end,
+})

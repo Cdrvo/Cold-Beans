@@ -215,3 +215,32 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "gatlint_pea",
+    cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            repetitions = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds_current}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.repetition and context.cardarea == G.play and G.GAME.current_round.hands_played == 0  then
+            return {
+                repetitions = cae.repetitions
+            }
+        end
+    end,
+})
