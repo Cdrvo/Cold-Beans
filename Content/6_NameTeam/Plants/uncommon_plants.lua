@@ -318,3 +318,32 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "squash",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            if G.GAME.blind then
+                if G.GAME.blind.boss then
+                    NAMETEAM.msg(card, localize("k_cbean_halved"))
+                    G.GAME.blind.chips = (G.GAME.blind.chips)/(2)
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) --iforgotmytalismancompatibiltiy
+                else
+                NAMETEAM.defeat()
+                end
+            end
+        end
+    end,
+})
