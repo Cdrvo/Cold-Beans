@@ -1653,3 +1653,34 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "citron",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            chips = 150
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.chips}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main and G.GAME.current_round.hands_left == 0 then
+            return{
+                chips = cae.chips
+            }
+        end
+    end,
+})
