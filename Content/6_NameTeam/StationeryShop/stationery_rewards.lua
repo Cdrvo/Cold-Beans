@@ -118,7 +118,7 @@ end
 function NAMETEAM.poll_stationery_accepted()
 	local ret = {}
 	local pool = NAMETEAM.filter(SMODS.Sticker.obj_buffer, function(key)
-		return SMODS.Stickers[key].sets["Joker"] == true and key ~= "pinned"
+		return (SMODS.Stickers[key].sets or {})["Joker"] == true and not string.find(key, "pinned")
 	end)
 	return NAMETEAM.get_unique_pseudorandom_elements(
 		pool,
