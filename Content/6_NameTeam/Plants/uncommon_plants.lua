@@ -992,7 +992,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 3,
+    rarity = 2,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1009,6 +1009,46 @@ SMODS.Joker({
             if (card:on_the("right") and context.other_card == card:on_the("right")) or (card:on_the("left") and context.other_card == card:on_the("left")) then
                 -- print("KILL YOURSELF")
                 SMODS.calculate_effect({xmult = cae.xmukt}, context.other_card)
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "cattail",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmukt = 1,
+            xmult_gain = 0.75,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmukt,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmukt
+            }
+        end
+        if context.after and NAMETEAM.cattail_number then
+            for i = 1, NAMETEAM.cattail_number do
+                NAMETEAM.cattail_number = NAMETEAM.cattail_number - 1
+                SMODS.scale_card(card,{
+                    ref_table = cae,
+                    ref_value = "xmukt",
+                    scalar_value = "xmult_gain"
+                })
             end
         end
     end,
