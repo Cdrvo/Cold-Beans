@@ -1133,3 +1133,40 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "coconut_cannon",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            rep2 = 1,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.stored_chips}}
+    end,
+    calculate = function(self,card,context)
+	local cae = card.ability.extra
+	if context.retrigger_joker_check and not context.retrigger_joker and G.GAME.current_round.hands_left==0 then
+		if
+			(card:on_the("right") and context.other_card == card:on_the("right"))
+			or (card:on_the("left") and context.other_card == card:on_the("left"))
+		then
+			return {
+				message = localize("k_again_ex"),
+				repetitions = cae.rep2,
+				card = card,
+			}
+		end
+	end
+    end,
+})
