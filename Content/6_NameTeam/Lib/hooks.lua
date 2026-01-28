@@ -56,6 +56,8 @@ function Game:start_run(args)
 	G.GAME.already_no_interest = G.GAME.already_no_interest or false
 	---@type integer
 	G.GAME.dangerous_mult = G.GAME.dangerous_mult or 1
+	---@type integer
+	G.GAME.nteam_locked_index = G.GAME.nteam_locked_index or 0
 end
 
 local apply_hook = Back.apply_to_run

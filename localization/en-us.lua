@@ -4946,6 +4946,18 @@ return {
 					"{C:red}discarded{}",
 				},
 			},
+			cbean_locked = {
+				name = "Locked Sticker",
+				text = {
+					"Selects a {C:attention}random",
+					"card in full deck",
+					"when applied",
+					"When the selected",
+					"card or this card",
+					"is destroyed, {C:attention}both",
+					"are destroyed"
+				},
+			},
 			cbean_unlucky = {
 				name = "Unlucky Sticker",
 				text = {
@@ -7993,6 +8005,7 @@ return {
 			cbean_poor = "Poor",
 			cbean_square = "Square",
 			cbean_unlucky = "Unlucky",
+			cbean_locked = "Locked",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",

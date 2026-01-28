@@ -559,3 +559,13 @@ function NAMETEAM.all_on(card, area, direction, ability)
     end
 	return cae.num
 end
+
+function NAMETEAM.remove_element(t, element)
+	local ret = {}
+	for _, v in ipairs(t) do
+		if v ~= element then
+			ret[#ret + 1] = v
+		end
+	end
+	return ret
+end
