@@ -4234,6 +4234,16 @@ return {
 					"{C:inactive}(Currently #4#){}"
 				}
 			},
+			j_cbean_nameteam_thelastsupper = {
+				name = 'The Last Supper',
+				text =
+				{
+					"{C:white,X:mult}X#1#{} Mult if {C:attention}full deck{}",
+					"contains exactly",
+					"{C:attention}#2#{} face cards",
+					"{C:inactive}({C:attention}#3#:#2#{C:inactive}, #4#){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
