@@ -1769,3 +1769,46 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "EM_peach",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2.5,
+            stop = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={2.5}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card)
+    end,
+    remove_from_deck = function(self,card,from_debuff) 
+        local cae = card.ability.extra
+        cae.stop = true
+        for k, v in pairs(G.playing_cards) do
+            if not v.debuff then
+                SMODS.debuff_card(v, false, "EM_peaching_it")
+            end
+        end
+    end,
+    update = function(self,card)
+        local cae = card.ability.extra
+        for k, v in pairs(G.playing_cards) do
+            if not v.debuff and not cae.stop then
+                SMODS.debuff_card(v, true, "EM_peaching_it")
+            end
+        end
+    end
+})
