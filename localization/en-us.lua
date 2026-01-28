@@ -6287,8 +6287,8 @@ return {
 			c_cbean_dangerous_sheet = {
 				name = "Dangerous",
 				text = {
-					"Creates a {C:spectral}Spectral{} card",
-					"with a {C:attention}Dangerous{} sticker",
+					"Creates a {C:attention}Dangerous{}",
+					"{C:spectral}Spectral{} card",
 					"{C:inactive}(Must have room){}",
 				},
 			},
