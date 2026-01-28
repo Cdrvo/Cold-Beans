@@ -6284,6 +6284,14 @@ return {
 					},
 				},
 			},
+			c_cbean_dangerous_sheet = {
+				name = "Dangerous",
+				text = {
+					"Creates a {C:spectral}Spectral{} card",
+					"with a {C:attention}Dangerous{} sticker",
+					"{C:inactive}(Must have room){}",
+				},
+			},
 			c_cbean_hungry_sheet = {
 				name = "Hungry",
 				text = {

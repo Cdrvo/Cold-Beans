@@ -723,6 +723,45 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
+  key = "dangerous_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 2 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_dangerous"]
+    return {}
+  end,
+  can_use = function(self, card)
+    return count_consumables() < G.consumeables.config.card_limit
+  end,
+  use = function(self, card, area, copier)
+    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      play_sound('timpani')
+      G.E_MANAGER:add_event(Event({
+        delay = 0.3,
+        blockable = false,
+        func = function()
+          local new_card = create_card("Spectral", G.consumables, nil, nil, nil, nil, nil, "dangeroussheet")
+          
+        play_sound("gold_seal", 1.5, 1)
+        new_card:add_sticker("cbean_dangerous", true)
+          new_card:add_to_deck()
+          G.consumeables:emplace(new_card)
+          G.GAME.consumeable_buffer = 0
+          return true
+        end
+      }))
+      return { message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral }
+  end
+}
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
   key = "hungry_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 3 },
   draw_extra = function(self, card, layer)
