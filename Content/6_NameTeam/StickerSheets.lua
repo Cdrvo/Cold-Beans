@@ -1018,7 +1018,7 @@ SMODS.Consumable {
                   end
               end
           end
-          ease_dollars(sticker_amount)
+          ease_dollars(sticker_amount * card.ability.extra.money_per_sticker)
           return true
         end
       }))
