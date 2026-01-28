@@ -1477,3 +1477,47 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "AKKE",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 8
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i > cae.rr and context.other_card == G.jokers.cards[i] then
+                    G.jokers.cards[i].ability.AKKEd_cbean = true
+               end
+            end
+        end
+        if context.other_joker and context.other_joker.ability.AKKEd_cbean then
+            context.other_joker.ability.AKKEd_cbean  = false
+            return{
+                mult = cae.mult,
+                message_card = context.other_joker
+            }
+        end
+    end,
+})
