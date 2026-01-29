@@ -740,3 +740,12 @@ function NAMETEAM.shuffle(table, seed)
 
 	return tab
 end
+
+function Card:NAMETEAM_enhancement()
+	for k, v in pairs(G.P_CENTER_POOLS.Enhanced) do
+		if v.name == self.ability.name or v.key == self.ability.name then
+			return v.key
+		end
+	end
+	return nil
+end

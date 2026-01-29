@@ -4569,6 +4569,15 @@ return {
 					"not score at all"
 				},
 			},
+			j_cbean_witch_hazel = {
+				name = "Witch Hazel",
+				text = {
+					"After scoring",
+					"{C:attention}transfomr{} a random",
+					"scored card to {C:attention}another",
+					"scored card"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

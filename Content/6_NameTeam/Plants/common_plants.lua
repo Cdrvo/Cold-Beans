@@ -1079,3 +1079,70 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "witch_hazel",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            tcard = nil,
+            rcard = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and #context.scoring_hand>2 then
+            local tab = {}
+            for k, v in pairs(context.scoring_hand) do
+                tab[#tab+1] = v
+            end
+            cae.tcard = pseudorandom_element(tab,pseudoseed("witch_hazel"))
+            for i = 1, #tab do
+                if cae.tcard == tab[i] then
+                    table.remove(tab, i)
+                end
+            end
+            cae.rcard = pseudorandom_element(tab,pseudoseed("witch_hazel"))
+        end
+        if context.final_scoring_step and cae.tcard and cae.rcard then
+            G.E_MANAGER:add_event(Event({
+                trigger = "before",
+                delay = 0,
+                func = function()
+                    cae.tcard:flip()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.3,
+                func = function()
+                    copy_card(cae.rcard, cae.tcard)
+                    cae.tcard:juice_up()
+                    cae.rcard:juice_up()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.5,
+                func = function()
+                    cae.tcard:flip()
+                    cae.tcard = nil
+                    cae.rcard = nil
+                    return true
+                end
+            }))
+        end
+    end
+})
