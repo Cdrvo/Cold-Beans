@@ -604,3 +604,48 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "cauli_power",
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            odds = 2,
+            stored_chips = 0
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMODS.get_probability_vars(card, 1, cae.odds, "cauli_powering")
+        return{
+            vars={num,den,cae.stored_chips}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_round and context.main_eval and G.GAME.current_round.hands_played == 1 then
+            cae.stored_chips = G.GAME.blind.chips
+            NAMETEAM.msg(card, "=" .. cae.stored_chips)
+        end
+        if context.first_hand_drawn and cae.stored_chips>0 and SMODS.pseudorandom_probability(card, "cauli_powering", 1, cae.odds) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.1,
+                func = function()
+                    G.GAME.blind.chips = G.GAME.blind.chips - cae.stored_chips
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    NAMETEAM.msg(card, "-" .. cae.stored_chips)
+                    cae.stored_chips = 0
+                    return true
+                end
+            }))
+        end
+    end,
+})

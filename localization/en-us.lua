@@ -4599,6 +4599,19 @@ return {
 					"any other card {C:red}will not{} score"
 				},
 			},
+			j_cbean_cauli_power = {
+				name = "Cauli Power",
+				text = {
+					"If a Blind is defeated",
+					"in a {C:attention}single{} hand,",
+					"{:green}store{} its required chips.",
+					"When a {:attention}Blind{} is selected,",
+					"{C:green}#1# in #2#{} Chance to",
+					"{C:red}remove{} the {C:chips}stored chips{}",
+					"from the current blind's required chips",
+					"{C:inactive}(Stored: {C:chips}#3#{C:inactive})"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
