@@ -1347,3 +1347,45 @@ SMODS.Consumable({
 		delay(0.6)
 	end,
 })
+
+SMODS.Consumable {
+  set = "cbean_StickerSheet",
+  key = "poor_sheet",
+  pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 7 },
+  draw_extra = function(self, card, layer)
+    if self.discovered or card.params.bypass_discovery_center then
+      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  atlas = "NAMETEAM_StickerSheets",
+  config = {extra = {debt_limit = 30}},
+  cost = 1,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_poor"]
+    return {}
+  end,
+  can_use = function(self, card)
+    if not G.GAME.selected_back.ability.cbean_poor then
+      return true
+    end
+    return false
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound("gold_seal", 1.5, 1)
+        G.GAME.selected_back:nteam_apply_sticker("cbean_poor")
+        SMODS.calculate_effect({
+          message = localize("cbean_poor", "labels") .. "!",
+          instant = true,
+          colour = SMODS.Stickers["cbean_poor"].badge_colour,
+        }, G.deck.cards[1] or G.deck)
+        G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.debt_limit
+        return true
+      end
+    }))
+    delay(0.6)
+  end
+}

@@ -6883,6 +6883,16 @@ return {
 					"{C:inactive}(If applicable)"
 				},
 			},
+			c_cbean_poor_sheet = {
+				name = "Poor",
+				text = {
+					"Applies {C:dark_edition}Poor{} to",
+					"your {C:attention}Deck{}",
+					"Go up to an",
+					"additional",
+					"{C:red}-$#1#{} in debt "
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_sunbean = {
