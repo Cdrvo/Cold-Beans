@@ -308,7 +308,16 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 					SMODS.calculate_effect({xmult = 2.5}, card)
 				end
             end
-        else
+        elseif scoring_hand and card.marked_by_mortar then
+			if in_scoring then 
+                -- G.GAME.blind.triggered = true
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = (function() SMODS.juice_up_blind() return true end)
+                }))
+                NAMETEAM.msg(card, "No Score!")
+            end
+		else
             if scoring_hand then
                 if in_scoring then context.cardarea = G.play else context.cardarea = 'unscored' end
             end

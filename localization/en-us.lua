@@ -4559,6 +4559,16 @@ return {
 					"chance to get {C:red}destroyed"
 				},
 			},
+			j_cbean_apple_mortar = {
+				name = "Apple Mortar",
+				text = {
+					"Last 3 cards in scoring",
+					"gives {C:mult}+#1#{} Mult",
+					"{C:green}#2# in #3#{} Chance",
+					"to cause them to",
+					"not score at all"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

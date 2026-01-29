@@ -935,7 +935,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -968,7 +968,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1008,7 +1008,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1023,6 +1023,59 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.selling_self and #G.jokers.cards>0 then
             ease_dollars(cae.dollars*#G.jokers.cards)
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "apple_mortar",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+                mult = 10,
+                odds = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMODS.get_probability_vars(card, 1, cae.odds, "apple_mortaring_int")
+        return{vars={cae.mult,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            local c = context.scoring_hand
+            for k, v in pairs(c) do
+                if v == c[#c] or v == c[#c-1] or v == c[#c-2] then
+                    if SMODS.pseudorandom_probability(card, "apple_mortaring_int", 1, cae.odds) then
+                        v.marked_by_mortar = true
+                    else
+                        v.marked_for_apple_mortar = true
+                    end
+                end 
+            end
+        end
+        if context.individual and context.cardarea == G.play and context.other_card.marked_for_apple_mortar then
+            return{
+                mult = cae.mult
+            }
+        end
+        if context.after then
+            for k, v in pairs(G.playing_cards) do
+                if v.marked_by_mortar then
+                    v.marked_by_mortar = nil
+                end
+                if v.marked_for_apple_mortar then
+                    v.marked_for_apple_mortar = nil
+                end
+            end
         end
     end
 })
