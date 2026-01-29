@@ -146,6 +146,41 @@ function SMODS:create_card(t)
     return smods_create_card_ref(self, t)
 end
 
+SMODS.Joker {
+    key = "nameteam_aldus",
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 7, y = 9 },
+    cost = 8,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    }
+}
+
+local main_menu_ref = Game.main_menu
+Game.main_menu = function(change_context)
+  local ret = main_menu_ref(change_context)
+
+  for k, v in pairs(G.P_CENTERS) do
+    if v.set == "Tarot" and v.config and ((v.config.mod_conv and v.config.mod_conv ~= "card") or v.config.suit_conv or v.config.cbean_banned_by_aldus) and not v.config.cbean_whitelisted_by_aldus then
+        v.in_pool = v.in_pool or (function() return true end)
+
+        local in_pool_ref = v.in_pool
+        v.in_pool = (function() return in_pool_ref() and not next(SMODS.find_card("j_cbean_nameteam_aldus")) end)
+    end
+  end
+
+  return ret
+end
+
 SMODS.Sound({
     key = "bwow",
     path = "6_NameTeam/cbean_bwow.ogg"

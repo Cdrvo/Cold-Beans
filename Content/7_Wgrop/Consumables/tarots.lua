@@ -21,7 +21,7 @@
     },
   
     atlas = 'wgrop_tarot_atlas', pos = { x = 0, y = 0 },
-      config = { max_highlighted = 2, extra = "m_cbean_wgrop_thistled"},
+      config = { max_highlighted = 2, extra = "m_cbean_wgrop_thistled", cbean_banned_by_aldus = true},
       update = function(self, card, dt)
         if card.ability.extra ~= CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome] then
           card.ability.extra = CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome]

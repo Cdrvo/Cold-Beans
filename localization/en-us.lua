@@ -4421,6 +4421,15 @@ return {
 					"are {C:green}Uncommon{}",
 				},
 			},
+			j_cbean_nameteam_aldus = {
+				name = "Aldus",
+				text = {
+					"{C:tarot}Tarot{} cards that",
+					"change {C:attention}suits{} or",
+					"add {C:attention}enhancements{}",
+					"{C:red}cannot appear{}",
+				},
+			},
 			j_cbean_nameteam_manface = {
 				name = "Man Face",
 				text = {
