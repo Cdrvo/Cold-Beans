@@ -8094,6 +8094,18 @@ return {
 				"Creates {C:attention,T:j_cbean_0chill_house_rules}House Rules{}",
 				"{C:inactive}(Must have room)",
 			},
+			cbean_reward_sheets          = {
+				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
+				"{C:attention}Sticker Sheets{}",
+			},
+			cbean_reward_blessings          = {
+				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
+				"{C:attention}Blessings{}",
+			},
+			cbean_reward_zodiacs          = {
+				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
+				"{C:attention}Chinese Zodiacs{}",
+			},
 			--#endregion
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
@@ -8148,6 +8160,7 @@ return {
 			b_cbean_stickersheet_cards          = "Sticker Sheets",
 			b_nteam_exchange                    = "Exchange",
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
+			k_plus_blessing                     = "+1 Blessing",
 			k_plus_soul                         = "+The Soul",
 			k_plus_piss                         = "+1 Piss Card",
 			k_cbean_nteam_uhoh                  = "Uh oh!",

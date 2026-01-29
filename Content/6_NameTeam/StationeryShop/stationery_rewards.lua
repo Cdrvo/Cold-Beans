@@ -245,7 +245,6 @@ NAMETEAM.StationeryReward({
 	end,
 })
 
-
 NAMETEAM.StationeryReward({
 	key = "house",
 	config = { sticker = "cbean_painted" },
@@ -263,4 +262,26 @@ NAMETEAM.StationeryReward({
 	in_pool = function(self)
 		return #G.jokers.cards < G.jokers.config.card_limit
 	end,
+})
+
+NAMETEAM.StationeryReward({
+	key = "sheets",
+	config = { amount = 2 },
+	loc_vars = function(self)
+		return { self.config.amount }
+	end,
+	apply = function(self, card)
+		for i = 1, self.config.amount do
+			SMODS.add_card({
+				set = "cbean_StickerSheet",
+				edition = "e_negative",
+			})
+		end
+		SMODS.calculate_effect({
+			message = localize("k_plus_stickersheet"),
+			instant = true,
+		}, card)
+	end,
+})
+
 })
