@@ -2279,7 +2279,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.xmult, cae.mult,cae.chips}}
+        return{vars={cae.xmult}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -2301,7 +2301,9 @@ SMODS.Joker({
                         if v.marked_for_debuff then
                             v.marked_for_debuff = false
                             v.cbean_banana_timer = 3
+                            print(v.cbean_banana_timer)
                             SMODS.debuff_card(v, true, "debuffed_by_banana_launcher")
+                            print(v.cbean_banana_timer)
                         end
                     end
                     return true

@@ -4315,7 +4315,7 @@ return {
 					"gives {C:chips}+#3#{} Chips"
 				},
 			},
-			j_cbean_banana_launcer  = {
+			j_cbean_banana_launcher  = {
 				name = "Banana Launcher",
 				text = {
 					"First scored card",
