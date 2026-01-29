@@ -4650,6 +4650,16 @@ return {
 					"{C:attention}final{} hand of round"
 				}
 			},
+			j_cbean_nameteam_liam = {
+				name = 'Liam',
+				text =
+				{
+					"{C:attention}+#1#{} hand size for each",
+					"other owned {C:red}Rare{} {C:attention}Joker{}",
+					"{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size,{}",
+					"{C:inactive}max of {C:attention}+#3#{C:inactive} hand size){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {

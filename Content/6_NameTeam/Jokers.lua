@@ -1445,3 +1445,48 @@ SMODS.Joker {
       return card.ability.extra.current_money
   end
 }
+
+function count_rares_minus_one()
+    local count = 0
+    for _, v in ipairs(G.jokers.cards) do
+        if v:is_rarity("Rare") then count = count + 1 end
+    end
+
+    return count - 1
+end
+
+SMODS.Joker {
+    key = "nameteam_liam",
+    config = { extra = { is_contestant = true, added_hand_size = 1, max_hand_size = 3 } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 4, y = 9 },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.added_hand_size, card.ability.extra.added_hand_size * math.min(card.ability.extra.max_hand_size, math.max(0, card.ability.extra.seen_rares or count_rares_minus_one())), card.ability.extra.max_hand_size } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.seen_rares = count_rares_minus_one()
+        G.hand:change_size(math.min(card.ability.extra.max_hand_size, math.max(0, card.ability.extra.seen_rares)))
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.hand:change_size(-math.min(card.ability.extra.max_hand_size, math.max(0, card.ability.extra.seen_rares)))
+    end,
+    calculate = function(self, card, context)
+      if card.ability.extra.seen_rares ~= count_rares_minus_one() then
+        G.hand:change_size(math.min(card.ability.extra.max_hand_size, math.max(0, count_rares_minus_one() - card.ability.extra.seen_rares)))
+        card.ability.extra.seen_rares = count_rares_minus_one()
+      end
+    end
+}
