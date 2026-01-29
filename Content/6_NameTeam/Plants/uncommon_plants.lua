@@ -2219,6 +2219,7 @@ SMODS.Joker({
                     G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.perc)
                     G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                     NAMETEAM.msg(card, "Reduced!")
+                    cae.perc = 0
                     return true
                 end
             }))
@@ -2392,6 +2393,45 @@ SMODS.Joker({
         end
         if context.after then
             cae.card = nil
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "nightshade",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 0
+        }
+    },
+    pools = {
+        cbean_shadow = true
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.destroy_card and context.cardarea == G.play and context.scoring_hand[1] and context.destroy_card == context.scoring_hand[1] and not context.blueprint then
+            cae.mult = cae.mult + context.destroy_card.base.id/2
+            NAMETEAM.msg(card, "+" .. context.destroy_card.base.id/2)
+            return{
+                remove = true
+            }
+        end
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
         end
     end
 })

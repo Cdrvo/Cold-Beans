@@ -4369,6 +4369,16 @@ return {
 					"{C:inactive}(Currently reducing by {C:attention}%#1#{C:inactive})"
 				},
 			},
+			j_cbean_nightshade  = {
+				name = "Nightshade",
+				text = {
+					"Destroy the first scoring",
+					"card and add half of its",
+					"{C:chips}Chip{} value as {C:mult}Mult{}",
+					"to this card",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_grimrose = {
 				name = "Grimrose",
 				text = {
@@ -4377,6 +4387,13 @@ return {
 					"from the {C:attention}next{} scoring",
 					"hand and {C:green}level up{} the",
 					"played hand"
+				},
+			},
+			j_cbean_homing_thistle  = {
+				name = "Homing Thistle",
+				text = {
+					"Firt scored card",
+					"gives {C:chips}+#1#{} Chips"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
