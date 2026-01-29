@@ -1362,7 +1362,9 @@ SMODS.Consumable {
   cost = 1,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = SMODS.Stickers["cbean_poor"]
-    return {}
+    return {
+      vars = {card.ability.extra.debt_limit}
+    }
   end,
   can_use = function(self, card)
     if not G.GAME.selected_back.ability.cbean_poor then
