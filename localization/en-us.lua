@@ -4352,6 +4352,33 @@ return {
 					"card gives {X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_primal_peashooter = {
+				name = "Primal Peashooter",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"1 random joker is {C:attention}shuffled",
+					"before scoring"
+				},
+			},
+			j_cbean_perfume_shroom  = {
+				name = "Perfume Shroom",
+				text = {
+					"Reduce the next blind's",
+					"requirements by {C:attention}%#2#{}",
+					"when the current blind is triggered",
+					"{C:inactive}(Currently reducing by {C:attention}%#1#{C:inactive})"
+				},
+			},
+			j_cbean_nightshade  = {
+				name = "Nightshade",
+				text = {
+					"Destroy the first scoring",
+					"card and add half of its",
+					"{C:chips}Chip{} value as {C:mult}Mult{}",
+					"to this card",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_grimrose = {
 				name = "Grimrose",
 				text = {
@@ -4360,6 +4387,22 @@ return {
 					"from the {C:attention}next{} scoring",
 					"hand and {C:green}level up{} the",
 					"played hand"
+				},
+			},
+			j_cbean_homing_thistle  = {
+				name = "Homing Thistle",
+				text = {
+					"Firt scored card",
+					"gives {C:chips}+#1#{} Chips"
+				},
+			},
+			j_cbean_ghost_pepper  = {
+				name = "Ghost Pepper",
+				text = {
+					"All scored cards",
+					"give {C:chips}+#1#{} Chips",
+					"{C:red}Self-Destruct{} after",
+					"{C:attention}#3#{C:inactive} (#2#){} rounds"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {

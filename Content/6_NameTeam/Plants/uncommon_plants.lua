@@ -2034,7 +2034,58 @@ SMODS.Joker({ -- don't do this
 })
 
 
--- Primal Peashooter
+SMODS.Joker({ 
+    key = "primal_peashooter",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    if context.cbean_first and context.cardarea == G.jokers and G.jokers.cards and #G.jokers.cards>1 then
+            local old_pos = -1
+            local new_pos = -1
+            local _card = NAMETEAM.random_joker(G.jokers.cards, card)
+            for k, v in ipairs(G.jokers.cards) do
+                if v == _card then
+                    old_pos = k
+                end
+            end
+            new_pos = math.random(1, #G.jokers.cards)
+            while old_pos == new_pos do
+                new_pos = math.random(1, #G.jokers.cards)
+            end
+            G.E_MANAGER:add_event(Event({ 
+                trigger = "before",
+                blockable = "false",
+                func = function() 
+                    table.insert(G.jokers.cards, new_pos, table.remove(G.jokers.cards,old_pos))
+                    play_sound('cardSlide1', 0.85)
+                    return true
+                end 
+            })) 
+        end
+    end
+})
+
 
 SMODS.Joker({ 
     key = "primal_sunflower",
@@ -2128,7 +2179,53 @@ SMODS.Joker({
     end
 })
 
--- Perfume Shroom
+
+SMODS.Joker({ 
+    key = "perfume_shroom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            perc = 0,
+            perc_gain = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.perc,cae.perc_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.debuffed_hand or context.joker_main then
+            if G.GAME.blind.triggered then
+                SMODS.scale_card(card,{
+                    ref_table = cae,
+                    ref_value = "perc",
+                    scalar_value = "perc_gain"
+                })
+            end
+        end
+        if context.first_hand_drawn and cae.perc>0 then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.perc)
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    NAMETEAM.msg(card, "Reduced!")
+                    cae.perc = 0
+                    return true
+                end
+            }))
+        end
+    end
+})
 
 
 SMODS.Joker({ 
@@ -2296,6 +2393,45 @@ SMODS.Joker({
         end
         if context.after then
             cae.card = nil
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "nightshade",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 0
+        }
+    },
+    pools = {
+        cbean_shadow = true
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.destroy_card and context.cardarea == G.play and context.scoring_hand[1] and context.destroy_card == context.scoring_hand[1] and not context.blueprint then
+            cae.mult = cae.mult + context.destroy_card.base.id/2
+            NAMETEAM.msg(card, "+" .. context.destroy_card.base.id/2)
+            return{
+                remove = true
+            }
+        end
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
         end
     end
 })
