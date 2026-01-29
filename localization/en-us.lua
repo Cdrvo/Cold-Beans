@@ -4706,6 +4706,16 @@ return {
 				},
 			},
 
+			j_cbean_blastberry_vine = {
+				name = "Blastberry Vine",
+				text = {
+					"During scoring,",
+					"triggered jokers on the right",
+					"of this gives {C:mult}+#1#{} Mult",
+					"{C:dark_edition}+1{C:attention} Joker Slot"
+				},
+			},
+
 			j_cbean_dazey_chain = {
 				name = "Dazey Chain",
 				text = {

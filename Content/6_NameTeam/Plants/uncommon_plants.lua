@@ -3064,3 +3064,60 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "blastberry_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            mult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i > cae.rr and context.other_card == G.jokers.cards[i] then
+                    G.jokers.cards[i].ability.BLASTED_CBEAN = true
+               end
+            end
+        end
+        if context.other_joker and context.other_joker.ability.BLASTED_CBEAN then
+            context.other_joker.ability.BLASTED_CBEAN  = false
+            return{
+                mult = cae.mult,
+                message_card = context.other_joker
+            }
+        end
+    end,
+})
