@@ -2534,3 +2534,52 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "kiwibeast",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            hands = 3,
+            xmult = 1,
+            xmult_gain = 0.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.hands,cae.xmult_gain,cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.after and not context.blueprint and not context.repetition and not context.end_of_round then
+            if cae.hands>1 then
+                cae.hands = cae.hands - 1
+                NAMETEAM.msg(card, cae.hands)
+            else
+                cae.hands = 3
+                SMODS.scale_card(card, {
+                    ref_table = cae,
+                    ref_value = "xmult",
+                    scalar_value = "xmult_gain"
+                })
+            end
+        end
+
+        if context.end_of_round and context.main_eval then
+            NAMETEAM.msg(card, localize("k_reset"))
+        end
+        
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end
+})

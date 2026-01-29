@@ -4460,6 +4460,15 @@ return {
 					"cards give {C:mult}+#1#{} Mult"
 				},
 			},
+			j_cbean_kiwibeast  = {
+				name = "Kiwibeast",
+				text = {
+					"Every {C:attention}#1#{} Hands",
+					"you don't beat a blind",
+					"Gain {X:mult,C:white}X#2#{} Mult",
+					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
