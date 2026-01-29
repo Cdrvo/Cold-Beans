@@ -1413,3 +1413,35 @@ SMODS.Joker {
       if context.joker_main and card.ability.extra.chips > 0 then return { chips = card.ability.extra.chips } end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_goldenghost",
+    config = { extra = { current_money = 1, added_money = 1 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 3, y = 9 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.current_money, card.ability.extra.added_money } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.before and G.GAME.current_round.hands_left <= 0 and not context.blueprint then
+        card.ability.extra.current_money = card.ability.extra.current_money + card.ability.extra.added_money
+      return { message = localize("k_upgrade_ex"), colour = G.C.FILTER }
+      end
+    end,
+  calc_dollar_bonus = function(self, card)
+      return card.ability.extra.current_money
+  end
+}

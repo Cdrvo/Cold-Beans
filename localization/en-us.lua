@@ -4641,6 +4641,15 @@ return {
 					"{C:inactive}Butterfly was on){}"
 				}
 			},
+			j_cbean_nameteam_goldenghost = {
+				name = 'Golden Ghost',
+				text =
+				{
+					"Earn {C:money}$#1#{} at end of round,",
+					"gains {C:money}$#2#{} when playing",
+					"{C:attention}final{} hand of round"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
