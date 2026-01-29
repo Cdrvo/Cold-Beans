@@ -6848,6 +6848,14 @@ return {
 					"{C:attention}playing card{} without {C:attention}Minuscule",
 				},
 			},
+			c_cbean_locked_sheet = {
+				name = "Locked",
+				text = {
+					"Applies {C:attention}Locked{} to {C:attention}1{} selected",
+					"{C:attention}playing card{} without {C:attention}Locked,",
+					"then creates {C:attention}#1#{} copies of it",
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_sunbean = {

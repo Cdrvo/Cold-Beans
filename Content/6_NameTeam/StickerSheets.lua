@@ -484,7 +484,9 @@ SMODS.Consumable {
             local is_valid = true
             for __, vv in ipairs(done) do
               if v == vv then
-                is_valid = false; break; end
+                is_valid = false
+break
+end
             end
             if is_valid then
               candidates[#candidates + 1] = v
@@ -494,7 +496,8 @@ SMODS.Consumable {
 
         if #candidates > 0 then
           pseudorandom_element(candidates, pseudoseed("hooking_sheet")):set_ability("m_gold")
-        else break; end
+        else break
+end
       end
         return true
       end
@@ -1155,3 +1158,61 @@ SMODS.Consumable {
     delay(0.6)
   end
 }
+
+SMODS.Consumable({
+	set = "cbean_StickerSheet",
+	key = "locked_sheet",
+	pos = { x = 0, y = 0 },
+	pos_extra = { x = 1, y = 5 },
+	draw_extra = function(self, card, layer)
+		if self.discovered or card.params.bypass_discovery_center then
+			card.cbean_extra:draw_shader("booster", nil, card.ARGS.send_to_shader, nil, card.children.center)
+		end
+	end,
+	config = { extra = { cards = 2 } },
+	atlas = "NAMETEAM_StickerSheets",
+	cost = 6,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = SMODS.Stickers["cbean_locked"]
+		return {
+			vars = { card.ability.extra.cards },
+		}
+	end,
+	can_use = function(self, card)
+		if #G.hand.highlighted == 1 then
+			if not G.hand.highlighted[1].ability.cbean_locked then
+				return true
+			end
+		end
+		return false
+	end,
+	use = function(self, card, area, copier)
+		local affected_card = G.hand.highlighted[1]
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				play_sound("gold_seal", 2, 0.75)
+				affected_card:add_sticker("cbean_locked", true)
+				card:juice_up(0.3, 0.5)
+				affected_card:juice_up()
+				local _first_dissolve = nil
+				local new_cards = {}
+				for i = 1, card.ability.extra.cards do
+					G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+					local _card = copy_card(affected_card, nil, nil, G.playing_card)
+					_card:add_to_deck()
+					G.deck.config.card_limit = G.deck.config.card_limit + 1
+					table.insert(G.playing_cards, _card)
+					G.hand:emplace(_card)
+					_card:start_materialize(nil, _first_dissolve)
+					_first_dissolve = true
+					new_cards[#new_cards + 1] = _card
+				end
+				SMODS.calculate_context({ playing_card_added = true, cards = new_cards })
+				return true
+			end,
+		}))
+		delay(0.6)
+	end,
+})
