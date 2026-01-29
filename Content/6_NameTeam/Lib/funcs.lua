@@ -660,3 +660,12 @@ function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
 		end
 	end
 end
+
+function NAMETEAM.debug_locked()
+	for _, c in ipairs(G.playing_cards) do
+		if c.ability.nteam_lock_link then
+			print(c.base.name)
+			print(c.ability.nteam_lock_link)
+		end
+	end
+end
