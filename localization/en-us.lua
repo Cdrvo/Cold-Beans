@@ -4413,6 +4413,14 @@ return {
 					"order is {C:dark_edition}randomized{}"
 				},
 			},
+			j_cbean_sap_fling  = {
+				name = "Sap Fling",
+				text = {
+					"Playing Cards are now",
+					"scored {C:attention}after{}",
+					"jokers"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

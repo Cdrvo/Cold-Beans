@@ -57,3 +57,37 @@ payload = '''
     if (card.ability.set ~= 'Joker') or (#G.jokers.cards < G.jokers.config.card_limit + card_limit) or card.config.center.always_buyable then
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+        for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
+            SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
+            delay(0.3)
+        end'''
+position = "at"
+payload = '''
+    if not (#SMODS.find_card("j_cbean_sap_fling")>0) then
+        for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
+            SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
+            delay(0.3)
+        end
+    end
+'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+SMODS.calculate_context({full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, final_scoring_step = true})'''
+position = "after"
+payload = '''
+    if (#SMODS.find_card("j_cbean_sap_fling")>0) then
+        for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
+            SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
+            delay(0.3)
+        end
+    end
+'''
+match_indent = true

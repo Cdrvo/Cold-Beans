@@ -772,9 +772,6 @@ SMODS.Joker({
             chips = 20
         }
     },
-    pools = {
-        cbean_shadow = true
-    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.chips}}
@@ -806,9 +803,6 @@ SMODS.Joker({
             rounds_max = 5
         }
     },
-    pools = {
-        cbean_shadow = true
-    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.chips,cae.rounds,cae.rounds_max}}
@@ -829,5 +823,28 @@ SMODS.Joker({
                 NAMETEAM.msg(card, localize("k_eaten_ex"))
             end
         end
+    end
+})
+
+SMODS.Joker({ 
+    key = "sap_fling",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
     end
 })
