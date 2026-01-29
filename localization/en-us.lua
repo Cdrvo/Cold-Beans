@@ -5903,6 +5903,16 @@ return {
 					"cards"
 				},
 			},
+			cbean_shroom = {
+				name = "Shroom",
+				text = {
+					"Card is considered",
+					"a {C:purple}Shroom{}",
+					"Can only trigger",
+					"if in the 2 leftmost",
+					"slots"
+				},
+			},
 
 			-- Blind Stickers
 
@@ -8828,6 +8838,7 @@ return {
 			cbean_square = "Square",
 			cbean_unlucky = "Unlucky",
 			cbean_locked = "Locked",
+			cbean_shroom = "Shroom",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",

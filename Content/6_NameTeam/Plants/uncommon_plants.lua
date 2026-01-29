@@ -298,7 +298,7 @@ SMODS.Joker({
             end
 
             for i = 1, #G.jokers.cards do
-               if i > cae.rr and string.find(G.jokers.cards[i].config.center.key, "shroom") then
+               if i > cae.rr and (string.find(G.jokers.cards[i].config.center.key, "shroom") or card.ability.cbean_shroom) then
                     G.jokers.cards[i].ability.fume_shroomed_cbean = true
                end
             end
@@ -845,7 +845,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.retrigger_joker_check and not context.retrigger_joker and card:on_the("right") and context.other_card == card:on_the("right") then
-            if string.find(card:on_the("right").config.center.key, "shroom") then
+            if (string.find(card:on_the("right").config.center.key, "shroom") or card:on_the("right").ability.cbean_shroom) then
                 return{
                     message = localize("k_again_ex"),
                     repetitions = cae.rep2,

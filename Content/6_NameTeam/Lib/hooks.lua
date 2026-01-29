@@ -233,11 +233,22 @@ end
 local joker_calc_cold = Card.calculate_joker
 function Card:calculate_joker(context)
     if self.ability then
+		local trigger_defying_factors = 0
 		if self.ability["cbean_square"] then
 			if G.play and G.play.cards and #G.play.cards == 4 then
-				return joker_calc_cold(self, context)
+				-- ye
+			else
+				trigger_defying_factors = trigger_defying_factors + 1
 			end
-		else
+		end
+		if self.ability["cbean_shroom"] then
+			if G.jokers and (G.jokers.cards[1] == self or G.jokers.cards[2] == self) then
+				-- ye
+			else
+				trigger_defying_factors = trigger_defying_factors + 1
+			end
+		end
+		if trigger_defying_factors <= 0 then
 			return joker_calc_cold(self, context)
 		end
 	else
