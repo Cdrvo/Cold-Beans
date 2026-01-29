@@ -4478,6 +4478,15 @@ return {
 					"for {C:attention}2{} Rounds"
 				},
 			},
+			j_cbean_toad_stool = {
+				name = "Toad Stool",
+				text = {
+					"If played hand only",
+					"has {C:attention}1{} Card",
+					"destroy it and gain",
+					"{C:money}+$#1#{}"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

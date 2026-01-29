@@ -1520,14 +1520,16 @@ SMODS.Joker {
         end
     end,
     update = function(self, card, dt)
-        if card.debuff and card.ability.extra.curr_hand_size > 0 then
-            G.hand:change_size(-card.ability.extra.curr_hand_size)
-            card.ability.extra.curr_hand_size = 0
-        end
-        if math.min(count_rares_minus_one(), card.ability.extra.max_hand_size) ~= card.ability.extra.curr_hand_size and not card.debuff then
-            local final_amt = math.min(count_rares_minus_one(), card.ability.extra.max_hand_size)
-            G.hand:change_size(final_amt - card.ability.extra.curr_hand_size)
-            card.ability.extra.curr_hand_size = final_amt
+        if card.added_to_deck then
+            if card.debuff and card.ability.extra.curr_hand_size > 0 then
+                G.hand:change_size(-card.ability.extra.curr_hand_size)
+                card.ability.extra.curr_hand_size = 0
+            end
+            if math.min(count_rares_minus_one(), card.ability.extra.max_hand_size) ~= card.ability.extra.curr_hand_size and not card.debuff then
+                local final_amt = math.min(count_rares_minus_one(), card.ability.extra.max_hand_size)
+                G.hand:change_size(final_amt - card.ability.extra.curr_hand_size)
+                card.ability.extra.curr_hand_size = final_amt
+            end
         end
     end,
 }

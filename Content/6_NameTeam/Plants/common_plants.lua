@@ -926,3 +926,63 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "toad_stool",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            dollars = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.destroy_card and context.cardarea == G.play and #context.scoring_hand == 1 and #G.play.cards == 1 then
+            return{
+                remove = true,
+                message = "Destroyed!",
+                dollars = cae.dollars
+            }
+        end
+    end
+})
+
+
+SMODS.Joker({ 
+    key = "straw_burst",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.hands,cae.xmult_gain,cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main and cae.rounds >= 2 then
+            return{
+                chips = cae.chips
+            }
+        end
+    end
+})
