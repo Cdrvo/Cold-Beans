@@ -260,7 +260,7 @@ NAMETEAM.StationeryReward({
 		end
 	end,
 	in_pool = function(self)
-		return #G.jokers.cards < G.jokers.config.card_limit
+		return #G.jokers.cards < G.jokers.config.card_limit and not next(SMODS.find_card("j_cbean_0chill_house_rules", true))
 	end,
 })
 
