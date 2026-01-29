@@ -1269,7 +1269,7 @@ SMODS.Joker {
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 0, y = 9 },
-    cost = 7,
+    cost = 6,
     loc_vars = function(self, info_queue, card)
     local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "pipelinepunch")
     return { vars = { card.ability.extra.hands_left, num, denom } }
@@ -1340,5 +1340,76 @@ SMODS.Joker {
                 }
             end
         end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_butterfly",
+    config = { extra = { added_mult = 2, current_mult = 0 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 1, y = 9 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.added_mult, card.ability.extra.current_mult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = false,
+    pronouns = "she_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.joker_main and card.ability.extra.current_mult > 0 then return { mult = card.ability.extra.current_mult } end
+
+      if context.before and G.GAME.current_round.hands_played >= 2 and not context.blueprint then
+      card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.added_mult
+      return { message = localize("k_upgrade_ex"), colour = G.C.FILTER }
+    end
+
+    if context.selling_self and not context.blueprint and card.ability.extra.current_mult > 0 then
+        G.E_MANAGER:add_event(Event({
+        func = function()
+          play_sound('timpani')
+          local new_card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_cbean_nameteam_butterflywing', 'butterfly')
+          new_card:add_to_deck()
+          G.jokers:emplace(new_card)
+          new_card:juice_up(0.3, 0.5)
+          new_card.ability.extra.chips = card.ability.extra.current_mult * 8
+          return true
+        end
+      }))
+    end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_butterflywing",
+    config = { extra = { chips = 0 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 2, y = 9 },
+    cost = 2,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.chips } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.joker_main and card.ability.extra.chips > 0 then return { chips = card.ability.extra.chips } end
     end
 }

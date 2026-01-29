@@ -4622,6 +4622,25 @@ return {
 					"to become a {C:attention}Queen{}"
 				}
 			},
+			j_cbean_nameteam_butterfly = {
+				name = 'Butterfly',
+				text =
+				{
+					"Gains {C:mult}+#1#{} Mult if played",
+					"hand is not the {C:attention}first{}",
+					"or {C:attention}second{} hand of round",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}"
+				}
+			},
+			j_cbean_nameteam_butterflywing = {
+				name = 'Butterfly Wing',
+				text =
+				{
+					"{C:chips}+#1#{} Chips",
+					"{C:inactive}(8X the value your{}",
+					"{C:inactive}Butterfly was on){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
