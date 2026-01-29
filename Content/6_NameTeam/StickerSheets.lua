@@ -1227,14 +1227,10 @@ SMODS.Consumable({
 			card.cbean_extra:draw_shader("booster", nil, card.ARGS.send_to_shader, nil, card.children.center)
 		end
 	end,
-	config = { extra = { cards = 2 } },
 	atlas = "NAMETEAM_StickerSheets",
 	cost = 6,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = SMODS.Stickers["cbean_healing"]
-		return {
-			vars = { card.ability.extra.cards },
-		}
 	end,
 	can_use = function(self, card)
 		if #G.jokers.highlighted == 1 then
