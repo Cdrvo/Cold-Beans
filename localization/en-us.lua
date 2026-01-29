@@ -5086,14 +5086,14 @@ return {
 			},
 			-- Name Team Stickers
 			cbean_mailed = {
-				name = "Mailed Sticker",
+				name = "Mailed",
 				text = {
 					"{C:red}-$2{} when",
 					"{C:red}discarded{}",
 				},
 			},
 			cbean_locked = {
-				name = "Locked Sticker",
+				name = "Locked",
 				text = {
 					"Selects a {C:attention}random",
 					"card in full deck",
@@ -5105,14 +5105,14 @@ return {
 				},
 			},
 			cbean_unlucky = {
-				name = "Unlucky Sticker",
+				name = "Unlucky",
 				text = {
 					"{C:red}Halves{} all probabilities",
 					"{C:inactive}(ex. {C:green}2 in 5{C:inactive} -> {C:green}1 in 5{C:inactive}){}",
 				},
 			},
 			cbean_hooking = {
-				name = "Hooking Sticker",
+				name = "Hooking",
 				text = {
 					"{C:red}Discarded{} if held",
 					"in hand when",
@@ -5126,7 +5126,7 @@ return {
 				},
 			},
 			cbean_flashcard = {
-				name = "Flash Card Sticker",
+				name = "Flash Card",
 				text = {
 					"{C:attention}Replace{} this card",
 					"with another card of",
@@ -5135,7 +5135,7 @@ return {
 				},
 			},
 			cbean_frowning = {
-				name = "Frowning Sticker",
+				name = "Frowning",
 				text = {
 					"{C:red}Debuffed{} if played",
 					"hand contains",
@@ -5143,7 +5143,7 @@ return {
 				},
 			},
 			cbean_plasma = {
-				name = "Plasma Sticker",
+				name = "Plasma",
 				text = {
 					"{X:purple,C:white}X2{} Blind size",
 					"Balances {C:attention}10%{} of {C:blue}Chips",
@@ -5152,14 +5152,14 @@ return {
 				},
 			},
 			cbean_painted = {
-				name = "Painted Sticker",
+				name = "Painted",
 				text = {
 					"{C:attention}+1{} hand size",
 					"{C:red}-1{} Joker slot",
 				},
 			},
 			cbean_black = {
-				name = "Black Sticker",
+				name = "Black",
 				text = {
 					"{C:blue}-1{} hand",
 					"every round",
@@ -5168,7 +5168,7 @@ return {
 				},
 			},
 			cbean_heavy = {
-				name = "Heavy Sticker",
+				name = "Heavy",
 				text = {
 					"{C:red}-1{} hand size",
 					"while held in",
@@ -5176,7 +5176,7 @@ return {
 				},
 			},
 			cbean_dangerous = {
-				name = "Dangerous Sticker",
+				name = "Dangerous",
 				text = {
 					"When used, {C:green}#1# in #2#{}",
 					"chance for the next",
@@ -5185,7 +5185,7 @@ return {
 				},
 			},
 			cbean_shield = {
-				name = "Shield Sticker",
+				name = "Shield",
 				text = {
 					"{C:green}Prevents{} the",
 					"{C:red}destruction{} of this",
@@ -5193,26 +5193,26 @@ return {
 				},
 			},
 			cbean_man = {
-				name = "Man Sticker",
+				name = "Man",
 				text = {
 					"Cannot be {C:red}debuffed{}",
 				},
 			},
 			cbean_minuscule = {
-				name = "Minuscule Sticker",
+				name = "Minuscule",
 				text = {
 					"Fills {C:dark_edition}0.5{} slots",
 				},
 			},
 			cbean_shuffle = {
-				name = "Shuffle Sticker",
+				name = "Shuffle",
 				text = {
 					"When a hand is {C:attention}played{},",
 					"randomizes this {C:attention}Joker's position",
 				},
 			},
 			cbean_nebula = {
-				name = "Nebula Sticker",
+				name = "Nebula",
 				text = {
 					"{C:red}-1{} consumable Slot, create a {C:dark_edition}Negative",
 					"{C:planet}Planet{} card for most played hand when ",
@@ -5220,7 +5220,7 @@ return {
 				},
 			},
 			cbean_green = {
-				name = "Green Sticker",
+				name = "Green",
 				text = {
 					"Earn no {C:attention}Interest",
 					"Earn an additional {C:money}$1",
@@ -5229,7 +5229,7 @@ return {
 				},
 			},
 			cbean_brainrot = {
-				name = "Brainrot Sticker",
+				name = "Brainrot",
 				text = {
 					"If {C:attention}6{} and {C:attention}7{}",
 					"are {C:attention}scored{} together",
@@ -5237,14 +5237,14 @@ return {
 				},
 			},
 			cbean_egg = {
-				name = "Egg Sticker",
+				name = "Egg",
 				text = {
 					"Gains {C:money}$2{} of {C:attention}sell value",
 					"at end of round",
 				},
 			},
 			cbean_hungry = {
-				name = "Hungry Sticker",
+				name = "Hungry",
 				text = {
 					"When a {C:attention}Blind{} is selected",
 					"{C:red}consumes{} the card",
@@ -5252,7 +5252,7 @@ return {
 				},
 			},
 			cbean_barren = {
-				name = "Barren Sticker",
+				name = "Barren",
 				text = {
 					"Card {C:red}cannot",
 					"have an",
@@ -5260,7 +5260,7 @@ return {
 				},
 			},
 			cbean_spore = {
-				name = "Spore Sticker",
+				name = "Spore",
 				text = {
 					"When a {C:attention}Blind{}",
 					"is set, applies",
@@ -5270,7 +5270,7 @@ return {
 				},
 			},
 			cbean_healing = {
-				name = "Healing Sticker",
+				name = "Healing",
 				text = {
 					"When a {C:attention}Blind{}",
 					"is set removes",
@@ -5280,7 +5280,7 @@ return {
 				},
 			},
 			cbean_misprinted = {
-				name = "Misprinted Sticker",
+				name = "Misprinted",
 				text = {
 					"Copies a random",
 					"{C:attention}Sticker{} effect",
@@ -5290,14 +5290,14 @@ return {
 				},
 			},
 			cbean_poor = {
-				name = "Poor Sticker",
+				name = "Poor",
 				text = {
 					"All earned money",
 					"is halved",
 				},
 			},
 			cbean_square = {
-				name = "Square Sticker",
+				name = "Square",
 				text = {
 					"Can only trigger",
 					"if played hand",
