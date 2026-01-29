@@ -4657,6 +4657,15 @@ return {
 				},
 			},
 			--
+
+			j_cbean_sling_pea = {
+				name = "Sling-Pea",
+				text = {
+					"Scored Cards give", 
+					"{C:mult}+#1#{} Mult",
+					"{C:mult}-#2#{} Mult per trigger"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

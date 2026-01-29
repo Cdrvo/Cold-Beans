@@ -2980,13 +2980,17 @@ SMODS.Joker({
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.cbean_first and not context.blueprint then
+        if context.cbean_first and not context.blueprint and cae.hands_left>0 then
             cae.hands_left = cae.hands_left - 1
             local acard = SMODS.add_card{
                 key = "j_cbean_holly_projectile"
             }
             acard.cbean_type = pseudorandom_element({"mult","chips","dollars"})
+            card.ability.type = acard.cbean_type
             acard:set_edition("e_negative")
+            if cae.hands_left == 0 then
+                SMODS.destroy_cards(card)
+            end
         end
     end,
 })

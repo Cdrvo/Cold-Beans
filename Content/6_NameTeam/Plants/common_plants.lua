@@ -1269,16 +1269,19 @@ SMODS.Joker({
         }
     },
     loc_vars = function(self,info_queue,card)
-        if not card.cbean_type then card.cbean_type = "unselected" end
         local cae = card.ability.extra
+        if not card.cbean_type then card.cbean_type = (cae.type or "unselected") end
         local key, vars = self.key, {}
         if card.cbean_type == "mult" then
+            cae.type = "mult"
             vars = {cae.mult}
             key = self.key .. "_mult"
         elseif card.cbean_type == "chips" then
+            cae.type = "chips"
             vars = {cae.chips}
             key = self.key .. "_chips"
         elseif card.cbean_type == "dollars" then
+            cae.type = "dollars"
             vars = {cae.dollars}
             key = self.key .. "_dollars"
         else
@@ -1299,7 +1302,7 @@ SMODS.Joker({
                 return{
                     mult = cae.mult
                 }
-            else
+            elseif card.cbean_type == "chips" then
                 return{
                     chips = cae.chips
                 }
@@ -1311,4 +1314,50 @@ SMODS.Joker({
             return card.ability.extra.dollars
         end
     end
+})
+
+SMODS.Joker({
+    key = "sling_pea",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 21,
+            mult_lose = 3,
+            no_lose = true
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars = {
+                cae.mult, cae.mult_lose
+            }
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play and cae.mult>0 then
+            if not cae.no_lose then
+                cae.mult = cae.mult - cae.mult_lose
+                NAMETEAM.msg(card, "-" .. cae.mult_lose)
+            else
+                cae.no_lose = false
+            end
+            return{
+                mult = cae.mult
+            }
+        elseif context.individual and context.cardarea == G.play and cae.mult<=0 then
+            SMODS.destroy_cards(card)
+        end
+        if context.after and cae.mult<=0 then
+            SMODS.destroy_cards(card)
+        end
+    end,
 })
