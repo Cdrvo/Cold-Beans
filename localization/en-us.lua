@@ -4469,6 +4469,15 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
 				},
 			},
+			j_cbean_power_lily = {
+				name = "Power Lily",
+				text = {
+					"When {C:green}sold{}",
+					"{C:attention}Doubles{} the values",
+					"of the card on the right",
+					"for {C:attention}2{} Rounds"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

@@ -620,11 +620,39 @@ end
 
 
 -- Doesn't go into tables within extra
-function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
+function NAMETEAM.values(operator, card, num, extra, specific, only_extra, orig, ret)
+	--[[if ret then
+			local tab = {}
+				if extra and card.ability.extra then
+				if type(card.ability.extra) == "table" then
+					for l, m in pairs(card.ability.extra) do
+						if type(m) == "number" then
+							tab[card.ability.extra[l] .. "_old"] = card.ability.extra[m]
+						end
+					end
+				end
+				if not only_extra then
+				for k, v in pairs(card.ability) do
+					if
+						k ~= "x_mult"
+						and k ~= "x_chips"
+						and k ~= "order"
+						and v ~= 0
+					then
+						if type(v) == "number" then
+							tab[card.ability[k]] -- = card.ability[v]
+					--	end
+				--	end
+			--	end
+		----	end
+		-- end
+	--	return tab
+--	end]]
 	local orig = {
 		name = {},
 		val = {},
 	}
+
 	if num == 0 then
 		num = 0.1
 	end
@@ -635,10 +663,13 @@ function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
 				and k ~= "x_chips"
 				and k ~= "order"
 				and v ~= 0
+				and (not specific or specific and k == specific)
 			then
 				if type(v) == "number" then
 					if operator == "/" then
 						card.ability[k] = card.ability[k] / num
+					elseif operator == "-" then
+						card.ability[k] = card.ability[k] - num
 					else
 						card.ability[k] = card.ability[k] * num
 					end
@@ -649,9 +680,11 @@ function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
 	if extra and card.ability.extra then
 		if type(card.ability.extra) == "table" then
 			for l, m in pairs(card.ability.extra) do
-				if type(m) == "number" then
+				if type(m) == "number" and (not specific or specific and l == specific) then
 					if operator == "/" then
 						card.ability.extra[l] = card.ability.extra[l] / num
+					elseif operator == "-" then
+						card.ability.extra[l] = card.ability.extra[l] - num
 					else
 						card.ability.extra[l] = card.ability.extra[l] * num
 					end

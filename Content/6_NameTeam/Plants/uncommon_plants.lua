@@ -2583,3 +2583,32 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "power_liy",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.hands,cae.xmult_gain,cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            if card:on_the("right") then
+                card:on_the("right").cbean_lily_power = 2
+                NAMETEAM.values("*", card:on_the("right"), 2)
+            end
+        end
+    end
+})
