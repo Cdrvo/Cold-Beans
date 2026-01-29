@@ -1798,7 +1798,7 @@ SMODS.Joker({
         local cae = card.ability.extra
         cae.stop = true
         for k, v in pairs(G.playing_cards) do
-            if not v.debuff then
+            if v.debuff then
                 SMODS.debuff_card(v, false, "EM_peaching_it")
             end
         end
