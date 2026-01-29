@@ -1460,13 +1460,13 @@ end
 
 SMODS.Joker {
     key = "nameteam_liam",
-    config = { extra = { is_contestant = true, added_hand_size = 1, max_hand_size = 3 } },
+    config = { extra = { is_contestant = true, added_hand_size = 1, max_hand_size = 3, curr_hand_size = 0 } },
     rarity = 3,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 4, y = 9 },
     cost = 8,
     loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.added_hand_size, card.ability.extra.added_hand_size * math.min(card.ability.extra.max_hand_size, math.max(0, card.ability.extra.seen_rares or count_rares_minus_one())), card.ability.extra.max_hand_size } }
+    return { vars = { card.ability.extra.added_hand_size, card.ability.extra.added_hand_size * math.min(card.ability.extra.max_hand_size, math.max(card.ability.extra.curr_hand_size, 0)), card.ability.extra.max_hand_size } }
     end,
     blueprint_compat = false,
     eternal_compat = true,
@@ -1479,19 +1479,22 @@ SMODS.Joker {
         art = "GhostSalt",
         code = "GhostSalt",
     },
-    add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.seen_rares = count_rares_minus_one()
-        G.hand:change_size(math.min(card.ability.extra.max_hand_size, math.max(0, card.ability.extra.seen_rares)))
-    end,
     remove_from_deck = function(self, card, from_debuff)
-        G.hand:change_size(-math.min(card.ability.extra.max_hand_size, math.max(0, card.ability.extra.seen_rares)))
+        if not from_debuff then
+            G.hand:change_size(-card.ability.extra.curr_hand_size)
+        end
     end,
-    calculate = function(self, card, context)
-      if card.ability.extra.seen_rares ~= count_rares_minus_one() then
-        G.hand:change_size(math.min(card.ability.extra.max_hand_size, math.max(0, count_rares_minus_one() - card.ability.extra.seen_rares)))
-        card.ability.extra.seen_rares = count_rares_minus_one()
-      end
-    end
+    update = function(self, card, dt)
+        if card.debuff and card.ability.extra.curr_hand_size > 0 then
+            G.hand:change_size(-card.ability.extra.curr_hand_size)
+            card.ability.extra.curr_hand_size = 0
+        end
+        if math.min(count_rares_minus_one(), card.ability.extra.max_hand_size) ~= card.ability.extra.curr_hand_size and not card.debuff then
+            local final_amt = math.min(count_rares_minus_one(), card.ability.extra.max_hand_size)
+            G.hand:change_size(final_amt - card.ability.extra.curr_hand_size)
+            card.ability.extra.curr_hand_size = final_amt
+        end
+    end,
 }
 
 --[[SMODS.Joker {
