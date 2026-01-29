@@ -4612,6 +4612,16 @@ return {
 					"{C:inactive}({C:attention}#3#:#2#{C:inactive}, #4#){}"
 				}
 			},
+			j_cbean_nameteam_pipelinepunch = {
+				name = 'Pipeline Punch',
+				text =
+				{
+					"For the next {C:attention}#1#{} hands,",
+					"leftmost played and scored",
+					"card has a {C:green}#2# in #3#{} chance",
+					"to become a {C:attention}Queen{}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {

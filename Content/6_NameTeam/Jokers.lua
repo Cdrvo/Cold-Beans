@@ -1262,3 +1262,83 @@ SMODS.Joker {
       end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_pipelinepunch",
+    config = { extra = { hands_left = 10, odds = 2 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 0, y = 9 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+    local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "pipelinepunch")
+    return { vars = { card.ability.extra.hands_left, num, denom } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.before and SMODS.pseudorandom_probability(card, "pipelinepunch", 1, card.ability.extra.odds) then
+        local _card = context.scoring_hand[1]
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          play_sound('tarot1')
+          card:juice_up()
+          return true
+        end
+      }))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          _card:flip()
+          play_sound('card1', 1)
+          _card:juice_up(0.3, 0.3)
+          delay(0.2)
+          return true
+        end
+      }))
+      G.E_MANAGER:add_event(Event({
+        delay = 0.1,
+        func = function()
+          assert(SMODS.change_base(_card, nil, "Queen"))
+          return true
+        end
+      }))
+      G.E_MANAGER:add_event(Event({
+        delay = 0.1,
+        func = function()
+          _card:flip()
+          play_sound('tarot2', 1)
+          _card:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+      delay(0.2)
+      end
+
+      if context.after and not context.blueprint then
+            if card.ability.extra.hands_left - 1 <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                return {
+                    message = localize('k_drank_ex'),
+                    colour = G.C.FILTER
+                }
+            else
+                card.ability.extra.hands_left = card.ability.extra.hands_left - 1
+                return {
+                    message = card.ability.extra.hands_left .. '',
+                    colour = G.C.FILTER
+                }
+            end
+        end
+    end
+}
