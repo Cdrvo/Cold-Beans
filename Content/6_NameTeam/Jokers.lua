@@ -1408,7 +1408,7 @@ SMODS.Joker {
     config = { extra = { added_mult = 2, current_mult = 0 } },
     rarity = 1,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 1, y = 9 },
+    pos = { x = 3, y = 11 },
     cost = 5,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.added_mult, card.ability.extra.current_mult } }
@@ -1453,7 +1453,7 @@ SMODS.Joker {
     config = { extra = { chips = 0 } },
     rarity = 1,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 2, y = 9 },
+    pos = { x = 4, y = 11 },
     cost = 2,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
