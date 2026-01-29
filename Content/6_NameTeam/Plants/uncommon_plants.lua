@@ -2585,7 +2585,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({ 
-    key = "power_liy",
+    key = "power_lily",
     cost = 4,
     beans_credits = {
 		code = "Revo",
