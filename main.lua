@@ -77,6 +77,17 @@ ColdBeans.calculate = function(mod, context)
     end
     if context.end_of_round then
         G.GAME.cbean_combo_unique_round = {}
+
+		for k, v in pairs(G.playing_cards) do
+			if v.cbean_banana_timer then
+				if v.cbean_banana_timer == 1 then
+					v.cbean_banana_timer = nil
+					SMODS.debuff_card(v, false, "debuffed_by_banana_launcher")
+				else
+					v.cbean_banana_timer = v.cbean_banana_timer - 1
+				end
+			end
+		end
     end
 	if context.destroy_card and context.cardarea == G.play and NAMETEAM.destroy and NAMETEAM.destroy>0 then
 		NAMETEAM.destroy = NAMETEAM.destroy - 1

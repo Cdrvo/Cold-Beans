@@ -2260,3 +2260,53 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "banana_launcher",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2.5,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult, cae.mult,cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local gp,c = context.scoring_hand, context.other_card
+            if c == gp[1] and gp[1] and not c.debuff then
+                c.marked_for_debuff = true
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.final_scoring_step then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.03,
+                func = function()
+                    for k, v in pairs(G.play.cards) do
+                        if v.marked_for_debuff then
+                            v.marked_for_debuff = false
+                            v.cbean_banana_timer = 3
+                            SMODS.debuff_card(v, true, "debuffed_by_banana_launcher")
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+    end
+})

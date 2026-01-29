@@ -4315,6 +4315,15 @@ return {
 					"gives {C:chips}+#3#{} Chips"
 				},
 			},
+			j_cbean_banana_launcer  = {
+				name = "Banana Launcher",
+				text = {
+					"First scored card",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"and gets debuffed for {C:attention}3{}",
+					"rounds"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
