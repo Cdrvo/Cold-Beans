@@ -555,3 +555,52 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({ 
+    key = "shrinking_violet",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 3
+        }
+    },
+    add_to_deck = function(self,card,from_debuff)
+        for k, v in pairs(SMDOS.ConsumableTypes) do
+            if G.P_CENTER_POOLS[k] then
+                for _, _card in pairs(G.P_CENTER_POOLS[k]) do
+                    if _card and _card.config.max_highlighted and not _card.cbean_shrunk_by_violet then
+                        _card.config.max_highlighted = _card.config.max_highlighted * 2
+                        _card.cbean_shrunk_by_violet = true
+                    elseif _card and _card.config and _card.config.extra and type(_card.config.extra) == "table" and _card.config.extra.max_highlighted then
+                        _card.config.extra.max_highlighted = _card.config.extra.max_highlighted * 2
+                        _card.cbean_shrunk_by_violet = true
+                    end
+                end
+            end
+        end
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(SMDOS.ConsumableTypes) do
+            if G.P_CENTER_POOLS[k] then
+                for _, _card in pairs(G.P_CENTER_POOLS[k]) do
+                    if _card and _card.config.max_highlighted and _card.cbean_shrunk_by_violet then
+                        _card.cbean_shrunk_by_violet = nil
+                        _card.config.max_highlighted = _card.config.max_highlighted / 2
+
+                    elseif _card and _card.config and _card.config.extra and type(_card.config.extra) == "table" and _card.config.extra.max_highlighted and _card.cbean_shrunk_by_violet then
+                        _card.cbean_shrunk_by_violet = nil
+                        _card.config.extra.max_highlighted = _card.config.extra.max_highlighted / 2
+                    end
+                end
+            end
+        end
+    end
+})

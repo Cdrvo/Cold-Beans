@@ -2497,7 +2497,7 @@ SMODS.Joker({
                 key = "j_cbean_lava",
                 area = G.jokers
             }
-            card:add_sticker("eternal", true)
+            -- card:add_sticker("eternal", true)
         end
     end
 })

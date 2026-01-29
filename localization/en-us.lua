@@ -4445,6 +4445,13 @@ return {
 					"but destroyed afterwards"
 				},
 			},
+			j_cbean_shrinking_violet  = {
+				name = "Shrinking Violet",
+				text = {
+					"Most {C:attention}consumables{} can now",
+					"affect {C:green}double{} the cards"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
