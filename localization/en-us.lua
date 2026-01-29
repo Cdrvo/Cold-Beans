@@ -4260,6 +4260,15 @@ return {
 					"{C:inactive}(Cannot go back an ante)"
 				},
 			},
+			j_cbean_celery_stalker = {
+				name = "Celery Stalker",
+				text = {
+					"Joker on the {C:attention}left{} has",
+					"{C:red}halfed{} values",
+					"Joker on the {C:attention}right{} has",
+					"{C:green}doubled{} values"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
