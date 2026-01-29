@@ -298,7 +298,7 @@ SMODS.Joker({
             end
 
             for i = 1, #G.jokers.cards do
-               if i > cae.rr then
+               if i > cae.rr and string.find(G.jokers.cards[i].config.center.key, "shroom") then
                     G.jokers.cards[i].ability.fume_shroomed_cbean = true
                end
             end
