@@ -1285,6 +1285,7 @@ SMODS.Joker {
         art = "GhostSalt",
         code = "GhostSalt",
     },
+    pools = { ["Food"] = true },
     calculate = function(self, card, context)
       if context.before and SMODS.pseudorandom_probability(card, "pipelinepunch", 1, card.ability.extra.odds) then
         local _card = context.scoring_hand[1]

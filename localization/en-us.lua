@@ -4360,6 +4360,15 @@ return {
 					"before scoring"
 				},
 			},
+			j_cbean_perfume_shroom  = {
+				name = "Perfume Shroom",
+				text = {
+					"Reduce the next blind's",
+					"requirements by {C:attention}%#2#{}",
+					"when the current blind is triggered",
+					"{C:inactive}(Currently reducing by {C:attention}%#1#{C:inactive})"
+				},
+			},
 			j_cbean_grimrose = {
 				name = "Grimrose",
 				text = {

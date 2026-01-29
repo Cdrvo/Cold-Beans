@@ -2192,21 +2192,32 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            perc = 0
+            perc = 0,
+            perc_gain = 5
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.xmult}}
+        return{vars={cae.perc,cae.perc_gain}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
+        if context.debuffed_hand or context.joker_main then
+            if G.GAME.blind.triggered then
+                SMODS.scale_card(card,{
+                    ref_table = cae,
+                    ref_value = "perc",
+                    scalar_value = "perc_gain"
+                })
+            end
+        end
         if context.first_hand_drawn then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.01,
                 func = function()
                     G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.prec(G.GAME.blind.chips, cae.perc)
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                     return true
                 end
             }))
