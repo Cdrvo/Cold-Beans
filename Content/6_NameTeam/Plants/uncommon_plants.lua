@@ -2860,3 +2860,48 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "wasabi_whip",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1.75,
+            odds = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMODS.get_probability_vars(card, 1, cae.odds, "wasabi_whippig_it")
+        return{
+            vars={cae.xmult,num,den}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local c, gp = context.other_card, context.scoring_hand
+            if c == gp[1] or c == gp[#gp] then
+                if SMODS.pseudorandom_probability(card, "wasabi_whipping_it", 1, cae.odds) then
+                    context.other_card.marked_by_wasabi = true
+                end
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.marked_by_wasabi then
+            return{
+                remove = true
+            }
+        end
+    end,
+})

@@ -4549,6 +4549,16 @@ return {
 					"owned"
 				},
 			},
+			j_cbean_wasabi_whip = {
+				name = "Wasabi Whip",
+				text = {
+					"Leftmost and Rightmost",
+					"scoring cards give",
+					"{X:mult,C:white}X#1#{} Mult",
+					"but has a {C:green}#2# in #3#{}",
+					"chance to get {C:red}destroyed"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
