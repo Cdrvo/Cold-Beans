@@ -50,3 +50,6 @@ SMODS.Atlas({
 	py = 29,
 })
 
+SMODS.ObjectType({
+	key = "cbean_shadow"
+})

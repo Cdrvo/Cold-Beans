@@ -668,3 +668,29 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "moonflower",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            dollars = 3,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={ cae.dollars, ((cae.dollars +  ((G.jokers and NAMETEAM.pool_in("cbean_shadow", (G.jokers.cards or "")) ) or 0)))  }}
+    end,
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return cae.dollars + (NAMETEAM.pool_in("cbean_shadow", G.jokers.cards))
+    end
+})

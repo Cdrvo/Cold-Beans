@@ -2301,9 +2301,7 @@ SMODS.Joker({
                         if v.marked_for_debuff then
                             v.marked_for_debuff = false
                             v.cbean_banana_timer = 3
-                            print(v.cbean_banana_timer)
                             SMODS.debuff_card(v, true, "debuffed_by_banana_launcher")
-                            print(v.cbean_banana_timer)
                         end
                     end
                     return true

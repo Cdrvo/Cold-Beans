@@ -4324,6 +4324,16 @@ return {
 					"rounds"
 				},
 			},
+			j_cbean_moonflower  = {
+				name = "Moon Flower",
+				text = {
+					"{C:money}+$#1#{} At the",
+					"end of a round",
+					"earn an extra {C:money}+$1{}",
+					"for each {C:dark_edition}Shadow{} joker",
+					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

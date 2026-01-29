@@ -669,3 +669,26 @@ function NAMETEAM.debug_locked()
 		end
 	end
 end
+
+function NAMETEAM.pool_in(pool, area)
+	local ret = 0
+	if G.P_CENTER_POOLS[pool] then
+		for k, v in pairs(G.P_CENTER_POOLS[pool]) do
+			for _, card in pairs(area) do
+				if v == card.config.center then
+					ret = ret + 1
+				end
+			end
+		end
+	elseif G.P_JOKER_RARITY_POOLS[pool] then
+		for k, v in pairs(G.P_JOKER_RARITY_POOLS[pool]) do
+			for _, card in pairs(area) do
+				if v == card.config.center then
+					ret = ret + 1
+				end
+			end
+		end
+	end
+
+	return ret
+end
