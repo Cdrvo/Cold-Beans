@@ -2039,37 +2039,37 @@ SMODS.Joker({
     end,
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.jokers.cards) do
-            if v.cbean_celeried_2 then
+            if v.ability.cbean_celeried_2 then
                 NAMETEAM.values("*", v, 2)
-                v.cbean_celeried_2 = false
+                v.ability.cbean_celeried_2 = false
             end
-            if v.cbean_celeried_1 then
+            if v.ability.cbean_celeried_1 then
                 NAMETEAM.values("/", v, 2)
-                v.cbean_celeried_1 = false
+                v.ability.cbean_celeried_1 = false
             end
         end
     end,
     update = function(self,card,context)
         if card.added_to_deck and not card.getting_sliced then
-            if card:on_the("left") and not card:on_the("left").cbean_celeried_2 then
+            if card:on_the("left") and not card:on_the("left").ability.cbean_celeried_2 then
                 local _card = card:on_the("left")
-                _card.cbean_celeried_2 = true
+                _card.ability.cbean_celeried_2 = true
                 NAMETEAM.values("/", _card, 2)
             end
-            if card:on_the("right") and not card:on_the("right").cbean_celeried_1 then
+            if card:on_the("right") and not card:on_the("right").ability.cbean_celeried_1 then
                 local _card = card:on_the("right")
-                _card.cbean_celeried_1 = true
+                _card.ability.cbean_celeried_1 = true
                 NAMETEAM.values("*", _card, 2)
             end
 
             for k, v in pairs(G.jokers.cards) do
-                if v.cbean_celeried_2 and v ~= card:on_the("left") then
+                if v.ability.cbean_celeried_2 and v ~= card:on_the("left") then
                     NAMETEAM.values("*", v, 2)
-                    v.cbean_celeried_2 = false
+                    v.ability.cbean_celeried_2 = false
                 end
-                if v.cbean_celeried_1 and v ~= card:on_the("right") then
+                if v.ability.cbean_celeried_1 and v ~= card:on_the("right") then
                     NAMETEAM.values("/", v, 2)
-                    v.cbean_celeried_1 = false
+                    v.ability.cbean_celeried_1 = false
                 end
             end
         end
