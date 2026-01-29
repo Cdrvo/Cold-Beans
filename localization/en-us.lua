@@ -4874,6 +4874,13 @@ return {
 					"but will give {C:mult}+#1#{} Mult"
 				},
 			},
+			j_cbean_hocus_crocus = {
+				name = "Hocus Crocus",
+				text = {
+					"Playing Cards' {C:attention}scoring",
+					"order is {C:dark_edition}reversed"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

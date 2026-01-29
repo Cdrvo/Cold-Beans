@@ -1567,19 +1567,21 @@ SMODS.Joker({
         if card and card.edition and card.edition.negative then
             card:set_edition(nil, true, true)
         end
+    end,
+    in_pool = function(self,card)
+        return false
     end
 })
 
 SMODS.Joker({
     key = "stickybomb_rice",
-    cost = 5,
+    cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
 		art = "N/A",
 	},
     rarity = 1,
-    always_buyable = true,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1597,5 +1599,27 @@ SMODS.Joker({
             aecard.mark_for_no_score = true
             aecard.no_score_mult = cae.mult
         end
+    end,
+})
+SMODS.Joker({
+    key = "hocus_crocus",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
     end,
 })

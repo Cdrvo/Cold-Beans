@@ -298,6 +298,9 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 		NAMETEAM.general_area = NAMETEAM.shuffle(NAMETEAM.general_area, "sweet_lil_potato")
 	end
 
+	if (#SMODS.find_card("j_cbean_hocus_crocus")>0) then
+		NAMETEAM.general_area = NAMETEAM.reverse_table(NAMETEAM.general_area)
+	end
     for _, card in ipairs(NAMETEAM.general_area) do
         local in_scoring = scoring_hand and SMODS.in_scoring(card, NAMETEAM.scoring_area)
         --add cards played to list
@@ -489,4 +492,14 @@ function Card:highlight(is_highlighted)
 	else
 		return cardhighold(self, is_highlighted)
 	end
+end
+
+function NAMETEAM.reverse_table(table)
+	local tab = {}
+
+	for i = 1, #table do
+		tab[#tab+1] = table[#table-(i-1)]
+	end
+
+	return tab
 end
