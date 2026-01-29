@@ -46,7 +46,6 @@ SMODS.Sticker({
 				if #c.ability.nteam_lock_link == 0 then -- remove the link to indicate that it is no longer linked if its list of ids is empty
 					c.ability.nteam_lock_link = nil
 				end
-				break -- no need to iterate further
 			end
 		end
 		card.ability.nteam_lock_id = nil -- erase the stored id
@@ -73,7 +72,6 @@ ColdBeans.OnCalculate(function(mod, context)
 							and not NAMETEAM.contains(context.removed, checked) -- is the card being checked not being removed currently
 						then
 							locked_destroy[#locked_destroy + 1] = checked
-							break
 						end
 					end
 				end

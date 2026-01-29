@@ -793,7 +793,6 @@ SMODS.Consumable {
         blockable = false,
         func = function()
           local new_card = create_card("Spectral", G.consumables, nil, nil, nil, nil, nil, "dangeroussheet")
-          
         play_sound("gold_seal", 1.5, 1)
         new_card:add_sticker("cbean_dangerous", true)
           new_card:add_to_deck()
