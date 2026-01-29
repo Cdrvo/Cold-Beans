@@ -4738,9 +4738,17 @@ return {
 			j_cbean_explode_o_vine = {
 				name = "Explode-O-Vine",
 				text = {
-					"{X:mult,C:white}X#>#{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"{C:red}Self-Destructs{} after {C:attention}#2#{C:inactive} (#3#){} Rounds",
 					"{C:dark_edition}+1{C:attention} Joker Slot",
+				},
+			},
+			j_cbean_murkadamia = {
+				name = "Murkadamia",
+				text = {
+					"Gains {C:mult}+#2#{} Mult",
+					"for each scored card",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
 				},
 			},
 			j_cbean_ultomato = {
