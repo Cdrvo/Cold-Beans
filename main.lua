@@ -76,7 +76,7 @@ ColdBeans.calculate = function(mod, context)
 					trigger = "after",
 					delay = 0.03,
 					func = function()
-						SMODS.destroy_card(acard)
+						SMODS.destroy_cards(acard)
 						return true
 					end
 				})) 
