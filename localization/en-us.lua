@@ -5263,10 +5263,10 @@ return {
 				name = "Spore Sticker",
 				text = {
 					"When a {C:attention}Blind{}",
-					"is set gives",
-					"a {C:dark_edition}Random{} sticker",
-					"to a card in the",
-					"same area",
+					"is set, applies",
+					"a {C:dark_edition}random{} sticker",
+					"to a different card",
+					"in the same area",
 				},
 			},
 			cbean_healing = {
