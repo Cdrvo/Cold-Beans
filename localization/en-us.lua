@@ -4503,6 +4503,19 @@ return {
 					"{C:attention}#1#{} times"
 				},
 			},
+			j_cbean_jack_o_lantern = {
+				name = "Jack O' Lantern",
+				text = {
+					"For {C:attention}#1#{} Hands",
+					"all scored cards give",
+					"{X:mult,C:white}X#2#{} Mult and has",
+					"a {C:green}#3# in #4#{} chance to",
+					"get destroyed.",
+					"After {C:attention}2{} hands,",
+					"{C:red}debuffs{} itself for",
+					"{:attention}#5#{} hands"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
