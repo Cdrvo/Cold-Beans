@@ -6873,6 +6873,16 @@ return {
 					"{X:mult,C:white}X#1#{} Mult permanently"
 				},
 			},
+			c_cbean_square_sheet = {
+				name = "Square",
+				text = {
+					"Applies {C:attention}Square{} to {C:attention}1{} selected",
+					"{C:attention}Joker{} without {C:attention}Square{}",
+					"The selected {C:attention}Joker{}'s",
+					"values are {C:attention}doubled",
+					"{C:inactive}(If applicable)"
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_sunbean = {
