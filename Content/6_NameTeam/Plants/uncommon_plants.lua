@@ -2648,3 +2648,55 @@ SMODS.Joker({
         end
     end
 })
+
+
+SMODS.Joker({ 
+    key = "jack_o_lantern",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            hands_left = 2,
+            xmult = 1.5,
+            odds = 2,
+            debuff_hands = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "jacking_my_lantern_till_it_o")
+        return{vars={cae.hands_left,cae.xmult,num,den,cae.debuff_hands}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play and cae.hands_left>0 then
+            if SMODS.pseudorandom_probability(card, "jacking_my_lantern_till_it_o", 1 , cae.odds) then
+                context.other_card.marked_by_jack = true
+            end
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.marked_by_jack then
+            return{
+                remove = true
+            }
+        end
+        if context.after and not context.blueprint then
+            if cae.hands_left>1 then
+                cae.hands_left = cae.hands_left - 1
+                NAMETEAM.msg(card, "-1")
+            else
+                cae.hands_left = 2
+                NAMETEAM.msg(card, "Debuff!")
+                SMODS.debuff_card(card, true, "jack_lantern_debuff")
+            end
+        end
+    end
+})
