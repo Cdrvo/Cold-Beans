@@ -58,3 +58,8 @@ SMODS.Sound({
   key = "adapaige_heal",
   path = "6_NameTeam/cbean_adapaige_heal.ogg"
 })
+
+SMODS.Sound({
+  key = "edega_debuff",
+  path = "6_NameTeam/cbean_edega_debuff.ogg"
+})

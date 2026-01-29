@@ -1689,8 +1689,55 @@ SMODS.Joker {
     end
 }
 
-function NAMETEAM.debuff_all()
-    for k, v in ipairs(G.hand.cards) do
-        v:set_debuff(true)
+SMODS.Joker {
+    key = "nameteam_edega",
+    config = { extra = { chance = 1, max_chance = 4, mult = 2, current_mult = 0} },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 10, y = 11 },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { G.GAME.probabilities.normal*card.ability.extra.chance, card.ability.extra.max_chance , card.ability.extra.mult , card.ability.extra.current_mult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "TheAltDoc",
+        art = "TheAltDoc",
+        code = "TheAltDoc",
+    },
+    calculate = function(self, card, context)
+        if context.press_play then
+            for k, v in pairs(G.hand.cards) do
+                if not v.debuff then
+                    local will_rebuff = pseudorandom(pseudoseed('nteam_adapaige'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance)*100
+                    if will_rebuff then
+                        v:set_debuff(true)
+                        card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult
+                    end
+                end
+            end
+            if card.ability.extra.current_mult > 0 then
+                return {
+                    sound = "cbean_edega_debuff",
+                    message= localize("k_cbean_edega_debuff")
+                }
+            end
+        end
+        if context.joker_main then
+            return{
+                    mult = card.ability.extra.current_mult,
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            card.ability.extra.current_mult = 0
+            return {
+                message= localize("k_reset")
+            }
+        end
     end
-end
+}

@@ -4948,6 +4948,23 @@ return {
 					"rebuff themselves"
 				}
 			},
+			j_cbean_nameteam_edega = {
+				name = 'Dr. Edega',
+				text ={
+					{
+						"Upon playing a hand,",
+						"playing cards have",
+						"a {C:green}#1# in #2#{} chance to",
+						"debuff themselves"
+					},
+					{
+						"For each card that has",
+						"been debuffed, gain {C:mult}+#3#{} Mult",
+						"{s:0.8}Resets at the end of the round",
+						"{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult){}"
+					},
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8526,7 +8543,8 @@ return {
 
 			k_cbean_mitosis = "Mitosis!",
 			
-			k_cbean_adapaige_heal = "Healed!"
+			k_cbean_adapaige_heal = "Healed!",
+			k_cbean_edega_debuff = "Healed?"
 		},
 		high_scores = {},
 		labels = {
