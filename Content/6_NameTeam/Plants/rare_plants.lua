@@ -754,3 +754,53 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "blastberry_vine",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            trigs = 0,
+            needed_trigs = 3,
+            xmult = 1.25
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,cae.trigs,cae.needed_trigs}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual then
+            if cae.trigs < cae.needed_trigs then
+                cae.triggered = true
+                if context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+                    return{
+                        xmult = cae.xmult
+                    }
+                end
+            else
+                cae.trigs = 0
+                if context.cardarea == G.play or context.cardarea == "unscored" then
+                    return{
+                        xmult = cae.xmult
+                    }
+                end
+            end
+        end
+        if context.after and cae.triggered then
+            cae.triggered = false
+            cae.trigs = cae.trigs + 1
+        end
+    end,
+})

@@ -4716,6 +4716,17 @@ return {
 				},
 			},
 
+			j_cbean_pokra = {
+				name = "Pokra",
+				text = {
+					"First scored card",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"After every {C:attention}#3#{} {C:inactive}(#2#){} triggers",
+					"every played card gives",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+
 			j_cbean_dazey_chain = {
 				name = "Dazey Chain",
 				text = {
