@@ -4452,6 +4452,14 @@ return {
 					"affect {C:green}double{} the cards"
 				},
 			},
+			j_cbean_electric_currant  = {
+				name = "Electric Currant",
+				text = {
+					"Cards between your",
+					"scored {C:attention}Rightmost{} and {C:attention}Leftmost{}",
+					"cards give {C:mult}+#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
