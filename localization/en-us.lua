@@ -4396,6 +4396,15 @@ return {
 					"gives {C:chips}+#1#{} Chips"
 				},
 			},
+			j_cbean_ghost_pepper  = {
+				name = "Ghost Pepper",
+				text = {
+					"All scored cards",
+					"give {C:chips}+#1#{} Chips",
+					"{C:red}Self-Destruct{} after",
+					"{C:attention}#3#{C:inactive} (#2#){} rounds"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
