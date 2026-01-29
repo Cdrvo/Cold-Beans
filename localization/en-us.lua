@@ -8106,6 +8106,10 @@ return {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
 				"{C:attention}Chinese Zodiacs{}",
 			},
+			cbean_reward_combos          = {
+				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
+				"{C:attention}Combo Cards{}",
+			},
 			--#endregion
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
@@ -8161,6 +8165,7 @@ return {
 			b_nteam_exchange                    = "Exchange",
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
 			k_plus_blessing                     = "+1 Blessing",
+			k_plus_combo_card                   = "+1 Combo",
 			k_plus_soul                         = "+The Soul",
 			k_plus_piss                         = "+1 Piss Card",
 			k_cbean_nteam_uhoh                  = "Uh oh!",
