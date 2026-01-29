@@ -3054,10 +3054,12 @@ SMODS.Joker({
             if card:on_the("right") then
                 SMODS.debuff_card(card:on_the("right"), true, "elecelec")
                 card:on_the("right").newly_debuffed = true
+                card:on_the("right").was_debuffed_by_elec = true
             end
             if card:on_the("left") then
                 SMODS.debuff_card(card:on_the("left"), true, "elecelec")
                 card:on_the("left").newly_debuffed = true
+                card:on_the("left").was_debuffed_by_elec = true
             end
         end
     end,

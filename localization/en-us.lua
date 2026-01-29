@@ -4661,7 +4661,7 @@ return {
 			j_cbean_zoybean_pod = {
 				name = "Zoybean Pod",
 				text = {
-					"Every {C:attention}#1#{} Rounds",
+					"Every {C:attention}#2#{C:inactive} (#1#){} Rounds",
 					"create a random {C:dark_edition}negative{}",
 					"Zom-boid"
 				},
@@ -4676,7 +4676,7 @@ return {
 			j_cbean_carrot_z = {
 				name = "Carrothead Zomboid",
 				text = {
-					"{C:chips}+#2#{} Chips"
+					"{C:chips}+#1#{} Chips"
 				},
 			},
 			j_cbean_melon_z = {
@@ -4692,7 +4692,8 @@ return {
 				text = {
 					"{C:green}Sell{} to while",
 					"in a blind to defeat it",
-					"{C:red}Debuffs{} adjecent jokers"
+					"{C:red}Debuffs{} adjecent jokers",
+					"for 1 round"
 				},
 			},
 
@@ -4702,6 +4703,18 @@ return {
 					"Scored Cards give", 
 					"{C:mult}+#1#{} Mult",
 					"{C:mult}-#2#{} Mult per trigger"
+				},
+			},
+
+			j_cbean_dazey_chain = {
+				name = "Dazey Chain",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"AFter 2 rounds, starts giving",
+					"{C:mult}+#2#{} Mult. and",
+					"3 more rounds after that,",
+					"starts giving {X:mult,C:white}X#3#{} Mult",
+					"{C:inactive}(Rounds: #4#, Stage: #5#)"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {

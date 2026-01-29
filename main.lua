@@ -139,7 +139,8 @@ ColdBeans.calculate = function(mod, context)
 
 				if v.newly_debuffed then
 					v.newly_debuffed = false
-				else
+				elseif v.was_debuffed_by_elec then
+					v.was_debuffed_by_elec = nil
 					SMODS.debuff_card(v, false, "elecelec")
 				end
 
