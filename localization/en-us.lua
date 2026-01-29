@@ -4352,6 +4352,16 @@ return {
 					"card gives {X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_grimrose = {
+				name = "Grimrose",
+				text = {
+					"When this card is {C:green}sold",
+					"{C:red}destroy{} a random card",
+					"from the {C:attention}next{} scoring",
+					"hand and {C:green}level up{} the",
+					"played hand"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

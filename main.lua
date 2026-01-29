@@ -60,6 +60,29 @@ ColdBeans.calculate = function(mod, context)
 	if context.setting_blind then
 		NAMETEAM.skipped = false
 	end
+	if context.before then
+		if NAMETEAM.grimrose_number and NAMETEAM.grimrose_number>0 then
+			NAMETEAM.grimrose_triggered = true
+			NAMETEAM.grimrose_number = NAMETEAM.grimrose_number - 1
+			SMODS.smart_level_up_hand(nil, context.scoring_name, nil, 1)
+		end
+	end
+	if context.final_scoring_step then
+		if NAMETEAM.grimrose_triggered then
+			NAMETEAM.grimrose_triggered  = false
+			local acard = pseudorandom_element(context.scoring_hand,pseudoseed("grimyrosu"))
+			if acard then
+				G.E_MANAGER:add_event(Event({
+					trigger = "after",
+					delay = 0.03,
+					func = function()
+						SMODS.destroy_card(acard)
+						return true
+					end
+				})) 
+			end
+		end
+	end
 	
 	if context.after then
         G.GAME.cbean_combo_index = {}

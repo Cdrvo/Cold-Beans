@@ -726,3 +726,33 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "grimrose",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    pools = {
+        cbean_shadow = true
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={ cae.xmult }}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.grimrose_number = NAMETEAM.grimrose_number or 0 
+            NAMETEAM.grimrose_number =  NAMETEAM.grimrose_number + 1
+        end
+    end
+})
