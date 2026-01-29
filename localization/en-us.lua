@@ -4345,6 +4345,13 @@ return {
 					"hand left"
 				},
 			},
+			j_cbean_dusk_lobber = {
+				name = "Dusk Lobber",
+				text = {
+					"A random scored",
+					"card gives {X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
