@@ -220,6 +220,48 @@ SMODS.Joker({
     end,
 })
 
+SMODS.Joker({
+    key = "lava",
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rounds = 0,
+            max_round = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.max_round, cae.rounds}}
+    end,
+    update = function(self,card)
+        if card.added_to_deck then
+            if card.edition then
+                card:set_edition(nil, true, true)
+            end
+        end
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        card:add_sticker("eternal", true)
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_round and context.main_eval then
+            if cae.rounds<cae.max_round-1 then
+                cae.rounds=cae.rounds+1
+            else
+                SMODS.destroy_cards(card, true)
+            end
+        end
+    end,
+})
+
 
 
 SMODS.Joker({

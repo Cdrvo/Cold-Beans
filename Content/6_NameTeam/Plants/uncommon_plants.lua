@@ -15,6 +15,7 @@ SMODS.Joker({
         }
     },
     loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_crater
         local cae = card.ability.extra
         return{vars={cae.mult}}
     end,
@@ -735,7 +736,7 @@ SMODS.Joker({
 SMODS.Joker({
     key = "plantern",
     cost = 3,
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = true,
     config = {
         extra = {
@@ -829,7 +830,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = true,
     config = {
         extra = {
@@ -964,7 +965,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 3,
+    rarity = 2,
     blueprint_compat = false,
     config = {
         extra = {
@@ -2444,7 +2445,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2464,6 +2465,39 @@ SMODS.Joker({
             return{
                 xmult = 2
             }
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "lava_guava",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_lava
+        local cae = card.ability.extra
+        return{vars={cae.rep}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.GAME.blind and G.GAME.blind.in_blind then
+            NAMETEAM.defeat()
+            SMODS.add_card{
+                key = "j_cbean_lava",
+                area = G.jokers
+            }
+            card:add_sticker("eternal", true)
         end
     end
 })

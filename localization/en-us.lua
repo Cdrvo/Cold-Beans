@@ -4421,6 +4421,22 @@ return {
 					"jokers"
 				},
 			},
+			j_cbean_lava_guava  = {
+				name = "Lava Guava",
+				text = {
+					"{C:green}Sell{} to defeat",
+					"current blind",
+					"Leaves behind {C:attention}Lava{}",
+				},
+			},
+			j_cbean_lava = {
+				name = "Lava",
+				text = {
+					"Is eternal",
+					"{C:red}Self-Destructs{} after",
+					"{C:attention}#1#{C:inactive} (#2#){} rounds"
+				},
+			},
 			j_cbean_fire_peashooter  = {
 				name = "Fire Peashooter",
 				text = {
