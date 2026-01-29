@@ -1569,3 +1569,33 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "stickybomb_rice",
+    cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    always_buyable = true,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 10
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            local aecard = pseudorandom_element(context.scoring_hand,pseudoseed("sticky_ricey_ahahjgasyhgda"))
+            aecard.mark_for_no_score = true
+            aecard.no_score_mult = cae.mult
+        end
+    end,
+})

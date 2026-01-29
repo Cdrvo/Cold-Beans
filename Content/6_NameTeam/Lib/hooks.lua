@@ -317,6 +317,10 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                     func = (function() SMODS.juice_up_blind() return true end)
                 }))
                 NAMETEAM.msg(card, "No Score!")
+				if card.no_score_mult then
+					SMODS.calculate_effect({mult = card.no_score_mult}, card)
+					card.no_score_mult = nil
+				end
 				if card.mark_for_no_score then
 					card.mark_for_no_score = nil
 				end

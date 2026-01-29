@@ -4867,6 +4867,13 @@ return {
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_stickybomb_rice = {
+				name = "Stickybomb Rice",
+				text = {
+					"A random card {C:red}won't{} score",
+					"but will give {C:mult}+#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
