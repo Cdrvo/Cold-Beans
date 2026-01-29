@@ -1857,3 +1857,49 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "magnifying_grass",
+    cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            dollars = 4,
+            xmult = 1,
+            xmult_gain = 0.5,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars,cae.xmult,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.cbean_clicked and context.card == card then
+            ease_dollars(-cae.dollars)
+            SMODS.scale_card(card, {
+                ref_table = cae,
+                ref_value = "xmult",
+                scalar_value = "xmult_gain"
+            })
+        end
+
+        if context.end_of_round and context.main_eval and not context.blueprint then
+            cae.xmult = 1
+            return{message=localize("k_reset")}
+        end
+    end,
+})
