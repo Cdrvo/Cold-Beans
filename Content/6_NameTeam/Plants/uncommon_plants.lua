@@ -2697,13 +2697,54 @@ SMODS.Joker({
                     cae.hands_left = cae.hands_left - 1
                     NAMETEAM.msg(card, "-1")
                 else
-                   -- cae.hands_left = 2
+                    cae.hands_left = 0
                     NAMETEAM.msg(card, "Debuff!")
                     SMODS.debuff_card(card, true, "jack_lantern_debuff")
                 end
                 return true
             end
         }))
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "grapeshot",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            destroys = 5
+        }
+    },
+    add_to_deck = function(self,card,from_debuff)
+        card.ability.extra_value = card.cost
+        card:set_cost()
+    end,
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "jacking_my_lantern_till_it_o")
+        return{vars={cae.destroys}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.hand and G.hand.cards and #G.hand.cards>0 then
+            local shuffle_tab = {}
+            for k, v in pairs(G.hand.cards) do
+                shuffle_tab[#shuffle_tab+1] = v
+            end
+            shuffle_tab = NAMETEAM.shuffle(shuffle_tab,"aeaeaeaeaeaeae")
+            for i = 1, cae.destroys do
+                if #G.hand.cards>0 and shuffle_tab[i] then
+                    SMODS.destroy_cards(shuffle_tab[i])
+                end
+            end
         end
     end
 })

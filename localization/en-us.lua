@@ -4516,6 +4516,14 @@ return {
 					"{:attention}#5#{} hands"
 				},
 			},
+			j_cbean_grapeshot = {
+				name = "Grapeshot",
+				text = {
+					"{C:green}Sell{} this card to",
+					"{C:red}destroy{} {C:attention}#1#{} random",
+					"cards in hand",
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
