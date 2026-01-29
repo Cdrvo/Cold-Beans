@@ -3178,3 +3178,53 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "ice_bloom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1.75,
+            odds = 3,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "ice_seed")
+        return{vars={cae.mult,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            if SMODS.pseudorandom_probability(card, "ice_seed", 1, cae.odds) then
+                context.other_card.marked_by_ice = true
+            end
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.final_scoring_step then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    for k, v in pairs(G.play.cards) do
+                        if v.marked_by_ice then
+                            SMODS.debuff_card(v, true, "icey_never_openy")
+                            NAMETEAM.msg(v, "Debuffed!")
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+    end,
+})

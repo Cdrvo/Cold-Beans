@@ -4726,6 +4726,16 @@ return {
 				},
 			},
 
+			j_cbean_ice_bloom = {
+				name = "Ice Bloom",
+				text = {
+					"Scored cards give",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#2# in #3#{} Chance to",
+					"{C:red}debuff{} them permanently"
+				},
+			},
+
 			j_cbean_pokra = {
 				name = "Pokra",
 				text = {
