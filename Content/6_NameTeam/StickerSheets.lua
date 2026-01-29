@@ -1216,3 +1216,52 @@ SMODS.Consumable({
 		delay(0.6)
 	end,
 })
+
+SMODS.Consumable({
+	set = "cbean_StickerSheet",
+	key = "healing_sheet",
+	pos = { x = 0, y = 0 },
+	pos_extra = { x = 1, y = 5 },
+	draw_extra = function(self, card, layer)
+		if self.discovered or card.params.bypass_discovery_center then
+			card.cbean_extra:draw_shader("booster", nil, card.ARGS.send_to_shader, nil, card.children.center)
+		end
+	end,
+	config = { extra = { cards = 2 } },
+	atlas = "NAMETEAM_StickerSheets",
+	cost = 6,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = SMODS.Stickers["cbean_healing"]
+		return {
+			vars = { card.ability.extra.cards },
+		}
+	end,
+	can_use = function(self, card)
+		if #G.hand.highlighted == 1 then
+			if not G.hand.highlighted[1].ability.cbean_healing then
+        local stickers = NAMETEAM.get_all_stickers(G.hand.highlighted[1])
+        for _, key in ipairs(stickers) do
+          if SMODS.Stickers[key].sticker_type == "Negative" then
+            return true
+          end
+        end
+			end
+		end
+		return false
+	end,
+	use = function(self, card, area, copier)
+		local affected_card = G.hand.highlighted[1]
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				play_sound("gold_seal", 2, 0.75)
+				affected_card:add_sticker("cbean_healing", true)
+				card:juice_up(0.3, 0.5)
+				affected_card:juice_up()
+				return true
+			end,
+		}))
+		delay(0.6)
+	end,
+})

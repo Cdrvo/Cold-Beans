@@ -6856,6 +6856,14 @@ return {
 					"then creates {C:attention}#1#{} copies of it",
 				},
 			},
+			c_cbean_healing_sheet = {
+				name = "Healing",
+				text = {
+					"Applies {C:attention}Healing{} to {C:attention}1{} selected",
+					"{C:attention}Joker{} without {C:attention}Healing{} that",
+					"has a detrimental {C:attention}Sticker",
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_sunbean = {
