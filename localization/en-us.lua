@@ -4725,6 +4725,16 @@ return {
 					"{C:dark_edition}+1{C:attention} Joker Slot"
 				},
 			},
+			j_cbean_shine_vine = {
+				name = "Shine Vine",
+				text = {
+					"{C:money}+$#1#{} After every round",
+					"gives an extra {C:money}+$#1#{} for every",
+					"joker on this joker's right",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+				},
+			},
 
 			j_cbean_ice_bloom = {
 				name = "Ice Bloom",

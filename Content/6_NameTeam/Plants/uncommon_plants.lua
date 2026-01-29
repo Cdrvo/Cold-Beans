@@ -3181,6 +3181,46 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+    key = "shine_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            dollars = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars,cae.dollars + (card.area and NAMETEAM.all_on(card,card.area, "right")) or 0 }}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return cae.dollars + NAMETEAM.all_on(card,card.area, "right")
+    end
+})
+
+SMODS.Joker({
     key = "ice_bloom",
     cost = 4,
     beans_credits = {
