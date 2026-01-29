@@ -1237,9 +1237,9 @@ SMODS.Consumable({
 		}
 	end,
 	can_use = function(self, card)
-		if #G.hand.highlighted == 1 then
-			if not G.hand.highlighted[1].ability.cbean_healing then
-        local stickers = NAMETEAM.get_all_stickers(G.hand.highlighted[1])
+		if #G.jokers.highlighted == 1 then
+			if not G.jokers.highlighted[1].ability.cbean_healing then
+        local stickers = NAMETEAM.get_all_stickers(G.jokers.highlighted[1])
         for _, key in ipairs(stickers) do
           if SMODS.Stickers[key].sticker_type == "Negative" then
             return true
@@ -1250,7 +1250,7 @@ SMODS.Consumable({
 		return false
 	end,
 	use = function(self, card, area, copier)
-		local affected_card = G.hand.highlighted[1]
+		local affected_card = G.jokers.highlighted[1]
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
 			delay = 0.4,
