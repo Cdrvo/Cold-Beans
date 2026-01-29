@@ -4495,6 +4495,14 @@ return {
 					"{C:inactive}(Currently {C:blue}#1#{C:inactive} Hands played)"
 				},
 			},
+			j_cbean_electric_blueberry = {
+				name = "Electric Blueberry",
+				text = {
+					"{C:attention}Retrigger{} a random",
+					"scoring card",
+					"{C:attention}#1#{} times"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

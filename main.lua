@@ -117,7 +117,7 @@ ColdBeans.calculate = function(mod, context)
 				if v.cbean_lily_power and v.cbean_lily_power>0 then
 					v.cbean_lily_power = v.cbean_lily_power -1 
 					NAMETEAM.msg(v, "-1")
-				else
+				elseif v.cbean_lily_power then
 					v.cbean_lily_power = nil
 					NAMETEAM.msg(v, localize("k_reset"))
 					NAMETEAM.values("/",v,2,true)

@@ -2612,3 +2612,67 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "electric_blueberry",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 3,
+            _card = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rep}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            cae._card = pseudorandom_element(context.scoring_hand, pseudoseed("elec_ber"))
+        end
+        if context.repetition and context.cardarea == G.play and context.other_card == cae.card then
+            return{
+                repetitions = cae.rep
+            }
+        end
+        if context.after then
+            cae.card = nil
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "jack_o_lantern",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            hands_left = 2,
+            xmult = 1.5,
+            odds = 2,
+            debuff_hands = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.ods, "jacking_my_lantern_till_it_o")
+        return{vars={cae.xmult,cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end
+})
