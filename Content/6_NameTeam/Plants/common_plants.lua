@@ -1231,7 +1231,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.before and not context.blueprint then
-            
+
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
                     cae.rr = i
@@ -1253,4 +1253,62 @@ SMODS.Joker({
             }
         end
     end,
+})
+
+
+SMODS.Joker({
+    key = "holly_projectile",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 5,
+            chips = 30,
+            dollars = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        if not card.cbean_type then card.cbean_type = "unselected" end
+        local cae = card.ability.extra
+        local key, vars = self.key, {}
+        if card.cbean_type == "mult" then
+            vars = {cae.mult}
+            key = self.key .. "_mult"
+        elseif card.cbean_type == "chips" then
+            vars = {cae.chips}
+            key = self.key .. "_chips"
+        elseif card.cbean_type == "dollars" then
+            vars = {cae.dollars}
+            key = self.key .. "_dollars"
+        else
+            vars = {}
+            key = self.key
+        end
+        return{vars=vars,key=key}
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            if card.cbean_type == "mult" then
+                return{
+                    mult = cae.mult
+                }
+            else
+                return{
+                    chips = cae.chips
+                }
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self,card)
+        if card.cbean_type == "dollars" then
+            return card.ability.extra.dollars
+        end
+    end
 })

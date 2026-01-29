@@ -4612,6 +4612,51 @@ return {
 					"{C:inactive}(Stored: {C:chips}#3#{C:inactive})"
 				},
 			},
+			j_cbean_electric_peashooter = {
+				name = "Electric Peashooter",
+				text = {
+					"All cards to the",
+					"right of this",
+					"gives {C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_holly_barrier = {
+				name = "Holly Barier",
+				text = {
+					"For the next {C:attention}#1#{C:inactive} (#2#){} Hands",
+					"create a {C:dark_edition}Negative{}",
+					"{C:attention}Holly{} Projectile",
+					"with a random effect"
+				},
+			},
+			-- projectiles
+			j_cbean_holly_projectile = {
+				name = "Holly Projectile",
+				text = {
+					"When added to deck",
+					"obtains a random ability",
+				},
+			},
+			j_cbean_holly_projectile_mult = {
+				name = "Holly Projectile",
+				text = {
+					"{C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_holly_projectile_chips = {
+				name = "Holly Projectile",
+				text = {
+					"{C:chips}+#1#{} Chips"
+				},
+			},
+			j_cbean_holly_projectile_dollars = {
+				name = "Holly Projectile",
+				text = {
+					"{C:money}+$#1#{} after every",
+					"round"
+				},
+			},
+			--
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

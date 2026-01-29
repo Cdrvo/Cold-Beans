@@ -2953,3 +2953,40 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "holly_barrier",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            hands_left = 5,
+            hands_max = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_holly_projectile
+        local cae = card.ability.extra
+        return{
+            vars={cae.hands_max,cae.hands_left}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.cbean_first and not context.blueprint then
+            cae.hands_left = cae.hands_left - 1
+            local acard = SMODS.add_card{
+                key = "j_cbean_holly_projectile"
+            }
+            acard.cbean_type = pseudorandom_element({"mult","chips","dollars"})
+            acard:set_edition("e_negative")
+        end
+    end,
+})
