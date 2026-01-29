@@ -1640,3 +1640,52 @@ SMODS.Joker {
       end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_adapaige",
+    config = { extra = { chance = 1, max_chance = 3} },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 2, y = 11 },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { G.GAME.probabilities.normal*card.ability.extra.chance, card.ability.extra.max_chance } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "TheAltDoc",
+        art = "TheAltDoc",
+        code = "TheAltDoc",
+    },
+    calculate = function(self, card, context)
+        if context.press_play then
+            local has_rebuffs = false
+            for k, v in pairs(G.hand.cards) do
+                if v.debuff then
+                    local will_rebuff = pseudorandom(pseudoseed('nteam_adapaige'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance)*100
+                    if will_rebuff then
+                        v:set_debuff(false)
+                        has_rebuffs = true
+                    end
+                end
+            end
+            if has_rebuffs then
+                return {
+                    sound = "cbean_adapaige_heal",
+                    message = localize("k_cbean_adapaige_heal")
+                }
+            end
+        end
+    end
+}
+
+function NAMETEAM.debuff_all()
+    for k, v in ipairs(G.hand.cards) do
+        v:set_debuff(true)
+    end
+end

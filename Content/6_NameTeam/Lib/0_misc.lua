@@ -53,3 +53,8 @@ SMODS.Atlas({
 SMODS.ObjectType({
 	key = "cbean_shadow"
 })
+
+SMODS.Sound({
+  key = "adapaige_heal",
+  path = "6_NameTeam/cbean_adapaige_heal.ogg"
+})

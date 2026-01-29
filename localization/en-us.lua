@@ -4821,6 +4821,16 @@ return {
 					"are {C:hearts}Hearts{} suit"
 				}
 			},
+			j_cbean_nameteam_adapaige = {
+				name = 'Dr. Paige',
+				text =
+				{
+					"Upon playing a hand,",
+					"debuffed playing cards have",
+					"a {C:green}#1# in #2#{} chance to",
+					"rebuff themselves"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8395,7 +8405,11 @@ return {
 			k_styx_active = "active",
 			k_styx_inactive = "inactive",
 
-			k_converted = "Converted"
+			k_converted = "Converted",
+
+			k_cbean_mitosis = "Mitosis!",
+			
+			k_cbean_adapaige_heal = "Healed!"
 		},
 		high_scores = {},
 		labels = {

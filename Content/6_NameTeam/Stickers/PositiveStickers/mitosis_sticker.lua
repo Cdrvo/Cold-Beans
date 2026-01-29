@@ -38,7 +38,7 @@ SMODS.Sticker({
                         end
                     })) 
                     return {
-                        message = 'Mitosis!'
+                        message = localize("k_cbean_mitosis")
                     }
                 end
             else
