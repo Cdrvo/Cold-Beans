@@ -146,6 +146,41 @@ function SMODS:create_card(t)
     return smods_create_card_ref(self, t)
 end
 
+SMODS.Joker {
+    key = "nameteam_aldus",
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 7, y = 9 },
+    cost = 8,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    }
+}
+
+local main_menu_ref = Game.main_menu
+Game.main_menu = function(change_context)
+  local ret = main_menu_ref(change_context)
+
+  for k, v in pairs(G.P_CENTERS) do
+    if v.set == "Tarot" and v.config and ((v.config.mod_conv and v.config.mod_conv ~= "card") or v.config.suit_conv or v.config.cbean_banned_by_aldus) and not v.config.cbean_whitelisted_by_aldus then
+        v.in_pool = v.in_pool or (function() return true end)
+
+        local in_pool_ref = v.in_pool
+        v.in_pool = (function() return in_pool_ref() and not next(SMODS.find_card("j_cbean_nameteam_aldus")) end)
+    end
+  end
+
+  return ret
+end
+
 SMODS.Sound({
     key = "bwow",
     path = "6_NameTeam/cbean_bwow.ogg"
@@ -1549,6 +1584,38 @@ SMODS.Joker {
         ease_hands_played(card.ability.extra.hands_converted)
         ease_discard(-card.ability.extra.discards_converted)
         return {message = localize("k_converted")}
+      end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_littlegarnet",
+    config = { extra = { normal_money = 2, bonus_money = 4 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 7, y = 9 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.normal_money, card.ability.extra.bonus_money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:get_id() == 2 then
+        if context.other_card:is_suit("Hearts") then
+            return { dollars = card.ability.extra.bonus_money }
+        else
+            return { dollars = card.ability.extra.normal_money }
+        end
       end
     end
 }

@@ -4369,6 +4369,16 @@ return {
 					"{C:inactive}(Currently reducing by {C:attention}%#1#{C:inactive})"
 				},
 			},
+			j_cbean_nightshade  = {
+				name = "Nightshade",
+				text = {
+					"Destroy the first scoring",
+					"card and add half of its",
+					"{C:chips}Chip{} value as {C:mult}Mult{}",
+					"to this card",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_grimrose = {
 				name = "Grimrose",
 				text = {
@@ -4377,6 +4387,22 @@ return {
 					"from the {C:attention}next{} scoring",
 					"hand and {C:green}level up{} the",
 					"played hand"
+				},
+			},
+			j_cbean_homing_thistle  = {
+				name = "Homing Thistle",
+				text = {
+					"Firt scored card",
+					"gives {C:chips}+#1#{} Chips"
+				},
+			},
+			j_cbean_ghost_pepper  = {
+				name = "Ghost Pepper",
+				text = {
+					"All scored cards",
+					"give {C:chips}+#1#{} Chips",
+					"{C:red}Self-Destruct{} after",
+					"{C:attention}#3#{C:inactive} (#2#){} rounds"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
@@ -4436,6 +4462,15 @@ return {
 				text = {
 					"All spawned {C:attention}Jokers{}",
 					"are {C:green}Uncommon{}",
+				},
+			},
+			j_cbean_nameteam_aldus = {
+				name = "Aldus",
+				text = {
+					"{C:tarot}Tarot{} cards that",
+					"change {C:attention}suits{} or",
+					"add {C:attention}enhancements{}",
+					"{C:red}cannot appear{}",
 				},
 			},
 			j_cbean_nameteam_manface = {
@@ -4684,6 +4719,16 @@ return {
 					"Played {C:attention}Aces{} convert",
 					"{C:red}#1#{} discard into {C:blue}#1#{}",
 					"hand when scored"
+				}
+			},
+			j_cbean_nameteam_littlegarnet = {
+				name = 'Little Garnet',
+				text =
+				{
+					"Played {C:attention}2s{} earn {C:money}$#1#{}",
+					"when scored, earn",
+					"{C:money}$#2#{} instead if they",
+					"are {C:hearts}Hearts{} suit"
 				}
 			},
 

@@ -756,3 +756,77 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "homing_thistle",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 20
+        }
+    },
+    pools = {
+        cbean_shadow = true
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play and context.scoring_hand and context.other_card == context.scoring_hand[1] then
+            return{
+                chips = cae.chips
+            }
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "ghost_pepper",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 15,
+            rounds = 5,
+            rounds_max = 5
+        }
+    },
+    pools = {
+        cbean_shadow = true
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.rounds,cae.rounds_max}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            return{
+                chips = cae.chips
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            if cae.rounds > 1 then
+                cae.rounds = cae.rounds-1
+            else
+                SMDOS.destroy_cards(card)
+                NAMETEAM.msg(card, localize("k_eaten_ex"))
+            end
+        end
+    end
+})
