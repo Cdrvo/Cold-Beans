@@ -150,7 +150,7 @@ SMODS.Joker {
     key = "nameteam_aldus",
     rarity = 3,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 7, y = 9 },
+    pos = { x = 9, y = 11 },
     cost = 8,
     blueprint_compat = false,
     eternal_compat = true,
@@ -1589,7 +1589,7 @@ SMODS.Joker {
     config = { extra = { hands_converted = 1, discards_converted = 1 } },
     rarity = 1,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 6, y = 9 },
+    pos = { x = 7, y = 11 },
     cost = 4,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.discards_converted, card.ability.extra.hands_converted } }
@@ -1619,7 +1619,7 @@ SMODS.Joker {
     config = { extra = { normal_money = 2, bonus_money = 4 } },
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 7, y = 9 },
+    pos = { x = 8, y = 11 },
     cost = 7,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.normal_money, card.ability.extra.bonus_money } }
