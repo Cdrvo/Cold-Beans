@@ -2,7 +2,7 @@ SMODS.ConsumableType {
   key = "cbean_StickerSheet",
   primary_colour = HEX("677bb4"),
   secondary_colour = HEX("859ad7"),
-  collection_rows = { 4, 4 },
+  collection_rows = { 4, 5 },
   shop_rate = 1,
   default = "c_cbean_eternal_sheet",
   can_stack = true,
