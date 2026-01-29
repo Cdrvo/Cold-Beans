@@ -1812,3 +1812,48 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "sun_bean",
+    cost = 15,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            dollars = 6
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus or 0
+            if not NAMETEAM.sunbean_tagged then
+                NAMETEAM.sunbean_tagged = true
+                add_tag(Tag("tag_cbean_sunbean"))
+					play_sound("generic1", 0.9 + math.random() * 0.1, 0.8)
+					play_sound("holo1", 1.2 + math.random() * 0.1, 0.4)
+            end
+            if G.GAME.blind:get_type() == "Teeny" then
+                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars/2
+            elseif  G.GAME.blind:get_type() == "Small" then
+                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars
+            elseif G.GAME.blind:get_type() == "Big" then
+                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*2
+            elseif G.GAME.blind:get_type() == "Boss" then
+                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*3
+            elseif G.GAME.blind:get_type() == "CEO" then
+                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*4
+            end
+        end
+    end,
+})

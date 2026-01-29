@@ -4216,6 +4216,24 @@ return {
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_magnifying_grass = {
+				name = "Magnifying Grass",
+				text = {
+					"Gain {X:mult,C:white}X#3#{} Mult",
+					"when clicked but lose {C:money}-$#1#{}",
+					"{C:inactive,s:0.8}(Resets at the end of a round)",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_sun_bean = {
+				name = "Sun Bean",
+				text = {
+					"Get a {C:attention}Sun Bean{} tag",
+					"and increase it's value",
+					"depending on the current blind",
+					"{C:inactive,s:0.8}(e.g Small Blind = 6, Big Blind = 12)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
@@ -6704,6 +6722,14 @@ return {
 			},
 		},
 		Tag = {
+			tag_cbean_sunbean = {
+				name = 'Sunbean Tag',
+                text={
+                    "After defeating",
+                    "the Blind,",
+                    "gain {C:money}$#1#",
+                },
+			},
 			tag_cbean_colon_construction = {
 				name = 'Construction Tag',
 				text = {

@@ -394,3 +394,12 @@ G.FUNCS.check_for_buy_space = function(card)
     end
     return check_for_buy_space_old(card)
 end
+
+local click_old = Card.click
+function Card:click()
+	local ret = click_old(self)
+	if self.added_to_deck and self.config.center.key == "j_cbean_magnifying_grass" then
+		SMODS.calculate_context({cbean_clicked = true, card = self})
+	end
+	return ret
+end
