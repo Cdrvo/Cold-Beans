@@ -3141,7 +3141,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.mult}}
+        return{vars={cae.chips}}
     end,
     add_to_deck = function(self,card,from_debuff)
         G.jokers.config.card_limit = G.jokers.config.card_limit + 1
@@ -3199,7 +3199,7 @@ SMODS.Joker({
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "ice_seed")
-        return{vars={cae.mult,num,den}}
+        return{vars={cae.xmult,num,den}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra

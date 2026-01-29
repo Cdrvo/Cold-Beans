@@ -1423,3 +1423,79 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "dartichoke",
+    cost = 0,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            card = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and context.scoring_hand then
+            cae.card = NAMETEAM.find_highest(context.scoring_hand)
+        end
+        if context.individual and context.cardarea == G.play then
+            if context.other_card == cae.card then
+                return{
+                    chips = context.other_card.base.id
+                }
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "tumbleweed",
+    cost = 0,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 2,
+            odds = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMODS.get_probability_vars(card, 1,cae.odds,"tumbling")
+        return{
+            vars={cae.rep,num,den}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            for k, v in pairs(context.scoring_hand) do
+                if SMODS.pseudorandom_probability(card, "tumbling", 1, cae.odds) then
+                    v.mark_for_no_score = true
+                end
+            end
+        end
+        if context.repetition and context.cardarea == G.play then
+            return{
+                repetitions = cae.rep
+            }
+        end
+    end,
+})

@@ -4736,6 +4736,16 @@ return {
 				},
 			},
 
+			j_cbean_tumbleweed = {
+				name = "Tumbleweed",
+				text = {
+					"Scored cards has",
+					"a {C:green}#2# in #3#{} Chance",
+					"to retrigger {C:attention}#1#{} Times",
+					"never trigger otherwise"
+				},
+			},
+
 			j_cbean_pokra = {
 				name = "Pokra",
 				text = {
@@ -4764,6 +4774,14 @@ return {
 					"{C:green}Sell{} this to reduce",
 					"needed score by", 
 					"this ante's {C:attention}Big{} blind needed score"
+				},
+			},
+
+			j_cbean_dartichoke = {
+				name = "Dartichoke",
+				text = {
+					"Scored highest rank card",
+					"gives its rank as chips"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
