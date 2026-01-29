@@ -4573,9 +4573,21 @@ return {
 				name = "Witch Hazel",
 				text = {
 					"After scoring",
-					"{C:attention}transfomr{} a random",
+					"{C:attention}transform{} a random",
 					"scored card to {C:attention}another",
 					"scored card"
+				},
+			},
+			j_cbean_parsnip = {
+				name = "Parsnip",
+				text = {
+					"When the first scored card",
+					"scored, {C:green}#2# in  #3#{}",
+					"Chance to {C:red}Self-Destruct{}",
+					"and add {C:chips}+#4#{} Bonus chips",
+					"to other scored cards.",
+					"First scored card gains",
+					"{C:chips}+#1#{} Chips otherwise"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {

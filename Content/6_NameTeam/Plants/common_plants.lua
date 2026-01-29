@@ -1146,3 +1146,63 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    key = "parsnip",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    config = { 
+        extra = {
+            chip_gain = 10,
+            chip_destroy = 20,
+            odds = 8,
+            dest = false,
+            fuck_you = false
+        } 
+    },
+    loc_vars = function(self, info_queue, card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "parsnipping")
+        return { vars = { cae.chip_gain, num, den, cae.chip_destroy } }
+    end,
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            if SMODS.pseudorandom_probability(card, "parsnipping", 1, cae.odds) then
+                cae.fuck_you = true
+            end
+        end
+        if context.individual and context.cardarea == G.play then
+            local c, gp = context.other_card, context.scoring_hand
+                if cae.fuck_you then
+                    cae.dest = true
+                    if c ~= gp[1] then
+                        c.ability.perma_bonus = (c.ability.perma_bonus or 0) + cae.chip_destroy
+                        return {
+                            message = localize('k_upgrade_ex'),
+                            colour = G.C.CHIPS
+                        }
+                    end
+                else
+                    if c == gp[1] then
+                    c.ability.perma_bonus = (c.ability.perma_bonus or 0) + cae.chip_gain
+                    return {
+                        message = localize('k_upgrade_ex'),
+                        colour = G.C.CHIPS
+                    }
+                end
+            end
+        end
+        if context.after and not context.blueprint and cae.dest then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    SMODS.destroy_cards(card)
+                    return true
+                end
+            }))
+        end
+    end
+})
