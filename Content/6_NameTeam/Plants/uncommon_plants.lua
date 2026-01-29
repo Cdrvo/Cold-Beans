@@ -2211,13 +2211,14 @@ SMODS.Joker({
                 })
             end
         end
-        if context.first_hand_drawn then
+        if context.first_hand_drawn and cae.perc>0 then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.01,
                 func = function()
-                    G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.prec(G.GAME.blind.chips, cae.perc)
+                    G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.perc)
                     G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                    NAMETEAM.msg(card, "Reduced!")
                     return true
                 end
             }))
