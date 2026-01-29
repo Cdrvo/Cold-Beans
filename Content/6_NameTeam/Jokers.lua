@@ -1448,9 +1448,11 @@ SMODS.Joker {
 
 function count_rares_minus_one()
     local count = 0
+    if G.jokers and G.jokers.cards then
     for _, v in ipairs(G.jokers.cards) do
         if v:is_rarity("Rare") then count = count + 1 end
     end
+end
 
     return count - 1
 end
@@ -1487,6 +1489,62 @@ SMODS.Joker {
       if card.ability.extra.seen_rares ~= count_rares_minus_one() then
         G.hand:change_size(math.min(card.ability.extra.max_hand_size, math.max(0, count_rares_minus_one() - card.ability.extra.seen_rares)))
         card.ability.extra.seen_rares = count_rares_minus_one()
+      end
+    end
+}
+
+--[[SMODS.Joker {
+    key = "nameteam_bryce",
+    config = { extra = { is_contestant = true } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 5, y = 9 },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+    return { vars = {  } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      
+    end
+}]]--
+
+SMODS.Joker {
+    key = "nameteam_crowbar",
+    config = { extra = { hands_converted = 1, discards_converted = 1 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 6, y = 9 },
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.discards_converted, card.ability.extra.hands_converted } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:get_id() == 14 and G.GAME.current_round.discards_left >= card.ability.extra.discards_converted then
+        ease_hands_played(card.ability.extra.hands_converted)
+        ease_discard(-card.ability.extra.discards_converted)
+        return {message = localize("k_converted")}
       end
     end
 }

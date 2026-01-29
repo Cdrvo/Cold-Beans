@@ -4660,6 +4660,15 @@ return {
 					"{C:inactive}max of {C:attention}+#3#{C:inactive} hand size){}"
 				}
 			},
+			j_cbean_nameteam_crowbar = {
+				name = 'Crowbar',
+				text =
+				{
+					"Played {C:attention}Aces{} convert",
+					"{C:red}#1#{} discard into {C:blue}#1#{}",
+					"hand when scored"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8232,7 +8241,9 @@ return {
 			k_cbean_yomama = "Yo mama...",
 
 			k_styx_active = "active",
-			k_styx_inactive = "inactive"
+			k_styx_inactive = "inactive",
+
+			k_converted = "Converted"
 		},
 		high_scores = {},
 		labels = {
