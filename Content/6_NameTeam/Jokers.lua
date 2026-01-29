@@ -1479,7 +1479,7 @@ SMODS.Joker {
     config = { extra = { current_money = 1, added_money = 1 } },
     rarity = 1,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 3, y = 9 },
+    pos = { x = 5, y = 11 },
     cost = 6,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.current_money, card.ability.extra.added_money } }
@@ -1522,7 +1522,7 @@ SMODS.Joker {
     config = { extra = { is_contestant = true, added_hand_size = 1, max_hand_size = 3, curr_hand_size = 0 } },
     rarity = 3,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 4, y = 9 },
+    pos = { x = 6, y = 11 },
     cost = 8,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.added_hand_size, card.ability.extra.added_hand_size * math.min(card.ability.extra.max_hand_size, math.max(card.ability.extra.curr_hand_size, 0)), card.ability.extra.max_hand_size } }
