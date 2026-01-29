@@ -1305,7 +1305,9 @@ SMODS.Joker {
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 0, y = 9 },
     cbean_anim = {
-        { xrange = { first = 0, last = 11 }, y = 9, t = 0.1 },
+        { xrange = { first = 0, last = 9 }, y = 9, t = 0.1 },
+        { x = 0, y = 9, t = 0.1 },
+        { xrange = { first = 10, last = 11 }, y = 9, t = 0.1 },
         { xrange = { first = 0, last = 6 }, y = 10, t = 0.1 }
     },
     pos_extra = { x = 7, y = 10 },
