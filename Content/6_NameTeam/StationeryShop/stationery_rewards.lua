@@ -284,4 +284,42 @@ NAMETEAM.StationeryReward({
 	end,
 })
 
+NAMETEAM.StationeryReward({
+	key = "blessings",
+	config = { amount = 2 },
+	loc_vars = function(self)
+		return { self.config.amount }
+	end,
+	apply = function(self, card)
+		for i = 1, self.config.amount do
+			SMODS.add_card({
+				set = "sdown_blessing",
+				edition = "e_negative",
+			})
+		end
+		SMODS.calculate_effect({
+			message = localize("k_plus_blessing"),
+			instant = true,
+		}, card)
+	end,
+})
+
+NAMETEAM.StationeryReward({
+	key = "zodiacs",
+	config = { amount = 2 },
+	loc_vars = function(self)
+		return { self.config.amount }
+	end,
+	apply = function(self, card)
+		for i = 1, self.config.amount do
+			SMODS.add_card({
+				set = "sdown_czodiac",
+				edition = "e_negative",
+			})
+		end
+		SMODS.calculate_effect({
+			message = localize("sdown_czodiac_add"),
+			instant = true,
+		}, card)
+	end,
 })
