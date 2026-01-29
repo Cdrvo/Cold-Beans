@@ -2905,3 +2905,51 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "missle_toe",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            local small,small_card = 1,nil
+            for k, v in pairs(context.scoring_hand) do
+                if v and v.highlight_order_cbean then
+                    if v.highlight_order_cbean > small then
+                        small = v.highlight_order_cbean
+                        small_card = v
+                    end
+                end
+            end
+            if small_card then cae.small_card = small_card end
+            for k, v in pairs(context.scoring_hand) do
+                if v ~= small_card then
+                    v.mark_for_no_score = true
+                end
+            end
+        end
+        if context.individual and context.cardarea == G.play and cae.small_card and context.other_card == cae.small_card then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})

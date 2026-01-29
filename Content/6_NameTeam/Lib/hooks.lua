@@ -200,6 +200,7 @@ end
 
 local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
 function G.FUNCS.play_cards_from_highlighted(e)
+	NAMETEAM.highlight_order = 0
 	SMODS.calculate_context({cbean_first = true})
 	old_play_highlighted(e)
 end
@@ -308,7 +309,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 					SMODS.calculate_effect({xmult = 2.5}, card)
 				end
             end
-        elseif scoring_hand and card.marked_by_mortar then
+        elseif scoring_hand and (card.marked_by_mortar or card.mark_for_no_score) then
 			if in_scoring then 
                 -- G.GAME.blind.triggered = true
                 G.E_MANAGER:add_event(Event({
@@ -316,6 +317,9 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                     func = (function() SMODS.juice_up_blind() return true end)
                 }))
                 NAMETEAM.msg(card, "No Score!")
+				if card.mark_for_no_score then
+					card.mark_for_no_score = nil
+				end
             end
 		else
             if scoring_hand then
@@ -457,4 +461,17 @@ function Card:sell_card()
     sell_card_old(self)
 	G.GAME.NAMETEAM_sold_jokers = G.GAME.NAMETEAM_sold_jokers or {}
 	table.insert(G.GAME.NAMETEAM_sold_jokers, self.config.center.key)
+end
+
+
+local cardhighold = Card.highlight
+function Card:highlight(is_highlighted)
+	self.highlighted = is_highlighted
+	if self.area == G.hand and self.highlighted and (#SMDOS.find_card("j_cbean_missle_toe")>0) then
+		if not NAMETEAM.highlight_order then NAMETEAM.highlight_order = 1 else NAMETEAM.highlight_order = NAMETEAM.highlight_order + 1 end
+		self.highlight_order_cbean = NAMETEAM.highlight_order
+		-- print("highlighted " .. self.highlight_order_cbean, NAMETEAM.highlight_order)
+	else
+		return cardhighold(self, is_highlighted)
+	end
 end

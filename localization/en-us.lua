@@ -4590,6 +4590,15 @@ return {
 					"{C:chips}+#1#{} Chips otherwise"
 				},
 			},
+			j_cbean_missle_toe = {
+				name = "Missle Toe",
+				text = {
+					"Last {C:attention}highlighted{} card",
+					"{C:attention}before{} hand is played",
+					"gives {X:mult,C:white}X#1#{}",
+					"any other card {C:red}will not{} score"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
