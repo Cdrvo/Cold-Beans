@@ -4487,6 +4487,14 @@ return {
 					"{C:money}+$#1#{}"
 				},
 			},
+			j_cbean_straw_burst = {
+				name = "Strawburst",
+				text = {
+					"After {C:attention}2{} {C:blue}Hands{}",
+					"gives {C:chips}+#2#{} Chips",
+					"{C:inactive}(Currently {C:blue}#1#{C:inactive} Hands played)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

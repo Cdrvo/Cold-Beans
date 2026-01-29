@@ -950,9 +950,10 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.destroy_card and context.cardarea == G.play and #context.scoring_hand == 1 and #G.play.cards == 1 then
             return{
-                remove = true,
                 message = "Destroyed!",
-                dollars = cae.dollars
+                dollars = cae.dollars,
+                message_card = context.desdtroy_card,
+                remove = true,
             }
         end
     end
@@ -971,18 +972,30 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
+            hands = 0,
+            chips = 100
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.hands,cae.xmult_gain,cae.xmult}}
+        return{vars={cae.hands,cae.chips}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.joker_main and cae.rounds >= 2 then
+        if context.joker_main and cae.hands >= 2 then
+            cae.trigger = true
+            cae.hands = 0
             return{
                 chips = cae.chips
             }
+        end
+        if context.after and cae.hands <= 1 and not context.blueprint then
+            if not cae.trigger then
+                cae.hands = cae.hands+1
+                NAMETEAM.msg(card, "+1")
+            else
+                cae.trigger=false
+            end
         end
     end
 })
