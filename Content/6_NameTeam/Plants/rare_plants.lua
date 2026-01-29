@@ -649,3 +649,44 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "zoybean_pod",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            round_timer = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_basic_z
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_melon_z
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_carrot_z
+        local cae = card.ability.extra
+        return{
+            vars={cae.hands_max,cae.hands_left}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.setting_blind and not context.blueprint then
+            if cae.round_timer>1 then
+                cae.round_timer = cae.round_timer - 1
+            else
+                cae.round_timer = 4
+                local acard = SMODS.add_card{
+                    key = pseudorandom_element({"j_cbean_basic_z","j_cbean_carrot_z","j_cbean_melon_z"})
+                }
+                acard:set_edition("e_negative")
+            end
+        end
+    end,
+})

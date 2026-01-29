@@ -2994,3 +2994,71 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "melon_z",
+    cost = 0,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "electrici-tea",
+    cost = 0,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.defeat()
+            if card:on_the("right") then
+                SMODS.debuff_card(card:on_the("right"), true, "elecelec")
+                card:on_the("right").newly_debuffed = true
+            end
+            if card:on_the("left") then
+                SMODS.debuff_card(card:on_the("left"), true, "elecelec")
+                card:on_the("left").newly_debuffed = true
+            end
+        end
+    end,
+})

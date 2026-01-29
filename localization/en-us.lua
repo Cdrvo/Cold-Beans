@@ -4658,6 +4658,44 @@ return {
 			},
 			--
 
+			j_cbean_zoybean_pod = {
+				name = "Zoybean Pod",
+				text = {
+					"Every {C:attention}#1#{} Rounds",
+					"create a random {C:dark_edition}negative{}",
+					"Zom-boid"
+				},
+			},
+			-- zomboids
+			j_cbean_basic_z= {
+				name = "Basiz Zomboid",
+				text = {
+					"{C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_carrot_z = {
+				name = "Carrothead Zomboid",
+				text = {
+					"{C:chips}+#2#{} Chips"
+				},
+			},
+			j_cbean_melon_z = {
+				name = "Melonhead Zomboid",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			--
+
+			["j_cbean_electrici-tea"] = {
+				name = "Electrici-tea",
+				text = {
+					"{C:green}Sell{} to while",
+					"in a blind to defeat it",
+					"{C:red}Debuffs{} adjecent jokers"
+				},
+			},
+
 			j_cbean_sling_pea = {
 				name = "Sling-Pea",
 				text = {

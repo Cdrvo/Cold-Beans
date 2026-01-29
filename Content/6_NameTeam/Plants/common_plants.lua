@@ -1361,3 +1361,65 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "basic_z",
+    cost = 0,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 6
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.xmult
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "carrot_z",
+    cost = 0,
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 40
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = cae.xmult
+            }
+        end
+    end,
+})
