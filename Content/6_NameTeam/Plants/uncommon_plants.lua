@@ -3362,3 +3362,37 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "olive_pit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_card and context.card ~= card then
+            local a = context.card.sell_cost
+            cae.xmult = cae.xmult + a/20
+            NAMETEAM.msg(card, localize("k_upgrade_ex"))
+        end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
