@@ -4669,6 +4669,16 @@ return {
 					"hand when scored"
 				}
 			},
+			j_cbean_nameteam_littlegarnet = {
+				name = 'Little Garnet',
+				text =
+				{
+					"Played {C:attention}2s{} earn {C:money}$#1#{}",
+					"when scored, earn",
+					"{C:money}$#2#{} instead if they",
+					"are {C:hearts}Hearts{} suit"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {

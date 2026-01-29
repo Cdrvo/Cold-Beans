@@ -1549,3 +1549,35 @@ SMODS.Joker {
       end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_littlegarnet",
+    config = { extra = { normal_money = 2, bonus_money = 4 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 7, y = 9 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.normal_money, card.ability.extra.bonus_money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+      if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:get_id() == 2 then
+        if context.other_card:is_suit("Hearts") then
+            return { dollars = card.ability.extra.bonus_money }
+        else
+            return { dollars = card.ability.extra.normal_money }
+        end
+      end
+    end
+}
