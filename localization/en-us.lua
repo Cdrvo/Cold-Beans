@@ -6845,7 +6845,7 @@ return {
 				name = "Minuscule",
 				text = {
 					"Applies {C:attention}Minuscule{} to {C:attention}1{} selected",
-					"{C:attention}Joker{} without {C:attention}Minuscule",
+					"{C:attention}playing card{} without {C:attention}Minuscule",
 				},
 			},
 		},
