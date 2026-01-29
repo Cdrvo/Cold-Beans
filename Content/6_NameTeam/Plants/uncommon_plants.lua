@@ -2018,7 +2018,7 @@ SMODS.Joker({
 })
 
 
-SMODS.Joker({
+SMODS.Joker({ -- don't do this
     key = "celery_stalker",
     cost = 3,
     beans_credits = {
@@ -2039,37 +2039,40 @@ SMODS.Joker({
     end,
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.jokers.cards) do
-            if v.ability.cbean_celeried_2 then
+            if v.ability["cbean_celeried_" .. card.id2] then
                 NAMETEAM.values("*", v, 2, true)
-                v.ability.cbean_celeried_2 = false
+                v.ability["cbean_celeried_" .. card.id2] = false
             end
-            if v.ability.cbean_celeried_1 then
+            if v.ability["cbean_celeried_" .. card.id] then
                 NAMETEAM.values("/", v, 2, true)
-                v.ability.cbean_celeried_1 = false
+                v.ability["cbean_celeried_" .. card.id] = false
             end
         end
     end,
     update = function(self,card,context)
         if card.added_to_deck and not card.getting_sliced then
-            if card:on_the("left") and not card:on_the("left").ability.cbean_celeried_2 then
+            if not card.id then card.id = (pseudorandom("celery_stalker")*pseudorandom("celery_stalker")) end
+            if not card.id2 then card.id2 = (pseudorandom("celery_stalker")*pseudorandom("celery_stalker")) end
+            local id,id2 = card.id, card.id2
+            if card:on_the("left") and not card:on_the("left").ability["cbean_celeried_" .. id2] then
                 local _card = card:on_the("left")
-                _card.ability.cbean_celeried_2 = true
+                _card.ability["cbean_celeried_" .. id2] = true
                 NAMETEAM.values("/", _card, 2, true)
             end
-            if card:on_the("right") and not card:on_the("right").ability.cbean_celeried_1 then
+            if card:on_the("right") and not card:on_the("right").ability["cbean_celeried_" .. id] then
                 local _card = card:on_the("right")
-                _card.ability.cbean_celeried_1 = true
+                _card.ability["cbean_celeried_" .. id] = true
                 NAMETEAM.values("*", _card, 2, true)
             end
 
             for k, v in pairs(G.jokers.cards) do
-                if v.ability.cbean_celeried_2 and v ~= card:on_the("left") then
+                if v.ability["cbean_celeried_" .. id2] and v ~= card:on_the("left") then
                     NAMETEAM.values("*", v, 2, true)
-                    v.ability.cbean_celeried_2 = false
+                    v.ability["cbean_celeried_" .. id2] = false
                 end
-                if v.ability.cbean_celeried_1 and v ~= card:on_the("right") then
+                if v.ability["cbean_celeried_" .. id] and v ~= card:on_the("right") then
                     NAMETEAM.values("/", v, 2, true)
-                    v.ability.cbean_celeried_1 = false
+                    v.ability["cbean_celeried_" .. id] = false
                 end
             end
         end
