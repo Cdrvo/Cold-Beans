@@ -678,7 +678,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -692,5 +691,38 @@ SMODS.Joker({
     calc_dollar_bonus = function(self,card)
         local cae = card.ability.extra
         return cae.dollars + (NAMETEAM.pool_in("cbean_shadow", G.jokers.cards))
+    end
+})
+
+SMODS.Joker({ 
+    key = "shadow_shroom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    pools = {
+        cbean_shadow = true
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            perc = 20
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={ cae.perc }}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.GAME.blind.in_blind then
+            for i = 1, G.GAME.current_round.hands_left do
+                G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.perc)
+            end
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end
     end
 })

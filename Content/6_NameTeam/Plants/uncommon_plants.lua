@@ -1824,7 +1824,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1870,7 +1869,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1915,7 +1913,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1963,7 +1960,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1999,7 +1995,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2027,7 +2022,6 @@ SMODS.Joker({ -- don't do this
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2091,7 +2085,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2117,7 +2110,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2153,7 +2145,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2189,7 +2180,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2225,7 +2215,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2270,7 +2259,6 @@ SMODS.Joker({
 		art = "N/A",
 	},
     rarity = 2,
-    always_buyable = true,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2307,6 +2295,47 @@ SMODS.Joker({
                     return true
                 end
             }))
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "dusk_lobber",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    pools = {
+        cbean_shadow = true
+    },
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.5,
+            card = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={ cae.xmult }}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            cae.card = pseudorandom_element(context.scoring_hand,pseudoseed("DUSKYLOBY"))
+        end
+        if context.individual and context.cardarea == G.play then
+            if context.other_card == cae.card then
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.after then
+            cae.card = nil
         end
     end
 })

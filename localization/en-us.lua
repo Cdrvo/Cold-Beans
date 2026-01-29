@@ -4325,13 +4325,24 @@ return {
 				},
 			},
 			j_cbean_moonflower  = {
-				name = "Moon Flower",
+				name = "Moonflower",
 				text = {
 					"{C:money}+$#1#{} At the",
 					"end of a round",
 					"earn an extra {C:money}+$1{}",
 					"for each {C:dark_edition}Shadow{} joker",
 					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+				},
+			},
+			j_cbean_shadow_shroom  = {
+				name = "Shadow Shroom",
+				text = {
+					"Sell this card",
+					"while in a blind",
+					"to reduce the current",
+					"blind's chips by",
+					"{:attention}%#1#{} for each",
+					"hand left"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
