@@ -999,3 +999,30 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({ 
+    key = "gold_bloom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+                dollars = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and #G.jokers.cards>0 then
+            ease_dollars(cae.dollars*#G.jokers.cards)
+        end
+    end
+})

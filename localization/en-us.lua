@@ -4533,6 +4533,14 @@ return {
 					"ante afterwards"
 				},
 			},
+			j_cbean_escape_root = {
+				name = "Escape Root",
+				text = {
+					"{C:mult}+#1#{} Mult",
+					"changes placaes before",
+					"scoring"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

@@ -2710,7 +2710,7 @@ SMODS.Joker({
 
 SMODS.Joker({ 
     key = "grapeshot",
-    cost = 4,
+    cost = 2,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
@@ -2751,7 +2751,7 @@ SMODS.Joker({
 
 SMODS.Joker({
     key = "cold_snapdragon",
-    cost = 4,
+    cost = 3,
     rarity = 2,
     blueprint_compat = false,
     config = {
@@ -2804,6 +2804,59 @@ SMODS.Joker({
             for k, v in pairs(G.playing_cards) do
                 SMODS.debuff_card(v, false, "debuff_by_cold_snapdragon")
             end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "escape_root",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 30
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.mult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
+        end
+        if context.cbean_first and context.cardarea == G.jokers and G.jokers.cards and #G.jokers.cards>1 and not context.blueprint then
+            local old_pos = -1
+            local new_pos = -1
+            for k, v in ipairs(G.jokers.cards) do
+                if v == card then
+                    old_pos = k
+                end
+            end
+            new_pos = math.random(1, #G.jokers.cards)
+            while old_pos == new_pos do
+                new_pos = math.random(1, #G.jokers.cards)
+            end
+            G.E_MANAGER:add_event(Event({ 
+                trigger = "before",
+                blockable = "false",
+                func = function() 
+                    table.insert(G.jokers.cards, new_pos, table.remove(G.jokers.cards,old_pos))
+                    play_sound('cardSlide1', 0.85)
+                    return true
+                end 
+            })) 
         end
     end,
 })
