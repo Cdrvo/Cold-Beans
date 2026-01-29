@@ -1553,7 +1553,7 @@ SMODS.Joker({
     end,
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.dollars}}
+        return{vars={cae.chips}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
