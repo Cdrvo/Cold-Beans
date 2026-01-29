@@ -619,7 +619,7 @@ end
 
 
 
--- JANK 
+-- Doesn't go into tables within extra
 function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
 	local orig = {
 		name = {},
@@ -651,7 +651,7 @@ function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
 			for l, m in pairs(card.ability.extra) do
 				if type(m) == "number" then
 					if operator == "/" then
-						card.ability.extra[l] = card.ability.extra[l] * num
+						card.ability.extra[l] = card.ability.extra[l] / num
 					else
 						card.ability.extra[l] = card.ability.extra[l] * num
 					end

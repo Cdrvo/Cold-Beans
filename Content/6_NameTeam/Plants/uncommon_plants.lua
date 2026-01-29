@@ -2040,11 +2040,11 @@ SMODS.Joker({
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.jokers.cards) do
             if v.ability.cbean_celeried_2 then
-                NAMETEAM.values("*", v, 2)
+                NAMETEAM.values("*", v, 2, true)
                 v.ability.cbean_celeried_2 = false
             end
             if v.ability.cbean_celeried_1 then
-                NAMETEAM.values("/", v, 2)
+                NAMETEAM.values("/", v, 2, true)
                 v.ability.cbean_celeried_1 = false
             end
         end
@@ -2054,21 +2054,21 @@ SMODS.Joker({
             if card:on_the("left") and not card:on_the("left").ability.cbean_celeried_2 then
                 local _card = card:on_the("left")
                 _card.ability.cbean_celeried_2 = true
-                NAMETEAM.values("/", _card, 2)
+                NAMETEAM.values("/", _card, 2, true)
             end
             if card:on_the("right") and not card:on_the("right").ability.cbean_celeried_1 then
                 local _card = card:on_the("right")
                 _card.ability.cbean_celeried_1 = true
-                NAMETEAM.values("*", _card, 2)
+                NAMETEAM.values("*", _card, 2, true)
             end
 
             for k, v in pairs(G.jokers.cards) do
                 if v.ability.cbean_celeried_2 and v ~= card:on_the("left") then
-                    NAMETEAM.values("*", v, 2)
+                    NAMETEAM.values("*", v, 2, true)
                     v.ability.cbean_celeried_2 = false
                 end
                 if v.ability.cbean_celeried_1 and v ~= card:on_the("right") then
-                    NAMETEAM.values("/", v, 2)
+                    NAMETEAM.values("/", v, 2, true)
                     v.ability.cbean_celeried_1 = false
                 end
             end
