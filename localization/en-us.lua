@@ -4860,6 +4860,13 @@ return {
 					"{C:dark_edition}+1{C:attention} Joker Slot"
 				},
 			},
+			j_cbean_boingsetta = {
+				name = "Boingsetta",
+				text = {
+					"Scored cards gain",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

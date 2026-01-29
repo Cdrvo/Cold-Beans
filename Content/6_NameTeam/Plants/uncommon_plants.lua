@@ -3396,3 +3396,39 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "boingsetta",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult_gain = 0.1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+       if context.individual then
+			if context.cardarea == G.play then
+				context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 1
+				context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + cae.xmult_gain
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+			end
+		end
+    end,
+})
+
