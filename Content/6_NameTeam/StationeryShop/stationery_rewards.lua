@@ -343,3 +343,23 @@ NAMETEAM.StationeryReward({
 		}, card)
 	end,
 })
+
+NAMETEAM.StationeryReward({
+	key = "keys",
+	config = { amount = 2 },
+	loc_vars = function(self)
+		return { self.config.amount }
+	end,
+	apply = function(self, card)
+		for i = 1, self.config.amount do
+			SMODS.add_card({
+				set = "yma_keys",
+				edition = "e_negative",
+			})
+		end
+		SMODS.calculate_effect({
+			message = localize("k_plus_key"),
+			instant = true,
+		}, card)
+	end,
+})

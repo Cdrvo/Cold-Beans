@@ -8166,6 +8166,7 @@ return {
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
 			k_plus_blessing                     = "+1 Blessing",
 			k_plus_combo_card                   = "+1 Combo",
+			k_plus_key                          = "+1 Key",
 			k_plus_soul                         = "+The Soul",
 			k_plus_piss                         = "+1 Piss Card",
 			k_cbean_nteam_uhoh                  = "Uh oh!",
