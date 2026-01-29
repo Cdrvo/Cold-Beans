@@ -4304,6 +4304,17 @@ return {
 					"{C:inactive}(Reducing by: {C:attention}#2#{C:inactive})"
 				},
 			},
+			j_cbean_bowling_bulb  = {
+				name = "Bowling Bulb",
+				text = {
+					"First scored card",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"Second scored card",
+					"gives {C:mult}+#2#{} Mult and",
+					"Third scored card",
+					"gives {C:chips}+#3#{} Chips"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

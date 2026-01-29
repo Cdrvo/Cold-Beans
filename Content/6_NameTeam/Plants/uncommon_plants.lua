@@ -2179,7 +2179,6 @@ SMODS.Joker({
 
 -- Perfume Shroom
 
---Celery stalker
 
 SMODS.Joker({ 
     key = "guacodile",
@@ -2213,6 +2212,51 @@ SMODS.Joker({
             G.GAME.blind.chips = G.GAME.blind.chips-blind_amt
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             NAMETEAM.msg(card, "-" .. blind_amt)
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "bowling_bulb",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.5,
+            mult = 8,
+            chips = 20
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult, cae.mult,cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local gp,c = context.scoring_hand, context.other_card
+            if c == gp[1] and gp[1] then
+                return{
+                    xmult = cae.xmult
+                }
+            end
+            if c == gp[2] and gp[1+1] then
+                return{
+                    mult = cae.mult
+                }
+            end
+            if c == gp[3] and gp[1+1+1] then
+                return{
+                    chips = cae.chips
+                }
+            end
         end
     end
 })
