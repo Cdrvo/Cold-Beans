@@ -1648,10 +1648,10 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "nameteam_adapaige",
-    config = { extra = { chance = 1, max_chance = 3} },
+    config = { extra = { chance = 1, max_chance = 3 } },
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 2, y = 11 },
+    pos = { x = 4, y = 11 },
     cost = 8,
     loc_vars = function(self, info_queue, card)
     return { vars = { G.GAME.probabilities.normal*card.ability.extra.chance, card.ability.extra.max_chance } }
