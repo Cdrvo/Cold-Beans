@@ -4264,7 +4264,7 @@ return {
 				name = "Celery Stalker",
 				text = {
 					"Joker on the {C:attention}left{} has",
-					"{C:red}halfed{} values",
+					"{C:red}halved{} values",
 					"Joker on the {C:attention}right{} has",
 					"{C:green}doubled{} values"
 				},

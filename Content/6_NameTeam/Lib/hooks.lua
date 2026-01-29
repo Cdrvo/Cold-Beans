@@ -24,6 +24,40 @@ function Game:update(dt)
 			end
 		end
 	end
+	if G.jokers then
+		for i, j in ipairs(G.jokers.cards) do
+			if
+				G.jokers.cards[i + 1]
+				and G.jokers.cards[i + 1].config.center.key == "j_cbean_celery_stalker"
+				and not G.jokers.cards[i + 1].debuff
+			then
+				if not j.ability.nteam_celery_left then
+					NAMETEAM.values("/", j, 2, true)
+				end
+				j.ability.nteam_celery_left = true
+			else
+				if j.ability.nteam_celery_left then
+					NAMETEAM.values("*", j, 2, true)
+				end
+				j.ability.nteam_celery_left = false
+			end
+			if
+				G.jokers.cards[i - 1]
+				and G.jokers.cards[i - 1].config.center.key == "j_cbean_celery_stalker"
+				and not G.jokers.cards[i - 1].debuff
+			then
+				if not j.ability.nteam_celery_right then
+					NAMETEAM.values("*", j, 2, true)
+				end
+				j.ability.nteam_celery_right = true
+			else
+				if j.ability.nteam_celery_right then
+					NAMETEAM.values("/", j, 2, true)
+				end
+				j.ability.nteam_celery_right = false
+			end
+		end
+	end
 end
 
 local start_run_hook = Game.start_run
