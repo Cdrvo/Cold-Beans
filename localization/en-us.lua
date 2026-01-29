@@ -4735,6 +4735,14 @@ return {
 					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
 				},
 			},
+			j_cbean_explode_o_vine = {
+				name = "Explode-O-Vine",
+				text = {
+					"{X:mult,C:white}X#>#{} Mult",
+					"{C:red}Self-Destructs{} after {C:attention}#2#{C:inactive} (#3#){} Rounds",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+				},
+			},
 			j_cbean_ultomato = {
 				name = "Ultomato",
 				text = {
@@ -4818,6 +4826,15 @@ return {
 					"cards give {X:mult,C:white}X#1#{} Mult",
 					"but has a {C:green}#2# in #3#{} Chance to",
 					"get {C:red}destroyed{}"
+				},
+			},
+			j_cbean_olive_pit = {
+				name = "Olive Pit",
+				text = {
+					"When a joker is sold",
+					"this card gains 1/20 of its",
+					"sell value as {X:mult,C:white}XMULT",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
