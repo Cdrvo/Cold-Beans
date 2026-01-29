@@ -1304,6 +1304,25 @@ SMODS.Joker {
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 0, y = 9 },
+    cbean_anim = {
+        { xrange = { first = 0, last = 11 }, y = 9, t = 0.1 },
+        { xrange = { first = 0, last = 6 }, y = 10, t = 0.1 }
+    },
+    pos_extra = { x = 7, y = 10 },
+    cbean_anim_extra = {
+        { x = 7, y = 10, t = 0.075 },
+        { x = 8, y = 10, t = 0.125 },
+        { x = 9, y = 10, t = 0.175 },
+        { x = 10, y = 10, t = 0.3 },
+        { x = 9, y = 10, t = 0.175 },
+        { x = 8, y = 10, t = 0.125 },
+        { x = 7, y = 10, t = 0.075 },
+        { x = 11, y = 10, t = 0.125 },
+        { x = 0, y = 11, t = 0.175 },
+        { x = 1, y = 11, t = 0.3 },
+        { x = 0, y = 11, t = 0.175 },
+        { x = 11, y = 10, t = 0.125 }
+    },
     cost = 6,
     loc_vars = function(self, info_queue, card)
     local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "pipelinepunch")
