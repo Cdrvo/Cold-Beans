@@ -6864,6 +6864,15 @@ return {
 					"has a detrimental {C:attention}Sticker",
 				},
 			},
+			c_cbean_barren_sheet = {
+				name = "Barren",
+				text = {
+					"Applies {C:attention}Barren{} to {C:attention}1{} selected",
+					"{C:attention}playing card{} without {C:attention}Barren{}",
+					"The selected card gains",
+					"{X:mult,C:white}X#1#{} Mult permanently"
+				},
+			},
 		},
 		Tag = {
 			tag_cbean_sunbean = {
