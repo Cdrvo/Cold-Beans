@@ -403,3 +403,10 @@ function Card:click()
 	end
 	return ret
 end
+
+local sell_card_old = Card.sell_card
+function Card:sell_card()
+    sell_card_old(self)
+	G.GAME.NAMETEAM_sold_jokers = G.GAME.NAMETEAM_sold_jokers or {}
+	table.insert(G.GAME.NAMETEAM_sold_jokers, self.config.center.key)
+end

@@ -4243,6 +4243,14 @@ return {
 					"{C:mult}+#1#{} Mult"
 				},
 			},
+			j_cbean_intensive_carrot = {
+				name = "Intensive Carrot",
+				text = {
+					"When sold, gives",
+					"a random previously sold",
+					"joker"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

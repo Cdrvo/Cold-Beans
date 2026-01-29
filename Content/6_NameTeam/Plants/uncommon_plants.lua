@@ -1953,3 +1953,39 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "intensive_carrot",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.GAME.NAMETEAM_last_sold_jokers and #G.GAME.NAMETEAM_last_sold_jokers>0 then
+            local acard = SMODS.add_card({
+                key = pseudorandom_element(G.GAME.NAMETEAM_last_sold_jokers),
+                area = G.jokers
+            })
+            if card.edition and card.edition.negative then
+                acard:set_edition("e_negative")
+            end
+        else
+            NAMETEAM.msg(card, localize("k_nope_ex"))
+        end
+    end,
+})
