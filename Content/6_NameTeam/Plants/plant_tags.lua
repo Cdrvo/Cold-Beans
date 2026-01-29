@@ -28,7 +28,7 @@ SMODS.Tag {
     in_pool = function(self,card)
         return false
     end,
-    cbean_credits = {
+    beans_credits = {
         code = "Revo",
         art = "N/A",
         team = "Name Team"

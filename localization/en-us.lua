@@ -4234,6 +4234,15 @@ return {
 					"{C:inactive,s:0.8}(e.g Small Blind = 6, Big Blind = 12)"
 				},
 			},
+			j_cbean_phat_beet = {
+				name = "Phat Beet",
+				text = {
+					"Scored cards and",
+					"triggered adjecent",
+					"jokers give",
+					"{C:mult}+#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

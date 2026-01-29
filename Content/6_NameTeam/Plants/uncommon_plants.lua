@@ -1805,9 +1805,11 @@ SMODS.Joker({
     end,
     update = function(self,card)
         local cae = card.ability.extra
-        for k, v in pairs(G.playing_cards) do
-            if not v.debuff and not cae.stop then
-                SMODS.debuff_card(v, true, "EM_peaching_it")
+        if card.added_to_deck then
+            for k, v in pairs(G.playing_cards) do
+                if not v.debuff and not cae.stop then
+                    SMODS.debuff_card(v, true, "EM_peaching_it")
+                end
             end
         end
     end
@@ -1900,6 +1902,54 @@ SMODS.Joker({
         if context.end_of_round and context.main_eval and not context.blueprint then
             cae.xmult = 1
             return{message=localize("k_reset")}
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "phat_beet",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.individual and context.cardarea == G.play then
+            return{
+                mult = cae.mult
+            }
+        end
+
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
+            if (card:on_the("right") and context.other_card == card:on_the("right")) or (card:on_the("left") and context.other_card == card:on_the("left")) then
+                context.other_card.ability.phat_beeted = true
+            end
+        end
+        if context.other_joker and context.other_joker.ability.phat_beeted then
+            context.other_joker.ability.phat_beeted  = false
+            return{
+                mult = cae.mult,
+                message_card = context.other_joker
+            }
         end
     end,
 })
