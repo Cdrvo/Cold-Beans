@@ -4269,6 +4269,41 @@ return {
 					"{C:green}doubled{} values"
 				},
 			},
+			j_cbean_primal_sunflower = {
+				name = "Primal Sunflower",
+				text = {
+					"Gives {C:money}+#1#{} after",
+					"every round"
+				},
+			},
+			j_cbean_primal_wallnut  = {
+				name = "Primal Wall-nut",
+				text = {
+					"Playing cards cannot",
+					"be debuffed.",
+					"{C:red}Self-Destruct{} after",
+					"preventing {C:attention}#1#{C:inactive} (#2#){} debuffs "
+				},
+			},
+			j_cbean_primal_potato  = {
+				name = "Primal Potato",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"sell while in blind to",
+					"destroy all handheld cards"
+				},
+			},
+			j_cbean_guacodile  = {
+				name = "Guacodile",
+				text = {
+					"{C:mult}+#1#{} Mult",
+					"Sell while in blind",
+					"to reduce the current",
+					"blind's requirement by",
+					"(Small Blind Chips)/2",
+					"{C:inactive}(Reducing by: {C:attention}#2#{C:inactive})"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

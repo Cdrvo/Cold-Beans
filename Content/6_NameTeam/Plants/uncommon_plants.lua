@@ -2080,4 +2080,139 @@ SMODS.Joker({ -- don't do this
 })
 
 
+-- Primal Peashooter
+
+SMODS.Joker({ 
+    key = "primal_sunflower",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            dollars = 10
+        }
+    },
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return cae.dollars
+    end,
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end
+})
+
+SMODS.Joker({ 
+    key = "primal_wallnut",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rounds = 3,
+            rounds_max = 3,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds_max, cae.rounds}}
+    end,
+    update = function(self,card)
+        local cae = card.ability.extra
+        if card.added_to_deck then
+            for k, v in pairs(G.playing_cards) do
+                if v.debuff and cae.rounds > 0 then v.debuff = false cae.rounds = cae.rounds - 1
+                    NAMETEAM.msg(card, "-1")
+                end
+            end
+            if cae.rounds <= 0 then
+                SMODS.destroy_cards(card)
+            end
+        end
+    end
+})
+
+SMODS.Joker({ 
+    key = "primal_potato",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.selling_self and not context.blueprint and G.hand and G.hand.cards then
+            SMODS.destroy_cards(G.hand.cards)
+        end
+    end
+})
+
+-- Perfume Shroom
+
 --Celery stalker
+
+SMODS.Joker({ 
+    key = "guacodile",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    always_buyable = true,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 20
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult, ((get_blind_amount(G.GAME.round_resets.blind_ante)*Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Small"]).mult*G.GAME.starting_params.ante_scaling)/2) or 0}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.xmult
+            }
+        end
+        if context.selling_self and G.GAME.blind and G.GAME.blind.in_blind then
+            local blind_amt = (get_blind_amount(G.GAME.round_resets.blind_ante)*Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Small"]).mult*G.GAME.starting_params.ante_scaling)/2
+            G.GAME.blind.chips = G.GAME.blind.chips-blind_amt
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            NAMETEAM.msg(card, "-" .. blind_amt)
+        end
+    end
+})
