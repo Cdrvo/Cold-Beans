@@ -4251,6 +4251,15 @@ return {
 					"joker"
 				},
 			},
+			j_cbean_thyme_warp = {
+				name = "Thyme Warp",
+				text = {
+					"When sold during",
+					"blind select, go back",
+					"a blind and round",
+					"{C:inactive}(Cannot go back an ante)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

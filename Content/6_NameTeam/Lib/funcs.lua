@@ -569,3 +569,92 @@ function NAMETEAM.remove_element(t, element)
 	end
 	return ret
 end
+
+
+function NAMETEAM.goback()
+    --G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
+    if G.GAME.round_resets.blind_states.Teeny == 'Select' then return nil end
+
+    ease_round(-1)
+
+    if G.GAME.round_resets.blind_states.Small == 'Select' then
+        G.blind_select.alignment.offset.x = 5
+        G.GAME.round_resets.blind_states.Teeny = "Select"
+		G.blind_select_opts.teeny.children.alert = nil
+        G.GAME.round_resets.blind_states.Small = 'Upcoming'
+        G.GAME.round_resets.blind_states.Big = 'Upcoming'
+        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
+        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
+        G.GAME.blind_on_deck = 'Teeny'
+    elseif G.GAME.round_resets.blind_states.Big == "Select" then
+        G.blind_select.alignment.offset.x = 1
+        G.GAME.round_resets.blind_states.Teeny = "Defeated"
+        G.GAME.round_resets.blind_states.Small = 'Select'
+		G.blind_select_opts.small.children.alert = nil
+        G.GAME.round_resets.blind_states.Big = 'Upcoming'
+        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
+        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
+        G.GAME.blind_on_deck = 'Small'
+    elseif G.GAME.round_resets.blind_states.Boss == "Select" then
+        G.blind_select.alignment.offset.x = -4
+        G.GAME.round_resets.blind_states.Teeny = "Defeated"
+        G.GAME.round_resets.blind_states.Small = 'Defeated'
+        G.GAME.round_resets.blind_states.Big = 'Select'
+		G.blind_select_opts.big.children.alert = nil
+        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
+        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
+        G.GAME.blind_on_deck = 'Big'
+    elseif G.GAME.round_resets.blind_states.CEO == "Select" then
+        G.GAME.round_resets.blind_states.Teeny = "Defeated"
+        G.GAME.round_resets.blind_states.Small = 'Defeated'
+        G.GAME.round_resets.blind_states.Big = 'Defeated'
+        G.GAME.round_resets.blind_states.Boss = 'Select'
+		G.blind_select_opts.boss.children.alert = nil
+        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
+        G.GAME.blind_on_deck = 'Boss'
+    end
+end
+
+
+
+-- JANK 
+function NAMETEAM.values(operator, card, num, extra, only_extra, orig)
+	local orig = {
+		name = {},
+		val = {},
+	}
+	if num == 0 then
+		num = 0.1
+	end
+	if not only_extra then
+		for k, v in pairs(card.ability) do
+			if
+				k ~= "x_mult"
+				and k ~= "x_chips"
+				and k ~= "order"
+				and v ~= 0
+			then
+				if type(v) == "number" then
+					if operator == "/" then
+						card.ability[k] = card.ability[k] / num
+					else
+						card.ability[k] = card.ability[k] * num
+					end
+				end
+			end
+		end
+	end
+	if extra and card.ability.extra then
+		if type(card.ability.extra) == "table" then
+			for l, m in pairs(card.ability.extra) do
+				if type(m) == "number" then
+					if operator == "/" then
+						card.ability.extra[l] = card.ability.extra[l] * num
+					else
+						card.ability.extra[l] = card.ability.extra[l] * num
+					end
+				end
+			end
+		end
+	end
+end
