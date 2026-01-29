@@ -53,6 +53,13 @@ ColdBeans.calculate = function(mod, context)
             remove = true
         }
     end
+
+	if context.skip_blind then
+		NAMETEAM.skipped = true
+	end
+	if context.setting_blind then
+		NAMETEAM.skipped = false
+	end
 	
 	if context.after then
         G.GAME.cbean_combo_index = {}

@@ -575,7 +575,9 @@ function NAMETEAM.goback()
     --G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
     if G.GAME.round_resets.blind_states.Teeny == 'Select' then return nil end
 
-    ease_round(-1)
+	if not NAMETEAM.skipped then
+    	ease_round(-1)
+	end
 
     if G.GAME.round_resets.blind_states.Small == 'Select' then
         G.blind_select.alignment.offset.x = 5
