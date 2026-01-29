@@ -4541,6 +4541,14 @@ return {
 					"scoring"
 				},
 			},
+			j_cbean_gold_bloom = {
+				name = "Gold Bloom",
+				text = {
+					"Sell this to get",
+					"{C:money}+$#1#{} per joker",
+					"owned"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
