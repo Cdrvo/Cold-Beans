@@ -4524,6 +4524,15 @@ return {
 					"cards in hand",
 				},
 			},
+			j_cbean_cold_snapdragon = {
+				name = "Cold Snapdragon",
+				text = {
+					"First 3 scoring cards",
+					"give {X:chips,C:white}X#1#{} Chips",
+					"but are {C:red}debuffed{} for the current",
+					"ante afterwards"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
