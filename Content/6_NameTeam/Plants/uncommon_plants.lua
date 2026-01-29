@@ -2689,14 +2689,21 @@ SMODS.Joker({
             }
         end
         if context.after and not context.blueprint then
-            if cae.hands_left>1 then
-                cae.hands_left = cae.hands_left - 1
-                NAMETEAM.msg(card, "-1")
-            else
-                cae.hands_left = 2
-                NAMETEAM.msg(card, "Debuff!")
-                SMODS.debuff_card(card, true, "jack_lantern_debuff")
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.1,
+            func = function()
+                if cae.hands_left>1 then
+                    cae.hands_left = cae.hands_left - 1
+                    NAMETEAM.msg(card, "-1")
+                else
+                   -- cae.hands_left = 2
+                    NAMETEAM.msg(card, "Debuff!")
+                    SMODS.debuff_card(card, true, "jack_lantern_debuff")
+                end
+                return true
             end
+        }))
         end
     end
 })

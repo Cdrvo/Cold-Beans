@@ -101,8 +101,10 @@ ColdBeans.calculate = function(mod, context)
 			for k, v in pairs(G.jokers.cards) do 
 				if v.debuff and v.config.center.key == "j_cbean_jack_o_lantern" and v.ability.extra.hands_left<=0 then
 					if v.ability.extra.debuff_hands>0 then
+						v.ability.extra.debuff_hands = v.ability.exrea.debuff_hands-1
 						NAMETEAM.msg(v, "-1 Debuff Round")
 					else
+						v.ability.extra.hands_left = 2
 						v.ability.extra.debuff_hands = 2
 						SMODS.debuff_card(v, false, "jack_lantern_debuff")
 						NAMETEAM.msg(v, "Undebuff!")
