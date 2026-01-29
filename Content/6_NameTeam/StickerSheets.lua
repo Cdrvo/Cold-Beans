@@ -1122,7 +1122,7 @@ SMODS.Consumable {
   hidden = true,
   soul_set = "cbean_StickerSheet",
   select_card = 'consumeables',
-  pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 6 },
+  pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 7 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
       card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
