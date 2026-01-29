@@ -692,3 +692,18 @@ function NAMETEAM.pool_in(pool, area)
 
 	return ret
 end
+
+function NAMETEAM.shuffle(table, seed)
+	if not seed then seed = pseudorandom("random_seed") end
+
+	local tab = {}
+
+	for i = 1, #table do
+		tab[#tab+1] = table[i]
+	end
+
+	pseudoshuffle(tab, pseudoseed(seed))
+
+
+	return tab
+end

@@ -823,6 +823,7 @@ SMODS.Joker({
         if context.end_of_round and context.main_eval then
             if cae.rounds > 1 then
                 cae.rounds = cae.rounds-1
+                NAMETEAM.msg(card, "-1")
             else
                 SMDOS.destroy_cards(card)
                 NAMETEAM.msg(card, localize("k_eaten_ex"))

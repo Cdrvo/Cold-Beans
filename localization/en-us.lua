@@ -4405,6 +4405,14 @@ return {
 					"{C:attention}#3#{C:inactive} (#2#){} rounds"
 				},
 			},
+			j_cbean_sweet_potato  = {
+				name = "Sweet Potato",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Playing card scoring",
+					"order is {C:dark_edition}randomized{}"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

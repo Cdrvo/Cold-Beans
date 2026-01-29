@@ -281,6 +281,11 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 		table.remove(NAMETEAM.scoring_area,  #NAMETEAM.scoring_area)
 		if not NAMETEAM.cattail_number then NAMETEAM.cattail_number = 1 else NAMETEAM.cattail_number = NAMETEAM.cattail_number + 1 end
 	end
+	
+	if (#SMODS.find_card("j_cbean_sweet_potato")>0) then
+		NAMETEAM.general_area = NAMETEAM.shuffle(NAMETEAM.general_area, "sweet_lil_potato")
+	end
+
     for _, card in ipairs(NAMETEAM.general_area) do
         local in_scoring = scoring_hand and SMODS.in_scoring(card, NAMETEAM.scoring_area)
         --add cards played to list
