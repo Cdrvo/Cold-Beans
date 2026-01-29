@@ -2034,7 +2034,58 @@ SMODS.Joker({ -- don't do this
 })
 
 
--- Primal Peashooter
+SMODS.Joker({ 
+    key = "primal_peashooter",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    if context.cbean_first and context.cardarea == G.jokers and G.jokers.cards and #G.jokers.cards>1 then
+            local old_pos = -1
+            local new_pos = -1
+            local _card = NAMETEAM.random_joker(G.jokers.cards, card)
+            for k, v in ipairs(G.jokers.cards) do
+                if v == _card then
+                    old_pos = k
+                end
+            end
+            new_pos = math.random(1, #G.jokers.cards)
+            while old_pos == new_pos do
+                new_pos = math.random(1, #G.jokers.cards)
+            end
+            G.E_MANAGER:add_event(Event({ 
+                trigger = "before",
+                blockable = "false",
+                func = function() 
+                    table.insert(G.jokers.cards, new_pos, table.remove(G.jokers.cards,old_pos))
+                    play_sound('cardSlide1', 0.85)
+                    return true
+                end 
+            })) 
+        end
+    end
+})
+
 
 SMODS.Joker({ 
     key = "primal_sunflower",
@@ -2128,7 +2179,40 @@ SMODS.Joker({
     end
 })
 
--- Perfume Shroom
+
+SMODS.Joker({ 
+    key = "perfume_shroom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            perc = 0
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.first_hand_drawn then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.prec(G.GAME.blind.chips, cae.perc)
+                    return true
+                end
+            }))
+        end
+    end
+})
 
 
 SMODS.Joker({ 

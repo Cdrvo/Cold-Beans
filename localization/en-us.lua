@@ -4352,6 +4352,14 @@ return {
 					"card gives {X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_primal_peashooter = {
+				name = "Primal Peashooter",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"1 random joker is {C:attention}shuffled",
+					"before scoring"
+				},
+			},
 			j_cbean_grimrose = {
 				name = "Grimrose",
 				text = {
