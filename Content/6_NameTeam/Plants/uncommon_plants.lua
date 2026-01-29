@@ -3268,3 +3268,45 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "puffball",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2,
+            odds = 4,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "puffball")
+        return{vars={cae.xmult,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local c, gp = context.other_card,context.scoring_hand
+            if c ~= gp[1] and c ~= gp[#gp] then
+                if SMODS.pseudorandom_probability(card, "puffy_seed", 1, cae.odds) then
+                    c.mark_by_puffy = true
+                end
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.mar_by_puffy then
+            return{
+                remove = true
+            }
+        end
+    end,
+})

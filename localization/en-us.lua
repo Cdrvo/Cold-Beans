@@ -4810,6 +4810,16 @@ return {
 					"hands are used"
 				},
 			},
+			j_cbean_puffball = {
+				name = "Puffball",
+				text = {
+					"Scored cards between your",
+					"Rightmost and Leftmost scoring",
+					"cards give {X:mult,C:white}X#1#{} Mult",
+					"but has a {C:green}#2# in #3#{} Chance to",
+					"get {C:red}destroyed{}"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
