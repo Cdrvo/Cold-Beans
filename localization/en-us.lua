@@ -4784,6 +4784,14 @@ return {
 					"gives its rank as chips"
 				},
 			},
+			j_cbean_gumnut = {
+				name = "Gumnut",
+				text = {
+					"When {C:green}sold{}, next {C:attention}#2#{} Blind",
+					"wont end until all",
+					"hands are used"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
