@@ -840,3 +840,40 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "ultomato",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    add_to_deck = function(self,card,context)
+        G.P_CENTERS[card.config.center.key].config.extra.xmult = G.P_CENTERS[card.config.center.key].config.extra.xmult + 1
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+    in_pool = function(self,card)
+        return true, {allow_duplicates = true}
+    end
+})

@@ -3198,7 +3198,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.dollars,cae.dollars + (card.area and NAMETEAM.all_on(card,card.area, "right")) or 0 }}
+        return{vars={cae.dollars,cae.dollars + (card.area and NAMETEAM.all_on(card,card.area.cards, "right")) or 0 }}
     end,
     add_to_deck = function(self,card,from_debuff)
         G.jokers.config.card_limit = G.jokers.config.card_limit + 1
@@ -3216,7 +3216,7 @@ SMODS.Joker({
     end,
     calc_dollar_bonus = function(self,card)
         local cae = card.ability.extra
-        return cae.dollars + NAMETEAM.all_on(card,card.area, "right")
+        return cae.dollars + NAMETEAM.all_on(card,card.area.cards, "right")
     end
 })
 

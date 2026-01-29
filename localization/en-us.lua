@@ -4729,10 +4729,18 @@ return {
 				name = "Shine Vine",
 				text = {
 					"{C:money}+$#1#{} After every round",
-					"gives an extra {C:money}+$#1#{} for every",
+					"gives an extra {C:money}+$1{} for every",
 					"joker on this joker's right",
 					"{C:dark_edition}+1{C:attention} Joker Slot",
 					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+				},
+			},
+			j_cbean_ultomato = {
+				name = "Ultomato",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"future copies of this card",
+					"gains {X:mult,C:white}X1{} Mult"
 				},
 			},
 
