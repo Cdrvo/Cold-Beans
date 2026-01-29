@@ -916,3 +916,37 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "turkey_pult",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_tofu_turkey
+        local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.setting_blind then
+            local acard = SMODS.add_card{
+                key = "j_cbean_tofu_turkey"
+            }
+            acard:set_edition(nil, true, true)
+        end
+    end,
+})

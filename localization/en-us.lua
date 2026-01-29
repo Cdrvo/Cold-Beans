@@ -4845,6 +4845,21 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
+			j_cbean_turkey_pult = {
+				name = "Turkey Pult",
+				text = {
+					"When a {C:attention}Blind{}",
+					"is selected, create",
+					"a {C:attention}Tofu Turkey{}"
+				},
+			},
+			j_cbean_tofu_turkey = {
+				name = "Tofu Turkey",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"{C:dark_edition}+1{C:attention} Joker Slot"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

@@ -1527,3 +1527,45 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "tofu_turkey",
+    cost = 5,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    always_buyable = true,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            chips = 20
+        }
+    },
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = 20
+            }
+        end
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end
+})
