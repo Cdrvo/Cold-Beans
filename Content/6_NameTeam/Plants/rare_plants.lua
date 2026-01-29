@@ -757,7 +757,7 @@ SMODS.Joker({
 
 
 SMODS.Joker({
-    key = "blastberry_vine",
+    key = "pokra",
     cost = 3,
     rarity = 3,
     blueprint_compat = false,
@@ -790,7 +790,7 @@ SMODS.Joker({
                     }
                 end
             else
-                cae.trigs = 0
+                cae.mega_triggered = true
                 if context.cardarea == G.play or context.cardarea == "unscored" then
                     return{
                         xmult = cae.xmult
@@ -799,8 +799,13 @@ SMODS.Joker({
             end
         end
         if context.after and cae.triggered then
-            cae.triggered = false
-            cae.trigs = cae.trigs + 1
+            if cae.mega_triggered then
+                 cae.trigs = 0
+                 cae.mega_triggered = false
+            else
+                cae.triggered = false
+                cae.trigs = cae.trigs + 1
+            end
         end
     end,
 })
