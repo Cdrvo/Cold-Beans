@@ -798,14 +798,45 @@ SMODS.Joker({
                 end
             end
         end
-        if context.after and cae.triggered then
+        if context.after then
             if cae.mega_triggered then
                  cae.trigs = 0
                  cae.mega_triggered = false
-            else
+            elseif cae.triggered then
                 cae.triggered = false
                 cae.trigs = cae.trigs + 1
             end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "imp_pear",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={((get_blind_amount(G.GAME.round_resets.blind_ante)*Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Big"]).mult*G.GAME.starting_params.ante_scaling))or 0}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            G.GAME.blind.chips = G.GAME.blind.chips - ((get_blind_amount(G.GAME.round_resets.blind_ante)*Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Big"]).mult*G.GAME.starting_params.ante_scaling))or 0
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            NAMETEAM.msg(card, "Reduced!")
         end
     end,
 })

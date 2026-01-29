@@ -4738,6 +4738,14 @@ return {
 					"{C:inactive}(Rounds: #4#, Stage: #5#)"
 				},
 			},
+			j_cbean_imp_pear = {
+				name = "Imp Pear",
+				text = {
+					"{C:green}Sell{} this to reduce",
+					"needed score by", 
+					"this ante's {C:attention}Big{} blind needed score"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
