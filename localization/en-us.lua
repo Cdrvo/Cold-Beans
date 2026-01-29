@@ -4716,6 +4716,16 @@ return {
 				},
 			},
 
+			j_cbean_pyre_vine = {
+				name = "Pyre Vine",
+				text = {
+					"During scoring,",
+					"triggered jokers on the right",
+					"of this gives {C:chips}+#1#{} Chips",
+					"{C:dark_edition}+1{C:attention} Joker Slot"
+				},
+			},
+
 			j_cbean_pokra = {
 				name = "Pokra",
 				text = {
