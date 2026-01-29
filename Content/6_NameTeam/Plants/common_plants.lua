@@ -848,3 +848,39 @@ SMODS.Joker({
         local cae = card.ability.extra
     end
 })
+
+SMODS.Joker({ 
+    key = "fire_peashooter",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rep}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.repetition and context.cardarea == G.play and context.scoring_hand and context.other_card == context.scoring_hand[1] then
+            context.other_card.cbean_burnt = true
+            return {
+                repetitions = cae.rep
+            }
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.cbean_burnt then
+            NAMETEAM.msg(context.destroy_card, "Burnt!")
+            return{
+                remove = true
+            }
+        end
+    end
+})

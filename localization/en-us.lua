@@ -4414,11 +4414,19 @@ return {
 				},
 			},
 			j_cbean_sap_fling  = {
-				name = "Sap Fling",
+				name = "Sap-fling",
 				text = {
 					"Playing Cards are now",
 					"scored {C:attention}after{}",
 					"jokers"
+				},
+			},
+			j_cbean_fire_peashooter  = {
+				name = "Fire Peashooter",
+				text = {
+					"First scored card",
+					"is retriggered {C:attention}#1#{} times",
+					"but destroyed afterwards"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
