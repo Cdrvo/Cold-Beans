@@ -2561,7 +2561,7 @@ SMODS.Joker({
         if context.after and not context.blueprint and not context.repetition and not context.end_of_round then
             if cae.hands>1 then
                 cae.hands = cae.hands - 1
-                NAMETEAM.msg(card, cae.hands)
+                NAMETEAM.msg(card, "-1")
             else
                 cae.hands = 3
                 SMODS.scale_card(card, {
