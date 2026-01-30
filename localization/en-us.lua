@@ -4747,7 +4747,7 @@ return {
 				name = "Gloom Vine",
 				text = {
 					"{C:chips}+#1#{} Chips for",
-					"every shadow joker owned",
+					"every shadow plant owned",
 					"{C:dark_edition}+1{C:attention} Joker Slot",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
@@ -4887,7 +4887,9 @@ return {
 				name = "Hocus Crocus",
 				text = {
 					"Playing Cards' {C:attention}scoring",
-					"order is {C:dark_edition}reversed"
+					"order is {C:dark_edition}reversed.",
+					"First scored card gains",
+					"{:mult}+#1#{} Perma Mult"
 				},
 			},
 			j_cbean_headbutter_lettuce = {
