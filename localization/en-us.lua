@@ -5023,6 +5023,15 @@ return {
 					"{C:inactive}(Only works during scoring)"
 				},
 			},
+			j_cbean_buttercup = {
+				name =  "Buttercup",
+				text = {
+					"{C:attention}First{} scoring card",
+					"gives {C:mult}+#1#{} Mult",
+					"but is debuffed for the",
+					"rest of the ante"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

@@ -1826,5 +1826,65 @@ SMODS.Joker({
     end,
 })
 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "buttercup",
+    cost = 2,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            mult = 15
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.xmumultlt}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, "debuff_by_buttercup")
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local c = context.scoring_hand 
+            if c == context.scoring_hand[1] then
+                return{
+                    mult = cae.mult
+                }
+            end
+        end
+        if context.final_scoring_step then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    for k, v in pairs(context.scoring_hand) do
+                        local c = context.scoring_hand 
+                        if v == c[1] then
+                            SMODS.debuff_card(v, true, "debuff_by_buttercup")
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+        if context.ante_change and context.ante_end and not context.blueprint then
+            for k, v in pairs(G.playing_cards) do
+                SMODS.debuff_card(v, false, "debuff_by_buttercup")
+            end
+        end
+    end,
+})
 
 
