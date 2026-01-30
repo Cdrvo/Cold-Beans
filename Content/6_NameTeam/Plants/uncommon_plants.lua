@@ -2966,6 +2966,78 @@ SMODS.Joker({
     end,
 })
 
+SMODS.Joker({
+    key = "boom_ballon_flower",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,cae.xmult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            local small,small_card = 14,nil
+            for k, v in pairs(context.scoring_hand) do
+                if v and v.highlight_order_cbean then
+                    if v.highlight_order_cbean < small then
+                        small = v.highlight_order_cbean
+                        small_card = v
+                    end
+                end
+            end
+
+            for k, v in pairs(context.scoring_hand) do
+                if small_card == v then
+                    if v.seal then
+                        v:set_seal(nil)
+                        SMODS.scale_card(card, {
+                            ref_table = cae,
+                            ref_value = "xmult",
+                            scalar_value = "xmult_gain"
+                        })
+                    end
+                    if v.edition then
+                        v:set_edition(nil)
+                        SMODS.scale_card(card, {
+                            ref_table = cae,
+                            ref_value = "xmult",
+                            scalar_value = "xmult_gain"
+                        })
+                    end
+                    if v.ability.set == "Enhanced" then
+                        v:set_ability("c_base")
+                        SMODS.scale_card(card, {
+                            ref_table = cae,
+                            ref_value = "xmult",
+                            scalar_value = "xmult_gain"
+                        })
+                    end
+                end
+            end
+        end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
 
 SMODS.Joker({
     key = "holly_barrier",

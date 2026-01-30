@@ -4920,6 +4920,18 @@ return {
 					"to be discarded instead"
 				},
 			},
+			j_cbean_boom_ballon_flower = {
+				name = "Boom Ballon Flower",
+				text = {
+					"Remove any {C:attention}Seal{},",
+					"{C:dark_edition}Edition{} or {C:attention}Enhancement{}",
+					"from the {C:attention}First{} highlighted and",
+					"{C:attention}Scored{} card.",
+					"Gains {X:mult,C:white}X#2#{} Mult per",
+					"removed modification",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

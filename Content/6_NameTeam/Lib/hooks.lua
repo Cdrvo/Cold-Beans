@@ -494,7 +494,7 @@ end
 local cardhighold = Card.highlight
 function Card:highlight(is_highlighted)
 	self.highlighted = is_highlighted
-	if self.area == G.hand and self.highlighted and (#SMDOS.find_card("j_cbean_missle_toe")>0) then
+	if self.area == G.hand and self.highlighted and ((#SMDOS.find_card("j_cbean_missle_toe")>0) or (#SMDOS.find_card("j_cbean_boom_ballon_flower")>0) ) then
 		if not NAMETEAM.highlight_order then NAMETEAM.highlight_order = 1 else NAMETEAM.highlight_order = NAMETEAM.highlight_order + 1 end
 		self.highlight_order_cbean = NAMETEAM.highlight_order
 		-- print("highlighted " .. self.highlight_order_cbean, NAMETEAM.highlight_order)
