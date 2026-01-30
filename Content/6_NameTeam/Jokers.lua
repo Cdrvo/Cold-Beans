@@ -2179,3 +2179,71 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_greenmatador",
+    config = { extra = { current_money = 0, added_money = 1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 4, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.current_money, card.ability.extra.added_money } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.end_of_round and context.cardarea == G.jokers and not (G.GAME.blind_on_deck ~= "CEO" and G.GAME.blind_on_deck ~= "Ceo") and not context.blueprint then
+            if G.GAME.current_round.discards_left > 0 then
+                card.ability.extra.current_money = card.ability.extra.current_money + (card.ability.extra.added_money * G.GAME.current_round.discards_left)
+                return { message = localize("k_upgrade_ex") }
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.current_money
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_bluematador",
+    config = { extra = { current_money = 0, added_money = 1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 5, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.current_money, card.ability.extra.added_money } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "she_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.end_of_round and context.cardarea == G.jokers and not (G.GAME.blind_on_deck ~= "CEO" and G.GAME.blind_on_deck ~= "Ceo") and not context.blueprint then
+            if G.GAME.current_round.hands_left > 0 then
+                card.ability.extra.current_money = card.ability.extra.current_money + (card.ability.extra.added_money * G.GAME.current_round.hands_left)
+                return { message = localize("k_upgrade_ex") }
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.current_money
+    end
+}
