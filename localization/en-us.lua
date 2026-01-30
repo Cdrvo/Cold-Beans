@@ -5049,6 +5049,15 @@ return {
 					"in hand are {C:red}discarded"
 				},
 			},
+			j_cbean_levitater = {
+				name =  "Levitater",
+				text = {
+					"{C:green}#2# in #3#{} Chance for",
+					"cards to not socre.",
+					"Cards affected from this",
+					"gives {X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_mega_gattling_pea = {
 				name =  "Mega Gattling Pea",
 				text = {
