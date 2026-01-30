@@ -3779,6 +3779,15 @@ return {
 					"after triggering"
 				},
 			},
+			j_cbean_meteor_flower = {
+				name = "Meteor Flower",
+				text = {
+					"Highest Ranked played",
+					"card is {C:red}Destroyed{}",
+					"cards next to it",
+					"Gains {C:mult}+#1#{} Perma Mult"
+				},
+			},
 			j_cbean_tomb_tangler = {
 				name = "Tomb Tangler",
 				text = {

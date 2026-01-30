@@ -4251,3 +4251,53 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "meteor_flower",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.final_scoring_step then
+            local b = NAMETEAM.find_highest(G.play.cards)
+            if b then
+                if b:on_the("right") then
+                    b:on_the("right").ability.perma_mult = b:on_the("right").ability.perma_mult or 0
+				    b:on_the("right").ability.perma_mult = b:on_the("right").ability.perma_mult + cae.mult
+                    NAMETEAM.msg(b:on_the("right"), localize("k_upgrade_ex"))
+                end
+                if b:on_the("left") then
+                    b:on_the("left").ability.perma_mult = b:on_the("left").ability.perma_mult or 0
+				    b:on_the("left").ability.perma_mult = b:on_the("left").ability.perma_mult + cae.mult
+                    NAMETEAM.msg(b:on_the("left"), localize("k_upgrade_ex"))
+                end
+                G.E_MANAGER:add_event(Event({
+                    trigger = "immediate",
+                    delay = 0,
+                    func = function()
+                        local a = NAMETEAM.find_highest(G.play.cards)
+                        SMODS.destroy_cards(a)
+                    end
+                }))
+            end
+        end
+    end
+})
+
