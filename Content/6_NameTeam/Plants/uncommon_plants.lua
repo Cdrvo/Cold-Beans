@@ -4520,3 +4520,56 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "bamboo_spartan",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 0,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.pre_discard and G.GAME.current_round.discards_left == 1 then
+            if G.GAME.current_round.hands_left == 1 then
+                cae.double = true
+            else
+                cae.double = false
+            end
+            cae.trigger = true
+        end
+        if context.hand_drawn and cae.trigger and not context.blueprint then
+            local sum = 0
+            for k, v in pairs(G.hand.cards) do
+                sum = sum + v:get_id()
+            end
+            if cae.double then
+                sum = sum * 2
+            end
+            cae.chips = cae.chips + sum
+            NAMETEAM.msg(card, localize("k_upgrade_ex"))
+            cae.trigger = false
+            cae.double = false
+        end
+        if context.joker_main then
+            retrun{
+                chips = cae.chips
+            }
+        end
+    end
+})

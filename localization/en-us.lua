@@ -3836,6 +3836,17 @@ return {
 					"Gains {C:mult}+#1#{} Perma Mult"
 				},
 			},
+			j_cbean_bamboo_spartan = {
+				name = "Bamboo Spartan",
+				text = {
+					"On the last {C:red}discard{}",
+					"Gains {C:chips}Chips{} equal to",
+					"the sum of the handheld cards' ranks.",
+					"Earn {C:attention}double{} if on the last {C:blue}hand",
+					"as well.",
+					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+				},
+			},
 			j_cbean_sea_flora = {
 				name = "Sea Flora",
 				text = {
