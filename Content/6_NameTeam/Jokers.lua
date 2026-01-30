@@ -1081,13 +1081,13 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "nameteam_brodyfoxx",
-    config = { extra = { mama_ix = 1, mamas = {} } },
+    config = { extra = { mama_ix = 1, mamas = {}, money = 2 } },
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 6, y = 8 },
     cost = 7,
     loc_vars = function(self, info_queue, card)
-        return { vars = {} }
+        return { vars = { card.ability.extra.money } }
     end,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1116,7 +1116,7 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.setting_blind and not context.blueprint then
             if not card.ability.extra.mamas or #card.ability.extra.mamas <= 0 or card.ability.extra.mama_ix >= #card.ability.extra.mamas then
                 card.ability.extra.mama_ix = 1
 
@@ -1139,6 +1139,10 @@ SMODS.Joker {
                 end
             }))
             return { message = localize("k_cbean_yomama") }
+        end
+
+        if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:get_id() == 13 then
+            return { dollars = card.ability.extra.money }
         end
     end
 }
