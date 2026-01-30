@@ -3273,6 +3273,47 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    key = "gloom_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            chips = 15
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,  cae.chips+(G.jokers and NAMETEAM.pool_in("cbean_shadow",G.jokers.cards) or 0 )   }}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = cae.chips+(G.jokers and NAMETEAM.pool_in("cbean_shadow",G.jokers.cards) or 0 )
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
     key = "ice_bloom",
     cost = 4,
     beans_credits = {

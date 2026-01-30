@@ -1762,7 +1762,7 @@ SMODS.Joker {
                             (pseudorandom("nameteam_charles", 1, 2) == 1 and G.jokers.cards[me - 1] or G.jokers.cards[me + 1])
                             or G.jokers.cards[me - 1] or G.jokers.cards[me + 1]
 
-                        marked:start_dissolve()
+                        if marked then marked:start_dissolve() end
                     end
 
                     G.hand_text_area.blind_chips:juice_up()
@@ -1779,6 +1779,41 @@ SMODS.Joker {
                 end
             }))
             return { saved = "ph_cbean_nameteam_charles", dollars = card.ability.extra.money }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_intentionallyblank",
+    config = { extra = { xmult = 1.3 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 8, y = 1 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.other_joker then
+            local me = nil
+            for i = 1, #G.jokers.cards do
+                if (G.jokers.cards[i] == card) then me = i end
+            end
+
+            if context.other_joker == G.jokers.cards[me - 1] or context.other_joker == G.jokers.cards[me + 1] then
+                return { xmult = card.ability.extra.xmult }
+            end
         end
     end
 }

@@ -4743,6 +4743,15 @@ return {
 					"{C:dark_edition}+1{C:attention} Joker Slot",
 				},
 			},
+			j_cbean_gloom_vine = {
+				name = "Gloom Vine",
+				text = {
+					"{C:chips}+#1#{} Chips for",
+					"every shadow plant owned",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+				},
+			},
 			j_cbean_murkadamia = {
 				name = "Murkadamia",
 				text = {
@@ -4878,7 +4887,9 @@ return {
 				name = "Hocus Crocus",
 				text = {
 					"Playing Cards' {C:attention}scoring",
-					"order is {C:dark_edition}reversed"
+					"order is {C:dark_edition}reversed.",
+					"First scored card gains",
+					"{:mult}+#1#{} Perma Mult"
 				},
 			},
 			j_cbean_headbutter_lettuce = {
@@ -5234,6 +5245,14 @@ return {
                     "gives {C:money}$#1#{}, {C:red}destroys{} an",
                     "adjacent {C:attention}Joker{} and",
                     "{S:1.1,C:red,E:2}self destructs{}"
+				}
+			},
+			j_cbean_nameteam_intentionallyblank = {
+				name = 'Intentionally Blank',
+				text =
+				{
+					"Adjacent {C:attention}Jokers{}",
+					"give {C:white,X:mult}X#1#{} Mult"
 				}
 			},
 

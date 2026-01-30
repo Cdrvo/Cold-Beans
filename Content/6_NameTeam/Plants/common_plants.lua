@@ -1613,14 +1613,26 @@ SMODS.Joker({
     blueprint_compat = false,
     config = {
         extra = {
+            mult_gain = 1
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.mult}}
+        return{vars={cae.mult_gain}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            if context.other_card == context.scoring_hand[1] then
+                context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+				context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + cae.mult_gain
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+        end
     end,
 })
 
