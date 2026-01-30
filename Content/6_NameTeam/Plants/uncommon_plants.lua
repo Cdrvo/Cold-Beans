@@ -4573,3 +4573,53 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "night_cap",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_round and context.main_eval then
+            local to_scale = 0
+            for k, v in pairs(G.jokers.cards) do
+                print(v==card)
+                if v ~= card then
+                    print("pas1")
+                    if not (v.sell_cost <= 0) and ((not v.ability.extra_value) or ((v.ability.extra_value and (v.ability.extra_value+v.sell_cost >= 0)))) then
+                        v.ability.extra_value = v.ability.extra_value or 0
+                        v.ability.extra_value = v.abiltiy.extra_value - 1
+                        v:set_cost()
+                        to_scale = to_scale + 1
+                        NAMETEAM.msg(v, "-1 Value")
+                    end
+                end
+            end
+            for i = 1, to_scale do
+                cae.xmult = cae.xmult + cae.xmult_gain
+            end
+            if to_scale > 0 then
+                NAMETEAM.msg(card, localize("k_upgrade_ex"))
+            end
+        end
+    end
+})

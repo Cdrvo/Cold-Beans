@@ -3853,6 +3853,16 @@ return {
 					"scores"
 				},
 			},
+			j_cbean_night_cap = {
+				name = "Night Cap",
+				text = {
+					"After every round,","all jokers except this",
+					"loses {C:red}-$1{} Sell Value.",
+					"Gains {X:mult,C:white}X#2#{} Mult for",
+					"per reduced value.",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_bamboo_spartan = {
 				name = "Bamboo Spartan",
 				text = {
