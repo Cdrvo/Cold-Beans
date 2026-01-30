@@ -3771,6 +3771,14 @@ return {
 					"from a random card"
 				},
 			},
+			j_cbean_vamporcini = {
+				name = "Vamporcini",
+				text = {
+					"{C:mult+#1#{} Mult",
+					"{C:red}debuff itself",
+					"after triggering"
+				},
+			},
 			j_cbean_tomb_tangler = {
 				name = "Tomb Tangler",
 				text = {

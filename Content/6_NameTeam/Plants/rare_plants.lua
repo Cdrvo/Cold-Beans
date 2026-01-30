@@ -1129,12 +1129,14 @@ SMODS.Joker({
                 end
             end
             local _card = pseudorandom_element(tab, pseudoseed("tomb_tangler"))
+        if _card then
             for k, v in pairs(SMODS.Stickers) do
                 if _card.ability[v.key] then
                     _card:remove_sticker(v.key, true)
                  end
             end
             _card:set_edition("e_negative")
+        end
         end
     end
 })
