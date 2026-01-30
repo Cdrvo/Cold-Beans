@@ -3787,6 +3787,13 @@ return {
 					"from a random card"
 				},
 			},
+			j_cbean_boomberry = {
+				name = "Boom Berry",
+				text = {
+					"{C:attention}Last{} scoring card",
+					"gives {C:chips}+#1#{} Chips"
+				},
+			},
 			j_cbean_vamporcini = {
 				name = "Vamporcini",
 				text = {
