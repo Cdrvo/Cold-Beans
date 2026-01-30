@@ -4976,7 +4976,8 @@ return {
 				text = {
 					"{C:green}Sell{} this joker",
 					"to {C:attention}Half{} all",
-					"blinds' requirements"
+					"blinds' requirements",
+					"for this ante"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
