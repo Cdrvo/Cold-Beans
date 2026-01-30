@@ -4980,6 +4980,17 @@ return {
 					"for this ante"
 				},
 			},
+			j_cbean_tiger_grass = {
+				name = "Tiger Grass",
+				text = {
+					"{C:red}Destroy{} the leftmost",
+					"played card and",
+					"gain {X:mult,C:white}X#2#{} Mult",
+					"Then go on cooldown for",
+					"{C:attention}1{} Hand",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

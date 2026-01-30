@@ -3770,3 +3770,57 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "tiger_grass",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.2,
+            on_cooldown = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.final_scoring_step and not cae.on_cooldown then
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.01,
+            func = function()
+                for k, v in pairs(G.play.cards) do
+                    if v == context.scoring_hand[1] then
+                        SMODS.destroy_cards(v)
+                        SMODS.scale_card(card,{
+                            ref_table = cae,
+                            ref_value = "xmult",
+                            scalar_value = "xmult_gain"
+                        })
+                        cae.on_cooldown = true
+                    end
+                end
+                return true
+            end
+        }))
+        elseif context.final_scoring_step and cae.on_cooldown then
+            cae.on_cooldown = false
+            NAMETEAM.msg(card, "Ready!")
+        end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
