@@ -768,3 +768,11 @@ function NAMETEAM.index(card, table)
 		end
 	end
 end
+
+function NAMETEAM.plant_in_pool()
+	if G.GAME.round_resets.blind_biome == "nameteam_davelawn" then
+		return true
+	else
+		return false
+	end
+end

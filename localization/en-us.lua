@@ -8607,6 +8607,12 @@ return {
 					"plenty to see and do",
 				},
 			},
+			nameteam_davelawn = {
+				text = {
+					"Only Crazy Dave's",
+					"plant Jokers may appear",
+				},
+			},
 		},
 	},
 	misc = {

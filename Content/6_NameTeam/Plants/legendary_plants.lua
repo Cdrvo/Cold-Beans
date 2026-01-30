@@ -1,4 +1,6 @@
 --[[SMODS.Joker({           didn't know this existd in yahimod 
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "cob_cannon_OG",
     cost = 3,
     beans_credits = {

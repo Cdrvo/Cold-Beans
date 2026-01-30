@@ -1,4 +1,6 @@
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "peashooter",
     cost = 3,
     rarity = 1,
@@ -40,6 +42,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "sunflower",
     cost = 4,
     rarity = 1,
@@ -75,6 +79,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "sun_shroom",
     cost = 4,
     rarity = 2,
@@ -110,7 +116,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ -- literally copypaste :D
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, -- literally copypaste :D
     key = "sunnier_shroom",
     cost = 4,
     rarity = 1,
@@ -149,6 +157,8 @@ SMODS.Joker({ -- literally copypaste :D
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "grave_buster",
     cost = 4,
     rarity = 1,
@@ -189,6 +199,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "crater",
     cost = 4,
     rarity = 1,
@@ -224,6 +236,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "lava",
     cost = 4,
     rarity = 1,
@@ -268,6 +282,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "tangle_kelp",
     cost = 1,
     rarity = 1,
@@ -298,6 +314,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "jalepeno",
     cost = 3,
     rarity = 1,
@@ -326,6 +344,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "cabbage_pult",
     cost = 3,
     rarity = 1,
@@ -355,6 +375,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "marigold",
     cost = 3,
     rarity = 1,
@@ -389,6 +411,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "kernel_pult",
     cost = 3,
     rarity = 1,
@@ -446,6 +470,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "hypno_shroom",
     cost = 3,
     rarity = 1,
@@ -488,6 +514,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "ice_lettuce",
     cost = 4,
     beans_credits = {
@@ -515,6 +543,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "snap_dragon",
     cost = 4,
     beans_credits = {
@@ -548,6 +578,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "spring_bean",
     cost = 3,
     beans_credits = {
@@ -571,6 +603,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "pea_pod",
     cost = 3,
     beans_credits = {
@@ -619,6 +653,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "robotga",
     cost = 3,
     beans_credits = {
@@ -650,6 +686,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "bean",
     cost = 3,
     beans_credits = {
@@ -678,6 +716,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "gold_leaf",
     cost = 5,
     beans_credits = {
@@ -717,7 +757,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "moonflower",
     cost = 4,
     beans_credits = {
@@ -742,7 +784,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "shadow_shroom",
     cost = 4,
     beans_credits = {
@@ -775,7 +819,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "grimrose",
     cost = 4,
     beans_credits = {
@@ -805,7 +851,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "homing_thistle",
     cost = 4,
     beans_credits = {
@@ -834,7 +882,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "ghost_pepper",
     cost = 4,
     beans_credits = {
@@ -874,7 +924,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "sap_fling",
     cost = 4,
     beans_credits = {
@@ -897,7 +949,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "fire_peashooter",
     cost = 4,
     beans_credits = {
@@ -936,7 +990,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "toad_stool",
     cost = 4,
     beans_credits = {
@@ -969,7 +1025,9 @@ SMODS.Joker({
 })
 
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "straw_burst",
     cost = 4,
     beans_credits = {
@@ -1009,7 +1067,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "gold_bloom",
     cost = 4,
     beans_credits = {
@@ -1036,7 +1096,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "apple_mortar",
     cost = 2,
     beans_credits = {
@@ -1089,7 +1151,9 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({ 
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
     key = "witch_hazel",
     cost = 2,
     beans_credits = {
@@ -1157,6 +1221,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "parsnip",
     blueprint_compat = true,
     rarity = 1,
@@ -1217,6 +1283,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "electric_peashooter",
     cost = 4,
     beans_credits = {
@@ -1270,6 +1338,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "holly_projectile",
     cost = 3,
     rarity = 2,
@@ -1330,6 +1400,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "sling_pea",
     cost = 3,
     rarity = 2,
@@ -1379,6 +1451,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "basic_z",
     cost = 0,
     rarity = 1,
@@ -1410,6 +1484,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "carrot_z",
     cost = 0,
     rarity = 1,
@@ -1441,6 +1517,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "dartichoke",
     cost = 0,
     rarity = 1,
@@ -1477,6 +1555,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "tumbleweed",
     cost = 0,
     rarity = 1,
@@ -1518,6 +1598,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "gumnut",
     cost = 4,
     beans_credits = {
@@ -1546,6 +1628,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "tofu_turkey",
     cost = 5,
     beans_credits = {
@@ -1590,6 +1674,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "stickybomb_rice",
     cost = 3,
     beans_credits = {
@@ -1618,6 +1704,8 @@ SMODS.Joker({
     end,
 })
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "hocus_crocus",
     cost = 3,
     beans_credits = {
@@ -1653,6 +1741,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "headbutter_lettuce",
     cost = 3,
     beans_credits = {
