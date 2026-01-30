@@ -1681,3 +1681,32 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "solar_sage",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.gold_rush = NAMETEAM.gold_rush or 0
+            NAMETEAM.gold_rush = NAMETEAM.gold_rush  + 1
+        end
+    end,
+})
+

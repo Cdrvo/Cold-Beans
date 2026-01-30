@@ -3619,7 +3619,7 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            xmult = 1
+            xmult = 1.2
         }
     },
     loc_vars = function(self,info_queue,card)
@@ -3629,10 +3629,17 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.individual and context.cardarea == G.play then
-            SMODS.modify_rank(context.other_card, -1)
-            return{
-                xmult = cae.xmult
-            }
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.1,
+            func = function()
+                context.other_card:juice_up()
+                SMODS.modify_rank(context.other_card, -1)
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        }))
         end
     end,
 })
