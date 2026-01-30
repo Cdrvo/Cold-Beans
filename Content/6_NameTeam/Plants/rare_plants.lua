@@ -296,8 +296,8 @@ SMODS.Joker({
                 xmult = cae.xmult
             }
         end
-        if context.cbean_cashout and NAMETEAM.goldenmagnet_number then
-            cae.xmult = cae.xmult + (cae.xmult_gain*NAMETEAM.goldenmagnet_number)
+        if context.cbean_cashout and G.GAME.NAMETEAM.goldenmagnet_number then
+            cae.xmult = cae.xmult + (cae.xmult_gain*G.GAME.NAMETEAM.goldenmagnet_number)
             NAMETEAM.msg(card, localize("k_upgrade_ex"), "mult")
         end
     end,
@@ -424,7 +424,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
     key = "imitater",
     cost = 5,
     beans_credits = {
@@ -473,7 +472,7 @@ SMODS.Joker({
         end
     end,
     in_pool = function(self)
-        return (G.GAME.last_bought_joker_key~=nil)
+        return (G.GAME.last_bought_joker_key~=nil) and NAMETEAM.plant_in_pool
     end
 })
 
@@ -885,7 +884,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
     key = "ultomato",
     cost = 3,
     rarity = 3,
@@ -918,7 +916,7 @@ SMODS.Joker({
         end
     end,
     in_pool = function(self,card)
-        return true, {allow_duplicates = true}
+        return NAMETEAM.plant_in_pool, {allow_duplicates = true}
     end
 })
 

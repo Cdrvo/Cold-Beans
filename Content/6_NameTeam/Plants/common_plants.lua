@@ -118,7 +118,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool, -- literally copypaste :D
     key = "sunnier_shroom",
     cost = 4,
     rarity = 1,
@@ -337,8 +336,8 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            if not NAMETEAM.jal_sold then NAMETEAM.jal_sold = 0 end
-            NAMETEAM.jal_sold = NAMETEAM.jal_sold + 1
+            if not G.GAME.NAMETEAM.jal_sold then G.GAME.NAMETEAM.jal_sold = 0 end
+            G.GAME.NAMETEAM.jal_sold = G.GAME.NAMETEAM.jal_sold + 1
         end
     end
 })
@@ -537,7 +536,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
+            G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress + cae.rounds
         end
     end,
 })
@@ -604,7 +603,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
     key = "pea_pod",
     cost = 3,
     beans_credits = {
@@ -648,7 +646,7 @@ SMODS.Joker({
         end
     end,
     in_pool = function(self,card)
-        return true, {allow_duplicates = true}
+        return NAMETEAM.plant_in_pool, {allow_duplicates = true}
     end
 })
 
@@ -710,7 +708,7 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.selling_self and G.GAME.current_round.hands_played==0 and not G.GAME.blind.disabled then
             G.GAME.blind.disabled = false
-            NAMETEAM.first_hand_disable = true
+            G.GAME.NAMETEAM.first_hand_disable = true
         end
     end,
 })
@@ -845,8 +843,8 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.grimrose_number = NAMETEAM.grimrose_number or 0 
-            NAMETEAM.grimrose_number =  NAMETEAM.grimrose_number + 1
+            G.GAME.NAMETEAM.grimrose_number = G.GAME.NAMETEAM.grimrose_number or 0 
+            G.GAME.NAMETEAM.grimrose_number =  G.GAME.NAMETEAM.grimrose_number + 1
         end
     end
 })
@@ -1621,7 +1619,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
+            G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress + cae.rounds
         end
     end,
 })
@@ -1629,7 +1627,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
     key = "tofu_turkey",
     cost = 5,
     beans_credits = {
@@ -1795,9 +1792,39 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.gold_rush = NAMETEAM.gold_rush or 0
-            NAMETEAM.gold_rush = NAMETEAM.gold_rush  + 1
+            G.GAME.NAMETEAM.gold_rush = G.GAME.NAMETEAM.gold_rush or 0
+            G.GAME.NAMETEAM.gold_rush = G.GAME.NAMETEAM.gold_rush  + 1
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "teleporto_mine",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.blind_select and (Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Boss"]).key) ~= "bl_cbean_blank" then
+            G.GAME.NAMETEAM.stored_boss = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Boss"]).key
+            NAMETEAM.set_blind("bl_cbean_blank")
+        end
+    end,
+})
+
+
 

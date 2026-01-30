@@ -81,3 +81,12 @@ SMODS.Sound({
   key = "greatest_plan",
   path = "6_NameTeam/cbean_greatest_plan.ogg"
 })
+
+SMODS.Atlas({
+	key = "nteam_blinds",
+	path = "6_NameTeam/ColdBeansBlinds.png",
+	atlas_table = "ANIMATION_ATLAS",
+	px = 34,
+	py = 34,
+	frames = 21,
+})

@@ -44,6 +44,19 @@ G.culled_table.STATE = (G.STATE == G.STATES.STATIONERY or G.STATE == G.STATES.MA
 '''
 match_indent = true
 
+# sneaking a save
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'after'
+pattern = '''
+    VERSION = G.VERSION
+'''
+payload = '''
+,NPLANTS = NPLANTS or {}
+'''
+match_indent = true
+
 [[patches]]
 [patches.pattern]
 target = 'game.lua'

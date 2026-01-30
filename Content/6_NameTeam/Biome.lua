@@ -26,7 +26,7 @@ Game.main_menu = function(change_context)
         -- Replaces in_pool for all jokers which simply checks for the biome
         for k, v in pairs(G.P_CENTERS) do
             if string.find(k, "j_") == 1 then
-                if not v.pvz_plant or k ~= "j_bones" then
+                if not v.pvz_plant and k ~= "j_mr_bones" then
                     local old_in_pool = nil
                     if v.in_pool then
                         sendDebugMessage("Setting new pool for "..k, "nameteam_davelawn")

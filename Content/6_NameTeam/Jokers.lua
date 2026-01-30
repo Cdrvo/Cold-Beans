@@ -2073,3 +2073,46 @@ SMODS.Joker {
         return false
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_zirconiumpants",
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 1, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+        return {}
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.before and next(context.poker_hands["Two Pair"]) then
+            local candidates = {}
+            for _, v in ipairs(G.hand.cards) do
+                if not next(SMODS.get_enhancements(v)) then candidates[#candidates + 1] = v end
+            end
+
+            if next(candidates) then
+                local _card = pseudorandom_element(candidates, pseudoseed('zirconiumpants'))
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        _card:set_ability("m_steel")
+                        _card:juice_up()
+                        return true
+                    end
+                }))
+                return { message = localize { key = "m_steel", type = "name_text", set = "Enhanced" }, colour = G.C.FILTER }
+            end
+        end
+    end
+}

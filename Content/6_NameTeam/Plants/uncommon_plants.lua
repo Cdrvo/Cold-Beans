@@ -25,9 +25,9 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.selling_self then
             SMODS.add_card{key="j_cbean_crater",area=G.jokers}
-            if not NAMETEAM.reduce then NAMETEAM.reduce = 0 end
+            if not G.GAME.NAMETEAM.reduce then G.GAME.NAMETEAM.reduce = 0 end
             if G.GAME.blind and G.GAME.blind.in_blind then
-                NAMETEAM.reduce = NAMETEAM.reduce + 2
+                G.GAME.NAMETEAM.reduce = G.GAME.NAMETEAM.reduce + 2
                 if G.GAME.blind.boss then
                     G.GAME.blind.chips = G.GAME.blind.chips/cae.blind
                     G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
@@ -37,7 +37,7 @@ SMODS.Joker({
                 end
                 NAMETEAM.msg(card, "Doom!")
             else
-                NAMETEAM.reduce = NAMETEAM.reduce + 3
+                G.GAME.NAMETEAM.reduce = G.GAME.NAMETEAM.reduce + 3
             end
         end
     end,
@@ -393,7 +393,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
+            G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress + cae.rounds
         end
     end,
 })
@@ -630,8 +630,8 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.after and NAMETEAM.blover_number and not context.blueprint then
-            for i = 1, NAMETEAM.blover_number do
+        if context.after and G.GAME.NAMETEAM.blover_number and not context.blueprint then
+            for i = 1, G.GAME.NAMETEAM.blover_number do
                 SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",
@@ -984,9 +984,9 @@ SMODS.Joker({
     end,
     calculate = function(self, card, context)
         local cae = card.ability.extra
-        if context.after and NAMETEAM.cactus_number and not context.blueprint then
-            for i = 1, NAMETEAM.cactus_number do
-                NAMETEAM.cactus_number = NAMETEAM.cactus_number- 1
+        if context.after and G.GAME.NAMETEAM.cactus_number and not context.blueprint then
+            for i = 1, G.GAME.NAMETEAM.cactus_number do
+                G.GAME.NAMETEAM.cactus_number = G.GAME.NAMETEAM.cactus_number- 1
                 SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",
@@ -1158,9 +1158,9 @@ SMODS.Joker({
                 xmult = cae.xmukt
             }
         end
-        if context.after and NAMETEAM.cattail_number then
-            for i = 1, NAMETEAM.cattail_number do
-                NAMETEAM.cattail_number = NAMETEAM.cattail_number - 1
+        if context.after and G.GAME.NAMETEAM.cattail_number then
+            for i = 1, G.GAME.NAMETEAM.cattail_number do
+                G.GAME.NAMETEAM.cattail_number = G.GAME.NAMETEAM.cattail_number - 1
                 SMODS.scale_card(card,{
                     ref_table = cae,
                     ref_value = "xmukt",
@@ -1983,23 +1983,23 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus or 0
-            if not NAMETEAM.sunbean_tagged then
-                NAMETEAM.sunbean_tagged = true
+            G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus or 0
+            if not G.GAME.NAMETEAM.sunbean_tagged then
+                G.GAME.NAMETEAM.sunbean_tagged = true
                 add_tag(Tag("tag_cbean_sunbean"))
 					play_sound("generic1", 0.9 + math.random() * 0.1, 0.8)
 					play_sound("holo1", 1.2 + math.random() * 0.1, 0.4)
             end
             if G.GAME.blind:get_type() == "Teeny" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars/2
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars/2
             elseif  G.GAME.blind:get_type() == "Small" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars
             elseif G.GAME.blind:get_type() == "Big" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*2
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars*2
             elseif G.GAME.blind:get_type() == "Boss" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*3
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars*3
             elseif G.GAME.blind:get_type() == "CEO" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*4
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars*4
             end
         end
     end,
@@ -3943,6 +3943,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "inferno",
     cost = 3,
     beans_credits = {
@@ -3980,6 +3982,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "noctairne",
     cost = 4,
     beans_credits = {
@@ -4013,6 +4017,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "health_seeker",
     cost = 4,
     beans_credits = {
@@ -4036,12 +4042,14 @@ SMODS.Joker({
             local prev_scaling = G.GAME.starting_params.ante_scaling
             G.GAME.starting_params.ante_scaling =  G.GAME.starting_params.ante_scaling / 2
             local current_scaling = prev_scaling - G.GAME.starting_params.ante_scaling
-            NAMETEAM.healthy_ante = current_scaling
+            G.GAME.NAMETEAM.healthy_ante = current_scaling
         end
     end,
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "tiger_grass",
     cost = 4,
     beans_credits = {

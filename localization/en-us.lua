@@ -723,6 +723,12 @@ return {
 					"#1# in #2# chance to give a scored card Polychrome",
 				},
 			},
+			bl_cbean_blank = {
+				name = "Blank",
+				text = {
+					"Has no effect"
+				},
+			},
 		},
 		Combo = {
 			c_cbean_0chill_raging_storm = {
@@ -4999,6 +5005,15 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
+			j_cbean_teleporto_mine = {
+				name = "Teleporto Mine",
+				text = {
+					"{C:green}Sell{} this card",
+					"to move the current {C:attention}Boss{}",
+					"to the next {C:attention}Ante{}",
+					"{C:inactive,s:0.8}(Blank excluded)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
@@ -5412,6 +5427,16 @@ return {
 					"{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
 					"and {C:white,X:mult}X#3#{} Mult",
 					"when scored"
+				}
+			},
+			j_cbean_nameteam_zirconiumpants = {
+				name = 'Zirconium Pants',
+				text =
+				{
+                    "If played hand",
+					"contains a {C:attention}Two Pair{},",
+					"an {C:attention}unenhanced{} card held",
+					"in hand becomes {C:attention}Steel{}"
 				}
 			},
 
