@@ -58,7 +58,7 @@ ColdBeans.calculate = function(mod, context)
 			}
 		end
 	end
-	if context.destroy_card and context.cardarea == G.play and (G.GAME.NAMETEAM.jal_sold and G.GAME.NAMETEAM.jal_sold>0) or (context.destroy_card.ability.bzzed) then
+	if context.destroy_card and context.cardarea == G.play and ((G.GAME.NAMETEAM.jal_sold and G.GAME.NAMETEAM.jal_sold>0) or (context.destroy_card.ability.bzzed) )then
 		G.GAME.NAMETEAM.jal_triggered = true
         return{
             remove = true

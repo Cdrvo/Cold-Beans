@@ -89,7 +89,7 @@ SMODS.Joker({
     atlas = 'NAMETEAM_PlantJokers',
     pos = { x = 11, y = 2 },
     cost = 4,
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = false,
     config = {
         extra = {
@@ -756,7 +756,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     always_buyable = true,
     blueprint_compat = false,
     config = {
@@ -799,7 +799,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1390,7 +1390,7 @@ SMODS.Joker({
     key = "holly_projectile",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1453,7 +1453,7 @@ SMODS.Joker({
     key = "sling_pea",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1842,7 +1842,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1873,7 +1873,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1999,7 +1999,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     config = {
         extra = {
@@ -2027,6 +2027,40 @@ SMODS.Joker({
                     mult = cae.mult
                 }
             end
+        end
+    end
+    
+})
+
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "boomberry",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 40
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.mult,cae.hands,cae.hands_max}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scroing_hand] then
+            return{
+                chips = ((cae.chips/4)+(cae.chips/4)+(cae.chips/4)+(cae.chips/4))
+            }
         end
     end
 })

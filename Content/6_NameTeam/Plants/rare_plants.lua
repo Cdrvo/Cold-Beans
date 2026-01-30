@@ -496,7 +496,7 @@ SMODS.Joker({
     atlas = 'NAMETEAM_PlantJokers',
     pos = { x = 2, y = 4 },
     cost = 4,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
@@ -556,7 +556,7 @@ SMODS.Joker({
     key = "red_stinger",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
@@ -659,7 +659,7 @@ SMODS.Joker({
     key = "cauli_power",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
