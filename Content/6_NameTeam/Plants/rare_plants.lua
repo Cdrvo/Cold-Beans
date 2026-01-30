@@ -54,7 +54,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -382,7 +382,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 3,
     blueprint_compat = true,
@@ -436,7 +436,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 3,
     blueprint_compat = true,
@@ -506,7 +506,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.playing_cards) do

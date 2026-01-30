@@ -24,7 +24,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -68,7 +68,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -105,7 +105,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -307,7 +307,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -325,6 +325,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "jalepeno",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 7, y = 4 },
     cost = 3,
     rarity = 1,
     blueprint_compat = true,
@@ -340,7 +342,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -372,7 +374,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -445,7 +447,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.playing_cards) do
@@ -564,7 +566,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 1,
     blueprint_compat = false,
@@ -601,7 +603,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 1,
     blueprint_compat = false,
@@ -628,7 +630,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 1,
     blueprint_compat = true,
@@ -674,11 +676,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "robotga",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 0, y = 4 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 1,
     blueprint_compat = true,
@@ -708,10 +712,12 @@ SMODS.Joker({
     in_pool = NAMETEAM.plant_in_pool,
     key = "bean",
     cost = 3,
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 0, y = 0 },
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 1,
     blueprint_compat = true,
@@ -1018,7 +1024,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 1,
     blueprint_compat = true,
@@ -1097,7 +1103,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 1,
     blueprint_compat = true,
