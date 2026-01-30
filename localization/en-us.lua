@@ -5458,6 +5458,10 @@ return {
 				text =
 				{
 					{
+						"Played {C:attention}Kings{} give",
+						"{C:money}+$#1#{} when scored"
+					},
+					{
 						"When {C:attention}Blind{} is selected,",
 						"tells a {C:attention}Yo Mama{} joke"
 					}
