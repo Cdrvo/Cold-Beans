@@ -5218,9 +5218,6 @@ return {
 					"to increase repetitions by {C:attention}1{}"
 				},
 			},
-<<<<<<< Updated upstream
-			j_cbean_nameteam_stickerbomb                = {
-=======
 
 			j_cbean_dragon_bruit = {
 				name =  "Dragon Bruit",
@@ -5243,7 +5240,6 @@ return {
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
->>>>>>> Stashed changes
 				name = {
 					"Stickerbomb",
 				},
