@@ -1130,6 +1130,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "tomb_tangler",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
