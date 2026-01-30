@@ -1137,7 +1137,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1167,5 +1167,36 @@ SMODS.Joker({
             _card:set_edition("e_negative")
         end
         end
+    end
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "bz_button",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+         if context.selling_self then
+            G.GAME.NAMETEAM.bzzed_amount = G.GAME.NAMETEAM.bzzed_amount or 0
+            G.GAME.NAMETEAM.bzzed = G.GAME.NAMETEAM.bzzed + 1
+            G.GAME.NAMETEAM.bzzed_amount = cae.xmult
+         end
     end
 })

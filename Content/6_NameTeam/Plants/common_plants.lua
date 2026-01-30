@@ -2016,7 +2016,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.joker_main then
-            if cae.hands > 0 then
+            if cae.hands > 1 then
                 cae.hands = cae.hands - 1
                 return{
                     chips = cae.chips

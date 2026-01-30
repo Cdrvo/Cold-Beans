@@ -3788,11 +3788,19 @@ return {
 					"are {C:red}debuffed{}"
 				},
 			},
+			j_cbean_bz_button = {
+				name = "Bzzz Button",
+				text = {
+					"The cards {C:attention}scored{} after {:green}selling",
+					"this card give {X:mult,C:white}X#1#{} Mult",
+					"but are {C:red}destroyed{} afterwards"
+				},
+			},
 			j_cbean_bun_chi = {
 				name = "Bun Chi",
 				text = {
 					"{C:chips}+#1#{} Chips",
-					"after {:attention}#4${C:inactive} (#3#){} triggers,",
+					"after {C:attention}#4${C:inactive} (#3#){} triggers,",
 					"{C:mult}+#2#{} Mult instead"
 				},
 			},
