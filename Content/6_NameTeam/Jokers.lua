@@ -1819,6 +1819,7 @@ SMODS.Joker {
             loop = false
         }
     },
+    cbean_anim_current_state = "normal",
     cost = 8,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.money } }
