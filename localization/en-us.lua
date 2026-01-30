@@ -3782,6 +3782,15 @@ return {
 					"stop returning chips"
 				},
 			},
+			j_cbean_iceweed = {
+				name = "Iceweed",
+				text = {
+					"Scored cards gain {X:mult,C:white}X#1#{}",
+					"{C:mult}Perma XMULT{} but lose {C:red}-1{} Chips",
+					"Destroy scored cards if they",
+					"stop returning chips"
+				},
+			},
 			j_cbean_blover = {
 				name = "Blover",
 				text = {
@@ -4774,7 +4783,7 @@ return {
 				},
 			},
 			j_cbean_murkadamia = {
-				name = "Murkadamia",
+				name = "Murkadamia Nut",
 				text = {
 					"Gains {C:mult}+#2#{} Mult",
 					"for each scored card",

@@ -403,7 +403,7 @@ SMODS.Joker({
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
 
-                if -(context.other_card.base.id)>= -(context.other_card.ability.perma_bonus) then
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
                     context.other_card.ability.cbean_marked = true
                 end
 				return {

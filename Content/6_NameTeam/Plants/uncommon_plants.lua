@@ -508,7 +508,7 @@ SMODS.Joker({
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
 
-                if -(context.other_card.base.id)>= -(context.other_card.ability.perma_bonus) then
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
                     context.other_card.ability.cbean_marked = true
                 end
 				return {
@@ -524,6 +524,55 @@ SMODS.Joker({
             }
         end
     end,
+})
+
+SMODS.Joker({
+    key = "iceweed",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 0.2
+        }
+    },
+    pvz_plant = true,
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+			if ((not context.other_card.ability.perma_bonus) or ((-(context.other_card.ability.perma_bonus)))<context.other_card.base.id) then
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
+
+                context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 1
+				context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + cae.xmult
+
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
+                    context.other_card.ability.cbean_marked = true
+                end
+				return {
+					message = "Downgrade! + Upgrade!",
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+		end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.cbean_marked then
+            return{
+                remove = true
+            }
+        end
+    end,
+    in_pool = NAMETEAM.plant_in_pool
 })
 
 SMODS.Joker({
@@ -4016,7 +4065,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.destroy_card and context.destroy_card == G.play.cards[1] and not cae.on_cooldown then
-            SMODS.destroy_cards(context.destroy_card)
+                SMODS.destroy_cards(context.destroy_card)
                 SMODS.scale_card(card,{
                     ref_table = cae,
                     ref_value = "xmult",
