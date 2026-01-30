@@ -71,7 +71,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        local num,den = SMODS.get_probabiltiy_vars(card, 1,cae.odds,"gattlingit")
+        local num,den = SMODS.get_probability_vars(card, 1,cae.odds,"gattlingit")
         return{vars={cae.rep,num,den}}
     end,
     calculate = function(self,card,context)

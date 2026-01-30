@@ -5041,6 +5041,14 @@ return {
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_rhubarbarian = {
+				name =  "Rhubarbarian",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"when a hand is played,","all cards left",
+					"in hand are {C:red}discarded"
+				},
+			},
 			j_cbean_mega_gattling_pea = {
 				name =  "Mega Gattling Pea",
 				text = {

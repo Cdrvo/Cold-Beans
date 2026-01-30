@@ -211,6 +211,15 @@ function G.FUNCS.play_cards_from_highlighted(e)
 			end
 		end
 	end
+	if (#SMODS.find_card("j_cbean_rhubarbarian")>0) or NAMETEAM.testing_discard_2 then
+		for i=1, #G.hand.cards do
+		if G.hand.cards[i].highlighted == false then
+			draw_card(G.hand, G.discard, i*100/#G.hand.cards, 'up', nil, G.hand.cards[i])
+			SMODS.calculate_context({discard = true, other_card =  G.hand.cards[i], full_hand = G.hand.cards, ignore_other_debuff = true})
+			G.hand.cards[i].cbean_discarded = true
+		end
+		end
+	end
 	old_play_highlighted(e)
 end
 
