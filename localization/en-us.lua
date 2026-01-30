@@ -4932,6 +4932,15 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
+			j_cbean_inferno = {
+				name = "Inferno",
+				text = {
+					"Scored cards give",
+					"{X:mult,C:white}X#1#{} Mult",
+					"but are downgraded",
+					"to a rank below"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

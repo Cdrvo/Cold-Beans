@@ -3607,3 +3607,33 @@ SMODS.Joker({
     end,
 })
 
+SMODS.Joker({
+    key = "inferno",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            SMODS.modify_rank(context.other_card, -1)
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
