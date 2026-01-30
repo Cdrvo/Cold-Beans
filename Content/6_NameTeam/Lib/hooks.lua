@@ -493,13 +493,3 @@ function Card:highlight(is_highlighted)
 		return cardhighold(self, is_highlighted)
 	end
 end
-
-function NAMETEAM.reverse_table(table)
-	local tab = {}
-
-	for i = 1, #table do
-		tab[#tab+1] = table[#table-(i-1)]
-	end
-
-	return tab
-end

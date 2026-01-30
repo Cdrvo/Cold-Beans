@@ -749,3 +749,22 @@ function Card:NAMETEAM_enhancement()
 	end
 	return nil
 end
+
+
+function NAMETEAM.reverse_table(table)
+	local tab = {}
+
+	for i = 1, #table do
+		tab[#tab+1] = table[#table-(i-1)]
+	end
+
+	return tab
+end
+
+function NAMETEAM.index(card, table)
+	for i = 1, #table do
+		if table[i] == card then
+			return i
+		end
+	end
+end

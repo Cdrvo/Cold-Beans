@@ -1623,3 +1623,34 @@ SMODS.Joker({
         local cae = card.ability.extra
     end,
 })
+
+SMODS.Joker({
+    key = "headbutter_lettuce",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            chips = 55
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            if NAMETEAM.index(card, G.jokers.cards) == NAMETEAM.index(context.other_card, G.play.cards) then
+                return{
+                    chips = cae.chips
+                }
+            end 
+        end
+    end,
+})

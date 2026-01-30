@@ -4881,6 +4881,15 @@ return {
 					"order is {C:dark_edition}reversed"
 				},
 			},
+			j_cbean_headbutter_lettuce = {
+				name = "Headbutter Lettuce",
+				text = {
+					"If a scored card's position",
+					"is the same as this Joker's position",
+					"it gives {C:chips}+#1#{} Chips",
+					"{C:inactive,s:0.85}(e.g 3rd in jokers, 3rd in scoring)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
