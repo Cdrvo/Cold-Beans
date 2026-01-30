@@ -47,29 +47,29 @@ end
 
 ColdBeans.calculate = function(mod, context)
 
-	if context.destroy_card and context.cardarea == G.play and (NAMETEAM.jal_sold and NAMETEAM.jal_sold>0) then
-		NAMETEAM.jal_triggered = true
+	if context.destroy_card and context.cardarea == G.play and (G.GAME.NAMETEAM.jal_sold and G.GAME.NAMETEAM.jal_sold>0) then
+		G.GAME.NAMETEAM.jal_triggered = true
         return{
             remove = true
         }
     end
 
 	if context.skip_blind then
-		NAMETEAM.skipped = true
+		G.GAME.NAMETEAM.skipped = true
 	end
 	if context.setting_blind then
-		NAMETEAM.skipped = false
+		G.GAME.NAMETEAM.skipped = false
 	end
 	if context.before then
-		if NAMETEAM.grimrose_number and NAMETEAM.grimrose_number>0 then
-			NAMETEAM.grimrose_triggered = true
-			NAMETEAM.grimrose_number = NAMETEAM.grimrose_number - 1
+		if G.GAME.NAMETEAM.grimrose_number and NAMEG.GAME.NAMETEAMTEAM.grimrose_number>0 then
+			G.GAME.NAMETEAM.grimrose_triggered = true
+			G.GAME.NAMETEAM.grimrose_number = G.GAME.NAMETEAM.grimrose_number - 1
 			SMODS.smart_level_up_hand(nil, context.scoring_name, nil, 1)
 		end
 	end
 	if context.final_scoring_step then
-		if NAMETEAM.grimrose_triggered then
-			NAMETEAM.grimrose_triggered  = false
+		if G.GAME.NAMETEAM.grimrose_triggered then
+			G.GAME.NAMETEAM.grimrose_triggered  = false
 			local acard = pseudorandom_element(context.scoring_hand,pseudoseed("grimyrosu"))
 			if acard then
 				G.E_MANAGER:add_event(Event({
@@ -83,8 +83,8 @@ ColdBeans.calculate = function(mod, context)
 			end
 		end
 
-		if NAMETEAM.gold_rush and NAMETEAM.gold_rush  > 0 then
-			NAMETEAM.gold_rush = NAMETEAM.gold_rush - 1
+		if G.GAME.NAMETEAM.gold_rush and G.GAME.NAMETEAM.gold_rush  > 0 then
+			G.GAME.NAMETEAM.gold_rush = G.GAME.NAMETEAM.gold_rush - 1
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 0,
@@ -104,12 +104,12 @@ ColdBeans.calculate = function(mod, context)
         G.GAME.cbean_combo_index = {}
         G.GAME.cbean_combo_unique_hand = {}
         G.GAME.cbean_combos_used_turn = 0
-		if NAMETEAM.jal_triggered then
-			NAMETEAM.jal_sold = NAMETEAM.jal_sold - 1
-			NAMETEAM.jal_triggered = false
+		if G.GAME.NAMETEAM.jal_triggered then
+			G.GAME.NAMETEAM.jal_sold = G.GAME.NAMETEAM.jal_sold - 1
+			G.GAME.NAMETEAM.jal_triggered = false
 		end
-		if NAMETEAM.first_hand_disable then
-			NAMETEAM.first_hand_disable = false
+		if G.GAME.NAMETEAM.first_hand_disable then
+			G.GAME.NAMETEAM.first_hand_disable = false
 			--idk what im doing
 			G.GAME.blind.disabled = false
 		end
@@ -132,6 +132,9 @@ ColdBeans.calculate = function(mod, context)
         G.GAME.cbean_combo_unique_round = {}
 
 		if context.main_eval then
+			if G.GAME.NAMETEAM.cards_no_score then 
+				G.GAME.NAMETEAM.cards_no_score = nil
+			end
 			for k, v in pairs(G.playing_cards) do
 				if v.cbean_banana_timer then
 					if v.cbean_banana_timer == 1 then
@@ -168,15 +171,15 @@ ColdBeans.calculate = function(mod, context)
 
 		end
     end
-	if context.destroy_card and context.cardarea == G.play and NAMETEAM.destroy and NAMETEAM.destroy>0 then
-		NAMETEAM.destroy = NAMETEAM.destroy - 1
+	if context.destroy_card and context.cardarea == G.play and G.GAME.NAMETEAM.destroy and G.GAME.NAMETEAM.destroy>0 then
+		G.GAME.NAMETEAM.destroy = G.GAME.NAMETEAM.destroy - 1
 		return{
 			remove = true
 		}
 	end
 	if context.ante_change and context.ante_end then
-		if NAMETEAM.healthy_ante then
-			G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + NAMETEAM.healthy_ante
+		if G.GAME.NAMETEAM.healthy_ante then
+			G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + G.GAME.NAMETEAM.healthy_ante
 		end
 	end
 	if context.card_added and context.cardarea == G.jokers then

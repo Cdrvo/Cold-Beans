@@ -723,6 +723,12 @@ return {
 					"#1# in #2# chance to give a scored card Polychrome",
 				},
 			},
+			bl_cbean_blank = {
+				name = "Blank",
+				text = {
+					"Has no effect"
+				},
+			},
 		},
 		Combo = {
 			c_cbean_0chill_raging_storm = {
@@ -3782,6 +3788,15 @@ return {
 					"stop returning chips"
 				},
 			},
+			j_cbean_iceweed = {
+				name = "Iceweed",
+				text = {
+					"Scored cards gain {X:mult,C:white}X#1#{}",
+					"{C:mult}Perma XMULT{} but lose {C:red}-1{} Chips",
+					"Destroy scored cards if they",
+					"stop returning chips"
+				},
+			},
 			j_cbean_blover = {
 				name = "Blover",
 				text = {
@@ -4128,12 +4143,12 @@ return {
 				},
 			},
 			j_cbean_bean = {
-				name = "Bean",
+				name = "Chilli Bean",
 				text = {
-					"When sold in a blind",
-					"disable the blind",
-					"for the first hand",
-					"of the round"
+					"When {C:green}sold{} in a blind",
+					"disable the current blind",
+					"but makes cards {C:red}unable",
+					"to score"
 				},
 			},
 			j_cbean_red_stinger = {
@@ -4774,7 +4789,7 @@ return {
 				},
 			},
 			j_cbean_murkadamia = {
-				name = "Murkadamia",
+				name = "Murkadamia Nut",
 				text = {
 					"Gains {C:mult}+#2#{} Mult",
 					"for each scored card",
@@ -4988,6 +5003,59 @@ return {
 					"gain {X:mult,C:white}X#2#{} Mult",
 					"Then go on cooldown for {C:attention}1{} Hand",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_teleporto_mine = {
+				name = "Teleporto Mine",
+				text = {
+					"{C:green}Sell{} this card",
+					"to move the current {C:attention}Boss{}",
+					"to the next {C:attention}Ante{}",
+					"{C:inactive,s:0.8}(Blank excluded)"
+				},
+			},
+			j_cbean_blockoli = {
+				name =  "Blockoli",
+				text = {
+					"{C:attention}Retrigger{} adjecent jokers",
+					"but they have a {C:green}chance{} to",
+					"{C:red}don't{} trigger at all",
+					"{C:inactive}(Only works during scoring)"
+				},
+			},
+			j_cbean_buttercup = {
+				name =  "Buttercup",
+				text = {
+					"{C:attention}First{} scoring card",
+					"gives {C:mult}+#1#{} Mult",
+					"but is debuffed for the",
+					"rest of the ante"
+				},
+			},
+			j_cbean_bramble_bush = {
+				name =  "Bramble Bush",
+				text = {
+					"This card and cards",
+					"on the right of it",
+					"{C:red}cannot{} be dragged",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			j_cbean_rhubarbarian = {
+				name =  "Rhubarbarian",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"when a hand is played,","all cards left",
+					"in hand are {C:red}discarded"
+				},
+			},
+			j_cbean_mega_gattling_pea = {
+				name =  "Mega Gattling Pea",
+				text = {
+					"First scored card",
+					"is retriggered {C:attention}#1#{} Times",
+					"After scoring, has a {C:green}#2# in #3#{} Chance",
+					"to increase repetitions by {C:attention}1{}"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {

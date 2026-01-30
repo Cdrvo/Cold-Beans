@@ -3,19 +3,19 @@ SMODS.Tag {
     pos = { x = 2, y = 1 },
     config = {},
     loc_vars = function(self, info_queue, tag)
-        return { vars = { (NAMETEAM.sunbean_bonus or 0) } }
+        return { vars = { (G.GAME.NAMETEAM.sunbean_bonus or 0) } }
     end,
     apply = function(self, tag, context)
         if context.type == 'eval' then
             if G.GAME.last_blind then
-                local a = NAMETEAM.sunbean_bonus
+                local a = G.GAME.NAMETEAM.sunbean_bonus
                 tag:yep('+', G.C.GOLD, function()
                     return true
                 end)
                 tag.triggered = true
-                local a = NAMETEAM.sunbean_bonus
-                NAMETEAM.sunbean_tagged = false
-                NAMETEAM.sunbean_bonus = 0
+                local a = G.GAME.NAMETEAM.sunbean_bonus
+                G.GAME.NAMETEAM.sunbean_tagged = false
+                G.GAME.NAMETEAM.sunbean_bonus = 0
                 return {
                     dollars = a,
                     condition = "Sell Sun Bean",

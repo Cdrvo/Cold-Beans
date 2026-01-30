@@ -298,8 +298,8 @@ SMODS.Joker({
                 xmult = cae.xmult
             }
         end
-        if context.cbean_cashout and NAMETEAM.goldenmagnet_number then
-            cae.xmult = cae.xmult + (cae.xmult_gain*NAMETEAM.goldenmagnet_number)
+        if context.cbean_cashout and G.GAME.NAMETEAM.goldenmagnet_number then
+            cae.xmult = cae.xmult + (cae.xmult_gain*G.GAME.NAMETEAM.goldenmagnet_number)
             NAMETEAM.msg(card, localize("k_upgrade_ex"), "mult")
         end
     end,
@@ -407,7 +407,7 @@ SMODS.Joker({
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
 
-                if -(context.other_card.base.id)>= -(context.other_card.ability.perma_bonus) then
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
                     context.other_card.ability.cbean_marked = true
                 end
 				return {
@@ -428,7 +428,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
     key = "imitater",
     atlas = 'NAMETEAM_PlantJokers',
     pos = { x = 3, y = 2 },
@@ -479,7 +478,7 @@ SMODS.Joker({
         end
     end,
     in_pool = function(self)
-        return (G.GAME.last_bought_joker_key~=nil)
+        return (G.GAME.last_bought_joker_key~=nil) and NAMETEAM.plant_in_pool
     end
 })
 
@@ -893,7 +892,6 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
     key = "ultomato",
     cost = 3,
     rarity = 3,
@@ -926,7 +924,7 @@ SMODS.Joker({
         end
     end,
     in_pool = function(self,card)
-        return true, {allow_duplicates = true}
+        return NAMETEAM.plant_in_pool, {allow_duplicates = true}
     end
 })
 
@@ -1023,6 +1021,73 @@ SMODS.Joker({
         local cae = card.ability.extra
         return{
             vars={cae.xmult,(G.GAME.probabilities.normal or 1)}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "draftodil",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,(G.GAME.probabilities.normal or 1)}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "rhubarbarian",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
         }
     end,
     beans_credits = {

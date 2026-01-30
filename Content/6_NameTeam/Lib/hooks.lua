@@ -211,6 +211,15 @@ function G.FUNCS.play_cards_from_highlighted(e)
 			end
 		end
 	end
+	if (#SMODS.find_card("j_cbean_rhubarbarian")>0) or NAMETEAM.testing_discard_2 then
+		for i=1, #G.hand.cards do
+		if G.hand.cards[i].highlighted == false then
+			draw_card(G.hand, G.discard, i*100/#G.hand.cards, 'up', nil, G.hand.cards[i])
+			SMODS.calculate_context({discard = true, other_card =  G.hand.cards[i], full_hand = G.hand.cards, ignore_other_debuff = true})
+			G.hand.cards[i].cbean_discarded = true
+		end
+		end
+	end
 	old_play_highlighted(e)
 end
 
@@ -257,7 +266,7 @@ function Card:calculate_joker(context)
 				trigger_defying_factors = trigger_defying_factors + 1
 			end
 		end
-		if trigger_defying_factors <= 0 then
+		if trigger_defying_factors <= 0 and not self.ability.prevent_trigger then
 			return joker_calc_cold(self, context)
 		end
 	else
@@ -289,7 +298,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 		end]]
 		if b ~= 0 and #NAMETEAM.scoring_area>1 then
 			table.remove(NAMETEAM.scoring_area, b)
-			if not NAMETEAM.cactus_number then NAMETEAM.cactus_number = 1 else NAMETEAM.cactus_number = NAMETEAM.cactus_number + 1 end
+			if not G.GAME.NAMETEAM.cactus_number then G.GAME.NAMETEAM.cactus_number = 1 else G.GAME.NAMETEAM.cactus_number = G.GAME.NAMETEAM.cactus_number + 1 end
 		end
 		--[[if d ~= 0 then  -- YEETS the card lmao
 			table.remove(NAMETEAM.general_area, d)
@@ -300,7 +309,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 	if (#SMODS.find_card("j_cbean_cattail")>0) and #NAMETEAM.scoring_area>2 then
 		table.remove(NAMETEAM.scoring_area, 1)
 		table.remove(NAMETEAM.scoring_area,  #NAMETEAM.scoring_area)
-		if not NAMETEAM.cattail_number then NAMETEAM.cattail_number = 1 else NAMETEAM.cattail_number = NAMETEAM.cattail_number + 1 end
+		if not G.GAME.NAMETEAM.cattail_number then G.GAME.NAMETEAM.cattail_number = 1 else G.GAME.NAMETEAM.cattail_number = G.GAME.NAMETEAM.cattail_number + 1 end
 	end
 	
 	if (#SMODS.find_card("j_cbean_sweet_potato")>0) then
@@ -332,7 +341,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 					SMODS.calculate_effect({xmult = 2.5}, card)
 				end
             end
-        elseif scoring_hand and (card.marked_by_mortar or card.mark_for_no_score or card.mark_for_perma_no_score) then
+        elseif scoring_hand and (card.marked_by_mortar or card.mark_for_no_score or card.mark_for_perma_no_score) or G.GAME.NAMETEAM.cards_no_score then
 			if in_scoring then 
                 -- G.GAME.blind.triggered = true
                 G.E_MANAGER:add_event(Event({
@@ -353,13 +362,13 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                 if in_scoring then context.cardarea = G.play else context.cardarea = 'unscored' end
             end
 			if (#SMODS.find_card("j_cbean_blover")>0) then
-				NAMETEAM.blover_number = #context.scoring_hand
+				G.GAME.NAMETEAM.blover_number = #context.scoring_hand
 			else
 				SMODS.score_card(card, context)
 			end
         end
     end
-	if NAMETEAM.no_score_cards and not (#SMODS.find_card("j_cbean_blover")) then
+	if not G.GAME.NAMETEAM.no_score_cards and not (#SMODS.find_card("j_cbean_blover")) then
 		return calculate_main_scoring_old(context, scoring_hand)
 	end
 end
@@ -509,4 +518,23 @@ function SMODS.calculate_repetitions(card,context,reps)
 	if (#SMODS.find_card("j_cbean_power_vine")==0) then
 		calc_reps_old(card, context, reps)
 	end
+end
+
+	
+local get_boss_old = get_new_boss
+function get_new_boss()
+	if G.GAME.NAMETEAM.stored_boss then
+		local boss = G.GAME.NAMETEAM.stored_boss
+		G.GAME.NAMETEAM.stored_boss = nil
+		return boss
+	else
+		return get_boss_old()
+	end
+end
+
+local igo = Game.init_game_object
+Game.init_game_object = function(self)
+	local ret = igo(self)
+	ret.NAMETEAM = {}
+	return ret
 end

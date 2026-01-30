@@ -25,9 +25,9 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.selling_self then
             SMODS.add_card{key="j_cbean_crater",area=G.jokers}
-            if not NAMETEAM.reduce then NAMETEAM.reduce = 0 end
+            if not G.GAME.NAMETEAM.reduce then G.GAME.NAMETEAM.reduce = 0 end
             if G.GAME.blind and G.GAME.blind.in_blind then
-                NAMETEAM.reduce = NAMETEAM.reduce + 2
+                G.GAME.NAMETEAM.reduce = G.GAME.NAMETEAM.reduce + 2
                 if G.GAME.blind.boss then
                     G.GAME.blind.chips = G.GAME.blind.chips/cae.blind
                     G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
@@ -37,7 +37,7 @@ SMODS.Joker({
                 end
                 NAMETEAM.msg(card, "Doom!")
             else
-                NAMETEAM.reduce = NAMETEAM.reduce + 3
+                G.GAME.NAMETEAM.reduce = G.GAME.NAMETEAM.reduce + 3
             end
         end
     end,
@@ -407,7 +407,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.no_progress = NAMETEAM.no_progress + cae.rounds
+            G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress + cae.rounds
         end
     end,
 })
@@ -528,7 +528,7 @@ SMODS.Joker({
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
 
-                if -(context.other_card.base.id)>= -(context.other_card.ability.perma_bonus) then
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
                     context.other_card.ability.cbean_marked = true
                 end
 				return {
@@ -544,6 +544,55 @@ SMODS.Joker({
             }
         end
     end,
+})
+
+SMODS.Joker({
+    key = "iceweed",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 0.2
+        }
+    },
+    pvz_plant = true,
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+			if ((not context.other_card.ability.perma_bonus) or ((-(context.other_card.ability.perma_bonus)))<context.other_card.base.id) then
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
+
+                context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 1
+				context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + cae.xmult
+
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
+                    context.other_card.ability.cbean_marked = true
+                end
+				return {
+					message = "Downgrade! + Upgrade!",
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+		end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.cbean_marked then
+            return{
+                remove = true
+            }
+        end
+    end,
+    in_pool = NAMETEAM.plant_in_pool
 })
 
 SMODS.Joker({
@@ -603,8 +652,8 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.after and NAMETEAM.blover_number and not context.blueprint then
-            for i = 1, NAMETEAM.blover_number do
+        if context.after and G.GAME.NAMETEAM.blover_number and not context.blueprint then
+            for i = 1, G.GAME.NAMETEAM.blover_number do
                 SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",
@@ -961,9 +1010,9 @@ SMODS.Joker({
     end,
     calculate = function(self, card, context)
         local cae = card.ability.extra
-        if context.after and NAMETEAM.cactus_number and not context.blueprint then
-            for i = 1, NAMETEAM.cactus_number do
-                NAMETEAM.cactus_number = NAMETEAM.cactus_number- 1
+        if context.after and G.GAME.NAMETEAM.cactus_number and not context.blueprint then
+            for i = 1, G.GAME.NAMETEAM.cactus_number do
+                G.GAME.NAMETEAM.cactus_number = G.GAME.NAMETEAM.cactus_number- 1
                 SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",
@@ -1137,9 +1186,9 @@ SMODS.Joker({
                 xmult = cae.xmukt
             }
         end
-        if context.after and NAMETEAM.cattail_number then
-            for i = 1, NAMETEAM.cattail_number do
-                NAMETEAM.cattail_number = NAMETEAM.cattail_number - 1
+        if context.after and G.GAME.NAMETEAM.cattail_number then
+            for i = 1, G.GAME.NAMETEAM.cattail_number do
+                G.GAME.NAMETEAM.cattail_number = G.GAME.NAMETEAM.cattail_number - 1
                 SMODS.scale_card(card,{
                     ref_table = cae,
                     ref_value = "xmukt",
@@ -1988,23 +2037,23 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
-            NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus or 0
-            if not NAMETEAM.sunbean_tagged then
-                NAMETEAM.sunbean_tagged = true
+            G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus or 0
+            if not G.GAME.NAMETEAM.sunbean_tagged then
+                G.GAME.NAMETEAM.sunbean_tagged = true
                 add_tag(Tag("tag_cbean_sunbean"))
 					play_sound("generic1", 0.9 + math.random() * 0.1, 0.8)
 					play_sound("holo1", 1.2 + math.random() * 0.1, 0.4)
             end
             if G.GAME.blind:get_type() == "Teeny" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars/2
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars/2
             elseif  G.GAME.blind:get_type() == "Small" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars
             elseif G.GAME.blind:get_type() == "Big" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*2
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars*2
             elseif G.GAME.blind:get_type() == "Boss" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*3
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars*3
             elseif G.GAME.blind:get_type() == "CEO" then
-                NAMETEAM.sunbean_bonus = NAMETEAM.sunbean_bonus + cae.dollars*4
+                G.GAME.NAMETEAM.sunbean_bonus = G.GAME.NAMETEAM.sunbean_bonus + cae.dollars*4
             end
         end
     end,
@@ -3964,6 +4013,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "inferno",
     cost = 3,
     beans_credits = {
@@ -4001,6 +4052,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "noctairne",
     cost = 4,
     beans_credits = {
@@ -4034,6 +4087,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "health_seeker",
     cost = 4,
     beans_credits = {
@@ -4057,12 +4112,14 @@ SMODS.Joker({
             local prev_scaling = G.GAME.starting_params.ante_scaling
             G.GAME.starting_params.ante_scaling =  G.GAME.starting_params.ante_scaling / 2
             local current_scaling = prev_scaling - G.GAME.starting_params.ante_scaling
-            NAMETEAM.healthy_ante = current_scaling
+            G.GAME.NAMETEAM.healthy_ante = current_scaling
         end
     end,
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "tiger_grass",
     cost = 4,
     beans_credits = {
@@ -4086,7 +4143,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.destroy_card and context.destroy_card == G.play.cards[1] and not cae.on_cooldown then
-            SMODS.destroy_cards(context.destroy_card)
+                SMODS.destroy_cards(context.destroy_card)
                 SMODS.scale_card(card,{
                     ref_table = cae,
                     ref_value = "xmult",
@@ -4103,4 +4160,125 @@ SMODS.Joker({
             }
         end
     end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "blockoli",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep2 = 1,
+            go = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rep2}}
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.jokers.cards) do
+            if v.ability.blockolied then
+                v.ability.prevent_trigger = nil
+            end
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            cae.go = true
+            if card:on_the("right") and not card:on_the("right").ability.prevent_trigger then
+                if pseudorandom("blockoli") < 1/3 then
+                    card:on_the("right").ability.prevent_trigger = true
+                    card:on_the("right").ability.blockolied = true
+                else
+                    card:on_the("right").ability.prevent_trigger = false
+                    card:on_the("right").ability.blockolied = nil
+                end
+            end
+            if card:on_the("left") and not card:on_the("left").ability.prevent_trigger then
+                if pseudorandom("blockoli") < 1/3 then
+                    card:on_the("left").ability.prevent_trigger = true
+                    card:on_the("left").ability.blockolied = true
+                else
+                    card:on_the("left").ability.prevent_trigger = false
+                    card:on_the("left").ability.blockolied = nil
+                end
+            end
+        end
+        if cae.go and context.retrigger_joker_check and not context.blueprint and cae.go and (card:on_the("left") and context.other_card == card:on_the("left") or card:on_the("right") and context.other_card == card:on_the("right")) then
+                return{
+                    repetitions = cae.rep2
+                }
+            end
+        if context.after then
+            cae.go = false
+            if card:on_the("right") and card:on_the("right").ability.blockolied then
+                card:on_the("right").ability.prevent_trigger = false
+                card:on_the("right").ability.blockolied = nil
+            end
+            if card:on_the("left") and card:on_the("left").ability.blockolied then
+                card:on_the("left").ability.prevent_trigger = false
+                card:on_the("left").ability.blockolied = nil
+            end
+        end
+    end
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "bramble_bush",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.75,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.jokers.cards) do
+           v.states.drag.can = true
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+    update = function(self,card,context)
+        if card.added_to_deck then
+            card.states.drag.can = false
+            for k, v in pairs(G.jokers.cards) do
+                v.ability.on_brambles_right = nil
+                NAMETEAM.all_on(card, G.jokers.cards, "right","on_brambles_right")
+                if v.ability.on_brambles_right then
+                    v.states.drag.can = false
+                elseif v ~= card then
+                    v.states.drag.can = true
+                end 
+            end
+        end
+    end
 })
