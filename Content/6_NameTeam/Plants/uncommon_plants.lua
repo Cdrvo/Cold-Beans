@@ -4212,3 +4212,42 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "levitater",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2,
+            odds = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "levitoatorrr")
+        return{vars={cae.xmult,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            for k, v in pairs(context.scoring_hand) do
+                if SMODS.pseudorandom_probability(card, "levitoatorrr", 1, cae.odds) then
+                    v.mark_for_no_score = true
+                    v.no_score_effect = {
+                        effect = "xmult",
+                        amount = cae.xmult
+                    }
+                end
+            end
+        end
+    end
+})
