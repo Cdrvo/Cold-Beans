@@ -5014,6 +5014,15 @@ return {
 					"{C:inactive,s:0.8}(Blank excluded)"
 				},
 			},
+			j_cbean_blockoli = {
+				name =  "Blockoli",
+				text = {
+					"{C:attention}Retrigger{} adjecent jokers",
+					"but they have a {C:green}chance{} to",
+					"{C:red}don't{} trigger at all",
+					"{C:inactive}(Only works during scoring)"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

@@ -4091,3 +4091,69 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "blockoli",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.xmult_gain}}
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.jokers.cards) do
+            if v.ability.blockolied then
+                v.ability.prevent_trigger = nil
+            end
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            if card:on_the("right") then
+                if pseudorandom("blockoli") < 1/3 then
+                    card:on_the("right").ability.prevent_trigger = true
+                    card:on_the("right").ability.blockolied = true
+                else
+                    card:on_the("right").ability.prevent_trigger = false
+                    card:on_the("right").ability.blockolied = nil
+                end
+            end
+            if card:on_the("left") then
+                if pseudorandom("blockoli") < 1/3 then
+                    card:on_the("left").ability.prevent_trigger = true
+                    card:on_the("left").ability.blockolied = true
+                else
+                    card:on_the("left").ability.prevent_trigger = true
+                    card:on_the("left").ability.blockolied = nil
+                end
+            end
+        end
+        if NAMETEAM.during_scoring and context.retrigger_joker_check and not context.retrigger_joker and (card:on_the("right") and context.other_card == card:on_the("right") or card:on_the("left") and context.other_card == card:on_the("left")) then
+                return{
+                    message = localize("k_again_ex"),
+                    repetitions = cae.rep2,
+                    card = card,
+                }
+            else
+                return{
+                    message = localize("k_again_ex"),
+                    repetitions = cae.rep1,
+                    card = card,
+                }
+            end
+        end
+})
