@@ -87,11 +87,11 @@ ColdBeans.calculate = function(mod, context)
 			NAMETEAM.gold_rush = NAMETEAM.gold_rush - 1
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
-				delay = 0.1,
+				delay = 0,
 				func = function()
 					for k, v in pairs(G.play.cards) do
-						v:juice_up()
 						v:set_seal("Gold")
+						v:juice_up()
 						v:set_ability("m_gold")
 					end
 					return true

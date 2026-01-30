@@ -3629,15 +3629,14 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.individual and context.cardarea == G.play then
+        local acard = context.other_card
         G.E_MANAGER:add_event(Event({
             trigger = "after",
             delay = 0.1,
             func = function()
-                context.other_card:juice_up()
-                SMODS.modify_rank(context.other_card, -1)
-                return{
-                    xmult = cae.xmult
-                }
+                acard:juice_up()
+                SMODS.modify_rank(acard, -1)
+                SMODS.calculate_effect({xmult = cae.xmult},acard)
             end
         }))
         end

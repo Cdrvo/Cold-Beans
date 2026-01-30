@@ -4941,6 +4941,15 @@ return {
 					"to a rank below"
 				},
 			},
+			j_cbean_solar_sage = {
+				name = "Solar Sage",
+				text = {
+					"{C:green}Sell{} this to",
+					"turn the next scored",
+					"cards into {C:money}Gold{} and apply",
+					"{C:money}Gold Seal{} on them"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
