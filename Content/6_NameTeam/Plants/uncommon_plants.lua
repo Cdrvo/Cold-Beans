@@ -3795,24 +3795,24 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.final_scoring_step and not cae.on_cooldown then
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.01,
-            func = function()
-                for k, v in pairs(G.play.cards) do
-                    if v == context.scoring_hand[1] then
-                        SMODS.destroy_cards(v)
-                        SMODS.scale_card(card,{
-                            ref_table = cae,
-                            ref_value = "xmult",
-                            scalar_value = "xmult_gain"
-                        })
-                        cae.on_cooldown = true
+            G.E_MANAGER:add_event(Event({
+                trigger = "before",
+                delay = 0.3,
+                func = function()
+                    for k, v in pairs(G.play.cards) do
+                        if v == G.play.cards[1] then
+                            SMODS.destroy_cards(v)
+                            SMODS.scale_card(card,{
+                                ref_table = cae,
+                                ref_value = "xmult",
+                                scalar_value = "xmult_gain"
+                            })
+                            cae.on_cooldown = true
+                        end
                     end
+                    return true
                 end
-                return true
-            end
-        }))
+            }))
         elseif context.final_scoring_step and cae.on_cooldown then
             cae.on_cooldown = false
             NAMETEAM.msg(card, "Ready!")
