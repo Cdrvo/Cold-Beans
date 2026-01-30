@@ -2057,7 +2057,7 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scroing_hand] then
+        if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] then
             return{
                 chips = ((cae.chips/4)+(cae.chips/4)+(cae.chips/4)+(cae.chips/4))
             }
