@@ -2251,3 +2251,36 @@ SMODS.Joker {
         end
     end
 }
+
+
+SMODS.Joker {
+    key = "nameteam_splashman",
+    config = { extra = { xmult = 1.1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 6, y = 2 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.modify_scoring_hand and not context.blueprint then
+            return { add_to_hand = true }
+        end
+
+        if context.individual and not context.repetition and context.cardarea == G.play then
+            return { xmult = card.ability.extra.xmult }
+        end
+    end
+}
