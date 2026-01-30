@@ -706,9 +706,9 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.selling_self and G.GAME.current_round.hands_played==0 and not G.GAME.blind.disabled then
-            G.GAME.blind.disabled = false
-            G.GAME.NAMETEAM.first_hand_disable = true
+        if context.selling_self and G.GAME.blind and G.GAME.blind.in_blind and not G.GAME.blind.disabled then
+            G.GAME.blind:disable()
+            G.GAME.NAMETEAM.cards_no_score = true
         end
     end,
 })

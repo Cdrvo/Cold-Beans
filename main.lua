@@ -132,6 +132,9 @@ ColdBeans.calculate = function(mod, context)
         G.GAME.cbean_combo_unique_round = {}
 
 		if context.main_eval then
+			if G.GAME.NAMETEAM.cards_no_score then 
+				G.GAME.NAMETEAM.cards_no_score = nil
+			end
 			for k, v in pairs(G.playing_cards) do
 				if v.cbean_banana_timer then
 					if v.cbean_banana_timer == 1 then

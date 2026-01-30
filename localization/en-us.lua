@@ -4143,12 +4143,12 @@ return {
 				},
 			},
 			j_cbean_bean = {
-				name = "Bean",
+				name = "Chilli Bean",
 				text = {
-					"When sold in a blind",
-					"disable the blind",
-					"for the first hand",
-					"of the round"
+					"When {C:green}sold{} in a blind",
+					"disable the current blind",
+					"but makes cards {C:red}unable",
+					"to score"
 				},
 			},
 			j_cbean_red_stinger = {
