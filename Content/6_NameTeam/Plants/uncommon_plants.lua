@@ -4106,12 +4106,13 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            
+            rep2 = 1,
+            go = false
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.xmult,cae.xmult_gain}}
+        return{vars={cae.rep2}}
     end,
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.jokers.cards) do
@@ -4123,7 +4124,8 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.before then
-            if card:on_the("right") then
+            cae.go = true
+            if card:on_the("right") and not card:on_the("right").ability.prevent_trigger then
                 if pseudorandom("blockoli") < 1/3 then
                     card:on_the("right").ability.prevent_trigger = true
                     card:on_the("right").ability.blockolied = true
@@ -4132,28 +4134,31 @@ SMODS.Joker({
                     card:on_the("right").ability.blockolied = nil
                 end
             end
-            if card:on_the("left") then
+            if card:on_the("left") and not card:on_the("left").ability.prevent_trigger then
                 if pseudorandom("blockoli") < 1/3 then
                     card:on_the("left").ability.prevent_trigger = true
                     card:on_the("left").ability.blockolied = true
                 else
-                    card:on_the("left").ability.prevent_trigger = true
+                    card:on_the("left").ability.prevent_trigger = false
                     card:on_the("left").ability.blockolied = nil
                 end
             end
         end
-        if NAMETEAM.during_scoring and context.retrigger_joker_check and not context.retrigger_joker and (card:on_the("right") and context.other_card == card:on_the("right") or card:on_the("left") and context.other_card == card:on_the("left")) then
+        if cae.go and context.retrigger_joker_check and not context.blueprint and cae.go and (card:on_the("left") and context.other_card == card:on_the("left") or card:on_the("right") and context.other_card == card:on_the("right")) then
                 return{
-                    message = localize("k_again_ex"),
-                    repetitions = cae.rep2,
-                    card = card,
-                }
-            else
-                return{
-                    message = localize("k_again_ex"),
-                    repetitions = cae.rep1,
-                    card = card,
+                    repetitions = cae.rep2
                 }
             end
+        if context.after then
+            cae.go = false
+            if card:on_the("right") and card:on_the("right").ability.blockolied then
+                card:on_the("right").ability.prevent_trigger = false
+                card:on_the("right").ability.blockolied = nil
+            end
+            if card:on_the("left") and card:on_the("left").ability.blockolied then
+                card:on_the("left").ability.prevent_trigger = false
+                card:on_the("left").ability.blockolied = nil
+            end
         end
+    end
 })
