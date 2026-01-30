@@ -2210,7 +2210,9 @@ SMODS.Joker {
         end
     end,
     calc_dollar_bonus = function(self, card)
-        return card.ability.extra.current_money
+        if card.ability.extra.current_money > 0 then
+            return card.ability.extra.current_money
+        end
     end
 }
 
@@ -2244,6 +2246,8 @@ SMODS.Joker {
         end
     end,
     calc_dollar_bonus = function(self, card)
-        return card.ability.extra.current_money
+        if card.ability.extra.current_money > 0 then
+            return card.ability.extra.current_money
+        end
     end
 }
