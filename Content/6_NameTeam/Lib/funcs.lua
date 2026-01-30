@@ -532,7 +532,8 @@ end
 function NAMETEAM.all_on(card, area, direction, ability)
 	local cae = {
 		rr = nil,
-		num = 0
+		num = 0,
+		tab = {}
 	}
 	for i = 1, #area do
         if area[i] == card then
@@ -544,6 +545,7 @@ function NAMETEAM.all_on(card, area, direction, ability)
 		if not direction or (direction and direction ~= "left") then
 			if i > cae.rr then
 				if ability then
+					cae.tab[#cae.tab+1] = area[i]
 					area[i].ability[ability] = true
 				end
 				cae.num = cae.num + 1
@@ -551,13 +553,14 @@ function NAMETEAM.all_on(card, area, direction, ability)
 		else
 			if i < cae.rr then
 				if ability then
+					cae.tab[#cae.tab+1] = area[i]
 					area[i].ability[ability] = true
 				end
 				cae.num = cae.num + 1
 			end
 		end
     end
-	return cae.num
+	return cae.num -- cae.tab
 end
 
 function NAMETEAM.remove_element(t, element)

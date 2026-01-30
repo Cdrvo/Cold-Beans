@@ -4162,3 +4162,54 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "bramble_bush",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep2 = 1,
+            go = false
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rep2}}
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.jokers.cards) do
+           v.states.drag.can = true
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = 1.5
+            }
+        end
+    end,
+    update = function(self,card,context)
+        if card.added_to_deck then
+            card.states.drag.can = false
+            for k, v in pairs(G.jokers.cards) do
+                v.ability.on_brambles_right = nil
+                NAMETEAM.all_on(card, G.jokers.cards, "right","on_brambles_right")
+                if v.ability.on_brambles_right then
+                    v.states.drag.can = false
+                else
+                    v.states.drag.can = true
+                end 
+            end
+        end
+    end
+})

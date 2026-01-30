@@ -1841,7 +1841,7 @@ SMODS.Joker({
     loc_vars = function(self,info_queue,card)
             local cae = card.ability.extra
         return{
-            vars={cae.xmumultlt}
+            vars={cae.mult}
         }
     end,
     beans_credits = {
@@ -1857,7 +1857,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.individual and context.cardarea == G.play then
-            local c = context.scoring_hand 
+            local c = context.other_card 
             if c == context.scoring_hand[1] then
                 return{
                     mult = cae.mult

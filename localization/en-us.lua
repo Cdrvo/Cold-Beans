@@ -5032,6 +5032,15 @@ return {
 					"rest of the ante"
 				},
 			},
+			j_cbean_bramble_bush = {
+				name =  "Bramble Bush",
+				text = {
+					"This card and cards",
+					"on the right of it",
+					"{C:red}cannot{} be dragged",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

@@ -1029,3 +1029,37 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "draftodil",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,(G.GAME.probabilities.normal or 1)}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
