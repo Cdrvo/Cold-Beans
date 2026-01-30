@@ -520,7 +520,7 @@ end
 
 local calc_reps_old = SMODS.calculate_repetitions
 function SMODS.calculate_repetitions(card,context,reps)
-	if (#SMODS.find_card("j_cbean_power_vine")==0) then
+	if (#SMODS.find_card("j_cbean_power_vine")==0) and (#SMODS.find_card("j_cbean_sundew_tangler")==0) then
 		calc_reps_old(card, context, reps)
 	end
 end

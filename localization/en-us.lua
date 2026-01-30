@@ -3836,6 +3836,23 @@ return {
 					"Gains {C:mult}+#1#{} Perma Mult"
 				},
 			},
+			j_cbean_sundew_tangler = {
+				name = "Sundew Tangler",
+				text = {
+					"{C:attention}Playing Cards{} cannot",
+					"retrigger. Each scored card",
+					"gives {C:money}+$#1#{}"
+				},
+			},
+			j_cbean_bean_sprout = {
+				name = "Bean Sprout",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Gives an extra {X:mult,C:white}X#2#{} Mult",
+					"when the highest ranked card in play",
+					"scores"
+				},
+			},
 			j_cbean_bamboo_spartan = {
 				name = "Bamboo Spartan",
 				text = {
