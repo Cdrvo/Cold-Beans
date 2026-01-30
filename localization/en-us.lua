@@ -5630,6 +5630,19 @@ return {
                     "{C:inactive}(A, 9, 7, 5, 3){}"
 				}
 			},
+            j_matador={
+                name="Red Matador",
+                text={
+                    "Earn {C:money}$#1#{} if played",
+                    "hand triggers the",
+                    "{C:attention}Boss Blind{} ability",
+                },
+                unlock={
+                    "Defeat a Boss Blind",
+                    "in {E:1,C:attention}1 hand{} without",
+                    "using any discards",
+                },
+            },
 			j_cbean_nameteam_greenmatador = {
 				name = 'Green Matador',
 				text =
@@ -5637,6 +5650,15 @@ return {
                     "Earn {C:money}$#1#{} at end of round,",
 					"gains {C:money}+$#2#{} during {C:attention}CEO Blind{}",
 					"for each unused {C:red}discard{}"
+				}
+			},
+			j_cbean_nameteam_bluematador = {
+				name = 'Blue Matador',
+				text =
+				{
+                    "Earn {C:money}$#1#{} at end of round,",
+					"gains {C:money}+$#2#{} during {C:attention}CEO Blind{}",
+					"for each unused {C:blue}hand{}"
 				}
 			},
 
