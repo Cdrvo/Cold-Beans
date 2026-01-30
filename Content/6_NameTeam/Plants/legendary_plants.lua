@@ -46,3 +46,46 @@
         end
     end
 })]]
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "mega_gattling_pea",
+    cost = 10,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 4,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 4,
+            odds = 10
+        }
+    },
+    pools = {
+        cbean_electric = true
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num,den = SMODS.get_probabiltiy_vars(card, 1,cae.odds,"gattlingit")
+        return{vars={cae.rep,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+            return{
+                repetitions = cae.rep
+            }
+        end
+        if context.before and not context.blueprint then
+            if SMODS.pseudorandom_probability(card, "gattlingit", 1, cae.odds) then
+                cae.rep = cae.rep+1
+                NAMETEAM.msg(card, localize("k_upgrade_ex"))
+            end
+        end
+    end
+})

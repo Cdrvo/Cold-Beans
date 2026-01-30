@@ -5041,6 +5041,15 @@ return {
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
+			j_cbean_mega_gattling_pea = {
+				name =  "Mega Gattling Pea",
+				text = {
+					"First scored card",
+					"is retriggered {C:attention}#1#{} Times",
+					"After scoring, has a {C:green}#2# in #3#{} Chance",
+					"to increase repetitions by {C:attention}1{}"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

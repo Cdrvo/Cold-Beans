@@ -4177,13 +4177,12 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            rep2 = 1,
-            go = false
+            xmult = 1.75,
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.rep2}}
+        return{vars={cae.xmult}}
     end,
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.jokers.cards) do
@@ -4194,7 +4193,7 @@ SMODS.Joker({
         local cae = card.ability.extra
         if context.joker_main then
             return{
-                xmult = 1.5
+                xmult = cae.xmult
             }
         end
     end,
@@ -4206,7 +4205,7 @@ SMODS.Joker({
                 NAMETEAM.all_on(card, G.jokers.cards, "right","on_brambles_right")
                 if v.ability.on_brambles_right then
                     v.states.drag.can = false
-                else
+                elseif v ~= card then
                     v.states.drag.can = true
                 end 
             end
