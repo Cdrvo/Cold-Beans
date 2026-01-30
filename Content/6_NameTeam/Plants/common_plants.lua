@@ -1988,3 +1988,45 @@ SMODS.Joker({
 })
 
 
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "bun_chi",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 30,
+            hands = 5,
+            mult = 40,
+            hands_max = 5,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.mult,cae.hands,cae.hands_max}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            if cae.hands > 0 then
+                cae.hands = cae.hands - 1
+                return{
+                    chips = cae.chips
+                }
+            else
+                cae.hands = cae.hands_max
+                return{
+                    mult = cae.mult
+                }
+            end
+        end
+    end
+})

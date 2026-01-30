@@ -3788,6 +3788,14 @@ return {
 					"are {C:red}debuffed{}"
 				},
 			},
+			j_cbean_bun_chi = {
+				name = "Bun Chi",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"after {:attention}#4${C:inactive} (#3#){} triggers,",
+					"{C:mult}+#2#{} Mult instead"
+				},
+			},
 			j_cbean_meteor_flower = {
 				name = "Meteor Flower",
 				text = {
