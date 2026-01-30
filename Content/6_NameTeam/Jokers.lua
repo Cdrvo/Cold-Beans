@@ -1652,7 +1652,7 @@ SMODS.Joker {
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 4, y = 11 },
-    cost = 8,
+    cost = 6,
     loc_vars = function(self, info_queue, card)
     return { vars = { G.GAME.probabilities.normal*card.ability.extra.chance, card.ability.extra.max_chance } }
     end,
@@ -1714,7 +1714,7 @@ SMODS.Joker {
         if context.press_play then
             for k, v in pairs(G.hand.cards) do
                 if not v.debuff then
-                    local will_rebuff = pseudorandom(pseudoseed('nteam_adapaige'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance)*100
+                    local will_rebuff = pseudorandom(pseudoseed('nteam_edega'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance)*100
                     if will_rebuff then
                         v:set_debuff(true)
                         card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult
@@ -1738,6 +1738,55 @@ SMODS.Joker {
             return {
                 message= localize("k_reset")
             }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_ian",
+    config = { extra = { upgrade = 30 , losing = 1} },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 11, y = 11 },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.upgrade , card.ability.extra.losing} }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "TheAltDoc",
+        art = "TheAltDoc",
+        code = "TheAltDoc",
+    },
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if card.ability.extra.upgrade > 0 then
+                context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+                context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + card.ability.extra.upgrade
+                card.ability.extra.upgrade = card.ability.extra.upgrade - card.ability.extra.losing
+                local disappear_func = nil
+                return {
+                    extra = {message = localize('k_upgrade_ex'), colour = G.C.CHIPS},
+                    colour = G.C.CHIPS,
+                }
+            end
+        end
+        if context.joker_main then
+            if card.ability.extra.upgrade <= 0 then
+                return {
+                    message = localize("k_cbean_ian_exhausted"),
+                    func = function()
+                            G.E_MANAGER:add_event(Event({func = function()
+                                    SMODS.debuff_card(card, true, "cbean_nameteam_ian")
+                            return true end }))
+                        end
+                }
+            end
         end
     end
 }

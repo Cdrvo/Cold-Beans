@@ -4965,6 +4965,22 @@ return {
 					},
 				}
 			},
+			j_cbean_nameteam_ian = {
+				name = 'Ian',
+				text ={
+					{
+						"Played {C:attention}cards{}",
+						"permanently gains",
+						"{C:chips}+#1#{} Chips when scored",
+						"This Joker loses {C:chips}#2#{} Chips",
+						"per card upgraded"
+					},
+					{
+						"Upon reaching {C:chips}0{} Chips",
+						"this Joker debuffs itself"
+					}
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8544,7 +8560,8 @@ return {
 			k_cbean_mitosis = "Mitosis!",
 			
 			k_cbean_adapaige_heal = "Healed!",
-			k_cbean_edega_debuff = "Healed?"
+			k_cbean_edega_debuff = "Healed?",
+			k_cbean_ian_exhausted = "Exhausted!"
 		},
 		high_scores = {},
 		labels = {
