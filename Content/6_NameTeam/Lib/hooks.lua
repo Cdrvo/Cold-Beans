@@ -202,6 +202,15 @@ local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
 function G.FUNCS.play_cards_from_highlighted(e)
 	NAMETEAM.highlight_order = 0
 	SMODS.calculate_context({cbean_first = true})
+	if (#SMODS.find_card("j_cbean_draftodil")>0) or NAMETEAM.testing_discard then
+		for i=1, #G.hand.highlighted do
+			if SMODS.pseudorandom_probability(nil, "SEED", 1, G.hand.highlighted[i].base.id) then
+				draw_card(G.hand, G.discard, i*100/#G.hand.highlighted, 'up', nil, G.hand.highlighted[i])
+				SMODS.calculate_context({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted, ignore_other_debuff = true})
+				G.hand.highlighted[i].cbean_discarded = true
+			end
+		end
+	end
 	old_play_highlighted(e)
 end
 

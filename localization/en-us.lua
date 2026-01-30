@@ -4706,6 +4706,16 @@ return {
 				},
 			},
 
+			j_cbean_pea_vine = {
+				name = "Pea Vine",
+				text = {
+					"Every owned {C:green}Pea{} joker's",
+					"values are multiplied",
+					"by {C:attention}X#1#",
+					"{C:inactive}(Pea Vine excluded)"
+				},
+			},
+
 			j_cbean_blastberry_vine = {
 				name = "Blastberry Vine",
 				text = {
@@ -4899,6 +4909,15 @@ return {
 					"is the same as this Joker's position",
 					"it gives {C:chips}+#1#{} Chips",
 					"{C:inactive,s:0.85}(e.g 3rd in jokers, 3rd in scoring)"
+				},
+			},
+			j_cbean_draftodil = {
+				name = "Draftodil",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Played cards has a", 
+					"{C:green}#2# in [RANK]{} Chance to",
+					"to be discarded instead"
 				},
 			},
 			j_cbean_nameteam_stickerbomb = {
@@ -8669,6 +8688,7 @@ return {
 		challenge_names = {
 			c_cbean_sdown_inexcusable = "Inexcusable",
 			c_cbean_all_stickers = "Oops! All Stickers",
+			c_cbean_tornado_poker = "Tornado Poker"
 		},
 		collabs = {},
 		dictionary = {
@@ -9286,6 +9306,9 @@ return {
             ch_c_cbean_nteam_all_stickers_3={
 				"have Stickers",
             },
+			ch_c_cbean_win_ante_poker = {
+				"Required {C:attention}Ante{} to win is {C:attention}11",
+			},
 		},
 	},
 }

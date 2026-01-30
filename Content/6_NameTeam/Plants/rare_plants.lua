@@ -38,6 +38,9 @@ SMODS.Joker({
             mult = 25
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.xmult,cae.mult}}
@@ -230,6 +233,9 @@ SMODS.Joker({
         extra = {
             repetitions = 2
         }
+    },
+    pools = {
+        cbean_pea = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
@@ -947,6 +953,37 @@ SMODS.Joker({
                 key = "j_cbean_tofu_turkey"
             }
             acard:set_edition(nil, true, true)
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "draftodil",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,(G.GAME.probabilities.normal or 1)}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
         end
     end,
 })

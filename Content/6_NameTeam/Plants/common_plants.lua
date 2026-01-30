@@ -8,6 +8,9 @@ SMODS.Joker({
             blind = 0.9
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{
@@ -583,6 +586,9 @@ SMODS.Joker({
             mult_gain = 5
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.mult,cae.mult_gain}}
@@ -906,6 +912,9 @@ SMODS.Joker({
             rep = 3
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.rep}}
@@ -1224,6 +1233,9 @@ SMODS.Joker({
             tab = {}
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.mult}}
@@ -1336,6 +1348,9 @@ SMODS.Joker({
             }
         }
     end,
+    pools = {
+        cbean_pea = true
+    },
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",

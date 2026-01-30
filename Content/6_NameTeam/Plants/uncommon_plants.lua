@@ -130,6 +130,9 @@ SMODS.Joker({
             odds = 4
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         local num,den = SMODS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
@@ -223,6 +226,9 @@ SMODS.Joker({
         extra = {
             repetitions = 1
         }
+    },
+    pools = {
+        cbean_pea = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
@@ -422,6 +428,9 @@ SMODS.Joker({
             chips = 30,
             dollars = 3
         }
+    },
+    pools = {
+        cbean_pea = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
@@ -2050,6 +2059,9 @@ SMODS.Joker({
             xmult = 2
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.xmult}}
@@ -3311,6 +3323,56 @@ SMODS.Joker({
             }
         end
     end,
+})
+
+SMODS.Joker({
+    key = "pea_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            value = 1.2,
+            key = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.value}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        local cae = card.ability.extra
+        if not cae.key then cae.key = pseudorandom("ae")*pseudorandom("bc") end
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        local cae = card.ability.extra
+        for k, v in pairs(G.jokers.cards) do
+                if v.ability["pead_" .. cae.key] then
+                    v.ability["pead_" .. cae.key] = nil
+                    NAMETEAM.values("/",v,cae.value,true)
+                end 
+            end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    update = function(self,card)
+        local cae = card.ability.extra
+        if card.added_to_deck then
+            for k, v in pairs(G.jokers.cards) do
+                if v.config.center.pools and v.config.center.pools.cbean_pea and not v.ability["pead_" .. cae.key] and v.config.center.key ~= "j_cbean_pea_vine" then
+                    v.ability["pead_" .. cae.key] = true
+                    NAMETEAM.values("*",v,cae.value,true)
+                end 
+            end
+        end
+    end
 })
 
 SMODS.Joker({

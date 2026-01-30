@@ -55,6 +55,9 @@ if G.GAME.modifiers.cbean_nteam_all_stickers then
         card:add_sticker(sticker_keys[sticker], true)
     end
 end
+if G.GAME.modifiers.cbean_win_ante_poker then
+    G.GAME.win_ante = 11
+end
 '''
 match_indent = true
 

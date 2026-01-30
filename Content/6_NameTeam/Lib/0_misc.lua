@@ -60,6 +60,9 @@ SMODS.Atlas({
 SMODS.ObjectType({
 	key = "cbean_shadow"
 })
+SMODS.ObjectType({
+	key = "cbean_pea"
+})
 
 SMODS.Sound({
   key = "adapaige_heal",
