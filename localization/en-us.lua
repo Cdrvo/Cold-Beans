@@ -4962,7 +4962,7 @@ return {
 				},
 			},
 			j_cbean_noctairne = {
-				name = "Noctairne",
+				name = "Noctarine",
 				text = {
 					"{C:green}Sell{} this joker",
 					"while in a blind to",
