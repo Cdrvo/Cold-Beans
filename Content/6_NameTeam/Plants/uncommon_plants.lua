@@ -3,6 +3,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "doom_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -47,11 +48,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "wallnut",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 6, y = 0 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -84,11 +87,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "potatomine",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 5, y = 0 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -125,11 +130,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "snowpea",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 7, y = 1 },
     cost = 5,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -175,11 +182,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "chomper",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 9, y = 1 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -226,11 +235,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "repeater",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 3, y = 0 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -260,11 +271,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "puff_shroom",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 0, y = 3 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -291,11 +304,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "fume_shroom",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 1, y = 3 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -340,6 +355,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "scaredy_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -372,6 +388,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "ice_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -402,11 +419,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "squash",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 6, y = 4 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -438,11 +457,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "threepeater",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 11, y = 0 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -479,11 +500,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "spikeweed",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 2, y = 1 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -527,7 +550,10 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "iceweed",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -541,7 +567,6 @@ SMODS.Joker({
             xmult = 0.2
         }
     },
-    pvz_plant = true,
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.xmult}}
@@ -572,13 +597,13 @@ SMODS.Joker({
             }
         end
     end,
-    in_pool = NAMETEAM.plant_in_pool
 })
 
 SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "sea_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -610,11 +635,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "blover",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 10, y = 3 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -653,6 +680,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "pumpkin",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -706,11 +734,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "magnet_shroom",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 2, y = 3 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -771,6 +801,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "flower_pot",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -831,6 +862,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "plantern",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = true,
@@ -922,6 +954,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "coffee_bean",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -964,11 +997,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "cactus",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 11, y = 1 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -1007,6 +1042,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "melon_pult",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -1063,11 +1099,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "twin_sunflower",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 5, y = 1 },
     cost = 2,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -1094,6 +1132,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "gloom_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -1133,6 +1172,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "cattail",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -1175,6 +1215,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "cob_cannon",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -1229,11 +1270,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "bloomerang",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 2, y = 0 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -1259,11 +1302,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "coconut_cannon",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 0, y = 1 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -1298,11 +1343,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, --ehehehehehehe
     key = "bonk_choy",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 6, y = 1 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -1385,6 +1432,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "electric_reed",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -1444,11 +1492,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "hot_potato",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 4, y = 4 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -1498,6 +1548,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "stunion",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 1, y = 4 },
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -1515,7 +1567,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     remove_from_deck = function(self,card,from_debuff)
         for k, v in pairs(G.playing_cards) do
@@ -1553,6 +1605,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "pepper_pult",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 3, y = 4 },
     cost = 4,
     rarity = 2,
     blueprint_compat = true,
@@ -1571,7 +1625,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -1610,11 +1664,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "AKKE",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 8, y = 4 },
     cost = 2,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Inky",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -1657,6 +1713,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "endurian",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -1702,6 +1759,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "stallia",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -1761,6 +1819,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "laser_bean",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 11, y = 3 },
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -1778,7 +1838,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -1794,6 +1854,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "citron",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 8, y = 3 },
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -1811,7 +1873,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -1827,6 +1889,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "infinut",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 7, y = 3 },
     cost = 4,
     rarity = 2,
     blueprint_compat = true,
@@ -1845,7 +1909,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -1874,6 +1938,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "tile_turnip",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 5, y = 3 },
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -1892,7 +1958,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -1916,6 +1982,8 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "EM_peach",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 9, y = 3 },
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -1934,7 +2002,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card)
     end,
@@ -1963,11 +2031,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "sun_bean",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 3, y = 3 },
     cost = 15,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -2010,11 +2080,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "magnifying_grass",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 6, y = 3 },
     cost = 5,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = false,
@@ -2056,6 +2128,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "phat_beet",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2105,6 +2178,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "intensive_carrot",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2142,6 +2216,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "thyme_warp",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2171,6 +2246,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, -- don't do this
     key = "celery_stalker",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2194,6 +2270,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "primal_peashooter",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2252,6 +2329,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "primal_sunflower",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2279,6 +2357,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "primal_wallnut",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2316,6 +2395,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "primal_potato",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -2351,6 +2431,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "perfume_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2401,11 +2482,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "guacodile",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 8, y = 2 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2438,11 +2521,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "bowling_bulb",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 7, y = 2 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2484,11 +2569,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "banana_launcher",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 9, y = 2 },
     cost = 3,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2535,6 +2622,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "dusk_lobber",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2578,6 +2666,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "nightshade",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2619,6 +2708,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "sweet_potato",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2653,6 +2743,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "lava_guava",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2689,6 +2780,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "electric_currant",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2726,6 +2818,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "kiwibeast",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -2777,11 +2870,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "power_lily",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 8, y = 1 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2808,11 +2903,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "electric_blueberry",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 0, y = 2 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2850,11 +2947,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "jack_o_lantern",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 1, y = 2 },
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2910,11 +3009,13 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "grapeshot",
+    atlas = 'NAMETEAM_PlantJokers',
+    pos = { x = 2, y = 2 },
     cost = 2,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 2,
     blueprint_compat = true,
@@ -2953,6 +3054,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "cold_snapdragon",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = false,
@@ -3014,6 +3116,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "escape_root",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = true,
@@ -3070,6 +3173,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "wasabi_whip",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = false,
@@ -3116,6 +3220,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "missle_toe",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = false,
@@ -3163,7 +3268,10 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "boom_ballon_flower",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = false,
@@ -3239,6 +3347,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "holly_barrier",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     rarity = 2,
     blueprint_compat = false,
@@ -3282,6 +3391,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "melon_z",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 0,
     rarity = 2,
     blueprint_compat = true,
@@ -3315,6 +3425,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "electrici-tea",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 0,
     rarity = 2,
     blueprint_compat = true,
@@ -3359,6 +3470,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "blastberry_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3418,6 +3530,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "pyre_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3477,6 +3590,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "shine_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3519,6 +3633,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "explode_o_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3573,6 +3688,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "gloom_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3616,6 +3732,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "pea_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3668,6 +3785,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "power_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3723,6 +3841,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "power_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 2,
     beans_credits = {
 		code = "Revo",
@@ -3778,6 +3897,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "ice_bloom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -3829,6 +3949,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "puffball",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -3873,6 +3994,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "olive_pit",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -3909,6 +4031,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "boingsetta",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -3946,6 +4069,7 @@ SMODS.Joker({
     pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "inferno",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -3985,6 +4109,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "noctairne",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -4020,6 +4145,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "health_seeker",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -4051,6 +4177,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "tiger_grass",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -4096,6 +4223,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "blockoli",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -4167,6 +4295,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "bramble_bush",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
@@ -4217,6 +4346,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "levitater",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     beans_credits = {
 		code = "Revo",
