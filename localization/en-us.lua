@@ -5249,7 +5249,7 @@ return {
 			j_cbean_guard_shroom = {
 				name =  "Guard Shroom",
 				text = {
-					"After every {C:attention}#£#{C:inactive} (#1#){}",
+					"After every {C:attention}#2#{C:inactive} (#1#){}",
 					"{C:blue}hands{} played,",
 					"apply a {C:purple}Guard Shroom{} sticker",
 					"to a joker without one"

@@ -4685,11 +4685,12 @@ SMODS.Joker({
                 cae.hands = cae.hands_max
                 local tab = {}
                 for k, v in pairs(G.jokers.cards) do
-                    if not v.ability.cbean_guardshroom then
+                    if not v.ability.cbean_guardshroom and v ~= card then
                         tab[#tab+1] = v
                     end
                 end
                 local acarad = pseudorandom_element(tab,pseudoseed("SEED"))
+                acarad:juice_up()
                 acarad:add_sticker("cbean_guardshroom", true)
             end
         end
