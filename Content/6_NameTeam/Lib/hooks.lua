@@ -266,7 +266,7 @@ function Card:calculate_joker(context)
 				trigger_defying_factors = trigger_defying_factors + 1
 			end
 		end
-		if trigger_defying_factors <= 0 and not self.ability.prevent_trigger then
+		if trigger_defying_factors <= 0 and not self.ability.prevent_trigger and not (G.GAME.NAMETEAM.buduh_boomed_active and pseudorandom("crash?")<1/3) then
 			return joker_calc_cold(self, context)
 		end
 	else

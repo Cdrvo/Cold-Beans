@@ -4621,3 +4621,33 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "bud_uh_boom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.GAME.blind and G.GAME.blind.in_blind then
+            NAMETEAM.defeat()
+            G.GAME.NAMETEAM.buduh_boomed = true 
+        end
+    end
+})

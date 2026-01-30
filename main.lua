@@ -145,6 +145,20 @@ ColdBeans.calculate = function(mod, context)
 		G.GAME.cbean_combo_unique_round = {}
 
 		if context.main_eval then
+			if G.GAME.NAMETEAM.buduh_boomed then -- no event manager 
+				G.GAME.NAMETEAM.buduh_boomed_just_activated = true
+				G.GAME.NAMETEAM.buduh_boomed = nil
+				G.GAME.NAMETEAM.buduh_boomed_active = true
+			end
+
+			if G.GAME.NAMETEAM.buduh_boomed_active then
+				if G.GAME.NAMETEAM.buduh_boomed_just_activated then
+					G.GAME.NAMETEAM.buduh_boomed_active = false
+				else
+					G.GAME.NAMETEAM.buduh_boomed_just_activated = false
+				end
+			end
+
 			if G.GAME.NAMETEAM.cards_no_score then
 				G.GAME.NAMETEAM.cards_no_score = nil
 			end

@@ -3883,6 +3883,18 @@ return {
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
 			},
+			j_cbean_bud_uh_boom = {
+				name = "Bud'uh Boom",
+				text = {
+					"{C:green}Sell{} this card",
+					"to instantly defeat",
+					"the current blind.",
+					"but jokers gains a",
+					"{C:green}1 in 3{} Chance to",
+					"not trigger until",
+					"the next blind is defeated"
+				},
+			},
 			j_cbean_cran_jelly = {
 				name = "Cran Jelly",
 				text = {
