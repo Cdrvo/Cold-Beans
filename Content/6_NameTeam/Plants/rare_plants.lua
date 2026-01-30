@@ -1200,3 +1200,50 @@ SMODS.Joker({
          end
     end
 })
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "cran_jelly",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 3,
+            odds = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "cran_seed")
+        return{vars={cae.rep,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            for k, v in pairs(context.scoring_hand) do
+                if SMODS.pseudorandom_probability(card, "cran_seed", 1, cae.odds) then
+                    v.ability.marked_for_jelly_dest = true
+                end
+            end
+        end
+        if context.repetition and context.cardarea == G.play then
+            return{
+                repetitions = cae.rep
+            }
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.marked_for_jelly_dest then
+            return{
+                remove = true
+            }
+        end
+    end
+})

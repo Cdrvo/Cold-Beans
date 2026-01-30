@@ -3883,6 +3883,15 @@ return {
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
 			},
+			j_cbean_cran_jelly = {
+				name = "Cran Jelly",
+				text = {
+					"Scored cards are",
+					"retriggered {C:attention}#1#{} times",
+					"{C:green}#2# in #3#{} Chance to",
+					"{C:red}destroy{} said cards"
+				},
+			},
 			j_cbean_maybee = {
 				name = "Maybee",
 				text = {

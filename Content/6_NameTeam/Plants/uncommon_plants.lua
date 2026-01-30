@@ -4602,12 +4602,10 @@ SMODS.Joker({
         if context.end_of_round and context.main_eval then
             local to_scale = 0
             for k, v in pairs(G.jokers.cards) do
-                print(v==card)
                 if v ~= card then
-                    print("pas1")
                     if not (v.sell_cost <= 0) and ((not v.ability.extra_value) or ((v.ability.extra_value and (v.ability.extra_value+v.sell_cost >= 0)))) then
                         v.ability.extra_value = v.ability.extra_value or 0
-                        v.ability.extra_value = v.abiltiy.extra_value - 1
+                        v.ability.extra_value = v.ability.extra_value - 1
                         v:set_cost()
                         to_scale = to_scale + 1
                         NAMETEAM.msg(v, "-1 Value")
