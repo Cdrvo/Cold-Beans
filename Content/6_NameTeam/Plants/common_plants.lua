@@ -187,19 +187,20 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then 
-            local card = pseudorandom_element(G.jokers.cards,pseudoseed("gravebustingggg"))
-            for k, v in pairs(SMODS.Stickers) do
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.1, -- holy crash material man
-                    func = function()
-                        if card.ability[v.key] then
-                            card:remove_sticker(v.key, true)
-                        end
-                        return true
-                    end
-                }))
+            local tab = {}
+            for k, v in pairs(G.jokers.cards) do
+                if v:cbean_has_sticker() and v ~= card then
+                    tab[#tab+1] = v
+                end
             end
+            local _card = pseudorandom_element(tab, pseudoseed("GRAVEBUSINGIT"))
+        if _card then
+            for k, v in pairs(SMODS.Stickers) do
+                if _card.ability[v.key] then
+                    _card:remove_sticker(v.key, true)
+                 end
+            end
+        end
         end
     end,
 })
@@ -1949,6 +1950,36 @@ SMODS.Joker({
             for k, v in pairs(G.playing_cards) do
                 SMODS.debuff_card(v, false, "debuff_by_buttercup")
             end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "vamporcini",
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 30
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            SMODS.debuff_card(card, true, "self_debuf_vamp_oh_no")
+            return{
+                mult = cae.mult
+            }
         end
     end,
 })

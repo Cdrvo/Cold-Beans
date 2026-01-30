@@ -3771,6 +3771,32 @@ return {
 					"from a random card"
 				},
 			},
+			j_cbean_vamporcini = {
+				name = "Vamporcini",
+				text = {
+					"{C:mult+#1#{} Mult",
+					"{C:red}debuff itself",
+					"after triggering"
+				},
+			},
+			j_cbean_meteor_flower = {
+				name = "Meteor Flower",
+				text = {
+					"Highest Ranked played",
+					"card is {C:red}Destroyed{}",
+					"cards next to it",
+					"Gains {C:mult}+#1#{} Perma Mult"
+				},
+			},
+			j_cbean_tomb_tangler = {
+				name = "Tomb Tangler",
+				text = {
+					"{C:green}Sell{} this card",
+					"to {C:red}remove{} all stickers",
+					"from a random card and",
+					"turn it {C:dark_edition}Negative{}"
+				},
+			},
 			j_cbean_tallnut = {
 				name = "Tall-Nut",
 				text = {
