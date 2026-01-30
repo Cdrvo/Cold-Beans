@@ -2140,5 +2140,9 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         if context.joker_main and G.GAME.NAMETEAM.voucher_this_ante then return { xmult = card.ability.extra.xmult } end
+
+        if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.config.center.set == "Voucher" and not context.blueprint then
+            return { message = localize("k_active_ex") }
+        end
     end
 }
