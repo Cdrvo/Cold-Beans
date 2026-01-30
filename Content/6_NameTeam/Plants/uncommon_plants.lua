@@ -3724,7 +3724,6 @@ SMODS.Joker({
         }
     },
     loc_vars = function(self,info_queue,card)
-        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_crater
         local cae = card.ability.extra
         return{vars={cae.mult}}
     end,
