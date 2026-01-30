@@ -173,3 +173,35 @@ function format_cbean_anim(anim)
     new_anim.t = anim.t
     return new_anim
 end
+
+
+
+function Card:cbean_set_anim_state(state)
+  self.config.center.cbean_anim_current_state = state
+  self.config.center.cbean_anim_t = 0
+end
+
+function Card:cbean_set_anim_extra_state(state)
+  self.config.center.cbean_anim_extra_current_state = state
+  self.config.center.cbean_anim_extra_t = 0
+end
+
+function SMODS.Center:cbean_set_anim_state(state)
+  self.config.center.cbean_anim_current_state = state
+  self.config.center.cbean_anim_t = 0
+end
+
+function SMODS.Center:cbean_set_anim_extra_state(state)
+  self.cbean_anim_extra_current_state = state
+  self.cbean_anim_extra_t = 0
+end
+
+function cbean_set_anim_state(center, state)
+  center.config.center.cbean_anim_current_state = state
+  center.config.center.cbean_anim_t = 0
+end
+
+function cbean_set_anim_extra_state(center, state)
+  center.cbean_anim_extra_current_state = state
+  center.cbean_anim_extra_t = 0
+end

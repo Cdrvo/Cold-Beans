@@ -5217,6 +5217,16 @@ return {
 					"rebuff themselves"
 				}
 			},
+			j_cbean_nameteam_charles = {
+				name = 'Charles',
+				text =
+				{
+					"Prevents Death,",
+                    "gives {C:money}$#1#{}, {C:red}destroys{} an",
+                    "adjacent {C:attention}Joker{} and",
+                    "{S:1.1,C:red,E:2}self destructs{}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8805,7 +8815,8 @@ return {
 
 			k_cbean_mitosis = "Mitosis!",
 			
-			k_cbean_adapaige_heal = "Healed!"
+			k_cbean_adapaige_heal = "Healed!",
+            ph_cbean_nameteam_charles="Saved by Charles",
 		},
 		high_scores = {},
 		labels = {

@@ -44,6 +44,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "NAMETEAM_Jokers3",
+	path = "6_NameTeam/ColdBeansJokers3.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "nteam_stakes",
 	path = "6_NameTeam/ColdBeansStakes.png",
 	px = 29,
@@ -57,4 +64,9 @@ SMODS.ObjectType({
 SMODS.Sound({
   key = "adapaige_heal",
   path = "6_NameTeam/cbean_adapaige_heal.ogg"
+})
+
+SMODS.Sound({
+  key = "greatest_plan",
+  path = "6_NameTeam/cbean_greatest_plan.ogg"
 })
