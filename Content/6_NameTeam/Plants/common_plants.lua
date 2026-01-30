@@ -2129,3 +2129,43 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "bean_sprout",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.2,
+            exxmult = 1.4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.exxmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.individual and context.cardarea == G.play and context.other_card == NAMETEAM.find_highest(G.play.cards) then
+            return{
+                xmult = cae.exxmult,
+                card = card,
+                message_card = card
+            }
+        end
+    end
+})
