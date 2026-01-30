@@ -3779,6 +3779,15 @@ return {
 					"after triggering"
 				},
 			},
+			j_cbean_chilli_pepper = {
+				name = "Chilli Pepper",
+				text = {
+					"{C:green}Sell{} this card",
+					"to {C:attention}half{} current blind's",
+					"requirements. All cards held in hand",
+					"are {C:red}debuffed{}"
+				},
+			},
 			j_cbean_meteor_flower = {
 				name = "Meteor Flower",
 				text = {

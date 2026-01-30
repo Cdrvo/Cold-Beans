@@ -4433,3 +4433,37 @@ SMODS.Joker({
     end
 })
 
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "chilli_pepper",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self and G.GAME.blind.in_blind then
+            G.GAME.blind.chips = G.GAME.blind.chips/2
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            for k, v in pairs(G.hand.cards) do
+                SMODS.debuff_card(v, true, "debuffed_by_chilli_pepper")
+            end
+        end
+    end
+})
+
