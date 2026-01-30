@@ -4971,6 +4971,14 @@ return {
 					"for the rest of the round"
 				},
 			},
+			j_cbean_health_seeker = {
+				name = "Health Seeker",
+				text = {
+					"{C:green}Sell{} this joker",
+					"to {C:attention}Half{} all",
+					"blinds' requirements"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

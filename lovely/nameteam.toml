@@ -95,3 +95,16 @@ if G.GAME.modifiers.cbean_nteam_all_stickers then
 end
 '''
 match_indent = true
+
+# modify pool
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''add = in_pool and (add or pool_opts.override_base_checks)'''
+position = "after"
+payload = '''
+if G['P_BIOMES'][_type] and v.rarity ~= _rarity then
+    add = false
+end
+'''
+match_indent = true

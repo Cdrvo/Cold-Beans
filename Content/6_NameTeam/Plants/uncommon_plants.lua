@@ -3741,3 +3741,32 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    key = "health_seeker",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            local prev_scaling = G.GAME.starting_params.ante_scaling
+            G.GAME.starting_params.ante_scaling =  G.GAME.starting_params.ante_scaling / 2
+            local current_scaling = prev_scaling - G.GAME.starting_params.ante_scaling
+            NAMETEAM.healthy_ante = current_scaling
+        end
+    end,
+})

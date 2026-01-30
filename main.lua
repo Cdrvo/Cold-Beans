@@ -174,6 +174,11 @@ ColdBeans.calculate = function(mod, context)
 			remove = true
 		}
 	end
+	if context.ante_change and context.ante_end then
+		if NAMETEAM.healthy_ante then
+			G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + NAMETEAM.healthy_ante
+		end
+	end
 	if context.card_added and context.cardarea == G.jokers then
 		local jokers = GetJokers()
 		local troub, minne, trouv = jokers["j_troubadour"], jokers["j_cbean_colon_minnesang"], jokers["j_cbean_colon_trouvere"]

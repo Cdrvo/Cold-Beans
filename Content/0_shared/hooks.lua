@@ -157,6 +157,12 @@ end
 --Giant, Timeshift and Shadow Key code
 local start_dissolve_ref = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
+    if self.ability.cbean_shield then
+        self:remove_sticker("cbean_shield")
+        play_sound("cbean_shielddefend", 1, 0.5)
+        SMODS.calculate_effect({ message = "Shielded!"}, self)
+        return nil
+    end
   local ref = start_dissolve_ref(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
   if self.ability and self.ability.yma_temp_key then
     local key = self.ability.yma_temp_key

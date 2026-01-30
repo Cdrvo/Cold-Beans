@@ -1471,6 +1471,9 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         if context.joker_main and card.ability.extra.chips > 0 then return { chips = card.ability.extra.chips } end
+    end,
+    in_pool = function()
+        return false
     end
 }
 
@@ -1806,10 +1809,11 @@ SMODS.Joker {
         },
         ["happening"] = {
             anim = {
-                { x = 1,                             y = 0, t = 1.8 / 3.5 },
-                { xrange = { first = 2, last = 11 }, y = 0, t = 0.94 * (10 / 18) / 3.5 },
-                { xrange = { first = 0, last = 7 },  y = 1, t = 0.94 * (8 / 18) / 3.5 }
-            }
+                { x = 1,                             y = 0, t = 1.8 + (0.94 / 2) },
+                { xrange = { first = 2, last = 11 }, y = 0, t = (0.94 / 2) / 18 },
+                { xrange = { first = 0, last = 7 },  y = 1, t = (0.94 / 2) / 18 }
+            },
+            loop = false
         }
     },
     cost = 8,
