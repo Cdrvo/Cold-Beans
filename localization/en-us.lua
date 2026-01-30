@@ -4743,6 +4743,15 @@ return {
 					"{C:dark_edition}+1{C:attention} Joker Slot",
 				},
 			},
+			j_cbean_gloom_vine = {
+				name = "Gloom Vine",
+				text = {
+					"{C:chips}+#1#{} Chips for",
+					"every shadow joker owned",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+				},
+			},
 			j_cbean_murkadamia = {
 				name = "Murkadamia",
 				text = {
