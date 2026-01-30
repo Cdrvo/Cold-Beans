@@ -5246,6 +5246,15 @@ return {
 					"{C:chips}+#2#{} Chips"
 				},
 			},
+			j_cbean_guard_shroom = {
+				name =  "Guard Shroom",
+				text = {
+					"After every {C:attention}#£#{C:inactive} (#1#){}",
+					"{C:blue}hands{} played,",
+					"apply a {C:purple}Guard Shroom{} sticker",
+					"to a joker without one"
+				},
+			},
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
@@ -6441,6 +6450,14 @@ return {
 					"Can only trigger",
 					"if in the 2 leftmost",
 					"slots"
+				},
+			},
+			cbean_guardshroom = {
+				name = "Guard Shroom",
+				text = {
+					"Increase the Values",
+					"of the applied card",
+					"by {C:attention}%5{}"
 				},
 			},
 
@@ -9383,6 +9400,7 @@ return {
 			cbean_unlucky = "Unlucky",
 			cbean_locked = "Locked",
 			cbean_shroom = "Shroom",
+			cbean_guardshroom = "Shroom",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",

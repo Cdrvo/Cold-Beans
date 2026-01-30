@@ -4651,3 +4651,47 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "guard_shroom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            hands = 6,
+            hands_max = 6
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = {set = "Other", key = "cbean_guardshroom"}
+        local cae = card.ability.extra
+        return{vars={cae.hands,cae.hands_max}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.after and not context.blueprint then
+            if cae.hands>1 then
+                cae.hands=cae.hands-1
+            else
+                cae.hands = cae.hands_max
+                local tab = {}
+                for k, v in pairs(G.jokers.cards) do
+                    if not v.ability.cbean_guardshroom then
+                        tab[#tab+1] = v
+                    end
+                end
+                local acarad = pseudorandom_element(tab,pseudoseed("SEED"))
+                acarad:add_sticker("cbean_guardshroom", true)
+            end
+        end
+    end
+})
