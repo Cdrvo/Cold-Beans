@@ -3290,7 +3290,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.chips,  (G.jokers and NAMETEAM.pool_in("cbean_shadow",G.jokers.cards) or 0 )   }}
+        return{vars={cae.chips,  cae.chips+(G.jokers and NAMETEAM.pool_in("cbean_shadow",G.jokers.cards) or 0 )   }}
     end,
     add_to_deck = function(self,card,from_debuff)
         G.jokers.config.card_limit = G.jokers.config.card_limit + 1
