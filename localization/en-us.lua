@@ -4716,6 +4716,17 @@ return {
 				},
 			},
 
+			j_cbean_power_vine = {
+				name = "Power Vine",
+				text = {
+					"Every owned {C:green}Electric{} joker's",
+					"values are multiplied",
+					"by {C:attention}X#1#{}",
+					"Playing Cards {C:red}cannot{} retrigger",
+					"{C:inactive}(Power Vine excluded)"
+				},
+			},
+
 			j_cbean_blastberry_vine = {
 				name = "Blastberry Vine",
 				text = {

@@ -83,7 +83,7 @@ ColdBeans.calculate = function(mod, context)
 			end
 		end
 
-		if NAMETEAM.gold_rush then
+		if NAMETEAM.gold_rush and NAMETEAM.gold_rush  > 0 then
 			NAMETEAM.gold_rush = NAMETEAM.gold_rush - 1
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",

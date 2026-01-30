@@ -502,3 +502,11 @@ function Card:highlight(is_highlighted)
 		return cardhighold(self, is_highlighted)
 	end
 end
+
+
+local calc_reps_old = SMODS.calculate_repetitions
+function SMODS.calculate_repetitions(card,context,reps)
+	if (#SMODS.find_card("j_cbean_power_vine")==0) then
+		calc_reps_old(card, context, reps)
+	end
+end

@@ -63,6 +63,9 @@ SMODS.ObjectType({
 SMODS.ObjectType({
 	key = "cbean_pea"
 })
+SMODS.ObjectType({
+	key = "cbean_electric"
+})
 
 SMODS.Sound({
   key = "adapaige_heal",

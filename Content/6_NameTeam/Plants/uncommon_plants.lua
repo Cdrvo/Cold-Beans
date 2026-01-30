@@ -1289,6 +1289,9 @@ SMODS.Joker({
             electric_reeded_num = 2,
         }
     },
+    pools = {
+        cbean_electric = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.electric_reeded_num}}
@@ -2530,6 +2533,9 @@ SMODS.Joker({
             mult = 10
         }
     },
+    pools = {
+        cbean_electric = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.mult}}
@@ -2640,6 +2646,9 @@ SMODS.Joker({
             rep = 3,
             _card = nil
         }
+    },
+    pools = {
+        cbean_electric = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
@@ -3131,6 +3140,9 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
+    pools = {
+        cbean_electric = true
+    },
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then
@@ -3448,6 +3460,59 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    key = "power_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            value = 1.2,
+            key = nil
+        }
+    },
+    pools = {
+        cbean_electric = true
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.value}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        local cae = card.ability.extra
+        if not cae.key then cae.key = pseudorandom("ae")*pseudorandom("bc") end
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        local cae = card.ability.extra
+        for k, v in pairs(G.jokers.cards) do
+                if v.ability["powed_" .. cae.key] then
+                    v.ability["powed_" .. cae.key] = nil
+                    NAMETEAM.values("/",v,cae.value,true)
+                end 
+            end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    update = function(self,card)
+        local cae = card.ability.extra
+        if card.added_to_deck then
+            for k, v in pairs(G.jokers.cards) do
+                if v.config.center.pools and v.config.center.pools.cbean_electric and not v.ability["powed_" .. cae.key] and v.config.center.key ~= "j_cbean_power_vine" then
+                    v.ability["powed_" .. cae.key] = true
+                    NAMETEAM.values("*",v,cae.value,true)
+                end 
+            end
+        end
+    end
+})
+
+SMODS.Joker({
     key = "ice_bloom",
     cost = 4,
     beans_credits = {
@@ -3643,3 +3708,35 @@ SMODS.Joker({
     end,
 })
 
+
+SMODS.Joker({
+    key = "noctairne",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_crater
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            if G.GAME.blind and G.GAME.blind.in_blind then
+                if G.GAME.blind.boss then
+                    G.GAME.blind.chips = G.GAME.blind.chips/2
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                end
+            end
+        end
+    end,
+})

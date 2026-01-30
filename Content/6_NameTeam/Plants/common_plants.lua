@@ -1234,7 +1234,8 @@ SMODS.Joker({
         }
     },
     pools = {
-        cbean_pea = true
+        cbean_pea = true,
+        cbean_electric = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
