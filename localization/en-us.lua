@@ -3836,6 +3836,15 @@ return {
 					"Gains {C:mult}+#1#{} Perma Mult"
 				},
 			},
+			j_cbean_sea_flora = {
+				name = "Sea Flora",
+				text = {
+					"{C:chips}+#1#{} Chips for",
+					"each card on the",
+					"left of this joker",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+				},
+			},
 			j_cbean_maybee = {
 				name = "Maybee",
 				text = {

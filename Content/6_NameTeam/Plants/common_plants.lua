@@ -2064,3 +2064,36 @@ SMODS.Joker({
         end
     end
 })
+
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "sea_flora",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 15
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,(cae.chips*(G.jokers and NAMETEAM.all_on(card, G.jokers.cards, "left") or 1))}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = cae.chips*NAMETEAM.all_on(card, G.jokers.cards, "left")
+            }
+        end
+    end
+})

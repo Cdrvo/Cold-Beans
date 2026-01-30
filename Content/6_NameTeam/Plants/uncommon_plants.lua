@@ -4503,13 +4503,13 @@ SMODS.Joker({
             tab = NAMETEAM.shuffle(tab, "maybee_you_will_work_questionmark")
 
             for i = 1, 2 do
-                table.remove(tab, i)
+                table.remove(tab, 1)
             end
 
             cae.cards = tab
         end
 
-        if context.individual and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_left == 0 then
             for k, v in pairs(cae.cards) do
                 if context.other_card == v then
                     return{
