@@ -4467,3 +4467,56 @@ SMODS.Joker({
     end
 })
 
+
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "maybee",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and G.GAME.current_round.hands_left == 0 then
+            cae.cards = cae.cards or {}
+            local tab = {}
+            for k, v in pairs(context.scoring_hand) do
+                tab[#tab+1] = v
+            end
+            tab = NAMETEAM.reverse_table(tab)
+            tab = NAMETEAM.shuffle(tab, "maybee_you_will_work_questionmark")
+
+            for i = 1, 2 do
+                table.remove(tab, i)
+            end
+
+            cae.cards = tab
+        end
+
+        if context.individual and context.cardarea == G.play then
+            for k, v in pairs(cae.cards) do
+                if context.other_card == v then
+                    return{
+                        xmult = cae.xmult
+                    }
+                end
+            end
+        end
+    end
+})

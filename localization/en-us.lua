@@ -3836,6 +3836,15 @@ return {
 					"Gains {C:mult}+#1#{} Perma Mult"
 				},
 			},
+			j_cbean_maybee = {
+				name = "Maybee",
+				text = {
+					"On the last {C:blue}hand",
+					"of the round, {C:attention}3{}",
+					"random scored cards",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
 			j_cbean_tomb_tangler = {
 				name = "Tomb Tangler",
 				text = {
