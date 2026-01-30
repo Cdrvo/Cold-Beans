@@ -16,3 +16,41 @@ SMODS.Challenge{
 		},
     },
 }
+
+SMODS.Challenge{
+    key = "tornado_poker",
+    rules = {
+        custom = {
+            {id = "cbean_win_ante_poker"}
+        },
+        modifiers = {
+        }
+    },
+    jokers = {
+        {
+            id = "j_cbean_draftodil",
+            eternal = true
+        },
+        {
+            id = "j_cbean_draftodil",
+            eternal = true
+        },
+        {
+            id = "j_cbean_draftodil",
+            eternal = true
+        },
+        {
+            id = "j_cbean_draftodil",
+            eternal = true
+        },
+        {
+            id = "j_cbean_draftodil",
+            eternal = true
+        },
+        
+    },
+	restrictions = {
+		banned_cards = {
+		},
+    },
+}

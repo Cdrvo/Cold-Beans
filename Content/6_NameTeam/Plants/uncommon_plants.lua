@@ -130,6 +130,9 @@ SMODS.Joker({
             odds = 4
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         local num,den = SMODS.get_probability_vars(card,1,cae.odds,"snowpea_seedssomething")
@@ -224,6 +227,9 @@ SMODS.Joker({
             repetitions = 1
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.repetitions}}
@@ -298,7 +304,7 @@ SMODS.Joker({
             end
 
             for i = 1, #G.jokers.cards do
-               if i > cae.rr and string.find(G.jokers.cards[i].config.center.key, "shroom") then
+               if i > cae.rr and (string.find(G.jokers.cards[i].config.center.key, "shroom") or card.ability.cbean_shroom) then
                     G.jokers.cards[i].ability.fume_shroomed_cbean = true
                end
             end
@@ -422,6 +428,9 @@ SMODS.Joker({
             chips = 30,
             dollars = 3
         }
+    },
+    pools = {
+        cbean_pea = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
@@ -845,7 +854,7 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.retrigger_joker_check and not context.retrigger_joker and card:on_the("right") and context.other_card == card:on_the("right") then
-            if string.find(card:on_the("right").config.center.key, "shroom") then
+            if (string.find(card:on_the("right").config.center.key, "shroom") or card:on_the("right").ability.cbean_shroom) then
                 return{
                     message = localize("k_again_ex"),
                     repetitions = cae.rep2,
@@ -2050,6 +2059,9 @@ SMODS.Joker({
             xmult = 2
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.xmult}}
@@ -2953,3 +2965,573 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+    key = "holly_barrier",
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            hands_left = 5,
+            hands_max = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_holly_projectile
+        local cae = card.ability.extra
+        return{
+            vars={cae.hands_max,cae.hands_left}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.cbean_first and not context.blueprint and cae.hands_left>0 then
+            cae.hands_left = cae.hands_left - 1
+            local acard = SMODS.add_card{
+                key = "j_cbean_holly_projectile"
+            }
+            acard.cbean_type = pseudorandom_element({"mult","chips","dollars"})
+            card.ability.type = acard.cbean_type
+            acard:set_edition("e_negative")
+            if cae.hands_left == 0 then
+                SMODS.destroy_cards(card)
+            end
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "melon_z",
+    cost = 0,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "electrici-tea",
+    cost = 0,
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            NAMETEAM.defeat()
+            if card:on_the("right") then
+                SMODS.debuff_card(card:on_the("right"), true, "elecelec")
+                card:on_the("right").newly_debuffed = true
+                card:on_the("right").was_debuffed_by_elec = true
+            end
+            if card:on_the("left") then
+                SMODS.debuff_card(card:on_the("left"), true, "elecelec")
+                card:on_the("left").newly_debuffed = true
+                card:on_the("left").was_debuffed_by_elec = true
+            end
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "blastberry_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            mult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.mult}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i > cae.rr and context.other_card == G.jokers.cards[i] then
+                    G.jokers.cards[i].ability.BLASTED_CBEAN = true
+               end
+            end
+        end
+        if context.other_joker and context.other_joker.ability.BLASTED_CBEAN then
+            context.other_joker.ability.BLASTED_CBEAN  = false
+            return{
+                mult = cae.mult,
+                message_card = context.other_joker
+            }
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "pyre_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            chips = 10
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.post_trigger and not context.blueprint and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring) then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    cae.rr = i
+                end
+            end
+
+            for i = 1, #G.jokers.cards do
+               if i > cae.rr and context.other_card == G.jokers.cards[i] then
+                    G.jokers.cards[i].ability.PYRED_BEAN = true
+               end
+            end
+        end
+        if context.other_joker and context.other_joker.ability.PYRED_BEAN then
+            context.other_joker.ability.PYRED_BEAN  = false
+            return{
+                chips = cae.chips,
+                message_card = context.other_joker
+            }
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "shine_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            dollars = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars,cae.dollars + (card.area and NAMETEAM.all_on(card,card.area.cards, "right")) or 0 }}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    calc_dollar_bonus = function(self,card)
+        local cae = card.ability.extra
+        return cae.dollars + NAMETEAM.all_on(card,card.area.cards, "right")
+    end
+})
+
+SMODS.Joker({
+    key = "explode_o_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            xmult = 1.5,
+            rounds = 3,
+            rounds_max = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.rounds_max,cae.rounds}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.end_of_round and not context.blueprint and context.main_eval then
+            if cae.rounds>1 then
+                cae.rounds = cae.rounds -1
+                NAMETEAM.msg(card, "-1")
+            else
+                cae.rounds = 0
+                SMODS.destroy_cards(card)
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "gloom_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            chips = 15
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,  cae.chips+(G.jokers and NAMETEAM.pool_in("cbean_shadow",G.jokers.cards) or 0 )   }}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = cae.chips+(G.jokers and NAMETEAM.pool_in("cbean_shadow",G.jokers.cards) or 0 )
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "pea_vine",
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            value = 1.2,
+            key = nil
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.value}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        local cae = card.ability.extra
+        if not cae.key then cae.key = pseudorandom("ae")*pseudorandom("bc") end
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        local cae = card.ability.extra
+        for k, v in pairs(G.jokers.cards) do
+                if v.ability["pead_" .. cae.key] then
+                    v.ability["pead_" .. cae.key] = nil
+                    NAMETEAM.values("/",v,cae.value,true)
+                end 
+            end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+    end,
+    update = function(self,card)
+        local cae = card.ability.extra
+        if card.added_to_deck then
+            for k, v in pairs(G.jokers.cards) do
+                if v.config.center.pools and v.config.center.pools.cbean_pea and not v.ability["pead_" .. cae.key] and v.config.center.key ~= "j_cbean_pea_vine" then
+                    v.ability["pead_" .. cae.key] = true
+                    NAMETEAM.values("*",v,cae.value,true)
+                end 
+            end
+        end
+    end
+})
+
+SMODS.Joker({
+    key = "ice_bloom",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1.75,
+            odds = 3,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "ice_seed")
+        return{vars={cae.xmult,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            if SMODS.pseudorandom_probability(card, "ice_seed", 1, cae.odds) then
+                context.other_card.marked_by_ice = true
+            end
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.final_scoring_step then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    for k, v in pairs(G.play.cards) do
+                        if v.marked_by_ice then
+                            SMODS.debuff_card(v, true, "icey_never_openy")
+                            NAMETEAM.msg(v, "Debuffed!")
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "puffball",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2,
+            odds = 4,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "puffball")
+        return{vars={cae.xmult,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local c, gp = context.other_card,context.scoring_hand
+            if c ~= gp[1] and c ~= gp[#gp] then
+                if SMODS.pseudorandom_probability(card, "puffy_seed", 1, cae.odds) then
+                    c.mark_by_puffy = true
+                end
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.mar_by_puffy then
+            return{
+                remove = true
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "olive_pit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_card and context.card ~= card then
+            local a = context.card.sell_cost
+            cae.xmult = cae.xmult + a/20
+            NAMETEAM.msg(card, localize("k_upgrade_ex"))
+        end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "boingsetta",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult_gain = 0.1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult_gain}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+       if context.individual then
+			if context.cardarea == G.play then
+				context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 1
+				context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + cae.xmult_gain
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+			end
+		end
+    end,
+})
+

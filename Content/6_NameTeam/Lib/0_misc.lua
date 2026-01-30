@@ -44,6 +44,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "NAMETEAM_Jokers3",
+	path = "6_NameTeam/ColdBeansJokers3.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "nteam_stakes",
 	path = "6_NameTeam/ColdBeansStakes.png",
 	px = 29,
@@ -52,6 +59,9 @@ SMODS.Atlas({
 
 SMODS.ObjectType({
 	key = "cbean_shadow"
+})
+SMODS.ObjectType({
+	key = "cbean_pea"
 })
 
 SMODS.Sound({
@@ -62,4 +72,9 @@ SMODS.Sound({
 SMODS.Sound({
   key = "edega_debuff",
   path = "6_NameTeam/cbean_edega_debuff.ogg"
+})
+
+SMODS.Sound({
+  key = "greatest_plan",
+  path = "6_NameTeam/cbean_greatest_plan.ogg"
 })

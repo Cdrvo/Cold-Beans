@@ -1408,7 +1408,7 @@ SMODS.Joker {
     config = { extra = { added_mult = 2, current_mult = 0 } },
     rarity = 1,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 3, y = 11 },
+    pos = { x = 2, y = 11 },
     cost = 5,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.added_mult, card.ability.extra.current_mult } }
@@ -1453,7 +1453,7 @@ SMODS.Joker {
     config = { extra = { chips = 0 } },
     rarity = 1,
     atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 4, y = 11 },
+    pos = { x = 3, y = 11 },
     cost = 2,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
@@ -1654,7 +1654,7 @@ SMODS.Joker {
     pos = { x = 4, y = 11 },
     cost = 6,
     loc_vars = function(self, info_queue, card)
-    return { vars = { G.GAME.probabilities.normal*card.ability.extra.chance, card.ability.extra.max_chance } }
+        return { vars = { G.GAME.probabilities.normal * card.ability.extra.chance, card.ability.extra.max_chance } }
     end,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1672,7 +1672,7 @@ SMODS.Joker {
             local has_rebuffs = false
             for k, v in pairs(G.hand.cards) do
                 if v.debuff then
-                    local will_rebuff = pseudorandom(pseudoseed('nteam_adapaige'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance)*100
+                    local will_rebuff = pseudorandom(pseudoseed('nteam_adapaige'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance) * 100
                     if will_rebuff then
                         v:set_debuff(false)
                         has_rebuffs = true
@@ -1786,6 +1786,129 @@ SMODS.Joker {
                             return true end }))
                         end
                 }
+            end
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_charles",
+    config = { extra = { money = 20 } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 0, y = 0 },
+    cbean_anim_states = {
+        ["normal"] = {
+            anim = {
+                { x = 0, y = 0, t = 1 }
+            },
+            loop = false
+        },
+        ["happening"] = {
+            anim = {
+                { x = 1,                             y = 0, t = 1.8 / 3.5 },
+                { xrange = { first = 2, last = 11 }, y = 0, t = 0.94 * (10 / 18) / 3.5 },
+                { xrange = { first = 0, last = 7 },  y = 1, t = 0.94 * (8 / 18) / 3.5 }
+            }
+        }
+    },
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = false,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        card:cbean_set_anim_state("normal")
+    end,
+    set_ability = function (self, card, initial, delay_sprites)
+        card:cbean_set_anim_state("normal")
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over and context.main_eval then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound("cbean_greatest_plan", 1, 1)
+                    card:cbean_set_anim_state("happening")
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                timer = "REAL",
+                delay = 2.74,
+                func = function()
+                    local me = nil
+                    for i = 1, #G.jokers.cards do
+                        if (G.jokers.cards[i] == card) then me = i end
+                    end
+
+                    if me and me >= 1 and me <= #G.jokers.cards then
+                        local marked = G.jokers.cards[me - 1] and G.jokers.cards[me + 1] and
+                            (pseudorandom("nameteam_charles", 1, 2) == 1 and G.jokers.cards[me - 1] or G.jokers.cards[me + 1])
+                            or G.jokers.cards[me - 1] or G.jokers.cards[me + 1]
+
+                        if marked then marked:start_dissolve() end
+                    end
+
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card:cbean_set_anim_state("normal")
+                    card:start_dissolve()
+                    return true
+                end
+            }))
+            return { saved = "ph_cbean_nameteam_charles", dollars = card.ability.extra.money }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_intentionallyblank",
+    config = { extra = { xmult = 1.3 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 8, y = 1 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.other_joker then
+            local me = nil
+            for i = 1, #G.jokers.cards do
+                if (G.jokers.cards[i] == card) then me = i end
+            end
+
+            if context.other_joker == G.jokers.cards[me - 1] or context.other_joker == G.jokers.cards[me + 1] then
+                return { xmult = card.ability.extra.xmult }
             end
         end
     end

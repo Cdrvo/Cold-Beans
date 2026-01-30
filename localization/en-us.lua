@@ -4612,6 +4612,314 @@ return {
 					"{C:inactive}(Stored: {C:chips}#3#{C:inactive})"
 				},
 			},
+			j_cbean_electric_peashooter = {
+				name = "Electric Peashooter",
+				text = {
+					"All cards to the",
+					"right of this",
+					"gives {C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_holly_barrier = {
+				name = "Holly Barier",
+				text = {
+					"For the next {C:attention}#1#{C:inactive} (#2#){} Hands",
+					"create a {C:dark_edition}Negative{}",
+					"{C:attention}Holly{} Projectile",
+					"with a random effect"
+				},
+			},
+			-- projectiles
+			j_cbean_holly_projectile = {
+				name = "Holly Projectile",
+				text = {
+					"When added to deck",
+					"obtains a random ability",
+				},
+			},
+			j_cbean_holly_projectile_mult = {
+				name = "Holly Projectile",
+				text = {
+					"{C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_holly_projectile_chips = {
+				name = "Holly Projectile",
+				text = {
+					"{C:chips}+#1#{} Chips"
+				},
+			},
+			j_cbean_holly_projectile_dollars = {
+				name = "Holly Projectile",
+				text = {
+					"{C:money}+$#1#{} after every",
+					"round"
+				},
+			},
+			--
+
+			j_cbean_zoybean_pod = {
+				name = "Zoybean Pod",
+				text = {
+					"Every {C:attention}#2#{C:inactive} (#1#){} Rounds",
+					"create a random {C:dark_edition}negative{}",
+					"Zom-boid"
+				},
+			},
+			-- zomboids
+			j_cbean_basic_z= {
+				name = "Basiz Zomboid",
+				text = {
+					"{C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_carrot_z = {
+				name = "Carrothead Zomboid",
+				text = {
+					"{C:chips}+#1#{} Chips"
+				},
+			},
+			j_cbean_melon_z = {
+				name = "Melonhead Zomboid",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			--
+
+			["j_cbean_electrici-tea"] = {
+				name = "Electrici-tea",
+				text = {
+					"{C:green}Sell{} to while",
+					"in a blind to defeat it",
+					"{C:red}Debuffs{} adjecent jokers",
+					"for 1 round"
+				},
+			},
+
+			j_cbean_sling_pea = {
+				name = "Sling-Pea",
+				text = {
+					"Scored Cards give", 
+					"{C:mult}+#1#{} Mult",
+					"{C:mult}-#2#{} Mult per trigger"
+				},
+			},
+
+			j_cbean_pea_vine = {
+				name = "Pea Vine",
+				text = {
+					"Every owned {C:green}Pea{} joker's",
+					"values are multiplied",
+					"by {C:attention}X#1#",
+					"{C:inactive}(Pea Vine excluded)"
+				},
+			},
+
+			j_cbean_blastberry_vine = {
+				name = "Blastberry Vine",
+				text = {
+					"During scoring,",
+					"triggered jokers on the right",
+					"of this gives {C:mult}+#1#{} Mult",
+					"{C:dark_edition}+1{C:attention} Joker Slot"
+				},
+			},
+
+			j_cbean_pyre_vine = {
+				name = "Pyre Vine",
+				text = {
+					"During scoring,",
+					"triggered jokers on the right",
+					"of this gives {C:chips}+#1#{} Chips",
+					"{C:dark_edition}+1{C:attention} Joker Slot"
+				},
+			},
+			j_cbean_shine_vine = {
+				name = "Shine Vine",
+				text = {
+					"{C:money}+$#1#{} After every round",
+					"gives an extra {C:money}+$1{} for every",
+					"joker on this joker's right",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+				},
+			},
+			j_cbean_explode_o_vine = {
+				name = "Explode-O-Vine",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:red}Self-Destructs{} after {C:attention}#2#{C:inactive} (#3#){} Rounds",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+				},
+			},
+			j_cbean_gloom_vine = {
+				name = "Gloom Vine",
+				text = {
+					"{C:chips}+#1#{} Chips for",
+					"every shadow plant owned",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+				},
+			},
+			j_cbean_murkadamia = {
+				name = "Murkadamia",
+				text = {
+					"Gains {C:mult}+#2#{} Mult",
+					"for each scored card",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_ultomato = {
+				name = "Ultomato",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"future copies of this card",
+					"gains {X:mult,C:white}X1{} Mult"
+				},
+			},
+
+			j_cbean_ice_bloom = {
+				name = "Ice Bloom",
+				text = {
+					"Scored cards give",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#2# in #3#{} Chance to",
+					"{C:red}debuff{} them permanently"
+				},
+			},
+
+			j_cbean_tumbleweed = {
+				name = "Tumbleweed",
+				text = {
+					"Scored cards has",
+					"a {C:green}#2# in #3#{} Chance",
+					"to retrigger {C:attention}#1#{} Times",
+					"never trigger otherwise"
+				},
+			},
+
+			j_cbean_pokra = {
+				name = "Pokra",
+				text = {
+					"First scored card",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"After every {C:attention}#3#{} {C:inactive}(#2#){} triggers",
+					"every played card gives",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+
+			j_cbean_dazey_chain = {
+				name = "Dazey Chain",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"AFter 2 rounds, starts giving",
+					"{C:mult}+#2#{} Mult. and",
+					"3 more rounds after that,",
+					"starts giving {X:mult,C:white}X#3#{} Mult",
+					"{C:inactive}(Rounds: #4#, Stage: #5#)"
+				},
+			},
+			j_cbean_imp_pear = {
+				name = "Imp Pear",
+				text = {
+					"{C:green}Sell{} this to reduce",
+					"needed score by", 
+					"this ante's {C:attention}Big{} blind needed score"
+				},
+			},
+
+			j_cbean_dartichoke = {
+				name = "Dartichoke",
+				text = {
+					"Scored highest rank card",
+					"gives its rank as chips"
+				},
+			},
+			j_cbean_gumnut = {
+				name = "Gumnut",
+				text = {
+					"When {C:green}sold{}, next {C:attention}#2#{} Blind",
+					"wont end until all",
+					"hands are used"
+				},
+			},
+			j_cbean_puffball = {
+				name = "Puffball",
+				text = {
+					"Scored cards between your",
+					"Rightmost and Leftmost scoring",
+					"cards give {X:mult,C:white}X#1#{} Mult",
+					"but has a {C:green}#2# in #3#{} Chance to",
+					"get {C:red}destroyed{}"
+				},
+			},
+			j_cbean_olive_pit = {
+				name = "Olive Pit",
+				text = {
+					"When a joker is sold",
+					"this card gains 1/20 of its",
+					"sell value as {X:mult,C:white}XMULT",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+			j_cbean_turkey_pult = {
+				name = "Turkey Pult",
+				text = {
+					"When a {C:attention}Blind{}",
+					"is selected, create",
+					"a {C:attention}Tofu Turkey{}"
+				},
+			},
+			j_cbean_tofu_turkey = {
+				name = "Tofu Turkey",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"{C:dark_edition}+1{C:attention} Joker Slot"
+				},
+			},
+			j_cbean_boingsetta = {
+				name = "Boingsetta",
+				text = {
+					"Scored cards gain",
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			j_cbean_stickybomb_rice = {
+				name = "Stickybomb Rice",
+				text = {
+					"A random card {C:red}won't{} score",
+					"but will give {C:mult}+#1#{} Mult"
+				},
+			},
+			j_cbean_hocus_crocus = {
+				name = "Hocus Crocus",
+				text = {
+					"Playing Cards' {C:attention}scoring",
+					"order is {C:dark_edition}reversed.",
+					"First scored card gains",
+					"{:mult}+#1#{} Perma Mult"
+				},
+			},
+			j_cbean_headbutter_lettuce = {
+				name = "Headbutter Lettuce",
+				text = {
+					"If a scored card's position",
+					"is the same as this Joker's position",
+					"it gives {C:chips}+#1#{} Chips",
+					"{C:inactive,s:0.85}(e.g 3rd in jokers, 3rd in scoring)"
+				},
+			},
+			j_cbean_draftodil = {
+				name = "Draftodil",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Played cards has a", 
+					"{C:green}#2# in [RANK]{} Chance to",
+					"to be discarded instead"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",
@@ -4979,6 +5287,24 @@ return {
 						"Upon reaching {C:chips}0{} Chips",
 						"this Joker debuffs itself"
 					}
+				}
+			},
+			j_cbean_nameteam_charles = {
+				name = 'Charles',
+				text =
+				{
+					"Prevents Death,",
+                    "gives {C:money}$#1#{}, {C:red}destroys{} an",
+                    "adjacent {C:attention}Joker{} and",
+                    "{S:1.1,C:red,E:2}self destructs{}"
+				}
+			},
+			j_cbean_nameteam_intentionallyblank = {
+				name = 'Intentionally Blank',
+				text =
+				{
+					"Adjacent {C:attention}Jokers{}",
+					"give {C:white,X:mult}X#1#{} Mult"
 				}
 			},
 
@@ -5672,6 +5998,16 @@ return {
 					"if played hand",
 					"has exactly 4",
 					"cards"
+				},
+			},
+			cbean_shroom = {
+				name = "Shroom",
+				text = {
+					"Card is considered",
+					"a {C:purple}Shroom{}",
+					"Can only trigger",
+					"if in the 2 leftmost",
+					"slots"
 				},
 			},
 
@@ -8385,6 +8721,7 @@ return {
 		challenge_names = {
 			c_cbean_sdown_inexcusable = "Inexcusable",
 			c_cbean_all_stickers = "Oops! All Stickers",
+			c_cbean_tornado_poker = "Tornado Poker"
 		},
 		collabs = {},
 		dictionary = {
@@ -8561,7 +8898,9 @@ return {
 			
 			k_cbean_adapaige_heal = "Healed!",
 			k_cbean_edega_debuff = "Healed?",
-			k_cbean_ian_exhausted = "Exhausted!"
+			k_cbean_ian_exhausted = "Exhausted!",
+			
+            ph_cbean_nameteam_charles="Saved by Charles",
 		},
 		high_scores = {},
 		labels = {
@@ -8601,6 +8940,7 @@ return {
 			cbean_square = "Square",
 			cbean_unlucky = "Unlucky",
 			cbean_locked = "Locked",
+			cbean_shroom = "Shroom",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",
@@ -9002,6 +9342,9 @@ return {
             ch_c_cbean_nteam_all_stickers_3={
 				"have Stickers",
             },
+			ch_c_cbean_win_ante_poker = {
+				"Required {C:attention}Ante{} to win is {C:attention}11",
+			},
 		},
 	},
 }

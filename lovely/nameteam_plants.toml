@@ -91,3 +91,20 @@ payload = '''
     end
 '''
 match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+draw_card(G.hand, G.play, i*100/#G.hand.highlighted, 'up', nil, G.hand.highlighted[i])'''
+position = "at"
+payload = '''
+if not G.hand.highlighted[i].cbean_discarded then
+    draw_card(G.hand, G.play, i*100/#G.hand.highlighted, 'up', nil, G.hand.highlighted[i])
+else
+    G.hand.highlighted[i].cbean_discarded = false
+end
+'''
+match_indent = true
+

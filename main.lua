@@ -137,6 +137,13 @@ ColdBeans.calculate = function(mod, context)
 					NAMETEAM.values("/",v,2,true)
 				end
 
+				if v.newly_debuffed then
+					v.newly_debuffed = false
+				elseif v.was_debuffed_by_elec then
+					v.was_debuffed_by_elec = nil
+					SMODS.debuff_card(v, false, "elecelec")
+				end
+
 			end
 
 		end

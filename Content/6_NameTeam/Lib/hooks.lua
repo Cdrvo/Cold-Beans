@@ -202,6 +202,15 @@ local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
 function G.FUNCS.play_cards_from_highlighted(e)
 	NAMETEAM.highlight_order = 0
 	SMODS.calculate_context({cbean_first = true})
+	if (#SMODS.find_card("j_cbean_draftodil")>0) or NAMETEAM.testing_discard then
+		for i=1, #G.hand.highlighted do
+			if SMODS.pseudorandom_probability(nil, "SEED", 1, G.hand.highlighted[i].base.id) then
+				draw_card(G.hand, G.discard, i*100/#G.hand.highlighted, 'up', nil, G.hand.highlighted[i])
+				SMODS.calculate_context({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted, ignore_other_debuff = true})
+				G.hand.highlighted[i].cbean_discarded = true
+			end
+		end
+	end
 	old_play_highlighted(e)
 end
 
@@ -233,11 +242,22 @@ end
 local joker_calc_cold = Card.calculate_joker
 function Card:calculate_joker(context)
     if self.ability then
+		local trigger_defying_factors = 0
 		if self.ability["cbean_square"] then
 			if G.play and G.play.cards and #G.play.cards == 4 then
-				return joker_calc_cold(self, context)
+				-- ye
+			else
+				trigger_defying_factors = trigger_defying_factors + 1
 			end
-		else
+		end
+		if self.ability["cbean_shroom"] then
+			if G.jokers and (G.jokers.cards[1] == self or G.jokers.cards[2] == self) then
+				-- ye
+			else
+				trigger_defying_factors = trigger_defying_factors + 1
+			end
+		end
+		if trigger_defying_factors <= 0 then
 			return joker_calc_cold(self, context)
 		end
 	else
@@ -287,6 +307,9 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 		NAMETEAM.general_area = NAMETEAM.shuffle(NAMETEAM.general_area, "sweet_lil_potato")
 	end
 
+	if (#SMODS.find_card("j_cbean_hocus_crocus")>0) then
+		NAMETEAM.general_area = NAMETEAM.reverse_table(NAMETEAM.general_area)
+	end
     for _, card in ipairs(NAMETEAM.general_area) do
         local in_scoring = scoring_hand and SMODS.in_scoring(card, NAMETEAM.scoring_area)
         --add cards played to list
@@ -317,6 +340,10 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                     func = (function() SMODS.juice_up_blind() return true end)
                 }))
                 NAMETEAM.msg(card, "No Score!")
+				if card.no_score_mult then
+					SMODS.calculate_effect({mult = card.no_score_mult}, card)
+					card.no_score_mult = nil
+				end
 				if card.mark_for_no_score then
 					card.mark_for_no_score = nil
 				end

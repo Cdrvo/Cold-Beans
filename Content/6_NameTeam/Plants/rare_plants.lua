@@ -38,6 +38,9 @@ SMODS.Joker({
             mult = 25
         }
     },
+    pools = {
+        cbean_pea = true
+    },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
         return{vars={cae.xmult,cae.mult}}
@@ -230,6 +233,9 @@ SMODS.Joker({
         extra = {
             repetitions = 2
         }
+    },
+    pools = {
+        cbean_pea = true
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
@@ -646,6 +652,338 @@ SMODS.Joker({
                     return true
                 end
             }))
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "zoybean_pod",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            round_timer = 4,
+            rounds_max = 4,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_basic_z
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_melon_z
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_carrot_z
+        local cae = card.ability.extra
+        return{
+            vars={cae.round_timer,cae.rounds_max}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.setting_blind and not context.blueprint then
+            if cae.round_timer>1 then
+                cae.round_timer = cae.round_timer - 1
+            else
+                cae.round_timer = 4
+                local acard = SMODS.add_card{
+                    key = pseudorandom_element({"j_cbean_basic_z","j_cbean_carrot_z","j_cbean_melon_z"})
+                }
+                acard:set_edition("e_negative")
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "dazey_chain",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            chips = 40,
+            mult = 20,
+            xmult = 3,
+            stage = 1,
+            rounds = 2,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local key = self.key
+        return{
+            vars={cae.chips,cae.mult,cae.xmult,cae.rounds,cae.stage},
+            key=key
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            if cae.stage == 1 then
+                return{
+                    chips = cae.chips
+                }
+            elseif cae.stage == 2 then
+                return{
+                    mult = cae.mult
+                }
+            elseif cae.stage == 3 then
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.end_of_round and context.main_eval then
+            if cae.rounds > 1 and cae.stage ~= "Last Stage" then
+                cae.rounds = cae.rounds - 1
+                NAMETEAM.msg(card, "-1")
+            else
+                if cae.stage == 1 then
+                    cae.rounds = 3
+                    cae.stage = 2
+                    NAMETEAM.msg(card, "Stage 2!")
+                elseif cae.stage == 2 then
+                    cae.rounds = "Last Stage"
+                    cae.stage = 3
+                    NAMETEAM.msg(card, "Stage 3!")
+                end
+            end
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "pokra",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            trigs = 0,
+            needed_trigs = 3,
+            xmult = 1.25
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,cae.trigs,cae.needed_trigs}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual then
+            if cae.trigs < cae.needed_trigs then
+                cae.triggered = true
+                if context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+                    return{
+                        xmult = cae.xmult
+                    }
+                end
+            else
+                cae.mega_triggered = true
+                if context.cardarea == G.play or context.cardarea == "unscored" then
+                    return{
+                        xmult = cae.xmult
+                    }
+                end
+            end
+        end
+        if context.after then
+            if cae.mega_triggered then
+                 cae.trigs = 0
+                 cae.mega_triggered = false
+            elseif cae.triggered then
+                cae.triggered = false
+                cae.trigs = cae.trigs + 1
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "imp_pear",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={((get_blind_amount(G.GAME.round_resets.blind_ante)*Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Big"]).mult*G.GAME.starting_params.ante_scaling))or 0}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.selling_self then
+            G.GAME.blind.chips = G.GAME.blind.chips - ((get_blind_amount(G.GAME.round_resets.blind_ante)*Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Big"]).mult*G.GAME.starting_params.ante_scaling))or 0
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            NAMETEAM.msg(card, "Reduced!")
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "ultomato",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    add_to_deck = function(self,card,context)
+        G.P_CENTERS[card.config.center.key].config.extra.xmult = G.P_CENTERS[card.config.center.key].config.extra.xmult + 1
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end,
+    in_pool = function(self,card)
+        return true, {allow_duplicates = true}
+    end
+})
+
+SMODS.Joker({
+    key = "murkadamia",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 0,
+            mult_gain = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.mult
+            }
+        end
+        if context.individual and context.cardarea == G.play then
+            SMODS.scale_card(card, {
+                ref_table = cae,
+                ref_value = "mult",
+                scalar_value = "mult_gain"
+            })
+        end
+    end,
+})
+
+
+SMODS.Joker({
+    key = "turkey_pult",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_tofu_turkey
+        local cae = card.ability.extra
+        return{
+            vars={cae.mult,cae.mult_gain}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.setting_blind then
+            local acard = SMODS.add_card{
+                key = "j_cbean_tofu_turkey"
+            }
+            acard:set_edition(nil, true, true)
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "draftodil",
+    cost = 3,
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 4
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{
+            vars={cae.xmult,(G.GAME.probabilities.normal or 1)}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
         end
     end,
 })
