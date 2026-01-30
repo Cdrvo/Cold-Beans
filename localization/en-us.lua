@@ -3771,6 +3771,15 @@ return {
 					"from a random card"
 				},
 			},
+			j_cbean_tomb_tangler = {
+				name = "Tomb Tangler",
+				text = {
+					"{C:green}Sell{} this card",
+					"to {C:red}remove{} all stickers",
+					"from a random card and",
+					"turn it {C:dark_edition}Negative{}"
+				},
+			},
 			j_cbean_tallnut = {
 				name = "Tall-Nut",
 				text = {
