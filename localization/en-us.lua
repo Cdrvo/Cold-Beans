@@ -5630,6 +5630,15 @@ return {
                     "{C:inactive}(A, 9, 7, 5, 3){}"
 				}
 			},
+			j_cbean_nameteam_greenmatador = {
+				name = 'Green Matador',
+				text =
+				{
+                    "Earn {C:money}$#1#{} at end of round,",
+					"gains {C:money}+$#2#{} during {C:attention}CEO Blind{}",
+					"for each unused {C:red}discard{}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
