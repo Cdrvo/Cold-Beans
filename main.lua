@@ -142,8 +142,8 @@ ColdBeans.calculate = function(mod, context)
 					end
 				end
 
-				if v.marked_for_perma_no_score and v.ability.marked_by_noctairne then
-					v.marked_for_perma_no_score = nil
+				if v.mark_for_perma_no_score and v.ability.marked_by_noctairne then
+					v.mark_for_perma_no_score = nil
 				end
 			end
 
