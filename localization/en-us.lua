@@ -5405,6 +5405,16 @@ return {
 					"when scored"
 				}
 			},
+			j_cbean_nameteam_zirconiumpants = {
+				name = 'Zirconium Pants',
+				text =
+				{
+                    "If played hand",
+					"contains a {C:attention}Two Pair{},",
+					"an {C:attention}unenhanced{} card held",
+					"in hand becomes {C:attention}Steel{}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
