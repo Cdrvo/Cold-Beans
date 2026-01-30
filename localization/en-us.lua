@@ -5377,6 +5377,15 @@ return {
 					"give {C:white,X:mult}X#1#{} Mult"
 				}
 			},
+			j_cbean_nameteam_bountyhunter = {
+				name = 'Bounty Hunter',
+				text =
+				{
+					"When {C:attention}Blind{} is selected,",
+                    "destroy Joker to the",
+                    "right and earn {C:money}$#1#{}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
