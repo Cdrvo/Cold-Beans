@@ -514,9 +514,10 @@ end
 	
 local get_boss_old = get_new_boss
 function get_new_boss()
-	print("hooked")
 	if G.GAME.NAMETEAM.stored_boss then
-		return G.GAME.NAMETEAM.stored_boss 
+		local boss = G.GAME.NAMETEAM.stored_boss
+		G.GAME.NAMETEAM.stored_boss = nil
+		return boss
 	else
 		return get_boss_old()
 	end
