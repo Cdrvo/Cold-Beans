@@ -5621,6 +5621,15 @@ return {
 					"{C:inactive}(Currently #2#){}"
 				}
 			},
+			j_cbean_nameteam_miraclemachine = {
+				name = 'Miracle Machine',
+				text =
+				{
+                    "Played cards with {C:attention}odd{}",
+					"rank give {C:money}$#1#{} when scored",
+                    "{C:inactive}(A, 9, 7, 5, 3){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
