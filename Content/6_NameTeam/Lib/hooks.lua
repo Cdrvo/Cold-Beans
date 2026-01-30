@@ -332,7 +332,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 					SMODS.calculate_effect({xmult = 2.5}, card)
 				end
             end
-        elseif scoring_hand and (card.marked_by_mortar or card.mark_for_no_score) then
+        elseif scoring_hand and (card.marked_by_mortar or card.mark_for_no_score or card.mark_for_perma_no_score) then
 			if in_scoring then 
                 -- G.GAME.blind.triggered = true
                 G.E_MANAGER:add_event(Event({

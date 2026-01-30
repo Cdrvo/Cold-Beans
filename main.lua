@@ -141,6 +141,10 @@ ColdBeans.calculate = function(mod, context)
 						v.cbean_banana_timer = v.cbean_banana_timer - 1
 					end
 				end
+
+				if v.marked_for_perma_no_score and v.ability.marked_by_noctairne then
+					v.marked_for_perma_no_score = nil
+				end
 			end
 
 			for k, v in pairs(G.jokers.cards) do -- needs a check for other values ( iwanted to use - instead of / but i got other jokers to code)

@@ -4961,6 +4961,16 @@ return {
 					"{C:money}Gold Seal{} on them"
 				},
 			},
+			j_cbean_noctairne = {
+				name = "Noctairne",
+				text = {
+					"{C:green}Sell{} this joker",
+					"while in a blind to",
+					"{C:attention}Half{} the required chips",
+					"Playing Cards {C:red}cannot{} score",
+					"for the rest of the round"
+				},
+			},
 			j_cbean_nameteam_stickerbomb = {
 				name = {
 					"Stickerbomb",

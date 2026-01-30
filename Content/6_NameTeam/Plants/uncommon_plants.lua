@@ -3736,6 +3736,10 @@ SMODS.Joker({
                     G.GAME.blind.chips = G.GAME.blind.chips/2
                     G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                 end
+                for k, v in pairs(G.playing_cards) do
+                    v.marked_for_perma_no_score = true
+                    v.ability.marked_by_noctairne = true
+                end
             end
         end
     end,
