@@ -833,3 +833,12 @@ function NAMETEAM.set_blind(blind)
       end)
     }))
   end
+
+  function Card:cbean_has_sticker()
+	for k, v in pairs(SMODS.Stickers) do
+		if self.ability[k] then
+			return true
+		end
+	end
+	return false
+  end

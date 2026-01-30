@@ -1096,3 +1096,45 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "tomb_tangler",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 2,
+            odds = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+                if context.selling_self then 
+            local tab = {}
+            for k, v in pairs(G.jokers.cards) do
+                if v:cbean_has_sticker() and v ~= card then
+                    tab[#tab+1] = v
+                end
+            end
+            local _card = pseudorandom_element(tab, pseudoseed("tomb_tangler"))
+            for k, v in pairs(SMODS.Stickers) do
+                if _card.ability[v.key] then
+                    _card:remove_sticker(v.key, true)
+                 end
+            end
+            _card:set_edition("e_negative")
+        end
+    end
+})

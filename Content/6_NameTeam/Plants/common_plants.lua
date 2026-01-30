@@ -179,18 +179,17 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.selling_self then 
-            local card = pseudorandom_element(G.jokers.cards,pseudoseed("gravebustingggg"))
+            local tab = {}
+            for k, v in pairs(G.jokers.cards) do
+                if v:cbean_has_sticker() and v ~= card then
+                    tab[#tab+1] = v
+                end
+            end
+            local _card = pseudorandom_element(tab, pseudoseed("GRAVEBUSINGIT"))
             for k, v in pairs(SMODS.Stickers) do
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.1, -- holy crash material man
-                    func = function()
-                        if card.ability[v.key] then
-                            card:remove_sticker(v.key, true)
-                        end
-                        return true
-                    end
-                }))
+                if _card.ability[v.key] then
+                    _card:remove_sticker(v.key, true)
+                 end
             end
         end
     end,
