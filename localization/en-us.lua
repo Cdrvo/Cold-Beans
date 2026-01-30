@@ -5595,6 +5595,15 @@ return {
 					"in hand becomes {C:attention}Steel{}"
 				}
 			},
+			j_cbean_nameteam_beentheredonethat = {
+				name = 'Been There Done That',
+				text =
+				{
+                    "{C:white,X:mult}X#1#{} Mult if a {C:attention}Voucher{}",
+					"was purchased this {C:attention}Ante{}",
+					"{C:inactive}(Currently #2#){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {

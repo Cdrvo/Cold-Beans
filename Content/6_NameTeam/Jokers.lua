@@ -2116,3 +2116,33 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_beentheredonethat",
+    config = { extra = { xmult = 3 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 3, y = 2 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, G.GAME.NAMETEAM.voucher_this_ante and localize("k_styx_active") or localize("k_styx_inactive") } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.joker_main and G.GAME.NAMETEAM.voucher_this_ante then return { xmult = card.ability.extra.xmult } end
+
+        if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.config.center.set == "Voucher" and not context.blueprint then
+            return { message = localize("k_active_ex") }
+        end
+    end
+}

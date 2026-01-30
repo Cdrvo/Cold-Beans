@@ -4541,7 +4541,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.xmult}}
+        return{vars={cae.chips}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -4567,7 +4567,7 @@ SMODS.Joker({
             cae.double = false
         end
         if context.joker_main then
-            retrun{
+            return{
                 chips = cae.chips
             }
         end
