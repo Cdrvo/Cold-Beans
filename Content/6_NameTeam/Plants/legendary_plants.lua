@@ -2,6 +2,7 @@
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "cob_cannon_OG",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 3,
     beans_credits = {
 		code = "Revo",
@@ -52,6 +53,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "mega_gattling_pea",
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 10,
     beans_credits = {
 		code = "Revo",
