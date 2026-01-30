@@ -1190,6 +1190,7 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
+        return{vars{cae.xmult}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -1244,6 +1245,114 @@ SMODS.Joker({
             return{
                 remove = true
             }
+        end
+    end
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "dragon_bruit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 10,
+            chips = 20,
+            xmult = 1.25
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS["j_cbean_baby_bruit"]
+        local cae = card.ability.extra
+        return{vars={cae.mult,cae.chips,cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.mult,
+                chips = cae.chips,
+                xmult = cae.xmult
+            }
+        end
+        if context.end_of_round and context.game_over and context.main_eval then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.hand_text_area.blind_chips:juice_up()
+                        G.hand_text_area.game_chips:juice_up()
+                        play_sound('tarot1')
+                        card:start_dissolve()
+                        for i = 1, 2 do 
+                            if #G.jokers.cards < G.jokers.config.card_limit then
+                                SMODS.add_card{
+                                    key = "j_cbean_baby_bruit",
+                                    area = G.jokers
+                                }
+                            end
+                        end
+                        return true
+                    end 
+                }))
+                return {
+                    message = localize('k_saved_ex'),
+                    saved = 'ph_cbean_dragon_bruit',
+                    colour = G.C.RED
+                }
+            end
+        end
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = false, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "baby_bruit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 10,
+            rounds = 2,
+            rounds_max = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.rounds,cae.rounds_max}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        card:add_sticker("eternal", true)
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = cae.chips,
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            if cae.rounds > 1 then
+                cae.rounds = cae.rounds - 1
+            else
+                cae.rounds = 0
+                card:remove_sticker("eternal", true)
+                NAMETEAM.msg(card, "Sellable!")
+            end
         end
     end
 })

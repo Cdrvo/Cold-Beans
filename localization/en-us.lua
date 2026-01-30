@@ -5218,7 +5218,32 @@ return {
 					"to increase repetitions by {C:attention}1{}"
 				},
 			},
+<<<<<<< Updated upstream
 			j_cbean_nameteam_stickerbomb                = {
+=======
+
+			j_cbean_dragon_bruit = {
+				name =  "Dragon Bruit",
+				text = {
+					"{C:mult}+#1#{} Mult, {C:chips}+#2#{} Chips",
+					"and {X:mult,C:white}X#3#{} Mult.",
+					"Saves you from {C:red}death{} once then",
+					"spawns {C:attention}2{} {C:green}Baby Bruits{}",
+					"{C:inactive}(Must have room)"
+				},
+			},
+			j_cbean_baby_bruit = {
+				name =  "Baby Bruit",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"Is {:dark_edition}Eternal{}",
+					"for {C:attention}#3#{C:inactive} #2#{} rounds"
+				},
+			},
+
+			-- quick end
+			j_cbean_nameteam_stickerbomb = {
+>>>>>>> Stashed changes
 				name = {
 					"Stickerbomb",
 				},
@@ -9299,6 +9324,7 @@ return {
 
 			k_converted                         = "Converted",
 
+<<<<<<< Updated upstream
 			k_cbean_mitosis                     = "Mitosis!",
 
 			k_cbean_adapaige_heal               = "Healed!",
@@ -9307,6 +9333,18 @@ return {
 
 			ph_cbean_nameteam_charles           = "Saved by Charles",
 			k_cbean_promoted_ex                 = "Promoted!",
+=======
+			k_cbean_mitosis = "Mitosis!",
+			
+			k_cbean_adapaige_heal = "Healed!",
+			k_cbean_edega_debuff = "Healed?",
+			k_cbean_ian_exhausted = "Exhausted!",
+			
+            ph_cbean_nameteam_charles="Saved by Charles",
+			k_cbean_promoted_ex = "Promoted!",
+
+			ph_cbean_dragon_bruit = "Saved by Dragon Bruit!"
+>>>>>>> Stashed changes
 		},
 		high_scores = {},
 		labels = {

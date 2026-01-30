@@ -146,13 +146,13 @@ ColdBeans.calculate = function(mod, context)
 
 		if context.main_eval then
 			if G.GAME.NAMETEAM.buduh_boomed then -- no event manager 
-				G.GAME.NAMETEAM.buduh_boomed_just_activated = true
 				G.GAME.NAMETEAM.buduh_boomed = nil
+				G.GAME.NAMETEAM.buduh_boomed_just_activated = true
 				G.GAME.NAMETEAM.buduh_boomed_active = true
 			end
 
 			if G.GAME.NAMETEAM.buduh_boomed_active then
-				if G.GAME.NAMETEAM.buduh_boomed_just_activated then
+				if not G.GAME.NAMETEAM.buduh_boomed_just_activated then
 					G.GAME.NAMETEAM.buduh_boomed_active = false
 				else
 					G.GAME.NAMETEAM.buduh_boomed_just_activated = false
