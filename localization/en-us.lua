@@ -5237,6 +5237,15 @@ return {
 					"for {C:attention}#3#{C:inactive} #2#{} rounds"
 				},
 			},
+			j_cbean_electric_peel = {
+				name =  "Electric Peel",
+				text = {
+					"A random scored card",
+					"gives {C:chips}+#1#{} Chips",
+					"other scored cards give",
+					"{C:chips}+#2#{} Chips"
+				},
+			},
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {

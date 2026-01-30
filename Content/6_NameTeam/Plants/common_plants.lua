@@ -2185,18 +2185,33 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            chips = 40
+            chips = 40,
+            chips2 = 15
         }
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.xmult,cae.exxmult}}
+        return{vars={cae.chips,cae.chips2}}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.before then
             cae._card = pseudorandom_element(context.scoring_hand, pseudoseed("seeds_can_eat_my_ass"))
-            
+        end
+        if context.individual and context.cardarea == G.play then
+            local c = context.other_card
+            if c == cae._card then
+                return{
+                    chips = cae.chips
+                }
+            else
+                return{
+                    chips = cae.chips2
+                }
+            end
+        end
+        if context.after then
+            cae._card = nil
         end
     end
 })
