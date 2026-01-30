@@ -9320,16 +9320,6 @@ return {
 
 			k_converted                         = "Converted",
 
-<<<<<<< Updated upstream
-			k_cbean_mitosis                     = "Mitosis!",
-
-			k_cbean_adapaige_heal               = "Healed!",
-			k_cbean_edega_debuff                = "Healed?",
-			k_cbean_ian_exhausted               = "Exhausted!",
-
-			ph_cbean_nameteam_charles           = "Saved by Charles",
-			k_cbean_promoted_ex                 = "Promoted!",
-=======
 			k_cbean_mitosis = "Mitosis!",
 			
 			k_cbean_adapaige_heal = "Healed!",
@@ -9340,7 +9330,6 @@ return {
 			k_cbean_promoted_ex = "Promoted!",
 
 			ph_cbean_dragon_bruit = "Saved by Dragon Bruit!"
->>>>>>> Stashed changes
 		},
 		high_scores = {},
 		labels = {
