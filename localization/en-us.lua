@@ -9400,7 +9400,7 @@ return {
 			cbean_unlucky = "Unlucky",
 			cbean_locked = "Locked",
 			cbean_shroom = "Shroom",
-			cbean_guardshroom = "Shroom",
+			cbean_guardshroom = "Guard Shroom",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",
