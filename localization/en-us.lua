@@ -5386,6 +5386,25 @@ return {
                     "right and earn {C:money}$#1#{}"
 				}
 			},
+			j_cbean_nameteam_pawn = {
+				name = 'Pawn',
+				text =
+				{
+                    "After #2# rounds,",
+					"becomes a {C:attention}Queen{}",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#){}",
+				}
+			},
+			j_cbean_nameteam_queen = {
+				name = 'Queen',
+				text =
+				{
+                    "Played {C:attention}Queens{} give",
+					"{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
+					"and {C:white,X:mult}X#3#{} Mult",
+					"when scored"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8980,6 +8999,7 @@ return {
 			k_cbean_ian_exhausted = "Exhausted!",
 			
             ph_cbean_nameteam_charles="Saved by Charles",
+			k_cbean_promoted_ex = "Promoted!",
 		},
 		high_scores = {},
 		labels = {

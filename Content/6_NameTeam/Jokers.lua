@@ -1694,13 +1694,13 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "nameteam_edega",
-    config = { extra = { chance = 1, max_chance = 4, mult = 2, current_mult = 0} },
+    config = { extra = { chance = 1, max_chance = 4, mult = 2, current_mult = 0 } },
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 10, y = 11 },
     cost = 8,
     loc_vars = function(self, info_queue, card)
-    return { vars = { G.GAME.probabilities.normal*card.ability.extra.chance, card.ability.extra.max_chance , card.ability.extra.mult , card.ability.extra.current_mult } }
+        return { vars = { G.GAME.probabilities.normal * card.ability.extra.chance, card.ability.extra.max_chance, card.ability.extra.mult, card.ability.extra.current_mult } }
     end,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1717,7 +1717,7 @@ SMODS.Joker {
         if context.press_play then
             for k, v in pairs(G.hand.cards) do
                 if not v.debuff then
-                    local will_rebuff = pseudorandom(pseudoseed('nteam_edega'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance)*100
+                    local will_rebuff = pseudorandom(pseudoseed('nteam_edega'), 1, 100) < ((G.GAME.probabilities.normal * card.ability.extra.chance) / card.ability.extra.max_chance) * 100
                     if will_rebuff then
                         v:set_debuff(true)
                         card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult
@@ -1727,19 +1727,19 @@ SMODS.Joker {
             if card.ability.extra.current_mult > 0 then
                 return {
                     sound = "cbean_edega_debuff",
-                    message= localize("k_cbean_edega_debuff")
+                    message = localize("k_cbean_edega_debuff")
                 }
             end
         end
         if context.joker_main then
-            return{
-                    mult = card.ability.extra.current_mult,
+            return {
+                mult = card.ability.extra.current_mult,
             }
         end
         if context.end_of_round and context.main_eval then
             card.ability.extra.current_mult = 0
             return {
-                message= localize("k_reset")
+                message = localize("k_reset")
             }
         end
     end
@@ -1747,13 +1747,13 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "nameteam_ian",
-    config = { extra = { upgrade = 30 , losing = 1} },
+    config = { extra = { upgrade = 30, losing = 1 } },
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 11, y = 11 },
     cost = 8,
     loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.upgrade , card.ability.extra.losing} }
+        return { vars = { card.ability.extra.upgrade, card.ability.extra.losing } }
     end,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1774,7 +1774,7 @@ SMODS.Joker {
                 card.ability.extra.upgrade = card.ability.extra.upgrade - card.ability.extra.losing
                 local disappear_func = nil
                 return {
-                    extra = {message = localize('k_upgrade_ex'), colour = G.C.CHIPS},
+                    extra = { message = localize('k_upgrade_ex'), colour = G.C.CHIPS },
                     colour = G.C.CHIPS,
                 }
             end
@@ -1784,10 +1784,13 @@ SMODS.Joker {
                 return {
                     message = localize("k_cbean_ian_exhausted"),
                     func = function()
-                            G.E_MANAGER:add_event(Event({func = function()
-                                    SMODS.debuff_card(card, true, "cbean_nameteam_ian")
-                            return true end }))
-                        end
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                SMODS.debuff_card(card, true, "cbean_nameteam_ian")
+                                return true
+                            end
+                        }))
+                    end
                 }
             end
         end
@@ -1835,7 +1838,7 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         card:cbean_set_anim_state("normal")
     end,
-    set_ability = function (self, card, initial, delay_sprites)
+    set_ability = function(self, card, initial, delay_sprites)
         card:cbean_set_anim_state("normal")
     end,
     calculate = function(self, card, context)
@@ -1964,5 +1967,108 @@ SMODS.Joker {
                 return { dollars = card.ability.extra.money }
             end
         end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_pawn",
+    config = { extra = { current_rounds = 0, rounds_required = 5 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 10, y = 1 },
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_nameteam_queen
+        return { vars = { card.ability.extra.current_rounds, card.ability.extra.rounds_required } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = false,
+    perishable_compat = false,
+    pronouns = "she_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
+            card.ability.extra.current_rounds = card.ability.extra.current_rounds + 1
+            if card.ability.extra.current_rounds == card.ability.extra.rounds_required then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        card:flip(); play_sound('card1', 1); card:juice_up(0.3, 0.3); return true
+                    end
+                }))
+                delay(0.2)
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 2,
+                    func = function()
+                        delay(1)
+                        card:juice_up()
+                        return true
+                    end
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        card:set_ability("j_cbean_nameteam_queen")
+                        card:flip()
+                        play_sound('tarot2', 1, 0.6)
+                        return true
+                    end
+                }))
+                return { message = localize('k_cbean_promoted_ex') }
+            else
+                return {
+                    message = (card.ability.extra.current_rounds < card.ability.extra.rounds_required) and
+                        (card.ability.extra.current_rounds .. '/' .. card.ability.extra.rounds_required) or localize('k_active_ex'),
+                    colour = G.C.FILTER
+                }
+            end
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.current_rounds = 0
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_queen",
+    config = { extra = { chips = 30, mult = 4, xmult = 1.5 } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 11, y = 1 },
+    cost = 10,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:get_id() == 12 then
+            return {
+                chips = card.ability.extra.chips,
+                mult = card.ability.extra.mult,
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+    in_pool = function()
+        return false
     end
 }
