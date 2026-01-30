@@ -1101,6 +1101,7 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
     key = "tomb_tangler",
     cost = 4,
     beans_credits = {

@@ -4253,6 +4253,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
     key = "meteor_flower",
@@ -4294,6 +4295,7 @@ SMODS.Joker({
                     func = function()
                         local a = NAMETEAM.find_highest(G.play.cards)
                         SMODS.destroy_cards(a)
+                        return true
                     end
                 }))
             end

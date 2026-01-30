@@ -1773,6 +1773,8 @@ SMODS.Joker({
 
 
 SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "solar_sage",
     cost = 3,
     beans_credits = {
@@ -1889,6 +1891,9 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "vamporcini",
     cost = 3,
     beans_credits = {
