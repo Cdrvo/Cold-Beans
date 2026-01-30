@@ -1205,7 +1205,23 @@ return {
 						"{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}",
 					},
 				},
-			}
+			},
+			c_cbean_nameteam_discombobulate = {
+				name = { "Discombobulate", "{X:purple,C:white,s:0.7}Special{}" },
+				text = {
+					{
+						"Retrigger {C:attention}all{} played",
+						"cards used in scoring",
+						"except the {C:attention}first{} and {C:attention}last{}",
+						"{C:attention}#1#{} additional time",
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:blue,C:white}Ultimate{}",
+					},
+				},
+			},
 		},
 		yma_keys = {
 			c_cbean_yma_alpha = {
