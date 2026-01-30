@@ -1710,9 +1710,9 @@ SMODS.Joker {
         },
         ["happening"] = {
             anim = {
-                { x = 1,                             y = 0, t = 1.8 },
-                { xrange = { first = 2, last = 11 }, y = 0, t = 0.94 * (10 / 18) },
-                { xrange = { first = 0, last = 7 },  y = 1, t = 0.94 * (8 / 18) }
+                { x = 1,                             y = 0, t = 1.8 / 3.5 },
+                { xrange = { first = 2, last = 11 }, y = 0, t = 0.94 * (10 / 18) / 3.5 },
+                { xrange = { first = 0, last = 7 },  y = 1, t = 0.94 * (8 / 18) / 3.5 }
             }
         }
     },
@@ -1735,6 +1735,9 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         card:cbean_set_anim_state("normal")
     end,
+    set_ability = function (self, card, initial, delay_sprites)
+        card:cbean_set_anim_state("normal")
+    end,
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over and context.main_eval then
             G.E_MANAGER:add_event(Event({
@@ -1745,7 +1748,9 @@ SMODS.Joker {
                 end
             }))
             G.E_MANAGER:add_event(Event({
-                after = 2.7,
+                trigger = "after",
+                timer = "REAL",
+                delay = 2.74,
                 func = function()
                     local me = nil
                     for i = 1, #G.jokers.cards do
@@ -1763,6 +1768,12 @@ SMODS.Joker {
                     G.hand_text_area.blind_chips:juice_up()
                     G.hand_text_area.game_chips:juice_up()
                     play_sound('tarot1')
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card:cbean_set_anim_state("normal")
                     card:start_dissolve()
                     return true
                 end
