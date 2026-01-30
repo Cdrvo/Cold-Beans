@@ -5247,6 +5247,14 @@ return {
                     "{S:1.1,C:red,E:2}self destructs{}"
 				}
 			},
+			j_cbean_nameteam_intentionallyblank = {
+				name = 'Intentionally Blank',
+				text =
+				{
+					"Adjacent {C:attention}Jokers{}",
+					"give {C:white,X:mult}X#1#{} Mult"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
