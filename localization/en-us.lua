@@ -5328,6 +5328,16 @@ return {
 				},
 			},
 
+			j_cbean_frost_bonnet = {
+				name =  "Frost Bonnet",
+				text = {
+					"If you have more",
+					"hands than discards,",
+					"{C:chips}+#1#{} Chips",
+					"otherwise {C:mult}+#2#{} Mult"
+				},
+			},
+
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {

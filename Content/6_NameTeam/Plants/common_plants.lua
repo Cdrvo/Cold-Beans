@@ -2279,3 +2279,42 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "frost_bonnet",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 100,
+            mult = 20
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            if G.GAME.current_round.hands_left > G.GAME.current_round.discards_left then
+                return{
+                    chips = cae.chips
+                }
+            else
+                return{
+                    mult = cae.mult
+                }
+            end
+        end
+    end
+})
