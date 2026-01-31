@@ -3831,19 +3831,19 @@ return {
 			j_cbean_doom_shroom                         = {
 				name = "Doom Shroom",
 				text = {
-					"Sell this joker to set",
-					"current blind's reqired chips to {C:red}0",
-					"If its a {C:attention}Boss Blind,{}",
-					"half it instead.",
-					"creates a {C:attention}Crater{}",
+					"Sell this {C:attention}Joker{} to set",
+					"current {C:attention}Blind{}'s required chips to {C:red}0",
+					"Halve the requirement instead",
+					"if facing a {C:attention}Boss Blind{}",
+					"Creates a {C:attention}Crater{}",
 					"when sold"
 				},
 			},
 			j_cbean_crater                              = {
 				name = "Crater",
 				text = {
-					"Is eternal",
-					"{C:red}Self-Destructs{} after",
+					"Always has {C:eternal}Eternal{}",
+					"{C:red,E:2}Self-destructs{} after",
 					"{C:attention}#1#{C:inactive} (#2#){} rounds"
 				},
 			},
