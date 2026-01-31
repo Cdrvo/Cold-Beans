@@ -3799,8 +3799,8 @@ return {
 			j_cbean_fume_shroom                         = {
 				name = "Fume Shroom",
 				text = {
-					"All {C:attention}Shrooms{} on the",
-					"right of this card",
+					"All {C:attention}Shrooms{} to the",
+					"right of this {C:attention}Joker",
 					"gives {X:mult,C:white}X#1#{} Mult"
 				},
 			},
