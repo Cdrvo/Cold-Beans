@@ -3896,6 +3896,88 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
+    key = "aqua_vine",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 2,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    always_buyable = true,
+    config = {
+        extra = {
+            chips = 50,
+            mult = 8,
+            dollars = 3,
+            xmult = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local vars, key = {}, self.key
+        if card:on_the("right") and card.added_to_deck then
+            local c = card:on_the("right").config.center.rarity
+            if c == 1 then
+                vars = {cae.chips}
+                key = self.key .. "_common"
+            elseif c == 2 then
+                vars = {cae.mult}
+                key = self.key .. "_uncommon"
+            elseif c == 3 then
+                vars = {cae.dollars}
+                key = self.key .. "_rare"
+            elseif c == 4 then
+                vars = {cae.xmult}
+                key = self.key .. "_legendary"
+            end
+        end
+        return{vars=vars,key=key}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    end,
+    update = function(self,card)
+        if card and card.edition and card.edition.negative then
+            card:set_edition(nil, true, true)
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main and card:on_the("right") then
+        local c = card:on_the("right").config.center.rarity
+            if c == 1 then
+                return{
+                    chips = cae.chips
+                }
+            elseif c == 2 then
+                return{
+                    mult = cae.mult
+                }
+            elseif c == 4 then
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.individual and context.cardarea == G.play then
+            if card:on_the("right") and card:on_the("right").config.center.rarity == 3 then
+                return{
+                    dollars = cae.dollars
+                }
+            end
+        end
+    end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
     key = "ice_bloom",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,

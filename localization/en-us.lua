@@ -5256,6 +5256,48 @@ return {
 				},
 			},
 
+			j_cbean_aqua_vine = {
+				name =  "Aqua Vine",
+				text = {
+					"Gains a different",
+					"ability depending",
+					"on the joker on the",
+					"right"
+				},
+			},
+
+			-- aqua vine variants
+
+			j_cbean_aqua_vine_common = {
+				name =  "Aqua Vine",
+				text = {
+					"{C:chips}+#1#{} Chips"
+				},
+			},
+
+			j_cbean_aqua_vine_uncommon = {
+				name =  "Aqua Vine",
+				text = {
+					"{C:mult}+#1#{} Mult"
+				},
+			},
+
+			j_cbean_aqua_vine_rare = {
+				name =  "Aqua Vine",
+				text = {
+					"Each scored card",
+					"gives {C:money}+$#1#{}"
+				},
+			},
+			
+			j_cbean_aqua_vine_legendary = {
+				name =  "Aqua Vine",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult"
+				},
+			},
+			--
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
 				name = {
