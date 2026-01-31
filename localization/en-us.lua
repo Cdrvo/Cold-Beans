@@ -12,12 +12,22 @@ return {
 					"as {C:money}Piss{} cards",
 				}
 			},
+			b_cbean_nameteam_sticky = {
+				name = "Sticky Deck",
+				text = {
+					"Start with an",
+					"{C:attention,T:c_cbean_eternal_sheet}Eternal{} {C:cbean_stickersheet}Sticker Sheet",
+					"{C:cbean_stickersheet}Sticker Sheets{} appear",
+					"{C:attention}2X{} more frequently",
+					"in the {C:attention}Shop",
+				}
+			},
 			b_cbean_nameteam_happy = {
 				name = "Happy Deck",
 				text = {
 					"Start run with",
-                    "a copy of",
-                    "{C:attention,T:j_smiley}Smiley Face{}"
+					"a copy of",
+					"{C:attention,T:j_smiley}Smiley Face{}"
 				}
 			},
 			b_cbean_nameteam_graveyard = {
@@ -3721,7 +3731,7 @@ return {
 					{
 						"Creates a {C:dark_edition}Negative{}",
 						"{C:tarot}Tarot{} card after",
-						"using a {C:stickersheet}Sticker Sheet"
+						"using a {C:cbean_stickersheet}Sticker Sheet"
 					},
 					{
 						"Gains {X:mult,C:white}X#1#{} Mult when a",
@@ -3780,10 +3790,10 @@ return {
 				text = {
 					{
 						"Gains {X:mult,C:white}X#1#{} Mult when a",
-						"{C:stickersheet}Sticker Sheet{} is used",
+						"{C:cbean_stickersheet}Sticker Sheet{} is used",
 						"At end of round, if your",
 						"{C:attention}deck{} has a {C:attention}Sticker{},",
-						"create a {C:stickersheet}Sticker Sheet{}",
+						"create a {C:cbean_stickersheet}Sticker Sheet{}",
 						"{C:inactive}(Must have room)",
 						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 					},
@@ -3924,7 +3934,7 @@ return {
 			j_cbean_crater                              = {
 				name = "Crater",
 				text = {
-					"Always has {C:eternal}Eternal{}",
+					"Always has {C:attention}Eternal{}",
 					"{C:red,E:2}Self-destructs{} after",
 					"{C:attention}#1#{C:inactive} (#2#){} rounds"
 				},
@@ -4196,17 +4206,18 @@ return {
 			j_cbean_flower_pot                          = {
 				name = "Flower Pot",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult if",
-					"scored hand has one",
-					"of each suit"
+					"{X:mult,C:white}X#1#{} Mult if scored",
+					"hand contains one",
+					"card of each suit"
 				},
 			},
 			j_cbean_cabbage_pult                        = {
 				name = "Cabbage Pult",
 				text = {
-					"Scored card with the",
-					"Highest rank",
+					"Played card with",
+					"the highest rank",
 					"gives {C:mult}+#1#{} Mult",
+					"when scored",
 				},
 			},
 			j_cbean_coffee_bean                         = {
@@ -5565,7 +5576,7 @@ return {
 				},
 			},
 
-			j_cbean_pea_nut                          = {
+			j_cbean_pea_nut                             = {
 				name = "Pea-Nut",
 				text = {
 					"{C:attention}X#1#{} Blind Size",
@@ -5574,7 +5585,7 @@ return {
 				},
 			},
 
-			j_cbean_dandelion                         = {
+			j_cbean_dandelion                           = {
 				name = "Dandelion",
 				text = {
 					"If played hand has",
@@ -5584,7 +5595,7 @@ return {
 				},
 			},
 
-			j_cbean_bombegranate                         = {
+			j_cbean_bombegranate                        = {
 				name = "Bombegranate",
 				text = {
 					"When entering a {C:attention}Blind{}",
@@ -5595,7 +5606,7 @@ return {
 				},
 			},
 
-			j_cbean_blooming_heart                         = {
+			j_cbean_blooming_heart                      = {
 				name = "Blooming Heart",
 				text = {
 					"Scored cards give",
@@ -5857,7 +5868,7 @@ return {
 					"When {C:attention}Blind{} is selected,",
 					"{C:red}destroys{} a random {C:tarot}Tarot{} card",
 					"If successful, creates",
-					"a {C:stickersheet}Sticker Sheet{}",
+					"a {C:cbean_stickersheet}Sticker Sheet{}",
 				},
 			},
 			j_cbean_nameteam_theworldshardestjoker      = {
@@ -5926,14 +5937,14 @@ return {
 					}
 				}
 			},
-			j_cbean_nameteam_intheway                  = {
+			j_cbean_nameteam_intheway                   = {
 				name = 'In the Way',
 				text =
 				{
 					"Retrigger {C:attention}first{} and",
-                    "{C:attention}last{} played cards",
+					"{C:attention}last{} played cards",
 					"used in scoring",
-                    "{C:attention}#1#{} additional time"
+					"{C:attention}#1#{} additional time"
 				}
 			},
 			j_cbean_nameteam_riverstyx                  = {
@@ -6003,13 +6014,13 @@ return {
 					"{C:inactive}max of {C:attention}+#3#{C:inactive} hand size){}"
 				}
 			},
-			j_cbean_nameteam_bryce                       = {
+			j_cbean_nameteam_bryce                      = {
 				name = 'Bryce',
 				text =
 				{
 					"Each {C:attention}Jack{}",
-                    "held in hand",
-                    "gives {X:mult,C:white}X#1#{} Mult",
+					"held in hand",
+					"gives {X:mult,C:white}X#1#{} Mult",
 				}
 			},
 			j_cbean_nameteam_crowbar                    = {
@@ -6130,7 +6141,7 @@ return {
 					"in hand becomes {C:attention}Steel{}"
 				}
 			},
-			j_cbean_nameteam_mappedout             = {
+			j_cbean_nameteam_mappedout                  = {
 				name = 'Mapped Out',
 				text =
 				{
@@ -6211,13 +6222,13 @@ return {
 					"hand is level {C:attention}1{}"
 				}
 			},
-			j_cbean_nameteam_walledin                  = {
+			j_cbean_nameteam_walledin                   = {
 				name = 'Walled In',
 				text =
 				{
 					"All cards in {C:attention}Standard{}",
-                    "{C:attention}Packs{} are {C:green}guaranteed{}",
-                    "to be {C:attention}Stone{}"
+					"{C:attention}Packs{} are {C:green}guaranteed{}",
+					"to be {C:attention}Stone{}"
 				}
 			},
 			j_cbean_nameteam_trafficlight               = {
@@ -6254,6 +6265,14 @@ return {
 					"go back {C:attention}#1# ante,",
 					"but sends you to",
 					"{C:attention}The Afterlife",
+				}
+			},
+			j_cbean_nameteam_wavegoodbye                 = {
+				name = 'Wave Goodbye',
+				text =
+				{
+					"Earn {C:money}$#1#{} when playing",
+					"{C:attention}final{} hand of round"
 				}
 			},
 
@@ -6967,6 +6986,41 @@ return {
 					"by {C:attention}%5{}"
 				},
 			},
+
+			-- Sticker Sheet Packs
+			
+            p_cbean_nameteam_stickersheet_normal1 = {
+                name = "Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_nameteam_stickersheet_normal2 = {
+                name = "Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_nameteam_stickersheet_jumbo1 = {
+                name = "Storage Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_nameteam_stickersheet_mega1 = {
+                name = "Warehouse Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
 
 			-- Blind Stickers
 
@@ -9780,7 +9834,7 @@ return {
 			},
 			cbean_reward_sheets                 = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
-				"{C:stickersheet}Sticker Sheets{}",
+				"{C:cbean_stickersheet}Sticker Sheets{}",
 			},
 			cbean_reward_blessings              = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
@@ -9850,6 +9904,7 @@ return {
 			cbean_disable_animations            = "Disable Joker Animations",
 			k_cbean_stickersheet                = "Sticker Sheet",
 			b_cbean_stickersheet_cards          = "Sticker Sheets",
+			k_cbean_stickersheetpack            = "Collector's Pack",
 			b_nteam_exchange                    = "Exchange",
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
 			k_plus_blessing                     = "+1 Blessing",

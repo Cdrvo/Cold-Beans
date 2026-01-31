@@ -64,6 +64,34 @@ SMODS.Back {
 }
 
 SMODS.Back {
+    key = 'nameteam_sticky',
+    atlas = 'NAMETEAM_Decks',
+    pos = { x = 0, y = 0 },
+    apply = function(self, back)
+        G.GAME.cbean_stickersheet_rate = (G.GAME.cbean_stickersheet_rate or 0) + 1
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                if G.consumeables then
+                    local card = SMODS.add_card({
+                        key = "c_cbean_eternal_sheet",
+                        area = G.consumeables,
+                        no_edition = true
+                    })
+                    return true
+                end
+            end
+        }))
+    end,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "ThunderEdge",
+    }
+}
+
+SMODS.Back {
     key = 'nameteam_graveyard',
     atlas = 'NAMETEAM_Decks',
     pos = { x = 0, y = 1 },
@@ -103,8 +131,8 @@ SMODS.Back {
 
     beans_credits = {
         team = "Name Team",
-        idea = "GhostSalt",
-        art = "GhostSalt",
-        code = "GhostSalt",
+        idea = "Revo",
+        art = "Inky",
+        code = "TheAltDoc",
     }
 }
