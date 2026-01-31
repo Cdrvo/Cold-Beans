@@ -3808,7 +3808,8 @@ return {
 				name = "Scaredy Shroom",
 				text = {
 					"{C:mult}+#1#{} Mult{} if this",
-					"joker is in the 2 leftmost slots"
+					"{C:attention}Joker{} is in the 2",
+					"leftmost {C:attention}Joker{} slots",
 				},
 			},
 			j_cbean_ice_shroom                          = {
