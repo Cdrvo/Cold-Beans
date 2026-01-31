@@ -2472,3 +2472,39 @@ SMODS.Joker({
         end
     end,
 })
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "security_gourds",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            hands = 2,
+            discards = 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.hands,cae.discards}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            if G.GAME.current_round.hands_left == 0 then
+                ease_hands_played(cae.hands)
+                ease_discard(cae.discards)
+                SMODS.destroy_cards(card)
+            end
+        end
+    end,
+})

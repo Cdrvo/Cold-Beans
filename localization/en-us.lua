@@ -5411,12 +5411,22 @@ return {
 				},
 			},
 
-			j_cbean_sour_shot = {
+			j_cbean_sourshot = {
 				name =  "Sour Shot",
 				text = {
 					"Scored cards lose",
 					"{C:red}-1{} Chips but",
 					"give {C:money}+$#1#{}"
+				},
+			},
+
+			j_cbean_security_gourds = {
+				name =  "Security Gourds",
+				text = {
+					"Give {C:blue}+#1#{} Hands",
+					"and {C:red}+#2#{} discard",
+					"when out of hands",
+					"{C:red}Self-Destructs{}"
 				},
 			},
 
