@@ -14,7 +14,7 @@ SMODS.Enhancement({
 		local cae = card.ability.extra
 		return { vars = { cae.mult } }
 	end,
-	calculate = function(self, card, context, effect)
+	calculate = function(self, card, context)
         local cae = card.ability.extra
 		if context.main_scoring and context.cardarea == G.play then
 			return {
@@ -43,7 +43,7 @@ SMODS.Enhancement({
 		local cae = card.ability.extra
 		return { vars = { cae.chips } }
 	end,
-	calculate = function(self, card, context, effect)
+	calculate = function(self, card, context)
         local cae = card.ability.extra
 		if context.main_scoring and context.cardarea == G.play then
 			return {
@@ -72,7 +72,7 @@ SMODS.Enhancement({
 		local cae = card.ability.extra
 		return { vars = { cae.xmult } }
 	end,
-	calculate = function(self, card, context, effect)
+	calculate = function(self, card, context)
         local cae = card.ability.extra
 		if context.main_scoring and context.cardarea == G.play then
 			return {
