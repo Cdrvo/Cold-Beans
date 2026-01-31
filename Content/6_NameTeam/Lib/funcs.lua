@@ -863,3 +863,15 @@ function NAMETEAM.set_blind(blind)
 	end
 	return false
   end
+
+
+function Card:cbean_is_consumable()
+	for k, v in pairs(SMODS.ConsumableTypes) do
+		for _, cons in pairs(G.P_CENTER_POOLS[k]) do
+			if cons.key == self.config.center.key then
+				return true
+			end
+		end
+	end
+	return false
+end

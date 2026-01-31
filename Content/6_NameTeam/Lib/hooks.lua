@@ -560,6 +560,24 @@ end
 local igo = Game.init_game_object
 Game.init_game_object = function(self)
 	local ret = igo(self)
-	ret.NAMETEAM = {}
+	ret.NAMETEAM = {
+		unique_consumables = {}
+	}
 	return ret
+end
+
+local add_to_deck_old = Card.add_to_deck
+function Card:add_to_deck(from_debuff)
+	local insert = true
+	if #G.GAME.NAMETEAM.unique_consumables > 0 then
+		for k, v in pairs(G.GAME.NAMETEAM.unique_consumables) do
+			if v == self.config.center.key then
+				insert = false
+			end
+		end
+	end
+	if insert and self:cbean_is_consumable() then
+		G.GAME.NAMETEAM.unique_consumables[#G.GAME.NAMETEAM.unique_consumables+1] = self.config.center.key
+	end
+	return add_to_deck_old(self, from_debuff)
 end

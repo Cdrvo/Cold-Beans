@@ -425,3 +425,10 @@ SMODS.Atlas({
 	px = 32,
 	py = 32
 })
+
+SMODS.current_mod.reset_game_globals = function(run_start)
+	if run_start then
+		G.GAME.NAMETEAM.unique_consumables = {}
+	end
+
+end

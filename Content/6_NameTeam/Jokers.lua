@@ -2972,3 +2972,34 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "commit_farming",
+    config = { extra = { chips = 5 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 10, y = 4 },
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, (#G.GAME.NAMETEAM.unique_consumables or 0)*card.ability.extra.chips} }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "Inky",
+        art = "Inky",
+        code = "Revo",
+    },
+
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = #G.GAME.NAMETEAM.unique_consumables*cae.chips
+            }
+        end
+    end
+}
