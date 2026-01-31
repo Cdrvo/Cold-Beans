@@ -2123,8 +2123,17 @@ SMODS.Joker({
     calculate = function(self,card,context)
         local cae = card.ability.extra
         if context.individual and context.cardarea == G.play then
+            G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + cae.dollars
             return{
-                dollars = cae.dollars
+                dollars = cae.dollars,
+                func = function() -- This is for timing purposes, this goes after the dollar modification
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME.dollar_buffer = 0
+                            return true
+                        end
+                    }))
+                end
             }
         end
     end
