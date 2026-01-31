@@ -4025,10 +4025,11 @@ return {
 			j_cbean_night_cap                           = {
 				name = "Night Cap",
 				text = {
-					"After every round,", "all jokers except this",
-					"loses {C:red}-$1{} Sell Value.",
-					"Gains {X:mult,C:white}X#2#{} Mult for",
-					"per reduced value.",
+					"At end of round, all",
+					"other {C:attention}Jokers{} lose {C:red}-$1{}",
+					"of sell value",
+					"Gains {X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
+					"that lost sell value",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},

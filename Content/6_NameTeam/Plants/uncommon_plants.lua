@@ -4810,7 +4810,7 @@ SMODS.Joker({
 						v.ability.extra_value = v.ability.extra_value - 1
 						v:set_cost()
 						to_scale = to_scale + 1
-						NAMETEAM.msg(v, "-1 Value")
+						NAMETEAM.msg(v, "-1 Sell Value")
 					end
 				end
 			end
