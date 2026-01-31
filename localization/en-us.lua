@@ -3635,6 +3635,85 @@ return {
 				},
 			},
 			--Name Team
+			j_cbean_nteam_self_insert                          = {
+				name = "Name Team",
+				text = {
+					"Changes effect",
+					"after defeating",
+					"a {C:attention}Boss Blind",
+				},
+			},
+			j_cbean_nteam_self_insert_thunderedge                          = {
+				name = "ThunderEdge",
+				text = {
+					"Gains {X:mult,C:white}X#1#{} Mult when",
+					"exchanging {C:attention}Stickers",
+					"or rerolling the",
+					"{C:attention}Stationery Shop",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
+			j_cbean_nteam_self_insert_revo                          = {
+				name = "Revo",
+				text = {
+					"Gives {X:mult,C:white}X#1#{} Mult per {C:attention}Sticker{}",
+					"applied this run",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
+			j_cbean_nteam_self_insert_dave                          = {
+				name = "Crazy Dave",
+				text = {
+					"Each {C:attention}Plant Joker",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"Creates a {C:attention}Plant Joker{}",
+					"at the end of the {C:attention}Shop{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			j_cbean_nteam_self_insert_ghost                          = {
+				name = "GhostSalt",
+				text = {
+					"Creates a {C:dark_edition}Negative{}",
+					"{C:tarot}Tarot{} card after",
+					"using a {C:stickersheet}Sticker Sheet",
+					"Gains {X:mult,C:white}X#1#{} Mult when a",
+					"{C:tarot}Tarot{} card is used",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
+			j_cbean_nteam_self_insert_doggfly                          = {
+				name = "Doggfly",
+				text = {
+					"{C:green}#1# in #2#{} chance to apply",
+					"a {C:attention}positive Sticker{} to",
+					"a random Joker at the",
+					"start of the {C:attention}Shop",
+					"{C:green}Numerator{} increases by {C:green}1{}",
+					"per {C:attention}Plant Joker{} owned",
+				},
+			},
+			j_cbean_nteam_self_insert_inky                          = {
+				name = "Inky",
+				text = {
+					"If played hand contains",
+					"{C:attention}4{} cards, this Joker",
+					"gains {X:chips,C:white}X#1#{} Chips",
+					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+				},
+			},
+			j_cbean_nteam_self_insert_doctor                          = {
+				name = "TheAlternateDoctor",
+				text = {
+					"Gains {X:mult,C:white}X#1#{} Mult when a",
+					"{C:stickersheet}Sticker Sheet{} is used",
+					"At end of round, if your",
+					"{C:attention}deck{} has a {C:attention}Sticker{},",
+					"create a {C:stickersheet}Sticker Sheet{}",
+					"{C:inactive}(Must have room)",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
 			j_cbean_peashooter                          = {
 				name = "Pea Shooter",
 				text = {
@@ -9442,11 +9521,15 @@ return {
 			},
 			cbean_reward_sheets                 = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
-				"{C:attention}Sticker Sheets{}",
+				"{C:stickersheet}Sticker Sheets{}",
 			},
 			cbean_reward_blessings              = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
 				"{C:attention}Blessings{}",
+			},
+			cbean_reward_keys              = {
+				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
+				"{C:attention}Keys{}",
 			},
 			cbean_reward_zodiacs                = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
