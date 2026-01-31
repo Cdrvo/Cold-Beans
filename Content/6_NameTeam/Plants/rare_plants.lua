@@ -16,7 +16,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -97,7 +97,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -283,7 +283,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 3,
     blueprint_compat = false,
@@ -320,7 +320,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
     rarity = 3,
     blueprint_compat = false,
@@ -496,7 +496,7 @@ SMODS.Joker({
     atlas = 'NAMETEAM_PlantJokers',
     pos = { x = 2, y = 4 },
     cost = 4,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
@@ -556,7 +556,7 @@ SMODS.Joker({
     key = "red_stinger",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
@@ -611,7 +611,7 @@ SMODS.Joker({
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
     rarity = 3,
     blueprint_compat = true,
@@ -659,7 +659,7 @@ SMODS.Joker({
     key = "cauli_power",
     atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = false,
     config = {
         extra = {
@@ -1129,15 +1129,15 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool, 
-    key = "tomb_tangler",
     atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "tomb_tangler",
     cost = 4,
     beans_credits = {
 		code = "Revo",
 		team = "Name Team",
 		art = "N/A",
 	},
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = true,
     config = {
         extra = {
@@ -1166,6 +1166,252 @@ SMODS.Joker({
             end
             _card:set_edition("e_negative")
         end
+        end
+    end
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "bz_button",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars{cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+         if context.selling_self then
+            G.GAME.NAMETEAM.bzzed_amount = G.GAME.NAMETEAM.bzzed_amount or 0
+            G.GAME.NAMETEAM.bzzed = G.GAME.NAMETEAM.bzzed + 1
+            G.GAME.NAMETEAM.bzzed_amount = cae.xmult
+         end
+    end
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "cran_jelly",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rep = 3,
+            odds = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "cran_seed")
+        return{vars={cae.rep,num,den}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            for k, v in pairs(context.scoring_hand) do
+                if SMODS.pseudorandom_probability(card, "cran_seed", 1, cae.odds) then
+                    v.ability.marked_for_jelly_dest = true
+                end
+            end
+        end
+        if context.repetition and context.cardarea == G.play then
+            return{
+                repetitions = cae.rep
+            }
+        end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.marked_for_jelly_dest then
+            return{
+                remove = true
+            }
+        end
+    end
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "dragon_bruit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            mult = 10,
+            chips = 20,
+            xmult = 1.25
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = G.P_CENTERS["j_cbean_baby_bruit"]
+        local cae = card.ability.extra
+        return{vars={cae.mult,cae.chips,cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                mult = cae.mult,
+                chips = cae.chips,
+                xmult = cae.xmult
+            }
+        end
+        if context.end_of_round and context.game_over and context.main_eval then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.hand_text_area.blind_chips:juice_up()
+                        G.hand_text_area.game_chips:juice_up()
+                        play_sound('tarot1')
+                        card:start_dissolve()
+                        for i = 1, 2 do 
+                            if #G.jokers.cards < G.jokers.config.card_limit then
+                                SMODS.add_card{
+                                    key = "j_cbean_baby_bruit",
+                                    area = G.jokers
+                                }
+                            end
+                        end
+                        return true
+                    end 
+                }))
+                return {
+                    message = localize('k_saved_ex'),
+                    saved = 'ph_cbean_dragon_bruit',
+                    colour = G.C.RED
+                }
+            end
+        end
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = false, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "baby_bruit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 10,
+            rounds = 2,
+            rounds_max = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.chips,cae.rounds,cae.rounds_max}}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        card:add_sticker("eternal", true)
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                chips = cae.chips,
+            }
+        end
+        if context.end_of_round and context.main_eval then
+            if cae.rounds > 1 then
+                cae.rounds = cae.rounds - 1
+            else
+                cae.rounds = 0
+                card:remove_sticker("eternal", true)
+                NAMETEAM.msg(card, "Sellable!")
+            end
+        end
+    end
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = false, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "hammeruit",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult_scale = 0
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult_scale+1}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and G.GAME.current_round.hands_left == 0 then
+            cae.cards = cae.cards or {}
+            local tab = {}
+            for k, v in pairs(context.scoring_hand) do
+                tab[#tab+1] = v
+            end
+            tab = NAMETEAM.reverse_table(tab)
+            tab = NAMETEAM.shuffle(tab, "goddamnitworkshoorray")
+
+            for i = 1, 2 do
+                table.remove(tab, 1)
+            end
+
+            cae.cards = tab
+        end
+        if context.individual and context.cardarea == G.play then
+            if G.GAME.current_round.hands_left > 0 then
+                cae.xmult_scale = cae.xmult_scale + 0.1
+            else
+                for k, v in pairs(cae.cards) do
+                if context.other_card == v then
+                    return{
+                        xmult = cae.xmult_scale+1
+                    }
+                end
+            end
+            end
+        end
+        if context.end_of_round and context.main_eval then
+            cae.xmult_scale = 0
+            NAMETEAM.msg(card, localize("k_reset"))
         end
     end
 })

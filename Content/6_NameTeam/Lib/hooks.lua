@@ -266,7 +266,7 @@ function Card:calculate_joker(context)
 				trigger_defying_factors = trigger_defying_factors + 1
 			end
 		end
-		if trigger_defying_factors <= 0 and not self.ability.prevent_trigger then
+		if trigger_defying_factors <= 0 and not self.ability.prevent_trigger and not ((G.GAME.NAMETEAM or {}).buduh_boomed_active and pseudorandom("crash?")<1/3) then
 			return joker_calc_cold(self, context)
 		end
 	else
@@ -520,7 +520,7 @@ end
 
 local calc_reps_old = SMODS.calculate_repetitions
 function SMODS.calculate_repetitions(card,context,reps)
-	if (#SMODS.find_card("j_cbean_power_vine")==0) then
+	if (#SMODS.find_card("j_cbean_power_vine")==0) and (#SMODS.find_card("j_cbean_sundew_tangler")==0) then
 		calc_reps_old(card, context, reps)
 	end
 end

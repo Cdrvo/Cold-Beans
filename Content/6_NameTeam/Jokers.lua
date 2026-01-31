@@ -341,7 +341,8 @@ SMODS.Joker {
             local valid = false
             for _, v in ipairs(context.scoring_hand) do
                 if not v:is_suit("Diamonds") or SMODS.has_any_suit(v) then
-                    valid = true; break;
+                    valid = true
+break
                 end
             end
 
@@ -580,7 +581,8 @@ SMODS.Joker {
             local valid = true
             for _, v in ipairs(G.play.cards) do
                 if v:get_id() ~= 2 then
-                    valid = false; break
+                    valid = false
+break
                 end
             end
 
@@ -1081,13 +1083,13 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "nameteam_brodyfoxx",
-    config = { extra = { mama_ix = 1, mamas = {} } },
+    config = { extra = { mama_ix = 1, mamas = {}, money = 2 } },
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 6, y = 8 },
     cost = 7,
     loc_vars = function(self, info_queue, card)
-        return { vars = {} }
+        return { vars = { card.ability.extra.money } }
     end,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1116,7 +1118,7 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.setting_blind and not context.blueprint then
             if not card.ability.extra.mamas or #card.ability.extra.mamas <= 0 or card.ability.extra.mama_ix >= #card.ability.extra.mamas then
                 card.ability.extra.mama_ix = 1
 
@@ -1139,6 +1141,10 @@ SMODS.Joker {
                 end
             }))
             return { message = localize("k_cbean_yomama") }
+        end
+
+        if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:get_id() == 13 then
+            return { dollars = card.ability.extra.money }
         end
     end
 }
@@ -2001,7 +2007,10 @@ SMODS.Joker {
                     trigger = 'after',
                     delay = 0.15,
                     func = function()
-                        card:flip(); play_sound('card1', 1); card:juice_up(0.3, 0.3); return true
+                        card:flip()
+play_sound('card1', 1)
+card:juice_up(0.3, 0.3)
+return true
                     end
                 }))
                 delay(0.2)
@@ -2118,93 +2127,409 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "nameteam_wayne",
-    config = { extra = { saved = false, antes = -1 } },
-    rarity = 1,
+    key = "nameteam_beentheredonethat",
+    config = { extra = { xmult = 3 } },
+    rarity = 2,
     atlas = 'NAMETEAM_Jokers3',
-    pos = { x = 0, y = 3 },
-    cbean_anim_states = {
-        ["normal"] = {
-            anim = {
-                { x = 0, y = 3, t = 1 }
-            },
-            loop = false
-        },
-        ["dead"] = {
-            anim = {
-                { x = 10, y = 3, t = 1 }
-            },
-            loop = false
-        },
-        ["happening"] = {
-            anim = {
-                { x = 1,                             y = 3, t = 0.5 + (0.94 / 2) /4 },
-                { x = 2, y = 3, t = 0.5 + (0.94 / 2) /4 },
-                { xrange = { first = 3, last = 10 }, y = 3, t = (0.94 / 2) / 9 },
-            },
-            loop = false
-        }
-    },
-    cbean_anim_current_state = "normal",
-    cost = 5,
+    pos = { x = 3, y = 2 },
+    cost = 6,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = { key = "nameteam_afterlife", set = "Biome" }
-        return { vars = { card.ability.extra.antes * -1 } }
+        return { vars = { card.ability.extra.xmult, G.GAME.NAMETEAM.voucher_this_ante and localize("k_styx_active") or localize("k_styx_inactive") } }
     end,
-    blueprint_compat = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "they_them",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.joker_main and G.GAME.NAMETEAM.voucher_this_ante then return { xmult = card.ability.extra.xmult } end
+
+        if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.config.center.set == "Voucher" and not context.blueprint then
+            return { message = localize("k_active_ex") }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_miraclemachine",
+    config = { extra = { money = 1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 0, y = 2 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     pronouns = "he_him",
 
     beans_credits = {
         team = "Name Team",
-        idea = "TheAltDoc",
-        art = "TheAltDoc",
-        code = "TheAltDoc",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
     },
-
-    add_to_deck = function(self, card, from_debuff)
-        card:cbean_set_anim_state("normal")
-    end,
-    set_ability = function(self, card, initial, delay_sprites)
-        card:cbean_set_anim_state("normal")
-    end,
-
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over and context.main_eval then
-            card.ability.extra.saved = true
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound("cbean_wayne_death", 1, 1)
-                    card:cbean_set_anim_state("happening")
-                    card:juice_up()
-                    return true
-                end
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                timer = "REAL",
-                delay = 1.5,
-                func = function()
-                    card:juice_up()
-                    G.hand_text_area.blind_chips:juice_up()
-                    G.hand_text_area.game_chips:juice_up()
-                    play_sound('tarot1')
-                    return true
-                end
-            }))
-            G.FUNCS.switch_biome("nameteam_afterlife")
-            return { saved = "ph_cbean_nameteam_wayne"}
-        end
-        if context.starting_shop or context.blind_select and card.ability.extra.saved then
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    ease_ante(card.ability.extra.antes)
-                    card:cbean_set_anim_state("dead")
-                    card:start_dissolve()
-                    return true
-                end
-            }))
+        if context.individual and context.cardarea == G.play then
+            if (context.other_card:get_id() <= 10 and
+                    context.other_card:get_id() >= 0 and
+                    context.other_card:get_id() % 2 == 1) or
+                (context.other_card:get_id() == 14) then
+                return { dollars = card.ability.extra.money }
+            end
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_greenmatador",
+    config = { extra = { current_money = 0, added_money = 1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 4, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.current_money, card.ability.extra.added_money } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.end_of_round and context.cardarea == G.jokers and not (G.GAME.blind_on_deck ~= "CEO" and G.GAME.blind_on_deck ~= "Ceo") and not context.blueprint then
+            if G.GAME.current_round.discards_left > 0 then
+                card.ability.extra.current_money = card.ability.extra.current_money + (card.ability.extra.added_money * G.GAME.current_round.discards_left)
+                return { message = localize("k_upgrade_ex") }
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        if card.ability.extra.current_money > 0 then
+            return card.ability.extra.current_money
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_bluematador",
+    config = { extra = { current_money = 0, added_money = 1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 5, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.current_money, card.ability.extra.added_money } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    pronouns = "she_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.end_of_round and context.cardarea == G.jokers and not (G.GAME.blind_on_deck ~= "CEO" and G.GAME.blind_on_deck ~= "Ceo") and not context.blueprint then
+            if G.GAME.current_round.hands_left > 0 then
+                card.ability.extra.current_money = card.ability.extra.current_money + (card.ability.extra.added_money * G.GAME.current_round.hands_left)
+                return { message = localize("k_upgrade_ex") }
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        if card.ability.extra.current_money > 0 then
+            return card.ability.extra.current_money
+        end
+    end
+}
+
+
+SMODS.Joker {
+    key = "nameteam_splashman",
+    config = { extra = { xmult = 1.1 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 6, y = 2 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.modify_scoring_hand and not context.blueprint then
+            return { add_to_hand = true }
+        end
+
+        if context.individual and not context.repetition and context.cardarea == G.play then
+            return { xmult = card.ability.extra.xmult }
+        end
+    end
+}
+
+SMODS.Joker({
+	key = "nteam_self_insert",
+	-- add atlas later
+	config = {
+		extra = {
+			current_effect = "NONE",
+			thunderedge = {
+				xmult = 1,
+				xmult_inc = 0.25,
+			},
+			revo = {
+				xmult = 1,
+				xmult_inc = 0.25,
+			},
+			dave = {
+				xmult = 1.5,
+			},
+			ghost = {
+				xmult = 1,
+				xmult_inc = 0.1,
+			},
+			doggfly = {
+				odds = 4,
+				num = 1,
+			},
+			inky = {
+				xchips = 1,
+				xchips_inc = 0.4,
+			},
+			doctor = {
+				xmult = 1,
+				xmult_inc = 0.5,
+			},
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+        local tbl = card.ability.extra[card.ability.extra.current_effect]
+		if card.ability.extra.current_effect == "NONE" then
+		elseif card.ability.current_effect ~= "doggfly" then
+			if card.ability.extra.current_effect == "ghost" then
+				info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+			end
+			local final_xmult = nil
+			if card.ability.extra.current_effect == "revo" then
+				final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
+			end
+			return {
+				vars = {
+					tbl.xmult_inc or tbl.xchips_inc,
+					final_xmult or tbl.xmult or tbl.xchips,
+				},
+				key = self.key .. "_" .. card.ability.extra.current_effect,
+			}
+		else
+			local plant_count = 0
+			if G.jokers then
+				for _, j in ipairs(G.jokers.cards) do
+					if j.config.center.pvz_plant then
+						plant_count = plant_count + 1
+					end
+				end
+			end
+			local n, d = SMODS.get_probability_vars(
+				card,
+				tbl.num + plant_count,
+				tbl.odds,
+				"nteam_self_insert"
+			)
+			return {
+				vars = {
+					n,
+					d,
+				},
+				key = self.key .. "_" .. card.ability.extra.current_effect,
+			}
+		end
+	end,
+	cost = 10,
+	rarity = 3,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	beans_credits = {
+		team = "Name Team",
+		idea = "Name Team",
+		art = "Name Team",
+		code = "ThunderEdge",
+	},
+	add_to_deck = function(self, card, from_debuff)
+		if not from_debuff then
+			card.ability.extra.current_effect = pseudorandom_element({
+				"thunderedge",
+				"revo",
+				"dave",
+				"ghost",
+				"doggfly",
+				"inky",
+				"doctor",
+			}, "nteam_self_insert")
+		end
+	end,
+	calculate = function(self, card, context)
+        local tbl = card.ability.extra[card.ability.extra.current_effect] or {}
+		if context.starting_shop and card.ability.extra.current_effect == "doggfly" then
+			for _, j in ipairs(G.jokers.cards) do
+				if j.config.center.pvz_plant then
+					plant_count = plant_count + 1
+				end
+			end
+			if
+				SMODS.pseudorandom_probability(
+					card,
+					"nteam_self_insert",
+					tbl.num + plant_count,
+					tbl.odds,
+					"nteam_self_insert"
+				)
+			then
+                local pool = {}
+                for _, sticker in pairs(SMODS.Stickers) do
+                    if sticker.sticker_type == "Positive" and sticker.sets and sticker.sets["Joker"] then
+                        pool[#pool+1] = sticker.key
+                    end
+                end
+                local added = pseudorandom_element(pool, "nteam_doggfly")
+                local target = pseudorandom_element(G.jokers.cards, "nteam_doggfly")
+                if target then
+                    target:add_sticker(added, true)
+                end
+			end
+		end
+        if context.ending_shop and card.ability.extra.current_effect == "dave" then
+            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+                local pool = {}
+                for _, center in pairs(G.P_CENTER_POOLS.Joker) do
+                    if center.pvz_plant then
+                        pool[#pool+1] = center.key
+                    end
+                end
+                G.E_MANAGER:add_event(Event({
+                    func = function ()
+                        SMODS.add_card({
+                            key = pseudorandom_element(pool, "nteam_dave")
+                        })
+                        G.GAME.joker_buffer = 0
+                        return true
+                    end
+                }))
+            end
+        end
+        if context.using_consumeable then
+            if not context.blueprint and card.ability.extra.current_effect == "doctor" and context.consumeable.config.center.set == "cbean_StickerSheet" then
+                SMODS.scale_card(card, {
+                    ref_table = tbl,
+                    ref_value = "xmult",
+                    scalar_value = "xmult_inc"
+                })
+            end
+            if card.ability.extra.current_effect == "ghost" then
+                if context.consumeable.config.center.set == "cbean_StickerSheet" then
+                    SMODS.add_card({
+                        set = "Tarot",
+                        edition = "e_negative"
+                    })
+                elseif context.consumeable.config.center.set == "Tarot" and not context.blueprint then
+                    SMODS.scale_card(card, {
+                        ref_table = tbl,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_inc"
+                    })
+                end
+            end
+        end
+        if not context.blueprint and card.ability.extra.current_effect == "thunderedge" and (context.nteam_reroll_stationery or context.nteam_exchange_stationery) then
+            SMODS.scale_card(card, {
+                ref_table = tbl,
+                ref_value = "xmult",
+                scalar_value = "xmult_inc"
+            })
+        end
+        if context.other_joker and context.other_joker.config.center.pvz_plant and card.ability.extra.current_effect == "dave" then
+            return {
+                xmult = tbl.xmult
+            }
+        end
+        if context.joker_main then
+            local final_xmult = nil
+            if card.ability.extra.current_effect == "revo" then
+				final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
+			end
+            return {
+                xmult = final_xmult or tbl.xmult,
+                xchips = tbl.chips,
+            }
+        end
+        if context.before and not context.blueprint and #context.full_hand == 4 and card.ability.extra.current_effect == "inky" then
+            SMODS.scale_card(card, {
+                ref_table = tbl,
+                ref_value = "xchips",
+                scalar_value = "xchips_inc"
+            })
+        end
+        if context.end_of_round and not context.game_over and context.main_eval and not context.blueprint then
+            local has_deck_sticker = false
+            for key, item in pairs(G.GAME.selected_back.ability) do
+                if SMODS.Stickers[key] then
+                    has_deck_sticker = true
+                    break
+                end
+            end
+            if has_deck_sticker and card.ability.extra.current_effect == "doctor" then
+                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    G.E_MANAGER:add_event(Event({
+                        func = function ()
+                            SMODS.add_card({
+                                set = "cbean_StickerSheet",
+                            })
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                    }))
+                end
+            end
+            if context.beat_boss then
+                card.ability.extra.current_effect = pseudorandom_element({
+                    "thunderedge",
+                    "revo",
+                    "dave",
+                    "ghost",
+                    "doggfly",
+                    "inky",
+                    "doctor",
+                }, "nteam_self_insert")
+            end
+        end
+	end,
+})

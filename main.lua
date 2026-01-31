@@ -13,17 +13,17 @@ to_number = to_number or function(x) return x end
 local on_calculate_cbs = {}
 ---Adds a function to a list whose functions are checked in the same place as the global mod calculate.
 ---@param cb fun(mod: Mod, context: CalcContext): table?
-ColdBeans.OnCalculate = function (cb)
-	on_calculate_cbs[#on_calculate_cbs+1] = cb
+ColdBeans.OnCalculate = function(cb)
+	on_calculate_cbs[#on_calculate_cbs + 1] = cb
 end
 
 SMODS.current_mod.optional_features = {
-  retrigger_joker = true,
-  post_trigger = true,
-  cardareas = {
-	deck = true,
-	discard = true
-  }
+	retrigger_joker = true,
+	post_trigger = true,
+	cardareas = {
+		deck = true,
+		discard = true
+	}
 }
 
 local function GetJokers()
@@ -38,21 +38,34 @@ local function GetJokers()
 end
 
 function count_consumables()
-  if G.consumeables.get_total_count then
-    return G.consumeables:get_total_count()
-  else
-    return #G.consumeables.cards + G.GAME.consumeable_buffer
-  end
+	if G.consumeables.get_total_count then
+		return G.consumeables:get_total_count()
+	else
+		return #G.consumeables.cards + G.GAME.consumeable_buffer
+	end
 end
 
 ColdBeans.calculate = function(mod, context)
+	if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.config.center.set == "Voucher" then
+		G.GAME.NAMETEAM.voucher_this_ante = true
+	end
 
-	if context.destroy_card and context.cardarea == G.play and (G.GAME.NAMETEAM.jal_sold and G.GAME.NAMETEAM.jal_sold>0) then
+	if context.individual and context.cardarea == G.play then
+		if G.GAME.NAMETEAM.bzzed then
+			G.GAME.NAMETEAM.bzzed = G.GAME.NAMETEAM.bzzed - 1
+			local a = G.GAME.NAMETEAM.bzzed_amount
+			context.other_card.ability.bzzed = true
+			return {
+				xmult = G.GAME.NAMETEAM.bzzed_amount
+			}
+		end
+	end
+	if context.destroy_card and context.cardarea == G.play and ((G.GAME.NAMETEAM.jal_sold and G.GAME.NAMETEAM.jal_sold > 0) or (context.destroy_card.ability.bzzed)) then
 		G.GAME.NAMETEAM.jal_triggered = true
-        return{
-            remove = true
-        }
-    end
+		return {
+			remove = true
+		}
+	end
 
 	if context.skip_blind then
 		G.GAME.NAMETEAM.skipped = true
@@ -61,7 +74,7 @@ ColdBeans.calculate = function(mod, context)
 		G.GAME.NAMETEAM.skipped = false
 	end
 	if context.before then
-		if G.GAME.NAMETEAM.grimrose_number and NAMEG.GAME.NAMETEAMTEAM.grimrose_number>0 then
+		if G.GAME.NAMETEAM.grimrose_number and NAMEG.GAME.NAMETEAMTEAM.grimrose_number > 0 then
 			G.GAME.NAMETEAM.grimrose_triggered = true
 			G.GAME.NAMETEAM.grimrose_number = G.GAME.NAMETEAM.grimrose_number - 1
 			SMODS.smart_level_up_hand(nil, context.scoring_name, nil, 1)
@@ -69,8 +82,8 @@ ColdBeans.calculate = function(mod, context)
 	end
 	if context.final_scoring_step then
 		if G.GAME.NAMETEAM.grimrose_triggered then
-			G.GAME.NAMETEAM.grimrose_triggered  = false
-			local acard = pseudorandom_element(context.scoring_hand,pseudoseed("grimyrosu"))
+			G.GAME.NAMETEAM.grimrose_triggered = false
+			local acard                        = pseudorandom_element(context.scoring_hand, pseudoseed("grimyrosu"))
 			if acard then
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
@@ -79,11 +92,11 @@ ColdBeans.calculate = function(mod, context)
 						SMODS.destroy_cards(acard)
 						return true
 					end
-				})) 
+				}))
 			end
 		end
 
-		if G.GAME.NAMETEAM.gold_rush and G.GAME.NAMETEAM.gold_rush  > 0 then
+		if G.GAME.NAMETEAM.gold_rush and G.GAME.NAMETEAM.gold_rush > 0 then
 			G.GAME.NAMETEAM.gold_rush = G.GAME.NAMETEAM.gold_rush - 1
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
@@ -99,11 +112,11 @@ ColdBeans.calculate = function(mod, context)
 			}))
 		end
 	end
-	
+
 	if context.after then
-        G.GAME.cbean_combo_index = {}
-        G.GAME.cbean_combo_unique_hand = {}
-        G.GAME.cbean_combos_used_turn = 0
+		G.GAME.cbean_combo_index = {}
+		G.GAME.cbean_combo_unique_hand = {}
+		G.GAME.cbean_combos_used_turn = 0
 		if G.GAME.NAMETEAM.jal_triggered then
 			G.GAME.NAMETEAM.jal_sold = G.GAME.NAMETEAM.jal_sold - 1
 			G.GAME.NAMETEAM.jal_triggered = false
@@ -114,25 +127,39 @@ ColdBeans.calculate = function(mod, context)
 			G.GAME.blind.disabled = false
 		end
 
-			for k, v in pairs(G.jokers.cards) do 
-				if v.debuff and v.config.center.key == "j_cbean_jack_o_lantern" and v.ability.extra.hands_left<=0 then
-					if v.ability.extra.debuff_hands>0 then
-						v.ability.extra.debuff_hands = v.ability.exrea.debuff_hands-1
-						NAMETEAM.msg(v, "-1 Debuff Round")
-					else
-						v.ability.extra.hands_left = 2
-						v.ability.extra.debuff_hands = 2
-						SMODS.debuff_card(v, false, "jack_lantern_debuff")
-						NAMETEAM.msg(v, "Undebuff!")
-					end
+		for k, v in pairs(G.jokers.cards) do
+			if v.debuff and v.config.center.key == "j_cbean_jack_o_lantern" and v.ability.extra.hands_left <= 0 then
+				if v.ability.extra.debuff_hands > 0 then
+					v.ability.extra.debuff_hands = v.ability.exrea.debuff_hands - 1
+					NAMETEAM.msg(v, "-1 Debuff Round")
+				else
+					v.ability.extra.hands_left = 2
+					v.ability.extra.debuff_hands = 2
+					SMODS.debuff_card(v, false, "jack_lantern_debuff")
+					NAMETEAM.msg(v, "Undebuff!")
 				end
 			end
-    end
-    if context.end_of_round then
-        G.GAME.cbean_combo_unique_round = {}
+		end
+	end
+	if context.end_of_round then
+		G.GAME.cbean_combo_unique_round = {}
 
 		if context.main_eval then
-			if G.GAME.NAMETEAM.cards_no_score then 
+			if G.GAME.NAMETEAM.buduh_boomed then -- no event manager 
+				G.GAME.NAMETEAM.buduh_boomed = nil
+				G.GAME.NAMETEAM.buduh_boomed_just_activated = true
+				G.GAME.NAMETEAM.buduh_boomed_active = true
+			end
+
+			if G.GAME.NAMETEAM.buduh_boomed_active then
+				if not G.GAME.NAMETEAM.buduh_boomed_just_activated then
+					G.GAME.NAMETEAM.buduh_boomed_active = false
+				else
+					G.GAME.NAMETEAM.buduh_boomed_just_activated = false
+				end
+			end
+
+			if G.GAME.NAMETEAM.cards_no_score then
 				G.GAME.NAMETEAM.cards_no_score = nil
 			end
 			for k, v in pairs(G.playing_cards) do
@@ -151,13 +178,13 @@ ColdBeans.calculate = function(mod, context)
 			end
 
 			for k, v in pairs(G.jokers.cards) do -- needs a check for other values ( iwanted to use - instead of / but i got other jokers to code)
-				if v.cbean_lily_power and v.cbean_lily_power>0 then
-					v.cbean_lily_power = v.cbean_lily_power -1 
+				if v.cbean_lily_power and v.cbean_lily_power > 0 then
+					v.cbean_lily_power = v.cbean_lily_power - 1
 					NAMETEAM.msg(v, "-1")
 				elseif v.cbean_lily_power then
 					v.cbean_lily_power = nil
 					NAMETEAM.msg(v, localize("k_reset"))
-					NAMETEAM.values("/",v,2,true)
+					NAMETEAM.values("/", v, 2, true)
 				end
 
 				if v.newly_debuffed then
@@ -166,14 +193,12 @@ ColdBeans.calculate = function(mod, context)
 					v.was_debuffed_by_elec = nil
 					SMODS.debuff_card(v, false, "elecelec")
 				end
-
 			end
-
 		end
-    end
-	if context.destroy_card and context.cardarea == G.play and G.GAME.NAMETEAM.destroy and G.GAME.NAMETEAM.destroy>0 then
+	end
+	if context.destroy_card and context.cardarea == G.play and G.GAME.NAMETEAM.destroy and G.GAME.NAMETEAM.destroy > 0 then
 		G.GAME.NAMETEAM.destroy = G.GAME.NAMETEAM.destroy - 1
-		return{
+		return {
 			remove = true
 		}
 	end
@@ -181,6 +206,8 @@ ColdBeans.calculate = function(mod, context)
 		if G.GAME.NAMETEAM.healthy_ante then
 			G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + G.GAME.NAMETEAM.healthy_ante
 		end
+
+		G.GAME.NAMETEAM.voucher_this_ante = false
 	end
 	if context.card_added and context.cardarea == G.jokers then
 		local jokers = GetJokers()
@@ -191,7 +218,7 @@ ColdBeans.calculate = function(mod, context)
 			trouv:remove()
 			-- how to not copy paste, but keep in 3 lines so i look smart
 
-			SMODS.add_card({key = "j_cbean_colon_orchestra"})
+			SMODS.add_card({ key = "j_cbean_colon_orchestra" })
 		end
 		--TODO: move this to a patch to get_blind_amount so it takes effect immediately instead of needing to enter a blind
 	elseif context.first_hand_drawn then
@@ -200,9 +227,9 @@ ColdBeans.calculate = function(mod, context)
 		local blind = G.GAME.blind
 		if count > 0 then
 			G.GAME.BlindCurse = G.GAME.BlindCurse - 1
-            blind.mult = blind.mult + 0.5;
+			blind.mult = blind.mult + 0.5;
 		end
-		blind.chips = get_blind_amount(G.GAME.round_resets.ante)*blind.mult*G.GAME.starting_params.ante_scaling + folly
+		blind.chips = get_blind_amount(G.GAME.round_resets.ante) * blind.mult * G.GAME.starting_params.ante_scaling + folly
 		blind.chip_text = number_format(blind.chips)
 	end
 	--Jbilling it
@@ -221,25 +248,25 @@ ColdBeans.calculate = function(mod, context)
 	end
 	if context.open_booster and next(SMODS.find_card("j_cbean_jbill_leak")) then
 		G.GAME.booster_leaked = false
-        G.GAME.refund = context.card.cost
-        G.GAME.real_choices = G.GAME.pack_choices
-        G.GAME.pack_choices = 0
-    end
+		G.GAME.refund = context.card.cost
+		G.GAME.real_choices = G.GAME.pack_choices
+		G.GAME.pack_choices = 0
+	end
 	-- dunno this, but I'm needing this after
-    local haspost = false;
-    local results = {}
-    for i, cb in ipairs(on_calculate_cbs) do
-        local result, post = cb(mod, context)
-        if result then
-            results[#results+1] = result;
-        end
-        if post then
-            haspost = true
-        end
-    end
-    if #results == 0 then return nil, haspost end
-    if #results == 1 then return results[1], haspost end
-    return SMODS.merge_effects(unpack(results)), haspost
+	local haspost = false;
+	local results = {}
+	for i, cb in ipairs(on_calculate_cbs) do
+		local result, post = cb(mod, context)
+		if result then
+			results[#results + 1] = result;
+		end
+		if post then
+			haspost = true
+		end
+	end
+	if #results == 0 then return nil, haspost end
+	if #results == 1 then return results[1], haspost end
+	return SMODS.merge_effects(unpack(results)), haspost
 end
 
 Colonparen = {
@@ -264,8 +291,8 @@ function ColdBeans.recursive_load(path)
 	end
 end
 
-ColdBeans.recursive_load("Content") 
--- more folders can be loaded by simply duplicating this 
+ColdBeans.recursive_load("Content")
+-- more folders can be loaded by simply duplicating this
 
 -- Credits!
 
@@ -292,7 +319,7 @@ function SMODS.create_mod_badges(obj, badges)
 			local scale_fac = {}
 			local min_scale_fac = 1
 			local strings = { ColdBeans.display_name }
-			for _, v in ipairs({ "team" , "idea", "art", "code"}) do
+			for _, v in ipairs({ "team", "idea", "art", "code" }) do
 				if obj.beans_credits[v] then
 					if type(obj.beans_credits[v]) == "string" then obj.beans_credits[v] = { obj.beans_credits[v] } end
 					for i = 1, #obj.beans_credits[v] do
@@ -319,42 +346,42 @@ function SMODS.create_mod_badges(obj, badges)
 				if badges[i].nodes[1].nodes[2].config.object.string == ColdBeans.display_name then --this was meant to be a hex code but it just doesnt work for like no reason so its hardcoded
 					badges[i].nodes[1].nodes[2].config.object:remove()
 					badges[i] = {
-                        n = G.UIT.R,
-                        config = { align = "cm" },
-                        nodes = {
-                            {
-                                n = G.UIT.R,
-                                config = {
-                                    align = "cm",
-                                    colour = ColdBeans.badge_colour,
-                                    r = 0.1,
-                                    minw = 2 / min_scale_fac,
-                                    minh = 0.36,
-                                    emboss = 0.05,
-                                    padding = 0.03 * 0.9,
-                                },
-                                nodes = {
-                                    { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-                                    {
-                                        n = G.UIT.O,
-                                        config = {
-                                            object = DynaText({
-                                                string = ct or "ERROR",
-                                                colours = { obj.beans_credits and obj.beans_credits.text_colour or HEX("678d8f") },
-                                                silent = true,
-                                                float = true,
-                                                shadow = true,
-                                                offset_y = -0.03,
-                                                spacing = 1,
-                                                scale = 0.33 * 0.9,
-                                            }),
-                                        },
-                                    },
-                                    { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-                                },
-                            },
-                        },
-                    }
+						n = G.UIT.R,
+						config = { align = "cm" },
+						nodes = {
+							{
+								n = G.UIT.R,
+								config = {
+									align = "cm",
+									colour = ColdBeans.badge_colour,
+									r = 0.1,
+									minw = 2 / min_scale_fac,
+									minh = 0.36,
+									emboss = 0.05,
+									padding = 0.03 * 0.9,
+								},
+								nodes = {
+									{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+									{
+										n = G.UIT.O,
+										config = {
+											object = DynaText({
+												string = ct or "ERROR",
+												colours = { obj.beans_credits and obj.beans_credits.text_colour or HEX("678d8f") },
+												silent = true,
+												float = true,
+												shadow = true,
+												offset_y = -0.03,
+												spacing = 1,
+												scale = 0.33 * 0.9,
+											}),
+										},
+									},
+									{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+								},
+							},
+						},
+					}
 					break
 				end
 			end
@@ -364,37 +391,37 @@ end
 
 ColdBeansConfig = SMODS.current_mod.config
 local cbeanConfigTab = function()
-  cbean_nodes = {}
-  config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} } } }
-  cbean_nodes[#cbean_nodes + 1] = config
-  cbean_nodes[#cbean_nodes + 1] = create_toggle({
-    label = localize("cbean_disable_animations"),
-    active_colour = HEX("40c76d"),
-    ref_table = ColdBeansConfig,
-    ref_value = "animations_disabled",
-    callback = function()
-    end,
-  })
-  return {
-    n = G.UIT.ROOT,
-    config = {
-      emboss = 0.05,
-      minh = 6,
-      r = 0.1,
-      minw = 10,
-      align = "cm",
-      padding = 0.2,
-      colour = G.C.BLACK,
-    },
-    nodes = cbean_nodes,
-  }
+	cbean_nodes = {}
+	config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} } } }
+	cbean_nodes[#cbean_nodes + 1] = config
+	cbean_nodes[#cbean_nodes + 1] = create_toggle({
+		label = localize("cbean_disable_animations"),
+		active_colour = HEX("40c76d"),
+		ref_table = ColdBeansConfig,
+		ref_value = "animations_disabled",
+		callback = function()
+		end,
+	})
+	return {
+		n = G.UIT.ROOT,
+		config = {
+			emboss = 0.05,
+			minh = 6,
+			r = 0.1,
+			minw = 10,
+			align = "cm",
+			padding = 0.2,
+			colour = G.C.BLACK,
+		},
+		nodes = cbean_nodes,
+	}
 end
 
 SMODS.current_mod.config_tab = cbeanConfigTab
 
 SMODS.Atlas({
-    key = "modicon",
-    path = "7_Wgrop/Icon.png",
-    px = 32,
-    py = 32
+	key = "modicon",
+	path = "7_Wgrop/Icon.png",
+	px = 32,
+	py = 32
 })
