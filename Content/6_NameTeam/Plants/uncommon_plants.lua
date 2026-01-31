@@ -4778,3 +4778,40 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "mangofier",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            odd_xmult = 0.75,
+            even_xmult = 3
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.even_xmult,cae.odd_xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main and (G.GAME.current_round.hands_left%2)==0 then
+            return{
+                xmult = cae.odd_xmult
+            }
+        elseif context.joker_main and (G.GAME.current_round.hands_left%2)==1 then
+            return{
+                xmult = cae.even_xmult
+            }
+        end
+    end
+})

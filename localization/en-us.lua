@@ -5298,6 +5298,16 @@ return {
 			},
 			--
 
+			j_cbean_mangofier = {
+				name =  "Mangofier",
+				text = {
+					"Every played {C:red}even{}",
+					"hand gives {X:mult,C:white}X#1#{} Mult",
+					"white every {C:blue}odd{} hand",
+					"gives {X:mult,C:white}X#2#{} Mult"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
 				name = {
