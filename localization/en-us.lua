@@ -4107,9 +4107,9 @@ return {
 			j_cbean_tallnut                             = {
 				name = "Tall-Nut",
 				text = {
-					"Future cards can only",
-					"have {C:attention}1{} Sticker.",
-					"Cards {C:red}cannot{} get debuffed"
+					"Future cards can have",
+					"at most {C:attention}1{} Sticker",
+					"Cards {C:red}cannot{} be debuffed"
 				},
 			},
 			j_cbean_spikeweed                           = {
