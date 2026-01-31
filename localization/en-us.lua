@@ -4161,29 +4161,28 @@ return {
 			j_cbean_starfruit                           = {
 				name = "Starfruit",
 				text = {
-					"{C:red}+#5#{} Discard each round",
-					"{C:mult}+#2#{} Mult, {C:chips}+#1#{} Chips",
-					"and {X:mult,C:white}X#3#{} Mult during scoring",
-					"{C:money}+$#4#{} after every round"
+					"{C:red}+#5#{} discards each round",
+					"{C:mult}+#2#{} Mult, {C:chips}+#1#{} Chips, {X:mult,C:white}X#3#{} Mult",
+					"Earn {C:money}$#4#{} at end of round"
 				},
 			},
 			j_cbean_pumpkin                             = {
 				name = "Pumpkin",
 				text = {
-					"Card to the {C:attention}left",
+					"{C:attention}Joker to the {C:attention}left",
 					"cannot be {C:attention}flipped{} or {C:red}debuffed{}",
-					"{C:red}Self-Destructs{} after preventing",
-					"{C:attention}#1#{C:inactive} (#2#){} Flips or Debuffs"
+					"{C:red}Self-destructs{} after preventing",
+					"{C:attention}#1#{C:inactive} (#2#){} flips or debuffs"
 				},
 			},
 			j_cbean_magnet_shroom                       = {
 				name = "Magnet Shroom",
 				text = {
 					"Remove {C:attention}Gold{} and {C:attention}Steel{}",
-					"from scored cards.",
+					"from scored cards",
 					"Gain {X:mult,C:white}X#2#{} Mult per",
 					"removed enhancement",
-					"{C:money}+$#3#{} after every round",
+					"Earn {C:money}$#3#{} at end of round",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
