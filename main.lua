@@ -74,7 +74,7 @@ ColdBeans.calculate = function(mod, context)
 		G.GAME.NAMETEAM.skipped = false
 	end
 	if context.before then
-		if G.GAME.NAMETEAM.grimrose_number and NAMEG.GAME.NAMETEAMTEAM.grimrose_number > 0 then
+		if G.GAME.NAMETEAM.grimrose_number and G.GAME.NAMETEAM.grimrose_number > 0 then
 			G.GAME.NAMETEAM.grimrose_triggered = true
 			G.GAME.NAMETEAM.grimrose_number = G.GAME.NAMETEAM.grimrose_number - 1
 			SMODS.smart_level_up_hand(nil, context.scoring_name, nil, 1)

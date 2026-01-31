@@ -2764,7 +2764,6 @@ SMODS.Booster:take_ownership_by_kind('Standard', {
             key_append = "sta"
         }
     end,
-    loc_vars = pack_loc_vars,
 })
 
 SMODS.Joker {
