@@ -1838,7 +1838,7 @@ return {
 			},
 			q_cbean_nteam_square = {
 				name = {
-					"Square",
+					"Square Joker",
 					"{C:dark_edition,s:0.7}Side Quest{}",
 				},
 				text = {
@@ -1858,6 +1858,20 @@ return {
 					"If a {C:attention}Sticker{} was",
 					"applied to an {C:attention}Ace{},",
 					"create {C:attention}Scholar{}",
+				},
+			},
+			q_cbean_nteam_showman = {
+				name = {
+					"Showman",
+					"{C:dark_edition,s:0.7}Side Quest{}",
+				},
+				text = {
+					"If a {C:attention}Shop{} item reappeared",
+					"within the same {C:attention}Shop{},",
+					"create {C:attention}Showman{}",
+					"and adds {C:dark_edition}Negative",
+					"to 2 random {C:attention}Jokers",
+					"without an {C:attention}Edition",
 				},
 			},
 		},
