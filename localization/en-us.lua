@@ -4292,7 +4292,7 @@ return {
 				name = "Garlic",
 				text = {
 					"{C:attention}Shuffles{} 2 random",
-					"jokers before scoring",
+					"{C:attention}Jokers{} before scoring",
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
