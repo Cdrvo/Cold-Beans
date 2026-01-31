@@ -4145,8 +4145,8 @@ return {
 			j_cbean_sea_shroom                          = {
 				name = "Sea Shroom",
 				text = {
-					"If this card is",
-					"in your leftmost joker slot",
+					"If this {C:attention}Joker{} is",
+					"in your leftmost {C:attention}Joker{} slot",
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
