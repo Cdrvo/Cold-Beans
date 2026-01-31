@@ -508,7 +508,7 @@ SMODS.Joker({
 		end
 	end,
 	in_pool = function(self)
-		return (G.GAME.last_bought_joker_key ~= nil) and NAMETEAM.plant_in_pool
+		return (G.GAME.last_bought_joker_key ~= nil) and NAMETEAM.plant_in_pool()
 	end,
 })
 
@@ -983,7 +983,7 @@ SMODS.Joker({
 		end
 	end,
 	in_pool = function(self, card)
-		return NAMETEAM.plant_in_pool, { allow_duplicates = true }
+		return NAMETEAM.plant_in_pool(), { allow_duplicates = true }
 	end,
 })
 
@@ -1229,7 +1229,7 @@ SMODS.Joker({
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return { vars({ cae.xmult }) }
+		return { vars = { cae.xmult } }
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -1391,7 +1391,7 @@ SMODS.Joker({
 				cae.rounds = cae.rounds - 1
 			else
 				cae.rounds = 0
-				card:remove_sticker("eternal", true)
+				card:remove_sticker("eternal")
 				NAMETEAM.msg(card, "Sellable!")
 			end
 		end
