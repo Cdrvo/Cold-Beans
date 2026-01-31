@@ -2261,7 +2261,6 @@ SMODS.Joker {
     end
 }
 
-
 SMODS.Joker {
     key = "nameteam_splashman",
     config = { extra = { xmult = 1.1 } },
@@ -2293,6 +2292,48 @@ SMODS.Joker {
         end
     end
 }
+
+
+SMODS.Joker {
+    key = "nameteam_trafficlight",
+    config = { extra = { xmult = 2 } },
+    rarity = 3,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 9, y = 2 },
+    cbean_anim_states = {
+        ["go"] = { anim = { { x = 9, y = 2, t = 15 } }, loop = false, continuation = "prepare" },
+        ["prepare"] = { anim = { { x = 10, y = 2, t = 3 } }, loop = false, continuation = "stop" },
+        ["stop"] = { anim = { { x = 11, y = 2, t = 15 } }, loop = false, continuation = "almost" },
+        ["almost"] = { anim = { { x = 11, y = 3, t = 3 } }, loop = false, continuation = "go" },
+    },
+    cbean_anim_current_state = "go",
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "it_its",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.press_play and not context.blueprint then
+            card.ability.extra.active = card.config.center.cbean_anim_current_state == "go" or card.config.center.cbean_anim_current_state == "prepare"
+        end
+
+        if context.joker_main and card.ability.extra.active then
+            return { xmult = card.ability.extra.xmult }
+        end
+    end
+}
+
+
 
 SMODS.Joker({
 	key = "nteam_self_insert",

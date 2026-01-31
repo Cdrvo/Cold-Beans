@@ -1,53 +1,53 @@
 SMODS.DrawStep {
-  key = 'extra',
-  order = 21,
-  func = function(self, layer)
-    if not self.cbean_extra and self.config.center.pos_extra then
-      local atlas = G.ASSET_ATLAS[self.config.center.atlas_extra or self.config.center.atlas]
-      self.cbean_extra = Sprite(0, 0, atlas.px, atlas.py,
-        atlas, self.config.center.pos_extra)
-    end
-    if self.cbean_extra then
-      if self.config.center.discovered or (self.params and self.params.bypass_discovery_center) then
-        self.cbean_extra:set_sprite_pos(self.config.center.pos_extra)
-        self.cbean_extra.role.draw_major = self
-        if (self.edition and self.edition.negative and (not self.delay_edition or self.delay_edition.negative)) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
-          self.cbean_extra:draw_shader('negative', nil, self.ARGS.send_to_shader, nil, self.children.center)
-        elseif not self:should_draw_base_shader() then
-        elseif not self.greyed then
-          self.cbean_extra:draw_shader('dissolve', nil, nil, nil, self.children.center)
+    key = 'extra',
+    order = 21,
+    func = function(self, layer)
+        if not self.cbean_extra and self.config.center.pos_extra then
+            local atlas = G.ASSET_ATLAS[self.config.center.atlas_extra or self.config.center.atlas]
+            self.cbean_extra = Sprite(0, 0, atlas.px, atlas.py,
+                atlas, self.config.center.pos_extra)
         end
+        if self.cbean_extra then
+            if self.config.center.discovered or (self.params and self.params.bypass_discovery_center) then
+                self.cbean_extra:set_sprite_pos(self.config.center.pos_extra)
+                self.cbean_extra.role.draw_major = self
+                if (self.edition and self.edition.negative and (not self.delay_edition or self.delay_edition.negative)) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+                    self.cbean_extra:draw_shader('negative', nil, self.ARGS.send_to_shader, nil, self.children.center)
+                elseif not self:should_draw_base_shader() then
+                elseif not self.greyed then
+                    self.cbean_extra:draw_shader('dissolve', nil, nil, nil, self.children.center)
+                end
 
-        if self.ability.name == 'Invisible Joker' and (self.config.center.discovered or self.bypass_discovery_center) then
-          if self:should_draw_base_shader() then
-            self.cbean_extra:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children.center)
-          end
-        end
+                if self.ability.name == 'Invisible Joker' and (self.config.center.discovered or self.bypass_discovery_center) then
+                    if self:should_draw_base_shader() then
+                        self.cbean_extra:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children.center)
+                    end
+                end
 
-        local center = self.config.center
-        if center.draw_extra and type(center.draw_extra) == 'function' then
-          center:draw_extra(self, layer)
-        end
+                local center = self.config.center
+                if center.draw_extra and type(center.draw_extra) == 'function' then
+                    center:draw_extra(self, layer)
+                end
 
-        local edition = self.delay_edition or self.edition
-        if edition then
-          for k, v in pairs(G.P_CENTER_POOLS.Edition) do
-            if edition[v.key:sub(3)] and v.shader then
-              if type(v.draw) == 'function' then
-                v:draw(self, layer)
-              else
-                self.cbean_extra:draw_shader(v.shader, nil, self.ARGS.send_to_shader, nil, self.children.center)
-              end
+                local edition = self.delay_edition or self.edition
+                if edition then
+                    for k, v in pairs(G.P_CENTER_POOLS.Edition) do
+                        if edition[v.key:sub(3)] and v.shader then
+                            if type(v.draw) == 'function' then
+                                v:draw(self, layer)
+                            else
+                                self.cbean_extra:draw_shader(v.shader, nil, self.ARGS.send_to_shader, nil, self.children.center)
+                            end
+                        end
+                    end
+                end
+                if (edition and edition.negative) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+                    self.cbean_extra:draw_shader('negative_shine', nil, self.ARGS.send_to_shader, nil, self.children.center)
+                end
             end
-          end
         end
-        if (edition and edition.negative) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
-          self.cbean_extra:draw_shader('negative_shine', nil, self.ARGS.send_to_shader, nil, self.children.center)
-        end
-      end
-    end
-  end,
-  conditions = { vortex = false, facing = 'front' },
+    end,
+    conditions = { vortex = false, facing = 'front' },
 }
 
 
@@ -72,8 +72,6 @@ function Game:update(dt)
     return update_ref(self, dt)
 end
 
-
-
 function handle_cbean_anim(v, dt)
     if v.cbean_anim_states or v.cbean_anim then
         v.cbean_anim = format_cbean_anim(v.cbean_anim_states and v.cbean_anim_current_state and
@@ -95,7 +93,15 @@ function handle_cbean_anim(v, dt)
             end
             v.cbean_anim_t = v.cbean_anim_t + dt
             if not loop and v.cbean_anim_t >= v.cbean_anim.length then
-                v.cbean_anim_t = v.cbean_anim.length
+                local continuation = v.cbean_anim_states[v.cbean_anim_current_state].continuation
+                if continuation then
+                    v.cbean_anim_current_state = continuation
+                    v.cbean_anim_t = 0
+                    handle_cbean_anim(v, dt)
+                    return
+                else
+                    v.cbean_anim_t = v.cbean_anim.length
+                end
             elseif loop then
                 v.cbean_anim_t = v.cbean_anim_t % v.cbean_anim.length
             end
@@ -134,7 +140,14 @@ function handle_cbean_anim_extra(v, dt)
             end
             v.cbean_anim_extra_t = v.cbean_anim_extra_t + dt
             if not loop and v.cbean_anim_extra_t >= v.cbean_anim_extra.length then
-                v.cbean_anim_extra_t = v.cbean_anim_extra.length
+                local continuation = v.cbean_anim_extra_states[v.cbean_anim_extra_current_state].continuation
+                if continuation then
+                    v.cbean_anim_extra_current_state = continuation
+                    v.cbean_anim_extra_t = 0
+                    handle_cbean_anim_extra(v, dt)
+                else
+                    v.cbean_anim_extra_t = v.cbean_anim_extra.length
+                end
             elseif loop then
                 v.cbean_anim_extra_t = v.cbean_anim_extra_t % v.cbean_anim_extra.length
             end
@@ -151,8 +164,6 @@ function handle_cbean_anim_extra(v, dt)
         end
     end
 end
-
-
 
 function format_cbean_anim(anim)
     if not anim then return nil end
@@ -174,34 +185,32 @@ function format_cbean_anim(anim)
     return new_anim
 end
 
-
-
 function Card:cbean_set_anim_state(state)
-  self.config.center.cbean_anim_current_state = state
-  self.config.center.cbean_anim_t = 0
+    self.config.center.cbean_anim_current_state = state
+    self.config.center.cbean_anim_t = 0
 end
 
 function Card:cbean_set_anim_extra_state(state)
-  self.config.center.cbean_anim_extra_current_state = state
-  self.config.center.cbean_anim_extra_t = 0
+    self.config.center.cbean_anim_extra_current_state = state
+    self.config.center.cbean_anim_extra_t = 0
 end
 
 function SMODS.Center:cbean_set_anim_state(state)
-  self.config.center.cbean_anim_current_state = state
-  self.config.center.cbean_anim_t = 0
+    self.config.center.cbean_anim_current_state = state
+    self.config.center.cbean_anim_t = 0
 end
 
 function SMODS.Center:cbean_set_anim_extra_state(state)
-  self.cbean_anim_extra_current_state = state
-  self.cbean_anim_extra_t = 0
+    self.cbean_anim_extra_current_state = state
+    self.cbean_anim_extra_t = 0
 end
 
 function cbean_set_anim_state(center, state)
-  center.config.center.cbean_anim_current_state = state
-  center.config.center.cbean_anim_t = 0
+    center.config.center.cbean_anim_current_state = state
+    center.config.center.cbean_anim_t = 0
 end
 
 function cbean_set_anim_extra_state(center, state)
-  center.cbean_anim_extra_current_state = state
-  center.cbean_anim_extra_t = 0
+    center.cbean_anim_extra_current_state = state
+    center.cbean_anim_extra_t = 0
 end
