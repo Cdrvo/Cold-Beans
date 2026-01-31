@@ -4067,13 +4067,13 @@ return {
 			j_cbean_bud_uh_boom                         = {
 				name = "Bud'uh Boom",
 				text = {
-					"{C:green}Sell{} this card",
+					"Sell this {C:attention}Joker",
 					"to instantly defeat",
-					"the current blind.",
-					"but jokers gains a",
-					"{C:green}1 in 3{} Chance to",
-					"not trigger until",
-					"the next blind is defeated"
+					"the current blind",
+					"If sold, {C:attention}Jokers have",
+					"a {C:green}1 in 3{} chance to",
+					"not trigger until the",
+					"next blind is defeated"
 				},
 			},
 			j_cbean_cran_jelly                          = {
