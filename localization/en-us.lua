@@ -3965,7 +3965,7 @@ return {
 				name = "Vamporcini",
 				text = {
 					"{C:mult+#1#{} Mult",
-					"{C:red}debuff itself",
+					"{C:red}Debuffs{} itself",
 					"after triggering"
 				},
 			},
