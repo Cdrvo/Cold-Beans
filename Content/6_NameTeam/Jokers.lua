@@ -2057,7 +2057,7 @@ SMODS.Joker {
     rarity = 2,
     atlas = 'NAMETEAM_Jokers2',
     pos = { x = 11, y = 11 },
-    cost = 8,
+    cost = 7,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.upgrade, card.ability.extra.losing } }
     end,
@@ -2751,7 +2751,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "nameteam_wayne",
     config = { extra = { saved = false, antes = -1 } },
-    rarity = 1,
+    rarity = 3,
     atlas = 'NAMETEAM_Jokers3',
     pos = { x = 0, y = 3 },
     cbean_anim_states = {
@@ -2777,7 +2777,7 @@ SMODS.Joker {
         }
     },
     cbean_anim_current_state = "normal",
-    cost = 5,
+    cost = 8,
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "cbean_biome_nameteam_afterlife", set = "Other" }
         return { vars = { card.ability.extra.antes * -1 } }
@@ -2842,7 +2842,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "nameteam_mappedout",
     config = { extra = { scaling = 0.5 } },
-    rarity = 1,
+    rarity = 2,
     atlas = 'NAMETEAM_Jokers3',
     pos = { x = 2, y = 2 },
     cost = 7,
