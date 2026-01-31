@@ -4179,10 +4179,10 @@ return {
 				name = "Magnet Shroom",
 				text = {
 					"Remove {C:attention}Gold{} and {C:attention}Steel{}",
-					"from scored cards.",
+					"from scored cards",
 					"Gain {X:mult,C:white}X#2#{} Mult per",
 					"removed enhancement",
-					"{C:money}+$#3#{} after every round",
+					"Earn {C:money}$#3#{} at end of round",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
