@@ -16,8 +16,8 @@ return {
 				name = "Happy Deck",
 				text = {
 					"Start run with",
-                    "a copy of",
-                    "{C:attention,T:j_smiley}Smiley Face{}"
+					"a copy of",
+					"{C:attention,T:j_smiley}Smiley Face{}"
 				}
 			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
@@ -5559,7 +5559,7 @@ return {
 				},
 			},
 
-			j_cbean_pea_nut                          = {
+			j_cbean_pea_nut                             = {
 				name = "Pea-Nut",
 				text = {
 					"{C:attention}X#1#{} Blind Size",
@@ -5568,7 +5568,7 @@ return {
 				},
 			},
 
-			j_cbean_dandelion                         = {
+			j_cbean_dandelion                           = {
 				name = "Dandelion",
 				text = {
 					"If played hand has",
@@ -5578,7 +5578,7 @@ return {
 				},
 			},
 
-			j_cbean_bombegranate                         = {
+			j_cbean_bombegranate                        = {
 				name = "Bombegranate",
 				text = {
 					"When entering a {C:attention}Blind{}",
@@ -5589,7 +5589,7 @@ return {
 				},
 			},
 
-			j_cbean_blooming_heart                         = {
+			j_cbean_blooming_heart                      = {
 				name = "Blooming Heart",
 				text = {
 					"Scored cards give",
@@ -5920,14 +5920,14 @@ return {
 					}
 				}
 			},
-			j_cbean_nameteam_intheway                  = {
+			j_cbean_nameteam_intheway                   = {
 				name = 'In the Way',
 				text =
 				{
 					"Retrigger {C:attention}first{} and",
-                    "{C:attention}last{} played cards",
+					"{C:attention}last{} played cards",
 					"used in scoring",
-                    "{C:attention}#1#{} additional time"
+					"{C:attention}#1#{} additional time"
 				}
 			},
 			j_cbean_nameteam_riverstyx                  = {
@@ -5997,13 +5997,13 @@ return {
 					"{C:inactive}max of {C:attention}+#3#{C:inactive} hand size){}"
 				}
 			},
-			j_cbean_nameteam_bryce                       = {
+			j_cbean_nameteam_bryce                      = {
 				name = 'Bryce',
 				text =
 				{
 					"Each {C:attention}Jack{}",
-                    "held in hand",
-                    "gives {X:mult,C:white}X#1#{} Mult",
+					"held in hand",
+					"gives {X:mult,C:white}X#1#{} Mult",
 				}
 			},
 			j_cbean_nameteam_crowbar                    = {
@@ -6124,7 +6124,7 @@ return {
 					"in hand becomes {C:attention}Steel{}"
 				}
 			},
-			j_cbean_nameteam_mappedout             = {
+			j_cbean_nameteam_mappedout                  = {
 				name = 'Mapped Out',
 				text =
 				{
@@ -6205,13 +6205,13 @@ return {
 					"hand is level {C:attention}1{}"
 				}
 			},
-			j_cbean_nameteam_walledin                  = {
+			j_cbean_nameteam_walledin                   = {
 				name = 'Walled In',
 				text =
 				{
 					"All cards in {C:attention}Standard{}",
-                    "{C:attention}Packs{} are {C:green}guaranteed{}",
-                    "to be {C:attention}Stone{}"
+					"{C:attention}Packs{} are {C:green}guaranteed{}",
+					"to be {C:attention}Stone{}"
 				}
 			},
 			j_cbean_nameteam_trafficlight               = {
@@ -6961,6 +6961,41 @@ return {
 					"by {C:attention}%5{}"
 				},
 			},
+
+			-- Sticker Sheet Packs
+			
+            p_cbean_nameteam_stickersheet_normal1 = {
+                name = "Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_nameteam_stickersheet_normal2 = {
+                name = "Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_nameteam_stickersheet_jumbo1 = {
+                name = "Storage Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
+            p_cbean_nameteam_stickersheet_mega1 = {
+                name = "Warehouse Collector's Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "be used immediately"
+                }
+            },
 
 			-- Blind Stickers
 
@@ -9844,6 +9879,7 @@ return {
 			cbean_disable_animations            = "Disable Joker Animations",
 			k_cbean_stickersheet                = "Sticker Sheet",
 			b_cbean_stickersheet_cards          = "Sticker Sheets",
+			k_cbean_stickersheetpack            = "Collector's Pack",
 			b_nteam_exchange                    = "Exchange",
 			k_plus_stickersheet                 = "+1 Sticker Sheet",
 			k_plus_blessing                     = "+1 Blessing",
