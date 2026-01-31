@@ -6114,7 +6114,7 @@ return {
 				name = 'Mapped Out',
 				text =
 				{
-					"Gives {C:white,X:mult}#1#{} for each",
+					"Gives {C:white,X:mult}X#1#{} for each",
 					"unique {C:green}Biome{}",
 					"visited this run",
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult){}"

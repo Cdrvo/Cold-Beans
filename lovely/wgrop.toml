@@ -67,12 +67,16 @@ payload = '''blind_biome = 'wgrop_city', -- default biome'''
 match_indent = true
 
 # select a random biome when game starts
+# Hello from Name Team!
 [[patches]]
 [patches.pattern]
 target = "game.lua"
 pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
 position = "after"
 payload = '''self.GAME.round_resets.blind_biome = CBWG.get_new_biome(false) --Sets a random biome at start of game
+G.GAME.current_round.biomes_visited = {}
+G.GAME.current_round.biomes_visited[self.GAME.round_resets.blind_biome] = true
+G.GAME.current_round.amount_biomes_visited =  1
 CBWG.ColdBeans_Biomes[self.GAME.round_resets.blind_biome]:enter(false)'''
 match_indent = true
 

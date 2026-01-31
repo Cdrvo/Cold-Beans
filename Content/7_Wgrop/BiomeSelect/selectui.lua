@@ -144,6 +144,10 @@ G.FUNCS.select_biome = function(e)
     local biome = e.config.ref_table
     if G.cb_wgrop_biome_selection then
     CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome]:exit(true)
+    if not G.GAME.current_round.biomes_visited[biome] then
+        G.GAME.current_round.biomes_visited[biome] = true
+        G.GAME.current_round.amount_biomes_visited = G.GAME.current_round.amount_biomes_visited + 1
+    end
     G.GAME.round_resets.blind_biome = biome 
     G.E_MANAGER:add_event(Event({
           trigger = 'before', delay = 0.2,
