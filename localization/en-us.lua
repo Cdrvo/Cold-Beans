@@ -4089,9 +4089,9 @@ return {
 			j_cbean_maybee                              = {
 				name = "Maybee",
 				text = {
-					"On the last {C:blue}hand",
-					"of the round, {C:attention}3{}",
-					"random scored cards",
+					"On last {C:blue}hand of",
+					"round, {C:attention}3{} random",
+					"scored cards give",
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
