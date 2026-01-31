@@ -3815,7 +3815,7 @@ return {
 			j_cbean_ice_shroom                          = {
 				name = "Ice Shroom",
 				text = {
-					"When {C:green}sold{}, the next {C:attention}#2#{}",
+					"When {C:green}sold{}, the next {C:attention}#1#{}",
 					"{C:attention}Blinds{} won't end until",
 					"all hands are used"
 				},
@@ -3823,9 +3823,9 @@ return {
 			j_cbean_ice_lettuce                         = {
 				name = "Iceberg Lettuce",
 				text = {
-					"When {C:green}sold{}, next {C:attention}#2#{} Blind",
-					"wont end until all",
-					"hands are used"
+					"When {C:green}sold{}, the next {C:attention}#1#{}",
+					"{C:attention}Blinds{} won't end until",
+					"all hands are used"
 				},
 			},
 			j_cbean_doom_shroom                         = {
