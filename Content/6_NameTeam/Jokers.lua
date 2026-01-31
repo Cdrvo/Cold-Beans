@@ -46,7 +46,7 @@ SMODS.Joker({
     set_ability = function(self, card, initial, delay_sprites)
         card:cbean_set_anim_state("attract")
         if card.ability.extra.current_effect ~= "NONE" then
-            NAMETEAM.set_sprite_self_insert(card, card.ability.extra.current_effect)
+            NAMETEAM.set_sprite_self_insert(card)
         end
     end,
     loc_vars = function(self, info_queue, card)
