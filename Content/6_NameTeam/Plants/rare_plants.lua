@@ -197,12 +197,12 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
-    key = "umbrella_leaf",
-    atlas = "NAMETEAM_PlantJokers",
-    pos = { x = 4, y = 6 },
-    cost = 3,
-    beans_credits = {
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "umbrella_leaf",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 4, y = 6 },
+	cost = 3,
+	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
 		art = "Crazy Dave",
@@ -293,12 +293,12 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool,
-    key = "golden_magnet",
-    atlas = "NAMETEAM_PlantJokers",
-    pos = { x = 3, y = 6 },
-    cost = 2,
-    beans_credits = {
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "golden_magnet",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 3, y = 6 },
+	cost = 2,
+	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
 		art = "Crazy Dave",
@@ -1456,12 +1456,12 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = NAMETEAM.plant_in_pool, 
-    atlas = "NAMETEAM_PlantJokers",
-    pos = { x = 1, y = 6 },
-    key = "torchwood",
-    cost = 4,
-    beans_credits = {
+	in_pool = NAMETEAM.plant_in_pool,
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 1, y = 6 },
+	key = "torchwood",
+	cost = 4,
+	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
 		art = "Inky",
