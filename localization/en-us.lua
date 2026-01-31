@@ -4330,8 +4330,8 @@ return {
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
 				},
 			},
-			j_cbean_electric_reed                       = {
-				name = "Electric Reed",
+			j_cbean_lightning_reed                       = {
+				name = "Lightning Reed",
 				text = {
 					"This and all jokers",
 					"to the right give {X:mult,C:white}X#1#{} Mult.",
