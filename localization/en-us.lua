@@ -3641,77 +3641,142 @@ return {
 					"Changes effect",
 					"after defeating",
 					"a {C:attention}Boss Blind",
+					"{C:inactive}(Scaling of effects",
+					"{C:inactive}is preserved)"
 				},
 			},
 			j_cbean_nteam_self_insert_thunderedge                          = {
 				name = "ThunderEdge",
 				text = {
-					"Gains {X:mult,C:white}X#1#{} Mult when",
-					"exchanging {C:attention}Stickers",
-					"or rerolling the",
-					"{C:attention}Stationery Shop",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult when",
+						"exchanging {C:attention}Stickers",
+						"or rerolling the",
+						"{C:attention}Stationery Shop",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_nteam_self_insert_revo                          = {
 				name = "Revo",
 				text = {
-					"Gives {X:mult,C:white}X#1#{} Mult per {C:attention}Sticker{}",
-					"applied this run",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					{
+						"Gives {X:mult,C:white}X#1#{} Mult per {C:attention}Sticker{}",
+						"applied this run",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_nteam_self_insert_dave                          = {
 				name = "Crazy Dave",
 				text = {
-					"Each {C:attention}Plant Joker",
-					"gives {X:mult,C:white}X#1#{} Mult",
-					"Creates a {C:attention}Plant Joker{}",
-					"at the end of the {C:attention}Shop{}",
-					"{C:inactive}(Must have room)",
+					{
+						"Each {C:attention}Plant Joker",
+						"gives {X:mult,C:white}X#1#{} Mult",
+						"Creates a {C:attention}Plant Joker{}",
+						"at the end of the {C:attention}Shop{}",
+						"{C:inactive}(Must have room)",
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_nteam_self_insert_ghost                          = {
 				name = "GhostSalt",
 				text = {
-					"Creates a {C:dark_edition}Negative{}",
-					"{C:tarot}Tarot{} card after",
-					"using a {C:stickersheet}Sticker Sheet",
-					"Gains {X:mult,C:white}X#1#{} Mult when a",
-					"{C:tarot}Tarot{} card is used",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					{
+						"Creates a {C:dark_edition}Negative{}",
+						"{C:tarot}Tarot{} card after",
+						"using a {C:stickersheet}Sticker Sheet",
+						"Gains {X:mult,C:white}X#1#{} Mult when a",
+						"{C:tarot}Tarot{} card is used",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_nteam_self_insert_doggfly                          = {
 				name = "Doggfly",
 				text = {
-					"{C:green}#1# in #2#{} chance to apply",
-					"a {C:attention}positive Sticker{} to",
-					"a random Joker at the",
-					"start of the {C:attention}Shop",
-					"{C:green}Numerator{} increases by {C:green}1{}",
-					"per {C:attention}Plant Joker{} owned",
+					{
+						"{C:green}#1# in #2#{} chance to apply",
+						"a {C:attention}positive Sticker{} to",
+						"a random Joker at the",
+						"start of the {C:attention}Shop",
+						"{C:green}Numerator{} increases by {C:green}1{}",
+						"per {C:attention}Plant Joker{} owned",
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_nteam_self_insert_inky                          = {
 				name = "Inky",
 				text = {
-					"If played hand contains",
-					"{C:attention}4{} cards, this Joker",
-					"gains {X:chips,C:white}X#1#{} Chips",
-					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+					{
+						"If played hand contains",
+						"{C:attention}4{} cards, this Joker",
+						"gains {X:chips,C:white}X#1#{} Chips",
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_nteam_self_insert_doctor                          = {
 				name = "TheAlternateDoctor",
 				text = {
-					"Gains {X:mult,C:white}X#1#{} Mult when a",
-					"{C:stickersheet}Sticker Sheet{} is used",
-					"At end of round, if your",
-					"{C:attention}deck{} has a {C:attention}Sticker{},",
-					"create a {C:stickersheet}Sticker Sheet{}",
-					"{C:inactive}(Must have room)",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult when a",
+						"{C:stickersheet}Sticker Sheet{} is used",
+						"At end of round, if your",
+						"{C:attention}deck{} has a {C:attention}Sticker{},",
+						"create a {C:stickersheet}Sticker Sheet{}",
+						"{C:inactive}(Must have room)",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					},
+					{
+						"Changes effect",
+						"after defeating",
+						"a {C:attention}Boss Blind",
+						"{C:inactive}(Scaling of effects",
+						"{C:inactive}is preserved)"
+					},
 				},
 			},
 			j_cbean_peashooter                          = {
@@ -3738,7 +3803,7 @@ return {
 			j_cbean_potatomine                          = {
 				name = "Potato Mine",
 				text = {
-					"{C:money}Sell{} after {C:attention}#1#{C:inactive} (#2#){}",
+					"Sell this {C:attention}Joker{} after {C:attention}#1#{C:inactive} (#2#){}",
 					"rounds to {C:attention}halve{} the current",
 					"blind's required chips"
 				},
@@ -3850,7 +3915,7 @@ return {
 			j_cbean_squash                              = {
 				name = "Squash",
 				text = {
-					"{C:green}Sell{} this {C:attention}Joker{} to {C:red}defeat",
+					"Sell this {C:attention}Joker{} to {C:red}defeat",
 					"the current {C:attention}Blind",
 					"If facing a {C:attention}Boss Blind{}, halve",
 					"the requirement instead",
@@ -3859,10 +3924,9 @@ return {
 			j_cbean_threepeater                         = {
 				name = "Threepeater",
 				text = {
-					"{C:chips}+#1#{} Chips and",
-					"{X:mult,C:white}X#2#{} Mult",
-					"{C:money}+$3#{} at the end",
-					"of a round"
+					"{C:chips}+#1#{} Chips, {X:mult,C:white}X#2#{} Mult",
+					"Earn {C:money}$#3#{} at",
+					"end of round"
 				},
 			},
 			j_cbean_tangle_kelp                         = {
@@ -3870,81 +3934,83 @@ return {
 				text = {
 					"{C:red}Destroy{} the first",
 					"played card",
-					"permanently {C:red}Debuff{} self",
-					"afterwards"
+					"Afterwards, {C:red}debuffs{} itself",
 				},
 			},
 			j_cbean_jalepeno                            = {
 				name = "Jalapeno",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:red}destroy{} the next",
-					"played hand"
+					"Sell this {C:attention}Joker",
+					"to {C:red}destroy{} all cards in",
+					"the next played hand"
 				},
 			},
 			j_cbean_grave_buster                        = {
 				name = "Grave Buster",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:red}remove{} all stickers",
-					"from a random card"
+					"Sell this {C:attention}Joker",
+					"to {C:red}remove{} all {C:attention}Stickers",
+					"from a random {C:attention}Joker"
 				},
 			},
 			j_cbean_boomberry                           = {
 				name = "Boom Berry",
 				text = {
-					"{C:attention}Last{} scoring card",
-					"gives {C:chips}+#1#{} Chips"
+					"Last played card",
+					"gives {C:chips}+#1#{} Chips",
+					"when scored",
 				},
 			},
 			j_cbean_vamporcini                          = {
 				name = "Vamporcini",
 				text = {
 					"{C:mult+#1#{} Mult",
-					"{C:red}debuff itself",
+					"{C:red}Debuffs{} itself",
 					"after triggering"
 				},
 			},
 			j_cbean_chilli_pepper                       = {
 				name = "Chilli Pepper",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:attention}half{} current blind's",
-					"requirements. All cards held in hand",
-					"are {C:red}debuffed{}"
+					"Sell this {C:attention}Joker{} to halve",
+					"current {C:attention}Blind{} requirement,",
+					"then permanently {C:red}debuff{}",
+					"all cards in hand"
 				},
 			},
 			j_cbean_bz_button                           = {
 				name = "Bzzz Button",
 				text = {
-					"The cards {C:attention}scored{} after {:green}selling",
-					"this card give {X:mult,C:white}X#1#{} Mult",
-					"but are {C:red}destroyed{} afterwards"
+					"All scored cards in the",
+					"next hand played {C:attention}after",
+					"this {C:attention}Joker{} is sold give",
+					"{X:mult,C:white}X#1#{} Mult and {C:red,E:2}self-destruct",
 				},
 			},
 			j_cbean_bun_chi                             = {
 				name = "Bun Chi",
 				text = {
 					"{C:chips}+#1#{} Chips",
-					"after {C:attention}#4#{C:inactive} (#3#){} triggers,",
+					"After {C:attention}#4#{C:inactive} (#3#){} triggers,",
 					"{C:mult}+#2#{} Mult instead"
 				},
 			},
 			j_cbean_meteor_flower                       = {
 				name = "Meteor Flower",
 				text = {
-					"Highest Ranked played",
-					"card is {C:red}Destroyed{}",
-					"cards next to it",
-					"Gains {C:mult}+#1#{} Perma Mult"
+					"Highest ranked scored",
+					"card is {C:red}destroyed{}",
+					"Cards adjacent to it",
+					"gains {C:mult}+#1#{} Mult permanently"
 				},
 			},
 			j_cbean_sundew_tangler                      = {
 				name = "Sundew Tangler",
 				text = {
-					"{C:attention}Playing Cards{} cannot",
-					"retrigger. Each scored card",
-					"gives {C:money}+$#1#{}"
+					"{C:attention}Playing Cards{}",
+					"don't retrigger",
+					"Each played card",
+					"gives {C:money}$#1#{} when scored"
 				},
 			},
 			j_cbean_bean_sprout                         = {
