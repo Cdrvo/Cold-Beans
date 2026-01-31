@@ -4081,8 +4081,9 @@ return {
 				text = {
 					"Scored cards are",
 					"retriggered {C:attention}#1#{} times",
-					"{C:green}#2# in #3#{} Chance to",
-					"{C:red}destroy{} said cards"
+					"{C:green}#2# in #3#{} chance",
+					"each played card",
+					"to be {C:red}destroyed{}"
 				},
 			},
 			j_cbean_maybee                              = {
