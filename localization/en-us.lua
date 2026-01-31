@@ -3803,7 +3803,7 @@ return {
 			j_cbean_potatomine                          = {
 				name = "Potato Mine",
 				text = {
-					"{C:money}Sell{} after {C:attention}#1#{C:inactive} (#2#){}",
+					"Sell this {C:attention}Joker{} after {C:attention}#1#{C:inactive} (#2#){}",
 					"rounds to {C:attention}halve{} the current",
 					"blind's required chips"
 				},
@@ -3915,7 +3915,7 @@ return {
 			j_cbean_squash                              = {
 				name = "Squash",
 				text = {
-					"{C:green}Sell{} this {C:attention}Joker{} to {C:red}defeat",
+					"Sell this {C:attention}Joker{} to {C:red}defeat",
 					"the current {C:attention}Blind",
 					"If facing a {C:attention}Boss Blind{}, halve",
 					"the requirement instead",
