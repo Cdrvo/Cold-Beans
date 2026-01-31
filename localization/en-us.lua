@@ -5308,6 +5308,17 @@ return {
 				},
 			},
 
+			j_cbean_blast_spinner = {
+				name =  "Blast Spinner",
+				text = {
+					"A random card",
+					"gives {X:mult,C:white}X#1#{} Mult",
+					"but is debuffed for the",
+					"entire ante afterwards"
+				},
+			},
+
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
 				name = {

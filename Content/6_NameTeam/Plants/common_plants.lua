@@ -2220,7 +2220,7 @@ SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
     key = "blast_spinner",
-    atlas = 'NAMETEAM_PlantJokers',
+    atlas = 'NAMETEAM_PlantPlaceholder',
     cost = 4,
     rarity = 1,
     blueprint_compat = false,
