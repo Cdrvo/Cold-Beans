@@ -12,6 +12,14 @@ return {
 					"as {C:money}Piss{} cards",
 				}
 			},
+			b_cbean_nameteam_happy = {
+				name = "Happy Deck",
+				text = {
+					"Start run with",
+                    "a copy of",
+                    "{C:attention,T:j_smiley}Smiley Face{}"
+				}
+			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
 				name = "Daily Deck",
 				text = {
@@ -5551,6 +5559,16 @@ return {
 					"{C:attention}X#1#{} Blind Size",
 					"Card on the right",
 					"{C:red}cannot{} be debuffed"
+				},
+			},
+
+			j_cbean_dandelion                         = {
+				name = "Dandelion",
+				text = {
+					"If played hand has",
+					"only {C:attention}3{} cards",
+					"a random one gains",
+					"{C:mult}+#1#{} Perma Mult"
 				},
 			},
 
