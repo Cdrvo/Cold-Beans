@@ -5523,15 +5523,22 @@ return {
 				name =  "Spore Shroom",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"When {C:attention} Blind{} is",
-					"selected, create another {C:dark_edition}Negative{}",
+					"When a {C:attention}Boss Blind{} is",
+					"defeated, create another {C:dark_edition}Negative{}",
 					"{C:purple}Spore-Shroom{}",
 					"{C:inactive,:s0.8}(Created spore shrooms cant duplicate)"
 				},
 			},
 
+			j_cbean_spore_shroom_nodup = {
+				name =  "Spore Shroom",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+				},
+			},
+
 			j_cbean_torchwood = {
-				name =  "Torch Wood",
+				name =  "Torchwood",
 				text = {
 					"All jokers to the left",
 					"of this has {C:attention}X1.5{}",

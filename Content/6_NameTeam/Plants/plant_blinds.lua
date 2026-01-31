@@ -2,8 +2,8 @@ SMODS.Blind({
 	key = "blank",
 	in_pool = false,
     boss = {
-		min = 1,
-		max = 10,
+		min = 9999,
+		max = 9999,
 		showdown = false,
 	},
 	atlas = "nteam_blinds",

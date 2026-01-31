@@ -1363,7 +1363,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-    in_pool = false, 
+    in_pool = NAMETEAM.plant_in_pool, 
     atlas = 'NAMETEAM_PlantPlaceholder',
     key = "hammeruit",
     cost = 4,
@@ -1417,5 +1417,33 @@ SMODS.Joker({
             cae.xmult_scale = 0
             NAMETEAM.msg(card, localize("k_reset"))
         end
+    end
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    key = "torchwood",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 3,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={1.5}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
     end
 })

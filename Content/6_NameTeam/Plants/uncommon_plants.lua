@@ -4964,7 +4964,11 @@ SMODS.Joker({
     },
     loc_vars = function(self,info_queue,card)
         local cae = card.ability.extra
-        return{vars={cae.xmult}}
+        local key = self.key
+        if card.ability and card.ability.no_dup then
+            key = self.key .. "_nodup"
+        end
+        return{vars={cae.xmult},key=key}
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
@@ -4978,7 +4982,7 @@ SMODS.Joker({
                 key = "j_cbean_spore_shroom"
             }
             acard.ability.no_dup = true
-            acard:set_edition("negative")
+            acard:set_edition("e_negative")
         end
     end,
 })

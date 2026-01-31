@@ -57,7 +57,27 @@ function Game:update(dt)
 				j.ability.nteam_celery_right = false
 			end
 		end
+
+
+		for i, j in ipairs(G.jokers.cards) do
+			if
+				NAMETEAM.all_on(j, G.jokers.cards, "right", nil, "j_cbean_torchwood")
+			then
+				if not j.ability.nteam_torchwood then
+					NAMETEAM.values("*", j, 1.5, true)
+				end
+				j.ability.nteam_torchwood = true
+			else
+				if j.ability.nteam_torchwood then
+					NAMETEAM.values("/", j, 1.5, true)
+				end
+				j.ability.nteam_torchwood = false
+			end
+		end
+
 	end
+
+	
 end
 
 local start_run_hook = Game.start_run

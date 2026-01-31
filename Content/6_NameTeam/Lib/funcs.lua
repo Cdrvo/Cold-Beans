@@ -527,7 +527,7 @@ function NAMETEAM.attention_text(_text, _hold, _major, _scale, _offset, _align)
 	})
 end
 
-function NAMETEAM.all_on(card, area, direction, ability)
+function NAMETEAM.all_on(card, area, direction, ability, check_for_key_only) -- the fuck am i doing
 	local cae = {
 		rr = nil,
 		num = 0,
@@ -543,9 +543,15 @@ function NAMETEAM.all_on(card, area, direction, ability)
 		if not direction or (direction and direction ~= "left") then
 			if i > cae.rr then
 				if ability then
+					
 					cae.tab[#cae.tab+1] = area[i]
 					area[i].ability[ability] = true
 				end
+				if area[i].config.center.key == check_for_key_only and not area[i].debuff then
+						return true
+					elseif not (check_for_key_only) or area[i].debuff then
+						return false
+					end
 				cae.num = cae.num + 1
 			end
 		else
@@ -554,11 +560,18 @@ function NAMETEAM.all_on(card, area, direction, ability)
 					cae.tab[#cae.tab+1] = area[i]
 					area[i].ability[ability] = true
 				end
+				if area[i].config.center.key == check_for_key_only and not area[i].debuff then
+						return true
+					elseif not (check_for_key_only) or area[i].debuff then
+						return false
+					end
 				cae.num = cae.num + 1
 			end
 		end
     end
-	return cae.num -- cae.tab
+	if not check_for_key_only then
+		return cae.num -- cae.tab
+	end
 end
 
 function NAMETEAM.remove_element(t, element)
