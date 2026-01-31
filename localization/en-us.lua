@@ -5181,9 +5181,9 @@ return {
 			j_cbean_imp_pear                            = {
 				name = "Imp Pear",
 				text = {
-					"{C:green}Sell{} this to reduce",
-					"needed score by",
-					"this ante's {C:attention}Big{} blind needed score"
+					"Sell this {C:attention}Joker{} to reduce the",
+					"current {C:attention}Blind{}'s requirement by",
+					"this {C:attention}Ante's{} {C:attention}Big Blind{} requirement",
 				},
 			},
 
