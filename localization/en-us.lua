@@ -4098,10 +4098,10 @@ return {
 			j_cbean_tomb_tangler                        = {
 				name = "Tomb Tangler",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:red}remove{} all stickers",
-					"from a random card and",
-					"turn it {C:dark_edition}Negative{}"
+					"Sell this {C:attention}Joker",
+					"to {C:red}remove{} all {C:attention}Stickers",
+					"from a random {C:attention}Joker",
+					"and give it {C:dark_edition}Negative{}"
 				},
 			},
 			j_cbean_tallnut                             = {
