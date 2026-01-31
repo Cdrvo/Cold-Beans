@@ -3833,8 +3833,8 @@ return {
 				text = {
 					"Sell this {C:attention}Joker{} to set",
 					"current {C:attention}Blind{}'s required chips to {C:red}0",
-					"Halve the requirement instead",
-					"if facing a {C:attention}Boss Blind{}",
+					"If facing a {C:attention}Boss Blind{}",
+					"halve the requirement instead",
 					"Creates a {C:attention}Crater{}",
 					"when sold"
 				},
@@ -3851,9 +3851,9 @@ return {
 				name = "Squash",
 				text = {
 					"{C:green}Sell{} this to {C:red}defeat",
-					"current blind.",
-					"If the current blind",
-					"is a {C:attention}Boss Blind{}, half it instead"
+					"the current {C:attention}Blind",
+					"If facing a {C:attention}Boss Blind{}",
+					"halve the requirement instead",
 				},
 			},
 			j_cbean_threepeater                         = {
