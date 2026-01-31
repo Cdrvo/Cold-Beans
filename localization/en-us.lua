@@ -3832,7 +3832,7 @@ return {
 				text = {
 					"Sell this {C:attention}Joker{} after {C:attention}#1#{C:inactive} (#2#){}",
 					"rounds to {C:attention}halve{} the current",
-					"blind's required chips"
+					"{C:attention}Blind's{} required {C:chips}Chips{}"
 				},
 			},
 			j_cbean_snowpea                             = {
@@ -3840,7 +3840,7 @@ return {
 				text = {
 					"When {C:attention}Blind{} is selected,",
 					"{C:green}#1# in #2#{} chance to",
-					"disable current blind"
+					"disable current {C:attention}Blind{}"
 				},
 			},
 			j_cbean_repeater                            = {
@@ -3875,7 +3875,7 @@ return {
 				text = {
 					"Earn {C:money}$#1#{} at",
 					"end of round",
-					"Turns into {C:attention}Sunnier Shroom{}",
+					"Becomes {C:attention}Sunnier Shroom{}",
 					"after {C:attention}#2#{C:inactive} (#3#){} rounds"
 				},
 			},
@@ -3924,9 +3924,9 @@ return {
 				name = "Doom Shroom",
 				text = {
 					"Sell this {C:attention}Joker{} to set",
-					"current {C:attention}Blind{}'s required chips to {C:red}0",
-					"If facing a {C:attention}Boss Blind{}, halve",
-					"the requirement instead",
+					"current {C:attention}Blind's{} requirement to {C:red}0",
+					"If facing a {C:attention}Boss Blind{},",
+					"halve it instead",
 					"Creates a {C:attention}Crater{}",
 					"when sold"
 				},
@@ -3934,7 +3934,7 @@ return {
 			j_cbean_crater                              = {
 				name = "Crater",
 				text = {
-					"Always has {C:attention}Eternal{}",
+					"{C:attention}Eternal{}",
 					"{C:red,E:2}Self-destructs{} after",
 					"{C:attention}#1#{C:inactive} (#2#){} rounds"
 				},
@@ -3945,7 +3945,7 @@ return {
 					"Sell this {C:attention}Joker{} to {C:red}defeat",
 					"the current {C:attention}Blind",
 					"If facing a {C:attention}Boss Blind{}, halve",
-					"the requirement instead",
+					"its requirement instead",
 				},
 			},
 			j_cbean_threepeater                         = {
@@ -4009,7 +4009,7 @@ return {
 				name = "Bzzz Button",
 				text = {
 					"All scored cards in the",
-					"next hand played {C:attention}after",
+					"hand played {C:attention}after",
 					"this {C:attention}Joker{} is sold give",
 					"{X:mult,C:white}X#1#{} Mult and {C:red,E:2}self-destruct",
 				},
@@ -4018,24 +4018,24 @@ return {
 				name = "Bun Chi",
 				text = {
 					"{C:chips}+#1#{} Chips",
-					"After {C:attention}#4#{C:inactive} (#3#){} triggers,",
+					"After {C:attention}#4#{C:inactive} [[#3#]{} triggers,",
 					"{C:mult}+#2#{} Mult instead"
 				},
 			},
 			j_cbean_meteor_flower                       = {
 				name = "Meteor Flower",
 				text = {
-					"Highest ranked scored",
+					"Highest-ranked scored",
 					"card is {C:red}destroyed{}",
 					"Cards adjacent to it",
-					"gains {C:mult}+#1#{} Mult permanently"
+					"gain {C:mult}+#1#{} Mult permanently"
 				},
 			},
 			j_cbean_sundew_tangler                      = {
 				name = "Sundew Tangler",
 				text = {
-					"{C:attention}Playing Cards{}",
-					"don't retrigger",
+					"{C:attention}Playing cards{}",
+					"can't be retriggered",
 					"Each played card",
 					"gives {C:money}$#1#{} when scored"
 				},
@@ -4054,16 +4054,16 @@ return {
 				text = {
 					"At end of round, all",
 					"other {C:attention}Jokers{} lose {C:red}-$1{}",
-					"of sell value and",
-					"gains {X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
-					"that lost sell value",
+					"of sell value, gains",
+					"{X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
+					"affected by this",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
 			j_cbean_bamboo_spartan                      = {
 				name = "Bamboo Spartan",
 				text = {
-					"After the last {C:red}discard{},",
+					"After final {C:red}discard{} of round,",
 					"gains {C:chips}Chips{} equal to",
 					"the sum of the ranks",
 					"of all cards in hand",
@@ -4076,8 +4076,8 @@ return {
 				name = "Sea Flora",
 				text = {
 					"{C:chips}+#1#{} Chips for",
-					"each {C:attention}Joker to the",
-					"left of this {C:attention}Joker",
+					"each {C:attention}Joker{} to the",
+					"left of this one",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
 			},
@@ -4086,8 +4086,8 @@ return {
 				text = {
 					"Sell this {C:attention}Joker",
 					"to instantly defeat",
-					"the current blind",
-					"If sold, {C:attention}Jokers have",
+					"the current {C:attention}Blind{}",
+					"If sold, {C:attention}Jokers{} have",
 					"a {C:green}1 in 3{} chance to",
 					"not trigger until the",
 					"next {C:attention}Blind{} is defeated"
@@ -4106,7 +4106,7 @@ return {
 			j_cbean_maybee                              = {
 				name = "Maybee",
 				text = {
-					"On last {C:blue}hand of",
+					"On final {C:blue}hand{} of",
 					"round, {C:attention}3{} random",
 					"scored cards give",
 					"{X:mult,C:white}X#1#{} Mult"
