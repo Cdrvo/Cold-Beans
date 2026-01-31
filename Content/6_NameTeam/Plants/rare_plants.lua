@@ -1179,13 +1179,9 @@ SMODS.Joker({
 	rarity = 3,
 	blueprint_compat = true,
 	config = {
-		extra = {
-			xmult = 2,
-			odds = 5,
-		},
 	},
 	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
+		info_queue[#info_queue+1] = G.P_CENTERS.e_negative
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra

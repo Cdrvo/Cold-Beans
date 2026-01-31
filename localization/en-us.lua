@@ -4046,11 +4046,12 @@ return {
 			j_cbean_bamboo_spartan                      = {
 				name = "Bamboo Spartan",
 				text = {
-					"On the last {C:red}discard{}",
-					"Gains {C:chips}Chips{} equal to",
-					"the sum of the handheld cards' ranks.",
-					"Earn {C:attention}double{} if on the last {C:blue}hand",
-					"as well.",
+					"After the last {C:red}discard{},",
+					"gains {C:chips}Chips{} equal to",
+					"the sum of the ranks",
+					"of all cards in hand",
+					"Gains {C:attention}twice{} as many {C:blue}Chips",
+					"if you have {C:attention}1{} hand remaining",
 					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
 				},
 			},
@@ -4058,21 +4059,21 @@ return {
 				name = "Sea Flora",
 				text = {
 					"{C:chips}+#1#{} Chips for",
-					"each card on the",
-					"left of this joker",
+					"each {C:attention}Joker to the",
+					"left of this {C:attention}Joker",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
 			},
 			j_cbean_bud_uh_boom                         = {
 				name = "Bud'uh Boom",
 				text = {
-					"{C:green}Sell{} this card",
+					"Sell this {C:attention}Joker",
 					"to instantly defeat",
-					"the current blind.",
-					"but jokers gains a",
-					"{C:green}1 in 3{} Chance to",
-					"not trigger until",
-					"the next blind is defeated"
+					"the current blind",
+					"If sold, {C:attention}Jokers have",
+					"a {C:green}1 in 3{} chance to",
+					"not trigger until the",
+					"next {C:attention}Blind{} is defeated"
 				},
 			},
 			j_cbean_cran_jelly                          = {
@@ -4080,76 +4081,80 @@ return {
 				text = {
 					"Scored cards are",
 					"retriggered {C:attention}#1#{} times",
-					"{C:green}#2# in #3#{} Chance to",
-					"{C:red}destroy{} said cards"
+					"{C:green}#2# in #3#{} chance",
+					"each played card",
+					"to be {C:red}destroyed{}"
 				},
 			},
 			j_cbean_maybee                              = {
 				name = "Maybee",
 				text = {
-					"On the last {C:blue}hand",
-					"of the round, {C:attention}3{}",
-					"random scored cards",
+					"On last {C:blue}hand of",
+					"round, {C:attention}3{} random",
+					"scored cards give",
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
 			j_cbean_tomb_tangler                        = {
 				name = "Tomb Tangler",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:red}remove{} all stickers",
-					"from a random card and",
-					"turn it {C:dark_edition}Negative{}"
+					"Sell this {C:attention}Joker",
+					"to {C:red}remove{} all {C:attention}Stickers",
+					"from a random {C:attention}Joker",
+					"and give it {C:dark_edition}Negative{}"
 				},
 			},
 			j_cbean_tallnut                             = {
 				name = "Tall-Nut",
 				text = {
-					"Future cards can only",
-					"have {C:attention}1{} Sticker.",
-					"Cards {C:red}cannot{} get debuffed"
+					"Future cards can have",
+					"at most {C:attention}1{} Sticker",
+					"Cards {C:red}cannot{} be debuffed"
 				},
 			},
 			j_cbean_spikeweed                           = {
 				name = "Spikeweed",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"Scored cards gains {C:red}-1{} Chips",
-					"Destroy scored cards if they",
-					"stop returning chips"
+					"Scored cards lose {C:chips}-#1#{} Chips",
+					"Destroy scored cards if",
+					"their total Chip value",
+					"becomes {C:attention}0{} or less"
 				},
 			},
 			j_cbean_iceweed                             = {
 				name = "Iceweed",
 				text = {
-					"Scored cards gain {X:mult,C:white}X#1#{}",
-					"{C:mult}Perma XMULT{} but lose {C:red}-1{} Chips",
-					"Destroy scored cards if they",
-					"stop returning chips"
+					"Scored cards gain {X:mult,C:white}X#1#{} Mult",
+					"permanently but lose {C:chips}-1{} Chips",
+					"Destroy scored cards if",
+					"their total Chip value",
+					"becomes {C:attention}0{} or less"
 				},
 			},
 			j_cbean_blover                              = {
 				name = "Blover",
 				text = {
 					"Cards {C:red}cannot{} score",
-					"Gains {X:mult,C:white}X#2#{} Mult",
-					"for each card that would've scored",
+					"Gains {X:mult,C:white}X#2#{} Mult for",
+					"each card that",
+					"would have scored",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
 			j_cbean_sea_shroom                          = {
 				name = "Sea Shroom",
 				text = {
-					"If this card is",
-					"in your leftmost joker slot",
+					"If this {C:attention}Joker{} is",
+					"in your leftmost {C:attention}Joker{} slot",
 					"{X:mult,C:white}X#1#{} Mult"
 				},
 			},
 			j_cbean_split_pea                           = {
 				name = "Split Pea",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"if this joker is closer to the left",
+					"{X:mult,C:white}X#1#{} Mult if this {C:attention}Joker{}",
+					"is closer to the left",
 					"{C:mult}+#2#{} Mult otherwise"
 				},
 			},
@@ -5990,6 +5995,15 @@ return {
 					"other owned {C:red}Rare{} {C:attention}Joker{}",
 					"{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size,{}",
 					"{C:inactive}max of {C:attention}+#3#{C:inactive} hand size){}"
+				}
+			},
+			j_cbean_nameteam_bryce                       = {
+				name = 'Bryce',
+				text =
+				{
+					"Each {C:attention}Jack{}",
+                    "held in hand",
+                    "gives {X:mult,C:white}X#1#{} Mult",
 				}
 			},
 			j_cbean_nameteam_crowbar                    = {

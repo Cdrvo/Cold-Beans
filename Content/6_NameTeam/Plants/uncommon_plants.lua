@@ -523,11 +523,12 @@ SMODS.Joker({
 	config = {
 		extra = {
 			xmult = 2.5,
+            chip_loss = 1,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return { vars = { cae.xmult } }
+		return { vars = { cae.xmult, cae.chip_loss } }
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -542,7 +543,7 @@ SMODS.Joker({
 				or -context.other_card.ability.perma_bonus < context.other_card.base.id
 			then
 				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
-				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - cae.chip_loss
 
 				if context.other_card.base.id == -context.other_card.ability.perma_bonus then
 					context.other_card.ability.cbean_marked = true
