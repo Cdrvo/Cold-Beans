@@ -5392,6 +5392,16 @@ return {
 				},
 			},
 
+			j_cbean_corn_fetti_popper = {
+				name =  "Corn-fetti Popper",
+				text = {
+					"Leftmost scored card",
+					"gives {C:mult}+#1#{} Mult",
+					"scaled by the amount",
+					"of scoring cards on",
+					"its right"
+				},
+			},
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
