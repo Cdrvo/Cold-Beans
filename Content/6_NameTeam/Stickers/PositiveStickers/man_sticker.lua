@@ -14,4 +14,5 @@ SMODS.Sticker({
 		art = "GhostSalt",
 		team = "Name Team"
 	},
+	sticker_type = "Positive",
 })
