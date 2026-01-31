@@ -6060,6 +6060,16 @@ return {
 					"in hand becomes {C:attention}Steel{}"
 				}
 			},
+			j_cbean_nameteam_mappedout             = {
+				name = 'Mapped Out',
+				text =
+				{
+					"Gives {C:white,X:mult}#1#{} for each",
+					"unique {C:green}Biome{}",
+					"visited this run",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult){}"
+				}
+			},
 			j_cbean_nameteam_beentheredonethat          = {
 				name = 'Been There Done That',
 				text =
