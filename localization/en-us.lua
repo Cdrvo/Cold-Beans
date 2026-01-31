@@ -4017,9 +4017,9 @@ return {
 				name = "Bean Sprout",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"Gives an extra {X:mult,C:white}X#2#{} Mult",
-					"when the highest ranked card in play",
-					"scores"
+					"Highest ranked card",
+					"in played hand gives",
+					"{X:mult,C:white}X#2#{} Mult when scored"
 				},
 			},
 			j_cbean_night_cap                           = {
