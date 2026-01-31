@@ -4169,10 +4169,10 @@ return {
 			j_cbean_pumpkin                             = {
 				name = "Pumpkin",
 				text = {
-					"Card to the {C:attention}left",
+					"{C:attention}Joker to the {C:attention}left",
 					"cannot be {C:attention}flipped{} or {C:red}debuffed{}",
-					"{C:red}Self-Destructs{} after preventing",
-					"{C:attention}#1#{C:inactive} (#2#){} Flips or Debuffs"
+					"{C:red}Self-destructs{} after preventing",
+					"{C:attention}#1#{C:inactive} (#2#){} flips or debuffs"
 				},
 			},
 			j_cbean_magnet_shroom                       = {
