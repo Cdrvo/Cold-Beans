@@ -2215,3 +2215,67 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "blast_spinner",
+    atlas = 'NAMETEAM_PlantJokers',
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 2
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+            local cae = card.ability.extra
+        return{
+            vars={cae.xmult}
+        }
+    end,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, "debuff_byblast_spinner")
+        end
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before then
+            cae._card = pseudorandom_element(context.scoring_hand,pseudoseed("blast_spinner"))
+        end
+        if context.individual and context.cardarea == G.play then
+            if context.other_card == cae._card then
+                return{
+                    xmult = cae.xmult
+                }
+            end
+        end
+        if context.final_scoring_step then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    for k, v in pairs(context.scoring_hand) do
+                        local c = context.scoring_hand 
+                        if v == cae._card then
+                            SMODS.debuff_card(v, true, "debuff_byblast_spinner")
+                        end
+                    end
+                    return true
+                end
+            }))
+        end
+        if context.ante_change and context.ante_end and not context.blueprint then
+            for k, v in pairs(G.playing_cards) do
+                SMODS.debuff_card(v, false, "debuff_byblast_spinner")
+            end
+        end
+    end,
+})

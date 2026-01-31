@@ -4804,11 +4804,11 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if context.joker_main and (G.GAME.current_round.hands_left%2)==0 then
+        if context.joker_main and (G.GAME.current_round.hands_left%2)==1 then
             return{
                 xmult = cae.odd_xmult
             }
-        elseif context.joker_main and (G.GAME.current_round.hands_left%2)==1 then
+        elseif context.joker_main and (G.GAME.current_round.hands_left%2)==0 then
             return{
                 xmult = cae.even_xmult
             }
