@@ -12,6 +12,14 @@ return {
 					"as {C:money}Piss{} cards",
 				}
 			},
+			b_cbean_nameteam_happy = {
+				name = "Happy Deck",
+				text = {
+					"Start run with",
+                    "a copy of",
+                    "{C:attention,T:j_smiley}Smiley Face{}"
+				}
+			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
 				name = "Daily Deck",
 				text = {
@@ -4029,8 +4037,8 @@ return {
 				text = {
 					"At end of round, all",
 					"other {C:attention}Jokers{} lose {C:red}-$1{}",
-					"of sell value",
-					"Gains {X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
+					"of sell value and",
+					"gains {X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
 					"that lost sell value",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
@@ -5572,6 +5580,17 @@ return {
 					"by {C:attention}%#1#{}.",
 					"reduced amount decreases",
 					"by {C:red}-#2#{} per trigger"
+				},
+			},
+
+			j_cbean_blooming_heart                         = {
+				name = "Blooming Heart",
+				text = {
+					"Scored cards give",
+					"{C:mult}+#1#{} Mult.",
+					"increases by {C:attention}1{}",
+					"per trigger and {C:red}resets",
+					"after scoring ends"
 				},
 			},
 

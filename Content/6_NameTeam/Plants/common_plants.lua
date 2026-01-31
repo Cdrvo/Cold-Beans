@@ -2597,3 +2597,41 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "blooming_heart",
+	atlas = "NAMETEAM_PlantJokers",
+	cost = 3,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			mult = 1,
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.mult }}
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+        if context.individual and context.cardarea == G.play then
+            local a = cae.mult
+            cae.mult = cae.mult + 1
+            return{
+                mult = a
+            }
+        end
+        if context.after then
+            cae.mult = 1
+            NAMETEAM.msg(card, localize("k_reset"))
+        end
+    end
+})
