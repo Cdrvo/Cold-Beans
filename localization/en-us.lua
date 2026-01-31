@@ -12,6 +12,14 @@ return {
 					"as {C:money}Piss{} cards",
 				}
 			},
+			b_cbean_nameteam_happy = {
+				name = "Happy Deck",
+				text = {
+					"Start run with",
+                    "a copy of",
+                    "{C:attention,T:j_smiley}Smiley Face{}"
+				}
+			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
 				name = "Daily Deck",
 				text = {
