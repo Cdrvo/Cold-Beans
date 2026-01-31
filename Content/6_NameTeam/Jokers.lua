@@ -1223,6 +1223,38 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+    key = "nameteam_intheway",
+    config = { extra = { retriggers = 1 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 9, y = 8 },
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.retriggers } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card == context.scoring_hand[1] and context.other_card == context.scoring_hand[#context.scoring_hand] then
+                return { repetitions = card.ability.extra.retriggers * 2 }
+            elseif context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[#context.scoring_hand] then
+                return { repetitions = card.ability.extra.retriggers }
+            end
+        end
+    end
+}
+
+SMODS.Joker {
     key = "nameteam_riverstyx",
     config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false } },
     rarity = 3,

@@ -5865,6 +5865,16 @@ return {
 					}
 				}
 			},
+			j_cbean_nameteam_intheway                  = {
+				name = 'In the Way',
+				text =
+				{
+					"Retrigger {C:attention}first{} and",
+                    "{C:attention}last{} played cards",
+					"used in scoring",
+                    "{C:attention}#1#{} additional time"
+				}
+			},
 			j_cbean_nameteam_riverstyx                  = {
 				name = 'Sail the Styx',
 				text =
