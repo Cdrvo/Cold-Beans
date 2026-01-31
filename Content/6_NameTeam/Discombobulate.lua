@@ -33,8 +33,6 @@ SMODS.Consumable {
             SelectCombo(card)
         elseif G.GAME.blind.in_blind and CanUncombo(card) then
             UnselectCombo(card)
-        else
-            return nil
         end
     end,
     keep_on_use = function(self, card) --Needed for every combo card
