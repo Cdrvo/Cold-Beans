@@ -5564,6 +5564,17 @@ return {
 				},
 			},
 
+			j_cbean_bombegranate                         = {
+				name = "Bombegranate",
+				text = {
+					"When entering a {C:attention}Blind{}",
+					"reduce its requirements",
+					"by {C:attention}%#1#{}.",
+					"reduced amount decreases",
+					"by {C:red}-#2#{} per trigger"
+				},
+			},
+
 			j_cbean_corn_fetti_popper                   = {
 				name = "Corn-fetti Popper",
 				text = {

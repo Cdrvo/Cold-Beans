@@ -5156,3 +5156,52 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "bombegranate",
+	atlas = "NAMETEAM_PlantJokers",
+	cost = 3,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			blind = 50,
+            lower = 10
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.blind }}
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+        if context.first_hand_drawn and not context.blueprint and G.GAME.blind and G.GAME.blind.chips then
+            local des = false
+            if cae.blind == cae.lower then
+                des = true
+            end
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.3,
+				func = function()
+                    cae.blind = cae.blind - cae.lower
+					G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.perc)
+					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+					NAMETEAM.msg(card, "-%" .. cae.perc)
+                    if des then
+                        SMODS.destroy_cards(card)
+                    end
+					return true
+				end,
+			}))
+		end
+	end,
+})
+
