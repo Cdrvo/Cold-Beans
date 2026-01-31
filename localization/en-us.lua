@@ -3762,11 +3762,12 @@ return {
 			j_cbean_chomper                             = {
 				name = "Chomper",
 				text = {
-					"If only {C:attention}1{} card",
-					"is played, {C:red}destroy{} it.",
-					"cannot destroy another card",
-					"for {C:attention}2{C:inactive} (#1#){}",
-					"roumds"
+					"If played hand contains",
+					"only {C:attention}1{} card, destroy it",
+					"This Joker's destruction",
+					"effect becomes inactive",
+					"for {C:attention}2{C:inactive} (#1#){} rounds",
+					"after it triggers",
 				},
 			},
 			j_cbean_puff_shroom                         = {
