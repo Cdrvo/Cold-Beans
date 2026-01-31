@@ -3984,7 +3984,7 @@ return {
 				text = {
 					"Sell this {C:attention}Joker{} to halve",
 					"current {C:attention}Blind{} requirement,",
-					"then permanently {C:red}debuff{}",
+					"then permanently {C:red}debuffs{}",
 					"all cards in hand"
 				},
 			},
