@@ -404,29 +404,6 @@ function Card:in_collection()
     end
 end
 
-function NAMETEAM.mult_value(table, value)	
-	local new_table = {}
-	for k, v in pairs(table) do
-		if type(v) == "table" then
-			local new_new_table = copy_table(NAMETEAM.mult_value(v, value))
-			new_table[k] = new_new_table
-		elseif type(v) == "number" then
-			if
-			v ~= 0 and (v ~= 1 or (name ~= "x_chips" and name ~= "x_mult"))
-			then
-				new_table[k] = v * (value or 2)
-			else
-				new_table[k] = v
-			end
-		else
-			new_table[k] = v
-		end
-	end
-
-	return new_table
-end
-
-
 function NAMETEAM.msg(card, message, type)
 	if not type then type = "extra" end
 	card_eval_status_text(card, type, nil, nil, nil, { message = message })

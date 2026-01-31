@@ -848,7 +848,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.2,
       func = function()
-        affected_card.ability = NAMETEAM.mult_value(affected_card.ability, 1.5)
+        affected_card.ability = NAMETEAM.values("*", card, 1.5)
         return true
       end
     }))
