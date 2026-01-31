@@ -2606,7 +2606,7 @@ SMODS.Joker {
     cbean_anim_current_state = "normal",
     cost = 5,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = { key = "nameteam_afterlife", set = "Biome" }
+        info_queue[#info_queue + 1] = { key = "cbean_biome_nameteam_afterlife", set = "Other" }
         return { vars = { card.ability.extra.antes * -1 } }
     end,
     blueprint_compat = false,

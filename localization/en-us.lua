@@ -7043,6 +7043,14 @@ return {
 				name = "m",
 				text = { "{C:mult}+10{}" }
 			},
+			-- Biomes don't work well in info queues
+			cbean_biome_nameteam_afterlife = {
+				name = "The Afterlife",
+				text = {
+					"There is nothing to",
+					"do here."
+				},
+			},
 		},
 		Planet = {
 			c_cbean_sdown_gay_planet = {
