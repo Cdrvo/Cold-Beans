@@ -4046,11 +4046,12 @@ return {
 			j_cbean_bamboo_spartan                      = {
 				name = "Bamboo Spartan",
 				text = {
-					"On the last {C:red}discard{}",
-					"Gains {C:chips}Chips{} equal to",
-					"the sum of the handheld cards' ranks.",
-					"Earn {C:attention}double{} if on the last {C:blue}hand",
-					"as well.",
+					"After the last {C:red}discard{},",
+					"gains {C:chips}Chips{} equal to",
+					"the sum of the ranks",
+					"of all cards in hand",
+					"Gains {C:attention}twice{} as many {C:blue}Chips",
+					"if you have {C:attention}1{} hand remaining",
 					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
 				},
 			},
