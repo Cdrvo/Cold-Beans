@@ -5519,6 +5519,26 @@ return {
 				},
 			},
 
+			j_cbean_spore_shroom = {
+				name =  "Spore Shroom",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"When {C:attention} Blind{} is",
+					"selected, create another {C:dark_edition}Negative{}",
+					"{C:purple}Spore-Shroom{}",
+					"{C:inactive,:s0.8}(Created spore shrooms cant duplicate)"
+				},
+			},
+
+			j_cbean_torchwood = {
+				name =  "Torch Wood",
+				text = {
+					"All jokers to the left",
+					"of this has {C:attention}X1.5{}",
+					"values"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
 				name = {

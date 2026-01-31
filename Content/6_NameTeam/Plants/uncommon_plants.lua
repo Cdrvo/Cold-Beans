@@ -4935,11 +4935,50 @@ SMODS.Joker({
     end,
     calculate = function(self,card,context)
         local cae = card.ability.extra
-        if cotnext.selling_self and G.GAME.blind and G.GAME.blind.in_blind then
+        if context.selling_self and G.GAME.blind and G.GAME.blind.in_blind then
             NAMETEAM.defeat()
             if #G.jokers.cards>1 then
                 SMDOS.destroy_cards(NAMETEAM.random_joker(G.jokers.cards, card))
             end
+        end
+    end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "spore_shroom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+            xmult = 1.5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+        if context.end_of_round and context.main_eval and G.GAME.blind and G.GAME.blind.boss and not card.ability.no_dup then
+            local acard = SMDOS.add_card{
+                key = "j_cbean_spore_shroom"
+            }
+            acard.ability.no_dup = true
+            acard:set_edition("negative")
         end
     end,
 })
