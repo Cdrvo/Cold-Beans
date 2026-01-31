@@ -342,7 +342,7 @@ SMODS.Joker {
             for _, v in ipairs(context.scoring_hand) do
                 if not v:is_suit("Diamonds") or SMODS.has_any_suit(v) then
                     valid = true
-break
+                    break
                 end
             end
 
@@ -582,7 +582,7 @@ SMODS.Joker {
             for _, v in ipairs(G.play.cards) do
                 if v:get_id() ~= 2 then
                     valid = false
-break
+                    break
                 end
             end
 
@@ -1217,6 +1217,38 @@ SMODS.Joker {
                     }))
                     return { message = '+1 Moon', colour = G.C.PURPLE }
                 end
+            end
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_intheway",
+    config = { extra = { retriggers = 1 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers2',
+    pos = { x = 9, y = 8 },
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.retriggers } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card == context.scoring_hand[1] and context.other_card == context.scoring_hand[#context.scoring_hand] then
+                return { repetitions = card.ability.extra.retriggers * 2 }
+            elseif context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[#context.scoring_hand] then
+                return { repetitions = card.ability.extra.retriggers }
             end
         end
     end
@@ -2008,9 +2040,9 @@ SMODS.Joker {
                     delay = 0.15,
                     func = function()
                         card:flip()
-play_sound('card1', 1)
-card:juice_up(0.3, 0.3)
-return true
+                        play_sound('card1', 1)
+                        card:juice_up(0.3, 0.3)
+                        return true
                     end
                 }))
                 delay(0.2)
@@ -2293,7 +2325,6 @@ SMODS.Joker {
     end
 }
 
-
 SMODS.Joker {
     key = "nameteam_trafficlight",
     config = { extra = { xmult = 2 } },
@@ -2329,6 +2360,55 @@ SMODS.Joker {
 
         if context.joker_main and card.ability.extra.active then
             return { xmult = card.ability.extra.xmult }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_cacklejack",
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 7, y = 4 },
+    cost = 7,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.individual and not context.repetition then
+            local me = nil
+            for i = 1, #G.jokers.cards do
+                if (G.jokers.cards[i] == card) then me = i end
+            end
+
+            if me and me >= 1 and me <= #G.jokers.cards then
+                local candidates = {}
+                for _, v in ipairs(G.jokers.cards) do
+                    if v and v ~= G.jokers.cards[me - 1] and not (v.config and v.config.center and v.config.center.key == "j_cbean_nameteam_cacklejack") then
+                        candidates[#candidates + 1] = v
+                    end
+                end
+
+                if next(candidates) then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            card:juice_up()
+                            local _card = pseudorandom_element(candidates, "cacklejack")
+                            play_sound("cbean_flashcardreroll", 1, 0.2)
+                            NAMETEAM.replacecards(_card)
+                            return true
+                        end
+                    }))
+                    return { message = localize("k_cbean_replaced_ex"), colour = G.C.GREEN }
+                end
+            end
         end
     end
 }
@@ -2455,25 +2535,25 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
         local tbl = card.ability.extra[card.ability.extra.current_effect] or {}
-		if context.starting_shop and card.ability.extra.current_effect == "doggfly" then
-			for _, j in ipairs(G.jokers.cards) do
-				if j.config.center.pvz_plant then
-					plant_count = plant_count + 1
-				end
-			end
-			if
-				SMODS.pseudorandom_probability(
-					card,
-					"nteam_self_insert",
-					tbl.num + plant_count,
-					tbl.odds,
-					"nteam_self_insert"
-				)
-			then
+        if context.starting_shop and card.ability.extra.current_effect == "doggfly" then
+            for _, j in ipairs(G.jokers.cards) do
+                if j.config.center.pvz_plant then
+                    plant_count = plant_count + 1
+                end
+            end
+            if
+                SMODS.pseudorandom_probability(
+                    card,
+                    "nteam_self_insert",
+                    tbl.num + plant_count,
+                    tbl.odds,
+                    "nteam_self_insert"
+                )
+            then
                 local pool = {}
                 for _, sticker in pairs(SMODS.Stickers) do
                     if sticker.sticker_type == "Positive" and sticker.sets and sticker.sets["Joker"] then
-                        pool[#pool+1] = sticker.key
+                        pool[#pool + 1] = sticker.key
                     end
                 end
                 local added = pseudorandom_element(pool, "nteam_doggfly")
@@ -2481,19 +2561,19 @@ SMODS.Joker({
                 if target then
                     target:add_sticker(added, true)
                 end
-			end
-		end
+            end
+        end
         if context.ending_shop and card.ability.extra.current_effect == "dave" then
             if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
                 local pool = {}
                 for _, center in pairs(G.P_CENTER_POOLS.Joker) do
                     if center.pvz_plant then
-                        pool[#pool+1] = center.key
+                        pool[#pool + 1] = center.key
                     end
                 end
                 G.E_MANAGER:add_event(Event({
-                    func = function ()
+                    func = function()
                         SMODS.add_card({
                             key = pseudorandom_element(pool, "nteam_dave")
                         })
@@ -2541,8 +2621,8 @@ SMODS.Joker({
         if context.joker_main then
             local final_xmult = nil
             if card.ability.extra.current_effect == "revo" then
-				final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
-			end
+                final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
+            end
             return {
                 xmult = final_xmult or tbl.xmult,
                 xchips = tbl.chips,
@@ -2567,7 +2647,7 @@ SMODS.Joker({
                 if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                     G.E_MANAGER:add_event(Event({
-                        func = function ()
+                        func = function()
                             SMODS.add_card({
                                 set = "cbean_StickerSheet",
                             })
@@ -2582,7 +2662,7 @@ SMODS.Joker({
 				NAMETEAM.set_effect(card, index)
             end
         end
-	end,
+    end,
 })
 
 function NAMETEAM.set_sprite_self_insert(card)
@@ -2624,8 +2704,8 @@ SMODS.Joker {
         },
         ["happening"] = {
             anim = {
-                { x = 1,                             y = 3, t = 0.5 + (0.94 / 2) /4 },
-                { x = 2, y = 3, t = 0.5 + (0.94 / 2) /4 },
+                { x = 1,                             y = 3, t = 0.5 + (0.94 / 2) / 4 },
+                { x = 2,                             y = 3, t = 0.5 + (0.94 / 2) / 4 },
                 { xrange = { first = 3, last = 10 }, y = 3, t = (0.94 / 2) / 9 },
             },
             loop = false
@@ -2679,7 +2759,7 @@ SMODS.Joker {
                 end
             }))
             G.FUNCS.switch_biome("nameteam_afterlife")
-            return { saved = "ph_cbean_nameteam_wayne"}
+            return { saved = "ph_cbean_nameteam_wayne" }
         end
         if (context.starting_shop or context.blind_select) and card.ability.extra.saved then
             G.E_MANAGER:add_event(Event({
