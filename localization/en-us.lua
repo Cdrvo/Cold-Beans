@@ -3956,8 +3956,9 @@ return {
 			j_cbean_boomberry                           = {
 				name = "Boom Berry",
 				text = {
-					"{C:attention}Last{} scoring card",
-					"gives {C:chips}+#1#{} Chips"
+					"Last played card",
+					"gives {C:chips}+#1#{} Chips",
+					"when scored",
 				},
 			},
 			j_cbean_vamporcini                          = {
