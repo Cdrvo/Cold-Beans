@@ -3934,8 +3934,7 @@ return {
 				text = {
 					"{C:red}Destroy{} the first",
 					"played card",
-					"permanently {C:red}Debuff{} self",
-					"afterwards"
+					"Afterwards, {C:red}debuffs{} itself",
 				},
 			},
 			j_cbean_jalepeno                            = {
