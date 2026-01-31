@@ -2337,7 +2337,22 @@ SMODS.Joker {
 
 SMODS.Joker({
 	key = "nteam_self_insert",
-	-- add atlas later
+	-- add atlas NOW
+	atlas = "NAMETEAM_Jokers3",
+	cbean_anim_states = {
+        ["normal"] = {
+            anim = {
+                { x = 0, y = 0, t = 1 }
+            },
+            loop = false
+        },
+        ["attract"] = {
+            anim = {
+                { xrange = { first = 0, last = 6 }, y = 4, t = 1 },
+            },
+            loop = true
+        }
+    },
 	config = {
 		extra = {
 			current_effect = "NONE",
@@ -2370,6 +2385,11 @@ SMODS.Joker({
 			},
 		},
 	},
+	set_ability = function(self, card, initial, delay_sprites)
+		if card.ability.extra.current_effect == "NONE" then
+			card:cbean_set_anim_state("attract")
+		end
+	end,
 	loc_vars = function(self, info_queue, card)
         local tbl = card.ability.extra[card.ability.extra.current_effect]
 		if card.ability.extra.current_effect == "NONE" then
@@ -2425,15 +2445,7 @@ SMODS.Joker({
 	},
 	add_to_deck = function(self, card, from_debuff)
 		if not from_debuff then
-			card.ability.extra.current_effect = pseudorandom_element({
-				"thunderedge",
-				"revo",
-				"dave",
-				"ghost",
-				"doggfly",
-				"inky",
-				"doctor",
-			}, "nteam_self_insert")
+			NAMETEAM.set_effect(card)
 		end
 	end,
 	calculate = function(self, card, context)
@@ -2561,19 +2573,37 @@ SMODS.Joker({
                 end
             end
             if context.beat_boss then
-                card.ability.extra.current_effect = pseudorandom_element({
-                    "thunderedge",
-                    "revo",
-                    "dave",
-                    "ghost",
-                    "doggfly",
-                    "inky",
-                    "doctor",
-                }, "nteam_self_insert")
+				NAMETEAM.set_effect(card)
             end
         end
 	end,
 })
+
+function NAMETEAM.set_effect(card)
+	local index = pseudorandom('nteam_self_insert', 0, 6)
+	if index == 0 then
+		card.ability.extra.current_effect = "inky"
+		card.children.center:set_sprite_pos({x = 0, y = 4})
+	elseif index == 1 then
+		card.ability.extra.current_effect = "revo"
+		card.children.center:set_sprite_pos({x = 1, y = 4})
+	elseif index == 2 then
+		card.ability.extra.current_effect = "dave"
+		card.children.center:set_sprite_pos({x = 2, y = 4})
+	elseif index == 3 then
+		card.ability.extra.current_effect = "doggfly"
+		card.children.center:set_sprite_pos({x = 3, y = 4})
+	elseif index == 4 then
+		card.ability.extra.current_effect = "doctor"
+		card.children.center:set_sprite_pos({x = 4, y = 4})
+	elseif index == 5 then
+		card.ability.extra.current_effect = "ghost"
+		card.children.center:set_sprite_pos({x = 5, y = 4})
+	elseif index == 6 then
+		card.ability.extra.current_effect = "thunderedge"
+		card.children.center:set_sprite_pos({x = 6, y = 4})
+	end
+end
 
 SMODS.Joker {
     key = "nameteam_wayne",
