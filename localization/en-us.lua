@@ -4161,10 +4161,9 @@ return {
 			j_cbean_starfruit                           = {
 				name = "Starfruit",
 				text = {
-					"{C:red}+#5#{} Discard each round",
-					"{C:mult}+#2#{} Mult, {C:chips}+#1#{} Chips",
-					"and {X:mult,C:white}X#3#{} Mult during scoring",
-					"{C:money}+$#4#{} after every round"
+					"{C:red}+#5#{} discards each round",
+					"{C:mult}+#2#{} Mult, {C:chips}+#1#{} Chips, {X:mult,C:white}X#3#{} Mult",
+					"Earn {C:money}$#4#{} at end of round"
 				},
 			},
 			j_cbean_pumpkin                             = {
