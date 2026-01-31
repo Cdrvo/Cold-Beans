@@ -4973,8 +4973,8 @@ return {
 			j_cbean_pea_vine                            = {
 				name = "Pea Vine",
 				text = {
-					"Every owned {C:green}Pea{} joker's",
-					"values are multiplied",
+					"Multiply all values",
+					"of {C:attention}Pea Jokers",
 					"by {C:attention}X#1#",
 					"{C:inactive}(Pea Vine excluded)"
 				},
