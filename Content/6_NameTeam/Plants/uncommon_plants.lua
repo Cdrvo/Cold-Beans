@@ -4865,3 +4865,38 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "sweetheart_snare",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            rounds = 5,
+            rounds_max = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.rounds,cae.rounds_max}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.end_of_scoring and context.main_eval then
+            if cae.rounds>1 then
+                cae.rounds = cae.rounds-1
+            else
+                SMODS.destroy_cards(card)
+            end
+        end
+    end,
+})

@@ -5367,6 +5367,17 @@ return {
 				},
 			},
 
+			j_cbean_sweetheart_snare = {
+				name =  "Sweetheart Snare",
+				text = {
+					"Blind wont progress",
+					"until all {C:blue}hands{} are",
+					"used.",
+					"{C:red}Self-Destructs{} after",
+					"{C:attention}#2#{C:inactive} (#1#){} Rounds"
+				},
+			},
+
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {

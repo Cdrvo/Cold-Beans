@@ -2349,7 +2349,7 @@ SMODS.Joker({
                 delay = 0.01,
                 func = function()
                     acard:juice_up()
-                    acard:set_ability({"m_cbean_basic_zomboid","m_cbean_carrot_zomboid","m_cbean_melon_zomboid"})
+                    acard:set_ability(pseudorandom_element({"m_cbean_basic_zomboid","m_cbean_carrot_zomboid","m_cbean_melon_zomboid"},pseudoseed("znake_lilly")))
                     return true
                 end
             }))
