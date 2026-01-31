@@ -5178,7 +5178,7 @@ SMODS.Joker({
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return { vars = { cae.blind }}
+		return { vars = { cae.blind, cae.lower }}
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -5191,10 +5191,10 @@ SMODS.Joker({
 				trigger = "after",
 				delay = 0.3,
 				func = function()
-                    cae.blind = cae.blind - cae.lower
-					G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.perc)
+					G.GAME.blind.chips = G.GAME.blind.chips - NAMETEAM.perc(G.GAME.blind.chips, cae.blind)
 					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-					NAMETEAM.msg(card, "-%" .. cae.perc)
+                    NAMETEAM.msg(card, "-" .. cae.blind .. "%")
+                    cae.blind = cae.blind - cae.lower
                     if des then
                         SMODS.destroy_cards(card)
                     end
