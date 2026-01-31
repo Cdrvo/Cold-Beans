@@ -3924,10 +3924,9 @@ return {
 			j_cbean_threepeater                         = {
 				name = "Threepeater",
 				text = {
-					"{C:chips}+#1#{} Chips and",
-					"{X:mult,C:white}X#2#{} Mult",
-					"{C:money}+$3#{} at the end",
-					"of a round"
+					"{C:chips}+#1#{} Chips, {X:mult,C:white}X#2#{} Mult",
+					"Earn {C:money}$#3#{} at",
+					"end of round"
 				},
 			},
 			j_cbean_tangle_kelp                         = {
