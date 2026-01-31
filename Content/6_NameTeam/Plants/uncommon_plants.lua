@@ -2697,7 +2697,6 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "dusk_lobber",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 8, y = 6 },
 	cost = 4,
@@ -5065,7 +5064,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "spore_shroom",
-	atlas = "NAMETEAM_PlantJokers",
+	atlas = "NAMETEAM_PlantPlaceholder",
 	pos = { x = 0, y = 6 },
 	cost = 4,
 	beans_credits = {
@@ -5109,4 +5108,51 @@ SMODS.Joker({
 			acard:set_edition("e_negative")
 		end
 	end,
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "pea_nut",
+	atlas = "NAMETEAM_PlantJokers",
+	cost = 3,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			blind = 0.9
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.blind }}
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+        if context.first_hand_drawn and not context.blueprint and G.GAME.blind and G.GAME.blind.chips then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.3,
+				func = function()
+					G.GAME.blind.chips = G.GAME.blind.chips * cae.blind
+					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+					NAMETEAM.msg(card, "X" .. cae.blind)
+					return true
+				end,
+			}))
+		end
+	end,
+    update = function(self,card)
+        if card.added_to_deck then
+            if card:on_the("right") and card:on_the("right").debuff then
+                 card:on_the("right").debuff = false
+            end
+        end
+    end
 })

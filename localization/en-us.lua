@@ -5545,6 +5545,15 @@ return {
 				},
 			},
 
+			j_cbean_pea_nut                          = {
+				name = "Pea-Nut",
+				text = {
+					"{C:attention}X#1#{} Blind Size",
+					"Card on the right",
+					"{C:red}cannot{} be debuffed"
+				},
+			},
+
 			j_cbean_corn_fetti_popper                   = {
 				name = "Corn-fetti Popper",
 				text = {
