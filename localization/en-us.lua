@@ -4189,17 +4189,18 @@ return {
 			j_cbean_flower_pot                          = {
 				name = "Flower Pot",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult if",
-					"scored hand has one",
-					"of each suit"
+					"{X:mult,C:white}X#1#{} Mult if scored",
+					"hand contains one",
+					"card of each suit"
 				},
 			},
 			j_cbean_cabbage_pult                        = {
 				name = "Cabbage Pult",
 				text = {
-					"Scored card with the",
-					"Highest rank",
+					"Played card with",
+					"the highest rank",
 					"gives {C:mult}+#1#{} Mult",
+					"when scored",
 				},
 			},
 			j_cbean_coffee_bean                         = {
