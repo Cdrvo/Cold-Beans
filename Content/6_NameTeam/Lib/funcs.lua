@@ -149,6 +149,16 @@ function NAMETEAM.contains(table, element)
 	return false
 end
 
+-- Stolen straight from StackOverflow
+function NAMETEAM.find(table, element)
+	for k, value in pairs(table) do
+		if value == element then
+			return k
+		end
+	end
+	return -1
+end
+
 -- Yoinked from Multiverse
 function NAMETEAM.create_localized_rows(set, key, args)
 	args = args or {}

@@ -20,6 +20,13 @@ return {
                     "{C:attention,T:j_smiley}Smiley Face{}"
 				}
 			},
+			b_cbean_nameteam_graveyard = {
+				name = "Graveyard Deck",
+				text = {
+					"Start run with",
+                    "five {C:attention}Plant{} Jokers"
+				}
+			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
 				name = "Daily Deck",
 				text = {

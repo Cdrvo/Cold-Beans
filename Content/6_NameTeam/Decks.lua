@@ -62,3 +62,49 @@ SMODS.Back {
         code = "GhostSalt",
     }
 }
+
+SMODS.Back {
+    key = 'nameteam_graveyard',
+    atlas = 'NAMETEAM_Decks',
+    pos = { x = 0, y = 1 },
+    apply = function(self, back)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                if G.jokers then
+                    local eligible_jokers = {}
+                    for k, v in pairs(G.P_CENTERS) do
+                        if string.find(k, "j_") == 1 then
+                            if v.pvz_plant then
+                                eligible_jokers[#eligible_jokers+1] = k
+                            end
+                        end
+                    end
+                    for i=1,5 do
+                        if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                            local joker = pseudorandom_element(eligible_jokers, "nameteam_graveyard")
+                            local joker_index = NAMETEAM.find(eligible_jokers, joker)
+                            table.remove(eligible_jokers, joker_index)
+                            local card = SMODS.create_card({
+                                set = "Joker",
+                                area = G.jokers,
+                                key = joker,
+                                no_edition = true
+                            })
+                            card:add_to_deck()
+                            card:start_materialize()
+                            G.jokers:emplace(card)
+                        end
+                    end
+                    return true
+                end
+            end
+        }))
+    end,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    }
+}
