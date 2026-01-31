@@ -1677,12 +1677,13 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "gumnut",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = {x=9,y=8},
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "DoggFly",
 	},
 	rarity = 1,
 	blueprint_compat = true,
@@ -1977,7 +1978,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = {x=8,y=8},
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "vamporcini",
@@ -1985,7 +1987,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Crazy Dave",
 	},
 	rarity = 1,
 	blueprint_compat = true,
@@ -2121,7 +2123,8 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = {x=10,y=8},
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "sundew_tangler",
@@ -2129,7 +2132,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "DoggFly",
 	},
 	rarity = 1,
 	blueprint_compat = true,
