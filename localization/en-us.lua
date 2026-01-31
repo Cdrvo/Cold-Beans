@@ -4355,7 +4355,7 @@ return {
 				},
 			},
 			j_cbean_robotga                             = {
-				name = "Robotga",
+				name = "Rotobaga",
 				text = {
 					"Each scored card",
 					"gives {C:chips}+#1#{} Chips"
@@ -4469,7 +4469,7 @@ return {
 				},
 			},
 			j_cbean_tile_turnip                         = {
-				name = "Tile Turnipt",
+				name = "Tile Turnip",
 				text = {
 					"{C:attention}Retrigger{} the card",
 					"on the right {C:attention}#1#{} Time",
