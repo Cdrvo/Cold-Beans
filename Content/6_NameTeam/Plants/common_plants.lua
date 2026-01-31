@@ -1622,7 +1622,7 @@ SMODS.Joker({
 		if context.individual and context.cardarea == G.play then
 			if context.other_card == cae.card then
 				return {
-					chips = context.other_card.base.id,
+					chips = context.other_card.base.id * 2,
 				}
 			end
 		end

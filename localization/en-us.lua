@@ -5190,8 +5190,9 @@ return {
 			j_cbean_dartichoke                          = {
 				name = "Dartichoke",
 				text = {
-					"Scored highest rank card",
-					"gives its rank as chips"
+					"Highest ranked card",
+					"gives twice its rank as",
+					"Chips when scored",
 				},
 			},
 			j_cbean_gumnut                              = {
