@@ -674,7 +674,7 @@ SMODS.Joker({
         end
     end,
     in_pool = function(self,card)
-        return NAMETEAM.plant_in_pool, {allow_duplicates = true}
+        return NAMETEAM.plant_in_pool(), {allow_duplicates = true}
     end
 })
 
