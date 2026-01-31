@@ -2555,7 +2555,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "dandelion",
-	atlas = "NAMETEAM_PlantJokers",
+	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
 	beans_credits = {
 		code = "Revo",
@@ -2602,7 +2602,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "blooming_heart",
-	atlas = "NAMETEAM_PlantJokers",
+	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
 	beans_credits = {
 		code = "Revo",

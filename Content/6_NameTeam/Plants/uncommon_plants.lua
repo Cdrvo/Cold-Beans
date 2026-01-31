@@ -5064,7 +5064,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "spore_shroom",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 0, y = 6 },
 	cost = 4,
 	beans_credits = {
@@ -5115,7 +5115,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "pea_nut",
-	atlas = "NAMETEAM_PlantJokers",
+	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
 	beans_credits = {
 		code = "Revo",
@@ -5161,7 +5161,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "bombegranate",
-	atlas = "NAMETEAM_PlantJokers",
+	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
 	beans_credits = {
 		code = "Revo",
