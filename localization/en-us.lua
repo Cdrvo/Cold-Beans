@@ -4143,9 +4143,9 @@ return {
 				name = "Iceweed",
 				text = {
 					"Scored cards gain {X:mult,C:white}X#1#{} Mult",
-					"permanently but lose {C:chips}-1{} Chips",
-					"Destroy scored cards if",
-					"their total Chip value",
+					"permanently but lose {C:chips}-1{} Chip",
+					"{C:red}Destroy{} scored cards if",
+					"their total {C:chips}Chips{} value",
 					"becomes {C:attention}0{} or less"
 				},
 			},
@@ -4162,9 +4162,9 @@ return {
 			j_cbean_sea_shroom                          = {
 				name = "Sea Shroom",
 				text = {
-					"If this {C:attention}Joker{} is",
-					"in your leftmost {C:attention}Joker{} slot",
-					"{X:mult,C:white}X#1#{} Mult"
+					"{X:mult,C:white}X#1#{} Mult if this",
+					"{C:attention}Joker{} is your",
+					"{C:attention}leftmost{} Joker"
 				},
 			},
 			j_cbean_split_pea                           = {
