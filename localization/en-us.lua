@@ -3754,8 +3754,9 @@ return {
 			j_cbean_repeater                            = {
 				name = "Repeater",
 				text = {
-					"{C:attention}Retrigger{} the first",
-					"played hand of the round"
+					"{C:attention}Retrigger{} all scored",
+					"cards in {C:attention}first",
+					"{C:attention}hand{} of round"
 				},
 			},
 			j_cbean_chomper                             = {
