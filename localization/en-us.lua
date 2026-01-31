@@ -4059,8 +4059,8 @@ return {
 				name = "Sea Flora",
 				text = {
 					"{C:chips}+#1#{} Chips for",
-					"each card on the",
-					"left of this joker",
+					"each {C:attention}Joker to the",
+					"left of this {C:attention}Joker",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
 			},
