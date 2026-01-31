@@ -6044,6 +6044,16 @@ return {
 					}
 				}
 			},
+			j_cbean_nameteam_trafficlight = {
+				name = 'Traffic Light',
+				text =
+				{
+					"{C:white,X:mult}X#1#{} Mult if this",
+					"Joker was on {C:green}GO{} or",
+					"{C:attention}PREPARE TO STOP{} when",
+					"hand was played"
+				}
+			},
 			j_cbean_nameteam_wayne = {
 				name = 'Wayne',
 				text =
