@@ -3746,6 +3746,7 @@ return {
 			j_cbean_snowpea                             = {
 				name = "Snow Pea",
 				text = {
+					"When {C:attention}Blind{} is selected,",
 					"{C:green}#1# in #2#{} chance to",
 					"disable current blind"
 				},
