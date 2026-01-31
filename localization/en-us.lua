@@ -4136,8 +4136,9 @@ return {
 				name = "Blover",
 				text = {
 					"Cards {C:red}cannot{} score",
-					"Gains {X:mult,C:white}X#2#{} Mult",
-					"for each card that would've scored",
+					"Gains {X:mult,C:white}X#2#{} Mult for",
+					"each card that",
+					"would have scored",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
