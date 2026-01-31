@@ -5403,6 +5403,14 @@ return {
 				},
 			},
 
+			j_cbean_seashooter = {
+				name =  "Sea Shooter",
+				text = {
+					"Each odd scoring",
+					"card gives {C:chips}+#1#{} Chips"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
 				name = {
