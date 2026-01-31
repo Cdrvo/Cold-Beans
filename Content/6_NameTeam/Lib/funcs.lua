@@ -852,3 +852,10 @@ function Card:cbean_is_consumable()
 	end
 	return false
 end
+
+function NAMETEAM.sticker_area_check(area)
+	if area == G.shop_jokers or area == G.shop_booster or area == G.shop_vouchers or area == G.pack_cards then
+		return true
+	end
+	return false
+end

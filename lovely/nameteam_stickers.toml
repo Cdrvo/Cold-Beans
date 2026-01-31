@@ -398,3 +398,36 @@ if v.stickers then
 end
 '''
 match_indent = true
+
+
+# sticker should_apply fix
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+should_apply = function(self, card, center, area, bypass_roll)
+            if
+                ( not self.sets or self.sets[center.set or {}]) and
+'''
+position = 'at'
+payload = '''
+should_apply = function(self, card, center, area, bypass_roll)
+            local cbean_sticking_it = nil
+            if string.find(self.key, "crv_") then cbean_sticking_it = true end
+            if
+               ((( not self.sets or self.sets[center.set or {}]) and not cbean_sticking_it) or (cbean_sticking_it and ( not self.sets or self.sets[center.set or {}]) and (card and card.cbean_area and NAMETEAM.sticker_area_check(card.cbean_area)))) and
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+if card.ability.consumeable and not skip_materialize then card:start_materialize() end
+'''
+position = 'before'
+payload = '''
+card.cbean_area = area
+'''
+match_indent = true

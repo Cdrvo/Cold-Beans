@@ -4556,7 +4556,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "levitater",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = {x=1,y=9},
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
