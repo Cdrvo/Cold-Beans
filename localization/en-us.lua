@@ -6336,6 +6336,17 @@ return {
 					"{C:attention}final{} hand of round"
 				}
 			},
+			j_cbean_nteam_mix_up                 = {
+				name = 'Mix Up',
+				text =
+				{
+					"If played hand is not",
+					"the {C:attention}most played{} hand,",
+					"gain {C:blue}+#1#{} hands this round",
+					"Can only trigger {C:attention}#2#{}",
+					"times per round",
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory              = {

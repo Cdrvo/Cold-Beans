@@ -3003,3 +3003,36 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nteam_mix_up",
+    config = { extra = { max_hands = 2, hands = 1, hands_given = 0 } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 2, y = 5 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.hands, card.ability.extra.max_hands } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "Inky",
+        art = "Inky",
+        code = "ThunderEdge",
+    },
+
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.joker_main and context.scoring_name ~= NAMETEAM.most_played() and cae.hands_given < 2 then
+            ease_hands_played(cae.hands)
+            cae.hands_given = cae.hands_given + 1
+        end
+        if context.end_of_round and context.main_eval and not context.game_over then
+            cae.hands_given = 0
+        end
+    end
+}
