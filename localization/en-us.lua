@@ -4073,7 +4073,7 @@ return {
 					"If sold, {C:attention}Jokers have",
 					"a {C:green}1 in 3{} chance to",
 					"not trigger until the",
-					"next blind is defeated"
+					"next {C:attention}Blind{} is defeated"
 				},
 			},
 			j_cbean_cran_jelly                          = {
