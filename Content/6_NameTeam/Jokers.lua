@@ -1,9 +1,9 @@
 SMODS.Joker({
-	key = "nteam_self_insert",
-	-- add atlas NOW
-	atlas = "NAMETEAM_Jokers3",
+    key = "nteam_self_insert",
+    -- add atlas NOW
+    atlas = "NAMETEAM_Jokers3",
     pos = { x = 0, y = 0 },
-	cbean_anim_states = {
+    cbean_anim_states = {
         ["attract"] = {
             anim = {
                 { xrange = { first = 0, last = 6 }, y = 4, t = 1 },
@@ -11,112 +11,112 @@ SMODS.Joker({
             loop = true
         }
     },
-	config = {
-		extra = {
-			current_effect = "NONE",
-			thunderedge = {
-				xmult = 1,
-				xmult_inc = 0.25,
-			},
-			revo = {
-				xmult = 1,
-				xmult_inc = 0.25,
-			},
-			dave = {
-				xmult = 1.5,
-			},
-			ghost = {
-				xmult = 1,
-				xmult_inc = 0.1,
-			},
-			doggfly = {
-				odds = 4,
-				num = 1,
-			},
-			inky = {
-				xchips = 1,
-				xchips_inc = 0.4,
-			},
-			doctor = {
-				xmult = 1,
-				xmult_inc = 0.5,
-			},
-		},
-	},
-	set_ability = function(self, card, initial, delay_sprites)
-		card:cbean_set_anim_state("attract")
-		if card.ability.extra.current_effect ~= "NONE" then
-			NAMETEAM.set_sprite_self_insert(card, card.ability.extra.current_effect)
-		end
-	end,
-	loc_vars = function(self, info_queue, card)
+    config = {
+        extra = {
+            current_effect = "NONE",
+            thunderedge = {
+                xmult = 1,
+                xmult_inc = 0.25,
+            },
+            revo = {
+                xmult = 1,
+                xmult_inc = 0.25,
+            },
+            dave = {
+                xmult = 1.5,
+            },
+            ghost = {
+                xmult = 1,
+                xmult_inc = 0.1,
+            },
+            doggfly = {
+                odds = 4,
+                num = 1,
+            },
+            inky = {
+                xchips = 1,
+                xchips_inc = 0.4,
+            },
+            doctor = {
+                xmult = 1,
+                xmult_inc = 0.5,
+            },
+        },
+    },
+    set_ability = function(self, card, initial, delay_sprites)
+        card:cbean_set_anim_state("attract")
+        if card.ability.extra.current_effect ~= "NONE" then
+            NAMETEAM.set_sprite_self_insert(card, card.ability.extra.current_effect)
+        end
+    end,
+    loc_vars = function(self, info_queue, card)
         local tbl = card.ability.extra[card.ability.extra.current_effect]
-		if card.ability.extra.current_effect == "NONE" then
-		elseif card.ability.current_effect ~= "doggfly" then
-			if card.ability.extra.current_effect == "ghost" then
-				info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
-			end
-			local final_xmult = nil
-			if card.ability.extra.current_effect == "revo" then
-				final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
-			end
-			return {
-				vars = {
-					tbl.xmult_inc or tbl.xchips_inc,
-					final_xmult or tbl.xmult or tbl.xchips,
-				},
-				key = self.key .. "_" .. card.ability.extra.current_effect,
-			}
-		else
-			local plant_count = 0
-			if G.jokers then
-				for _, j in ipairs(G.jokers.cards) do
-					if j.config.center.pvz_plant then
-						plant_count = plant_count + 1
-					end
-				end
-			end
-			local n, d = SMODS.get_probability_vars(
-				card,
-				tbl.num + plant_count,
-				tbl.odds,
-				"nteam_self_insert"
-			)
-			return {
-				vars = {
-					n,
-					d,
-				},
-				key = self.key .. "_" .. card.ability.extra.current_effect,
-			}
-		end
-	end,
-	cost = 10,
-	rarity = 3,
-	blueprint_compat = true,
-	eternal_compat = true,
-	perishable_compat = true,
-	beans_credits = {
-		team = "Name Team",
-		idea = "Name Team",
-		art = "Name Team",
-		code = "ThunderEdge",
-	},
-	add_to_deck = function(self, card, from_debuff)
-		if not from_debuff then
-			card.ability.extra.current_effect = pseudorandom_element({
-				"thunderedge",
-				"revo",
-				"dave",
-				"ghost",
-				"doggfly",
-				"inky",
-				"doctor",
-			}, "nteam_self_insert")
-			NAMETEAM.set_sprite_self_insert(card)
-		end
-	end,
-	calculate = function(self, card, context)
+        if card.ability.extra.current_effect == "NONE" then
+        elseif card.ability.current_effect ~= "doggfly" then
+            if card.ability.extra.current_effect == "ghost" then
+                info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+            end
+            local final_xmult = nil
+            if card.ability.extra.current_effect == "revo" then
+                final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
+            end
+            return {
+                vars = {
+                    tbl.xmult_inc or tbl.xchips_inc,
+                    final_xmult or tbl.xmult or tbl.xchips,
+                },
+                key = self.key .. "_" .. card.ability.extra.current_effect,
+            }
+        else
+            local plant_count = 0
+            if G.jokers then
+                for _, j in ipairs(G.jokers.cards) do
+                    if j.config.center.pvz_plant then
+                        plant_count = plant_count + 1
+                    end
+                end
+            end
+            local n, d = SMODS.get_probability_vars(
+                card,
+                tbl.num + plant_count,
+                tbl.odds,
+                "nteam_self_insert"
+            )
+            return {
+                vars = {
+                    n,
+                    d,
+                },
+                key = self.key .. "_" .. card.ability.extra.current_effect,
+            }
+        end
+    end,
+    cost = 10,
+    rarity = 3,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    beans_credits = {
+        team = "Name Team",
+        idea = "Name Team",
+        art = "Name Team",
+        code = "ThunderEdge",
+    },
+    add_to_deck = function(self, card, from_debuff)
+        if not from_debuff then
+            card.ability.extra.current_effect = pseudorandom_element({
+                "thunderedge",
+                "revo",
+                "dave",
+                "ghost",
+                "doggfly",
+                "inky",
+                "doctor",
+            }, "nteam_self_insert")
+            NAMETEAM.set_sprite_self_insert(card)
+        end
+    end,
+    calculate = function(self, card, context)
         local tbl = card.ability.extra[card.ability.extra.current_effect] or {}
         if context.starting_shop and card.ability.extra.current_effect == "doggfly" then
             for _, j in ipairs(G.jokers.cards) do
@@ -241,29 +241,29 @@ SMODS.Joker({
                 end
             end
             if context.beat_boss then
-				local index = pseudorandom('nteam_self_insert', 0, 6)
-				NAMETEAM.set_effect(card, index)
+                local index = pseudorandom('nteam_self_insert', 0, 6)
+                NAMETEAM.set_effect(card, index)
             end
         end
     end,
 })
 
 function NAMETEAM.set_sprite_self_insert(card)
-	if card.ability.extra.current_effect == "inky" then
-		card.children.center:set_sprite_pos({x = 0, y = 4})
-	elseif card.ability.extra.current_effect == "revo" then
-		card.children.center:set_sprite_pos({x = 1, y = 4})
-	elseif card.ability.extra.current_effect == "dave" then
-		card.children.center:set_sprite_pos({x = 2, y = 4})
-	elseif card.ability.extra.current_effect == "doggfly" then
-		card.children.center:set_sprite_pos({x = 3, y = 4})
-	elseif card.ability.extra.current_effect == "doctor" then
-		card.children.center:set_sprite_pos({x = 4, y = 4})
-	elseif card.ability.extra.current_effect == "ghost" then
-		card.children.center:set_sprite_pos({x = 5, y = 4})
-	elseif card.ability.extra.current_effect == "thunderedge" then
-		card.children.center:set_sprite_pos({x = 6, y = 4})
-	end
+    if card.ability.extra.current_effect == "inky" then
+        card.children.center:set_sprite_pos({ x = 0, y = 4 })
+    elseif card.ability.extra.current_effect == "revo" then
+        card.children.center:set_sprite_pos({ x = 1, y = 4 })
+    elseif card.ability.extra.current_effect == "dave" then
+        card.children.center:set_sprite_pos({ x = 2, y = 4 })
+    elseif card.ability.extra.current_effect == "doggfly" then
+        card.children.center:set_sprite_pos({ x = 3, y = 4 })
+    elseif card.ability.extra.current_effect == "doctor" then
+        card.children.center:set_sprite_pos({ x = 4, y = 4 })
+    elseif card.ability.extra.current_effect == "ghost" then
+        card.children.center:set_sprite_pos({ x = 5, y = 4 })
+    elseif card.ability.extra.current_effect == "thunderedge" then
+        card.children.center:set_sprite_pos({ x = 6, y = 4 })
+    end
 end
 
 SMODS.Joker {
@@ -1867,17 +1867,17 @@ SMODS.Joker {
     end,
 }
 
---[[SMODS.Joker {
+SMODS.Joker {
     key = "nameteam_bryce",
-    config = { extra = { is_contestant = true } },
+    config = { extra = { is_contestant = true, xmult = 1.5 } },
     rarity = 3,
-    atlas = 'NAMETEAM_Jokers2',
-    pos = { x = 5, y = 9 },
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 8, y = 4 },
     cost = 8,
     loc_vars = function(self, info_queue, card)
-    return { vars = {  } }
+        return { vars = { card.ability.extra.xmult } }
     end,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     pronouns = "he_him",
@@ -1889,9 +1889,18 @@ SMODS.Joker {
         code = "GhostSalt",
     },
     calculate = function(self, card, context)
-
+        if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == 11 then
+            if context.other_card.debuff then
+                return {
+                    message = localize('k_debuffed'),
+                    colour = G.C.RED
+                }
+            else
+                return { xmult = card.ability.extra.xmult }
+            end
+        end
     end
-}]] --
+}
 
 SMODS.Joker {
     key = "nameteam_crowbar",
@@ -2650,14 +2659,21 @@ SMODS.Joker {
 }
 
 SMODS.Booster:take_ownership_by_kind('Standard', {
-  create_card = function(self, card, i)
-    local _edition = poll_edition('standard_edition' .. G.GAME.round_resets.ante, 2, true)
-    local _seal = SMODS.poll_seal({ mod = 10 })
-    return { set = (next(SMODS.find_card("j_cbean_nameteam_walledin")) or pseudorandom(pseudoseed('stdset' .. G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base",
-    enhancement = next(SMODS.find_card("j_cbean_nameteam_walledin")) and "m_stone" or nil,
-    edition = _edition, seal = _seal, area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta" }
-  end,
-  loc_vars = pack_loc_vars,
+    create_card = function(self, card, i)
+        local _edition = poll_edition('standard_edition' .. G.GAME.round_resets.ante, 2, true)
+        local _seal = SMODS.poll_seal({ mod = 10 })
+        return {
+            set = (next(SMODS.find_card("j_cbean_nameteam_walledin")) or pseudorandom(pseudoseed('stdset' .. G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base",
+            enhancement = next(SMODS.find_card("j_cbean_nameteam_walledin")) and "m_stone" or nil,
+            edition = _edition,
+            seal = _seal,
+            area = G.pack_cards,
+            skip_materialize = true,
+            soulable = true,
+            key_append = "sta"
+        }
+    end,
+    loc_vars = pack_loc_vars,
 })
 
 SMODS.Joker {

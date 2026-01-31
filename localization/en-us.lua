@@ -5993,6 +5993,15 @@ return {
 					"{C:inactive}max of {C:attention}+#3#{C:inactive} hand size){}"
 				}
 			},
+			j_cbean_nameteam_bryce                       = {
+				name = 'Bryce',
+				text =
+				{
+					"Each {C:attention}Jack{}",
+                    "held in hand",
+                    "gives {X:mult,C:white}X#1#{} Mult",
+				}
+			},
 			j_cbean_nameteam_crowbar                    = {
 				name = 'Crowbar',
 				text =
