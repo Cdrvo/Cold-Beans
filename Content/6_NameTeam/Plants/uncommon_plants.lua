@@ -403,7 +403,6 @@ SMODS.Joker({
     blueprint_compat = true,
     config = {
         extra = {
-            mult = 20,
             rounds = 3
         }
     },
