@@ -4073,7 +4073,7 @@ return {
 				name = "Sundew Tangler",
 				text = {
 					"{C:attention}Playing cards{}",
-					"can't be retriggered",
+					"cannot be retriggered",
 					"Each played card",
 					"gives {C:money}$#1#{} when scored"
 				},
