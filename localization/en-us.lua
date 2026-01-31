@@ -3998,10 +3998,10 @@ return {
 			j_cbean_meteor_flower                       = {
 				name = "Meteor Flower",
 				text = {
-					"Highest Ranked played",
-					"card is {C:red}Destroyed{}",
-					"cards next to it",
-					"Gains {C:mult}+#1#{} Perma Mult"
+					"Highest ranked scored",
+					"card is {C:red}destroyed{}",
+					"Cards adjacent to it",
+					"gains {C:mult}+#1#{} Mult permanently"
 				},
 			},
 			j_cbean_sundew_tangler                      = {
