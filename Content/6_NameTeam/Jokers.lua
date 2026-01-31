@@ -2654,7 +2654,7 @@ SMODS.Joker {
             G.FUNCS.switch_biome("nameteam_afterlife")
             return { saved = "ph_cbean_nameteam_wayne"}
         end
-        if context.starting_shop or context.blind_select and card.ability.extra.saved then
+        if (context.starting_shop or context.blind_select) and card.ability.extra.saved then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     ease_ante(card.ability.extra.antes)
