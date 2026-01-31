@@ -12,6 +12,14 @@ return {
 					"as {C:money}Piss{} cards",
 				}
 			},
+			b_cbean_nameteam_happy = {
+				name = "Happy Deck",
+				text = {
+					"Start run with",
+                    "a copy of",
+                    "{C:attention,T:j_smiley}Smiley Face{}"
+				}
+			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
 				name = "Daily Deck",
 				text = {
@@ -4029,8 +4037,8 @@ return {
 				text = {
 					"At end of round, all",
 					"other {C:attention}Jokers{} lose {C:red}-$1{}",
-					"of sell value",
-					"Gains {X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
+					"of sell value and",
+					"gains {X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
 					"that lost sell value",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
@@ -5173,17 +5181,18 @@ return {
 			j_cbean_imp_pear                            = {
 				name = "Imp Pear",
 				text = {
-					"{C:green}Sell{} this to reduce",
-					"needed score by",
-					"this ante's {C:attention}Big{} blind needed score"
+					"Sell this {C:attention}Joker{} to reduce the",
+					"current {C:attention}Blind{}'s requirement by",
+					"this {C:attention}Ante's{} {C:attention}Big Blind{} requirement",
 				},
 			},
 
 			j_cbean_dartichoke                          = {
 				name = "Dartichoke",
 				text = {
-					"Scored highest rank card",
-					"gives its rank as chips"
+					"Highest ranked card",
+					"gives twice its rank as",
+					"Chips when scored",
 				},
 			},
 			j_cbean_gumnut                              = {
@@ -5542,6 +5551,47 @@ return {
 					"triggered during the round",
 					"{C:inactive,s:0.85}(Increases by 0.1 per trigger, resets after the round)",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+
+			j_cbean_pea_nut                          = {
+				name = "Pea-Nut",
+				text = {
+					"{C:attention}X#1#{} Blind Size",
+					"Card on the right",
+					"{C:red}cannot{} be debuffed"
+				},
+			},
+
+			j_cbean_dandelion                         = {
+				name = "Dandelion",
+				text = {
+					"If played hand has",
+					"only {C:attention}3{} cards",
+					"a random one gains",
+					"{C:mult}+#1#{} Perma Mult"
+				},
+			},
+
+			j_cbean_bombegranate                         = {
+				name = "Bombegranate",
+				text = {
+					"When entering a {C:attention}Blind{}",
+					"reduce its requirements",
+					"by {C:attention}%#1#{}.",
+					"reduced amount decreases",
+					"by {C:red}-#2#{} per trigger"
+				},
+			},
+
+			j_cbean_blooming_heart                         = {
+				name = "Blooming Heart",
+				text = {
+					"Scored cards give",
+					"{C:mult}+#1#{} Mult.",
+					"increases by {C:attention}1{}",
+					"per trigger and {C:red}resets",
+					"after scoring ends"
 				},
 			},
 
@@ -6131,6 +6181,23 @@ return {
 						"Played cards give",
 						"{C:white,X:mult}X#1#{} Mult when scored"
 					}
+				}
+			},
+			j_cbean_nameteam_bozobrain                  = {
+				name = 'Bozo Brain',
+				text =
+				{
+					"Earn {C:money}$#1#{} if played",
+					"hand is level {C:attention}1{}"
+				}
+			},
+			j_cbean_nameteam_walledin                  = {
+				name = 'Walled In',
+				text =
+				{
+					"All cards in {C:attention}Standard{}",
+                    "{C:attention}Packs{} are {C:green}guaranteed{}",
+                    "to be {C:attention}Stone{}"
 				}
 			},
 			j_cbean_nameteam_trafficlight               = {

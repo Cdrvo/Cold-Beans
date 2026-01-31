@@ -508,7 +508,7 @@ SMODS.Joker({
 		end
 	end,
 	in_pool = function(self)
-		return (G.GAME.last_bought_joker_key ~= nil) and NAMETEAM.plant_in_pool
+		return (G.GAME.last_bought_joker_key ~= nil) and NAMETEAM.plant_in_pool()
 	end,
 })
 
@@ -937,10 +937,10 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.selling_self then
 			G.GAME.blind.chips = G.GAME.blind.chips
-					- (get_blind_amount(G.GAME.round_resets.blind_ante) * Colonparen.get_blind_by_key(
+					- ((get_blind_amount(G.GAME.round_resets.blind_ante) * Colonparen.get_blind_by_key(
 						G.GAME.round_resets.blind_choices["Big"]
 					).mult * G.GAME.starting_params.ante_scaling)
-				or 0
+				or 0)
 			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			NAMETEAM.msg(card, "Reduced!")
 		end
@@ -983,7 +983,7 @@ SMODS.Joker({
 		end
 	end,
 	in_pool = function(self, card)
-		return NAMETEAM.plant_in_pool, { allow_duplicates = true }
+		return NAMETEAM.plant_in_pool(), { allow_duplicates = true }
 	end,
 })
 
@@ -1229,7 +1229,7 @@ SMODS.Joker({
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return { vars({ cae.xmult }) }
+		return { vars = { cae.xmult } }
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -1391,7 +1391,7 @@ SMODS.Joker({
 				cae.rounds = cae.rounds - 1
 			else
 				cae.rounds = 0
-				card:remove_sticker("eternal", true)
+				card:remove_sticker("eternal")
 				NAMETEAM.msg(card, "Sellable!")
 			end
 		end

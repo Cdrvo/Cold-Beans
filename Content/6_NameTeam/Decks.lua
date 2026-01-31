@@ -30,3 +30,35 @@ SMODS.Back {
         code = "GhostSalt",
     }
 }
+
+
+SMODS.Back {
+    key = 'nameteam_happy',
+    atlas = 'NAMETEAM_Decks',
+    pos = { x = 2, y = 0 },
+    apply = function(self, back)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                if G.jokers then
+                    local card = SMODS.create_card({
+                        set = "Joker",
+                        area = G.jokers,
+                        key = "j_smiley",
+                        no_edition = true
+                    })
+                    card:add_to_deck()
+                    card:start_materialize()
+                    G.jokers:emplace(card)
+                    return true
+                end
+            end
+        }))
+    end,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    }
+}

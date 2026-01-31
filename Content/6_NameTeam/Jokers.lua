@@ -1538,7 +1538,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = false,
-    pronouns = "they_them",
+    pronouns = "any_all",
 
     beans_credits = {
         team = "Name Team",
@@ -2439,7 +2439,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    pronouns = "they_them",
+    pronouns = "any_all",
 
     beans_credits = {
         team = "Name Team",
@@ -2592,6 +2592,73 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_bozobrain",
+    config = { extra = { money = 2 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 7, y = 2 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.before and to_number(G.GAME.hands[context.scoring_name].level) == 1 then
+            return { dollars = card.ability.extra.money }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "nameteam_walledin",
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 8, y = 2 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+        return {}
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.before and to_number(G.GAME.hands[context.scoring_name].level) == 1 then
+            return { dollars = card.ability.extra.money }
+        end
+    end
+}
+
+SMODS.Booster:take_ownership_by_kind('Standard', {
+  create_card = function(self, card, i)
+    local _edition = poll_edition('standard_edition' .. G.GAME.round_resets.ante, 2, true)
+    local _seal = SMODS.poll_seal({ mod = 10 })
+    return { set = (next(SMODS.find_card("j_cbean_nameteam_walledin")) or pseudorandom(pseudoseed('stdset' .. G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base",
+    enhancement = next(SMODS.find_card("j_cbean_nameteam_walledin")) and "m_stone" or nil,
+    edition = _edition, seal = _seal, area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta" }
+  end,
+  loc_vars = pack_loc_vars,
+})
 
 SMODS.Joker {
     key = "nameteam_trafficlight",
