@@ -4299,9 +4299,9 @@ return {
 			j_cbean_umbrella_leaf                       = {
 				name = "Umbrella Leaf",
 				text = {
-					"Cards on the {C:attention}right{} and",
-					"{C:attention}left{} of this card",
-					"cannot be {C:red}Debuffed{} or {C:attention}Flipped{}"
+					"{C:attention}Jokers{} to the {C:attention}right{} and",
+					"{C:attention}left{} of this {C:attention}Joker",
+					"cannot be {C:red}debuffed{} or {C:attention}flipped{}"
 				},
 			},
 			j_cbean_marigold                            = {
