@@ -4153,8 +4153,8 @@ return {
 			j_cbean_split_pea                           = {
 				name = "Split Pea",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"if this joker is closer to the left",
+					"{X:mult,C:white}X#1#{} Mult if this {C:attention}Joker{}",
+					"is closer to the left",
 					"{C:mult}+#2#{} Mult otherwise"
 				},
 			},
