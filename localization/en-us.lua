@@ -3706,7 +3706,9 @@ return {
 					{
 						"Creates a {C:dark_edition}Negative{}",
 						"{C:tarot}Tarot{} card after",
-						"using a {C:stickersheet}Sticker Sheet",
+						"using a {C:stickersheet}Sticker Sheet"
+					},
+					{
 						"Gains {X:mult,C:white}X#1#{} Mult when a",
 						"{C:tarot}Tarot{} card is used",
 						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
