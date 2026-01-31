@@ -3781,10 +3781,10 @@ return {
 			j_cbean_sun_shroom                          = {
 				name = "Sun Shroom",
 				text = {
-					"{C:money}+$#1#{} at the",
-					"end of a round",
+					"Earn {C:money}$#1#{} at",
+					"end of round",
 					"Turns into {C:attention}Sunnier Shroom{}",
-					"after {C:attention}#2#{C:inactive} (#3#){} Rounds"
+					"after {C:attention}#2#{C:inactive} (#3#){} rounds"
 				},
 			},
 			j_cbean_sunnier_shroom                      = {
