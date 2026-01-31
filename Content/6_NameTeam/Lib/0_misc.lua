@@ -109,3 +109,10 @@ SMODS.Atlas({
 	py = 34,
 	frames = 21,
 })
+
+SMODS.Atlas({
+	key = "nteam_sidequests",
+	path = "6_NameTeam/ColdBeansNTSide.png",
+	px = 65,
+	py = 65,
+})

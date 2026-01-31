@@ -12,8 +12,8 @@ YMA.SideQuests.quest {
         }
     end,
 
-    atlas = 'yma_quest_atlas',
-    pos = { x = 1, y = 2 },
+    atlas = 'nteam_sidequests',
+    pos = { x = 0, y = 0 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
 
