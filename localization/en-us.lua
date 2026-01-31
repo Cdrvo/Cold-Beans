@@ -5070,8 +5070,8 @@ return {
 				name = "Zoybean Pod",
 				text = {
 					"Every {C:attention}#2#{C:inactive} (#1#){} Rounds",
-					"create a random {C:dark_edition}negative{}",
-					"Zom-boid"
+					"add a random {C:attention}Zomboid{}",
+					"card to your deck"
 				},
 			},
 			-- zomboids
