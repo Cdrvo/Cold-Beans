@@ -2673,7 +2673,26 @@ return {
 					"{C:dark_edition}+#1#{} hand size",
 					"while held in hand"
 				}
-			}
+			},
+			-- Nameteam zomboids
+			m_cbean_basic_zomboid = {
+				name = "Basic Zomboid",
+				text = {
+					"{C:mult}+#1#{} Mult"
+				}
+			},
+			m_cbean_carrot_zomboid = {
+				name = "Carrothead Zomboid",
+				text = {
+					"{C:chips}+#1#{} Chips"
+				}
+			},
+			m_cbean_melon_zomboid = {
+				name = "Melonhead Zomboid",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult"
+				}
+			},
 		},
 
 		Edition = {
@@ -5335,6 +5354,16 @@ return {
 					"hands than discards,",
 					"{C:chips}+#1#{} Chips",
 					"otherwise {C:mult}+#2#{} Mult"
+				},
+			},
+
+			j_cbean_znake_lilly = {
+				name =  "Znake Lilly",
+				text = {
+					"On first {C:blue}hand{} of the",
+					"round, a random card",
+					"turns into a random",
+					"{C:attention}Zomboid{} card"
 				},
 			},
 

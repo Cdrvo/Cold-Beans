@@ -2318,3 +2318,41 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+    atlas = 'NAMETEAM_PlantPlaceholder',
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool, 
+    key = "znake_lilly",
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={t}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.final_scoring_step then
+            local acard = pseudorandom_element(context.scoring_hand)
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.01,
+                func = function()
+                    acard:juice_up()
+                    acard:set_ability({"m_cbean_basic_zomboid","m_cbean_carrot_zomboid","m_cbean_melon_zomboid"})
+                    return true
+                end
+            }))
+        end
+    end
+})
