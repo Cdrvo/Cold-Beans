@@ -3991,7 +3991,7 @@ return {
 				name = "Bun Chi",
 				text = {
 					"{C:chips}+#1#{} Chips",
-					"after {C:attention}#4#{C:inactive} (#3#){} triggers,",
+					"After {C:attention}#4#{C:inactive} (#3#){} triggers,",
 					"{C:mult}+#2#{} Mult instead"
 				},
 			},
