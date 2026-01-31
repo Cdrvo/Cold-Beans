@@ -1849,6 +1849,17 @@ return {
 					"create {C:attention}Square Joker{}",
 				},
 			},
+			q_cbean_nteam_scholar = {
+				name = {
+					"Scholar",
+					"{C:dark_edition,s:0.7}Side Quest{}",
+				},
+				text = {
+					"If a {C:attention}Sticker{} was",
+					"applied to an {C:attention}Ace{},",
+					"create {C:attention}Scholar{}",
+				},
+			},
 		},
 		--Tboi items
 		yma_tboi_items = {
