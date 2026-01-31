@@ -2925,3 +2925,51 @@ SMODS.Joker {
         end
     end
 }
+
+
+
+SMODS.Joker {
+    key = "smoke_merchant",
+    config = { extra = { xmult = 1, xmult_gain = 0.5  } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 11, y = 4 },
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult_gain,card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "Inky",
+        art = "Inky",
+        code = "Revo",
+    },
+
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.money_altered and not context.blueprint and context.amount < 0 and G.shop then
+            cae.xmult = 1
+            NAMETEAM.msg(card, localize("k_reset"))
+        end
+        if context.ending_shop and not context.blueprint then
+            SMODS.scale_card(card,{
+                ref_table = cae,
+                ref_value = "xmult",
+                scalar_value = "xmult_gain",
+                scaling_message = {
+                    colour = G.C.MULT,
+                    message = localize("k_upgrade_ex")
+                }
+            })
+        end
+        if context.joker_main then
+            return{
+                xmult = cae.xmult
+            }
+        end
+    end
+}

@@ -5748,6 +5748,27 @@ return {
 					"Chips when scored",
 				},
 			},
+
+			j_cbean_commit_farming                    = {
+				name = "Commit Farming",
+				text = {
+					"{C:chips}+#1#{} Chips for each",
+					"{C:attention}unique{} consumable",
+					"picked up this run",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+				},
+			},
+
+			j_cbean_smoke_merchant                    = {
+				name = "Smoke Merchant",
+				text = {
+					"Gains {X:mult,C:white}X#1#{} Mult",
+					"at the end of shop",
+					"{C:red}Resets{} if money was",
+					"spent in the shop",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+				},
+			},
 			j_cbean_nameteam_bettercreditcard           = {
 				name = "Better Credit Card",
 				text = {
