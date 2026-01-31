@@ -3774,8 +3774,8 @@ return {
 				name = "Puff Shroom",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult{} if this",
-					"Joker is in the 2",
-					"leftmost Joker slots",
+					"{C:attention}Joker{} is in the 2",
+					"leftmost {C:attention}Joker{} slots",
 				},
 			},
 			j_cbean_sun_shroom                          = {
