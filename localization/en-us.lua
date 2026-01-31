@@ -3739,7 +3739,7 @@ return {
 				name = "Potato Mine",
 				text = {
 					"{C:money}Sell{} after {C:attention}#1#{C:inactive} (#2#){}",
-					"rounds to {C:attention}Half{} the current",
+					"rounds to {C:attention}halve{} the current",
 					"blind's required chips"
 				},
 			},
