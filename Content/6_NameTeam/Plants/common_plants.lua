@@ -2424,3 +2424,51 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "sourshot",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 3,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 1,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            dollars= 1
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.dollars}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+			if ((not context.other_card.ability.perma_bonus) or ((-(context.other_card.ability.perma_bonus)))<context.other_card.base.id) then
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+				context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus - 1
+
+                if (context.other_card.base.id) == -(context.other_card.ability.perma_bonus) then
+                    context.other_card.ability.cbean_marked = true
+                end
+				return {
+                    dollars = cae.dollars,
+					message = "Downgrade!",
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+		end
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card.ability.cbean_marked then
+            return{
+                remove = true
+            }
+        end
+    end,
+})

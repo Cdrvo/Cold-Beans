@@ -5411,6 +5411,15 @@ return {
 				},
 			},
 
+			j_cbean_sour_shot = {
+				name =  "Sour Shot",
+				text = {
+					"Scored cards lose",
+					"{C:red}-1{} Chips but",
+					"give {C:money}+$#1#{}"
+				},
+			},
+
 			j_cbean_devour_bloom = {
 				name =  "Devour Bloom",
 				text = {
