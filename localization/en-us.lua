@@ -3972,7 +3972,7 @@ return {
 			j_cbean_crater                              = {
 				name = "Crater",
 				text = {
-					"{C:attention}Eternal{}",
+					"Is {C:attention}Eternal{}",
 					"{C:red,E:2}Self-destructs{} after",
 					"{C:attention}#1#{C:inactive} (#2#){} rounds"
 				},
