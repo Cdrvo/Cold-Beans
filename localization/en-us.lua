@@ -5411,6 +5411,16 @@ return {
 				},
 			},
 
+			j_cbean_devour_bloom = {
+				name =  "Devour Bloom",
+				text = {
+					"{C:green}Sell{} this card",
+					"to instantly defeat the",
+					"blind but {:red}lose",
+					"a random joker"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
 				name = {

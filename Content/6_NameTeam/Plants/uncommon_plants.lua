@@ -4900,3 +4900,35 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "devour_bloom",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = false,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if cotnext.selling_self and G.GAME.blind and G.GAME.blind.in_blind then
+            NAMETEAM.defeat()
+            if #G.jokers.cards>1 then
+                SMDOS.destroy_cards(NAMETEAM.random_joker(G.jokers.cards, card))
+            end
+        end
+    end,
+})
