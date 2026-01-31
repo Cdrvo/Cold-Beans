@@ -6133,6 +6133,14 @@ return {
 					}
 				}
 			},
+			j_cbean_nameteam_bozobrain                  = {
+				name = 'Bozo Brain',
+				text =
+				{
+					"Earn {C:money}$#1#{} if played",
+					"hand is level {C:attention}1{}"
+				}
+			},
 			j_cbean_nameteam_trafficlight               = {
 				name = 'Traffic Light',
 				text =

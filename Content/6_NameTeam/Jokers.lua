@@ -1538,7 +1538,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = false,
-    pronouns = "they_them",
+    pronouns = "any_all",
 
     beans_credits = {
         team = "Name Team",
@@ -2439,7 +2439,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    pronouns = "they_them",
+    pronouns = "any_all",
 
     beans_credits = {
         team = "Name Team",
@@ -2593,6 +2593,33 @@ SMODS.Joker {
     end
 }
 
+SMODS.Joker {
+    key = "nameteam_bozobrain",
+    config = { extra = { money = 2 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 7, y = 2 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_they",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+    calculate = function(self, card, context)
+        if context.before and to_number(G.GAME.hands[context.scoring_name].level) == 1 then
+            return { dollars = card.ability.extra.money }
+        end
+    end
+}
 SMODS.Joker {
     key = "nameteam_trafficlight",
     config = { extra = { xmult = 2 } },
