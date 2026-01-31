@@ -4007,9 +4007,10 @@ return {
 			j_cbean_sundew_tangler                      = {
 				name = "Sundew Tangler",
 				text = {
-					"{C:attention}Playing Cards{} cannot",
-					"retrigger. Each scored card",
-					"gives {C:money}+$#1#{}"
+					"{C:attention}Playing Cards{}",
+					"don't retrigger",
+					"Each played card",
+					"gives {C:money}$#1#{} when scored"
 				},
 			},
 			j_cbean_bean_sprout                         = {
