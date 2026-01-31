@@ -3948,9 +3948,9 @@ return {
 			j_cbean_grave_buster                        = {
 				name = "Grave Buster",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:red}remove{} all stickers",
-					"from a random card"
+					"Sell this {C:attention}Joker",
+					"to {C:red}remove{} all {C:attention}Stickers",
+					"from a random {C:attention}Joker"
 				},
 			},
 			j_cbean_boomberry                           = {
