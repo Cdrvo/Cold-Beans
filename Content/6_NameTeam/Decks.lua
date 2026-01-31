@@ -87,6 +87,6 @@ SMODS.Back {
         team = "Name Team",
         idea = "GhostSalt",
         art = "GhostSalt",
-        code = "GhostSalt",
+        code = "ThunderEdge",
     }
 }
