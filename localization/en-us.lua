@@ -12,6 +12,16 @@ return {
 					"as {C:money}Piss{} cards",
 				}
 			},
+			b_cbean_nameteam_sticky = {
+				name = "Sticky Deck",
+				text = {
+					"Start with an",
+					"{C:attention,T:c_cbean_eternal_sheet}Eternal{} {C:cbean_stickersheet}Sticker Sheet",
+					"{C:cbean_stickersheet}Sticker Sheets{} appear",
+					"{C:attention}2X{} more frequently",
+					"in the {C:attention}Shop",
+				}
+			},
 			b_cbean_nameteam_happy = {
 				name = "Happy Deck",
 				text = {
@@ -3714,7 +3724,7 @@ return {
 					{
 						"Creates a {C:dark_edition}Negative{}",
 						"{C:tarot}Tarot{} card after",
-						"using a {C:stickersheet}Sticker Sheet"
+						"using a {C:cbean_stickersheet}Sticker Sheet"
 					},
 					{
 						"Gains {X:mult,C:white}X#1#{} Mult when a",
@@ -3773,10 +3783,10 @@ return {
 				text = {
 					{
 						"Gains {X:mult,C:white}X#1#{} Mult when a",
-						"{C:stickersheet}Sticker Sheet{} is used",
+						"{C:cbean_stickersheet}Sticker Sheet{} is used",
 						"At end of round, if your",
 						"{C:attention}deck{} has a {C:attention}Sticker{},",
-						"create a {C:stickersheet}Sticker Sheet{}",
+						"create a {C:cbean_stickersheet}Sticker Sheet{}",
 						"{C:inactive}(Must have room)",
 						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 					},
@@ -3917,7 +3927,7 @@ return {
 			j_cbean_crater                              = {
 				name = "Crater",
 				text = {
-					"Always has {C:eternal}Eternal{}",
+					"Always has {C:attention}Eternal{}",
 					"{C:red,E:2}Self-destructs{} after",
 					"{C:attention}#1#{C:inactive} (#2#){} rounds"
 				},
@@ -5851,7 +5861,7 @@ return {
 					"When {C:attention}Blind{} is selected,",
 					"{C:red}destroys{} a random {C:tarot}Tarot{} card",
 					"If successful, creates",
-					"a {C:stickersheet}Sticker Sheet{}",
+					"a {C:cbean_stickersheet}Sticker Sheet{}",
 				},
 			},
 			j_cbean_nameteam_theworldshardestjoker      = {
@@ -6968,7 +6978,7 @@ return {
                 name = "Collector's Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
                     "be used immediately"
                 }
             },
@@ -6976,7 +6986,7 @@ return {
                 name = "Collector's Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
                     "be used immediately"
                 }
             },
@@ -6984,7 +6994,7 @@ return {
                 name = "Storage Collector's Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
                     "be used immediately"
                 }
             },
@@ -6992,7 +7002,7 @@ return {
                 name = "Warehouse Collector's Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:stickersheet}Sticker Sheets{} to",
+                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
                     "be used immediately"
                 }
             },
@@ -9809,7 +9819,7 @@ return {
 			},
 			cbean_reward_sheets                 = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
-				"{C:stickersheet}Sticker Sheets{}",
+				"{C:cbean_stickersheet}Sticker Sheets{}",
 			},
 			cbean_reward_blessings              = {
 				"Creates {C:attention}#1#{} {C:dark_edition,T:e_negative}Negative{}",
