@@ -1829,6 +1829,19 @@ return {
 					"to create {C:attention}Triboulet{}",
 				},
 			},
+			q_cbean_nteam_square = {
+				name = {
+					"Square",
+					"{C:dark_edition,s:0.7}Side Quest{}",
+				},
+				text = {
+					"If {C:attention}Blind{} was defeated",
+					"without playing a",
+					"hand that contains",
+					"{C:attention}#1#{} or more cards,",
+					"create {C:attention}Square Joker{}",
+				},
+			},
 		},
 		--Tboi items
 		yma_tboi_items = {
