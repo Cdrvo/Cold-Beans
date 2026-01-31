@@ -3791,8 +3791,8 @@ return {
 				name = "Sunnier Shroom",
 				text = {
 					"{C:green}#1# in #2#{} chance to",
-					"give {C:money}$#3#{} at the",
-					"end of a round",
+					"earn {C:money}$#3#{} at",
+					"end of round",
 					"{C:inactive,s:0.8}(This seems familiar..)"
 				},
 			},
