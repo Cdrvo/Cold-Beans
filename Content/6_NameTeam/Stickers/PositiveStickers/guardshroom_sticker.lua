@@ -10,7 +10,9 @@ SMODS.Sticker({
 	rate = 0.06,
 	needs_enable_flag = true,
     sticker_type = "Positive",
-    sets = {},
+    sets = {
+		Joker = true
+	},
 	loc_vars = function(self, info_queue, card)
 	return {
 		vars = {},
