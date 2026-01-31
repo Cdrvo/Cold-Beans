@@ -3724,8 +3724,8 @@ return {
 				name = "Sunflower",
 				text = {
 					"{C:green}#1# in #2#{} chance to",
-					"give {C:money}$#3#{} at the",
-					"end of a round"
+					"give {C:money}$#3#{} at end",
+					"of round"
 				},
 			},
 			j_cbean_wallnut                             = {
