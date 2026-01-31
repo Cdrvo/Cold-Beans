@@ -3940,9 +3940,9 @@ return {
 			j_cbean_jalepeno                            = {
 				name = "Jalapeno",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:red}destroy{} the next",
-					"played hand"
+					"Sell this {C:attention}Joker",
+					"to {C:red}destroy{} all cards in",
+					"the next played hand"
 				},
 			},
 			j_cbean_grave_buster                        = {
