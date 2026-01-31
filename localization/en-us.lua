@@ -4115,7 +4115,7 @@ return {
 				text = {
 					"{C:chips}+#1#{} Chips for",
 					"each {C:attention}Joker{} to the",
-					"left of this one",
+					"left of this {C:attention}Joker",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
 			},
