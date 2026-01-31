@@ -351,6 +351,7 @@ SMODS.Joker({
     end,
 })
 
+
 SMODS.Joker({
 	pvz_plant = true,
     in_pool = NAMETEAM.plant_in_pool,
@@ -4814,4 +4815,53 @@ SMODS.Joker({
             }
         end
     end
+})
+
+
+SMODS.Joker({
+	pvz_plant = true,
+    in_pool = NAMETEAM.plant_in_pool,
+    key = "blaze_leaf",
+    atlas = 'NAMETEAM_PlantPlaceholder',
+    cost = 4,
+    beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+    rarity = 2,
+    blueprint_compat = true,
+    config = {
+        extra = {
+            xmult = 1.15,
+            mult = 5
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        local cae = card.ability.extra
+        return{vars={cae.xmult,cae.mult}}
+    end,
+    calculate = function(self,card,context)
+        local cae = card.ability.extra
+        if context.before and not context.blueprint then
+            NAMETEAM.all_on(card, G.jokers.cards, "left","blaze_leafed_rn_omg" )
+            NAMETEAM.all_on(card, G.jokers.cards, "right","blaze_leafed_rn_not_omg" )
+        end
+
+        if context.other_joker then
+            if context.other_joker.ability.blaze_leafed_rn_omg then
+                context.other_joker.ability.blaze_leafed_rn_omg = false
+                return{
+                    xmult = cae.xmult,
+                    message_card = context.other_joker
+                }
+            elseif context.other_joker.ability.blaze_leafed_rn_not_omg then
+                context.other_joker.ability.blaze_leafed_rn_not_omg = false
+                return{
+                    mult = cae.mult,
+                    message_card = context.other_joker
+                }
+            end
+        end
+    end,
 })

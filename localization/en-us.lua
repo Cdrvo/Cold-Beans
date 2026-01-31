@@ -5318,6 +5318,16 @@ return {
 				},
 			},
 
+			j_cbean_blaze_leaf = {
+				name =  "Blaze Leaf",
+				text = {
+					"Cards on the left",
+					"give {X:mult,C:white}X#1#{} Mult",
+					"Cards on the right",
+					"give {C:mult}+#2#{} Mult"
+				},
+			},
+
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
