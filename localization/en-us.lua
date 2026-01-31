@@ -3972,10 +3972,10 @@ return {
 			j_cbean_chilli_pepper                       = {
 				name = "Chilli Pepper",
 				text = {
-					"{C:green}Sell{} this card",
-					"to {C:attention}half{} current blind's",
-					"requirements. All cards held in hand",
-					"are {C:red}debuffed{}"
+					"Sell this {C:attention}Joker{} to halve",
+					"current {C:attention}Blind{} requirement,",
+					"then permanently {C:red}debuff{}",
+					"all cards in hand"
 				},
 			},
 			j_cbean_bz_button                           = {
