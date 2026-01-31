@@ -5378,6 +5378,20 @@ return {
 				},
 			},
 
+			j_cbean_hammeruit = {
+				name =  "Hammeruit",
+				text = {
+					"On the last hand",
+					"of the round,",
+					"{C:attention}3{} Random scored",
+					"cards give {X:mult,C:white}XMULT{} based",
+					"on how many playing cards were",
+					"triggered during the round",
+					"{C:inactive,s:0.85}(Increases by 0.1 per trigger, resets after the round)",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+				},
+			},
+
 
 			-- quick end
 			j_cbean_nameteam_stickerbomb = {
