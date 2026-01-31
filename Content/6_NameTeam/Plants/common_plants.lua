@@ -2549,3 +2549,51 @@ SMODS.Joker({
 		end
 	end,
 })
+
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "dandelion",
+	atlas = "NAMETEAM_PlantJokers",
+	cost = 3,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			mult = 2,
+            _card = nil
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.mult }}
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+        if context.before then
+            if G.play.cards and #G.play.cards == 3 then
+                cae._card = pseudorandom_element(G.play.cards)
+            end
+        end
+        if context.individual and (context.cardarea == G.play or context.cardarea == "unscored") then
+            if context.other_card == cae._card then
+                context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+				context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + cae.mult
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+        end
+        if context.after then
+            cae._card = nil
+        end
+    end
+})

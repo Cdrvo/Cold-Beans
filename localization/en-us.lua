@@ -5554,6 +5554,16 @@ return {
 				},
 			},
 
+			j_cbean_dandelion                         = {
+				name = "Dandelion",
+				text = {
+					"If played hand has",
+					"only {C:attention}3{} cards",
+					"a random one gains",
+					"{C:mult}+#1#{} Perma Mult"
+				},
+			},
+
 			j_cbean_corn_fetti_popper                   = {
 				name = "Corn-fetti Popper",
 				text = {
