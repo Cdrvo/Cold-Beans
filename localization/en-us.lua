@@ -3981,9 +3981,10 @@ return {
 			j_cbean_bz_button                           = {
 				name = "Bzzz Button",
 				text = {
-					"The cards {C:attention}scored{} after {:green}selling",
-					"this card give {X:mult,C:white}X#1#{} Mult",
-					"but are {C:red}destroyed{} afterwards"
+					"All scored cards in the",
+					"next hand played {C:attention}after",
+					"this {C:attention}Joker{} is sold give",
+					"{X:mult,C:white}X#1#{} Mult and {C:red,E:2}self-destruct",
 				},
 			},
 			j_cbean_bun_chi                             = {
