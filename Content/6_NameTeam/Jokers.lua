@@ -341,7 +341,8 @@ SMODS.Joker {
             local valid = false
             for _, v in ipairs(context.scoring_hand) do
                 if not v:is_suit("Diamonds") or SMODS.has_any_suit(v) then
-                    valid = true; break;
+                    valid = true
+break
                 end
             end
 
@@ -580,7 +581,8 @@ SMODS.Joker {
             local valid = true
             for _, v in ipairs(G.play.cards) do
                 if v:get_id() ~= 2 then
-                    valid = false; break
+                    valid = false
+break
                 end
             end
 
@@ -2005,7 +2007,10 @@ SMODS.Joker {
                     trigger = 'after',
                     delay = 0.15,
                     func = function()
-                        card:flip(); play_sound('card1', 1); card:juice_up(0.3, 0.3); return true
+                        card:flip()
+play_sound('card1', 1)
+card:juice_up(0.3, 0.3)
+return true
                     end
                 }))
                 delay(0.2)
@@ -2288,3 +2293,243 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker({
+	key = "nteam_self_insert",
+	-- add atlas later
+	config = {
+		extra = {
+			current_effect = "NONE",
+			thunderedge = {
+				xmult = 1,
+				xmult_inc = 0.25,
+			},
+			revo = {
+				xmult = 1,
+				xmult_inc = 0.25,
+			},
+			dave = {
+				xmult = 1.5,
+			},
+			ghost = {
+				xmult = 1,
+				xmult_inc = 0.1,
+			},
+			doggfly = {
+				odds = 4,
+				num = 1,
+			},
+			inky = {
+				xchips = 1,
+				xchips_inc = 0.4,
+			},
+			doctor = {
+				xmult = 1,
+				xmult_inc = 0.5,
+			},
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+        local tbl = card.ability.extra[card.ability.extra.current_effect]
+		if card.ability.extra.current_effect == "NONE" then
+		elseif card.ability.current_effect ~= "doggfly" then
+			if card.ability.extra.current_effect == "ghost" then
+				info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+			end
+			local final_xmult = nil
+			if card.ability.extra.current_effect == "revo" then
+				final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
+			end
+			return {
+				vars = {
+					tbl.xmult_inc or tbl.xchips_inc,
+					final_xmult or tbl.xmult or tbl.xchips,
+				},
+				key = self.key .. "_" .. card.ability.extra.current_effect,
+			}
+		else
+			local plant_count = 0
+			if G.jokers then
+				for _, j in ipairs(G.jokers.cards) do
+					if j.config.center.pvz_plant then
+						plant_count = plant_count + 1
+					end
+				end
+			end
+			local n, d = SMODS.get_probability_vars(
+				card,
+				tbl.num + plant_count,
+				tbl.odds,
+				"nteam_self_insert"
+			)
+			return {
+				vars = {
+					n,
+					d,
+				},
+				key = self.key .. "_" .. card.ability.extra.current_effect,
+			}
+		end
+	end,
+	cost = 10,
+	rarity = 3,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	beans_credits = {
+		team = "Name Team",
+		idea = "Name Team",
+		art = "Name Team",
+		code = "ThunderEdge",
+	},
+	add_to_deck = function(self, card, from_debuff)
+		if not from_debuff then
+			card.ability.extra.current_effect = pseudorandom_element({
+				"thunderedge",
+				"revo",
+				"dave",
+				"ghost",
+				"doggfly",
+				"inky",
+				"doctor",
+			}, "nteam_self_insert")
+		end
+	end,
+	calculate = function(self, card, context)
+        local tbl = card.ability.extra[card.ability.extra.current_effect] or {}
+		if context.starting_shop and card.ability.extra.current_effect == "doggfly" then
+			for _, j in ipairs(G.jokers.cards) do
+				if j.config.center.pvz_plant then
+					plant_count = plant_count + 1
+				end
+			end
+			if
+				SMODS.pseudorandom_probability(
+					card,
+					"nteam_self_insert",
+					tbl.num + plant_count,
+					tbl.odds,
+					"nteam_self_insert"
+				)
+			then
+                local pool = {}
+                for _, sticker in pairs(SMODS.Stickers) do
+                    if sticker.sticker_type == "Positive" and sticker.sets and sticker.sets["Joker"] then
+                        pool[#pool+1] = sticker.key
+                    end
+                end
+                local added = pseudorandom_element(pool, "nteam_doggfly")
+                local target = pseudorandom_element(G.jokers.cards, "nteam_doggfly")
+                if target then
+                    target:add_sticker(added, true)
+                end
+			end
+		end
+        if context.ending_shop and card.ability.extra.current_effect == "dave" then
+            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+                local pool = {}
+                for _, center in pairs(G.P_CENTER_POOLS.Joker) do
+                    if center.pvz_plant then
+                        pool[#pool+1] = center.key
+                    end
+                end
+                G.E_MANAGER:add_event(Event({
+                    func = function ()
+                        SMODS.add_card({
+                            key = pseudorandom_element(pool, "nteam_dave")
+                        })
+                        G.GAME.joker_buffer = 0
+                        return true
+                    end
+                }))
+            end
+        end
+        if context.using_consumeable then
+            if not context.blueprint and card.ability.extra.current_effect == "doctor" and context.consumeable.config.center.set == "cbean_StickerSheet" then
+                SMODS.scale_card(card, {
+                    ref_table = tbl,
+                    ref_value = "xmult",
+                    scalar_value = "xmult_inc"
+                })
+            end
+            if card.ability.extra.current_effect == "ghost" then
+                if context.consumeable.config.center.set == "cbean_StickerSheet" then
+                    SMODS.add_card({
+                        set = "Tarot",
+                        edition = "e_negative"
+                    })
+                elseif context.consumeable.config.center.set == "Tarot" and not context.blueprint then
+                    SMODS.scale_card(card, {
+                        ref_table = tbl,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_inc"
+                    })
+                end
+            end
+        end
+        if not context.blueprint and card.ability.extra.current_effect == "thunderedge" and (context.nteam_reroll_stationery or context.nteam_exchange_stationery) then
+            SMODS.scale_card(card, {
+                ref_table = tbl,
+                ref_value = "xmult",
+                scalar_value = "xmult_inc"
+            })
+        end
+        if context.other_joker and context.other_joker.config.center.pvz_plant and card.ability.extra.current_effect == "dave" then
+            return {
+                xmult = tbl.xmult
+            }
+        end
+        if context.joker_main then
+            local final_xmult = nil
+            if card.ability.extra.current_effect == "revo" then
+				final_xmult = tbl.xmult + (G.GAME.total_stickers_applied or 0) * tbl.xmult_inc
+			end
+            return {
+                xmult = final_xmult or tbl.xmult,
+                xchips = tbl.chips,
+            }
+        end
+        if context.before and not context.blueprint and #context.full_hand == 4 and card.ability.extra.current_effect == "inky" then
+            SMODS.scale_card(card, {
+                ref_table = tbl,
+                ref_value = "xchips",
+                scalar_value = "xchips_inc"
+            })
+        end
+        if context.end_of_round and not context.game_over and context.main_eval and not context.blueprint then
+            local has_deck_sticker = false
+            for key, item in pairs(G.GAME.selected_back.ability) do
+                if SMODS.Stickers[key] then
+                    has_deck_sticker = true
+                    break
+                end
+            end
+            if has_deck_sticker and card.ability.extra.current_effect == "doctor" then
+                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    G.E_MANAGER:add_event(Event({
+                        func = function ()
+                            SMODS.add_card({
+                                set = "cbean_StickerSheet",
+                            })
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                    }))
+                end
+            end
+            if context.beat_boss then
+                card.ability.extra.current_effect = pseudorandom_element({
+                    "thunderedge",
+                    "revo",
+                    "dave",
+                    "ghost",
+                    "doggfly",
+                    "inky",
+                    "doctor",
+                }, "nteam_self_insert")
+            end
+        end
+	end,
+})

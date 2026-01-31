@@ -55,6 +55,7 @@ G.FUNCS.nteam_exchange_stickers = function(e)
 				})
 				rew_container.config.object:recalculate()
 			end
+			SMODS.calculate_context({nteam_exchange_stationery = true})
 			G.stationery:recalculate()
 			return true
 		end,
@@ -109,6 +110,7 @@ G.FUNCS.nteam_reroll_stationery = function(e)
 				})
 				rew_container.config.object:recalculate()
 			end
+			SMODS.calculate_context({nteam_reroll_stationery = true})
 			G.stationery:recalculate()
 			return true
 		end,

@@ -133,7 +133,7 @@ if G.deck and card == G.deck.cards[1] and G.GAME.selected_back and G.GAME.select
   end
 end
 if _c.set == "Sticker" then
-  localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or (_c.loc_vars and _c:loc_vars(info_queue, card or {ability = {}}).vars)}
+  localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or (_c.loc_vars and (_c:loc_vars(info_queue, card or {ability = {}}) or {}).vars)}
 end
 '''
 match_indent = true
