@@ -2771,3 +2771,34 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_mappedout",
+    config = { extra = { scaling = 0.5 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 2, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.scaling, (G.GAME.current_round.amount_biomes_visited or 0) * card.ability.extra.scaling + 1 } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "Inky",
+        art = "GhostSalt",
+        code = "TheAltDoc",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = (G.GAME.current_round.amount_biomes_visited or 0) * card.ability.extra.scaling + 1
+            }
+        end
+    end
+}
