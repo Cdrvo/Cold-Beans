@@ -65,6 +65,9 @@ CBWG.ColdBeans_Biome = SMODS.ObjectType:extend{
     enter = function(self)
     end,
     exit = function(self)
+    end,
+    in_pool = function(self)
+        return true
     end
 }
 
@@ -225,15 +228,18 @@ CBWG.ColdBeans_Biome {
 
 
 -- Function that gets a new biome
+-- Hello from Name Team!
 function CBWG.get_new_biome(new_biome)
     local eligible_biomes = {}
-    for k, v in pairs(G.P_BIOMES) do
+    for k, v in pairs(CBWG.ColdBeans_Biomes) do
         if new_biome then
-            if k ~= G.GAME.round_resets.blind_biome then
-                eligible_biomes[k] = v
+            if k ~= G.GAME.round_resets.blind_biome and v.in_pool and v.in_pool()then
+                eligible_biomes[k] = G.P_BIOMES[k]
             end
-        else
-            eligible_biomes[k] = v
+        elseif v.in_pool and v.in_pool() then 
+            eligible_biomes[k] = G.P_BIOMES[k]
+        elseif not v.in_pool then
+            eligible_biomes[k] = G.P_BIOMES[k]
         end
     end
     local _, biome = pseudorandom_element(eligible_biomes, pseudoseed('biome'))

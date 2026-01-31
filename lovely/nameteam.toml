@@ -108,3 +108,17 @@ if G['P_BIOMES'][_type] and v.rarity ~= _rarity then
 end
 '''
 match_indent = true
+
+# Add a "select_blind" context
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+for i = 1, #G.GAME.tags do
+                    if G.GAME.tags[i]:apply_to_run({type = 'new_blind_choice'}) then break end
+                end'''
+position = "after"
+payload = '''
+SMODS.calculate_context({blind_select = true})
+'''
+match_indent = true

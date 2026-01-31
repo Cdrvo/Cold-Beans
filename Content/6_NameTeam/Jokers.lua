@@ -2116,3 +2116,95 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "nameteam_wayne",
+    config = { extra = { saved = false, antes = -1 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 0, y = 3 },
+    cbean_anim_states = {
+        ["normal"] = {
+            anim = {
+                { x = 0, y = 3, t = 1 }
+            },
+            loop = false
+        },
+        ["dead"] = {
+            anim = {
+                { x = 10, y = 3, t = 1 }
+            },
+            loop = false
+        },
+        ["happening"] = {
+            anim = {
+                { x = 1,                             y = 3, t = 0.5 + (0.94 / 2) /4 },
+                { x = 2, y = 3, t = 0.5 + (0.94 / 2) /4 },
+                { xrange = { first = 3, last = 10 }, y = 3, t = (0.94 / 2) / 9 },
+            },
+            loop = false
+        }
+    },
+    cbean_anim_current_state = "normal",
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "nameteam_afterlife", set = "Biome" }
+        return { vars = { card.ability.extra.antes * -1 } }
+    end,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "TheAltDoc",
+        art = "TheAltDoc",
+        code = "TheAltDoc",
+    },
+
+    add_to_deck = function(self, card, from_debuff)
+        card:cbean_set_anim_state("normal")
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        card:cbean_set_anim_state("normal")
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over and context.main_eval then
+            card.ability.extra.saved = true
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound("cbean_wayne_death", 1, 1)
+                    card:cbean_set_anim_state("happening")
+                    card:juice_up()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                timer = "REAL",
+                delay = 1.5,
+                func = function()
+                    card:juice_up()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    return true
+                end
+            }))
+            G.FUNCS.switch_biome("nameteam_afterlife")
+            return { saved = "ph_cbean_nameteam_wayne"}
+        end
+        if context.starting_shop or context.blind_select and card.ability.extra.saved then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    ease_ante(card.ability.extra.antes)
+                    card:cbean_set_anim_state("dead")
+                    card:start_dissolve()
+                    return true
+                end
+            }))
+        end
+    end
+}

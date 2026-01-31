@@ -5518,6 +5518,16 @@ return {
 					"in hand becomes {C:attention}Steel{}"
 				}
 			},
+			j_cbean_nameteam_wayne = {
+				name = 'Wayne',
+				text =
+				{
+					"Prevents Death,",
+					"go back {C:attention}#1# ante,",
+                    "but sends you to",
+                    "{C:attention}The Afterlife",
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory = {
@@ -8726,6 +8736,13 @@ return {
 					"plant Jokers may appear",
 				},
 			},
+			nameteam_afterlife = {
+				name = "The Afterlife",
+				text = {
+					"There is nothing to",
+					"do here."
+				},
+			},
 		},
 	},
 	misc = {
@@ -9118,6 +9135,7 @@ return {
 			k_cbean_ian_exhausted = "Exhausted!",
 			
             ph_cbean_nameteam_charles="Saved by Charles",
+            ph_cbean_nameteam_wayne="Click Cash Out to Continue",
 			k_cbean_promoted_ex = "Promoted!",
 		},
 		high_scores = {},

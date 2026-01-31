@@ -96,6 +96,11 @@ SMODS.Sound({
   path = "6_NameTeam/cbean_greatest_plan.ogg"
 })
 
+SMODS.Sound({
+  key = "wayne_death",
+  path = "6_NameTeam/cbean_wayne_death.ogg"
+})
+
 SMODS.Atlas({
 	key = "nteam_blinds",
 	path = "6_NameTeam/ColdBeansBlinds.png",
