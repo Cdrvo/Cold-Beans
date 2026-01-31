@@ -6141,6 +6141,15 @@ return {
 					"hand is level {C:attention}1{}"
 				}
 			},
+			j_cbean_nameteam_walledin                  = {
+				name = 'Walled In',
+				text =
+				{
+					"All cards in {C:attention}Standard{}",
+                    "{C:attention}Packs{} are {C:green}guaranteed{}",
+                    "to be {C:attention}Stone{}"
+				}
+			},
 			j_cbean_nameteam_trafficlight               = {
 				name = 'Traffic Light',
 				text =
