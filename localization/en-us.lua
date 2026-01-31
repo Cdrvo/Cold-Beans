@@ -4116,18 +4116,20 @@ return {
 				name = "Spikeweed",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"Scored cards gains {C:red}-1{} Chips",
-					"Destroy scored cards if they",
-					"stop returning chips"
+					"Scored cards lose {C:chips}-#1#{} Chips",
+					"Destroy scored cards if",
+					"their total Chip value",
+					"becomes {C:attention}0{} or less"
 				},
 			},
 			j_cbean_iceweed                             = {
 				name = "Iceweed",
 				text = {
-					"Scored cards gain {X:mult,C:white}X#1#{}",
-					"{C:mult}Perma XMULT{} but lose {C:red}-1{} Chips",
-					"Destroy scored cards if they",
-					"stop returning chips"
+					"Scored cards gain {X:mult,C:white}X#1#{} Mult",
+					"permanently but lose {C:chips}-1{} Chips",
+					"Destroy scored cards if",
+					"their total Chip value",
+					"becomes {C:attention}0{} or less"
 				},
 			},
 			j_cbean_blover                              = {
