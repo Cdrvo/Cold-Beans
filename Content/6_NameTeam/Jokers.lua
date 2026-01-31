@@ -2885,3 +2885,43 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Sound({
+    key = "bye",
+    path = "6_NameTeam/cbean_bye.ogg"
+})
+
+SMODS.Joker {
+    key = "nameteam_wavegoodbye",
+    config = { extra = { money = 8 } },
+    rarity = 1,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 9, y = 4 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.before and G.GAME.current_round.hands_left == 0 then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound("cbean_bye", 1, 1)
+                    return true
+                end
+            }))
+            return { dollars = card.ability.extra.money }
+        end
+    end
+}

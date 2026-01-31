@@ -6260,6 +6260,14 @@ return {
 					"{C:attention}The Afterlife",
 				}
 			},
+			j_cbean_nameteam_wavegoodbye                 = {
+				name = 'Wave Goodbye',
+				text =
+				{
+					"Earn {C:money}$#1#{} when playing",
+					"{C:attention}final{} hand of round"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory              = {
