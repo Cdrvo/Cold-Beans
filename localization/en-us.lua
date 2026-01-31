@@ -4261,10 +4261,11 @@ return {
 			j_cbean_coffee_bean                         = {
 				name = "Coffee Bean",
 				text = {
-					"Retrigger the joker",
-					"on the right {C:attention}#1#{} time",
-					"Retrigger it {C:attention}#2#{}",
-					"times if it's a shroom"
+					"Retrigger the {C:attention}Joker",
+					"to the right {C:attention}#1#{} time",
+					"Retrigger it {C:attention}#2#{} times",
+					"instead if the {C:attention}Joker{} to",
+					"the right is a {C:attention}Shroom",
 				},
 			},
 			j_cbean_plantern                            = {
