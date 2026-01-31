@@ -937,10 +937,10 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.selling_self then
 			G.GAME.blind.chips = G.GAME.blind.chips
-					- (get_blind_amount(G.GAME.round_resets.blind_ante) * Colonparen.get_blind_by_key(
+					- ((get_blind_amount(G.GAME.round_resets.blind_ante) * Colonparen.get_blind_by_key(
 						G.GAME.round_resets.blind_choices["Big"]
 					).mult * G.GAME.starting_params.ante_scaling)
-				or 0
+				or 0)
 			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			NAMETEAM.msg(card, "Reduced!")
 		end
