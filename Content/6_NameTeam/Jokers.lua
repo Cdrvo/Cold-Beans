@@ -2339,13 +2339,8 @@ SMODS.Joker({
 	key = "nteam_self_insert",
 	-- add atlas NOW
 	atlas = "NAMETEAM_Jokers3",
+    pos = { x = 0, y = 0 },
 	cbean_anim_states = {
-        ["normal"] = {
-            anim = {
-                { x = 0, y = 0, t = 1 }
-            },
-            loop = false
-        },
         ["attract"] = {
             anim = {
                 { xrange = { first = 0, last = 6 }, y = 4, t = 1 },
@@ -2386,8 +2381,9 @@ SMODS.Joker({
 		},
 	},
 	set_ability = function(self, card, initial, delay_sprites)
-		if card.ability.extra.current_effect == "NONE" then
-			card:cbean_set_anim_state("attract")
+		card:cbean_set_anim_state("attract")
+		if card.ability.extra.current_effect ~= "NONE" then
+			NAMETEAM.set_sprite_self_insert(card, card.ability.extra.current_effect)
 		end
 	end,
 	loc_vars = function(self, info_queue, card)
@@ -2445,7 +2441,16 @@ SMODS.Joker({
 	},
 	add_to_deck = function(self, card, from_debuff)
 		if not from_debuff then
-			NAMETEAM.set_effect(card)
+			card.ability.extra.current_effect = pseudorandom_element({
+				"thunderedge",
+				"revo",
+				"dave",
+				"ghost",
+				"doggfly",
+				"inky",
+				"doctor",
+			}, "nteam_self_insert")
+			NAMETEAM.set_sprite_self_insert(card)
 		end
 	end,
 	calculate = function(self, card, context)
@@ -2573,34 +2578,27 @@ SMODS.Joker({
                 end
             end
             if context.beat_boss then
-				NAMETEAM.set_effect(card)
+				local index = pseudorandom('nteam_self_insert', 0, 6)
+				NAMETEAM.set_effect(card, index)
             end
         end
 	end,
 })
 
-function NAMETEAM.set_effect(card)
-	local index = pseudorandom('nteam_self_insert', 0, 6)
-	if index == 0 then
-		card.ability.extra.current_effect = "inky"
+function NAMETEAM.set_sprite_self_insert(card)
+	if card.ability.extra.current_effect == "inky" then
 		card.children.center:set_sprite_pos({x = 0, y = 4})
-	elseif index == 1 then
-		card.ability.extra.current_effect = "revo"
+	elseif card.ability.extra.current_effect == "revo" then
 		card.children.center:set_sprite_pos({x = 1, y = 4})
-	elseif index == 2 then
-		card.ability.extra.current_effect = "dave"
+	elseif card.ability.extra.current_effect == "dave" then
 		card.children.center:set_sprite_pos({x = 2, y = 4})
-	elseif index == 3 then
-		card.ability.extra.current_effect = "doggfly"
+	elseif card.ability.extra.current_effect == "doggfly" then
 		card.children.center:set_sprite_pos({x = 3, y = 4})
-	elseif index == 4 then
-		card.ability.extra.current_effect = "doctor"
+	elseif card.ability.extra.current_effect == "doctor" then
 		card.children.center:set_sprite_pos({x = 4, y = 4})
-	elseif index == 5 then
-		card.ability.extra.current_effect = "ghost"
+	elseif card.ability.extra.current_effect == "ghost" then
 		card.children.center:set_sprite_pos({x = 5, y = 4})
-	elseif index == 6 then
-		card.ability.extra.current_effect = "thunderedge"
+	elseif card.ability.extra.current_effect == "thunderedge" then
 		card.children.center:set_sprite_pos({x = 6, y = 4})
 	end
 end
@@ -2650,7 +2648,6 @@ SMODS.Joker {
         art = "TheAltDoc",
         code = "TheAltDoc",
     },
-
     add_to_deck = function(self, card, from_debuff)
         card:cbean_set_anim_state("normal")
     end,
