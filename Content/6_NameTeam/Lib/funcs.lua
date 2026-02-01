@@ -861,13 +861,14 @@ function NAMETEAM.sticker_area_check(area)
 end
 
 function NAMETEAM.shop_sign(sign)
+	local shop_sign = G.SHOP_SIGN
 	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	G.E_MANAGER:add_event(Event({
 		trigger = "before",
 		delay = 0.1,
 		func = function()
-			sign_sprite.T.scale = 0
+			shop_sign.alignment.offset.y = -5
 			return true
 		end,
 	}))
@@ -883,7 +884,7 @@ function NAMETEAM.shop_sign(sign)
 		trigger = "after",
 		delay = 1,
 		func = function()
-			sign_sprite.T.scale = 1
+			shop_sign.alignment.offset.y = 0
 			return true
 		end,
 	}))
