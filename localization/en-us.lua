@@ -10485,7 +10485,7 @@ return {
 			["cbean_0chill_jackpot"] = "HR Jackpot!",
 			["cbean_wgrop_thorny_boquete"] = "HR Thorny Bouquet",
 			["cbean_nteam_collection"] = "HR Collection",
-			["cbean_nteam_collection_3oak"] = "HR Three of a collection",
+			["cbean_nteam_collection_3oak"] = "HR Three of a Collection",
 		},
 		quips = {
 			cbean_pboys_hi_1 = {
