@@ -26,7 +26,7 @@ SMODS.Sticker({
 		end)
 	end,
 	calculate = function(self,card,context)
-		if context.money_altered then
+		if context.money_altered and context.amount>0 then
 			SMODS.calculate_effect({
                         message = localize("k_cbean_nteam_halved"),
                         instant = true

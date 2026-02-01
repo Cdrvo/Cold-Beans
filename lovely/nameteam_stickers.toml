@@ -304,7 +304,7 @@ payload = '''
 if G.GAME.round_resets.ante > 7 and G.GAME.modifiers.blind_stickers and not G.GAME.modifiers.showdown_stickers then
     G.GAME.modifiers.showdown_stickers = true
 end
-if G.GAME.modifiers.blind_stickers and G.GAME.blind.boss then
+if G.GAME.modifiers.blind_stickers and Colonparen.get_blind_type(G.GAME.blind)=="CEO" then
         local tab = {}
         local ae = NAMETEAM.poll_sticker(true, G.GAME.selected_back, true, "Blind")
           

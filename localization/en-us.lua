@@ -8446,7 +8446,7 @@ return {
 			stake_cbean_blind = {
 				name = "Plant Stake",
 				text = {
-					"After every boss blind, apply a",
+					"After every CEO blind, apply a",
 					"random blind sticker to the deck",
 					"{s:0.8}Applies all previous Stakes",
 				},
