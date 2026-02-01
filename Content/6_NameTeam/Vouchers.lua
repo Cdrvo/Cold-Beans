@@ -1,6 +1,8 @@
 SMODS.Voucher({
     key = "nameteam_more_choices",
     cost = 10,
+    atlas = 'NAMETEAM_Vouchers',
+    pos = {x=0, y=0},
     unlocked = true,
     discovered = false,
     available = true,
@@ -13,7 +15,7 @@ SMODS.Voucher({
     },
     in_pool = function()
         return G.GAME.nteam_sticker_obtained
-    end
+    end,
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.choices,card.ability.extra.rewards}}
     end,
@@ -26,10 +28,12 @@ SMODS.Voucher({
 SMODS.Voucher({
     key = "nameteam_free_sample",
     cost = 10,
+    atlas = 'NAMETEAM_Vouchers',
+    pos = {x=1, y=0},
     unlocked = true,
     discovered = false,
     available = true,
-    requires = 'v_cbean_nameteam_more_choices'
+    requires = {'v_cbean_nameteam_more_choices'},
     config = {extra = {odds_low = 1, odds_high = 4, new_round = true}},
     beans_credits = {
         team = "Name Team",
