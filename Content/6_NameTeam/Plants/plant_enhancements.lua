@@ -1,10 +1,12 @@
 SMODS.Enhancement({
 	key = "basic_zomboid",
+	atlas = "nteam_enh",
+	pos={x=0,y=0},
 	discovered = true,
 	unlocked = true,
-	replace_base_card = false,
-	no_rank = false,
-	no_suit = false,
+	replace_base_card = true,
+	no_rank = true,
+	no_suit = true,
 	overrides_base_rank = false,
 	any_suit = false,
 	always_scores = false,
@@ -25,15 +27,22 @@ SMODS.Enhancement({
 	in_pool = function(self)
 		return false
 	end,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "DoggFly",
+	},
 })
 
 SMODS.Enhancement({
 	key = "carrot_zomboid",
+	atlas = "nteam_enh",
+	pos={x=1,y=0},
 	discovered = true,
 	unlocked = true,
-	replace_base_card = false,
-	no_rank = false,
-	no_suit = false,
+	replace_base_card = true,
+	no_rank = true,
+	no_suit = true,
 	overrides_base_rank = false,
 	any_suit = false,
 	always_scores = false,
@@ -54,15 +63,22 @@ SMODS.Enhancement({
 	in_pool = function(self)
 		return false
 	end,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "DoggFly",
+	},
 })
 
 SMODS.Enhancement({
 	key = "melon_zomboid",
+	atlas = "nteam_enh",
+	pos={x=2,y=0},
 	discovered = true,
 	unlocked = true,
-	replace_base_card = false,
-	no_rank = false,
-	no_suit = false,
+	replace_base_card = true,
+	no_rank = true,
+	no_suit = true,
 	overrides_base_rank = false,
 	any_suit = false,
 	always_scores = false,
@@ -83,4 +99,9 @@ SMODS.Enhancement({
 	in_pool = function(self)
 		return false
 	end,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "DoggFly",
+	},
 })

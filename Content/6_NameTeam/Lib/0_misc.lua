@@ -125,3 +125,10 @@ SMODS.Atlas({
 	px = 65,
 	py = 65,
 })
+
+SMODS.Atlas({
+	key = "nteam_enh",
+	path = "6_NameTeam/enhancements.png",
+	px = 71,
+	py = 95,
+})
