@@ -4388,7 +4388,9 @@ return {
 			j_cbean_gloom_shroom                        = {
 				name = "Gloom Shroom",
 				text = {
-					"{C:attention}Adjacent Jokers{} give",
+					"Adjacent {C:attention}Jokers{} and",
+					"all played and",
+					"scored cards give",
 					"{X:mult,C:white}X#1#{} Mult when scored"
 				},
 			},
