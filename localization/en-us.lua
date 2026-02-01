@@ -9620,6 +9620,24 @@ return {
 					"{C:attention}Booster{} packs",
 				},
 			},
+			-- Name Team Vouchers
+			v_cbean_nameteam_more_choices = {
+				name = "More Stock",
+				text = {
+					"The {C:attention}Stationery Shop",
+					"accepts {C:attention}#1#{} more sticker type",
+					"and gives {C:attention}#2#{} more rewards",
+				},
+			},
+			v_cbean_nameteam_free_sample = {
+				name = "Free Sample",
+				text = {
+					"Entering the {C:attention}Stationery Shop",
+					"the first time this {C:attention}Round",
+					"has a {C:green}#1# in #2#{} chance to",
+					"create a {C:cbean_stickersheet}Sticker Sheet"
+				},
+			},
 		},
 		Biome = {
 			--Wgropping it

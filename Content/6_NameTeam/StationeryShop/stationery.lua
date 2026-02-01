@@ -451,6 +451,7 @@ G.FUNCS.show_stationery = function(e)
 	hide_location(G.main_street)
 	G.STATE_COMPLETE = false
 	G.STATE = G.STATES.STATIONERY
+	SMODS.calculate_context{cbean_entered_stationery = true}
 	--local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATE)
