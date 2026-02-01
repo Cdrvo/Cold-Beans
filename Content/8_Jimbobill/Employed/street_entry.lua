@@ -4,7 +4,7 @@ G.FUNCS.show_employ = function(e)
     stop_use()
     hide_location(G.main_street)
 
-    G.jbill_employed_area = CardArea(
+    G.jbill_employed_area = G.jbill_employed_area or CardArea(
         0, 0, G.jokers.T.w, G.jokers.T.h, 
         {
             card_limit = 5,
@@ -12,8 +12,11 @@ G.FUNCS.show_employ = function(e)
             highlight_limit = 1,
             no_card_count = true
         })
-    for k, v in pairs(G.P_CENTER_POOLS.Employed) do
-        SMODS.add_card({key = v.key, area = G.jbill_employed_area})
+
+    if G.jbill_employed_area and #G.jbill_employed_area.cards == 0 then
+        for k, v in pairs(G.P_CENTER_POOLS.Employed) do
+            SMODS.add_card({key = v.key, area = G.jbill_employed_area})
+        end
     end
     
 
@@ -22,7 +25,7 @@ G.FUNCS.show_employ = function(e)
 
     local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
     ease_background_colour_blind(G.STATE)
-    sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
+    sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_jbill_specialist"]
     G.hand.states.visible = false
     sign_sprite.states.visible = true
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
@@ -32,7 +35,9 @@ end
 G.FUNCS.hide_employ = function(e)
     stop_use()
 	hide_location(G.jbill_employed_screen)
-    
+
+
+
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
     
