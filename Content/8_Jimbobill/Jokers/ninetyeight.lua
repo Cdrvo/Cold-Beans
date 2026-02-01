@@ -7,6 +7,7 @@ SMODS.Joker {
     rarity = 1,
     cost = 5,
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = {set = "Blind", key = "bl_cbean_sdown_estrogen"}
     end,
     calculate = function(self, card, context)
         if G.GAME.round_resets.blind_choices.Teeny ~= "bl_cbean_sdown_estrogen" then

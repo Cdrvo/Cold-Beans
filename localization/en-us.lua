@@ -6566,7 +6566,7 @@ return {
 					"{C:inactive,s:0.95}Left Behind.{}"
 				}
 			}, --jokers jbill pokers woah woah jokercards yo jokers yo jbill
-			j_cbean_jbill_who                         = { -- ADD LOCALIZATION SHGRASDHJGVAHFJAS
+			j_cbean_jbill_who                         = { -- added by nteam
 				name = "Who can Placehold Now?",
 				text = {
 					"After the {C:attention}Big{}",
@@ -6574,6 +6574,13 @@ return {
 					"Gains {X:mult,C:white}X#1#{} Mult",
 					"when entering Boss or CEO blinds.",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_jbill_98                         = { -- added by nteam
+				name = "98%",
+				text = {
+					"{C:attention}Teeny{} blind is",
+					"always {C:attention}Estrogen{}"
 				}
 			},
 			j_cbean_jbill_tlane                         = {
