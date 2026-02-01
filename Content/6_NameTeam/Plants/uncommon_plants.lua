@@ -2976,7 +2976,7 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.selling_self then
 			if card:on_the("right") then
-				card:on_the("right").cbean_lily_power = 2
+				card:on_the("right").ability.cbean_lily_power = 2
 				NAMETEAM.values("*", card:on_the("right"), 2, true)
 			end
 		end

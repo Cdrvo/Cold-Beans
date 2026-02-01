@@ -178,11 +178,11 @@ ColdBeans.calculate = function(mod, context)
 			end
 
 			for k, v in pairs(G.jokers.cards) do -- needs a check for other values ( iwanted to use - instead of / but i got other jokers to code)
-				if v.cbean_lily_power and v.cbean_lily_power > 0 then
-					v.cbean_lily_power = v.cbean_lily_power - 1
+				if v.ability.cbean_lily_power and v.ability.cbean_lily_power > 0 then
+					v.ability.cbean_lily_power = v.ability.cbean_lily_power - 1
 					NAMETEAM.msg(v, "-1")
-				elseif v.cbean_lily_power then
-					v.cbean_lily_power = nil
+				elseif v.ability.cbean_lily_power then
+					v.ability.cbean_lily_power = nil
 					NAMETEAM.msg(v, localize("k_reset"))
 					NAMETEAM.values("/", v, 2, true)
 				end
@@ -400,7 +400,15 @@ local cbeanConfigTab = function()
 		ref_table = ColdBeansConfig,
 		ref_value = "animations_disabled",
 		callback = function()
-		end,
+		end
+	})
+	cbean_nodes[#cbean_nodes + 1] = create_toggle({
+		label = localize("cbean_disable_copyright"),
+		active_colour = HEX("40c76d"),
+		ref_table = ColdBeansConfig,
+		ref_value = "copyright_disabled",
+		callback = function()
+		end
 	})
 	return {
 		n = G.UIT.ROOT,

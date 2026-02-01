@@ -34,7 +34,7 @@ return {
 				name = "Graveyard Deck",
 				text = {
 					"Start run with",
-                    "five {C:attention}Plant{} Jokers"
+					"five {C:attention}Plant{} Jokers"
 				}
 			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
@@ -5732,7 +5732,7 @@ return {
 				},
 			},
 
-			j_cbean_solar_tomato                           = {
+			j_cbean_solar_tomato                        = {
 				name = "Solar Tomato",
 				text = {
 					"When sold, gives {C:money}$#1#{} per",
@@ -5742,7 +5742,7 @@ return {
 				},
 			},
 
-			j_cbean_goo_peashooter                           = {
+			j_cbean_goo_peashooter                      = {
 				name = "Goo Peashooter",
 				text = {
 					"When hand is played,",
@@ -5751,7 +5751,7 @@ return {
 				},
 			},
 
-			j_cbean_snap_pea                           = {
+			j_cbean_snap_pea                            = {
 				name = "Snap Pea",
 				text = {
 					"Every {C:attention}#2#{} {C:inactive}(#3#){} hands played,",
@@ -5762,7 +5762,7 @@ return {
 				},
 			},
 
-			j_cbean_explode_o_nut                             = {
+			j_cbean_explode_o_nut                       = {
 				name = "Explode-O-Nut",
 				text = {
 					"Adjacent {C:attention}Jokers",
@@ -5809,7 +5809,7 @@ return {
 				},
 			},
 
-			j_cbean_commit_farming                    = {
+			j_cbean_commit_farming                      = {
 				name = "Commit Farming",
 				text = {
 					"{C:chips}+#1#{} Chips for each",
@@ -5819,7 +5819,7 @@ return {
 				},
 			},
 
-			j_cbean_smoke_merchant                    = {
+			j_cbean_smoke_merchant                      = {
 				name = "Smoke Merchant",
 				text = {
 					"Gains {X:mult,C:white}X#1#{} Mult",
@@ -6372,6 +6372,15 @@ return {
 					"{C:attention}The Afterlife",
 				}
 			},
+			j_cbean_nameteam_face                       = {
+				name = 'Face',
+				text =
+				{
+					"Played face cards",
+					"give {C:white,X:mult}X#1#{} Mult",
+					"when scored"
+				}
+			},
 			j_cbean_nameteam_markiplier                 = {
 				name = 'Markiplier',
 				text =
@@ -6382,7 +6391,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_1                 = {
+			j_cbean_nameteam_markiplier_1               = {
 				name = 'Multiplier',
 				text =
 				{
@@ -6392,7 +6401,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_2                 = {
+			j_cbean_nameteam_markiplier_2               = {
 				name = 'Market Pire',
 				text =
 				{
@@ -6402,7 +6411,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_3                 = {
+			j_cbean_nameteam_markiplier_3               = {
 				name = 'Marlinshire',
 				text =
 				{
@@ -6412,7 +6421,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_4                 = {
+			j_cbean_nameteam_markiplier_4               = {
 				name = 'For Suppliers',
 				text =
 				{
@@ -6422,7 +6431,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_5                 = {
+			j_cbean_nameteam_markiplier_5               = {
 				name = 'Mark (A Player)',
 				text =
 				{
@@ -6432,7 +6441,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_6                 = {
+			j_cbean_nameteam_markiplier_6               = {
 				name = 'Market Buyer',
 				text =
 				{
@@ -6442,7 +6451,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_7                 = {
+			j_cbean_nameteam_markiplier_7               = {
 				name = 'Park For Hire',
 				text =
 				{
@@ -6452,7 +6461,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_markiplier_8                 = {
+			j_cbean_nameteam_markiplier_8               = {
 				name = 'Welcome',
 				text =
 				{
@@ -6462,16 +6471,16 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_nameteam_fashionismypassion                 = {
+			j_cbean_nameteam_fashionismypassion         = {
 				name = 'Fashion is my Passion',
 				text =
 				{
 					"Played cards with",
-                    "{C:hearts}Heart{} suit give",
-                    "{C:chips}+#1#{} Chips when scored",
+					"{C:hearts}Heart{} suit give",
+					"{C:chips}+#1#{} Chips when scored",
 				}
 			},
-			j_cbean_nameteam_wavegoodbye                 = {
+			j_cbean_nameteam_wavegoodbye                = {
 				name = 'Wave Goodbye',
 				text =
 				{
@@ -6479,7 +6488,7 @@ return {
 					"{C:attention}final{} hand of round"
 				}
 			},
-			j_cbean_nteam_mix_up                 = {
+			j_cbean_nteam_mix_up                        = {
 				name = 'Mix Up',
 				text =
 				{
@@ -6490,7 +6499,7 @@ return {
 					"times per round",
 				}
 			},
-			j_cbean_nteam_rick_astley                 = {
+			j_cbean_nteam_rick_astley                   = {
 				name = 'Rick Astley',
 				text =
 				{
@@ -6574,8 +6583,8 @@ return {
 					"{C:inactive,s:0.75}Perhaps some things are better...{}",
 					"{C:inactive,s:0.95}Left Behind.{}"
 				}
-			}, --jokers jbill pokers woah woah jokercards yo jokers yo jbill
-			j_cbean_jbill_who                         = { -- added by nteam
+			},                                     --jokers jbill pokers woah woah jokercards yo jokers yo jbill
+			j_cbean_jbill_who                           = { -- added by nteam
 				name = "Who can Placehold Now?",
 				text = {
 					"After the {C:attention}Big{}",
@@ -6585,7 +6594,7 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_jbill_98                         = { -- added by nteam
+			j_cbean_jbill_98                            = { -- added by nteam
 				name = "98%",
 				text = {
 					"{C:attention}Teeny{} blind is",
@@ -7256,39 +7265,39 @@ return {
 			},
 
 			-- Sticker Sheet Packs
-			
-            p_cbean_nameteam_stickersheet_normal1 = {
-                name = "Collector's Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-                    "be used immediately"
-                }
-            },
-            p_cbean_nameteam_stickersheet_normal2 = {
-                name = "Collector's Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-                    "be used immediately"
-                }
-            },
-            p_cbean_nameteam_stickersheet_jumbo1 = {
-                name = "Storage Collector's Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-                    "be used immediately"
-                }
-            },
-            p_cbean_nameteam_stickersheet_mega1 = {
-                name = "Warehouse Collector's Pack",
-                text = {
-                    "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-                    "be used immediately"
-                }
-            },
+
+			p_cbean_nameteam_stickersheet_normal1 = {
+				name = "Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
+			p_cbean_nameteam_stickersheet_normal2 = {
+				name = "Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
+			p_cbean_nameteam_stickersheet_jumbo1 = {
+				name = "Storage Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
+			p_cbean_nameteam_stickersheet_mega1 = {
+				name = "Warehouse Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
 
 			-- Blind Stickers
 
@@ -10188,6 +10197,7 @@ return {
 			k_cbean_nteam_tripled               = "Tripled!",
 			k_cbean_nteam_halved                = "Halved!",
 			cbean_disable_animations            = "Disable Joker Animations",
+			cbean_disable_copyright             = "Disable Copyrighted Material",
 			k_cbean_stickersheet                = "Sticker Sheet",
 			b_cbean_stickersheet_cards          = "Sticker Sheets",
 			k_cbean_stickersheetpack            = "Collector's Pack",
@@ -10230,7 +10240,7 @@ return {
 			ph_cbean_dragon_bruit               = "Saved by Dragon Bruit!",
 			k_cbean_replaced_ex                 = "Replaced!",
 
-			k_cbean_jbill_away 					= "Away!" -- idk what this is sorry
+			k_cbean_jbill_away                  = "Away!" -- idk what this is sorry
 		},
 		high_scores = {},
 		labels = {
