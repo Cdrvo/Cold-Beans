@@ -96,8 +96,8 @@ local back_draw_hook = SMODS.DrawSteps["back"].func
 SMODS.DrawSteps["back"].func = function(card, layer)
 	back_draw_hook(card, layer)
 	if
-		(G.GAME.viewed_back and G.GAME.viewed_back.effect.center.key == "b_cbean_nameteam_sticky")
-		or (G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_nameteam_sticky")
+		((G.GAME.viewed_back and G.GAME.viewed_back.effect.center.key == "b_cbean_nameteam_sticky")
+		or (G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_nameteam_sticky"))
 			and card.children.nteam_sticky_back
 	then
 		local overlay = G.C.WHITE
