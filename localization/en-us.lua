@@ -7120,6 +7120,25 @@ return {
 				},
 			},
 
+			cbean_targeted = {
+				name = "Targeted",
+				text = {
+					"Retrigger this",
+					"card {C:attention}once.",
+					"Moves to a different",
+					"card after triggering"
+				},
+			},
+
+			cbean_flagged = {
+				name = "Flagged",
+				text = {
+					"After scoring",
+					"{C:green}#1# in 8{} Chance to",
+					"{C:red}destroy{} adjecent cards"
+				},
+			},
+
 			-- Sticker Sheet Packs
 			
             p_cbean_nameteam_stickersheet_normal1 = {
@@ -10117,6 +10136,8 @@ return {
 			cbean_locked = "Locked",
 			cbean_shroom = "Shroom",
 			cbean_guardshroom = "Guard Shroom",
+			cbean_targeted = "Targeted",
+			cbean_flagged = "Flagged",
 
 			cbean_the_arm_sticker = "The Arm",
 			cbean_the_club_sticker = "The Club",
