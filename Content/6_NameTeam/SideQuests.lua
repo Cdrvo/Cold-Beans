@@ -65,7 +65,7 @@ YMA.SideQuests.quest {
     config = {},
 
     calculate = function(self, card, context)
-        if context.sticker_applied and not context.is_deck_sticker and context.other_card:get_rank() == 14 then
+        if context.sticker_applied and not context.is_deck_sticker and context.other_card:get_id() == 14 then
             YMA.complete_quest(card, "Joker", "j_scholar")
         end
     end,
