@@ -1699,6 +1699,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.selling_self then
+			if not G.GAME.NAMETEAM.no_progress then G.GAME.NAMETEAM.no_progress = 0 end
 			G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress + cae.rounds
 		end
 	end,
