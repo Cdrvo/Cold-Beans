@@ -6462,6 +6462,15 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
 				}
 			},
+			j_cbean_nameteam_fashionismypassion                 = {
+				name = 'Fashion is my Passion',
+				text =
+				{
+					"Played cards with",
+                    "{C:hearts}Heart{} suit give",
+                    "{C:chips}+#1#{} Chips when scored",
+				}
+			},
 			j_cbean_nameteam_wavegoodbye                 = {
 				name = 'Wave Goodbye',
 				text =

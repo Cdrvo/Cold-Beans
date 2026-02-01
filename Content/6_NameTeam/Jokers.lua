@@ -3242,6 +3242,35 @@ SMODS.Joker({
     end
 })
 
+SMODS.Joker({
+    key = "nameteam_fashionismypassion",
+    config = { extra = { chips = 50 } },
+    rarity = 2,
+    atlas = "NAMETEAM_Jokers3",
+    pos = { x = 4, y = 5 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
+            return { chips = card.ability.extra.chips }
+        end
+    end
+})
+
 SMODS.Sound({
     key = "bye",
     path = "6_NameTeam/cbean_bye.ogg",
