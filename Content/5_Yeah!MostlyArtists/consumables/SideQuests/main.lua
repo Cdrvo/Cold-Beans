@@ -76,6 +76,14 @@ function Card:set_sprites(center, front)
             y = G.ASSET_ATLAS.cbean_yma_quest_atlas.py
         }
     end
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_nameteam_sticky" and not self.children.nteam_sticky_back then
+        self.children.nteam_sticky_back = SMODS.create_sprite(self.T.x,self.T.y,self.T.w,self.T.h,"cbean_NAMETEAM_Decks",{x=4,y=0})
+        self.children.nteam_sticky_back.states.hover = self.states.hover
+        self.children.nteam_sticky_back.states.click = self.states.click
+        self.children.nteam_sticky_back.states.drag = self.states.drag
+        self.children.nteam_sticky_back.states.collide.can = false
+        self.children.nteam_sticky_back:set_role({ major = self, role_type = "Glued", draw_major = self })
+    end
 end
 
 local set_screen_positions_ref = set_screen_positions

@@ -52,7 +52,7 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         local tbl = card.ability.extra[card.ability.extra.current_effect]
         if card.ability.extra.current_effect == "NONE" then
-        elseif card.ability.current_effect ~= "doggfly" then
+        elseif card.ability.extra.current_effect ~= "doggfly" then
             if card.ability.extra.current_effect == "ghost" then
                 info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
             end
@@ -117,8 +117,9 @@ SMODS.Joker({
         end
     end,
     calculate = function(self, card, context)
-        local tbl = card.ability.extra[card.ability.extra.current_effect] or {}
+        local tbl = card.ability.extra[card.ability.extra.current_effect]
         if context.starting_shop and card.ability.extra.current_effect == "doggfly" then
+            local plant_count = 0
             for _, j in ipairs(G.jokers.cards) do
                 if j.config.center.pvz_plant then
                     plant_count = plant_count + 1
@@ -208,7 +209,7 @@ SMODS.Joker({
             end
             return {
                 xmult = final_xmult or tbl.xmult,
-                xchips = tbl.chips,
+                xchips = tbl.xchips,
             }
         end
         if context.before and not context.blueprint and #context.full_hand == 4 and card.ability.extra.current_effect == "inky" then
@@ -241,8 +242,16 @@ SMODS.Joker({
                 end
             end
             if context.beat_boss then
-                local index = pseudorandom('nteam_self_insert', 0, 6)
-                NAMETEAM.set_effect(card, index)
+                card.ability.extra.current_effect = pseudorandom_element({
+                    "thunderedge",
+                    "revo",
+                    "dave",
+                    "ghost",
+                    "doggfly",
+                    "inky",
+                    "doctor",
+                }, "nteam_self_insert")
+                NAMETEAM.set_sprite_self_insert(card)
             end
         end
     end,
