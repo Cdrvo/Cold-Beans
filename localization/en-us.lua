@@ -4554,7 +4554,7 @@ return {
 				},
 			},
 			j_cbean_AKKE                                = {
-				name = "AKKE",
+				name = "A.K.E.E.",
 				text = {
 					"All jokers on the right",
 					"of this card give",
