@@ -5742,6 +5742,15 @@ return {
 				},
 			},
 
+			j_cbean_goo_peashooter                           = {
+				name = "Goo Peashooter",
+				text = {
+					"When hand is played,",
+					"{C:attention}Blind{} requirements",
+					"are reduced by {C:attention}#1#%{}",
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb                = {
 				name = {

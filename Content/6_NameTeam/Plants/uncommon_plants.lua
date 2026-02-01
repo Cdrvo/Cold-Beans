@@ -5282,7 +5282,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "ThunderEdge",
 		team = "Name Team",
-		art = "DoggFly",
+		art = "N/A",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra

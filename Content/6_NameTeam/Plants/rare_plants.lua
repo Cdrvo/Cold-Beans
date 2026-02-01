@@ -1435,3 +1435,44 @@ SMODS.Joker({
 		local cae = card.ability.extra
 	end,
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	atlas = "NAMETEAM_PlantPlaceholder",
+	pos = { x = 0, y = 0 },
+	key = "goo_peashooter",
+	cost = 4,
+	beans_credits = {
+		code = "ThunderEdge",
+		team = "Name Team",
+		art = "N/A",
+	},
+	rarity = 3,
+	blueprint_compat = true,
+	config = {
+		extra = { percent = 20 },
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.percent } }
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if context.press_play then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.1,
+				func = function()
+					G.GAME.blind.chips = G.GAME.blind.chips * cae.percent / 100
+					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+					NAMETEAM.msg(card, "-" .. cae.percent .. "%")
+					return true
+				end,
+			}))
+		end
+	end,
+	pools = {
+		cbean_pea = true,
+	},
+})
