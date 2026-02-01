@@ -1159,54 +1159,6 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	key = "gloom_shroom",
-	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 5, y = 6 },
-	cost = 2,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "Crazy Dave",
-	},
-	rarity = 2,
-	blueprint_compat = false,
-	config = {
-		extra = {
-			xmukt = 1.5,
-		},
-	},
-	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
-		return { vars = { cae.xmukt } }
-	end,
-	calculate = function(self, card, context)
-		local cae = card.ability.extra
-		if
-			context.post_trigger
-			and not context.blueprint
-			and (context.other_context.joker_main or context.other_context.individual or NAMETEAM.during_scoring)
-		then
-			if
-				(card:on_the("right") and context.other_card == card:on_the("right"))
-				or (card:on_the("left") and context.other_card == card:on_the("left"))
-			then
-				-- print("KILL YOURSELF")
-				context.other_card.ability.gloomy_shroomy = true
-			end
-		end
-		if context.other_joker and context.other_joker.ability.gloomy_shroomy then
-			context.other_joker.ability.gloomy_shroomy = false
-			return {
-				xmult = cae.xmukt,
-				message_card = context.other_joker,
-			}
-		end
-	end,
-})
-
-SMODS.Joker({
-	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
 	key = "cattail",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 6, y = 6 },
