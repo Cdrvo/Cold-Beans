@@ -39,3 +39,12 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+	key = "jbill_specialist",
+	px = 113,
+	py = 57,
+    path = "8_Jimbobill/gift_from_pissboys.png",
+	atlas_table = "ANIMATION_ATLAS",
+	frames = 4,
+})  

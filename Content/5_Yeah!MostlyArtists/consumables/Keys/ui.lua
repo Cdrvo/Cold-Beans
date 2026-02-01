@@ -270,7 +270,7 @@ end
 
 function G.UIDEF.employsprite()
   --for now chicot is taking backalley sign, because he's kinda an asshole and we need a placeholder
-	local sprite_employ = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"], { x = 0, y = 0 }) or nil
+	local sprite_employ = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_jbill_specialist"], { x = 0, y = 0 }) or nil
 
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_employ}},
