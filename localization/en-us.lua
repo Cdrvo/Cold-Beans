@@ -3703,7 +3703,7 @@ return {
 				text = {
 					"Changes effect",
 					"after defeating",
-					"a {C:attention}Boss Blind",
+					"a {C:attention}CEO Blind",
 					"{C:inactive}(Scaling of effects",
 					"{C:inactive}is preserved)"
 				},
@@ -6507,6 +6507,16 @@ return {
 					"at least {C:attention}3{} distinct ranks,",
 					"this {C:attention}Joker{} gains {X:mult,C:white}X#1#{} Mult",
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult){}"
+				}
+			},
+			j_cbean_nameteam_yjh                   = {
+				name = 'Your Joker Here',
+				text =
+				{
+					"When {C:attention}Blind{} is selected,",
+					"creates a {C:tarot}Tarot{} card for",
+					"each empty {C:attention}Joker{} slot",
+					"{C:inactive}(Must have room){}"
 				}
 			},
 
@@ -10677,6 +10687,8 @@ return {
 			coldbean_code = { "Code: #1#" },
 			a_burned_cards = "#1# Cards",
 			a_yma_plus_score = "+#1#% Score",
+            a_tarot = "+#1# Tarot",
+            a_tarots = "+#1# Tarots"
 		},
 		v_text = {
 			--TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
