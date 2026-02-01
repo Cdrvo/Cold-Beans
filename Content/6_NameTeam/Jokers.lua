@@ -3038,10 +3038,70 @@ SMODS.Joker {
         local cae = card.ability.extra
         if context.joker_main and context.scoring_name ~= NAMETEAM.most_played() and cae.hands_given < 2 then
             ease_hands_played(cae.hands)
-            cae.hands_given = cae.hands_given + 1
+            if not context.blueprint then
+                cae.hands_given = cae.hands_given + 1
+            end
         end
         if context.end_of_round and context.main_eval and not context.game_over then
             cae.hands_given = 0
         end
     end
 }
+
+SMODS.Joker {
+    key = "nteam_rick_astley",
+    config = { extra = { xmult = 1, xmult_inc = 0.1, vid_played = false } },
+    rarity = 2,
+    atlas = 'NAMETEAM_Jokers3',
+    pos = { x = 3, y = 5 },
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult_inc, card.ability.extra.xmult } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "ThunderEdge",
+        art = "ThunderEdge",
+        code = "ThunderEdge",
+    },
+
+    calculate = function(self, card, context)
+        local cae = card.ability.extra
+        if context.joker_main and context.scoring_name ~= NAMETEAM.most_played() and cae.hands_given < 2 then
+            return {
+                xmult = cae.xmult
+            }
+        end
+        if context.before and not context.blueprint then
+            local ranks = {}
+            local count = 0
+            for _, c in ipairs(context.full_hand) do
+                if not ranks[c:get_id()] then
+                    count = count + 1
+                    ranks[c:get_id()] = true
+                end
+            end
+            if count >= 3 then
+                SMODS.scale_card(card, {
+                    ref_table = cae,
+                    ref_value = "xmult",
+                    scalar_value = "xmult_inc"
+                })
+            end
+        end
+    end
+}
+
+local card_click_hook = Card.click
+function Card:click()
+    local ret = card_click_hook(self)
+    if self.config.center.key == "j_cbean_nteam_rick_astley" and not self.ability.extra.vid_played and self.added_to_deck then
+        NAMETEAM.start_secret_video()
+        self.ability.extra.vid_played = true
+    end
+    return ret
+end

@@ -6391,6 +6391,16 @@ return {
 					"times per round",
 				}
 			},
+			j_cbean_nteam_rick_astley                 = {
+				name = 'Rick Astley',
+				text =
+				{
+					"If played hand contains",
+					"at least {C:attention}3{} distinct ranks,",
+					"this {C:attention}Joker{} gains {X:mult,C:white}X#1#{} Mult",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory              = {
