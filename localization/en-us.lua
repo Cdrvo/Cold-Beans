@@ -6566,6 +6566,16 @@ return {
 					"{C:inactive,s:0.95}Left Behind.{}"
 				}
 			}, --jokers jbill pokers woah woah jokercards yo jokers yo jbill
+			j_cbean_jbill_who                         = { -- ADD LOCALIZATION SHGRASDHJGVAHFJAS
+				name = "Who can Placehold Now?",
+				text = {
+					"After the {C:attention}Big{}",
+					"blind shop, reroll current boss.",
+					"Gains {X:mult,C:white}X#1#{} Mult",
+					"when entering Boss or CEO blinds.",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+				}
+			},
 			j_cbean_jbill_tlane                         = {
 				name = "Triple Lane",
 				text = {
@@ -10203,6 +10213,8 @@ return {
 
 			ph_cbean_dragon_bruit               = "Saved by Dragon Bruit!",
 			k_cbean_replaced_ex                 = "Replaced!",
+
+			k_cbean_jbill_away 					= "Away!" -- idk what this is sorry
 		},
 		high_scores = {},
 		labels = {

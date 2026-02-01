@@ -20,7 +20,7 @@ SMODS.Joker {
         if context.setting_blind and (G.GAME.blind_on_deck == "Boss" or G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo") then
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
             return {
-                message = localize("k_jbill_away"),
+                message = localize("k_cbean_jbill_away"),
                 colour = G.C.RED
             }
         end
