@@ -2,7 +2,7 @@
 SMODS.Keybind {
     key_pressed = "up",
     action = function (self)
-        if G.GAME and G.GAME.konami_counter < 2 then
+        if G.GAME and G.GAME.konami_counter and G.GAME.konami_counter < 2 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
 
         end
@@ -12,7 +12,7 @@ SMODS.Keybind {
 SMODS.Keybind {
     key_pressed = "down",
     action = function (self)
-        if (1 < G.GAME.konami_counter) and (G.GAME.konami_counter < 4) then
+        if G.GAME.konami_counter and (1 < G.GAME.konami_counter) and (G.GAME.konami_counter < 4) then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
 
         end
@@ -22,7 +22,7 @@ SMODS.Keybind {
 SMODS.Keybind {
     key_pressed = "left",
     action = function (self)
-        if G.GAME and G.GAME.konami_counter == 4 or G.GAME.konami_counter == 6 then
+        if G.GAME and G.GAME.konami_counter and G.GAME.konami_counter == 4 or G.GAME.konami_counter == 6 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
 
         end
@@ -32,7 +32,7 @@ SMODS.Keybind {
 SMODS.Keybind {
     key_pressed = "right",
     action = function (self)
-        if G.GAME and G.GAME.konami_counter == 5 or G.GAME.konami_counter == 7 then
+        if G.GAME and G.GAME.konami_counter and G.GAME.konami_counter == 5 or G.GAME.konami_counter == 7 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
 
         end
@@ -42,7 +42,7 @@ SMODS.Keybind {
 SMODS.Keybind {
     key_pressed = "b",
     action = function (self)
-        if G.GAME then
+        if G.GAME and G.GAME.konami_counter then
             if G.GAME.konami_counter == 8 then
                 G.GAME.konami_counter = G.GAME.konami_counter + 1
 
@@ -55,7 +55,7 @@ SMODS.Keybind {
 SMODS.Keybind {
     key_pressed = "a",
     action = function (self)
-        if G.GAME and G.GAME.konami_counter == 9 then
+        if G.GAME and G.GAME.konami_counter and G.GAME.konami_counter == 9 then
             G.GAME.konami_counter = G.GAME.konami_counter + 1
 
         end
