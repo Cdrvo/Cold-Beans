@@ -203,7 +203,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
+	in_pool = false,
 	key = "crater",
 	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
