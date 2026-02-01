@@ -33,6 +33,41 @@ SMODS.PokerHand({
 	end,
 })
 
+SMODS.PokerHand({
+	key = "nteam_collection_3oak",
+	l_chips = 90,
+	l_mult = 7,
+	chips = 150,
+	mult = 30,
+	cb_house_rules = true,
+	visible = function(self)
+		local joker = not not next(SMODS.find_card("j_cbean_0chill_house_rules"))
+		local clicked
+		if G.jokers and G.jokers.highlighted then
+			for _, v in ipairs(G.jokers.highlighted) do
+				if v.config.center.key == "j_cbean_0chill_house_rules" then
+					clicked = true
+				end
+			end
+		end
+		local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
+
+		return joker and (played or clicked)
+	end,
+	example = {
+		{ "D_3", true, stickers = { "eternal", "cbean_hooking" } },
+		{ "H_3", true, stickers = { "cbean_mailed" } },
+		{ "C_3", true, stickers = { "rental" } },
+		{ "C_2", false },
+		{ "S_9", false },
+	},
+	evaluate = function(parts, hand)
+		if #SMODS.find_card("j_cbean_0chill_house_rules") > 0 then -- if we have the house rules
+			return parts.cbean_nteam_collection_part and parts._3
+		end
+	end,
+})
+
 SMODS.PokerHandPart({
 	key = "nteam_collection_part",
 	func = function(hand)
@@ -59,3 +94,44 @@ SMODS.PokerHandPart({
 	end,
 })
 
+SMODS.Consumable {
+    key = 'nameteam_collection_planet',
+    set = 'Planet',
+    atlas = 'NAMETEAM_OtherConsumables',
+    config = { hand_type = 'cbean_nteam_collection', softlock = true },
+    pos = { x = 1, y = 0 },
+    beans_credits = {
+        team = "Name Team",
+        idea = "TheAltDoc",
+        art = "Inky",
+        code = "TheAltDoc",
+    },
+    generate_ui = 0,
+    process_loc_text = function(self)
+        local target_text = G.localization.descriptions[self.set]['c_mercury'].text
+        SMODS.Consumable.process_loc_text(self)
+        G.localization.descriptions[self.set][self.key] = {}
+        G.localization.descriptions[self.set][self.key].text = target_text
+    end
+}
+
+SMODS.Consumable {
+    key = 'nameteam_collection_3oak_planet',
+    set = 'Planet',
+    atlas = 'NAMETEAM_OtherConsumables',
+    config = { hand_type = 'cbean_nteam_collection_3oak', softlock = true },
+    pos = { x = 2, y = 0 },
+    beans_credits = {
+        team = "Name Team",
+        idea = "TheAltDoc",
+        art = "Inky",
+        code = "TheAltDoc",
+    },
+    generate_ui = 0,
+    process_loc_text = function(self)
+        local target_text = G.localization.descriptions[self.set]['c_mercury'].text
+        SMODS.Consumable.process_loc_text(self)
+        G.localization.descriptions[self.set][self.key] = {}
+        G.localization.descriptions[self.set][self.key].text = target_text
+    end
+}
