@@ -38,8 +38,8 @@ G.FUNCS.hide_employ = function(e)
 	hide_location(G.jbill_employed_screen)
 
 
-    G.jbill_employed_area:remove()
-    G.jbill_employed_area = nil
+    -- G.jbill_employed_area:remove()
+    -- G.jbill_employed_area = nil
 
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
