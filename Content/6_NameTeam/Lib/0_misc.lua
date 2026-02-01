@@ -21,6 +21,15 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "NAMETEAM_street",
+	px = 113,
+	py = 57,
+	path = "6_NameTeam/ColdBeansStreet.png",
+	atlas_table = "ANIMATION_ATLAS",
+	frames = 4,
+})
+
+SMODS.Atlas({
 	key = "NAMETEAM_closed",
 	px = 113,
 	py = 57,

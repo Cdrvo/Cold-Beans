@@ -859,3 +859,32 @@ function NAMETEAM.sticker_area_check(area)
 	end
 	return false
 end
+
+function NAMETEAM.shop_sign(sign)
+	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+	local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
+	G.E_MANAGER:add_event(Event({
+		trigger = "before",
+		delay = 0.1,
+		func = function()
+			sign_sprite.T.scale = 0
+			return true
+		end,
+	}))
+	G.E_MANAGER:add_event(Event({
+		trigger = "after",
+		delay = 0.5,
+		func = function()
+			sign_sprite.atlas = G.ANIMATION_ATLAS[sign]
+			return true
+		end,
+	}))
+	G.E_MANAGER:add_event(Event({
+		trigger = "after",
+		delay = 1,
+		func = function()
+			sign_sprite.T.scale = 1
+			return true
+		end,
+	}))
+end

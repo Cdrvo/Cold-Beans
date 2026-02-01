@@ -451,12 +451,13 @@ G.FUNCS.show_stationery = function(e)
 	hide_location(G.main_street)
 	G.STATE_COMPLETE = false
 	G.STATE = G.STATES.STATIONERY
-	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+	--local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATE)
-	sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_NAMETEAM_stationery"]
+	--sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_NAMETEAM_stationery"]
+	NAMETEAM.shop_sign("cbean_NAMETEAM_stationery")
 	G.hand.states.visible = false
-	sign_sprite.states.visible = true
+	--sign_sprite.states.visible = true
 	sign_text = DynaText({
 		string = { localize("ph_stationery") },
 		colours = { G.C.GOLD, G.C.IMPORTANT },
@@ -476,11 +477,12 @@ G.FUNCS.hide_stationery = function(e)
 		stop_use()
 		G.STATE = G.STATES.MAIN_STREET
 		G.STATE_COMPLETE = false
-		local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+		--local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 		local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 		ease_background_colour_blind(G.STATES.MAIN_STREET)
-		sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
-		sign_sprite.states.visible = false
+		--sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+		NAMETEAM.shop_sign("cbean_NAMETEAM_street")
+		--sign_sprite.states.visible = false
 		sign_text = DynaText({
 			string = { "" },
 			colours = { lighten(G.C.BLACK, 0.3) },

@@ -23,11 +23,12 @@ G.FUNCS.show_employ = function(e)
     G.STATE_COMPLETE = false
     G.STATE = G.STATES.EMPLOY
 
-    local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+    --local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
     ease_background_colour_blind(G.STATE)
-    sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_jbill_specialist"]
+    --sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_jbill_specialist"]
+    NAMETEAM.shop_sign("cbean_jbill_specialist")
     G.hand.states.visible = false
-    sign_sprite.states.visible = true
+    --sign_sprite.states.visible = true
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.jbill_employed_screen)
 end
@@ -41,11 +42,12 @@ G.FUNCS.hide_employ = function(e)
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
     
-	local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+	--local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
     local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATES.MAIN_STREET)
-	sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
-    sign_sprite.states.visible = false
+	--sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+    NAMETEAM.shop_sign("cbean_NAMETEAM_street")
+    --sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     G.dreamlands_consumeable_card_holder.states.visible = false
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()

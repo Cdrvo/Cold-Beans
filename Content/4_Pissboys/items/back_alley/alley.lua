@@ -299,13 +299,13 @@ G.FUNCS.show_balley = function(e)
   G.current_betmoney = 0
   G.STATE = G.STATES.BALLEY
   G.STATE_COMPLETE = false
-
-  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+	NAMETEAM.shop_sign("cbean_pboys_backalley_shop")
+  --local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
   local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
   ease_background_colour_blind(G.STATE)
-  sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
+  --sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"]
   G.hand.states.visible = false
-  sign_sprite.states.visible = true
+  --sign_sprite.states.visible = true
   sign_text = DynaText({string = {localize('ph_alley_wager')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
 end
 
@@ -319,11 +319,12 @@ G.FUNCS.hide_balley = function(e)
 	  G.cups = {}
 	  G.STATE = G.STATES.MAIN_STREET
 	  G.STATE_COMPLETE = false
-	  local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
+	  NAMETEAM.shop_sign("cbean_NAMETEAM_street")
+	  --local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	  local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	  ease_background_colour_blind(G.STATES.MAIN_STREET)
-	  sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
-	  sign_sprite.states.visible = false
+	  --sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
+	  --sign_sprite.states.visible = false
 	  sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
 	  show_location(G.main_street)
 
