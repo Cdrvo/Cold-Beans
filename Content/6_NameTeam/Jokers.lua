@@ -263,10 +263,19 @@ SMODS.Joker({
                     "inky",
                     "doctor",
                 }, "nteam_self_insert")
+                card:juice_up()
                 NAMETEAM.set_sprite_self_insert(card)
+                NAMETEAM.msg(card, (localize({ type = "name_text", key = card.config.center.key .. "_" .. card.ability.extra.current_effect, set = "Joker" }) .. "!"))
             end
         end
     end,
+    update = function(self,card)
+        if card.added_to_deck then
+            if card.children and card.children.center.sprite_pos.x == 0 and card.children.center.sprite_pos.y == 0 then
+                NAMETEAM.set_sprite_self_insert(card)
+            end
+        end
+    end
 })
 
 function NAMETEAM.set_sprite_self_insert(card)
