@@ -5311,3 +5311,59 @@ SMODS.Joker({
 		end
 	end,
 })
+
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "snap_pea",
+	atlas = "NAMETEAM_PlantPlaceholder",
+	pos = { x = 0, y = 0 },
+	cost = 3,
+	rarity = 2,
+	blueprint_compat = true,
+	config = {
+		extra = {
+			mult = 0,
+			rounds_remaining = 3
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return {
+			vars = { cae.mult, 3, cae.rounds_remaining, },
+		}
+	end,
+	beans_credits = {
+		code = "ThunderEdge",
+		team = "Name Team",
+		art = "N/A",
+	},
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if context.before and not context.blueprint then
+			if cae.rounds_remaining > 1 then
+				cae.rounds_remaining = cae.rounds_remaining - 1
+			else
+				cae.rounds_remaining = 3
+				local target = pseudorandom_element(context.scoring_hand)
+				if target then
+					target.nteam_marked_snap_pea = true
+				end
+			end
+		end
+		if context.destroy_card and context.cardarea == G.play and not context.blueprint then
+			if context.destroying_card.nteam_marked_snap_pea then
+				cae.mult = cae.mult + context.destroying_card.base.nominal
+				return {
+					remove = true
+				}
+			end
+		end
+		if context.joker_main then
+			return {
+				mult = cae.mult
+			}
+		end
+	end,
+})

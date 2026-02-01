@@ -5751,6 +5751,17 @@ return {
 				},
 			},
 
+			j_cbean_snap_pea                           = {
+				name = "Snap Pea",
+				text = {
+					"Every {C:attention}#2#{} {C:inactive}(#3#){} hands played,",
+					"destroy a random",
+					"scored card and gain",
+					"Mult equal to its rank",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb                = {
 				name = {
