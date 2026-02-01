@@ -32,7 +32,17 @@ function NAMETEAM.poll_sticker(guaranteed, check, check_allowed, set, test)
 
 	for k, v in pairs(tab) do
 		if SMODS.Stickers[v.key].sets[set] then
+			if set == "Blind" then
+				if SMODS.Stickers[v.key].showdown_sticker then
+					if G.GAME.modifiers.showdown_stickers then
+						finaltab[#finaltab + 1] = v
+					end
+				else
+					finaltab[#finaltab + 1] = v
+				end
+			else
 			finaltab[#finaltab + 1] = v
+			end
 		end
 	end
 
