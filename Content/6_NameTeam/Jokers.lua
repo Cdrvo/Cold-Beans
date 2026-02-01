@@ -2768,6 +2768,42 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+    key = "nameteam_mappedout",
+    config = { extra = { scaling = 0.5 } },
+    rarity = 2,
+    atlas = "NAMETEAM_Jokers3",
+    pos = { x = 2, y = 2 },
+    cost = 7,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.scaling,
+                (G.GAME.current_round.amount_biomes_visited or 0) * card.ability.extra.scaling + 1,
+            },
+        }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "he_him",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "Inky",
+        art = "GhostSalt",
+        code = "TheAltDoc",
+    },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = (G.GAME.current_round.amount_biomes_visited or 0) * card.ability.extra.scaling + 1,
+            }
+        end
+    end,
+})
+
+SMODS.Joker({
     key = "nameteam_beentheredonethat",
     config = { extra = { xmult = 3 } },
     rarity = 2,
@@ -3134,37 +3170,30 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-    key = "nameteam_mappedout",
-    config = { extra = { scaling = 0.5 } },
-    rarity = 2,
+    key = "nameteam_face",
+    config = { extra = { xmult = 1.2 } },
+    rarity = 1,
     atlas = "NAMETEAM_Jokers3",
-    pos = { x = 2, y = 2 },
-    cost = 7,
+    pos = { x = 1, y = 5 },
+    cost = 5,
     loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.scaling,
-                (G.GAME.current_round.amount_biomes_visited or 0) * card.ability.extra.scaling + 1,
-            },
-        }
+        return { vars = { card.ability.extra.xmult } }
     end,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    pronouns = "he_him",
+    pronouns = "they_them",
 
     beans_credits = {
         team = "Name Team",
-        idea = "Inky",
+        idea = "GhostSalt",
         art = "GhostSalt",
-        code = "TheAltDoc",
+        code = "GhostSalt",
     },
 
     calculate = function(self, card, context)
-        if context.joker_main then
-            return {
-                xmult = (G.GAME.current_round.amount_biomes_visited or 0) * card.ability.extra.scaling + 1,
-            }
+        if context.individual and not context.repetition and context.cardarea == G.play and context.other_card:is_face() then
+            return { xmult = card.ability.extra.xmult }
         end
     end,
 })
@@ -3269,46 +3298,6 @@ SMODS.Joker({
             return { chips = card.ability.extra.chips }
         end
     end
-})
-
-SMODS.Sound({
-    key = "bye",
-    path = "6_NameTeam/cbean_bye.ogg",
-})
-
-SMODS.Joker({
-    key = "nameteam_wavegoodbye",
-    config = { extra = { money = 8 } },
-    rarity = 1,
-    atlas = "NAMETEAM_Jokers3",
-    pos = { x = 9, y = 4 },
-    cost = 5,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.money } }
-    end,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    pronouns = "she_her",
-
-    beans_credits = {
-        team = "Name Team",
-        idea = "GhostSalt",
-        art = "GhostSalt",
-        code = "GhostSalt",
-    },
-
-    calculate = function(self, card, context)
-        if context.before and G.GAME.current_round.hands_left == 0 then
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound("cbean_bye", 1, 1)
-                    return true
-                end,
-            }))
-            return { dollars = card.ability.extra.money }
-        end
-    end,
 })
 
 SMODS.Joker({
@@ -3433,7 +3422,9 @@ SMODS.Joker({
     pos = { x = 3, y = 5 },
     cost = 6,
     loc_vars = function(self, info_queue, card)
-        if not card.ability.extra.vid_played then
+        if not card.ability.extra.vid_played
+        and not (ColdBeansConfig and ColdBeansConfig["copyright_disabled"])
+        then
             info_queue[#info_queue + 1] = {
                 set = "Other",
                 key = "cbean_nteam_secret",
@@ -3486,9 +3477,107 @@ function Card:click()
         self.config.center.key == "j_cbean_nteam_rick_astley"
         and not self.ability.extra.vid_played
         and self.added_to_deck
+        and not (ColdBeansConfig and ColdBeansConfig["copyright_disabled"])
     then
         NAMETEAM.start_secret_video()
         self.ability.extra.vid_played = true
     end
     return ret
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- I'd like this to be at the end of the file, for thematic reasons.
+
+SMODS.Sound({
+    key = "bye",
+    path = "6_NameTeam/cbean_bye.ogg",
+})
+
+SMODS.Joker({
+    key = "nameteam_wavegoodbye",
+    config = { extra = { money = 8 } },
+    rarity = 1,
+    atlas = "NAMETEAM_Jokers3",
+    pos = { x = 9, y = 4 },
+    cost = 5,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.before and G.GAME.current_round.hands_left == 0 then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound("cbean_bye", 1, 1)
+                    return true
+                end,
+            }))
+            return { dollars = card.ability.extra.money }
+        end
+    end,
+})

@@ -400,7 +400,15 @@ local cbeanConfigTab = function()
 		ref_table = ColdBeansConfig,
 		ref_value = "animations_disabled",
 		callback = function()
-		end,
+		end
+	})
+	cbean_nodes[#cbean_nodes + 1] = create_toggle({
+		label = localize("cbean_disable_copyright"),
+		active_colour = HEX("40c76d"),
+		ref_table = ColdBeansConfig,
+		ref_value = "copyright_disabled",
+		callback = function()
+		end
 	})
 	return {
 		n = G.UIT.ROOT,
