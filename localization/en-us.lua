@@ -3749,7 +3749,7 @@ return {
 				text = {
 					{
 						"Each {C:attention}Plant Joker",
-						"gives {X:mult,C:white}X#1#{} Mult",
+						"gives {X:mult,C:white}X#2#{} Mult",
 						"Creates a {C:attention}Plant Joker{}",
 						"at the end of the {C:attention}Shop{}",
 						"{C:inactive}(Must have room)",
