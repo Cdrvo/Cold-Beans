@@ -1222,6 +1222,7 @@ SMODS.Joker({
     },
     cost = 8,
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_soul
         return { vars = { card.ability.extra.target, card.ability.extra.target - card.ability.extra.counted } }
     end,
     blueprint_compat = true,
@@ -3423,7 +3424,7 @@ SMODS.Joker({
     cost = 6,
     loc_vars = function(self, info_queue, card)
         if not card.ability.extra.vid_played
-        and not (ColdBeansConfig and ColdBeansConfig["copyright_disabled"])
+            and not (ColdBeansConfig and ColdBeansConfig["copyright_disabled"])
         then
             info_queue[#info_queue + 1] = {
                 set = "Other",
@@ -3485,6 +3486,78 @@ function Card:click()
     return ret
 end
 
+SMODS.Joker({
+    key = "nameteam_yjh",
+    rarity = 2,
+    atlas = "NAMETEAM_Jokers3",
+    pos = { x = 5, y = 5 },
+    cost = 7,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "any_all",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.setting_blind and G.jokers.config.card_limit > #G.jokers.cards and count_consumables() < G.consumeables.config.card_limit then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound("timpani")
+                            return true
+                        end
+                    }))
+
+                    local counter = 0
+                    for i = 1, G.jokers.config.card_limit - #G.jokers.cards do
+                        if count_consumables() < G.consumeables.config.card_limit then
+                            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                            counter = counter + 1
+
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    local new_card = create_card("Tarot", G.consumables, nil, nil, nil, nil, nil, "nameteam_yjh")
+                                    new_card:add_to_deck()
+                                    G.consumeables:emplace(new_card)
+                                    new_card:juice_up(0.3, 0.5)
+                                    G.GAME.consumeable_buffer = 0
+                                    return true
+                                end
+                            }))
+                        end
+                    end
+
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            if counter == 1 then
+                                card_eval_status_text(card, 'extra', nil, nil, nil,
+                                    {
+                                        message = localize { type = 'variable', key = 'a_tarot', vars = { counter } },
+                                        colour = G.C.SECONDARY_SET.Tarot
+                                    })
+                            else
+                                card_eval_status_text(card, 'extra', nil, nil, nil,
+                                    {
+                                        message = localize { type = 'variable', key = 'a_tarots', vars = { counter } },
+                                        colour = G.C.SECONDARY_SET.Tarot
+                                    })
+                            end
+                            return true
+                        end
+                    }))
+                    return true
+                end
+            }))
+        end
+    end
+})
 
 
 

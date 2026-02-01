@@ -6509,6 +6509,16 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult){}"
 				}
 			},
+			j_cbean_nameteam_yjh                   = {
+				name = 'Your Joker Here',
+				text =
+				{
+					"When {C:attention}Blind{} is selected,",
+					"creates a {C:tarot}Tarot{} card for",
+					"each empty {C:attention}Joker{} slot",
+					"{C:inactive}(Must have room){}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory              = {
@@ -10677,6 +10687,8 @@ return {
 			coldbean_code = { "Code: #1#" },
 			a_burned_cards = "#1# Cards",
 			a_yma_plus_score = "+#1#% Score",
+            a_tarot = "+#1# Tarot",
+            a_tarots = "+#1# Tarots"
 		},
 		v_text = {
 			--TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to
