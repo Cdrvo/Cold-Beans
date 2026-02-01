@@ -106,8 +106,18 @@ SMODS.Sound({
 })
 
 SMODS.Sound({
-  key = "wayne_death",
-  path = "6_NameTeam/cbean_wayne_death.ogg"
+	key = "wayne_death",
+	path = "6_NameTeam/cbean_wayne_death.ogg",
+})
+
+SMODS.Sound({
+	key = "nteam_music_silence",
+	path = "6_NameTeam/cbean_silence.ogg",
+	select_music_track = function(self)
+		if NAMETEAM.secret_video:isPlaying() then
+			return 123456789
+		end
+	end,
 })
 
 SMODS.Atlas({
