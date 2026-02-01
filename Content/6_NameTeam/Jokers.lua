@@ -3181,26 +3181,6 @@ SMODS.Joker({
 
 SMODS.Joker({
     key = "nameteam_absoluteschnozz",
-    config = { extra = { xmult = 1.2 } },
-    rarity = 1,
-    atlas = "NAMETEAM_Jokers3",
-    pos = { x = 1, y = 5 },
-    cost = 5,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult } }
-    end,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    pronouns = "they_them",
-
-    beans_credits = {
-        team = "Name Team",
-        idea = "GhostSalt",
-        art = "GhostSalt",
-        code = "GhostSalt",
-    },
-
     config = { extra = { retriggers = 2 } },
     rarity = 1,
     atlas = "NAMETEAM_Jokers3",
