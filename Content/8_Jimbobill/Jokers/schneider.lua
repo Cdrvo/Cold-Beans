@@ -1,4 +1,4 @@
-
+--[[
 SMODS.Joker {
     key = "jbill_schneider",
     blueprint_compat = true,
@@ -87,4 +87,4 @@ SMODS.Joker {
         team = "Jimbobill",
         art = "Bluepoch"
     }
-}
+}]]
