@@ -6372,6 +6372,15 @@ return {
 					"{C:attention}The Afterlife",
 				}
 			},
+			j_cbean_nameteam_absoluteschnozz                   = {
+				name = 'Absolute Schnozz',
+				text =
+				{
+					"Retrigger {C:attention}middle{} played",
+                    "card(s) used in scoring",
+                    "{C:attention}#1#{} additional times",
+				}
+			},
 			j_cbean_nameteam_face                       = {
 				name = 'Face',
 				text =
