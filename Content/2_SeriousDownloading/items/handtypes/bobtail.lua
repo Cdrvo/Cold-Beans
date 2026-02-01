@@ -9,13 +9,33 @@ SMODS.PokerHandPart {
         for _,straight in pairs(straightsTable) do
             --have to reimplement the flush calc because unlike get_straight, smods doesn't modify it
             for suit,_ in pairs(SMODS.Suits) do
+                local rank_table = {}
+                for _, card in ipairs(straight) do
+                    if not rank_table[card:get_id()] then
+                        rank_table[card:get_id()] = {card}
+                    else
+                        rank_table[card:get_id()][#rank_table[card:get_id()]+1] = card
+                    end
+                end
                 local t = {}
                 local flush_count = 0
-                for i,_ in pairs(straight) do
-                    if straight[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = straight[i] end
+                -- for i,_ in pairs(straight) do
+                --     if straight[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = straight[i] end
+                -- end
+                for _, cards in pairs(rank_table) do
+                    local seen = false
+                    for _, card in ipairs(cards) do
+                        if card:is_suit(suit, nil, true) then
+                            t[#t+1] = card
+                            flush_count = flush_count + 1
+                            seen = true
+                        end
+                    end
+                    if not seen then break end
                 end
-                if flush_count >= (#straight) then
+                if flush_count >= 4 then
                     table.insert(bobtails, t)
+                    break
                 end
             end
         end
