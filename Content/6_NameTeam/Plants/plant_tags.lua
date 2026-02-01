@@ -1,6 +1,7 @@
 SMODS.Tag {
     key = "sunbean",
-    pos = { x = 2, y = 1 },
+    atlas = "nteam_tag",
+    pos = { x = 0, y = 0 },
     config = {},
     loc_vars = function(self, info_queue, tag)
         return { vars = { (G.GAME.NAMETEAM.sunbean_bonus or 0) } }
@@ -30,7 +31,7 @@ SMODS.Tag {
     end,
     beans_credits = {
         code = "Revo",
-        art = "N/A",
+        art = "GhostSalt",
         team = "Name Team"
     }
 }

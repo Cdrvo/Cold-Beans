@@ -156,3 +156,10 @@ SMODS.Atlas({
 	px = 71,
 	py = 95,
 })
+
+SMODS.Atlas({
+	key = "nteam_tag",
+	path = "6_NameTeam/ColdBeansTags.png",
+	px = 34,
+	py = 34,
+})
