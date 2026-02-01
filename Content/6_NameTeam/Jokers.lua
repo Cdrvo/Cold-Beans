@@ -253,7 +253,7 @@ SMODS.Joker({
                     }))
                 end
             end
-            if context.beat_boss and Colonparen.get_blind_type(G.GAME.blind)=="CEO" then
+            if context.beat_boss and Colonparen.get_blind_type(G.GAME.blind) == "CEO" then
                 card.ability.extra.current_effect = pseudorandom_element({
                     "thunderedge",
                     "revo",
@@ -269,7 +269,7 @@ SMODS.Joker({
             end
         end
     end,
-    update = function(self,card)
+    update = function(self, card)
         if card.added_to_deck then
             if card.children and card.children.center.sprite_pos.x == 0 and card.children.center.sprite_pos.y == 0 then
                 NAMETEAM.set_sprite_self_insert(card)
@@ -3655,7 +3655,7 @@ SMODS.Joker({
 
 
 
--- I'd like this to be at the end of the file, for thematic reasons.
+-- I'd like these to be at the end of the file, for thematic reasons.
 
 SMODS.Sound({
     key = "bye",
@@ -3692,6 +3692,41 @@ SMODS.Joker({
                     return true
                 end,
             }))
+            return { dollars = card.ability.extra.money }
+        end
+    end,
+})
+
+SMODS.Joker({
+    key = "nameteam_tokenofappreciation",
+    config = { extra = { money = 5 } },
+    rarity = 1,
+    atlas = "NAMETEAM_Jokers3",
+    pos = { x = 8, y = 8 },
+    pixel_size = { h = 71 },
+    --[[draw = function(self, card, layer)
+        if self.discovered or card.params.bypass_discovery_center then
+            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
+        end
+    end,]]-- -- nah this doesn't look nice
+    cost = 6,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money } }
+    end,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    pronouns = "she_her",
+
+    beans_credits = {
+        team = "Name Team",
+        idea = "GhostSalt",
+        art = "GhostSalt",
+        code = "GhostSalt",
+    },
+
+    calculate = function(self, card, context)
+        if context.buying_card and context.card.config.center.set == "Joker" and context.card ~= card and not card.getting_sliced then
             return { dollars = card.ability.extra.money }
         end
     end,

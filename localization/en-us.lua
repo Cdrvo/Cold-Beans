@@ -6530,6 +6530,14 @@ return {
 					"{C:inactive}(Must have room){}"
 				}
 			},
+			j_cbean_nameteam_tokenofappreciation                = {
+				name = 'Token of Appreciation',
+				text =
+				{
+					"Earn {C:money}$#1#{} when buying",
+                    "Jokers from the {C:money}shop{}"
+				}
+			},
 
 			--wgropop Jokers
 			j_cbean_wgrop_withering_memory              = {
