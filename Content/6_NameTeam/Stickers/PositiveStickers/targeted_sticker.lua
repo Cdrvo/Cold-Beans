@@ -23,7 +23,7 @@ SMODS.Sticker({
                 }
             end
         else
-            if context.repetition and context.other_card == card then
+            if context.repetition and context.other_card == card and context.cardarea == G.play then
                 card.ability.target_triggered = true
                 return{
                     repetitions = 1
