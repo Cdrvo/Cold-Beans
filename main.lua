@@ -79,6 +79,26 @@ ColdBeans.calculate = function(mod, context)
 			G.GAME.NAMETEAM.grimrose_number = G.GAME.NAMETEAM.grimrose_number - 1
 			SMODS.smart_level_up_hand(nil, context.scoring_name, nil, 1)
 		end
+
+		--[[if G.GAME.NAMETEAM.hands then
+			print(context.scoring_name)
+			if not G.GAME.NAMETEAM.redacted_scale then G.GAME.NAMETEAM.redacted_scale = {} end
+			for k, v in pairs(G.GAME.NAMETEAM.hands) do
+				if context.scoring_name and context.scoring_name == k then
+					if not G.GAME.NAMETEAM.hands[k].visible then
+						local add = true
+						for kk, vv in pairs(G.GAME.NAMETEAM.redacted_scale) do
+							if vv == k then
+								add = false
+							end
+						end
+						if add then
+							G.GAME.NAMETEAM.redacted_scale[#G.GAME.NAMETEAM.redacted_scale+1] = k
+						end
+					end
+				end
+			end
+		end]]
 	end
 	if context.final_scoring_step then
 		if G.GAME.NAMETEAM.grimrose_triggered then
@@ -111,6 +131,10 @@ ColdBeans.calculate = function(mod, context)
 				end
 			}))
 		end
+	end
+
+	if context.cbean_first then
+		G.GAME.NAMETEAM.hands = G.GAME.hands
 	end
 
 	if context.after then

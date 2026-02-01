@@ -3696,3 +3696,36 @@ SMODS.Joker({
         end
     end,
 })
+
+
+--[[SMODS.Joker({
+	key = "redacted",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 8, y = 5 },
+	cost = 5,
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+            xmult = 1,
+            xmult_gain = 0.2
+        },
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+        return{vars={cae.xmult, cae.xmult_gain,((#G.GAME.NAMETEAM.redacted_scale or 0)*cae.xmult_gain+cae.xmult) }}
+	end,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "Inky",
+	},
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+        if context.joker_main then
+            return{
+                xmult = 1 + (#G.GAME.NAMETEAM.redacted_scale*cae.xmult_gain)
+            }
+        end
+	end,
+})]]
