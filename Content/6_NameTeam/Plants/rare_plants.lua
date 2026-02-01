@@ -1188,7 +1188,7 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.selling_self then
 			G.GAME.NAMETEAM.bzzed_amount = G.GAME.NAMETEAM.bzzed_amount or 0
-			G.GAME.NAMETEAM.bzzed = G.GAME.NAMETEAM.bzzed + 1
+			G.GAME.NAMETEAM.bzzed = (G.GAME.NAMETEAM.bzzed or 0) + 1
 			G.GAME.NAMETEAM.bzzed_amount = cae.xmult
 		end
 	end,
