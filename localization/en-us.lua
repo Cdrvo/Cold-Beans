@@ -5763,7 +5763,7 @@ return {
 			},
 
 			j_cbean_explode_o_nut                             = {
-				name = "Explode-o-Nut",
+				name = "Explode-O-Nut",
 				text = {
 					"Adjacent {C:attention}Jokers",
 					"{C:red}cannot{} be debuffed",
