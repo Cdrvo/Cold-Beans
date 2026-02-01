@@ -60,6 +60,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "NAMETEAM_Markiplier",
+	path = "6_NameTeam/ColdBeansMarkiplier.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "NAMETEAM_PlantJokers",
 	path = "6_NameTeam/ColdBeansPlantJokers.png",
 	px = 71,

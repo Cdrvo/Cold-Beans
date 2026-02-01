@@ -6372,6 +6372,96 @@ return {
 					"{C:attention}The Afterlife",
 				}
 			},
+			j_cbean_nameteam_markiplier                 = {
+				name = 'Markiplier',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_1                 = {
+				name = 'Multiplier',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_2                 = {
+				name = 'Market Pire',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_3                 = {
+				name = 'Marlinshire',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_4                 = {
+				name = 'For Suppliers',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_5                 = {
+				name = 'Mark (A Player)',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_6                 = {
+				name = 'Market Buyer',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_7                 = {
+				name = 'Park For Hire',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_cbean_nameteam_markiplier_8                 = {
+				name = 'Welcome',
+				text =
+				{
+					"Gains {C:white,X:mult}X#1#{} Mult if",
+					"played hand contains",
+					"a {C:attention}9{}, {C:attention}8{} or {C:attention}7{}",
+					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+				}
+			},
 			j_cbean_nameteam_wavegoodbye                 = {
 				name = 'Wave Goodbye',
 				text =
