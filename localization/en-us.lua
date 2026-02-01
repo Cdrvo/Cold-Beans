@@ -5712,7 +5712,9 @@ return {
 					"When a {C:attention}Boss Blind{} is",
 					"defeated, create another {C:dark_edition}Negative{}",
 					"{C:purple}Spore-Shroom{}",
-					"{C:inactive,:s0.8}(Created spore shrooms cant duplicate)"
+					"{C:inactive,:s0.8}(Other Spore-Shrooms created",
+					"{C:inactive}by this Spore-Shroom can't",
+					"{C:inactive}create Spore-Shrooms)",
 				},
 			},
 
