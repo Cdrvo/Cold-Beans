@@ -39,14 +39,18 @@ SMODS.Sticker({
                         local a = nil
                         if card.ability.set == "Joker" then
                             a = NAMETEAM.random_joker(G.jokers.cards, card)
-                            NAMETEAM.msg(card, "Moved!")
-                            a:add_sticker("cbean_targeted", true)
-                            card:remove_sticker("cbean_targeted")
+                                if a then
+                                NAMETEAM.msg(card, "Moved!")
+                                a:add_sticker("cbean_targeted", true)
+                                card:remove_sticker("cbean_targeted")
+                            end
                         else
                             a = NAMETEAM.random_joker(G.playing_cards, card)
-                            NAMETEAM.msg(card, "Moved!")
-                            a:add_sticker("cbean_targeted", true)
-                            card:remove_sticker("cbean_targeted")
+                            if a then
+                                NAMETEAM.msg(card, "Moved!")
+                                a:add_sticker("cbean_targeted", true)
+                                card:remove_sticker("cbean_targeted")
+                            end
                         end
                     end   
                     return true
