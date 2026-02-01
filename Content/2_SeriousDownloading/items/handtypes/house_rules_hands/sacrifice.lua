@@ -8,11 +8,19 @@ SMODS.PokerHandPart {
         for _, card in ipairs(hand) do
             --todo: this doesn't really work because being a part of this hand increments times played and makes
             --the card no longer valid for the hand. move this calculation so that the hand can actually be played (somehow?)
-            if card.base.times_played > 0 then is_unplayed = false end
+            if card.ability.sdown_sacrifice_played then is_unplayed = false end
         end
         if is_unplayed then return {hand} else return {} end
     end
 }
+
+ColdBeans.OnCalculate(function (mod, context)
+    if context.after then
+        for _, c in ipairs(context.full_hand) do
+            c.ability.sdown_sacrifice_played = true
+        end
+    end
+end)
 
 SMODS.PokerHand{
     key = "sdown_sacrifice",
