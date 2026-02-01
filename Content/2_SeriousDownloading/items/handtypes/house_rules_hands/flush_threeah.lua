@@ -16,8 +16,9 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
                 for i,_ in pairs(three_oak) do
                     if three_oak[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = three_oak[i] end
                 end
-                if flush_count >= (#three_oak) then
+                if flush_count >= (3) then
                     table.insert(flush_threes, t)
+                    break
                 end
             end
         end
