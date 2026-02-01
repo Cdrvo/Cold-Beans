@@ -41,12 +41,12 @@ SMODS.Sticker({
                             a = NAMETEAM.random_joker(G.jokers.cards, card)
                             NAMETEAM.msg(card, "Moved!")
                             a:add_sticker("cbean_targeted", true)
-                            card:remove_sticker("cbean_targeted", true)
+                            card:remove_sticker("cbean_targeted")
                         else
                             a = NAMETEAM.random_joker(G.playing_cards, card)
                             NAMETEAM.msg(card, "Moved!")
                             a:add_sticker("cbean_targeted", true)
-                            card:remove_sticker("cbean_targeted", true)
+                            card:remove_sticker("cbean_targeted")
                         end
                     end   
                     return true
