@@ -8,7 +8,7 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
         pairsTable = get_X_same(3, hand, true)
         if next(pairsTable) == nil then return {} end
         flush_threes = {}
-        for _, three_oak in pairs(pairsTable) do
+        for _, three_oak in ipairs(pairsTable) do
             --have to reimplement the flush calc because unlike get_straight, smods doesn't modify it
             for suit,_ in pairs(SMODS.Suits) do
                 local t = {}
