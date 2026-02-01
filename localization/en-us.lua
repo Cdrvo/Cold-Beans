@@ -3703,7 +3703,7 @@ return {
 				text = {
 					"Changes effect",
 					"after defeating",
-					"a {C:attention}Boss Blind",
+					"a {C:attention}CEO Blind",
 					"{C:inactive}(Scaling of effects",
 					"{C:inactive}is preserved)"
 				},

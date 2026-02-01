@@ -253,7 +253,7 @@ SMODS.Joker({
                     }))
                 end
             end
-            if context.beat_boss then
+            if context.beat_boss and Colonparen.get_blind_type(G.GAME.blind)=="CEO" then
                 card.ability.extra.current_effect = pseudorandom_element({
                     "thunderedge",
                     "revo",
