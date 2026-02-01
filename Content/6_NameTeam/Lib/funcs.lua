@@ -546,7 +546,7 @@ function NAMETEAM.all_on(card, area, direction, ability, check_for_key_only) -- 
 				end
 				if area[i].config.center.key == check_for_key_only and not area[i].debuff then
 						return true
-					elseif not (check_for_key_only) or area[i].debuff then
+					elseif (check_for_key_only) and area[i].debuff then
 						return false
 					end
 				cae.num = cae.num + 1
@@ -559,7 +559,7 @@ function NAMETEAM.all_on(card, area, direction, ability, check_for_key_only) -- 
 				end
 				if area[i].config.center.key == check_for_key_only and not area[i].debuff then
 						return true
-					elseif not (check_for_key_only) or area[i].debuff then
+					elseif (check_for_key_only) and area[i].debuff then
 						return false
 					end
 				cae.num = cae.num + 1
