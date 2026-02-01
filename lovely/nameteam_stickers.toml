@@ -431,3 +431,23 @@ payload = '''
 card.cbean_area = area
 '''
 match_indent = true
+
+# Fix Sticker infoqueues on deck i think
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+if sticker.loc_vars and type(sticker.loc_vars) == 'function' then
+    res = sticker:loc_vars(info_queue, card) or {}
+    t.vars = res.vars or {}
+    t.key = res.key or t.key
+    t.set = res.set or t.set
+end
+'''
+position = "after"
+payload = '''
+if card and card.area == G.deck then
+    t = nil
+end
+'''
+match_indent = true
