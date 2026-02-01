@@ -5762,6 +5762,20 @@ return {
 				},
 			},
 
+			j_cbean_explode_o_nut                             = {
+				name = "Explode-o-Nut",
+				text = {
+					"Adjacent {C:attention}Jokers",
+					"{C:red}cannot{} be debuffed",
+					"Gains {X:mult,C:white}X#1#{} Mult when",
+					"preventing a debuff",
+					"{C:red,E:2}Self-destructs{}",
+					"if this {C:attention}Joker's{} {X:mult,C:white}XMult{}",
+					"would exceed {X:mult,C:white}X#2#{}",
+					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb                = {
 				name = {

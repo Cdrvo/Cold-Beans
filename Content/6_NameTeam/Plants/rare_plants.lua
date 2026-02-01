@@ -1,30 +1,53 @@
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	key = "tallnut",
-	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 8, y = 5 },
+	key = "explode_o_nut",
+	atlas = "NAMETEAM_PlantPlaceholder",
+	pos = { x = 0, y = 0 },
 	cost = 5,
 	rarity = 3,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	config = {
-		extra = {},
+		extra = {xmult = 1, xmult_inc = 0.2, max = 3},
 	},
+	eternal_compat = false,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
+		return {
+			vars = {
+				cae.xmult_inc,
+				cae.max,
+				cae.xmult
+			}
+		}
 	end,
 	beans_credits = {
-		code = "Revo",
+		code = "ThunderEdge",
 		team = "Name Team",
 		art = "Crazy Dave",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
+		if context.joker_main then
+			return {
+				xmult = cae.xmult
+			}
+		end
 	end,
 	update = function(self, card)
-		if card and card.area and card.area.cards and card.added_to_deck then
+		local cae = card.ability.extra
+		if card and card.area and card.area.cards and card.added_to_deck and not card.getting_sliced then
 			for k, v in pairs(card.area.cards) do
 				if v.debuff then
+					SMODS.scale_card(card, {
+						ref_table = cae,
+						ref_value = "xmult",
+						scalar_value = "xmult_inc"
+					})
+					if cae.xmult >= cae.max then
+						card.getting_sliced = true
+						SMODS.destroy_cards(card)
+					end
 					v.debuff = false
 				end
 			end
