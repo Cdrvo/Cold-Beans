@@ -5732,6 +5732,16 @@ return {
 				},
 			},
 
+			j_cbean_solar_tomato                           = {
+				name = "Solar Tomato",
+				text = {
+					"When sold, gives {C:money}$#1#{} per",
+					"card in the most recent",
+					"scored hand",
+					"{C:inactive}(Will give {C:money}$#2#{C:inactive})"
+				},
+			},
+
 			-- quick end
 			j_cbean_nameteam_stickerbomb                = {
 				name = {

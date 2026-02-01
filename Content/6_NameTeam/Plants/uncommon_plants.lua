@@ -5257,3 +5257,57 @@ SMODS.Joker({
 		end
 	end,
 })
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "solar_tomato",
+	atlas = "NAMETEAM_PlantPlaceholder",
+	pos = { x = 0, y = 0 },
+	cost = 3,
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			dollars = 3,
+			cards_scored = 0
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return {
+			vars = { cae.dollars, cae.dollars * cae.cards_scored },
+		}
+	end,
+	beans_credits = {
+		code = "ThunderEdge",
+		team = "Name Team",
+		art = "DoggFly",
+	},
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if context.selling_self then
+			local amt = cae.dollars * cae.cards_scored
+			G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + amt
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					ease_dollars(amt)
+					return true
+				end
+			}))
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					G.GAME.dollar_buffer = 0
+					return true
+				end
+			}))
+		end
+		if context.joker_main then
+			count = 0
+			for _, _ in ipairs(context.scoring_hand) do
+				count = count + 1
+			end
+			cae.cards_scored = count
+		end
+	end,
+})
