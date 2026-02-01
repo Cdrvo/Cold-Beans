@@ -88,12 +88,22 @@ SMODS.PokerHand{
             for _, six_seven in pairs(parts.cbean_sdown_67) do
                 --have to reimplement the flush calc because unlike get_straight, smods doesn't modify it
                 for suit,_ in pairs(SMODS.Suits) do
+                    local has_six = false
+                    local has_seven = false
                     local t = {}
                     local flush_count = 0
                     for i,_ in pairs(six_seven) do
-                        if six_seven[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = six_seven[i] end
+                        if six_seven[i]:is_suit(suit, nil, true) then
+                            if six_seven[i]:get_id() == 6 then
+                                has_six = true
+                            else
+                                has_seven = true
+                            end
+                            flush_count = flush_count + 1
+                            t[#t+1] = six_seven[i]
+                        end
                     end
-                    if flush_count >= (#six_seven) then
+                    if flush_count >= 2 and has_six and has_seven then
                         table.insert(flush_67s, t)
                     end
                 end
