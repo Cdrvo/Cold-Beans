@@ -6541,6 +6541,13 @@ return {
 			},
 		},
 		Other = {
+			cbean_nteam_secret = {
+				name = "Hint",
+				text = {
+					"Does something",
+					"when {C:attention}clicked{} on",
+				}
+			},
 			--Medals
 			cbean_yma_common_medal = {
 				name = "Common Medal",
