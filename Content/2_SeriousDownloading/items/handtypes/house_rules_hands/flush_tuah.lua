@@ -8,7 +8,7 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
         pairsTable = get_X_same(2, hand, true)
         if next(pairsTable) == nil then return {} end
         flush_twos = {}
-        for _, two_oak in pairs(pairsTable) do
+        for _, two_oak in ipairs(pairsTable) do
             --have to reimplement the flush calc because unlike get_straight, smods doesn't modify it
             for suit,_ in pairs(SMODS.Suits) do
                 local t = {}
@@ -16,8 +16,9 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
                 for i,_ in pairs(two_oak) do
                     if two_oak[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = two_oak[i] end
                 end
-                if flush_count >= (#two_oak) then
+                if flush_count >= 2 then
                     table.insert(flush_twos, t)
+                    break
                 end
             end
         end
