@@ -5241,7 +5241,7 @@ SMODS.Joker({
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.setting_blind and not context.blueprint then
+		if context.after and not context.blueprint then
 			if cae.round_timer > 1 then
 				cae.round_timer = cae.round_timer - 1
 			else

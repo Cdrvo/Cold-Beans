@@ -100,8 +100,8 @@ YMA.SideQuests.quest {
 
     calculate = function(self, card, context)
         if context.modify_shop_card then
-            card.ability.extra.seen[context.card.key] = (card.ability.extra.seen[context.card.key] or 0) + 1
-            if card.ability.extra.seen[context.card.key] > 1 then
+            card.ability.extra.seen[context.card.config.center.key] = (card.ability.extra.seen[context.card.config.center.key] or 0) + 1
+            if card.ability.extra.seen[context.card.config.center.key] > 1 then
                 card.ability.extra.seen = {}
                 YMA.complete_quest(card, "Joker", "j_ring_master")
                 G.E_MANAGER:add_event(Event({

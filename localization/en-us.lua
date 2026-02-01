@@ -5069,7 +5069,7 @@ return {
 			j_cbean_zoybean_pod                         = {
 				name = "Zoybean Pod",
 				text = {
-					"Every {C:attention}#2#{C:inactive} (#1#){} Rounds",
+					"Every {C:attention}#2#{C:inactive} (#1#){} Hands",
 					"add a random {C:attention}Zomboid{}",
 					"card to your deck"
 				},
