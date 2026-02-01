@@ -161,8 +161,8 @@ function Card:align_h_popup()
 	local ret = get_popup_offset_hook(self)
 	if G.deck and self == G.deck.cards[1] then
 		local d_sticker_count = 0
-		for k, _ in pairs(G.GAME.selected_back.ability) do
-			if SMODS.Stickers[k] then
+		for k, v in pairs(G.GAME.selected_back.ability) do
+			if v and SMODS.Stickers[k] then
 				d_sticker_count = d_sticker_count + 1
 			end
 		end
