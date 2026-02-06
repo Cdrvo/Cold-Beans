@@ -1,7 +1,6 @@
 local start_run_ref = Game.start_run
 function Game:start_run(args)
     start_run_ref(self, args)
-    G.GAME.xmult_in_extra = { "j_acrobat", "j_ancient", "j_baron", "j_baseball", "j_blackboard", "j_drivers_license", "j_flower_pot", "j_photograph", "j_seeing_double", "j_triboulet"}
     G.GAME.b_pressed_lmao = false
     G.GAME.konami_counter = 0
     if not G.GAME.jimbux then
@@ -12,6 +11,39 @@ end
 local card_click_ref = Card.click
 function Card:click()
     card_click_ref(self)
+    local t = {n=G.UIT.ROOT, config = {align = "cm", minh = 1,r = 0.3, padding = 0.07, minw = 1, colour = G.C.JOKER_GREY, shadow = true}, nodes={
+        {n=G.UIT.C, config={align = "cm", minh = 1,r = 0.2, padding = 0.1, minw = 1, colour = G.C.WHITE}, nodes={
+            {n = G.UIT.T, config = {text = localize("bean_"..math.random(1, 139)), colour = G.C.CHIPS, scale = 0.5}}
+        }}
+    }}
+    local time = love.timer.getTime()
+    self.time = time
+    if self.config.center.key == "j_cbean_coldbean" then
+        if self.children.yap_box then
+            self.children.yap_box:remove()
+            self.children.yap_box = nil
+        end
+        self.children.yap_box = UIBox({    
+            definition = t,
+            config = {
+            parent = self,
+            align = 'tm',
+            offset = { x = 0, y = 5 },
+            colour = G.C.CLEAR}
+        })
+        G.E_MANAGER:add_event(Event({
+        trigger = "after", 
+        delay = 3, 
+        func = function() 
+            if self.children.yap_box and self.time == time then
+                self.children.yap_box:remove()
+                self.children.yap_box = nil
+            end
+            return true 
+        end,
+        blockable = false
+        }))
+    end
     if G.jokers then
         SMODS.calculate_context { jbill_clicked = self }
     end
