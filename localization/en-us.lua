@@ -6727,6 +6727,40 @@ return {
 					"{C:inactive}(Currently: {C:white,X:chips}X#1#{C:inactive}, #3#/#4#)"
 				}
 			},
+			j_cbean_jbill_manos = {
+				name = "Hands of Fate",
+				text = {
+					"{C:blue}Hands{} don't go down when {C:attention}played{}",
+					"Lose {C:white,X:mult}X#2#{} when playing a hand",
+					"{C:inactive}(Currently: {C:white,X:mult}X#1#{}{C:inactive})"
+				}
+			},
+			j_cbean_jbill_pythagoras = {
+				name = "Pythagoreanistic Joker",
+				text = {
+					"This Joker gains {C:white,X:mult}X#2#{} Mult", 
+					"for every {C:attention}Bean Card{}", 
+					"that is destroyed",
+					"{C:inactive}(Currently: {C:white,X:mult}X#1# {C:inactive}Mult)"
+				}
+			},
+			j_cbean_jbill_wee_bottle = {
+				name = "Wee inside the Bottle",
+				text = {
+					"Scoring {C:attention}2s{}",
+					"become {C:attention}Glass Cards{}",
+					"{C:inactive,s:0.7}Thank god there's no root ranks"
+				}
+			},
+			j_cbean_jbill_dj = {
+				name = "Deejay",
+				text = {
+					"The {C:attention}2 rightmost{} scoring cards",
+					"are {C:attention}retriggered{}",
+					"The {C:attention}2 leftmost{} scoring cards",
+					"will {C:mult}not score{}"
+				}
+			},
 		},
 		Other = {
 			cbean_nteam_secret = {
