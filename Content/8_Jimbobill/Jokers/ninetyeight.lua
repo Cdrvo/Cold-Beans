@@ -3,7 +3,7 @@ SMODS.Joker {
     key = "jbill_98",
     blueprint_compat = true,
     atlas = "jbill_jokers",
-    pos = { x = 3, y = 1 },
+    pos = { x = 3, y = 3 },
     rarity = 1,
     cost = 5,
     loc_vars = function(self, info_queue, card)

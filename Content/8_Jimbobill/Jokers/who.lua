@@ -2,7 +2,7 @@ SMODS.Joker {
     key = "jbill_who",
     blueprint_compat = true,
     atlas = "jbill_jokers",
-    pos = { x = 0, y = 2 },
+    pos = { x = 1, y = 3 },
     rarity = 2,
     cost = 6,
     config = { extra = { xmult = 1, xmult_gain = 0.25 } },
@@ -35,6 +35,6 @@ SMODS.Joker {
         idea = "Evgast",
         code = "Evgast",
         team = "Jimbobill",
-        art = "Osaka & Men at Work"
+        art = "Evgast Placeholder"
     }
 }

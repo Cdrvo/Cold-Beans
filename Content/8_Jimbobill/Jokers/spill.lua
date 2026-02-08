@@ -13,7 +13,8 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.setting_blind and G.GAME.blind_on_deck == "Small" then
             for i = 1, card.ability.extra.bean do
-                SMODS.add_card( { set = "Enhanced", enhancement = "m_cbean_jbill_bean", area = G.deck })
+                local Card = SMODS.add_card( { set = "Enhanced", enhancement = "m_cbean_jbill_bean", area = G.deck })
+                playing_card_joker_effects({Card})
             end
         end
     end,

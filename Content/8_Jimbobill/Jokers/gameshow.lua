@@ -2,7 +2,7 @@ SMODS.Joker {
     key = "jbill_gameshow",
     blueprint_compat = true,
     atlas = "jbill_jokers",
-    pos = { x = 1, y = 2 },
+    pos = { x = 3, y = 1 },
     rarity = 2,
     cost = 5,
     config = { extra = { odds = 4 } },

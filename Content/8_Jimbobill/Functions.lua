@@ -63,7 +63,7 @@ function G.FUNCS.employed_update_use(e)
         if e.config.ref_table.config.center.type == "chicot" and G.GAME.CEO_beaten_employment then
             e.config.button = "employed_button_use"
             e.config.colour = G.C.GREEN
-        elseif e.config.ref_table.config.center.type == "perkeo" and G.consumeables and G.consumeables.highlighted and #G.consumeables.highlighted == 1 and G.GAME.jimbux >= 3 then
+        elseif e.config.ref_table.config.center.type == "perkeo" and #G.consumeables.cards < G.consumeables.config.card_limit and G.consumeables and G.consumeables.highlighted and #G.consumeables.highlighted == 1 and G.GAME.jimbux >= 3 then
             e.config.button = "employed_button_use"
             e.config.colour = G.C.GREEN
         elseif e.config.ref_table.config.center.type == "canio" and G.GAME.jimbux >= 2 then
@@ -89,8 +89,8 @@ function G.FUNCS.employed_button_use(e)
         e.config.ref_table:highlight(false)
     end
     if e.config.ref_table.config.center.type == "perkeo" then
-        local copy = copy_card(G.consumeable.highlighted[1])
-        G.consumeable:emplace(copy)
+        local copy = copy_card(G.consumeables.highlighted[1])
+        G.consumeables:emplace(copy)
         ease_jimbux(-3)
         e.config.ref_table:highlight(false)
     end

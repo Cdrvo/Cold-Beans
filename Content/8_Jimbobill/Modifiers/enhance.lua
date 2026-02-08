@@ -14,7 +14,7 @@ SMODS.Enhancement {
             delay = 0, 
             func = function()
                 if card:get_id() == 2 then
-                    card:start_dissolve()
+                    SMODS.destroy_cards(card)
                 else
                     SMODS.modify_rank(card, -1)
                 end

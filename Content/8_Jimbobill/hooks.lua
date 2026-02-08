@@ -107,3 +107,11 @@ function Card:is_face(from_boss)
 	
 	return card_isfaceref(self, from_boss)
 end
+
+local ease_hands_ref = ease_hands_played
+ease_hands_played = function(mod, instant)
+    if #SMODS.find_card("j_cbean_jbill_manos") > 0 then
+        return true
+    end
+    ease_hands_ref(mod, instant)
+end

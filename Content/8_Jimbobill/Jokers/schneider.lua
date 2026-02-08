@@ -46,7 +46,7 @@ SMODS.Joker {
     key = "jbill_schneider",
     blueprint_compat = true,
     atlas = "jbill_jokers",
-    pos = { x = 1, y = 2 },
+    pos = { x = 0, y = 2 },
     rarity = 3,
     cost = 7,
     config = { extra = { xmult = 1, xmult_require = 1, xmult_right = "None!", right_card = nil } },
