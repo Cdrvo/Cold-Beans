@@ -6761,6 +6761,43 @@ return {
 					"will {C:mult}not score{}"
 				}
 			},
+			j_cbean_jbill_jimbill = {
+				name = "Jim Bill",
+				text = {
+					"{C:green}#2# in #3#{} chance for each played",
+					"{C:attention}Enhanced Card{} to give {C:green}+J#1#{} when scored"
+				}
+			},
+			j_cbean_jbill_exchange = {
+				name = "Currency Exchange",
+				text = {
+					"When selecting a blind",
+					"exchanges {C:money}$5{} for {C:green}J1"
+				}
+			},
+			j_cbean_jbill_tcna = {
+				name = {
+					"{s:0.8}The Campaign for",
+					"North Africa",
+					},
+				text = {
+					{
+					"Gains {C:mult}#10#{} Mult every",
+					"{C:attention}#2#{C:inactive}[#1#]{} cards played",
+					"{C:inactive}(Currently: {C:mult}+#7#{}{C:inactive} Mult)"
+					},
+					{
+					"Gains {C:chips}#10#{} Chips every",
+					"{C:attention}#4#{C:inactive}[#3#]{} cards played",
+					"{C:inactive}(Currently: {C:chips}+#8#{}{C:inactive} Chips)"
+					},
+					{
+					"Gains {C:white,X:mult}X#11#{} Mult after",
+					"palying or discarding {C:attention}#6#{C:inactive}[#5#]{}cards in total",
+					"{C:inactive}(Currently: {C:white,X:mult}X#9#{}{C:inactive} Mult)"
+					}
+				}
+			},
 		},
 		Other = {
 			cbean_nteam_secret = {
@@ -10340,6 +10377,7 @@ return {
 			k_who_away							= "Go Away!",
 			k_schneider_upg						= "My lord...",
 			k_astro_upg							= "Unbalanced!",
+			k_dollar_jimbux						= "Exchnaged!",
 
 			bean_1								= "Make good use of this umbrella",
 			bean_2								= "What? No, my legal name isn't BEANIE, are you fucking stupid?",
