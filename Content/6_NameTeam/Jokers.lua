@@ -3294,7 +3294,7 @@ SMODS.Joker({
     calculate = function(self, card, context)
         if context.joker_main and card.ability.extra.current_xmult > 1 then return { xmult = card.ability.extra.current_xmult } end
 
-        if context.before then
+        if context.before and not context.blueprint then
             for _, v in ipairs(context.scoring_hand) do
                 if v and not SMODS.has_no_rank(v) and (v:get_id() == 9 or v:get_id() == 8 or v:get_id() == 7) then
                     G.E_MANAGER:add_event(Event({
