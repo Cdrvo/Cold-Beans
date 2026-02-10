@@ -37,6 +37,11 @@ SMODS.Joker {
         }
     },
 
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.pos = pseudorandom("seed", 0, 4)
+        card.ability.extra.pos_override.x = card.ability.extra.pos
+        card.children.center:set_sprite_pos(card.ability.extra.pos_override)
+    end,
     load = function(self, card, card_table, other_card)
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -46,8 +51,8 @@ SMODS.Joker {
         }))
     end,
     add_to_deck = function(self, card, context)
-        card.ability.extra.pos = card.ability.extra.pos or 0
-        card.config.center.pos.x = card.config.center.pos.x or 0
+        card.ability.extra.pos = pseudorandom("seed", 0, 4)
+        card.ability.extra.pos_override.x = card.ability.extra.pos
         card.children.center:set_sprite_pos(card.ability.extra.pos_override)
     end,
     calculate = function(self, card, context)
@@ -58,7 +63,7 @@ SMODS.Joker {
                 delay = 0.05,
                 func = function()
                     card:juice_up(0.3, 0.2)
-                    card.ability.extra.pos = pseudorandom("seed", 0, 4) -- TURN 4 INTO 5 WHEN ADDING YOUR EFFECT
+                    card.ability.extra.pos = pseudorandom("seed", 0, 4)
                     card.ability.extra.pos_override.x = card.ability.extra.pos
                     card.children.center:set_sprite_pos(card.ability.extra.pos_override)
                     return true
