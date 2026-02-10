@@ -8,7 +8,7 @@ SMODS.Joker {  -- Modified from Cryptid's Cotton Candy
     cost = 4,
     config = { },
     loc_vars = function(self, info_queue, card)
-        return { vars = {} }
+        info_queue[#info_queue+1] = G.P_CENTERS.e_cbean_sd_frozen
     end,
     calculate = function(self, card, context)
 		if
