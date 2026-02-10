@@ -1708,6 +1708,7 @@ SMODS.Joker({
             and context.card.config.center.set == "Joker"
             and context.card ~= card
             and not card.ability.extra.slots_given
+            and not context.blueprint
         then
             card.ability.extra.current_sold = card.ability.extra.current_sold + 1
 

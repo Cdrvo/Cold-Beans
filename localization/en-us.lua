@@ -6216,7 +6216,7 @@ return {
 				text =
 				{
 					"When {C:attention}Blind{} is selected,",
-					"destroy Joker to the",
+					"{C:red}destroy{} Joker to the",
 					"right and earn {C:money}$#1#{}"
 				}
 			},
@@ -6375,13 +6375,13 @@ return {
 					"{C:attention}The Afterlife",
 				}
 			},
-			j_cbean_nameteam_absoluteschnozz                   = {
+			j_cbean_nameteam_absoluteschnozz            = {
 				name = 'Absolute Schnozz',
 				text =
 				{
 					"Retrigger {C:attention}middle{} played",
-                    "card(s) used in scoring",
-                    "{C:attention}#1#{} additional times",
+					"card(s) used in scoring",
+					"{C:attention}#1#{} additional times",
 				}
 			},
 			j_cbean_nameteam_face                       = {
@@ -6521,7 +6521,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult){}"
 				}
 			},
-			j_cbean_nameteam_yjh                   = {
+			j_cbean_nameteam_yjh                        = {
 				name = 'Your Joker Here',
 				text =
 				{
@@ -6531,12 +6531,12 @@ return {
 					"{C:inactive}(Must have room){}"
 				}
 			},
-			j_cbean_nameteam_tokenofappreciation                = {
+			j_cbean_nameteam_tokenofappreciation        = {
 				name = 'Token of Appreciation',
 				text =
 				{
 					"Earn {C:money}$#1#{} when buying",
-                    "Jokers from the {C:money}shop{}"
+					"Jokers from the {C:money}shop{}"
 				}
 			},
 
@@ -10379,6 +10379,15 @@ return {
 			k_astro_upg							= "Unbalanced!",
 			k_dollar_jimbux						= "Exchnaged!",
 
+			cbean_copyright_headsup_1           = "Heads up!",
+			cbean_copyright_headsup_2           = "If you are streaming this mod,",
+			cbean_copyright_headsup_3a          = "you should turn on the ",
+			cbean_copyright_headsup_3b          = "Disable",
+			cbean_copyright_headsup_4a          = "Copyrighted Material",
+			cbean_copyright_headsup_4b          = " setting in",
+			cbean_copyright_headsup_5           = "this mod's Config to avoid any",
+			cbean_copyright_headsup_6           = "issues with copyright.",
+			cbean_dontshowagain                 = "Don't show me this again",
 			bean_1								= "Make good use of this umbrella",
 			bean_2								= "What? No, my legal name isn't BEANIE, are you fucking stupid?",
 			bean_3								= "It has a small comment written on it, '--J*kers fuck off'",
@@ -10953,8 +10962,8 @@ return {
 			coldbean_code = { "Code: #1#" },
 			a_burned_cards = "#1# Cards",
 			a_yma_plus_score = "+#1#% Score",
-            a_tarot = "+#1# Tarot",
-            a_tarots = "+#1# Tarots"
+			a_tarot = "+#1# Tarot",
+			a_tarots = "+#1# Tarots"
 		},
 		v_text = {
 			--TODO look at aikoyori's patch more closely to get this to be anything. Or maybe we don't need it to

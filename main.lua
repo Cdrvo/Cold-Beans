@@ -169,7 +169,7 @@ ColdBeans.calculate = function(mod, context)
 		G.GAME.cbean_combo_unique_round = {}
 
 		if context.main_eval then
-			if G.GAME.NAMETEAM.buduh_boomed then -- no event manager 
+			if G.GAME.NAMETEAM.buduh_boomed then -- no event manager
 				G.GAME.NAMETEAM.buduh_boomed = nil
 				G.GAME.NAMETEAM.buduh_boomed_just_activated = true
 				G.GAME.NAMETEAM.buduh_boomed_active = true
@@ -462,5 +462,260 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 	if run_start then
 		G.GAME.NAMETEAM.unique_consumables = {}
 	end
+end
 
+
+
+
+G.FUNCS.run_cbean_copyright_menu = function()
+	G.SETTINGS.paused = true
+	G.FUNCS.overlay_menu {
+		definition = create_cbean_copyright_menu()
+	}
+end
+
+function create_cbean_copyright_menu()
+	local dontshowagain = create_toggle({
+		label = localize("cbean_dontshowagain"),
+		active_colour = HEX("40c76d"),
+		ref_table = G,
+		ref_value = "cbean_did_player_no_show_again",
+		callback = function()
+		end,
+	})
+
+	local t = create_UIBox_generic_options({
+		contents = {
+			{
+				n = G.UIT.R,
+				config = { align = "cm", padding = 0.1 },
+				nodes = {
+					{
+						n = G.UIT.T,
+						config = {
+							align = "tm",
+							text = "Cold Beans",
+							colour = G.C.UI.TEXT_LIGHT,
+							scale = 1
+						}
+					}
+				}
+			},
+			{
+				n = G.UIT.R,
+				config = { align = "cm", minw = 7, minh = 5, colour = G.C.BLACK, emboss = 0.05, r = 0.1 },
+				nodes = {
+					{
+						n = G.UIT.C,
+						config = { align = "cm" },
+						nodes = {
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_1"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.5 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_2"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_3a"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_3b"),
+											colour = G.C.FILTER,
+											scale = 0.5
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_4a"),
+											colour = G.C.FILTER,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_4b"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_5"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_copyright_headsup_6"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									}
+								}
+							},
+						}
+					}
+				}
+			},
+			{
+				n = G.UIT.R,
+				config = { align = "cm" },
+				nodes = {
+					dontshowagain
+				}
+			}
+		},
+		back_label = localize("b_continue"),
+		back_func = "exit_cbean_copyright_overlay_menu"
+	})
+	return t
+end
+
+G.FUNCS.exit_cbean_copyright_overlay_menu = function()
+	if not G.OVERLAY_MENU then return end
+
+	G.CONTROLLER.locks.frame_set = true
+	G.CONTROLLER.locks.frame = true
+	G.CONTROLLER:mod_cursor_context_layer(-1000)
+	G.OVERLAY_MENU:remove()
+	G.OVERLAY_MENU = nil
+	G.VIEWING_DECK = nil
+	G.SETTINGS.paused = false
+
+	G:save_settings()
+
+	G.cbean_has_seen_copyright_headsup_this_session = true
+	G.PROFILES[G.SETTINGS.profile].cbean_has_seen_copyright_headsup = G.cbean_did_player_no_show_again
+	G:save_settings()
+end
+
+local main_menu_ref = Game.main_menu
+Game.main_menu = function(change_context)
+	local ret = main_menu_ref(change_context)
+
+	if not G.cbean_has_seen_copyright_headsup_this_session
+		and not G.PROFILES[G.SETTINGS.profile].cbean_has_seen_copyright_headsup then
+		G.FUNCS.run_cbean_copyright_menu()
+	end
+
+	return ret
 end
