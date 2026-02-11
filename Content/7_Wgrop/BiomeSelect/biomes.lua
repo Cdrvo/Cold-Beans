@@ -248,11 +248,12 @@ CBWG.ColdBeans_Biome {
 
 -- Function that gets a new biome
 -- Hello from Name Team!
-function CBWG.get_new_biome(new_biome)
+function CBWG.get_new_biome(new_biome, already_polled)
     local eligible_biomes = {}
+    local blacklist = already_polled or {}
     for k, v in pairs(CBWG.ColdBeans_Biomes) do
         if new_biome then
-            if k ~= G.GAME.round_resets.blind_biome and v.in_pool and v.in_pool()then
+            if k ~= G.GAME.round_resets.blind_biome and v.in_pool and v.in_pool() and not blacklist[k] then
                 eligible_biomes[k] = G.P_BIOMES[k]
             end
         elseif v.in_pool and v.in_pool() then 
