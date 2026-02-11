@@ -14,10 +14,12 @@ function set_dow(num)
     G.P_CENTERS.b_cbean_pboys_daily.pos.y = CBEAN_DATE_TABLE.wday - 1
 end
 
+math.randomseed(os.time())
+
 SMODS.Back {
     key = 'pboys_daily',
     atlas = 'pboys_daily_deck',
-    pos = { x = math.random(0, 7), y = CBEAN_DATE_TABLE.wday - 1 },
+    pos = { x = math.random(0, 6), y = CBEAN_DATE_TABLE.wday - 1 },
     apply = function(self, back)
         if CBEAN_DATE_TABLE.wday == 1 then
             local _pool, _pool_key = get_current_pool('Voucher')
