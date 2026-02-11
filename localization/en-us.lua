@@ -4411,7 +4411,7 @@ return {
 				text = {
 					{
 						"Scored cards give",
-						"{X:mult,C:white}X#1#{} Mult but"
+						"{X:mult,C:white}X#1#{} Mult but",
 						"permanently lose {C:red}-1{} Chip",
 					},
 					{
