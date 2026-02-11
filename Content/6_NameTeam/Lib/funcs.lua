@@ -537,39 +537,42 @@ function NAMETEAM.all_on(card, area, direction, ability, check_for_key_only) -- 
         end
     end
 
-    for i = 1, #area do
-		if not direction or (direction and direction ~= "left") then
-			if i > cae.rr then
-				if ability then
-					
-					cae.tab[#cae.tab+1] = area[i]
-					area[i].ability[ability] = true
-				end
-				if area[i].config.center.key == check_for_key_only and not area[i].debuff then
-						return true
-					elseif (check_for_key_only) and area[i].debuff then
-						return false
+	if cae.rr then
+		for i = 1, #area do
+			if not direction or (direction and direction ~= "left") then
+				if i > cae.rr then
+					if ability then
+						
+						cae.tab[#cae.tab+1] = area[i]
+						area[i].ability[ability] = true
 					end
-				cae.num = cae.num + 1
-			end
-		else
-			if i < cae.rr then
-				if ability then
-					cae.tab[#cae.tab+1] = area[i]
-					area[i].ability[ability] = true
+					if area[i].config.center.key == check_for_key_only and not area[i].debuff then
+							return true
+						elseif (check_for_key_only) and area[i].debuff then
+							return false
+						end
+					cae.num = cae.num + 1
 				end
-				if area[i].config.center.key == check_for_key_only and not area[i].debuff then
-						return true
-					elseif (check_for_key_only) and area[i].debuff then
-						return false
+			else
+				if i < cae.rr then
+					if ability then
+						cae.tab[#cae.tab+1] = area[i]
+						area[i].ability[ability] = true
 					end
-				cae.num = cae.num + 1
+					if area[i].config.center.key == check_for_key_only and not area[i].debuff then
+							return true
+						elseif (check_for_key_only) and area[i].debuff then
+							return false
+						end
+					cae.num = cae.num + 1
+				end
 			end
 		end
-    end
-	if not check_for_key_only then
-		return cae.num -- cae.tab
+		if not check_for_key_only then
+			return cae.num -- cae.tab
+		end
 	end
+	return 0
 end
 
 function NAMETEAM.remove_element(t, element)
