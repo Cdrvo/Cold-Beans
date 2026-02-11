@@ -20,6 +20,7 @@ SMODS.Consumable {
                     add_tag(Tag('tag_cbean_hongbao'))
                     add_tag(Tag('tag_cbean_0chill_combo'))
                     add_tag(Tag('tag_cbean_0chill_key'))
+                    add_tag(Tag('tag_cbean_0chill_sticker'))
                     add_tag(Tag('tag_cbean_0chill_squared'))
                     play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
                     play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)

@@ -8026,8 +8026,6 @@ return {
 				text = {
 					"For all consumables,",
 					"there is a booster pack",
-					"{C:inactive}(Except stickers because",
-					"{C:inactive}they don't have one yet)"
 				},
 			},
 			-- yma upgraded spectrals
@@ -9071,6 +9069,13 @@ return {
 				text = {
 					"Gives a free",
 					"{C:yma_keys}Mega Key Pack"
+				}
+			},
+			tag_cbean_0chill_sticker = {
+				name = 'Decal Tag',
+				text = {
+					"Gives a free",
+					"{C:cbean_stickersheet}Warehouse Collector's Pack"
 				}
 			},
 		},
