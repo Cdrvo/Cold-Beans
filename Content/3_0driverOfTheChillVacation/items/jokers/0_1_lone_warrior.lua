@@ -14,15 +14,11 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
             card.ability.extra.x_mult = ((G.GAME.cbean_combos_used_total * card.ability.extra.x_mult_gain) + 1)
         end
 
-        if context.joker_main and G.GAME.cbean_combos_used and card.ability.extra.x_mult > 1 then
+        if context.joker_main and card.ability.extra.x_mult > 1 then
            return {
                 x_mult = card.ability.extra.x_mult
             }
         end
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        --G.GAME.hands["cbean_0chill_fibonacci"].discovered = true
-        --G.GAME.hands["cbean_0chill_fibonacci_flush"].discovered = true
     end,
     beans_credits = {
         team = {"0 Driver Of",
