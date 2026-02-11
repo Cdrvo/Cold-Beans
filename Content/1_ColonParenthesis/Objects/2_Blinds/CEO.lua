@@ -365,7 +365,6 @@ Colonparen.CEOBlind{
     calculate = function(self, blind, context)
         if context.end_of_round and context.main_eval then
             if G.GAME.current_round.hands_played == 1 then
-                print(G.GAME.current_round.hands_played)
                 local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
                 local eligible_card = pseudorandom_element(editionless_jokers, 'cbean_promiseCEO')

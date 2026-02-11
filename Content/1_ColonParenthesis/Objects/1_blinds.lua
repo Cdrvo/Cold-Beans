@@ -340,7 +340,6 @@ function Colonparen.get_new_blind(type, startofante)
             end
         end
     end
-	print(eligible_bosses, min_use)
 	min_use = min_use or 0
     for k, v in pairs(eligible_bosses) do
         if eligible_bosses[k] then
@@ -352,7 +351,6 @@ function Colonparen.get_new_blind(type, startofante)
             end
         end
     end
-	print(eligible_bosses, min_use)
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     Colonparen.getBossesUsed()[boss] = (Colonparen.getBossesUsed()[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)
