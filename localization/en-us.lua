@@ -6634,9 +6634,9 @@ return {
 			j_cbean_jbill_tlane                         = {
 				name = "Triple Lane",
 				text = {
-					"{X:mult,C:white}X3{} mult if poker hand",
+					"{X:mult,C:white}X3{} Mult if poker hand",
 					"contains an {C:attention}Ace{} and a {C:attention}#3#{}",
-					"{X:chips,C:white}X3{} chips if poker hand",
+					"{X:chips,C:white}X3{} Chips if poker hand",
 					"contains a {C:attention}5{} and a {C:attention}#3#{}"
 				}
 			},
@@ -6678,7 +6678,7 @@ return {
 				name = "RedBull 67",
 				text = {
 					"{C:red}+#1#{} Discards",
-					"Self-destructs if more than",
+					"{S:1.1,C:red,E:2}Self destructs{} if more than",
 					"{C:hands}#2#{} hands are played"
 				}
 			},
@@ -6741,7 +6741,7 @@ return {
 					"This Joker gains {C:white,X:mult}X#2#{} Mult", 
 					"for every {C:attention}Bean Card{}", 
 					"that is destroyed",
-					"{C:inactive}(Currently: {C:white,X:mult}X#1# {C:inactive}Mult)"
+					"{C:inactive}(Currently: {C:white,X:mult}X#1#{C:inactive} Mult)"
 				}
 			},
 			j_cbean_jbill_wee_bottle = {
@@ -11008,5 +11008,6 @@ return {
 		},
 	},
 }
+
 
 
