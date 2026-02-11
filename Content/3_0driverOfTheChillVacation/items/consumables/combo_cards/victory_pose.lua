@@ -57,7 +57,7 @@ SMODS.Consumable {
                 "The Chill Vacation"
                 },
         idea = "MarioFan597",
-        art = "cmykl",
+        art = "MarioFan597",
         code = {"MarioFan597",
                 "Inspector_B"
                 },
