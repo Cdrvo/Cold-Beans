@@ -8,7 +8,7 @@ SMODS.DrawStep {
 	key = 'plant_cost',
 	order = 5,
 	func = function(self)
-		if self.config.center.pvz_plant then
+		if self.config.center.pvz_plant and not self.config.center.key == "j_cbean_pboys_peashooter" then
 		  local plant_buy = {n = G.UIT.T, config = {text = "$"..self.cost, colour = G.C.MONEY, scale = 0.5}}
 		  local plant_sell = {n = G.UIT.T, config = {text = "$"..self.sell_cost, colour = G.C.MONEY, scale = 0.5}}
 		  if (self.area ~= G.jokers) and not self.children.plant_buy then
