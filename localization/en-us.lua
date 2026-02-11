@@ -7130,6 +7130,41 @@ return {
 					"to take with you"
 				},
 			},
+
+			-- Sticker Sheet Packs
+
+			p_cbean_nameteam_stickersheet_normal1 = {
+				name = "Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
+			p_cbean_nameteam_stickersheet_normal2 = {
+				name = "Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
+			p_cbean_nameteam_stickersheet_jumbo1 = {
+				name = "Storage Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
+			p_cbean_nameteam_stickersheet_mega1 = {
+				name = "Warehouse Collector's Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
+					"be used immediately"
+				}
+			},
 			--Seals
 			cbean_yma_cipher_seal = {
 				name = "Cipher Seal",
@@ -7396,41 +7431,6 @@ return {
 					"{C:green}#1# in 8{} Chance to",
 					"{C:red}destroy{} adjacent cards"
 				},
-			},
-
-			-- Sticker Sheet Packs
-
-			p_cbean_nameteam_stickersheet_normal1 = {
-				name = "Collector's Pack",
-				text = {
-					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-					"be used immediately"
-				}
-			},
-			p_cbean_nameteam_stickersheet_normal2 = {
-				name = "Collector's Pack",
-				text = {
-					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-					"be used immediately"
-				}
-			},
-			p_cbean_nameteam_stickersheet_jumbo1 = {
-				name = "Storage Collector's Pack",
-				text = {
-					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-					"be used immediately"
-				}
-			},
-			p_cbean_nameteam_stickersheet_mega1 = {
-				name = "Warehouse Collector's Pack",
-				text = {
-					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2# {C:cbean_stickersheet}Sticker Sheets{} to",
-					"be used immediately"
-				}
 			},
 
 			-- Blind Stickers
@@ -9028,6 +9028,20 @@ return {
 			},
 		},
 		Tag = {
+			tag_cbean_hongbao = {
+		        name = 'Hongbao Tag',
+		        text = {
+		            "Gives a free",
+		            "{C:sdown_czodiac}Mega Zodiac Pack"
+		        }
+		    },
+		    tag_cbean_olympus = {
+		        name = 'Olympus Tag',
+		        text = {
+		            "Gives a free",
+		            "{C:sdown_blessing}Mega Pantheon Pack"
+		        }
+		    },
 			tag_cbean_sunbean = {
 				name = 'Sunbean Tag',
 				text = {

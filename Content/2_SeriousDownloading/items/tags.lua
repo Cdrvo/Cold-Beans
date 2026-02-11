@@ -1,19 +1,13 @@
 --TODO: this name kinda sucks can we get a better one
+--Moved text to the localization file
 SMODS.Tag {
     key = 'hongbao',
     atlas = 'sdown_tags',
     pos = { x = 1, y = 0 },
     discovered = false,
     loc_vars = function(self, info_queue)
-        info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_czodiac_mega1
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_czodiac_mega2
     end,
-    loc_txt = {
-        name = 'Hongbao Tag',
-        text = {
-            "Gives a free",
-            "{C:attention}Mega Zodiac Pack"
-        }
-    },
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
@@ -51,13 +45,6 @@ SMODS.Tag {
     loc_vars = function(self, info_queue)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_blessing_mega
     end,
-    loc_txt = {
-        name = 'Olympus Tag',
-        text = {
-            "Gives a free",
-            "{C:attention}Mega Pantheon Pack"
-        }
-    },
     beans_credits = {
         team = "SeriousDownloading",
         idea = "Athebyne",
