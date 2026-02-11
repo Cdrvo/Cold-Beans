@@ -74,6 +74,7 @@ function NAMETEAM.replacecards(card)
 		if
 			v.rarity == (card.rarity or (card.config and card.config.center and card.config.center.rarity))
 			and v.key ~= (card.key or (card.config and card.config.center and card.config.center.key))
+			and (not v.in_pool or v:in_pool())
 		then
 			tab[#tab + 1] = v.key
 		end

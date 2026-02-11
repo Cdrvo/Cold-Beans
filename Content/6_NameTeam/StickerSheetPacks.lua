@@ -37,7 +37,7 @@ SMODS.Booster {
     pos = { x = 0, y = 0 },
     config = { extra = 3, choose = 1 },
     cost = 4,
-    weight = 0.5,
+    weight = 0.8,
     create_card = function(self, card)
         return create_card("cbean_StickerSheet", G.pack_cards, nil, nil, true, true, nil, "nameteam_stickersheet_normal1")
     end,
@@ -59,7 +59,7 @@ SMODS.Booster {
     pos = { x = 1, y = 0 },
     config = { extra = 3, choose = 1 },
     cost = 4,
-    weight = 0.5,
+    weight = 0.8,
     create_card = function(self, card)
         return create_card("cbean_StickerSheet", G.pack_cards, nil, nil, true, true, nil, "nameteam_stickersheet_normal1")
     end,
@@ -81,7 +81,7 @@ SMODS.Booster {
     pos = { x = 2, y = 0 },
     config = { extra = 5, choose = 1 },
     cost = 6,
-    weight = 0.25,
+    weight = 0.4,
     create_card = function(self, card)
         return create_card("cbean_StickerSheet", G.pack_cards, nil, nil, true, true, nil, "nameteam_stickersheet_normal1")
     end,
@@ -103,7 +103,7 @@ SMODS.Booster {
     pos = { x = 3, y = 0 },
     config = { extra = 5, choose = 2 },
     cost = 8,
-    weight = 0.125,
+    weight = 0.2,
     create_card = function(self, card)
         return create_card("cbean_StickerSheet", G.pack_cards, nil, nil, true, true, nil, "nameteam_stickersheet_normal1")
     end,
