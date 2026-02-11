@@ -825,8 +825,8 @@ return {
 				},
 				text = {
 					{
-						"Lowers blind by {C:dark_edition}-#1#%",
-						"when scored",
+						"Reduces {C:attention}Blind{} requirement",
+						"by {C:dark_edition}-#1#%{} when scored",
 						"Boosted by current combo",
 						"length when used",
 					},
@@ -920,7 +920,7 @@ return {
 				name = { "Low Short", "{X:cbean_series,C:white,s:0.7}Series{}" },
 				text = {
 					{
-						"The highest ranked card gives",
+						"Highest ranked card gives",
 						"{X:mult,C:white}X#1#{} Mult when scored",
 						"Boosted by current combo",
 						"length when used",
@@ -971,8 +971,8 @@ return {
 				text = {
 					{
 						"First played {C:attention}card{}",
-						"permanently gains {C:chips}+#1#{} Chips",
-						"when scored",
+						"permanently gains",
+						"{C:chips}+#1#{} Chips when scored",
 					},
 					{
 						"Combos Into:",
@@ -1001,8 +1001,7 @@ return {
 				text = {
 					{
 						"Levels up {C:attention}played hand{}",
-						"for length of",
-						"{C:attention}total{} combo",
+						"by length of {C:attention}total{} combo",
 					},
 					{
 						"Can only be used",
@@ -1038,7 +1037,7 @@ return {
 					{
 						"{X:mult,C:white}X#1#{} Mult,",
 						"but {C:attention}increases{}",
-						"blind size by {C:dark_edition}#2#%{}",
+						"{C:attention}Blind{} size by {C:dark_edition}#2#%{}",
 					},
 					{
 						"Combos Into:",
@@ -1075,7 +1074,7 @@ return {
 					{
 						"{X:mult,C:white}X#1#{} Mult",
 						"{C:green}#2# in #3#{} chance to",
-						"instead be {X:chips,C:white}XChips",
+						"instead give {X:chips,C:white}XChips",
 					},
 					{
 						"Combos Into:",
@@ -1091,8 +1090,8 @@ return {
 				},
 				text = {
 					{
-						"Counts as using {C:attention}#1#{} Combo cards",
-						"in a combo",
+						"Counts as using {C:attention}#1#{}",
+						"Combo cards in a combo",
 					},
 					{
 						"Combos Into:",
@@ -1140,7 +1139,8 @@ return {
 				},
 				text = {
 					{
-						"Lowers blind by {C:dark_edition}-#1#%",
+						"Reduces {C:attention}Blind{} requirement",
+						"by {C:dark_edition}-#1#%{} when scored",
 						"Boosted by current combo",
 						"length when used",
 					},
@@ -1237,8 +1237,8 @@ return {
 					{
 						"Retrigger {C:attention}all{} played",
 						"cards used in scoring",
-						"except the {C:attention}first{} and {C:attention}last{}",
-						"{C:attention}#1#{} additional time",
+						"except the {C:attention}first{} and",
+						"{C:attention}last{} {C:attention}#1#{} additional time",
 					},
 					{
 						"Combos Into:",
