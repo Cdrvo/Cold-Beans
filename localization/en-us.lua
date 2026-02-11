@@ -4769,12 +4769,18 @@ return {
 			j_cbean_bowling_bulb                        = {
 				name = "Bowling Bulb",
 				text = {
-					"First scored card",
-					"gives {X:mult,C:white}X#1#{} Mult",
-					"Second scored card",
-					"gives {C:mult}+#2#{} Mult and",
-					"Third scored card",
-					"gives {C:chips}+#3#{} Chips"
+					{
+						"First scored card",
+						"gives {X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Second scored card",
+						"gives {C:mult}+#2#{} Mult",
+					},
+					{
+						"Third scored card",
+						"gives {C:chips}+#3#{} Chips"
+					},
 				},
 			},
 			j_cbean_banana_launcher                     = {
@@ -4999,9 +5005,13 @@ return {
 			j_cbean_escape_root                         = {
 				name = "Escape Root",
 				text = {
-					"{C:mult}+#1#{} Mult",
-					"Changes places",
-					"before scoring"
+					{
+						"{C:mult}+#1#{} Mult",
+					},
+					{
+						"Changes places",
+						"before scoring"
+					},
 				},
 			},
 			j_cbean_gold_bloom                          = {
@@ -5059,7 +5069,8 @@ return {
 					"Last {C:attention}highlighted{} card",
 					"{C:attention}before{} hand is played",
 					"gives {X:mult,C:white}X#1#{} Mult",
-					"Any other card {C:red}will not{} score"
+					"Any other card",
+					"{C:red}will not{} score"
 				},
 			},
 			j_cbean_cauli_power                         = {
@@ -5155,8 +5166,8 @@ return {
 				text = {
 					"Sell while in",
 					"{C:attention}Blind{} to defeat it",
-					"{C:red}Debuffs{} adjacent {C:attention}Jokers{}",
-					"for {C:attention}1{} round"
+					"Also {C:red}debuffs{} adjacent",
+					"{C:attention}Jokers{} for {C:attention}1{} round"
 				},
 			},
 
@@ -5189,7 +5200,8 @@ return {
 						"{C:inactive}(Power Vine excluded)"
 					},
 					{
-						"Playing Cards {C:red}cannot{} retrigger",
+						"Playing Cards",
+						"{C:red}cannot{} retrigger",
 					},
 				},
 			},
@@ -5350,10 +5362,10 @@ return {
 			j_cbean_puffball                            = {
 				name = "Puffball",
 				text = {
-					"Scored cards between your",
-					"Rightmost and Leftmost scoring",
-					"cards give {X:mult,C:white}X#1#{} Mult",
-					"but has a {C:green}#2# in #3#{} Chance to",
+					"Scored cards between",
+					"{C:attention}Leftmost{} and {C:attention}Rightmost{}",
+					"give {X:mult,C:white}X#1#{} Mult but have",
+					"a {C:green}#2# in #3#{} chance to",
 					"get {C:red}destroyed{}"
 				},
 			},
@@ -5385,7 +5397,7 @@ return {
 				name = "Boingsetta",
 				text = {
 					"Scored cards gain",
-					"{X:mult,C:white}X#1#{} Mult"
+					"{X:mult,C:white}X#1#{} permanent Mult"
 				},
 			},
 			j_cbean_stickybomb_rice                     = {
@@ -5429,13 +5441,17 @@ return {
 			j_cbean_boom_ballon_flower                  = {
 				name = "Boom Ballon Flower",
 				text = {
-					"Remove any {C:attention}Seal{},",
-					"{C:dark_edition}Edition{} or {C:attention}Enhancement{}",
-					"from the {C:attention}First{} highlighted",
-					"and {C:attention}Scored{} card",
-					"Gains {X:mult,C:white}X#2#{} Mult for each",
-					"modification removed this way",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					{
+						"Remove any {C:attention}Seal{},",
+						"{C:dark_edition}Edition{} or {C:attention}Enhancement{}",
+						"from the {C:attention}First{} highlighted",
+						"and {C:attention}Scored{} card",
+					},
+					{
+						"Gains {X:mult,C:white}X#2#{} Mult for each",
+						"modification removed this way",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					},
 				},
 			},
 			j_cbean_inferno                             = {
@@ -5459,10 +5475,17 @@ return {
 			j_cbean_noctairne                           = {
 				name = "Noctarine",
 				text = {
+<<<<<<< HEAD
+					"{C:green}Sell{} this {C:attention}Joker{} while",
+					"in a blind to {C:attention}Half{}",
+					"required chips but {C:red}prevents{}",
+					"{C:attention}Playing Cards{} from scoring",
+=======
 					"{C:green}Sell{} this {C:attention}Joker{}",
 					"while in a blind to",
 					"{C:attention}Half{} the required chips",
 					"Playing Cards {C:red}cannot{} score",
+>>>>>>> 3e76260c7ae248b983f692fd857772467570bb4d
 					"for the rest of the round"
 				},
 			},
@@ -5516,7 +5539,7 @@ return {
 				name = "Bramble Bush",
 				text = {
 					"This card and cards",
-					"on the right of it",
+					"to the right of it",
 					"{C:red}cannot{} be dragged",
 					"{X:mult,C:white}X#1#{} Mult"
 				},
@@ -5583,8 +5606,8 @@ return {
 				name = "Guard Shroom",
 				text = {
 					"After every {C:attention}#2#{C:inactive} (#1#){}",
-					"{C:blue}hands{} played,",
-					"apply a {C:purple}Guard Shroom{} sticker",
+					"{C:blue}hands{} played, apply",
+					"a {C:purple}Guard Shroom{} sticker",
 					"to a {C:attention}Jokers{} without one"
 				},
 			},
@@ -5689,9 +5712,8 @@ return {
 				name = "Sweetheart Snare",
 				text = {
 					"Blind wont progress",
-					"until all {C:blue}hands{} are",
-					"used.",
-					"{C:red}Self-Destructs{} after",
+					"until all {C:blue}hands{} are used",
+					"{S:1.1,C:red,E:2}Self destructs{} after",
 					"{C:attention}#2#{C:inactive} (#1#){} Rounds"
 				},
 			},
@@ -5713,9 +5735,13 @@ return {
 			j_cbean_pea_nut                             = {
 				name = "Pea-Nut",
 				text = {
-					"{C:attention}X#1#{} Blind Size",
-					"Card on the right",
-					"{C:red}cannot{} be debuffed"
+					{
+						"{C:attention}X#1#{} Blind Size",
+					},
+					{
+						"Card on the right",
+						"{C:red}cannot{} be debuffed"
+					},
 				},
 			},
 
@@ -5802,13 +5828,17 @@ return {
 			j_cbean_spore_shroom                        = {
 				name = "Spore Shroom",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"When a {C:attention}Boss Blind{} is",
-					"defeated, create another {C:dark_edition}Negative{}",
-					"{C:purple}Spore-Shroom{}",
-					"{C:inactive,:s0.8}(Other Spore-Shrooms created",
-					"{C:inactive}by this Spore-Shroom can't",
-					"{C:inactive}create Spore-Shrooms)",
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"When a {C:attention}Boss Blind{} is",
+						"defeated, create another",
+						"{C:dark_edition}Negative{} {C:purple}Spore-Shroom{}",
+						"{C:inactive,:s0.8}(Other Spore-Shrooms created",
+						"{C:inactive}by this Spore-Shroom can't",
+						"{C:inactive}create Spore-Shrooms)",
+					},
 				},
 			},
 
