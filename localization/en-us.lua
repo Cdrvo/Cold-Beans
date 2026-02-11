@@ -10525,7 +10525,9 @@ return {
 			bean_136							= "Me and the boys at 3am looking for beans",
 			bean_137							= "Entrusting this World to Jokers ~ Jokerize World",
 			bean_138							= "Which came first, ranch or cool ranch?",
-			bean_139							= "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs"
+			bean_139							= "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs",
+			bean_140							= "This mod is sponsored by Bean Shadow Legend",
+			bean_141							= "what the hell did i add?"
 		},
 		high_scores = {},
 		labels = {
