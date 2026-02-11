@@ -9976,6 +9976,7 @@ return {
 		Biome = {
 			--Wgropping it
 			wgrop_desert = {
+				name = "Desert",
 				text = {
 					"You can carry less",
 					"but packed plenty",
@@ -9983,24 +9984,28 @@ return {
 				},
 			},
 			wgrop_forest = {
+				name = "Forest",
 				text = {
 					"At the end of the day,",
 					"everything grows",
 				},
 			},
 			wgrop_graveyard = {
+				name = "Graveyard",
 				text = {
 					"Destroyed Cards may",
 					"persist after death",
 				},
 			},
 			wgrop_volcanic = {
+				name = "Volcano",
 				text = {
 					"Only discards have",
 					"value in this land",
 				},
 			},
 			wgrop_glaciers = {
+				name = "Glacier",
 				text = {
 					"The snow reduces your",
 					"vision, so keep your",
@@ -10008,22 +10013,25 @@ return {
 				},
 			},
 			wgrop_city = {
+				name = "City",
 				text = {
 					"Constant taxes, but",
 					"plenty to see and do",
 				},
 			},
 			nameteam_davelawn = {
+				name = "Dave's Lawn",
 				text = {
-					"Only Crazy Dave's",
-					"plant Jokers may appear",
+					"Plants are your best",
+					"option for keeping",
+					"zombies off your lawn",
 				},
 			},
 			nameteam_afterlife = {
 				name = "The Afterlife",
 				text = {
 					"There is nothing to",
-					"do here."
+					"do here"
 				},
 			},
 		},

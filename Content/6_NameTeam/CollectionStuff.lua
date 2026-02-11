@@ -40,7 +40,7 @@ function NAMETEAM.create_UIBox_your_collection_biomes_content(page)
 				local temp_sprite = SMODS.create_sprite(0, 0, 113 / 57 * G.CARD_W, G.CARD_W, biome.atlas, biome.pos)
 				col_nodes[#col_nodes + 1] = {
 					n = G.UIT.C,
-					config = { align = "cm", padding = 0.07, },
+					config = { align = "cm", padding = 0.07, detailed_tooltip = biome },
 					nodes = {
 						{
 							n = G.UIT.O,
