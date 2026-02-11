@@ -33,7 +33,7 @@ SMODS.PokerHandPart {
                     end
                     if not seen then break end
                 end
-                if flush_count >= 4 then
+                if flush_count >= SMODS.four_fingers('flush') - 1 then
                     table.insert(bobtails, t)
                     break
                 end
