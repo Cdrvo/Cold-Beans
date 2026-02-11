@@ -451,7 +451,7 @@ function Card:complete_arch()
 
     if not card.from_area then card.from_area = card.area end
         delay(0.1)
-        draw_card(G.hand, G.colonparen_arch_anim, 1, 'up', true, card, nil, true) 
+        draw_card(G.colonparen_arch_anim_from, G.colonparen_arch_anim, 1, 'up', true, card, nil, true) 
         G.GAME.round_scores.cards_purchased.amt = G.GAME.round_scores.cards_purchased.amt + 1
         card:functional_complete_arch()
         G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.2,
