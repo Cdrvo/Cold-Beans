@@ -30,7 +30,7 @@ function NAMETEAM.create_UIBox_your_collection_biomes_content(page)
 	args = {}
 	local pool = SMODS.collection_pool(CBWG.ColdBeans_Biomes)
 	local rows = 2
-	local cols = 3
+	local cols = 2
 	local table_nodes = {}
 	for i = 1, rows do
 		local col_nodes = {}

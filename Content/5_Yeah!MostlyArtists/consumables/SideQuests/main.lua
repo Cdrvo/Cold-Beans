@@ -67,8 +67,8 @@ YMA.SideQuests.quest = SMODS.Center:extend({
 })
 
 local set_sprites_ref = Card.set_sprites
-function Card:set_sprites(center, front)
-    set_sprites_ref(self, center, front)
+function Card:set_sprites(center, front, ...)
+    set_sprites_ref(self, center, front, ...)
     if center and center.set == 'yma_quest' then
         self.children.center.atlas = G.ASSET_ATLAS[center.atlas]
         self.children.center.scale = {
