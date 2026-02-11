@@ -16,8 +16,8 @@ SMODS.Joker {
         if context.setting_blind then
 		    ease_discard(card.ability.extra.discards)
 	    end
-        if G.GAME.current_round.hands_played and G.GAME.current_round.hands_played > card.ability.extra.hands then
-            SMODS.destroy_cards(card)
+        if context.before and G.GAME.current_round.hands_played >= card.ability.extra.hands then
+            card:start_dissolve()
         end
     end,
     beans_credits = {
