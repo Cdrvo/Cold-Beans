@@ -5459,7 +5459,7 @@ return {
 			j_cbean_noctairne                           = {
 				name = "Noctarine",
 				text = {
-					"{C:green}Sell{} this {C:attention}Jokers{}",
+					"{C:green}Sell{} this {C:attention}Joker{}",
 					"while in a blind to",
 					"{C:attention}Half{} the required chips",
 					"Playing Cards {C:red}cannot{} score",
@@ -5795,7 +5795,7 @@ return {
 					"{C:green}Sell{} this card",
 					"to instantly defeat the",
 					"blind but {:red}lose",
-					"a random {C:attention}Jokers{}"
+					"a random {C:attention}Joker{}"
 				},
 			},
 
