@@ -7,7 +7,9 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 8,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.e_cbean_sd_frozen
+        if not (card.edition and card.edition.cbean_sd_frozen) then
+            info_queue[#info_queue+1] = G.P_CENTERS.e_cbean_sd_frozen
+        end
         info_queue[#info_queue+1] = G.P_CENTERS.m_cbean_wgrop_ice
         info_queue[#info_queue+1] = G.P_CENTERS.j_cbean_0chill_thorn_ring
     end,
