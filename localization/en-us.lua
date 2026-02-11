@@ -10527,7 +10527,7 @@ return {
 			bean_138							= "Which came first, ranch or cool ranch?",
 			bean_139							= "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs",
 			bean_140							= "This mod is sponsored by Bean Shadow Legend",
-			bean_141							= "what the hell did i add?"
+			bean_141							= "what the hell did i add?" --If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16. added these 
 		},
 		high_scores = {},
 		labels = {
