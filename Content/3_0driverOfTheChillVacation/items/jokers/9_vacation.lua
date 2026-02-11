@@ -37,6 +37,13 @@ SMODS.Joker {
         return {
             key = self.key .. '_member' .. tostring(card.ability.immutable.member),
             vars = {
+                colours = { 
+                    G.C.RED,
+                    G.C.SUITS.Diamonds,
+                    G.C.UI.TEXT_INACTIVE,
+                    G.C.SECONDARY_SET.Tarot,
+
+                },
                 card.ability.extra.cmykl_mult,
                 card.ability.extra.CapitalChirp_mult,
                 card.ability.extra.CapitalChirp_num,
