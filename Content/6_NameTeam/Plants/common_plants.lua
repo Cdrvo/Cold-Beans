@@ -97,6 +97,7 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_sunnier_shroom
 		local cae = card.ability.extra
 		return { vars = { cae.dollars, cae.rounds_max, cae.rounds } }
 	end,

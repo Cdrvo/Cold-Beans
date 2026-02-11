@@ -4602,7 +4602,7 @@ SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	key = "chilli_pepper",
+	key = "chili_pepper",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
@@ -4626,7 +4626,7 @@ SMODS.Joker({
 			G.GAME.blind.chips = G.GAME.blind.chips / 2
 			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			for k, v in pairs(G.hand.cards) do
-				SMODS.debuff_card(v, true, "debuffed_by_chilli_pepper")
+				SMODS.debuff_card(v, true, "debuffed_by_chili_pepper")
 			end
 		end
 	end,

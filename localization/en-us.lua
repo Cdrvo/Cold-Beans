@@ -3854,23 +3854,23 @@ return {
 				name = "Sunflower",
 				text = {
 					"{C:green}#1# in #2#{} chance to",
-					"give {C:money}$#3#{} at end",
-					"of round"
+					"give {C:money}$#3#{} at",
+					"end of round"
 				},
 			},
 			j_cbean_wallnut                             = {
 				name = "Wall-Nut",
 				text = {
-					"Joker on the {C:attention}right{}",
+					"Joker to the {C:attention}right{}",
 					"cannot be {C:red}debuffed{}"
 				},
 			},
 			j_cbean_potatomine                          = {
 				name = "Potato Mine",
 				text = {
-					"Sell this {C:attention}Joker{} after {C:attention}#1#{C:inactive} (#2#){}",
+					"Sell this {C:attention}Joker{} after {C:attention}#1#{C:inactive} [#2#]",
 					"rounds to {C:attention}halve{} the current",
-					"{C:attention}Blind's{} required {C:chips}Chips{}"
+					"{C:attention}Blind's{} required chips"
 				},
 			},
 			j_cbean_snowpea                             = {
@@ -3896,7 +3896,7 @@ return {
 					"only {C:attention}1{} card, destroy it",
 					"This Joker's destruction",
 					"effect becomes inactive",
-					"for {C:attention}2{C:inactive} (#1#){} rounds",
+					"for {C:attention}2{C:inactive} [#1#]{} rounds",
 					"after it triggers",
 				},
 			},
@@ -3904,8 +3904,8 @@ return {
 				name = "Puff Shroom",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult{} if this",
-					"{C:attention}Joker{} is in the 2",
-					"leftmost {C:attention}Joker{} slots",
+					"{C:attention}Joker{} is in the {C:attention}2{}",
+					"leftmost Joker slots",
 				},
 			},
 			j_cbean_sun_shroom                          = {
@@ -3914,7 +3914,7 @@ return {
 					"Earn {C:money}$#1#{} at",
 					"end of round",
 					"Becomes {C:attention}Sunnier Shroom{}",
-					"after {C:attention}#2#{C:inactive} (#3#){} rounds"
+					"after {C:attention}#2#{C:inactive} [#3#]{} rounds"
 				},
 			},
 			j_cbean_sunnier_shroom                      = {
@@ -3923,7 +3923,7 @@ return {
 					"{C:green}#1# in #2#{} chance to",
 					"earn {C:money}$#3#{} at",
 					"end of round",
-					"{C:inactive,s:0.8}(This seems familiar..)"
+					"{C:inactive,s:0.8}(This seems familiar...)"
 				},
 			},
 			j_cbean_fume_shroom                         = {
@@ -3931,15 +3931,15 @@ return {
 				text = {
 					"All {C:attention}Shrooms{} to the",
 					"right of this {C:attention}Joker",
-					"gives {X:mult,C:white}X#1#{} Mult"
+					"give {X:mult,C:white}X#1#{} Mult"
 				},
 			},
 			j_cbean_scaredy_shroom                      = {
 				name = "Scaredy Shroom",
 				text = {
 					"{C:mult}+#1#{} Mult{} if this",
-					"{C:attention}Joker{} is in the 2",
-					"leftmost {C:attention}Joker{} slots",
+					"{C:attention}Joker{} is in the {C:attention}2{}",
+					"leftmost Joker slots",
 				},
 			},
 			j_cbean_ice_shroom                          = {
@@ -3954,7 +3954,7 @@ return {
 				name = "Iceberg Lettuce",
 				text = {
 					"When {C:green}sold{}, the next {C:attention}#1#{}",
-					"{C:attention}Blinds{} won't end until",
+					"{C:attention}Blind{} won't end until",
 					"all hands are used"
 				},
 			},
@@ -3973,8 +3973,8 @@ return {
 				name = "Crater",
 				text = {
 					"Is {C:attention}Eternal{}",
-					"{C:red,E:2}Self-destructs{} after",
-					"{C:attention}#1#{C:inactive} (#2#){} rounds"
+					"{C:red,E:1,s:1.1}self destructs{} after",
+					"{C:attention}#1#{C:inactive} [#2#]{} rounds"
 				},
 			},
 			j_cbean_squash                              = {
@@ -4034,8 +4034,8 @@ return {
 					"after triggering"
 				},
 			},
-			j_cbean_chilli_pepper                       = {
-				name = "Chilli Pepper",
+			j_cbean_chili_pepper                       = {
+				name = "Chili Pepper",
 				text = {
 					"Sell this {C:attention}Joker{} to halve",
 					"current {C:attention}Blind{} requirement,",
@@ -4049,30 +4049,30 @@ return {
 					"All scored cards in the",
 					"hand played {C:attention}after",
 					"this {C:attention}Joker{} is sold give",
-					"{X:mult,C:white}X#1#{} Mult and {C:red,E:2}self-destruct",
+					"{X:mult,C:white}X#1#{} Mult and are destroyed",
 				},
 			},
 			j_cbean_bun_chi                             = {
 				name = "Bun Chi",
 				text = {
 					"{C:chips}+#1#{} Chips",
-					"After {C:attention}#4#{C:inactive} [[#3#]{} triggers,",
+					"After {C:attention}#4#{C:inactive} [#3#]{} triggers,",
 					"{C:mult}+#2#{} Mult instead"
 				},
 			},
 			j_cbean_meteor_flower                       = {
 				name = "Meteor Flower",
 				text = {
-					"Highest-ranked scored",
-					"card is {C:red}destroyed{}",
+					"Highest ranked scored",
+					"card is {C:red}destroyed",
 					"Cards adjacent to it",
-					"gain {C:mult}+#1#{} Mult permanently"
+					"permanently gain {C:mult}+#1#{} Mult"
 				},
 			},
 			j_cbean_sundew_tangler                      = {
 				name = "Sundew Tangler",
 				text = {
-					"{C:attention}Playing cards{}",
+					"{C:attention}Playing cards",
 					"cannot be retriggered",
 					"Each played card",
 					"gives {C:money}$#1#{} when scored"
@@ -4090,9 +4090,9 @@ return {
 			j_cbean_night_cap                           = {
 				name = "Night Cap",
 				text = {
-					"At end of round, all",
-					"other {C:attention}Jokers{} lose {C:red}-$1{}",
-					"of sell value, gains",
+					"All other {C:attention}Jokers{} lose",
+					"{C:red}-$1{} of sell value at",
+					"end of round, gains",
 					"{X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
 					"affected by this",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
@@ -4681,8 +4681,8 @@ return {
 			j_cbean_primal_sunflower                    = {
 				name = "Primal Sunflower",
 				text = {
-					"Gives {C:money}+#1#{} after",
-					"every round"
+					"Earn {C:money}$#1#{} at",
+					"end of round"
 				},
 			},
 			j_cbean_primal_wallnut                      = {
@@ -4690,23 +4690,23 @@ return {
 				text = {
 					"Playing cards cannot",
 					"be debuffed.",
-					"{C:red}Self-Destruct{} after",
-					"preventing {C:attention}#1#{C:inactive} (#2#){} debuffs "
+					"{C:red,E:1,s:1.1}self destruct{} after",
+					"preventing {C:attention}#1#{C:inactive} [#2#]{} debuffs "
 				},
 			},
 			j_cbean_primal_potato                       = {
 				name = "Primal Potato",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"sell while in blind to",
-					"destroy all handheld cards"
+					"Sell while in {C:attention}Blind{} to",
+					"destroy cards held in hand"
 				},
 			},
 			j_cbean_guacodile                           = {
 				name = "Guacodile",
 				text = {
 					"{C:mult}+#1#{} Mult",
-					"Sell while in blind",
+					"Sell while in {C:attention}Blind",
 					"to reduce the current",
 					"blind's requirement by",
 					"(Small Blind Chips)/2",
@@ -4736,11 +4736,10 @@ return {
 			j_cbean_moonflower                          = {
 				name = "Moonflower",
 				text = {
-					"{C:money}+$#1#{} At the",
-					"end of a round",
+					"Earn {C:money}+$#1#{} at",
+					"end of round,",
 					"earn an extra {C:money}+$1{}",
-					"for each {C:dark_edition}Shadow{} {C:attention}Jokers{}",
-					"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+					"for every owned {C:dark_edition}Shadow{} {C:attention}Joker",
 				},
 			},
 			j_cbean_shadow_shroom                       = {
@@ -4825,9 +4824,9 @@ return {
 			j_cbean_sap_fling                           = {
 				name = "Sap-fling",
 				text = {
-					"Playing Cards are now",
-					"scored {C:attention}after{}",
-					"{C:attention}Jokers{}"
+					"{C:attention}Playing cards",
+					"are instead scored",
+					"{C:attention}after{} Jokers"
 				},
 			},
 			j_cbean_lava_guava                          = {
@@ -4842,8 +4841,8 @@ return {
 				name = "Lava",
 				text = {
 					"Is eternal",
-					"{C:red}Self-Destructs{} after",
-					"{C:attention}#1#{C:inactive} (#2#){} rounds"
+					"{C:red,E:1,s:1.1}self destructs{} after",
+					"{C:attention}#1#{C:inactive} [#2#]{} rounds"
 				},
 			},
 			j_cbean_fire_peashooter                     = {
@@ -4872,26 +4871,26 @@ return {
 			j_cbean_kiwibeast                           = {
 				name = "Kiwibeast",
 				text = {
-					"Every {C:attention}#1#{} Hands",
-					"you don't beat a blind",
-					"Gain {X:mult,C:white}X#2#{} Mult",
+					"This Joker gains {X:mult,C:white}X#2#{} Mult",
+					"every {C:attention}#1#{} hands you",
+					"don't defeat a {C:attention}Blind",
 					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
 				},
 			},
 			j_cbean_power_lily                          = {
 				name = "Power Lily",
 				text = {
-					"When {C:green}sold{}",
 					"{C:attention}Doubles{} the values",
 					"of the card on the right",
-					"for {C:attention}2{} Rounds"
+					"for {C:attention}2{} rounds",
+					"when {C:green}sold{}"
 				},
 			},
 			j_cbean_toad_stool                          = {
 				name = "Toad Stool",
 				text = {
 					"If played hand only",
-					"has {C:attention}1{} Card",
+					"has {C:attention}1{} card,",
 					"destroy it and gain",
 					"{C:money}+$#1#{}"
 				},
@@ -4946,8 +4945,8 @@ return {
 				name = "Escape Root",
 				text = {
 					"{C:mult}+#1#{} Mult",
-					"changes placaes before",
-					"scoring"
+					"Changes places",
+					"before scoring"
 				},
 			},
 			j_cbean_gold_bloom                          = {
@@ -5099,10 +5098,10 @@ return {
 			["j_cbean_electrici-tea"]                   = {
 				name = "Electrici-tea",
 				text = {
-					"{C:green}Sell{} to while",
-					"in a blind to defeat it",
+					"Sell while in",
+					"{C:attention}Blind{} to defeat it",
 					"{C:red}Debuffs{} adjacent {C:attention}Jokers{}",
-					"for 1 round"
+					"for {C:attention}1{} round"
 				},
 			},
 
@@ -5176,8 +5175,8 @@ return {
 			j_cbean_gloom_vine                          = {
 				name = "Gloom Vine",
 				text = {
-					"{C:chips}+#1#{} Chips for",
-					"every shadow plant owned",
+					"{C:chips}+#1#{} Chips for every",
+					"shadow plant owned",
 					"{C:dark_edition}+1{C:attention} Joker Slot",
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 				},
@@ -6652,8 +6651,8 @@ return {
 			j_cbean_jbill_spill                         = {
 				name = "Spill the Beans",
 				text = {
-					"When selecting a {C:attention}Small Blind{}",
-					"adds #1# {C:attention}Bean Cards{} in {C:attention}Deck{}"
+					"Adds {C:attention}#1# Bean Cards{} to deck",
+					"when Small Blind is selected"
 				}
 			},
 			j_cbean_jbill_pizzazzy                      = {
@@ -6678,7 +6677,7 @@ return {
 				name = "RedBull 67",
 				text = {
 					"{C:red}+#1#{} Discards",
-					"{S:1.1,C:red,E:2}Self destructs{} if more than",
+					"{S:1.1,C:red,E:2}self destructs{} if more than",
 					"{C:hands}#2#{} hands are played"
 				}
 			},
@@ -6730,9 +6729,9 @@ return {
 			j_cbean_jbill_manos = {
 				name = "Hands of Fate",
 				text = {
-					"{C:blue}Hands{} don't go down when {C:attention}played{}",
-					"Lose {C:white,X:mult}X#2#{} when playing a hand",
-					"{C:inactive}(Currently: {C:white,X:mult}X#1#{}{C:inactive})"
+					"Hands don't decrease when {C:attention}used{}",
+					"Lose {C:white,X:mult}X#2#{} when hand is played",
+					"{C:inactive}(Currently {C:white,X:mult}X#1#{}{C:inactive} Mult)"
 				}
 			},
 			j_cbean_jbill_pythagoras = {
@@ -6764,8 +6763,9 @@ return {
 			j_cbean_jbill_jimbill = {
 				name = "Jim Bill",
 				text = {
-					"{C:green}#2# in #3#{} chance for each played",
-					"{C:attention}Enhanced Card{} to give {C:green}+J#1#{} when scored"
+					"{C:green}#2# in #3#{} chance for",
+					"each played {C:attention}Enhanced Card",
+					"to give {C:green}+J#1#{} when scored"
 				}
 			},
 			j_cbean_jbill_exchange = {
