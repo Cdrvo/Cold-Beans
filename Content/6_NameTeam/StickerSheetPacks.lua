@@ -46,7 +46,7 @@ SMODS.Booster {
         ease_background_colour({ new_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheet, special_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheetAlt, contrast = 2 })
     end,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.config.center.config.choose, card.ability.extra } }
+        return { vars = {card.ability.choose, card.ability.extra } }
     end,
     group_key = "k_cbean_stickersheetpack",
     draw_hand = true
@@ -68,7 +68,7 @@ SMODS.Booster {
         ease_background_colour({ new_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheet, special_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheetAlt, contrast = 2 })
     end,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.config.center.config.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra } }
     end,
     group_key = "k_cbean_stickersheetpack",
     draw_hand = true
@@ -90,7 +90,7 @@ SMODS.Booster {
         ease_background_colour({ new_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheet, special_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheetAlt, contrast = 2 })
     end,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.config.center.config.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra } }
     end,
     group_key = "k_cbean_stickersheetpack",
     draw_hand = true
@@ -112,7 +112,7 @@ SMODS.Booster {
         ease_background_colour({ new_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheet, special_colour = G.C.NAMETEAM_STICKERSHEETPACK.StickerSheetAlt, contrast = 2 })
     end,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.config.center.config.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra } }
     end,
     group_key = "k_cbean_stickersheetpack",
     draw_hand = true

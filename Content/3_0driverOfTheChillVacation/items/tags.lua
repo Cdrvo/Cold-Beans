@@ -122,7 +122,7 @@ SMODS.Tag {
     pos = { x = 3, y = 0 },
     discovered = false,
     loc_vars = function(self, info_queue)
-        info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_combo_booster_ultimate1
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_cbean_nameteam_stickersheet_mega1
     end,
     beans_credits = {
         team = {"0 Driver Of",
