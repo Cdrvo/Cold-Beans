@@ -28,7 +28,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
         team = {"0 Driver Of",
             "The Chill Vacation"
         },
-        idea = "ChapitalChirp",
+        idea = "CapitalChirp",
         art =  "Monachrome",
         code = "MarioFan597",
     }
