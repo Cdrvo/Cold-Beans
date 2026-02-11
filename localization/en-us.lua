@@ -2861,7 +2861,7 @@ return {
 				name = "Minnesang",
 				text = {
 					"{C:red}+#1#{} discards each round,",
-					"Lose {C:money}$#2#{} at end of round",
+					"lose {C:money}$#2#{} at end of round",
 				},
 			},
 			j_cbean_colon_mu_cube                       = { --George The Rat | N/A | bitter
@@ -2912,7 +2912,7 @@ return {
 				name = "Trouvère",
 				text = {
 					"{C:blue}+#1#{} hands per round,",
-					"{C:red}-#2#{} discards each round",
+					"{C:red}-#2#{} discard each round",
 				},
 			},
 
@@ -3195,7 +3195,8 @@ return {
 				name = "Permafrost",
 				text = {
 					{
-						"{C:dark_edition}Frozen{} cards will not thaw"
+						"{C:dark_edition}Frozen{} cards",
+						"will not thaw"
 					},
 				},
 			},
@@ -3298,8 +3299,8 @@ return {
 				name = { "Zagreus" },
 				text = {
 					{
-						"Create an {C:dark_edition, E:2}Olympus Tag{}",
-						"after defeating a blind"
+						"Create an {C:dark_edition,E:2}Olympus Tag",
+						"when {C:attention}Blind{} is defeated"
 					}
 				}
 			},
@@ -4039,8 +4040,8 @@ return {
 				text = {
 					"Sell this {C:attention}Joker{} to halve",
 					"current {C:attention}Blind{} requirement,",
-					"then permanently {C:red}debuffs{}",
-					"all cards in hand"
+					"then permanently {C:red}debuff{}",
+					"all cards held in hand"
 				},
 			},
 			j_cbean_bz_button                           = {
@@ -6099,8 +6100,8 @@ return {
 				text =
 				{
 					"For the next {C:attention}#1#{} hands,",
-					"leftmost played and scored",
-					"card has a {C:green}#2# in #3#{} chance",
+					"leftmost scoring card",
+					"has a {C:green}#2# in #3#{} chance",
 					"to become a {C:attention}Queen{}"
 				}
 			},
@@ -6244,9 +6245,8 @@ return {
 				name = 'Pawn',
 				text =
 				{
-					"After #2# rounds,",
-					"becomes a {C:attention}Queen{}",
-					"{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#){}",
+					"After {C:attention}#2#{} {C:inactive}[#1#]{} rounds,",
+					"becomes a {C:attention}Queen{}"
 				}
 			},
 			j_cbean_nameteam_queen                      = {
@@ -6597,10 +6597,10 @@ return {
 			j_cbean_wgrop_glass_spire                   = {
 				name = "Glass Spire",
 				text = {
-					"When {C:attention}Glass{} cards",
-					" are {C:red}destroyed{}",
+					"When a {C:attention}Glass{} card",
+					"is {C:red}destroyed{},",
 					"add a {C:attention}Coarse{} copy",
-					"of it to your hand"
+					"to your hand"
 				}
 			},
 			j_cbean_wgrop_scorched_hands                = {
@@ -6807,8 +6807,8 @@ return {
 			j_cbean_jbill_exchange = {
 				name = "Currency Exchange",
 				text = {
-					"When selecting a blind",
-					"exchanges {C:money}$5{} for {C:green}J1"
+					"When {C:attention}Blind{} is selected,",
+					"{C:money}$5{} is exchanged for {C:green}J1"
 				}
 			},
 			j_cbean_jbill_tcna = {
