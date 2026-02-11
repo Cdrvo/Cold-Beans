@@ -1253,8 +1253,8 @@ return {
 				name = "Alpha Key",
 				text = {
 					"{C:red}Removes{} a random {C:money}Sticker{}",
-					"from a random {C:attention}Joker{} at the",
-					"end of {C:attention}round",
+					"from a random {C:attention}Joker{} at",
+					"the end of the {C:attention}round",
 					"{C:inactive}(Uses #1#/#2#)",
 				},
 			},
@@ -1262,19 +1262,18 @@ return {
 				name = "Angel Key",
 				text = {
 					"{C:attention}Creates{} a random {C:sdown_blessing}Blessing{}",
-					"with a {C:red}lower{} expire date",
-					"when a {C:attention}Booster{} pack is",
-					"opened",
+					"with a {C:red}lower{} expiry date when",
+					"a {C:attention}Booster Pack{} is opened",
 					"{C:inactive}(Uses #1#/#2# packs)",
 				},
 			},
 			c_cbean_yma_animal = {
 				name = "Animal Key",
 				text = {
-					"{C:attention}Create{} a random {C:dark_edition}Negative{}",
-					"{C:sdown_czodiac}Chinese Zodiac{} when",
-					"{C:attention}selecting{} blind",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"When {C:attention}Blind{} is selected,",
+					"{C:attention}create{} a random {C:dark_edition}Negative{}",
+					"{C:sdown_czodiac}Chinese Zodiac{} card",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_anywhere = {
@@ -1289,9 +1288,9 @@ return {
 			c_cbean_yma_bitey = {
 				name = "Bitey Key",
 				text = {
-					"Removes {C:attention}enhancements{} from",
-					"{C:attention}scored{} cards and gives",
-					"them {C:attention}permanently{} {C:mult}+#3#{} Mult",
+					"Played cards {C:attention}permanently{}",
+					"gain {C:mult}+#3#{} Mult when scored",
+					"but lose all {C:attention}enhancements{}",
 					"{C:inactive}(Uses #1#/#2# cards)",
 				},
 			},
@@ -1299,7 +1298,7 @@ return {
 				name = "Chain Key",
 				text = {
 					"When the {C:yma_keys}Key{} to the left",
-					"{C:attention}triggers{} add an {C:attention}additional",
+					"{C:attention}triggers{}, add an {C:attention}additional",
 					"use to the {C:yma_keys}Key{} to the right",
 					"{C:inactive}(Uses #1#/#2#)",
 				},
@@ -1308,7 +1307,7 @@ return {
 				name = "Creation Key",
 				text = {
 					"Creates a {C:attention}random{} free",
-					"{C:attention}Booster{} pack in the {C:money}shop",
+					"{C:attention}Booster Pack{} in the {C:money}shop",
 					"{C:inactive}(Uses #1#/#2# shops)",
 				},
 			},
@@ -1318,7 +1317,7 @@ return {
 					{
 						"{C:green}#3# in #4#{} chance to {C:attention}apply{} a",
 						"random {C:edition}edition{} to the two",
-						"{C:attention}leftmost{} playing cards",
+						"{C:attention}leftmost{} cards in scoring hand",
 					},
 					{
 						"{C:attention}Shuffles{} played {C:attention}cards",
@@ -1329,32 +1328,33 @@ return {
 			c_cbean_yma_echo = {
 				name = "Echo Key",
 				text = {
-					"When {C:blue}hand{} is {C:attention}played",
-					"mimics {C:tarot}Tarot{} to the left",
+					"When hand is {C:attention}played{},",
+					"{C:attention}mimics{} {C:tarot}Tarot{} to the left",
 					"{C:inactive}(Uses #1#/#2# hands)",
 				},
 			},
 			c_cbean_yma_enigma = {
 				name = "Enigma Key",
 				text = {
-					"{C:attention}Consumable{} pool is",
-					"randomized",
+					"{C:attention}Consumable{} pool",
+					"is randomized",
 					"{C:inactive}(Uses ?/? blinds)",
 				},
 			},
 			c_cbean_yma_gender = {
 				name = "Gender Key",
 				text = {
-					"{C:attention}Scored{} face cards change {C:attention}gender",
+					"{C:attention}Played{} face cards",
+					"change {C:attention}gender{} when scored",
 					"{C:inactive}(Uses #1#/#2# cards)",
 				},
 			},
 			c_cbean_yma_ghost = {
 				name = "Ghost Key",
 				text = {
-					"{C:attention}Creates{} two temporary",
-					"{C:dark_edition}Negative{} {C:attention}Jokers{} when blind",
-					"is {C:attention}selected",
+					"When {C:attention}Blind{} is selected,",
+					"{C:attention}creates{} two temporary",
+					"{C:dark_edition}Negative{} {C:attention}Jokers{}",
 					"{C:inactive}(Uses #1#/#2# shops)",
 				},
 			},
@@ -1362,9 +1362,9 @@ return {
 				name = "Giant Key",
 				text = {
 					"Create a {X:red,C:white}Finisher{} or",
-					"{X:blue,C:white}Ultimate{} {C:combo}Combo{} at",
-					"end of {C:attention}round",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"{X:blue,C:white}Ultimate{} {C:combo}Combo{} card at",
+					"the end of the {C:attention}round",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_harlequin = {
@@ -1372,41 +1372,41 @@ return {
 				text = {
 					"{C:attention}Mimics{} leftmost {C:attention}Joker",
 					"{B:1,C:white}#3#",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_head = {
 				name = "Head Key",
 				text = {
-					"{C:green}#3# in #4#{} chance to {C:attention}create{} a",
-					"{C:yma_keys}Key{} when the {C:attention}Boss{} blind",
-					"is {C:attention}defeated",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"{C:green}#3# in #4#{} chance to",
+					"create a {C:yma_keys}Key{} when any",
+					"{C:attention}Boss{} Blind is {C:attention}defeated",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_hercules = {
 				name = "Hercules Key",
 				text = {
 					{
-						"{C:attention}Creates{} two {C:dark_edition}Negative",
-						"{C:sdown_blessing}Blessings{} when blind is",
-						"{C:attention}selected",
+						"When {C:attention}Blind{} is selected,",
+						"create two {C:dark_edition}Negative",
+						"{C:sdown_blessing}Blessing{} cards",
 					},
 					{
 						"All {C:sdown_blessing}Blessings{} are {C:red}destroyed",
-						"at the end of {C:attention}round",
-						"{C:inactive}(Uses #1#/#2# blinds)",
+						"at the end of the {C:attention}round",
+						"{C:inactive}(Uses #1#/#2# Blinds)",
 					},
 				},
 			},
 			c_cbean_yma_identity = {
 				name = "Identity Key",
 				text = {
-					"{C:attention}Temporary{} turns into a",
+					"When {C:attention}Blind{} is selected,",
+					"{C:attention}temporarily{} becomes a",
 					"random {X:cbean_series,C:white}Series{} or {X:purple,C:white}Special{}",
-					"{C:combo}Combo{} card when blind is",
-					"{C:attention}selected",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"{C:combo}Combo{} card",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_key_to_hell = {
@@ -1420,10 +1420,10 @@ return {
 			c_cbean_yma_matchstick = {
 				name = "Matchstick Key",
 				text = {
-					"If {C:blue}hand{} scores larger than",
-					"the blind {C:attention}requirement",
-					"{C:attention}create{} a random {C:attention}Tag",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"If played hand scores above",
+					"the {C:attention}Blind{} requirement,",
+					"create a random {C:attention}Tag",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_mending = {
@@ -1437,7 +1437,7 @@ return {
 			c_cbean_yma_mirror = {
 				name = "Mirror Key",
 				text = {
-					"When blind is {C:attention}selected",
+					"When {C:attention}Blind{} is selected,",
 					"replaces {C:attention}rightmost{} consumable",
 					"with {C:attention}leftmost{} consumable",
 					"{C:inactive}(Uses #1#/#2#)",
@@ -1446,8 +1446,8 @@ return {
 			c_cbean_yma_moon = {
 				name = "Moon Key",
 				text = {
-					"Allows {C:red}destroyed{} Jokers to",
-					"be {C:attention}bought{} in shop",
+					"Allows {C:red}destroyed{} Jokers",
+					"to be {C:attention}bought{} in shop",
 					"{C:inactive}(Uses #1#/#2# shops)",
 				},
 			},
@@ -1456,21 +1456,22 @@ return {
 				text = {
 					{
 						"{C:attention}Jokers{} are shuffled",
-						"each {C:blue}hand{}",
+						"when hand is played",
 					},
 					{
 						"Leftmost {C:attention}Joker",
 						"{C:attention}triggers{} again",
-						"{C:inactive}(Uses #1#/#2# blinds)",
+						"{C:inactive}(Uses #1#/#2# Blinds)",
 					},
 				},
 			},
 			c_cbean_yma_orchestra = {
 				name = "Orchestra Key",
 				text = {
-					"{C:attention}Create{} two {C:dark_edition}Negative{} {X:green,C:white}Starter{}",
-					"or {X:black,C:white}Taunt{} {C:combo}Combos",
-					"{C:inactive}(Uses #1#/#2# hands)",
+					"Create two {C:dark_edition}Negative{} {X:red,C:white}Starter{}",
+					"or {X:blue,C:white}Taunt{} {C:combo}Combo{} cards at",
+					"the end of the {C:attention}round",
+					"{C:inactive}(Uses #1#/#2# Blinds)"
 				},
 			},
 			c_cbean_yma_reali = {
@@ -1491,39 +1492,38 @@ return {
 			c_cbean_yma_stamp = {
 				name = "Stamp Key",
 				text = {
-					"{C:attention}Scored{} cards with a {C:blue}Blue",
-					"Seal {C:attention}permanently{} gain a",
-					"{C:attention}retrigger",
+					"{C:attention}Scored{} cards with {C:blue}Blue{}",
+					"seals {C:attention}permanently{} gain",
+					"a {C:attention}retrigger",
 					"{C:inactive}(Uses #1#/#2# cards)",
 				},
 			},
 			c_cbean_yma_sword = {
 				name = "Sword Key",
 				text = {
-					"{C:attention}Cuts{} the blind {C:attention}requirement",
-					"in half",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"Cuts the {C:attention}Blind{}",
+					"requirement in {C:attention}half{}",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_teddy = {
 				name = "Teddy Key",
 				text = {
-					"Gives {C:attention}+#3#{} {C:blue}hand{} and",
-					"{C:attention}+#3#{} {C:red}discard",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"Gives {C:attention}+#3#{} {C:blue}hand{}",
+					"and {C:attention}+#3#{} {C:red}discard",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_tempus_fugit = {
 				name = "Tempus Fugit Key",
 				text = {
 					{
-						"{C:attention}Temporary{} turns into a",
-						"random {C:attention}Joker",
+						"When drawing first hand of {C:attention}round{},",
+						"{C:attention}temporarily{} becomes a random {C:attention}Joker{}",
 					},
 					{
-						"{C:red}Reverts{} after {C:attention}first{} played",
-						"{C:blue}hand",
-						"{C:inactive}(Uses #1#/#2# blinds)",
+						"{C:red}Reverts{} when hand is played",
+						"{C:inactive}(Uses #1#/#2# Blinds)",
 					},
 				},
 			},
@@ -1532,22 +1532,22 @@ return {
 				text = {
 					"{C:green}Probability{} is {C:attention}guaranteed",
 					"for the leftmost {C:attention}Joker",
-					"{C:inactive}(Uses #1#/#2# blinds)",
+					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
 			c_cbean_yma_timeshift = {
 				name = "Timeshift Key",
 				text = {
-					"{C:attention}Jokers{} are restored when",
-					"{C:red}destroyed",
+					"{C:attention}Jokers{} are restored",
+					"when {C:red}destroyed",
 					"{C:inactive}(Uses #1#/#2#)",
 				},
 			},
 			c_cbean_yma_undertree = {
 				name = "Undertree Key",
 				text = {
-					"When an {C:tarot}Arcana{} pack is",
-					"{C:attention}opened{} it will {C:attention}contain{} an",
+					"When an {C:tarot}Arcana Pack{} is",
+					"{C:attention}opened{}, it will contain an",
 					"{C:attention}upgraded{} {C:tarot}Tarot{} card",
 					"{C:inactive}(Uses #1#/#2# packs)",
 				},
