@@ -6783,17 +6783,18 @@ return {
 				text = {
 					{
 					"Gains {C:mult}#10#{} Mult every",
-					"{C:attention}#2#{C:inactive}[#1#]{} cards played",
+					"{C:attention}#2# {C:inactive}[#1#]{} cards played",
 					"{C:inactive}(Currently: {C:mult}+#7#{}{C:inactive} Mult)"
 					},
 					{
 					"Gains {C:chips}#10#{} Chips every",
-					"{C:attention}#4#{C:inactive}[#3#]{} cards played",
+					"{C:attention}#4# {C:inactive}[#3#]{} cards played",
 					"{C:inactive}(Currently: {C:chips}+#8#{}{C:inactive} Chips)"
 					},
 					{
 					"Gains {C:white,X:mult}X#11#{} Mult after",
-					"palying or discarding {C:attention}#6#{C:inactive}[#5#]{}cards in total",
+					"playing or discarding",
+					"{C:attention}#6# {C:inactive}[#5#]{}cards in total",
 					"{C:inactive}(Currently: {C:white,X:mult}X#9#{}{C:inactive} Mult)"
 					}
 				}
@@ -11007,3 +11008,4 @@ return {
 		},
 	},
 }
+
