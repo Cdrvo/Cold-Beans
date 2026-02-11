@@ -1,0 +1,23 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+# gaslight it into believing straight nullifies it
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+position = 'before'
+pattern = '''if next(poker_hands[v]) then'''
+payload = '''
+if v == "cbean_sdown_bobtail" then
+    if next(poker_hands.Straight) or next(poker_hands.Flush) then
+        v = "Nope!"
+        poker_hands[v] = {}
+    end
+end
+
+'''
+match_indent = true
+
