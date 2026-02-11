@@ -2835,8 +2835,14 @@ return {
 			j_cbean_colon_pebble                        = { -- George The Rat | N/A | jamirror and bitter
 				name = "Pebble",
 				text = {
-					"{C:blue}Small Blinds{} are replaced with {s:0.9,C:chips}Teeny Blinds",
-					"{C:money}Big Blinds{} are replaced with {C:blue}Small Blinds",
+					{
+						"{C:blue}Small Blinds{} are replaced",
+						"with {s:0.9,C:chips}Teeny Blinds",
+					},
+					{
+						"{C:money}Big Blinds{} are replaced",
+						"with {C:blue}Small Blinds",
+					},
 				},
 			},
 			j_cbean_colon_top_rope                      = { -- George The Rat | N/A | bitter
@@ -3201,13 +3207,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member0             = {
-				name = { "Chill Formation", "{s:0.7}Cmykl:{} {X:red,C:white,s:0.7}Red Dot" },
+			j_cbean_0chill_vacation_member0 = {
+				name = {"Chill Formation", "{s:0.7}Cmykl:{} {B:1,C:white,s:0.7}Red Dot"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"
+						"effect each use"	
 					},
 					{
 						"Highest rank card has",
@@ -3216,13 +3222,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member1             = {
-				name = { "Chill Formation", "{s:0.7}Capital Chirp:{} {X:red,C:white,s:0.7}Alien Invasion" },
+			j_cbean_0chill_vacation_member1 = {
+				name = {"Chill Formation", "{s:0.7}Capital Chirp:{} {B:1,C:white,s:0.7}Alien Invasion"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"
+						"effect each use"	
 					},
 					{
 						"Each scored Hearts card grants {C:mult}+#2#{} Mult",
@@ -3233,13 +3239,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member2             = {
-				name = { "Chill Formation", "{s:0.7}InspectorB:{} {X:red,C:white,s:0.7}Gluten Ray" },
+			j_cbean_0chill_vacation_member2 = {
+				name = {"Chill Formation", "{s:0.7}InspectorB:{} {B:2,C:white,s:0.7}Gluten Ray"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"
+						"effect each use"	
 					},
 					{
 						"Each scored King and 2 earns {C:money}$#8#{}",
@@ -3248,13 +3254,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member3             = {
-				name = { "Chill Formation", "{s:0.7}MarioFan597:{} {X:red,C:white,s:0.7}Trailblazer" },
+			j_cbean_0chill_vacation_member3 = {
+				name = {"Chill Formation", "{s:0.7}MarioFan597:{} {B:1,C:white,s:0.7}Trailblazer"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"
+						"effect each use"	
 					},
 					{
 						"If score catches fire,",
@@ -3263,13 +3269,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member4             = {
-				name = { "Chill Formation", "{s:0.7}Restruct:{} {X:green,C:white,s:0.7}Metal Pipe" },
+			j_cbean_0chill_vacation_member4 = {
+				name = {"Chill Formation", "{s:0.7}Restruct:{} {B:3,C:white,s:0.7}Metal Pipe"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"
+						"effect each use"	
 					},
 					{
 						"{X:mult,C:white}X#5#{} Mult",
@@ -3281,13 +3287,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member5             = {
-				name = { "Chill Formation", "{s:0.7}Monachrome:{} {X:tarot,C:white,s:0.7}Smoke and Mirrors" },
+			j_cbean_0chill_vacation_member5 = {
+				name = {"Chill Formation", "{s:0.7}Monachrome:{} {B:4,C:white,s:0.7}Smoke and Mirrors"},
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"
+						"effect each use"	
 					},
 					{
 						"{C:red}Destroys{} unscored played cards"
@@ -10513,6 +10519,10 @@ return {
 			k_cbean_halved                      = "Halved!",
 			k_cbean_chomp                       = "Chomp!",
 
+			k_nteam_tboi_items                	= "Items",
+			ph_owned_items 						= "Owned items",
+			ph_no_items 						= "No items in possession",
+
 			k_cbean_yomama                      = "Yo mama...",
 
 			k_styx_active                       = "active",
@@ -10809,7 +10819,6 @@ return {
 			},
 
 			["cbean_sdown_true_home"] = {
-				"(NOT YET IMPLEMENTED)",
 				"Three cards with a matching rank and suit, and two cards with a different matching rank and suit",
 				"Must have {C:attention}House Rules{} and {C:attention}Seeing Double or {}",
 				"{C:attention}Diamond Shape With a Dot Inside{} to play",

@@ -3,11 +3,11 @@ SMODS.Rank {
         if args and ((args.suit == '') or (args.initial_deck)) then
             return false
         else
-            return true 
+            return true
         end
     end,
     key = 'yma_s',
-    shorthand = 'yma_s',
+    shorthand = 'S',
     card_key = 'yma_s',
     pos = { x = 0 },
     nominal = 11,
@@ -31,11 +31,11 @@ SMODS.Rank {
         if args and ((args.suit == '') or (args.initial_deck)) then
             return false
         else
-            return true 
+            return true
         end
     end,
     key = 'yma_t',
-    shorthand = 'yma_t',
+    shorthand = 'T',
     card_key = 'yma_t',
     pos = { x = 1 },
     nominal = 11,
@@ -59,11 +59,11 @@ SMODS.Rank {
         if args and ((args.suit == '') or (args.initial_deck)) then
             return false
         else
-            return true 
+            return true
         end
     end,
     key = 'yma_r',
-    shorthand = 'yma_r',
+    shorthand = 'R',
     card_key = 'yma_r',
     pos = { x = 2 },
     nominal = 11,
@@ -87,11 +87,11 @@ SMODS.Rank {
         if args and ((args.suit == '') or (args.initial_deck)) then
             return false
         else
-            return true 
+            return true
         end
     end,
     key = 'yma_o',
-    shorthand = 'yma_o',
+    shorthand = 'O',
     card_key = 'yma_o',
     pos = { x = 3 },
     nominal = 11,
@@ -115,7 +115,7 @@ SMODS.PokerHandPart {
     key = "yma_astro",
     func = function(hand)
         if #hand ~= 5 then return {} end
-        
+
         local astro_ranks = {
             ["Ace"] = true,
             ["cbean_yma_s"] = true,
@@ -123,10 +123,10 @@ SMODS.PokerHandPart {
             ["cbean_yma_r"] = true,
             ["cbean_yma_o"] = true
         }
-        
+
         local found = {}
         local astro = {}
-        
+
         for _, card in ipairs(hand) do
             if not astro_ranks[card.base.value] or found[card.base.value] then
                 return {}
@@ -134,7 +134,7 @@ SMODS.PokerHandPart {
             found[card.base.value] = true
             table.insert(astro, card)
         end
-        
+
         if next(astro) == nil then return {} end
         return {astro}
     end

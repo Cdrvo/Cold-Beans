@@ -693,6 +693,10 @@ payload = '''
     label = localize('k_colon_architecture'),
     tab_definition_function = G.UIDEF.cbean_colon_started_arch,
 },
+{ --needed for tboi items, unreleated to architecture.
+    label = localize('k_nteam_tboi_items'),
+    tab_definition_function = G.UIDEF.cbean_tboi_items,
+},
 '''
 
 

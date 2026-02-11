@@ -261,6 +261,7 @@ unused_discards = 0,'''
 position = 'after'
 payload = '''
 cbean = {
+    quest_reroll_cost = 2,
     quest_complete = false,
     completed_quests = {},
     destroyed_jokers = {},
