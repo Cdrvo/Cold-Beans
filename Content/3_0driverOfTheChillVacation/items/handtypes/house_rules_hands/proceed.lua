@@ -8,7 +8,7 @@ SMODS.PokerHandPart { --Modifed from Potassium Remake
             local eligible_cards = {}
 
             for i, card in ipairs(hand) do
-                if card:get_id() == 9 and card:is_suit("Hearts") then 
+                if card.base.value == "cbean_yma_t" and card:is_suit("Hearts") then
                     nine_count = nine_count + 1
                     eligible_cards[#eligible_cards + 1] = card
                 end
@@ -41,11 +41,11 @@ SMODS.PokerHand{
         return joker and (played or clicked)
     end,
     example = {
-        { "H_9", true },
-        { "H_9", true },
-        { "H_9", true },
-        { "H_9", true },
-        { "H_9", true },
+        { "H_cbean_yma_t", true },
+        { "H_cbean_yma_t", true },
+        { "H_cbean_yma_t", true },
+        { "H_cbean_yma_t", true },
+        { "H_cbean_yma_t", true },
     },
     evaluate = function(parts, hand) --Was going to track hearts but ran out of time
         if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0) then --Checks if house rules and required joker are owned
