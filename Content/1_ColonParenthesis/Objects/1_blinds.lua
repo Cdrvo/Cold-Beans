@@ -193,13 +193,20 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
 					end
 				end
 			end
+			local neverprocced = true;
 			for k, v in pairs(G['P_BIOMES']) do
 				for key, value in pairs(CBWG.ColdBeans_Biomes[k].blinds) do
 					if key == self.key then
 						table.insert(G.P_BIOME_POOLS[k], self.key)
+						neverprocced = false;
 					end
 				end
 			end
+			--[[if neverprocced then
+				for k, v in pairs(G['P_BIOMES']) do
+					table.insert(G.P_BIOME_POOLS[k], self.key)
+				end
+			end]]
         end
     }
 end
@@ -244,6 +251,10 @@ function get_new_boss(...)
 			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds.Boss, "Boss")
 	end
 	return Colonparen.calculateReplacedBlind(CBWG.get_new_boss(...), "Boss")
+end
+
+function Colonparen.getBossesUsed()
+	return ((G.GAME.cbean_biome_bosses_used or {})[G.GAME.round_resets.blind_biome] or G.GAME.bosses_used)
 end
 
 --why did you use Type as a variable what are you doing
@@ -296,8 +307,8 @@ function Colonparen.get_new_blind(type, startofante)
 				if value == k then
 					if not v.boss or not v.boss.min or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) then
 						eligible_bosses[k] = SMODS.add_to_pool(v)
-						if (not G.GAME.bosses_used[k]) then
-							G.GAME.bosses_used[k] = 0
+						if (not Colonparen.getBossesUsed()[k]) then
+							Colonparen.getBossesUsed()[k] = 0
 						end
 					end
 				end
@@ -308,8 +319,8 @@ function Colonparen.get_new_blind(type, startofante)
 			for k, v in pairs(G[P_STRING]) do
 				if value == k then
 					eligible_bosses[k] = SMODS.add_to_pool(v)
-					if (not G.GAME.bosses_used[k]) then
-						G.GAME.bosses_used[k] = 0
+					if (not Colonparen.getBossesUsed()[k]) then
+						Colonparen.getBossesUsed()[k] = 0
 					end
 				end
 			end
@@ -321,7 +332,7 @@ function Colonparen.get_new_blind(type, startofante)
     end
 
     local min_use = nil
-    for k, v in pairs(G.GAME.bosses_used) do
+    for k, v in pairs(Colonparen.getBossesUsed()) do
         if eligible_bosses[k] then
             eligible_bosses[k] = v
             if (not min_use) or (eligible_bosses[k] <= min_use) then 
@@ -329,6 +340,7 @@ function Colonparen.get_new_blind(type, startofante)
             end
         end
     end
+	print(eligible_bosses, min_use)
 	min_use = min_use or 0
     for k, v in pairs(eligible_bosses) do
         if eligible_bosses[k] then
@@ -340,8 +352,9 @@ function Colonparen.get_new_blind(type, startofante)
             end
         end
     end
+	print(eligible_bosses, min_use)
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
-    G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
+    Colonparen.getBossesUsed()[boss] = (Colonparen.getBossesUsed()[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)
 end
 

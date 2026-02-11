@@ -242,6 +242,7 @@ function CBWG.get_new_biome(new_biome)
             eligible_biomes[k] = G.P_BIOMES[k]
         end
     end
+
     local _, biome = pseudorandom_element(eligible_biomes, pseudoseed('biome'))
     biome = biome or "wgrop_city"
     return biome
@@ -253,7 +254,7 @@ function CBWG.get_new_boss()
         G.GAME.perscribed_bosses[G.GAME.round_resets.ante] then
         local ret_boss = G.GAME.perscribed_bosses[G.GAME.round_resets.ante]
         G.GAME.perscribed_bosses[G.GAME.round_resets.ante] = nil
-        G.GAME.bosses_used[ret_boss] = G.GAME.bosses_used[ret_boss] + 1
+        Colonparen.getBossesUsed()[ret_boss] = Colonparen.getBossesUsed()[ret_boss] + 1
         return ret_boss
     end
     if G.FORCE_BOSS then return G.FORCE_BOSS end
@@ -292,7 +293,7 @@ function CBWG.get_new_boss()
     end
 
     local min_use = 100
-    for k, v in pairs(G.GAME.bosses_used) do
+    for k, v in pairs(Colonparen.getBossesUsed()) do
         if eligible_bosses[k] then
             eligible_bosses[k] = v
             if eligible_bosses[k] <= min_use then
@@ -309,7 +310,7 @@ function CBWG.get_new_boss()
     end
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     boss = boss or "bl_wall" -- Banner default
-    G.GAME.bosses_used[boss] = G.GAME.bosses_used[boss] + 1
+    Colonparen.getBossesUsed()[boss] = Colonparen.getBossesUsed()[boss] + 1
 
     return boss
 end
