@@ -6794,7 +6794,7 @@ return {
 					{
 					"Gains {C:white,X:mult}X#11#{} Mult after",
 					"playing or discarding",
-					"{C:attention}#6# {C:inactive}[#5#]{}cards in total",
+					"{C:attention}#6# {C:inactive}[#5#]{} cards in total",
 					"{C:inactive}(Currently: {C:white,X:mult}X#9#{}{C:inactive} Mult)"
 					}
 				}
@@ -11008,4 +11008,5 @@ return {
 		},
 	},
 }
+
 
