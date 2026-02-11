@@ -10988,7 +10988,7 @@ return {
 				"{C:inactive}(6/10)",
 			},
 			cbean_nteam_tutorial_7 = {
-				"...target(s) already has",
+				"...target(s) already have",
 				"that {C:attention}Sticker{}, then the",
 				"{C:attention}Sticker{} won't be reapplied.",
 				"{C:inactive}(7/10)",

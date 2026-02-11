@@ -134,6 +134,8 @@ end
 NAMETEAM.TUTORIAL_STATE = 0
 
 function G.UIDEF.nteam_scholar()
+	local tutorial_positions = { 7, 8, 7, 9, 11, 10, 7, 8, 9, 9, 10 }
+
 	local sprite =
 		Sprite(0, 0, G.CARD_W * 1.5, G.CARD_H * 1.5, G.ASSET_ATLAS["cbean_NAMETEAM_Jokers"], { x = 7, y = 2 })
 	sprite.states.collide.can = true
@@ -175,6 +177,7 @@ function G.UIDEF.nteam_scholar()
 			definition = G.UIDEF.speech_bubble("cbean_nteam_tutorial_" .. NAMETEAM.TUTORIAL_STATE, { quip = true }),
 			config = self.config.speech_bubble_align,
 		})
+		self:set_sprite_pos({x = tutorial_positions[NAMETEAM.TUTORIAL_STATE + 1], y = 2})
 	end
 	local t = {
 		n = G.UIT.ROOT,
