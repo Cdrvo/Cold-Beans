@@ -2835,8 +2835,14 @@ return {
 			j_cbean_colon_pebble                        = { -- George The Rat | N/A | jamirror and bitter
 				name = "Pebble",
 				text = {
-					"{C:blue}Small Blinds{} are replaced with {s:0.9,C:chips}Teeny Blinds",
-					"{C:money}Big Blinds{} are replaced with {C:blue}Small Blinds",
+					{
+						"{C:blue}Small Blinds{} are replaced",
+						"with {s:0.9,C:chips}Teeny Blinds",
+					},
+					{
+						"{C:money}Big Blinds{} are replaced",
+						"with {C:blue}Small Blinds",
+					},
 				},
 			},
 			j_cbean_colon_top_rope                      = { -- George The Rat | N/A | bitter
