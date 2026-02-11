@@ -10927,7 +10927,7 @@ return {
 				"morning to you!",
 			},
 			cbean_pboys_hi_5 = {
-				"Hello traveler!",
+				"Hello, traveler!",
 			},
 			cbean_pboys_hi_6 = {
 				"Hi, I hope you",
@@ -10935,7 +10935,8 @@ return {
 				"luck with you!",
 			},
 			cbean_pboys_hi_7 = {
-				"Welcome back alley!",
+				"Welcome to the",
+				"Back Alley!",
 			},
 			cbean_pboys_win_1 = {
 				"{C:dark_edition}YOU WIN!",
@@ -10977,12 +10978,12 @@ return {
 				"losing",
 			},
 			cbean_pboys_lose_4 = {
-				"Wheel of fortune",
+				"Wheel of Fortune",
 				"probably never",
 				"works for you!",
 			},
 			cbean_pboys_lose_5 = {
-				"Wait, Did I win?",
+				"Wait. Did I win?",
 			},
 			cbean_pboys_lose_6 = {
 				"Money Money Money",
