@@ -46,6 +46,15 @@ SMODS.DrawStep({
 				self.children.plant_sell:remove()
 				self.children.plant_sell = nil
 			end
+		else
+			if self.children.plant_sell then
+				self.children.plant_sell:remove()
+				self.children.plant_sell = nil
+			end
+			if self.children.plant_buy then
+				self.children.plant_buy:remove()
+				self.children.plant_buy = nil
+			end
 		end
 	end,
 })
