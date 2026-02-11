@@ -163,8 +163,8 @@ SMODS.Joker {
     end,
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
-        idea = "Whole Team",
-        art = "N/A",
+        idea = "Yeah! Mostly Artists",
+        art = "Yeah! Mostly Artists",
         code = "cloudzXIII",
     }
 }
