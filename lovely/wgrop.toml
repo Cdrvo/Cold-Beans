@@ -74,14 +74,6 @@ target = "game.lua"
 pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
 position = "after"
 payload = '''
-G.GAME.cbean_biome_bosses_used = {}
-for k, biome in pairs(CBWG.ColdBeans_Biomes) do
-  G.GAME.cbean_biome_bosses_used[k] = {}
-  for q, v in pairs(G.P_BLINDS) do 
-      if v.boss then G.GAME.cbean_biome_bosses_used[k][q] = 0 end
-  end
-end
-
 self.GAME.round_resets.blind_biome = CBWG.get_new_biome(false) --Sets a random biome at start of game
 G.GAME.current_round.biomes_visited = {}
 G.GAME.current_round.biomes_visited[self.GAME.round_resets.blind_biome] = true

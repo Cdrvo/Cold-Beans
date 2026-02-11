@@ -193,20 +193,6 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
 					end
 				end
 			end
-			local neverprocced = true;
-			for k, v in pairs(G['P_BIOMES']) do
-				for key, value in pairs(CBWG.ColdBeans_Biomes[k].blinds) do
-					if key == self.key then
-						table.insert(G.P_BIOME_POOLS[k], self.key)
-						neverprocced = false;
-					end
-				end
-			end
-			--[[if neverprocced then
-				for k, v in pairs(G['P_BIOMES']) do
-					table.insert(G.P_BIOME_POOLS[k], self.key)
-				end
-			end]]
         end
     }
 end
@@ -253,9 +239,6 @@ function get_new_boss(...)
 	return Colonparen.calculateReplacedBlind(CBWG.get_new_boss(...), "Boss")
 end
 
-function Colonparen.getBossesUsed()
-	return ((G.GAME.cbean_biome_bosses_used or {})[G.GAME.round_resets.blind_biome] or G.GAME.bosses_used)
-end
 
 --why did you use Type as a variable what are you doing
 local type_ = type
@@ -275,54 +258,42 @@ function Colonparen.get_new_blind(type, startofante)
 	local eligible_bosses = {}
 
 	if type == 'CEO' then
-		for key, value in pairs(G.P_BIOME_POOLS[G.GAME.round_resets.blind_biome]) do -- Hello from Wgrop!
-			for k, v in pairs(G[P_STRING]) do
-				if value == k then
-					local res, options = SMODS.add_to_pool(v)
-					options = options or {}
-					if not v.boss then
+		for k, v in pairs(G[P_STRING]) do
+			local res, options = SMODS.add_to_pool(v)
+			options = options or {}
+			if not v.boss then
 
-					elseif options.ignore_showdown_check then
-						eligible_bosses[k] = res and true or nil
-					elseif v.in_pool and type_(v.in_pool) == 'function' then
-						if
-							(
-								((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
-								(v.boss.showdown or false)
-							) and v:in_pool(startofante)
-						then
-							eligible_bosses[k] = res and true or nil
-						end
-					elseif not v.boss.showdown and ((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
-						eligible_bosses[k] = res and true or nil
-					elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
-						eligible_bosses[k] = res and true or nil
-					end
+			elseif options.ignore_showdown_check then
+				eligible_bosses[k] = res and true or nil
+			elseif v.in_pool and type_(v.in_pool) == 'function' then
+				if
+					(
+						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
+						(v.boss.showdown or false)
+					) and v:in_pool(startofante)
+				then
+					eligible_bosses[k] = res and true or nil
 				end
+			elseif not v.boss.showdown and ((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+				eligible_bosses[k] = res and true or nil
+			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
+				eligible_bosses[k] = res and true or nil
 			end
 		end
 	elseif type == 'Teeny' then
-		for key, value in pairs(G.P_BIOME_POOLS[G.GAME.round_resets.blind_biome]) do -- Hello from Wgrop!
-			for k, v in pairs(G[P_STRING]) do
-				if value == k then
-					if not v.boss or not v.boss.min or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) then
-						eligible_bosses[k] = SMODS.add_to_pool(v)
-						if (not Colonparen.getBossesUsed()[k]) then
-							Colonparen.getBossesUsed()[k] = 0
-						end
-					end
+		for k, v in pairs(G[P_STRING]) do
+			if not v.boss or not v.boss.min or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) then
+				eligible_bosses[k] = SMODS.add_to_pool(v)
+				if (not G.GAME.bosses_used[k]) then
+					G.GAME.bosses_used[k] = 0
 				end
 			end
 		end
 	else
-		for key, value in pairs(G.P_BIOME_POOLS[G.GAME.round_resets.blind_biome]) do -- Hello from Wgrop!
-			for k, v in pairs(G[P_STRING]) do
-				if value == k then
-					eligible_bosses[k] = SMODS.add_to_pool(v)
-					if (not Colonparen.getBossesUsed()[k]) then
-						Colonparen.getBossesUsed()[k] = 0
-					end
-				end
+		for k, v in pairs(G[P_STRING]) do
+			eligible_bosses[k] = SMODS.add_to_pool(v)
+			if (not G.GAME.bosses_used[k]) then
+				G.GAME.bosses_used[k] = 0
 			end
 		end
 	end
@@ -332,7 +303,7 @@ function Colonparen.get_new_blind(type, startofante)
     end
 
     local min_use = nil
-    for k, v in pairs(Colonparen.getBossesUsed()) do
+    for k, v in pairs(G.GAME.bosses_used) do
         if eligible_bosses[k] then
             eligible_bosses[k] = v
             if (not min_use) or (eligible_bosses[k] <= min_use) then 
@@ -352,7 +323,7 @@ function Colonparen.get_new_blind(type, startofante)
         end
     end
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
-    Colonparen.getBossesUsed()[boss] = (Colonparen.getBossesUsed()[boss] or 0) + 1
+    G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)
 end
 
