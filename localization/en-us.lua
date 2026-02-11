@@ -10513,6 +10513,10 @@ return {
 			k_cbean_halved                      = "Halved!",
 			k_cbean_chomp                       = "Chomp!",
 
+			k_nteam_tboi_items                	= "Items",
+			ph_owned_items 						= "Owned items",
+			ph_no_items 						= "No items in possession",
+
 			k_cbean_yomama                      = "Yo mama...",
 
 			k_styx_active                       = "active",

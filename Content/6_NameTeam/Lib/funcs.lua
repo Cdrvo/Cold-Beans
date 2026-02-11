@@ -903,3 +903,72 @@ function NAMETEAM.shop_sign(sign)
 		end,
 	}))
 end
+
+function G.UIDEF.cbean_tboi_items()
+
+  local silent = false
+  local keys_used = {}
+  local area_count = 0
+  local voucher_areas = {}
+  local voucher_tables = {}
+  local voucher_table_rows = {}
+  for k, v in ipairs(G.tboi_items.cards) do
+    local key = 1 + math.floor((k-0.1)/2)
+    keys_used[key] = keys_used[key] or {}
+    keys_used[key][#keys_used[key]+1] = v
+  end
+  for k, v in ipairs(keys_used) do 
+    if next(v) then
+      area_count = area_count + 1
+    end
+  end
+  for k, v in ipairs(keys_used) do 
+    if next(v) then
+      if #voucher_areas == 5 or #voucher_areas == 10 then 
+        table.insert(voucher_table_rows, 
+        {n=G.UIT.R, config={align = "cm", padding = 0, no_fill = true}, nodes=voucher_tables}
+        )
+        voucher_tables = {}
+      end
+      voucher_areas[#voucher_areas + 1] = CardArea(
+      G.ROOM.T.x + 0.2*G.ROOM.T.w/2,G.ROOM.T.h,
+      (#v == 1 and 1 or 1.33)*G.CARD_W,
+      (area_count >=10 and 0.75 or 1.07)*G.CARD_H, 
+      {card_limit = 2, type = 'voucher', highlight_limit = 0})
+      for kk, vv in ipairs(v) do 
+        local center = vv.config.center
+        local card = Card(voucher_areas[#voucher_areas].T.x + voucher_areas[#voucher_areas].T.w/2, voucher_areas[#voucher_areas].T.y, G.CARD_W, G.CARD_H, nil, center, {bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true})
+		--print(vv)
+		card.ability = vv.ability
+        --card.ability.order = vv.ability.order
+        card:start_materialize(nil, silent)
+        silent = true
+        voucher_areas[#voucher_areas]:emplace(card)
+      end
+      table.insert(voucher_tables, 
+      {n=G.UIT.C, config={align = "cm", padding = 0, no_fill = true}, nodes={
+        {n=G.UIT.O, config={object = voucher_areas[#voucher_areas]}}
+      }}
+      )
+    end
+  end
+  table.insert(voucher_table_rows,
+          {n=G.UIT.R, config={align = "cm", padding = 0, no_fill = true}, nodes=voucher_tables}
+        )
+
+  
+  local t = silent and {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
+    {n=G.UIT.R, config={align = "cm"}, nodes={
+      {n=G.UIT.O, config={object = DynaText({string = {localize('ph_owned_items')}, colours = {G.C.UI.TEXT_LIGHT}, bump = true, scale = 0.6})}}
+    }},
+    {n=G.UIT.R, config={align = "cm", minh = 0.5}, nodes={
+    }},
+    {n=G.UIT.R, config={align = "cm", colour = G.C.BLACK, r = 1, padding = 0.15, emboss = 0.05}, nodes={
+      {n=G.UIT.R, config={align = "cm"}, nodes=voucher_table_rows},
+    }}
+  }} or 
+  {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
+    {n=G.UIT.O, config={object = DynaText({string = {localize('ph_no_items')}, colours = {G.C.UI.TEXT_LIGHT}, bump = true, scale = 0.6})}}
+  }}
+  return t
+end
