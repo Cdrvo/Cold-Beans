@@ -236,7 +236,7 @@ function get_new_boss(...)
 		and G.GAME.colonparen_prescribed_blinds.Boss then
 			return Colonparen.calculateReplacedBlind(G.GAME.colonparen_prescribed_blinds.Boss, "Boss")
 	end
-	return Colonparen.calculateReplacedBlind(CBWG.get_new_boss(...), "Boss")
+	return Colonparen.calculateReplacedBlind(old_get_new_boss(...), "Boss")
 end
 
 
