@@ -4101,13 +4101,17 @@ return {
 			j_cbean_bamboo_spartan                      = {
 				name = "Bamboo Spartan",
 				text = {
-					"After final {C:red}discard{} of round,",
-					"gains {C:chips}Chips{} equal to",
-					"the sum of the ranks",
-					"of all cards in hand",
-					"Gains {C:attention}twice{} as many {C:blue}Chips",
-					"if you have {C:attention}1{} hand remaining",
-					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+					{
+						"After final {C:red}discard{} of round,",
+						"gains {C:chips}Chips{} equal to",
+						"the sum of the ranks",
+						"of all cards in hand",
+						"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+					},
+					{
+						"Gains {C:attention}twice{} as many {C:blue}Chips",
+						"if you have {C:attention}1{} hand remaining",
+					},
 				},
 			},
 			j_cbean_sea_flora                           = {
@@ -4122,13 +4126,17 @@ return {
 			j_cbean_bud_uh_boom                         = {
 				name = "Bud'uh Boom",
 				text = {
-					"Sell this {C:attention}Joker",
-					"to instantly defeat",
-					"the current {C:attention}Blind{}",
-					"If sold, {C:attention}Jokers{} have",
-					"a {C:green}1 in 3{} chance to",
-					"not trigger until the",
-					"next {C:attention}Blind{} is defeated"
+					{
+						"Sell this {C:attention}Joker",
+						"to instantly defeat",
+						"the current {C:attention}Blind{}",
+					},
+					{
+						"If sold, {C:attention}Jokers{} have",
+						"a {C:green}1 in 3{} chance to",
+						"not trigger until the",
+						"next {C:attention}Blind{} is defeated"
+					},
 				},
 			},
 			j_cbean_cran_jelly                          = {
@@ -4620,9 +4628,10 @@ return {
 			j_cbean_EM_peach                            = {
 				name = "E.M. Peach",
 				text = {
-					"All playing cards are {C:red}debuffed{}",
-					"{C:red}debuffed{} cards give",
-					"{X:mult,C:white}X#1#{} Mult"
+					"All playing cards",
+					"are {C:red}debuffed{}",
+					"{C:red}Debuffed{} cards",
+					"give {X:mult,C:white}X#1#{} Mult"
 				},
 			},
 			j_cbean_magnifying_grass                    = {
@@ -4656,8 +4665,8 @@ return {
 				name = "Intensive Carrot",
 				text = {
 					"When sold, gives",
-					"a random previously sold",
-					"{C:attention}Jokers{}"
+					"a random previously",
+					"sold {C:attention}Jokers{}"
 				},
 			},
 			j_cbean_thyme_warp                          = {
@@ -4672,10 +4681,14 @@ return {
 			j_cbean_celery_stalker                      = {
 				name = "Celery Stalker",
 				text = {
-					"Joker on the {C:attention}left{} has",
-					"{C:red}halved{} values",
-					"Joker on the {C:attention}right{} has",
-					"{C:green}doubled{} values"
+					{
+						"Joker on the {C:attention}left{} has",
+						"{C:red}halved{} values",
+					},
+					{
+						"Joker on the {C:attention}right{} has",
+						"{C:green}doubled{} values"
+					},
 				},
 			},
 			j_cbean_primal_sunflower                    = {
@@ -4698,7 +4711,7 @@ return {
 				name = "Primal Potato",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"sell while in blind to",
+					"Sell while in blind to",
 					"destroy all handheld cards"
 				},
 			},
@@ -5357,8 +5370,8 @@ return {
 				name = "Inferno",
 				text = {
 					"Scored cards give",
-					"{X:mult,C:white}X#1#{} Mult",
-					"but are downgraded",
+					"{X:mult,C:white}X#1#{} Mult but",
+					"are downgraded",
 					"to a rank below"
 				},
 			},
@@ -5393,10 +5406,10 @@ return {
 			j_cbean_tiger_grass                         = {
 				name = "Tiger Grass",
 				text = {
-					"{C:red}Destroy{} the leftmost",
-					"played card and",
-					"gain {X:mult,C:white}X#2#{} Mult",
-					"Then go on cooldown for {C:attention}1{} Hand",
+					"{C:red}Destroys{} the leftmost played",
+					"card and gains {X:mult,C:white}X#2#{} Mult",
+					"Goes on cooldown",
+					"for {C:attention}1{} hand after",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
@@ -5447,10 +5460,14 @@ return {
 			j_cbean_levitater                           = {
 				name = "Levitater",
 				text = {
-					"{C:green}#2# in #3#{} Chance for",
-					"cards to not socre.",
-					"Cards affected from this",
-					"gives {X:mult,C:white}X#1#{} Mult"
+					{
+						"{C:green}#2# in #3#{} chance for",
+						"cards to not score",
+					},
+					{
+						"Cards affected from this",
+						"gives {X:mult,C:white}X#1#{} Mult"
+					},
 				},
 			},
 			j_cbean_mega_gattling_pea                   = {
@@ -5565,10 +5582,14 @@ return {
 			j_cbean_blaze_leaf                          = {
 				name = "Blaze Leaf",
 				text = {
-					"Cards on the left",
-					"give {X:mult,C:white}X#1#{} Mult",
-					"Cards on the right",
-					"give {C:mult}+#2#{} Mult"
+					{
+						"Cards on the left",
+						"give {X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Cards on the right",
+						"give {C:mult}+#2#{} Mult"
+					},
 				},
 			},
 
@@ -6590,10 +6611,10 @@ return {
 						"a {C:green}#1#{} in {C:green}#2#{} chance to",
 						"be {C:red}destroyed{}" },
 					{ "{C:attention}Unenhanced{} cards",
-						"destroyed this way",
-						"give {C:money}$#3#{}",
-						"{C:attention}Enhanced{} cards give",
-						"{C:money}$#4#{} instead" }
+						"destroyed this",
+						"way give {C:money}$#3#{}",
+						"{C:attention}Enhanced{} cards",
+						"give {C:money}$#4#{} instead" }
 				}
 			},
 			j_cbean_wgrop_starry_reflection             = {
@@ -6617,12 +6638,16 @@ return {
 			j_cbean_jbill_who                           = { -- added by nteam
 				name = "Who can Placehold Now?",
 				text = {
-					"After the {C:attention}Big{}",
-					"blind shop, reroll {C:attention}Boss{} and {C:attention}CEO Blinds{}.",
-					"Gains {X:mult,C:white}X#1#{} Mult",
-					"when entering {C:attention}Boss{} or {C:attention}CEO blinds{}.",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
-				}
+					{
+						"After the {C:attention}Big blind{} shop,",
+						"reroll {C:attention}Boss{} and {C:attention}CEO Blinds{}.",
+					},
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult when",
+						"entering {C:attention}Boss{} or {C:attention}CEO blinds{}.",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+					}
+				},
 			},
 			j_cbean_jbill_98                            = { -- added by nteam
 				name = "98%",
@@ -6730,10 +6755,17 @@ return {
 			j_cbean_jbill_manos = {
 				name = "Hands of Fate",
 				text = {
-					"{C:blue}Hands{} don't go down when {C:attention}played{}",
-					"Lose {C:white,X:mult}X#2#{} when playing a hand",
-					"{C:inactive}(Currently: {C:white,X:mult}X#1#{}{C:inactive})"
-				}
+					{
+						"{C:attention}Hand count{} remains",
+						"unchanged when",
+						"a hand is {C:attention}played{}",
+					},
+					{
+						"Loses {C:white,X:mult}X#2#{} Mult",
+						"when playing a hand",
+						"{C:inactive}(Currently: {C:white,X:mult}X#1#{} {C:inactive}Mult)"
+					},
+				},
 			},
 			j_cbean_jbill_pythagoras = {
 				name = "Pythagoreanistic Joker",
@@ -6755,10 +6787,14 @@ return {
 			j_cbean_jbill_dj = {
 				name = "Deejay",
 				text = {
-					"The {C:attention}2 rightmost{} scoring cards",
-					"are {C:attention}retriggered{}",
-					"The {C:attention}2 leftmost{} scoring cards",
-					"will {C:mult}not score{}"
+					{
+						"The {C:attention}2 rightmost{} scoring",
+						"cards are {C:attention}retriggered{}",
+					},
+					{
+						"The {C:attention}2 leftmost{} scoring",
+						"cards will {C:mult}not score{}"
+					},
 				}
 			},
 			j_cbean_jbill_jimbill = {
