@@ -60,7 +60,7 @@ function Game:update(dt)
 
 
 		for i, j in ipairs(G.jokers.cards) do
-			if
+			if (#SMODS.find_card("j_cbean_torchwood")>0) and
 				NAMETEAM.all_on(j, G.jokers.cards, "right", nil, "j_cbean_torchwood")
 			then
 				if not j.ability.nteam_torchwood then
