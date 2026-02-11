@@ -572,7 +572,9 @@ function NAMETEAM.all_on(card, area, direction, ability, check_for_key_only) -- 
 			return cae.num -- cae.tab
 		end
 	end
-	return 0
+	if not check_for_key_only then
+		return 0
+	end
 end
 
 function NAMETEAM.remove_element(t, element)
