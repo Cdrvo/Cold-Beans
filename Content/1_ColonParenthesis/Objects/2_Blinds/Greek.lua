@@ -336,7 +336,8 @@ Colonparen.GreekBlind{
     },
     upper = {
         config = {
-            hands = 1
+            hands = 2,
+            hand_size = 2
         },
         set_blind = function(self, card, from_blind)
             G.GAME.round_resets.hands = G.GAME.round_resets.hands + self.config.hands

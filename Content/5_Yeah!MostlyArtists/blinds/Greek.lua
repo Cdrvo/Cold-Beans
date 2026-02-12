@@ -253,8 +253,9 @@ Colonparen.GreekBlind{
     },
     upper = {
         set_blind = function(self, card, from_blind)
-            yma_redeem_voucher(1, true)
-            yma_redeem_voucher(1, true)
+            for i = 1, 3 do
+                yma_redeem_voucher(1, true)
+            end
         end,
     },
     beans_credits = {

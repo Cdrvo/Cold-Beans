@@ -428,8 +428,8 @@ return {
 				text = {
 					"Redeem 2 random Vouchers,",
 					"create 2 random Negative Jokers,",
-					"and create 2 random Negative",
-					"consumables",
+					"and create 2 random",
+					"Negative consumables",
 				}
 			},
 			bl_cbean_lower_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -442,8 +442,8 @@ return {
 			bl_cbean_upper_colon_kappa = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Kappa",
 				text = {
-					"Permanently gain +1 hand",
-					"and +1 hand size",
+					"Permanently gain +2 hands",
+					"and +2 hand size",
 				}
 			},
 			bl_cbean_lower_colon_lambda = { -- Glitchkat10 | George The Rat | RattlingSnow353
@@ -456,7 +456,7 @@ return {
 			bl_cbean_upper_colon_lambda = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Lambda",
 				text = {
-					"Redeem 2 random Tier 1",
+					"Redeem 3 random Tier 1",
 					"Vouchers and their",
 					"corresponding Tier 2s",
 				}
@@ -464,32 +464,38 @@ return {
 			bl_cbean_lower_colon_mu = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Mu",
 				text = {
-					"If played hand contains 3 or more",
-					"scoring cards of the same rank,",
-					"each scoring card gains +10 Mult",
+					"If played hand contains",
+					"3 or more scoring cards",
+					"of the same rank, each",
+					"scoring card permanently",
+					"gains +10 Mult",
 				}
 			},
 			bl_cbean_upper_colon_mu = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Mu",
 				text = {
-					"If played hand contains 3 or more",
-					"scoring cards of the same rank,",
-					"each scoring card gains X1 Mult"
+					"If played hand contains",
+					"3 or more scoring cards",
+					"of the same rank, each",
+					"scoring card permanently",
+					"gains X1 Mult",
 				}
 			},
 			bl_cbean_lower_colon_nu = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Nu",
 				text = {
 					"If played hand contains",
-					"a Flush, each card gains",
-					"+50 Chips when scored"
+					"a Flush, each card",
+					"permanently gains",
+					"+50 Mult when scored"
 				},
 			},
 			bl_cbean_upper_colon_nu = { -- Glitchkat10 | George The Rat | Glitchkat10
 				name = "Nu",
 				text = {
 					"If played hand contains",
-					"a Flush, each card gains",
+					"a Flush, each card",
+					"permanently gains",
 					"X0.5 Mult when scored"
 				}
 			},
@@ -511,8 +517,10 @@ return {
 			bl_cbean_lower_colon_omicron = { -- Glitchkat10 | George The Rat | N/A
 				name = "Omicron",
 				text = {
-					"Played modified cards",
-					"gain +5 Mult when scored"
+					"Played cards with",
+					"a modification",
+					"permanently gain",
+					"+5 Mult when scored"
 				},
 			},
 			bl_cbean_upper_colon_omicron = { -- Glitchkat10 | George The Rat | RattlingSnow353
@@ -7973,9 +7981,9 @@ return {
 				name = "Stylobate",
 				text = {
 					"{C:attention}Omega{} appears next Ante when",
-					"you have 5 {C:inactive}[#1#]{} other {C:attention}Architecture",
+					"you have {C:attention}5{} {C:inactive}[#1#]{} other {C:attention}Architecture",
 					"{C:attention}Cards{} in their {C:red}base form",
-					"{C:inactive,s:0.8}(Excluding all Stylobates)"
+					"{C:inactive,s:0.8}(Excluding Stylobate)"
 				}
 			},
 			c_cbean_colon_raking = {
@@ -8133,8 +8141,8 @@ return {
 			c_cbean_colon_pediment = {
 				name = "Pediment",
 				text = {
-					"{C:attention}Upsilon{} appears next Ante when all",
-					"possible Blinds are {C:red}skipped{} for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
+					"{C:attention}Upsilon{} appears next Ante when all possible",
+					"{C:attention}Blinds{} are {C:red}skipped{} for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
 				}
 			},
 			c_cbean_colon_base = {
