@@ -10819,6 +10819,7 @@ return {
 			},
 
 			["cbean_sdown_true_home"] = {
+				"(NOT YET IMPLEMENTED)",
 				"Three cards with a matching rank and suit, and two cards with a different matching rank and suit",
 				"Must have {C:attention}House Rules{} and {C:attention}Seeing Double or {}",
 				"{C:attention}Diamond Shape With a Dot Inside{} to play",
