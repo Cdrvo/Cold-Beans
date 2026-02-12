@@ -10,8 +10,6 @@ SMODS.Sticker({
 	rate = 0,
 	needs_enable_flag = false,
 	sets = {
-        Default = true,
-        Enhanced = true,
     },
 	sticker_type = "Positive",
 	loc_vars = function(self, info_queue, card)
