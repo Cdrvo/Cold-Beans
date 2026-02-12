@@ -366,14 +366,18 @@ Colonparen.CEOBlind{
         if context.end_of_round and context.main_eval then
             if G.GAME.current_round.hands_played == 1 then
                 local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
-
-                local eligible_card = pseudorandom_element(editionless_jokers, 'cbean_promiseCEO')
-                eligible_card:set_edition('e_polychrome', true)
+                
+                if #editionless_jokers > 0 then
+                    local eligible_card = pseudorandom_element(editionless_jokers, 'cbean_promiseCEO')
+                    eligible_card:set_edition('e_polychrome', true)
+                end
             else
-                for _, joker in pairs(G.jokers.cards) do
-                    if joker.edition and joker.edition.key ~= "e_negative" then
-                        -- joker:set_ability('c_base')          -- This will make the joker no longer a joker, and instead a card that only has an edition
-                        joker:set_edition(nil)
+                if G.jokers and G.jokers.cards then
+                    for _, joker in pairs(G.jokers.cards) do
+                        if joker.edition and joker.edition.key ~= "e_negative" then
+                            -- joker:set_ability('c_base')          -- This will make the joker no longer a joker, and instead a card that only has an edition
+                            joker:set_edition(nil)
+                        end
                     end
                 end
             end
