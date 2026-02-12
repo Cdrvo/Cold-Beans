@@ -8141,7 +8141,7 @@ return {
 				name = "Base",
 				text = {
 					"{C:attention}Phi{} appears next Ante when at",
-					"least {C:attention}5{} of the same Joker are",
+					"least {C:attention}2{} of the same Joker are",
 					"owned {C:red}simultaneously"
 				}
 			},

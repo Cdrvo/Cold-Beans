@@ -1517,7 +1517,7 @@ Colonparen.Architecture {
         for i = 1, #G.jokers.cards do
             local key = G.jokers.cards[i].config.center.key;
             most[key] = (most[key] or 0) + 1;
-            if most[key] >= 5 then
+            if most[key] >= 2 then
                 return {
                     colonparen_complete = true
                 }
