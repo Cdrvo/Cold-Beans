@@ -27,7 +27,7 @@ SMODS.PokerHand({
 		{ "S_9", false },
 	},
 	evaluate = function(parts, hand)
-		if #SMODS.find_card("j_cbean_0chill_house_rules") > 0 then -- if we have the house rules
+		if (#SMODS.find_card("j_cbean_0chill_house_rules") > 0) and (#SMODS.find_card("j_cbean_nameteam_sticker_collection") > 0) then -- if we have the house rules
 			return parts.cbean_nteam_collection_part
 		end
 	end,
@@ -62,7 +62,7 @@ SMODS.PokerHand({
 		{ "S_9", false },
 	},
 	evaluate = function(parts, hand)
-		if #SMODS.find_card("j_cbean_0chill_house_rules") > 0 and #parts.cbean_nteam_collection_part > 0 and #parts._3 > 0 then -- if we have the house rules
+		if (#SMODS.find_card("j_cbean_0chill_house_rules") > 0) and (#SMODS.find_card("j_cbean_nameteam_sticker_collection") > 0) and #parts.cbean_nteam_collection_part > 0 and #parts._3 > 0 then -- if we have the house rules
 			return { SMODS.merge_lists(parts.cbean_nteam_collection_part, parts._3) }
 		end
 	end,
