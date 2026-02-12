@@ -4000,9 +4000,16 @@ return {
 			j_cbean_threepeater                         = {
 				name = "Threepeater",
 				text = {
-					"{C:chips}+#1#{} Chips, {X:mult,C:white}X#2#{} Mult",
-					"Earn {C:money}$#3#{} at",
-					"end of round"
+					{
+						"{C:chips}+#1#{} Chips",
+					},
+					{
+						"{X:mult,C:white}X#2#{} Mult",
+					},
+					{
+						"Earn {C:money}$#3#{} at",
+						"end of round"
+					}
 				},
 			},
 			j_cbean_tangle_kelp                         = {
@@ -4201,31 +4208,45 @@ return {
 			j_cbean_spikeweed                           = {
 				name = "Spikeweed",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"Scored cards lose {C:chips}-#1#{} Chips",
-					"Destroy scored cards if",
-					"their total Chip value",
-					"becomes {C:attention}0{} or less"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Scored cards lose {C:chips}-#1#{} Chips",
+					},
+					{
+						"Destroy scored cards if",
+						"their total Chip value",
+						"becomes {C:attention}0{} or less"
+					},
 				},
 			},
 			j_cbean_iceweed                             = {
 				name = "Iceweed",
 				text = {
-					"Scored cards gain {X:mult,C:white}X#1#{} Mult",
-					"permanently but lose {C:chips}-1{} Chip",
-					"{C:red}Destroy{} scored cards if",
-					"their total {C:chips}Chips{} value",
-					"becomes {C:attention}0{} or less"
+					{
+						"Scored cards gain {X:mult,C:white}X#1#{} Mult",
+						"permanently but lose {C:chips}-1{} Chip",
+					},
+					{
+						"{C:red}Destroy{} scored cards if",
+						"their total {C:chips}Chips{} value",
+						"becomes {C:attention}0{} or less"
+					},
 				},
 			},
 			j_cbean_blover                              = {
 				name = "Blover",
 				text = {
-					"Cards {C:red}cannot{} score",
-					"Gains {X:mult,C:white}X#2#{} Mult for",
-					"each card that",
-					"would have scored",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					{
+						"Cards {C:red}cannot{} score",
+					},
+					{
+						"Gains {X:mult,C:white}X#2#{} Mult for",
+						"each card that",
+						"would have scored",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					},
 				},
 			},
 			j_cbean_sea_shroom                          = {
@@ -4323,9 +4344,13 @@ return {
 			j_cbean_garlic                              = {
 				name = "Garlic",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"{C:attention}shuffles{} 2 random",
-					"{C:attention}Jokers{} before scoring"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"{C:attention}shuffles{} 2 random",
+						"{C:attention}Jokers{} before scoring"
+					},
 				},
 			},
 			j_cbean_umbrella_leaf                       = {
@@ -4554,10 +4579,14 @@ return {
 			j_cbean_gold_leaf                           = {
 				name = "Gold Leaf",
 				text = {
-					"{C:money}+$#1#{} At the",
-					"end of a round",
-					"{C:dark_edition}+1{} Joker Slot",
-					"{C:inactive}(Cannot be negative)"
+					{
+						"{C:money}$#1#{} At the",
+						"end of a round",
+					},
+					{
+						"{C:dark_edition}+1{} Joker Slot",
+						"{C:inactive}(Cannot be negative)"
+					},
 				},
 			},
 			j_cbean_stunion                             = {
@@ -4674,10 +4703,14 @@ return {
 			j_cbean_EM_peach                            = {
 				name = "E.M. Peach",
 				text = {
-					"All playing cards",
-					"are {C:red}debuffed{}",
-					"{C:red}Debuffed{} cards",
-					"give {X:mult,C:white}X#1#{} Mult"
+					{
+						"All playing cards",
+						"are {C:red}debuffed{}",
+					},
+					{
+						"{C:red}Debuffed{} cards",
+						"give {X:mult,C:white}X#1#{} Mult"
+					},
 				},
 			},
 			j_cbean_magnifying_grass                    = {
@@ -4958,8 +4991,8 @@ return {
 				text = {
 					"If played hand only",
 					"has {C:attention}1{} card,",
-					"destroy it and gain",
-					"{C:money}+$#1#{}"
+					"destroy it",
+					"and gain {C:money}$#1#{}"
 				},
 			},
 			j_cbean_straw_burst                         = {
@@ -5024,7 +5057,7 @@ return {
 				name = "Gold Bloom",
 				text = {
 					"Sell this to get",
-					"{C:money}+$#1#{} per {C:attention}Jokers{}",
+					"{C:money}$#1#{} per {C:attention}Jokers{}",
 					"owned"
 				},
 			},
@@ -5060,13 +5093,16 @@ return {
 			j_cbean_parsnip                             = {
 				name = "Parsnip",
 				text = {
-					"When the first scored card",
-					"scored, {C:green}#2# in  #3#{}",
-					"Chance to {C:red}Self-Destruct{}",
-					"and add {C:chips}+#4#{} Bonus chips",
-					"to other scored cards.",
-					"First scored card gains",
-					"{C:chips}+#1#{} Chips otherwise"
+					{
+						"First card gains",
+						"{C:chips}+#1#{} Chips when scored",
+					},
+					{
+						"{C:green}#2# in #3#{} chance to",
+						"instead {C:red,E:1,s:1.1}self destruct{} ",
+						"and add {C:chips}+#4#{} Bonus chips",
+						"to other scored cards",
+					},
 				},
 			},
 			j_cbean_missle_toe                          = {
@@ -5082,14 +5118,18 @@ return {
 			j_cbean_cauli_power                         = {
 				name = "Cauli Power",
 				text = {
-					"If a Blind is defeated",
-					"in a {C:attention}single{} hand,",
-					"{:green}store{} its required chips.",
-					"When a {:attention}Blind{} is selected,",
-					"{C:green}#1# in #2#{} Chance to",
-					"{C:red}remove{} the {C:chips}stored chips{}",
-					"from the current blind's required chips",
-					"{C:inactive}(Stored: {C:chips}#3#{C:inactive})"
+					{
+						"If a Blind is defeated",
+						"in a {C:attention}single{} hand,",
+						"{:green}store{} its required chips",
+						"{C:inactive}(Stored: {C:chips}#3#{C:inactive})"
+					},
+					{
+						"When a {:attention}Blind{} is selected,",
+						"{C:green}#1# in #2#{} Chance to {C:red}remove{}",
+						"the {C:chips}stored chips{} from",
+						"the current blind's required chips",
+					}
 				},
 			},
 			j_cbean_electric_peashooter                 = {
@@ -5321,23 +5361,33 @@ return {
 			j_cbean_pokra                               = {
 				name = "Pokra",
 				text = {
-					"First scored card",
-					"gives {X:mult,C:white}X#1#{} Mult",
-					"After every {C:attention}#3#{} {C:inactive}(#2#){} triggers",
-					"every played card gives",
-					"{X:mult,C:white}X#1#{} Mult"
+					{
+						"First scored card",
+						"gives {X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Every {C:attention}#3#{} {C:inactive}(#2#){} triggers",
+						"every played card gives",
+						"{X:mult,C:white}X#1#{} Mult"
+					},
 				},
 			},
 
 			j_cbean_dazey_chain                         = {
 				name = "Dazey Chain",
 				text = {
-					"{C:chips}+#1#{} Chips",
-					"AFter 2 rounds, starts giving",
-					"{C:mult}+#2#{} Mult. and",
-					"3 more rounds after that,",
-					"starts giving {X:mult,C:white}X#3#{} Mult",
-					"{C:inactive}(Rounds: #4#, Stage: #5#)"
+					{	
+						"{C:chips}+#1#{} Chips",
+					},
+					{
+						"After 2 rounds, starts",
+						"giving {C:mult}+#2#{} Mult",
+					},
+					{
+						"After 5 rounds, starts",
+						"giving {X:mult,C:white}X#3#{} Mult",
+						"{C:inactive}(Rounds: #4#, Stage: #5#)"
+					},
 				},
 			},
 			j_cbean_imp_pear                            = {
@@ -5395,8 +5445,12 @@ return {
 			j_cbean_tofu_turkey                         = {
 				name = "Tofu Turkey",
 				text = {
-					"{C:chips}+#1#{} Chips",
-					"{C:dark_edition}+1{C:attention} Joker Slot"
+					{
+						"{C:chips}+#1#{} Chips",
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 			j_cbean_boingsetta                          = {
@@ -5597,7 +5651,7 @@ return {
 				text = {
 					"A random scored card",
 					"gives {C:chips}+#1#{} Chips",
-					"other scored cards give",
+					"Other scored cards give",
 					"{C:chips}+#2#{} Chips"
 				},
 			},
@@ -5693,7 +5747,7 @@ return {
 					"If you have more",
 					"hands than discards,",
 					"{C:chips}+#1#{} Chips",
-					"otherwise {C:mult}+#2#{} Mult"
+					"Otherwise {C:mult}+#2#{} Mult"
 				},
 			},
 
@@ -5710,10 +5764,14 @@ return {
 			j_cbean_sweetheart_snare                    = {
 				name = "Sweetheart Snare",
 				text = {
-					"Blind wont progress",
-					"until all {C:blue}hands{} are used",
-					"{S:1.1,C:red,E:2}Self destructs{} after",
-					"{C:attention}#2#{C:inactive} (#1#){} Rounds"
+					{
+						"Blind wont progress",
+						"until all {C:blue}hands{} are used",
+					},
+					{
+						"{S:1.1,C:red,E:2}Self destructs{} after",
+						"{C:attention}#2#{C:inactive} (#1#){} Rounds"
+					},
 				},
 			},
 
@@ -5757,10 +5815,9 @@ return {
 			j_cbean_bombegranate                        = {
 				name = "Bombegranate",
 				text = {
-					"When entering a {C:attention}Blind{}",
-					"reduce its requirements",
-					"by {C:attention}%#1#{}.",
-					"reduced amount decreases",
+					"When entering a {C:attention}Blind{}, reduce",
+					"its requirements by {C:dark_edition}#1#%{}",
+					"Reduced amount decreases",
 					"by {C:red}-#2#{} per trigger"
 				},
 			},
@@ -5890,14 +5947,20 @@ return {
 			j_cbean_explode_o_nut                       = {
 				name = "Explode-O-Nut",
 				text = {
-					"Adjacent {C:attention}Jokers",
-					"{C:red}cannot{} be debuffed",
-					"Gains {X:mult,C:white}X#1#{} Mult when",
-					"preventing a debuff",
-					"{C:red,E:2}Self-destructs{}",
-					"if this {C:attention}Joker's{} {X:mult,C:white}XMult{}",
-					"would exceed {X:mult,C:white}X#2#{}",
-					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+					{
+						"Adjacent {C:attention}Jokers",
+						"{C:red}cannot{} be debuffed",
+					},
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult when",
+						"preventing a debuff",
+					},
+					{
+						"{C:red,E:2}Self-destructs{}",
+						"if this {C:attention}Joker's{} {X:mult,C:white}XMult{}",
+						"would exceed {X:mult,C:white}X#2#{}",
+						"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+					},
 				},
 			},
 
