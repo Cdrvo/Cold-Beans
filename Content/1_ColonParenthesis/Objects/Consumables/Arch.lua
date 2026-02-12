@@ -1396,7 +1396,7 @@ Colonparen.Architecture {
             if not context.result then
                 card.ability.extra = card.ability.extra + 1;
 
-                if card.ability.extra >= 8 then
+                if card.ability.extra >= 4 then
                     return {
                         colonparen_complete = true,
                         colonparen_card = card

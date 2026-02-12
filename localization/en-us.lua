@@ -622,15 +622,18 @@ return {
 			bl_cbean_lower_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
 				name = "Chi",
 				text = {
-					"Create 1 random Negative Common Joker",
-					"and 1 random Negative Uncommon Joker"
+					"Create 1 random",
+					"Negative Common Joker",
+					"and 1 random",
+					"Negative Uncommon Joker"
 				},
 			},
 			bl_cbean_upper_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
 				name = "Chi",
 				text = {
-					"Create 1 random Negative Uncommon Joker",
-					"and 1 random Negative Rare Joker"
+					"Create 1 random",
+					"Negative Rare Joker",
+					"when hand is played"
 				},
 			},
 			bl_cbean_lower_colon_psi = {
@@ -3578,8 +3581,8 @@ return {
 			j_cbean_yma_unicorn                         = {
 				name = "Unicorn",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult if played hand contains",
-					"all suits"
+					"{X:mult,C:white}X#1#{} Mult if played hand",
+					"contains {C:attention}all suits"
 				},
 			},
 			j_cbean_yma_joker_vision                    = {
@@ -8009,7 +8012,7 @@ return {
 				name = "Volute",
 				text = {
 					"{C:attention}Zeta{} appears next Ante when {C:attention}5 Glass",
-					"{C:attention}cards{} are all {C:red}discarded{} at the same time"
+					"{C:attention}cards{} are {C:red}discarded{} at the same time"
 				}
 			},
 			c_cbean_colon_acanthus_leaf = {
@@ -8023,7 +8026,7 @@ return {
 				name = "Cornice",
 				text = {
 					"{C:attention}Theta{} appears next Ante when",
-					"a hand thats {C:attention}on fire{} is {C:red}discarded"
+					"a hand that's {C:attention}on fire{} is {C:red}discarded"
 				}
 			},
 			c_cbean_colon_frieze = {
@@ -8124,14 +8127,14 @@ return {
 				text = {
 					"{C:attention}Tau{} appears next Ante when",
 					"The Wheel of Fortune {C:tarot}Nopes!",
-					"{C:attention}8{} {C:inactive}[#1#]{} times in a row"
+					"{C:attention}4{} {C:inactive}[#1#]{} times in a row"
 				}
 			},
 			c_cbean_colon_pediment = {
 				name = "Pediment",
 				text = {
 					"{C:attention}Upsilon{} appears next Ante when all",
-					"possible Blinds are {C:red}skipped for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
+					"possible Blinds are {C:red}skipped{} for {C:attention}3{} {C:inactive}[#1#]{} Antes in a row"
 				}
 			},
 			c_cbean_colon_base = {
@@ -8145,9 +8148,9 @@ return {
 			c_cbean_colon_entablazure = {
 				name = "Entablazure",
 				text = {
-					"{C:attention}Chi appears next Ante when",
-					"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#],",
-					"{C:green}Uncommon{} {C:inactive}[#2#]{} and {C:red}Rare{} {C:inactive}[#3#]{} Jokers"
+					"{C:attention}Chi{} appears next Ante when",
+					"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#]{},",
+					"{C:green}Uncommon{} {C:inactive}[#2#]{} and {C:red}Rare{} {C:inactive}[#3#]{} Joker"
 				}
 			},
 			c_cbean_colon_ionic_captial = {
