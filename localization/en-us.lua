@@ -3132,12 +3132,16 @@ return {
 				name = "Chumblock",
 				text = {
 					{
-						"Its so over."
+						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"{X:mult,C:white}X#1#{} Mult",
-						"Turns adjacent Jokers into Chumblock's",
-						"Destroys itself when triggered."
+						"Turns adjacent {C:attention}Jokers{} into",
+						"{C:attention}Chumblocks{} each hand",
+					},
+					{
+						"{C:red,E:1,s:1.1}Self destructs{}",
+						"when triggered",
+						"{C:inactive}Its so over{}"
 					},
 				},
 			},
@@ -3199,9 +3203,11 @@ return {
 				name = "Cryostasis",
 				text = {
 					{
-						"Adds {C:dark_edition}Frozen{} to",
-						"all other Jokers when sold",
-						"{C:inactive,E:1,s:2}Let's all just chill out...",
+						"Adds {C:dark_edition}Frozen{} to all",
+						"other {C:attention}Jokers{} when sold",
+					},
+					{
+						"{C:inactive,E:1,s:1.5}Let's all just chill out...",
 						"{C:inactive}and take responsibility"
 
 					},
