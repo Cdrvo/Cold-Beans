@@ -34,6 +34,7 @@ SMODS.Sticker({
 		local target = pseudorandom_element(pool, "lock_selection") -- randomly pick target to give the same id
 		target.ability.nteam_lock_link = target.ability.nteam_lock_link or {}
 		target.ability.nteam_lock_link[#target.ability.nteam_lock_link + 1] = G.GAME.nteam_locked_index -- give target the id
+		target.ability.cbean_locked = true
 	end,
 	NAMETEAM_removed = function(self, card)
 		for _, c in ipairs(G.playing_cards) do -- Find the other card that has the id that corresponds to the stickered card's id

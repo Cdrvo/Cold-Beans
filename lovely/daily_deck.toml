@@ -80,24 +80,24 @@ end
 '''
 
 # Saved runs on previous days properly use their own back pos
-[[patches]]
-[patches.regex]
-target = '=[SMODS _ "src/overrides.lua"]'
-position = "at"
-pattern = '''G\.GAME\[self\.back\]\.pos'''
-payload = '''G.GAME[self.back].pos or G.GAME.run_back_pos'''
+# [[patches]]
+# [patches.regex]
+# target = '=[SMODS _ "src/overrides.lua"]'
+# position = "at"
+# pattern = '''G\.GAME\[self\.back\]\.pos'''
+# payload = '''G.GAME[self.back].pos or G.GAME.run_back_pos'''
 
-[[patches]]
-[patches.regex]
-target = 'back.lua'
-position = "at"
-pattern = '''self.pos.(?<pos>[xy]) = pos.[xy]'''
-payload = '''self.pos.$pos = (G.GAME.run_back_pos or {}).$pos or (G.SAVED_GAME or {BACK = {pos = {}}}).BACK.pos.$pos or pos.$pos'''
+# [[patches]]
+# [patches.regex]
+# target = 'back.lua'
+# position = "at"
+# pattern = '''self.pos.(?<pos>[xy]) = pos.[xy]'''
+# payload = '''self.pos.$pos = (G.GAME.run_back_pos or {}).$pos or (G.SAVED_GAME or {BACK = {pos = {}}}).BACK.pos.$pos or pos.$pos'''
 
-[[patches]]
-[patches.pattern]
-target = 'back.lua'
-position = "at"
-pattern = '''pos = self.pos,'''
-match_indent = true
-payload = '''pos = G.GAME.run_back_pos or self.pos,'''
+# [[patches]]
+# [patches.pattern]
+# target = 'back.lua'
+# position = "at"
+# pattern = '''pos = self.pos,'''
+# match_indent = true
+# payload = '''pos = G.GAME.run_back_pos or self.pos,'''

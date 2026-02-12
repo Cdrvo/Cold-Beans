@@ -77,9 +77,10 @@ function Card:set_sprites(center, front, ...)
         }
     end
 	if
-		(G.GAME.viewed_back and G.GAME.viewed_back.effect.center.key == "b_cbean_nameteam_sticky")
-		or (G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_nameteam_sticky")
-			and not self.children.nteam_sticky_back
+		self.children.back.atlas.key == "cbean_NAMETEAM_Decks"
+        and self.children.back.sprite_pos.x == 3
+        and self.children.back.sprite_pos.y == 0
+        and not self.children.nteam_sticky_back
 	then
 		self.children.nteam_sticky_back =
 			SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, "cbean_NAMETEAM_Decks", { x = 4, y = 0 })
@@ -89,6 +90,12 @@ function Card:set_sprites(center, front, ...)
 		self.children.nteam_sticky_back.states.collide.can = false
 		self.children.nteam_sticky_back:set_role({ major = self, role_type = "Glued", draw_major = self })
 	end
+    if
+		self.children.back.atlas.key == "cbean_pboys_daily_deck"
+        and G.GAME.run_back_pos
+	then
+        self.children.back.sprite_pos = G.GAME.run_back_pos
+    end
 end
 
 local set_screen_positions_ref = set_screen_positions

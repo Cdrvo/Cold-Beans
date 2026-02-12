@@ -13,10 +13,13 @@ G.FUNCS.show_employ = function(e)
             no_card_count = true
         })
 
-    if G.jbill_employed_area and #G.jbill_employed_area.cards == 0 then
-        for k, v in pairs(G.P_CENTER_POOLS.Employed) do
-            SMODS.add_card({key = v.key, area = G.jbill_employed_area})
+    local area = G.jbill_employed_area
+
+    if area and not area._populated then
+        for _, v in pairs(G.P_CENTER_POOLS.Employed) do
+            SMODS.add_card({key = v.key, area = area})
         end
+        area._populated = true
     end
     
 

@@ -1396,7 +1396,7 @@ Colonparen.Architecture {
             if not context.result then
                 card.ability.extra = card.ability.extra + 1;
 
-                if card.ability.extra >= 8 then
+                if card.ability.extra >= 4 then
                     return {
                         colonparen_complete = true,
                         colonparen_card = card
@@ -1517,7 +1517,7 @@ Colonparen.Architecture {
         for i = 1, #G.jokers.cards do
             local key = G.jokers.cards[i].config.center.key;
             most[key] = (most[key] or 0) + 1;
-            if most[key] >= 5 then
+            if most[key] >= 2 then
                 return {
                     colonparen_complete = true
                 }

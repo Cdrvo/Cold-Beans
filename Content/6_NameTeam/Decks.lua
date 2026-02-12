@@ -96,9 +96,11 @@ local back_draw_hook = SMODS.DrawSteps["back"].func
 SMODS.DrawSteps["back"].func = function(card, layer)
 	back_draw_hook(card, layer)
 	if
-		((G.GAME.viewed_back and G.GAME.viewed_back.effect.center.key == "b_cbean_nameteam_sticky")
-		or (G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_nameteam_sticky"))
-			and card.children.nteam_sticky_back
+		card.children.back
+		and card.children.back.atlas.key == "cbean_NAMETEAM_Decks"
+        and card.children.back.sprite_pos.x == 3
+        and card.children.back.sprite_pos.y == 0
+        and card.children.nteam_sticky_back
 	then
 		local overlay = G.C.WHITE
 		if card.area and card.area.config.type == "deck" and card.rank > 3 then

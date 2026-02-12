@@ -336,7 +336,8 @@ Colonparen.GreekBlind{
     },
     upper = {
         config = {
-            hands = 1
+            hands = 2,
+            hand_size = 2
         },
         set_blind = function(self, card, from_blind)
             G.GAME.round_resets.hands = G.GAME.round_resets.hands + self.config.hands
@@ -446,8 +447,8 @@ Colonparen.GreekBlind{
     pos = { x = 0, y = 21 },
     lower = {
         set_blind = function(self, card, from_blind)
-            local card1 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Common", edition = "e_negative"})
-            local card2 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Uncommon", edition = "e_negative"})
+            local card1 = SMODS.create_card({ set = "Joker", area = G.jokers, rarity = "Common", edition = "e_negative" })
+            local card2 = SMODS.create_card({ set = "Joker", area = G.jokers, rarity = "Uncommon", edition = "e_negative" })
             card1:add_to_deck()
             G.jokers:emplace(card1)
             card1:start_materialize()
@@ -457,15 +458,13 @@ Colonparen.GreekBlind{
         end,
     },
     upper = {
-        set_blind = function(self, card, from_blind)
-            local card1 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Uncommon", edition = "e_negative"})
-            local card2 = SMODS.create_card({set = "Joker", area = G.jokers, rarity = "Rare", edition = "e_negative"})
-            card1:add_to_deck()
-            G.jokers:emplace(card1)
-            card1:start_materialize()
-            card2:add_to_deck()
-            G.jokers:emplace(card2)
-            card2:start_materialize()
+        calculate = function(self, blind, context)
+            if context.before then
+                local card = SMODS.create_card({ set = "Joker", area = G.jokers, rarity = "Rare", edition = "e_negative" })
+                card:add_to_deck()
+                G.jokers:emplace(card)
+                card:start_materialize()
+            end
         end,
     },
     beans_credits = {
