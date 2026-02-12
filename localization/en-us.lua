@@ -3060,7 +3060,7 @@ return {
 
 			--Uncommon
 			j_cbean_0chill_thorn_ring                   = {
-				name = "Thorn Ring",
+				name = "ThornRing",
 				text = {
 					{
 						"{X:mult,C:white}X#1#{} Mult",
@@ -3183,7 +3183,7 @@ return {
 						"Instead affects every held",
 						"card, also makes them {C:attention}Ice Cards{},",
 						"and allows {C:dark_edition}Frozen{} cards to be",
-						"clicked if you have {C:attention}Thorn Ring{}"
+						"clicked if you have {C:attention}ThornRing{}"
 					},
 				},
 			},
@@ -3541,16 +3541,20 @@ return {
 				name = "Exponentiation Edward",
 				text = {
 					"{X:dark_edition,C:white}^#1#{} Mult",
-					"{C:inactive}The long lost brother to the hyperoperation brothers,",
-					"{C:inactive}none of them knew where he went after the incident."
+					"{C:inactive}The long lost brother to the",
+					"{C:inactive}hyperoperation brothers,",
+					"{C:inactive}none of them knew where",
+					"{C:inactive}he went after the incident"
 				},
 			},
 			j_cbean_yma_manny                           = {
 				name = "Multiplication Manny",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"{C:inactive}The distant cousin to the hyperoperation brothers,",
-					"{C:inactive}also the only one without any arrows."
+					"{C:inactive}The distant cousin to the",
+					"{C:inactive}hyperoperation brothers,",
+					"{C:inactive}also the only one",
+					"{C:inactive}without any arrows"
 				},
 			},
 			j_cbean_yma_seeing_stars                    = {
@@ -10949,7 +10953,7 @@ return {
 
 			["cbean_0chill_proceed"] = {
 				"PROCEED",
-				"Must have {C:attention}House Rules{} and {C:attention}Thorn Ring{} to play",
+				"Must have {C:attention}House Rules{} and {C:attention}ThornRing{} to play",
 			},
 
 			["cbean_0chill_deer_in_headlights"] = {
