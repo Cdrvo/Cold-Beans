@@ -4797,12 +4797,16 @@ return {
 			j_cbean_guacodile                           = {
 				name = "Guacodile",
 				text = {
-					"{C:mult}+#1#{} Mult",
-					"Sell while in {C:attention}Blind",
-					"to reduce the current",
-					"blind's requirement by",
-					"(Small Blind Chips)/2",
-					"{C:inactive}(Reducing by: {C:attention}#2#{C:inactive})"
+					{
+						"{C:mult}+#1#{} Mult",
+					},
+					{
+						"Sell in {C:attention}Blind",
+						"to reduce current",
+						"requirement by",
+						"(Small Blind Chips)/2",
+						"{C:inactive}(Reducing by: {C:attention}#2#{C:inactive})"
+					},
 				},
 			},
 			j_cbean_bowling_bulb                        = {
@@ -5014,14 +5018,19 @@ return {
 			j_cbean_jack_o_lantern                      = {
 				name = "Jack O' Lantern",
 				text = {
-					"For {C:attention}#1#{} Hands",
-					"all scored cards give",
-					"{X:mult,C:white}X#2#{} Mult and has",
-					"a {C:green}#3# in #4#{} chance to",
-					"get destroyed.",
-					"After {C:attention}2{} hands,",
-					"{C:red}debuffs{} itself for",
-					"{:attention}#5#{} hands"
+					{
+						"Scored cards",
+						"give {X:mult,C:white}X#2#{} Mult",
+					},
+					{
+						"{C:green}#3# in #4#{} chance scored",
+						"cards get destroyed",
+					},
+					{
+						"After {C:attention}#1#{} hands,",
+						"{C:red}debuffs{} itself for",
+						"{C:attention}#5#{} hands"
+					},
 				},
 			},
 			j_cbean_grapeshot                           = {
@@ -5036,9 +5045,9 @@ return {
 				name = "Cold Snapdragon",
 				text = {
 					"First 3 scoring cards",
-					"give {X:chips,C:white}X#1#{} Chips",
-					"but are {C:red}debuffed{} for the current",
-					"ante afterwards"
+					"give {X:chips,C:white}X#1#{} Chips but are",
+					"{C:red}debuffed{} for the current",
+					"{C:attention}Ante{} afterwards"
 				},
 			},
 			j_cbean_escape_root                         = {
