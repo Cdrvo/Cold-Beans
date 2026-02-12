@@ -1,3 +1,5 @@
+-- note from glitchkat10: weights have been readjusted due to some kind of error; they are now the same as the arcana pack weights (may be adjusted if wanted), as they all used to be quadruple that of normal arcana packs
+
 SMODS.Booster {
     key = "combo_booster_standard1",
     config = { extra = 3, choose = 1 },
@@ -15,7 +17,7 @@ SMODS.Booster {
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
     atlas = "0chill_combo_booster_atlas",
-    weight = 4,
+    weight = 1,
     pos = { x = 0, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
@@ -51,7 +53,7 @@ SMODS.Booster {
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
     atlas = "0chill_combo_booster_atlas",
-    weight = 4,
+    weight = 1,
     pos = { x = 1, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
@@ -87,7 +89,7 @@ SMODS.Booster {
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
     atlas = "0chill_combo_booster_atlas",
-    weight = 4,
+    weight = 1,
     pos = { x = 2, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",
@@ -123,7 +125,7 @@ SMODS.Booster {
     group_key = "k_cbean_0chill_combopack",
     cost = 4,
     atlas = "0chill_combo_booster_atlas",
-    weight = 4,
+    weight = 0.25,
     pos = { x = 3, y = 0 },
     draw_hand = false,
     kind = "0chill_combo",

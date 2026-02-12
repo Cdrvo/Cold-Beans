@@ -7152,6 +7152,22 @@ return {
 					"be used immediately",
 				},
 			},
+			p_cbean_czodiac_normal3 = {
+				name = "Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+					"be used immediately",
+				},
+			},
+			p_cbean_czodiac_normal4 = {
+				name = "Zodiac Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:sdown_czodiac}Chinese Zodiac{} cards to",
+					"be used immediately",
+				},
+			},
 			p_cbean_czodiac_jumbo1 = {
 				name = "Jumbo Zodiac Pack",
 				text = {
