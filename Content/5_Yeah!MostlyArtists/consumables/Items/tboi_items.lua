@@ -1364,6 +1364,7 @@ YMA.TBOI_ITEMS {
     quaility = 1,
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
         return {
             vars = {
                 
@@ -1928,6 +1929,7 @@ YMA.TBOI_ITEMS {
     quaility = 1,
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
         return {
             vars = {
                 
@@ -2909,6 +2911,7 @@ YMA.TBOI_ITEMS {
     quaility = 1,
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_cbean_wgrop_coarse
         return {
             vars = {
                 
@@ -3118,7 +3121,7 @@ YMA.TBOI_ITEMS {
                 end
             end
         end
-        if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype then 
+        if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype == "CEO" then 
             if SMODS.pseudorandom_probability(card, 'yma_tboi_fate', 1, card.ability.extra.odds) then
                 ease_ante(-card.ability.extra.ante)
                 G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante

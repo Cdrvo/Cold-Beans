@@ -1904,11 +1904,11 @@ return {
 				},
 				text = {
 					{
-						"All {C:chips}XChips{} sources trigger",
+						"All {C:white,X:chips}XChips{} sources trigger",
 						"two {C:attention}additional{} times"
 					},
 					{
-						"All {C:chips}XChips{} sources are",
+						"All {C:white,X:chips}XChips{} sources are",
 						"{C:red}halved{}"
 					}
 				},
@@ -1918,8 +1918,8 @@ return {
 					"Spoon Bender",
 				},
 				text = {
-					"Failed {C:green}probabilitys{}",
-					"retrigger {C:attention}twice{}"
+					"Failed {C:attention}listed {C:green,E:1}probabilities",
+					"retrigger {C:attention}twice"
 				},
 			},
 			ti_cbean_yma_tboi_crickets_head = {
@@ -1931,8 +1931,8 @@ return {
 						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"All other {C:mult}XMult{} sources are",
-						"multiplied by {C:red}X#1#{}"
+						"All other {C:white,X:mult}XMult{} sources are",
+						"multiplied by {C:white,X:mult}X#1#"
 					}
 				},
 			},
@@ -1961,7 +1961,7 @@ return {
 					"{C:green}#1# in #2#{} chance to gain",
 					"access to {C:attention}all locked areas",
 					"for the rest of this {C:attention}Ante{}",
-					"after {C:attention}CEO Blind{} is defeated"
+					"when {C:attention}CEO Blind{} is defeated"
 				},
 			},
 			ti_cbean_yma_tboi_moms_eye = {
@@ -2031,7 +2031,7 @@ return {
 				},
 				text = {
 					"{C:attention}Creates{} a {C:dark_edition}Negative{} {C:yma_keys}Key",
-					"when {C:attention}selecting{} a blind"
+					"when {C:attention}Blind{} is selected"
 				},
 			},
 			ti_cbean_yma_tboi_dollar = {
@@ -2039,7 +2039,7 @@ return {
 					"A Dollar",
 				},
 				text = {
-					"Gain {C:money}$#1#"
+					"Earn {C:money}$#1#"
 				},
 			},
 			ti_cbean_yma_tboi_transcendence = {
@@ -2099,7 +2099,7 @@ return {
 				},
 				text = {
 					"{C:attention}+#1#{} to all {C:attention}listed",
-					"{C:green}probabilities"
+					"{C:green,E:1}probabilities"
 				},
 			},
 			ti_cbean_yma_tboi_cupids_arrow = {
@@ -2118,7 +2118,7 @@ return {
 				},
 				text = {
 					"All {C:chips}+Chips{} sources become",
-					"{C:chips}XChips{} with {X:attention,C:white}X#1#{} Values"
+					"{C:white,X:chips}XChips{} with {X:attention,C:white}X#1#{} values"
 				},
 			},
 			ti_cbean_yma_tboi_magneto = {
@@ -2137,13 +2137,13 @@ return {
 				text = {
 					{
 						"Gain a {C:red}discard{} for the round",
-						"every {C:blue}#1#{} Hands {C:attention}used",
-						"{C:inactive}(Currently {C:attention}#2#/#1#{}{C:inactive})",
+						"every {C:blue}#1#{} hands {C:attention}used",
+						"{C:inactive}(Currently {C:attention}#2#{C:inactive}/{C:attention}#1#{C:inactive})",
 					},
 					{
 						"Gain a {C:red}discard{} every {C:attention}#3#",
-						"blinds beaten",
-						"{C:inactive}(Currently {C:attention}#4#/#3#{}{C:inactive})",
+						"rounds completed",
+						"{C:inactive}(Currently {C:attention}#4#{C:inactive}/{C:attention}#3#{C:inactive})",
 					}
 				},
 			},
@@ -2154,7 +2154,7 @@ return {
 				text = {
 					"{C:green}#1# in #2#{} chance for the first",
 					"use of {C:attention}consumables{} to not",
-					"be {C:attention}used"
+					"destroy said {C:attention}consumable"
 				},
 			},
 			ti_cbean_yma_tboi_steam_sale = {
@@ -2171,7 +2171,7 @@ return {
 					"Sister Maggy",
 				},
 				text = {
-					"{C:attention}Two{} rankless {C:chips}Bonus{} cards",
+					"{C:attention}Two{} rankless {C:attention}Bonus Cards",
 					"are {C:attention}added{} to each {C:attention}played",
 					"hand",
 				},
@@ -2181,8 +2181,8 @@ return {
 					"Technology",
 				},
 				text = {
-					"All {C:chips}XChips{} sources become",
-					"{C:mult}XMult{} with {X:attention,C:white}X#1#{} Values"
+					"All {C:white,X:chips}XChips{} sources become",
+					"{C:white,X:mult}XMult{} with {X:attention,C:white}X#1#{} values"
 				},
 			},
 			ti_cbean_yma_tboi_chocolate_milk = {
@@ -2215,8 +2215,8 @@ return {
 				text = {
 					{
 						"The next {C:attention}#1#{} blinds this {C:attention}Ante",
-						"are {C:attention}Teeny{} blinds",
-						"{C:inactive}({C:attention}#2#{} {C:inactive}Left)",
+						"are {C:attention}Teeny Blinds",
+						"{C:inactive}({C:attention}#2#{} {C:inactive}left)",
 					},
 					{
 						"{X:chips,C:white}X#3#{} Chips",
@@ -2236,8 +2236,8 @@ return {
 					"X-Ray Vision",
 				},
 				text = {
-					"{C:attention}Prevents{} cards from being",
-					"{C:attention}flipped",
+					"{C:attention}Prevents{} cards from",
+					"being {C:attention}flipped",
 				},
 			},
 			ti_cbean_yma_tboi_mark = {
@@ -2248,7 +2248,7 @@ return {
 					{
 						"{C:green}#1# in #2#{} chance to gain a {C:blue}hand",
 						"for the {C:attention}round{} when",
-						"{C:attention}selecting{} a blind"
+						"{C:attention}Blind{} is selected"
 					},
 					{
 						"{C:dark_edition}+#3#%{} Score",
@@ -2292,7 +2292,7 @@ return {
 					"Robo-Baby",
 				},
 				text = {
-					"{C:attention}Two{} rankless {C:red}Mult{} cards are",
+					"{C:attention}Two{} rankless {C:attention}Mult Cards{} are",
 					"{C:attention}added{} to each {C:attention}played{} hand",
 				},
 			},
@@ -2326,8 +2326,8 @@ return {
 					"Money = Power",
 				},
 				text = {
-					"{X:mult,C:white}X#1#{} Mult for every {C:money}$",
-					"you have",
+					"{X:mult,C:white}X#1#{} Mult for every",
+					"{C:money}$1{} you have",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{} {C:inactive}Mult)",
 				},
 			},
@@ -2337,7 +2337,7 @@ return {
 				},
 				text = {
 					{
-						"All {C:chips}XChips{} sources",
+						"All {C:white,X:chips}XChips{} sources",
 						"are {C:attention}multiplied{} by {C:attention}#1#",
 					},
 					{
@@ -2362,7 +2362,7 @@ return {
 				},
 				text = {
 					"All {C:chips}+Chips{} sources become",
-					"{C:mult}XMult{} with {X:attention,C:white}X#1#{} Values"
+					"{C:white,X:mult}XMult{} with {X:attention,C:white}X#1#{} Values"
 				},
 			},
 			ti_cbean_yma_tboi_blood_bag = {
@@ -2398,7 +2398,7 @@ return {
 				},
 				text = {
 					"All {C:chips}+Chips{} sources become",
-					"{C:mult}+Mult{} with {C:mult}halved{} Values"
+					"{C:mult}+Mult{} with {C:mult}halved{} values"
 				},
 			},
 			ti_cbean_yma_tboi_ankh = {
@@ -2407,10 +2407,10 @@ return {
 				},
 				text = {
 					{
-						"The next {C:attention}#1#{} blinds this {C:attention}Ante",
-						"are {C:attention}Teeny{} blinds, {X:attention,C:white}X#3#{} Blind",
+						"The next {C:attention}#1#{} {C:attention}Blinds{} this {C:attention}Ante",
+						"are {C:attention}Teeny Blinds{}, {X:attention,C:white}X#3#{} Blind",
 						"Size {C:attention}permanently",
-						"{C:inactive}({C:attention}#2#{} {C:inactive}Left)",
+						"{C:inactive}({C:attention}#2# {C:inactive}left)",
 					},
 					{
 						"Prevents Death",
@@ -2424,7 +2424,7 @@ return {
 				},
 				text = {
 					{
-						"Failed {C:green}probabilitys{}",
+						"Failed {C:attention}listed {C:green,E:1}probabilities{}",
 						"retrigger {C:attention}twice{}"
 					},
 					{
@@ -2439,11 +2439,11 @@ return {
 				},
 				text = {
 					{
-						"{C:attention}Grants{} a random {C:tarot}Tarot{} card",
+						"{C:attention}Creates{} a random {C:tarot}Tarot{} card",
 						"{C:inactive}(Must have room){}",
 					},
 					{
-						"{C:spectral}Specrtal{} cards are more",
+						"{C:spectral}Spectral{} cards are more",
 						"{C:attention}common",
 					}
 				},
@@ -2454,7 +2454,7 @@ return {
 				},
 				text = {
 					"{C:attention}Grants{} an effect",
-					"based on the {C:attention}deck",
+					"based on the current {C:attention}deck",
 				},
 			},
 			ti_cbean_yma_tboi_speed_ball = {
@@ -2471,7 +2471,7 @@ return {
 					"Ghost Baby",
 				},
 				text = {
-					"{C:attention}Two{} rankless {C:yma_keys}Coarse{} cards",
+					"{C:attention}Two{} rankless {C:attention}Coarse Cards",
 					"are {C:attention}added{} to each {C:attention}played",
 					"hand",
 				},
@@ -2509,11 +2509,11 @@ return {
 				text = {
 					{
 						"Cards {C:attention}held in hand{} give their",
-						"{C:chips}Chip{} vaules"
+						"{C:chips}Chip{} values"
 					},
 					{
 						"{C:green}#1# in #2#{} chance for {C:attention}-#3#{} Ante",
-						"after {C:attention}beating{} the {C:attention}Final{} blind"
+						"when {C:attention}CEO Blind{} is defeated"
 					}
 				},
 			},
@@ -2568,7 +2568,7 @@ return {
 					"If score of {C:attention}played hand{}",
 					"exceeds the {C:attention}total blind",
 					"{C:attention}requirement{}, give a random",
-					"{C:edition}Edition{} to a card in {C:attention}played",
+					"{C:dark_edition}Edition{} to a card in {C:attention}played",
 					"{C:blue}hand"
 				},
 			},
@@ -2577,9 +2577,9 @@ return {
 			m_cbean_pboys_piss = {
 				name = "Piss Card",
 				text = {
-					"Gives {C:chips}+#1#{} Chips for",
+					"Gives {C:chips}+#1#{} chips for",
 					"each {C:attention}Piss card{} in deck",
-					"{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips)",
+					"{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}chips)",
 				},
 			},
 			m_cbean_yma_lucky_1 = {
@@ -2689,9 +2689,9 @@ return {
 				name = "Coarse Card",
 				text = {
 					"For every {C:money}$#1#{} of",
-					"{C:attention}Joker{} sell value",
-					"This gains {C:white,X:chips}X#3#{} {C:blue}Chips{}",
-					"{C:inactive}(Currently{} {C:white,X:chips}X#2#{C:inactive})"
+					"{C:attention}Joker{} sell value,",
+					"this gains {C:white,X:chips}X#3#{} Chips",
+					"{C:inactive}(Currently{} {C:white,X:chips}X#2#{C:inactive} Chips)"
 				}
 			},
 			m_cbean_wgrop_graffiti = {
@@ -2760,7 +2760,7 @@ return {
 			m_cbean_carrot_zomboid = {
 				name = "Carrothead Zomboid",
 				text = {
-					"{C:chips}+#1#{} Chips"
+					"{C:chips}+#1#{} chips"
 				}
 			},
 			m_cbean_melon_zomboid = {
