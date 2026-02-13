@@ -619,7 +619,6 @@ function G.UIDEF.yma_tboi_chest()
     if G.GAME.tboi_chest_card_amt > 0 then
         for i = 1, G.GAME.tboi_chest_card_amt do
             local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, nil, 'for')
-            cardd:add_to_deck()
             G.tboi_chest_cards:emplace(cardd)
         end
         G.GAME.tboi_chest_card_amt = 0
@@ -1278,4 +1277,5 @@ G.FUNCS.draw_from_deck_to_card_area = function(card_area, amt)
             return true
         end
     }))
+
 end
