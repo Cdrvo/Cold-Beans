@@ -1,7 +1,7 @@
 local old_ease_dollars = ease_dollars;
-function ease_dollars(...)
-    local stuff = old_ease_dollars(...)
-    if G.GAME and G.GAME.blind and G.GAME.blind.name == "The Treasure" then
+function ease_dollars(mod, ...)
+    local stuff = old_ease_dollars(mod, ...)
+    if G.GAME and G.GAME.blind and G.GAME.blind.name == "The Treasure" and mod > 0 then
         G.GAME.blind.mult = G.GAME.blind.mult + 0.2;
         G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
