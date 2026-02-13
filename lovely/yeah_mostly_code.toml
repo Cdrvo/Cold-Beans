@@ -420,6 +420,7 @@ elseif _type == 'yma_quest' then _pool[#_pool + 1] = "q_cbean_yma_credit_card"
 '''
 match_indent = true
 
+#Extra cases when to hide the Issac Items
 [[patches]] 
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -427,7 +428,7 @@ pattern = "-- TARGET: evaluate your own general effects"
 position = "before"
 match_indent = true
 payload = '''
-if context.ending_shop or context.cashing_out then
+if context.ending_shop or context.drawing_cards or context.cashing_out or context.starting_shop then
     if CM.states.slot_visible == -1 then
         G.FUNCS.toggle_jokers_items()
     end
