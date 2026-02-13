@@ -75,7 +75,7 @@ end
 G.UIDEF.wgrop_full_biome_selection = function ()
     local destination_biome_nodes = {}
     local b1 = CBWG.get_new_biome(true)
-    local b2 = CBWG.get_new_biome(true, {b1})
+    local b2 = CBWG.get_new_biome(true, {b1 = true})
     table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(b1))
     table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(G.GAME.round_resets.blind_biome))
     table.insert(destination_biome_nodes, G.UIDEF.wgrop_biome_select_individual(b2))
