@@ -26,7 +26,7 @@ Colonparen.GreekBlind{
                 for i, area in ipairs(SMODS.get_card_areas('jokers')) do
                     for q, card in ipairs(area.cards) do
                         Colonparen.manipulate(card, {
-                            value = 1.1,
+                            value = 1.2,
                             type = "X"
                         })
                     end

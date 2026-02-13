@@ -138,7 +138,7 @@ Colonparen.GreekBlind{
     upper = {
         calculate = function(self, blind, context)
             if context.end_of_round and not context.blueprint and context.main_eval then
-                local val = get_blind_amount(G.GAME.round_resets.ante)*10*G.GAME.starting_params.ante_scaling
+                local val = get_blind_amount(G.GAME.round_resets.ante)*5*G.GAME.starting_params.ante_scaling
                 local total = math.floor(G.GAME.chips/val)
                 if total >= 1 then
                     G.E_MANAGER:add_event(Event({

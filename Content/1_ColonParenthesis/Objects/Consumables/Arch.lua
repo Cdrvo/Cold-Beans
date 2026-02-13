@@ -87,7 +87,7 @@ Colonparen.Architecture {
     end,
     evaluate_completion = function (self, card)
         local amount = self:progress();
-        if amount >= 5 then
+        if amount >= 3 then
             return {
                 colonparen_complete = true
             }
@@ -341,11 +341,11 @@ Colonparen.Architecture {
         if context.end_of_round and (G.GAME.blind.chips) then
             local percentage = math.abs(((G.GAME.chips / G.GAME.blind.chips) - 1) * 100)
 
-            if percentage <= 5 then
+            if percentage <= 10 then
                 return {
                     colonparen_complete = true
                 }
-            elseif percentage <= 15 then
+            elseif percentage <= 30 then
                 return {
                     colonparen_in_progress = true
                 }

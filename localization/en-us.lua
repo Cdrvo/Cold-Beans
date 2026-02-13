@@ -310,17 +310,19 @@ return {
 					"of their probability effects when scored"
 				}
 			},
-			bl_cbean_lower_colon_beta = { -- Glitchkat10 | George The Rat | N/A
+			bl_cbean_lower_colon_beta = { -- Glitchkat10 | George The Rat | jamirror
 				name = "Beta",
 				text = {
-					"Scale all Jokers"
+					"Multiply all Joker",
+					"values by X1.1"
 				}
 			},
-			bl_cbean_upper_colon_beta = { -- Glitchkat10 | George The Rat | N/A
+			bl_cbean_upper_colon_beta = { -- Glitchkat10 | George The Rat | jamirror
 				name = "Beta",
 				text = {
-					"Scale all Jokers when",
-					"hand is played"
+					"Multiply all Joker",
+					"values by X1.2",
+					"when hand is played"
 				},
 			},
 			bl_cbean_lower_colon_gamma = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -410,7 +412,7 @@ return {
 			bl_cbean_upper_colon_theta = { -- Glitchkat10 | George The Rat | RattlingSnow353
 				name = "Theta",
 				text = {
-					"-1 Ante per X10",
+					"-1 Ante per X5",
 					"Blind requirement",
 					"scored at end of round",
 				}
@@ -8007,7 +8009,7 @@ return {
 				name = "Stylobate",
 				text = {
 					"{C:attention}Omega{} appears next Ante when",
-					"you have {C:attention}5{} {C:inactive}[#1#]{} other {C:attention}Architecture",
+					"you have {C:attention}3{} {C:inactive}[#1#]{} other {C:attention}Architecture",
 					"{C:attention}Cards{} in their {C:red}base form",
 					"{C:inactive,s:0.8}(Excluding Stylobate)"
 				}
@@ -8038,7 +8040,7 @@ return {
 				name = "Necking",
 				text = {
 					"{C:attention}Epsilon{} appears next Ante",
-					"when you win within {C:attention}5%{} of",
+					"when you win within {C:attention}10%{} of",
 					"the {C:red}Blind requirement"
 				}
 			},
@@ -8120,14 +8122,14 @@ return {
 				text = {
 					"{C:attention}Pi{} appears next Ante when {C:attention}1 Flush House{} {C:inactive}[#1#]{},",
 					"{C:attention}Five of a Kind{} {C:inactive}[#2#]{}, and {C:attention}Flush Five{} {C:inactive}[#3#]",
-					"each has been {C:red}discarded"
+					"have each been {C:red}discarded"
 				}
 			},
 			c_cbean_colon_architrave = {
 				name = "Architrave",
 				text = {
-					"{C:attention}Rho{} appears next Ante when",
-					"{C:attention}#1#{} is not played {C:attention}10{} {C:inactive}[#2#]{} times"
+					"{C:attention}Rho{} appears next Ante when {C:attention}10{} {C:inactive}[#2#]{} {C:attention}poker hands{}",
+					"that are {C:red}not {C:attention}#1#{} are played"
 				}
 			},
 			c_cbean_colon_echinus = {
@@ -10465,7 +10467,7 @@ return {
 			k_colon_architecture_pack           = "Architecture Pack",
 
 			cbean_colon_random_face             = "(Random face card)",
-			cbean_colon_random_achievable_tier2 = "(Random T2 in pool)",
+			cbean_colon_random_achievable_tier2 = "(Random T2 Voucher)",
 			cbean_colon_most_rank_in_deck       = "(Most common rank in deck)",
 			cbean_colon_least_suit_in_deck      = "(Least common suit in deck)",
 			cbean_colon_least_leveled           = "(Least leveled poker hand)",
