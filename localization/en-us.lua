@@ -9112,7 +9112,7 @@ return {
 					},
 					{
 						"Next {C:attention}5{} rerolls",
-						"cost {C:attention}$3{} more",
+						"cost {C:money}$3{} more",
 					},
 				},
 			},
@@ -9125,7 +9125,7 @@ return {
 					},
 					{
 						"Creates a random",
-						"{C:attention}Enhanced face card{}",
+						"{C:attention}Enhanced face{} card",
 					},
 				},
 			},
@@ -9232,7 +9232,7 @@ return {
 				name = "Locked",
 				text = {
 					"Applies {C:attention}Locked{} to {C:attention}1{} selected",
-					"{C:attention}playing card{} without {C:attention}Locked,",
+					"{C:attention}playing card{} without {C:attention}Locked{},",
 					"then creates {C:attention}#1#{} copies of it",
 				},
 			},
