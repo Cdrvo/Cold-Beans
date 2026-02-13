@@ -285,7 +285,7 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         if #G.jokers.highlighted == 1 then
-            if not G.jokers.highlighted[1].ability.jbill_stick2 then
+            if not G.jokers.highlighted[1].ability.cbean_stick2 then
                 return true
             end
         end
@@ -297,7 +297,7 @@ SMODS.Consumable {
         delay = 0.4,
         func = function()
             play_sound("gold_seal", 2, 0.75)
-            affected_card:add_sticker("cbean_jbill_stick2", true)
+            affected_card:add_sticker("cbean_stick2", true)
             card:juice_up(0.3, 0.5)
             affected_card:juice_up()
             return true
