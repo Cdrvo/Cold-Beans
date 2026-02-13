@@ -551,9 +551,11 @@ Colonparen.GreekBlind{
                     most_played_hand = k
                 end
             end
-            update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(most_played_hand, 'poker_hands'),chips = G.GAME.hands[most_played_hand].chips, mult = G.GAME.hands[most_played_hand].mult, level=G.GAME.hands[most_played_hand].level})
-            level_up_hand(nil, most_played_hand, nil, val)
-            update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
+            if most_played_hand then
+                update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(most_played_hand, 'poker_hands'),chips = G.GAME.hands[most_played_hand].chips, mult = G.GAME.hands[most_played_hand].mult, level=G.GAME.hands[most_played_hand].level})
+                level_up_hand(nil, most_played_hand, nil, val)
+                update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
+            end
         end
     },
     beans_credits = {

@@ -4601,12 +4601,12 @@ return {
 				name = "Gold Leaf",
 				text = {
 					{
-						"{C:money}$#1#{} At the",
-						"end of a round",
+						"Earn {C:money}$#1#{} at",
+						"end of round",
 					},
 					{
 						"{C:dark_edition}+1{} Joker Slot",
-						"{C:inactive}(Cannot be negative)"
+						"{C:inactive}(Cannot appear {C:dark_edition}Negative{C:inactive})"
 					},
 				},
 			},

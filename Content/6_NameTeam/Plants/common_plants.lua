@@ -771,6 +771,7 @@ SMODS.Joker({
 		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 		local cae = card.ability.extra
 		return { vars = { cae.dollars } }
 	end,
