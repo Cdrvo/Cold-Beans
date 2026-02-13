@@ -10883,7 +10883,6 @@ return {
 
 			--House Rules Hands
 			["cbean_sdown_sacrifice"] = {
-				"(BUGGED, DOESN'T WORK RIGHT NOW)",
 				"A hand that contains five cards that have not been played before",
 				"Must have {C:attention}House Rules{} and {C:attention}Obelisk{} to play",
 			},
