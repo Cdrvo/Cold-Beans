@@ -558,7 +558,8 @@ end
 
 G.FUNCS.hide_yma_tboi_chest = function(e)
     stop_use()
-	hide_location(G.yma_tboi_chest)
+	hide_location(G.yma_tboi_chest) --Hides Issac Items when leaving chest
+    G.FUNCS.toggle_jokers_items()
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
     
