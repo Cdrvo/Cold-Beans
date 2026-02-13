@@ -278,6 +278,7 @@ YMA.SideQuests.quest {
                     leg.ability = leg.ability or {}
                     leg.ability.yma_quest_temporary = true
                     G.jokers:emplace(leg)
+                    YMA.complete_quest(card, nil, nil, false)
                     return true
                 end)
             }))
