@@ -611,8 +611,8 @@ return {
 			bl_cbean_upper_colon_upsilon = {
 				name = "Upsilon",
 				text = {
-					"-1 Ante per 5 Teeny",
-					"Blinds selected this run",
+					"-1 Ante per 3 Teeny Blinds",
+					"selected this run",
 				},
 			},
 			bl_cbean_lower_colon_phi = {

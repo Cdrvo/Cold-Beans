@@ -604,15 +604,11 @@ Colonparen.GreekBlind{
         set_blind = function (self)
             ease_ante(-1)
         end,
-        calculate = function(self, blind, context)
-        end
     },
     upper = {
         set_blind = function (self)
-            ease_ante(-math.floor((G.GAME.cbean_colon_teenies_played or 0) / 5))
+            ease_ante(-math.floor((G.GAME.cbean_colon_teenies_played or 0) / 3))
         end,
-        calculate = function(self, blind, context)
-        end
     },
     beans_credits = {
         team = ":(",
