@@ -7461,7 +7461,7 @@ return {
 			cbean_colon_tauic = {
 				name = "Tauic",
 				text = {
-					"Can apply {C:dark_edition}Negative{}",
+					"May apply {C:dark_edition}Negative{}",
 				},
 			},
 			cbean_flashcard = {
@@ -7553,9 +7553,10 @@ return {
 			cbean_nebula = {
 				name = "Nebula",
 				text = {
-					"{C:red}-1{} consumable Slot, create a {C:dark_edition}Negative",
-					"{C:planet}Planet{} card for most played hand when ",
-					"{C:attention}Small Blind{} is selected ",
+					"{C:red}-1{} consumable slot, create a",
+					"{C:dark_edition}Negative {C:planet}Planet{} card for",
+					"{C:attention}most played hand{} when",
+					"{C:attention}Small Blind{} is selected",
 				},
 			},
 			cbean_green = {
@@ -7876,20 +7877,20 @@ return {
 			--Jbill stickers
 			cbean_jaded = {
 				name = "Jaded",
-				text = { "Considered a {C:attention}Face Card{}" }
+				text = { "Considered a {C:attention}face{} card" }
 			},
 			cbean_banished = {
 				name = "Banished",
 				text = {
 					"{C:red}Discards{} itself when drawn",
-					"Draws a new {C:attention}Card{}",
+					"and draws a new {C:attention}card{}",
 					"{C:attention}Removes{} this sticker",
 					"after beating a {C:attention}CEO{} Blind"
 				}
 			},
 			cbean_stick2 = {
 				name = "Sticker^2",
-				text = { "{C:dark_edition}+0.5{} Consumable slots" }
+				text = { "{C:attention}+0.5{} consumable slots" }
 			},
 			cbean_mitosis = {
 				name = "Mitosis",
@@ -11255,13 +11256,13 @@ return {
 				"{C:attention}All Blinds{} are {C:attention}The Folly",
 			},
 			ch_c_cbean_nteam_all_stickers = {
-				"All Jokers, Consumeables,"
+				"All {C:attention}Jokers{}, {C:attention}consumables{},"
 			},
 			ch_c_cbean_nteam_all_stickers_2 = {
-				"and Playing Cards (including starting ones)",
+				"and {C:attention}playing cards{} (including starting ones)",
 			},
 			ch_c_cbean_nteam_all_stickers_3 = {
-				"have Stickers",
+				"have {C:attention}Stickers",
 			},
 			ch_c_cbean_win_ante_poker = {
 				"Required {C:attention}Ante{} to win is {C:attention}11",
