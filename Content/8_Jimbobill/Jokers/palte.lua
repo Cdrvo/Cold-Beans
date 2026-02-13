@@ -14,10 +14,12 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
     end,
-    calculate = function(self, card, context)
-        if context.setting_blind then
+    update = function(self, card, dt)
+        if G.GAME.blind.chip_text and G.GAME.blind.chip_text ~= "???" then
             G.GAME.blind.chip_text = "???"
         end
+    end,
+    calculate = function(self, card, context)
         if context.joker_main then
             return {
                 xmult = card.ability.extra.xmult
