@@ -6236,7 +6236,7 @@ return {
 				{
 					{
 						"Played {C:attention}Kings{} give",
-						"{C:money}+$#1#{} when scored"
+						"{C:money}$#1#{} when scored"
 					},
 					{
 						"When {C:attention}Blind{} is selected,",
@@ -10984,7 +10984,7 @@ return {
 				"A hand that contains a Jack, 4, 3, Ace, and a Stone Card",
 				"Must have {C:attention}House Rules{} to play",
 			},
-			
+
 			["cbean_wgrop_thorny_boquete"] = {
 				"A hand that contains either",
 				"{C:attention}3{} Light Suits and {C:attention}2{} Dark Suits or",
