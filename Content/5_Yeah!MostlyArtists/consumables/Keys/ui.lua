@@ -230,11 +230,11 @@ end
 
 function G.UIDEF.tboi_chestsprite()
   
-	local sprite_tboi_chest = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("tboi_chest") and "cbean_yma_chest_sign" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
+	local sprite_tboi_chest = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("tboi_chest") and "cbean_yma_chest_sign" or "cbean_NAMETEAM_closed"], { x = 0, y = 0 }) or nil
     function sprite_tboi_chest:update(dt)
 		AnimatedSprite.update(self, dt)
 		self.atlas =
-			G.ANIMATION_ATLAS[yma_can_access_location("tboi_chest") and "cbean_yma_chest_sign" or "cbean_yma_locked_sign"]
+			G.ANIMATION_ATLAS[yma_can_access_location("tboi_chest") and "cbean_yma_chest_sign" or "cbean_NAMETEAM_closed"]
 	end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_tboi_chest}},
