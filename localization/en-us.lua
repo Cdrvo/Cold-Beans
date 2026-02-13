@@ -10912,7 +10912,8 @@ return {
 			},
 
 			["cbean_sdown_true_home"] = {
-				"Three cards with a matching rank and suit, and two cards with a different matching rank and suit",
+				"Three cards with a matching rank and suit,",
+				"and two cards with a different matching rank and suit",
 				"Must have {C:attention}House Rules{} and {C:attention}Seeing Double or {}",
 				"{C:attention}Diamond Shape With a Dot Inside{} to play",
 			},
@@ -10980,9 +10981,10 @@ return {
 			},
 
 			["cbean_0chill_house_rules"] = {
-				"A hand that contains an Jack, 4, 3, 1,",
+				"A hand that contains a Jack, 4, 3, Ace, and a Stone Card",
 				"Must have {C:attention}House Rules{} to play",
 			},
+			
 			["cbean_wgrop_thorny_boquete"] = {
 				"A hand that contains either",
 				"{C:attention}3{} Light Suits and {C:attention}2{} Dark Suits or",
