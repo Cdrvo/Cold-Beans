@@ -135,12 +135,16 @@ YMA.add_random_quest = function()
 end
 
 YMA.complete_quest = function(card, set, key, add_card)
+    SMODS.calculate_effect({ message = "Complete!", colour = G.C.GREEN }, card) --Probably needs to be localized at some point
     add_card = (add_card == nil) and true or add_card
     G.GAME.cbean.completed_quests[#G.GAME.cbean.completed_quests + 1] = card.config.center.key
     if add_card then
-        SMODS.add_card { set = set, key = key }
+        if #G.jokers.cards < G.jokers.config.card_limit then
+            SMODS.add_card { set = set, key = key }
+        else
+            SMODS.calculate_effect({ message = localize('k_no_room_ex')}, card)
+        end
     end
-    SMODS.calculate_effect({ message = "Complete!", colour = G.C.GREEN }, card)
     SMODS.destroy_cards(card)
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
