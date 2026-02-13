@@ -4,23 +4,31 @@ G.FUNCS.show_employ = function(e)
     stop_use()
     hide_location(G.main_street)
 
-    if G.jbill_employed_area then
-        G.jbill_employed_area:remove()
-        G.jbill_employed_area = nil
+    if G.jbill_employed_area and G.jbill_employed_area.round == G.GAME.round then
+        G.jbill_employed_area = G.jbill_employed_area
+    else
+        if G.jbill_employed_area then
+            G.jbill_employed_area:remove()
+            G.jbill_employed_area = nil
+        end
+        G.jbill_employed_area = CardArea(
+            0, 0, G.jokers.T.w, G.jokers.T.h, 
+            {
+                card_limit = 5,
+                type = 'joker',
+                highlight_limit = 1,
+                no_card_count = true
+            })
+        G.jbill_employed_area.round = G.GAME.round
     end
-    -- G.jbill_employed_area = G.jbill_employed_area part was crashing the game apparently
-    G.jbill_employed_area = CardArea(
-        0, 0, G.jokers.T.w, G.jokers.T.h, 
-        {
-            card_limit = 5,
-            type = 'joker',
-            highlight_limit = 1,
-            no_card_count = true
-        })
+    
+
+    if G.GAME.round and (not G.GAME.employ_round) or (G.GAME.employ_round ~= G.GAME.round) then
+        G.GAME.employ_round = G.GAME.round
+    end
 
     local area = G.jbill_employed_area
 
-    -- I think the check for cards existing is actually not needed now but I won't touch it just in case
     if area and not area._populated then
         for _, v in pairs(G.P_CENTER_POOLS.Employed) do
             SMODS.add_card({key = v.key, area = area})
