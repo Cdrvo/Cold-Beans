@@ -698,6 +698,7 @@ G.FUNCS.hide_yma_dreamland = function(e)
     --sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     if G.dreamlands_consumeable_card_holder then
+        G.dreamlands_consumeable_card_holder.states.visible = false
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             blockable = false,
@@ -710,7 +711,6 @@ G.FUNCS.hide_yma_dreamland = function(e)
                 return true
             end)
         }))
-
     end
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
