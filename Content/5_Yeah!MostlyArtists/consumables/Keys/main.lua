@@ -267,7 +267,7 @@ function yma_can_access_location(location)
     if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) then
         return true
     end
-    if location == 'tboi_chest' and ((G.GAME.tboi_chest_card_amt and G.GAME.tboi_chest_card_amt > 0) or (not G.GAME.tboi_chest_choiceless)) then
+    if location == 'tboi_chest' and  (G.GAME.tboi_chest_card_amt and G.GAME.tboi_chest_card_amt > 0) then
         return true
     end
     if location == 'casino' then
