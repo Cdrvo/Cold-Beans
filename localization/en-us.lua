@@ -9167,12 +9167,12 @@ return {
 				text = {
 					{
 						"Applies {C:attention}Heavy{} to",
-						"{C:attention}1{} selected card",
+						"{C:attention}1{} selected consumable",
 					},
 					{
 						"Applies {C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
 						"{C:dark_edition}Polychrome{} edition to",
-						"the same {C:attention}playing card{}",
+						"a random {C:attention}playing card",
 					},
 				},
 			},
@@ -9231,7 +9231,7 @@ return {
 				name = "Minuscule",
 				text = {
 					"Applies {C:attention}Minuscule{} to {C:attention}1{} selected",
-					"{C:attention}playing card{} without {C:attention}Minuscule",
+					"{C:attention}Joker{} without {C:attention}Minuscule",
 				},
 			},
 			c_cbean_locked_sheet = {
