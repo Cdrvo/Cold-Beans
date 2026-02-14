@@ -10840,7 +10840,7 @@ return {
 			bean_167                            = "No ads, at least.",
 			bean_168                            = "Yes... Ha ha ha... YES!",
 			bean_169                            = "This is the 169th flavour text! That's 13 squared. Neat!",
-			bean_170							= "This is the 170th flavour text! 170 is deficient by 16, it is utterly useless!"
+			bean_170							= "This is the 170th flavour text! 170 is deficient by 16, it is utterly useless!",
 		},
 		high_scores = {},
 		labels = {
