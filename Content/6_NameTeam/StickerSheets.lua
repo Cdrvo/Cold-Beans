@@ -802,7 +802,14 @@ select_card = 'consumeables',
     return {}
   end,
   can_use = function(self, card)
-    return count_consumables() < G.consumeables.config.card_limit
+    local mod = 0;
+    for k, c in pairs(G.consumeables.cards) do
+      if c == card then
+        mod = -1
+        break
+      end
+    end
+    return Colonparen.checkForSpace(G.consumeables, mod)
   end,
   use = function(self, card, area, copier)
     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1

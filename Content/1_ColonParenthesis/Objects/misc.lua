@@ -35,3 +35,7 @@ if Card.is_food then
         return old_is_food(self)
     end
 end
+
+function Colonparen.checkForSpace(area, extra_slots_used, card_limit)
+    return (#area.cards + (1 + (extra_slots_used or 0))) <= (area.config.card_limit + (card_limit or 0))
+end
