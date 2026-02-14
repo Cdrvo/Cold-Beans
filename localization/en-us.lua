@@ -1698,7 +1698,7 @@ return {
 					"{C:dark_edition,s:0.7}Side Quest{}",
 				},
 				text = {
-					"Spend {C:money}$#1#{} {C:inactive}(#2#){}",
+					"Spend {C:money}$#1#{} {C:inactive}[#2#]{}",
 					"in a single {C:attention}shop{}",
 					"to create {C:attention}Credit Card{}",
 				},
@@ -7534,7 +7534,8 @@ return {
 			cbean_man = {
 				name = "Man",
 				text = {
-					"Cannot be {C:red}debuffed{}",
+					"Cannot be",
+					"{C:red}debuffed{}",
 				},
 			},
 			cbean_minuscule = {
@@ -8957,32 +8958,32 @@ return {
 			stake_cbean_nameteam = {
 				name = "NTeam Stake",
 				text = {
-					"Ton of stickers added by",
-					"Name Team can spawn",
+					"Many {C:attention}Stickers{} added by",
+					"Name Team may spawn",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
 			stake_cbean_consumable = {
 				name = "Consumed Stake",
 				text = {
-					"Consumables can spawn",
-					"with certain stickers",
+					"{C:attention}Consumables{} may spawn",
+					"with specific {C:attention}Stickers{}",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
 			stake_cbean_playingcardstake = {
 				name = "Spade of Stakes",
 				text = {
-					"Playing Cards have a chance to",
-					"gain stickers after being played",
+					"{C:attention}Playing Cards{} have a chance to gain",
+					"1 or more {C:attention}Stickers{} after being played",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
 			stake_cbean_deck = {
 				name = "Painted Stake",
 				text = {
-					"Decks has a 1/4 chance to gain",
-					"a sticker after leaving the shop",
+					"{C:attention}Deck{} has a {C:green}1 in 4{} chance to gain",
+					"a {C:attention}Sticker after leaving the shop",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
