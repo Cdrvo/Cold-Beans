@@ -8975,23 +8975,25 @@ return {
 				name = "Spade of Stakes",
 				text = {
 					"{C:attention}Playing Cards{} have a chance to gain",
-					"1 or more {C:attention}Stickers{} after being played",
+					"{C:attention}1{} or more {C:attention}Stickers{} after being played",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
 			stake_cbean_deck = {
 				name = "Painted Stake",
 				text = {
-					"{C:attention}Deck{} has a {C:green}1 in 4{} chance to gain",
-					"a {C:attention}Sticker after leaving the shop",
+					"{C:green}1 in 4{} chance to apply",
+					"a {C:attention}Sticker{} to your deck",
+					"at the end of the shop",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
 			stake_cbean_blind = {
 				name = "Plant Stake",
 				text = {
-					"After every CEO blind, apply a",
-					"random blind sticker to the deck",
+					"Apply a random {C:attention}Blind Sticker",
+					"to your deck when",
+					"{C:attention}CEO Blind{} is defeated",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},

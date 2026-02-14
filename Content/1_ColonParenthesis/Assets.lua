@@ -91,7 +91,7 @@ SMODS.Atlas({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 0.7,
+    pitch = 0.71805851185,
 	key = "teeny_music",
 	path = "1_ColonParenthesis/teeny.ogg",
 	select_music_track = function(self)
@@ -101,7 +101,7 @@ SMODS.Sound ({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 0.7,
+    pitch = 0.71805851185,
 	key = "ceo_music",
 	path = "1_ColonParenthesis/ceo.ogg",
 	select_music_track = function(self)
@@ -123,13 +123,25 @@ SMODS.Sound {
 }
 
 SMODS.Sound {
-	key = "low_greekMusic",
-	path = "1_ColonParenthesis/lowercasegreek.ogg"
+	volume = 1.2,
+    pitch = 0.71805851185,
+	key = "lower_greek_music",
+	path = "1_ColonParenthesis/lowercasegreek.ogg",
+	select_music_track = function(self)
+		return (G.GAME.blind and G.GAME.blind.config.blind.is_lower) and 17 or nil
+	end
 }
-SMODS.Sound {
-	key = "upper_greekMusic",
-	path = "1_ColonParenthesis/uppercasegreek.ogg"
-}
+
+-- currently has some really weird issue with being the raw itself being slowed down causing pretty bad-sounding effects in-game
+-- SMODS.Sound {
+-- 	volume = 1.2,
+--     pitch = 0.71805851185,
+-- 	key = "upper_greek_music",
+-- 	path = "1_ColonParenthesis/uppercasegreek.ogg",
+-- 	select_music_track = function(self)
+-- 		return (G.GAME.blind and G.GAME.blind.config.blind.is_upper) and 18 or nil
+-- 	end
+-- }
 
 -- fonts because fuck you again
 
