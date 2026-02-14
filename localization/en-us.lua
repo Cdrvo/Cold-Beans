@@ -4079,7 +4079,7 @@ return {
 					},
 				},
 			},
-			j_cbean_chili_pepper                       = {
+			j_cbean_chili_pepper                        = {
 				name = "Chili Pepper",
 				text = {
 					"Sell this {C:attention}Joker{} to halve",
@@ -6914,7 +6914,7 @@ return {
 					},
 				}
 			},
-			j_cbean_jbill_schneider = {
+			j_cbean_jbill_schneider                     = {
 				name = {
 					"{C:inactive,s:0.8}Don't forget...{}",
 					"...My {C:white,X:mult}Heartbeat{} on the Right"
@@ -6929,7 +6929,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive})"
 				}
 			},
-			j_cbean_jbill_gameshow = {
+			j_cbean_jbill_gameshow                      = {
 				name = {
 					"Intestinal Game Show",
 				},
@@ -6939,7 +6939,7 @@ return {
 					"drawn cards"
 				}
 			},
-			j_cbean_jbill_ante_lock = {
+			j_cbean_jbill_ante_lock                     = {
 				name = "Ante Lock",
 				text = {
 					"When ante increases, gains {C:white,X:chips}X#2#{} Chips,",
@@ -6947,7 +6947,7 @@ return {
 					"{C:inactive}(Currently: {C:white,X:chips}X#1#{C:inactive}, #3#/#4#)"
 				}
 			},
-			j_cbean_jbill_manos = {
+			j_cbean_jbill_manos                         = {
 				name = "Hands of Fate",
 				text = {
 					{
@@ -6962,16 +6962,16 @@ return {
 					},
 				},
 			},
-			j_cbean_jbill_pythagoras = {
+			j_cbean_jbill_pythagoras                    = {
 				name = "Pythagoreanistic Joker",
 				text = {
-					"This Joker gains {C:white,X:mult}X#2#{} Mult", 
-					"for every {C:attention}Bean Card{}", 
+					"This Joker gains {C:white,X:mult}X#2#{} Mult",
+					"for every {C:attention}Bean Card{}",
 					"that is destroyed",
 					"{C:inactive}(Currently: {C:white,X:mult}X#1#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_jbill_wee_bottle = {
+			j_cbean_jbill_wee_bottle                    = {
 				name = "Wee inside the Bottle",
 				text = {
 					"Scoring {C:attention}2s{}",
@@ -6979,7 +6979,7 @@ return {
 					"{C:inactive,s:0.7}Thank god there's no root ranks"
 				}
 			},
-			j_cbean_jbill_dj = {
+			j_cbean_jbill_dj                            = {
 				name = "Deejay",
 				text = {
 					{
@@ -6992,7 +6992,7 @@ return {
 					},
 				}
 			},
-			j_cbean_jbill_jimbill = {
+			j_cbean_jbill_jimbill                       = {
 				name = "Jim Bill",
 				text = {
 					"{C:green}#2# in #3#{} chance for",
@@ -7000,34 +7000,34 @@ return {
 					"to give {C:green}+J#1#{} when scored"
 				}
 			},
-			j_cbean_jbill_exchange = {
+			j_cbean_jbill_exchange                      = {
 				name = "Currency Exchange",
 				text = {
 					"When {C:attention}Blind{} is selected,",
 					"{C:money}$5{} is exchanged for {C:green}J1"
 				}
 			},
-			j_cbean_jbill_tcna = {
+			j_cbean_jbill_tcna                          = {
 				name = {
 					"{s:0.8}The Campaign for",
 					"North Africa",
-					},
+				},
 				text = {
 					{
-					"Gains {C:mult}#10#{} Mult every",
-					"{C:attention}#2# {C:inactive}[#1#]{} cards played",
-					"{C:inactive}(Currently: {C:mult}+#7#{}{C:inactive} Mult)"
+						"Gains {C:mult}#10#{} Mult every",
+						"{C:attention}#2# {C:inactive}[#1#]{} cards played",
+						"{C:inactive}(Currently: {C:mult}+#7#{}{C:inactive} Mult)"
 					},
 					{
-					"Gains {C:chips}#10#{} Chips every",
-					"{C:attention}#4# {C:inactive}[#3#]{} cards played",
-					"{C:inactive}(Currently: {C:chips}+#8#{}{C:inactive} Chips)"
+						"Gains {C:chips}#10#{} Chips every",
+						"{C:attention}#4# {C:inactive}[#3#]{} cards played",
+						"{C:inactive}(Currently: {C:chips}+#8#{}{C:inactive} Chips)"
 					},
 					{
-					"Gains {C:white,X:mult}X#11#{} Mult after",
-					"playing or discarding",
-					"{C:attention}#6# {C:inactive}[#5#]{} cards in total",
-					"{C:inactive}(Currently: {C:white,X:mult}X#9#{}{C:inactive} Mult)"
+						"Gains {C:white,X:mult}X#11#{} Mult after",
+						"playing or discarding",
+						"{C:attention}#6# {C:inactive}[#5#]{} cards in total",
+						"{C:inactive}(Currently: {C:white,X:mult}X#9#{}{C:inactive} Mult)"
 					}
 				}
 			},
@@ -9282,19 +9282,19 @@ return {
 		},
 		Tag = {
 			tag_cbean_hongbao = {
-		        name = 'Hongbao Tag',
-		        text = {
-		            "Gives a free",
-		            "{C:sdown_czodiac}Mega Zodiac Pack"
-		        }
-		    },
-		    tag_cbean_olympus = {
-		        name = 'Olympus Tag',
-		        text = {
-		            "Gives a free",
-		            "{C:sdown_blessing}Mega Pantheon Pack"
-		        }
-		    },
+				name = 'Hongbao Tag',
+				text = {
+					"Gives a free",
+					"{C:sdown_czodiac}Mega Zodiac Pack"
+				}
+			},
+			tag_cbean_olympus = {
+				name = 'Olympus Tag',
+				text = {
+					"Gives a free",
+					"{C:sdown_blessing}Mega Pantheon Pack"
+				}
+			},
 			tag_cbean_sunbean = {
 				name = 'Sunbean Tag',
 				text = {
@@ -10658,10 +10658,10 @@ return {
 			ph_cbean_dragon_bruit               = "Saved by Dragon Bruit!",
 			k_cbean_replaced_ex                 = "Replaced!",
 
-			k_who_away							= "Go Away!",
-			k_schneider_upg						= "My lord...",
-			k_astro_upg							= "Unbalanced!",
-			k_dollar_jimbux						= "Exchnaged!",
+			k_who_away                          = "Go Away!",
+			k_schneider_upg                     = "My lord...",
+			k_astro_upg                         = "Unbalanced!",
+			k_dollar_jimbux                     = "Exchnaged!",
 
 			cbean_copyright_headsup_1           = "Heads up!",
 			cbean_copyright_headsup_2           = "If you are streaming this mod,",
@@ -10672,146 +10672,174 @@ return {
 			cbean_copyright_headsup_5           = "this mod's Config to avoid any",
 			cbean_copyright_headsup_6           = "issues with copyright.",
 			cbean_dontshowagain                 = "Don't show me this again",
-			bean_1								= "Make good use of this umbrella",
-			bean_2								= "What? No, my legal name isn't BEANIE, are you fucking stupid?",
-			bean_3								= "It has a small comment written on it, '--J*kers fuck off'",
-			bean_4								= "Not approved by the School of Apeiron!",
-			bean_5								= "Mr. Localthunk, a second developer chaos has hit #modding",
-			bean_6								= "Our code is made of trans people! They don't mind it :3",
-			bean_7								= "Also try Hot Potato!",
-			bean_8								= "Rated AAAAAAAAAAAAAA for mature Zoobles only!",
-			bean_9								= "Now with the ability to have sex! (Depricated)",
-			bean_10								= "This splash text is sentient!",
-			bean_11								= "Changes your orientation!",
-			bean_12								= "Could hospitalize an autistic toddler!",
-			bean_13								= "Nature's potato': why are Jokers 'playing' Beans?",
-			bean_14								= "5 Jokers out of 150 are employed!",
-			bean_15								= "Mostly harmless!",
-			bean_16								= "Jeu Malter? Hardly even know 'er!",
-			bean_17								= "Originally called Bean's Almanac!",
-			bean_18								= "Filled with jokers, like some kind of digital circus...",
-			bean_19								= "Part of a breakfast that's balanced like Cryptid...",
-			bean_20								= "This mod won't crash itself, it's happy!",
-			bean_21								= "...why are you like this?",
-			bean_22								= "Oops! All obscure references!",
-			bean_23								= "I really wish I weren't here right now",
-			bean_24								= 'She "Orta" on my "Lab" until I "Shinku" ',
-			bean_25								= "You PARASITE!!!!!",
-			bean_26								= "Cold Beans is based on a true story of Cole D. Beane",
-			bean_27								= "Balatro? I hardly even know 'er o!",
-			bean_28								= "You know I put the sauce in the can like I'm Cold Beanz",
-			bean_29								= "It's not a self-insert if it's not yourself!",
-			bean_30								= "This time I'm really gonna do it.",
-			bean_31								= "This quip was added on February 5, 2026!",
-			bean_32								= 'Let\'s pretend that "hot pot is better" is just a personal opinion',
-			bean_33								= "it should have been called cool beans instead im just saying",
-			bean_34								= "Am I glad that he's frozen in there and that we're out here!",
-			bean_35								= "Me when the beans are cold",
-			bean_36								= "Do you wanna build a beanmaaaaan?",
-			bean_37								= "You gotta be kidding me.",
-			bean_38								= "So! How're you finding the crashes?",
-			bean_39								= "Joker? I barely know her!",
-			bean_40								= "Hello there",
-			bean_41								= ":3",
-			bean_42								= "Stop clicking me, it tickles!",
-			bean_43								= "Thanks for slopping by!",
-			bean_44								= "Hotpot? Whats that? Some kinda cold beans ripoff?",
-			bean_45								= "Are we some kinda Cold Beans?",
-			bean_46								= "Cool explosion",
-			bean_47								= "I have a dream - Abraham Lincoln",
-			bean_48								= "play hotpot! it features pregnancy!",
-			bean_49								= "your are the father",
-			bean_50								= "Can you add me to your balatro mod",
-			bean_51								= "Insert cash or payment type",
-			bean_52								= "The cold never bothered me anyway...",
-			bean_53								= "me when the pot isn't hot",
-			bean_54								= "me when the hot isn't pot",
-			bean_55								= "me when i overuse this joke format",
-			bean_56								= "Watch what happens when I cast a bean I don't know!",
-			bean_57								= "Sorry, it's just a prank",
-			bean_58								= "LETS GO JUSTIN!!!!!!",
-			bean_59								= "What if the world was made of pudding?",
-			bean_60								= "Thats not... the ThornRing, is it...?",
-			bean_61								= "THIS JOKER CARD IS THE PROPERTY OF JOHN C. BEANS",
-			bean_62								= "... ignoring the fact that they might be Dracula",
-			bean_63								= "LK LK Forward HP LP",
-			bean_64								= "REDACTED is so goated",
-			bean_65								= "I summon pot of greed to draw three additional cards from my deck!",
-			bean_66								= "She's a killer, beeeean",
-			bean_67								= "Me when the mystery is minty",
-			bean_68								= "Tiger Uppercut",
-			bean_69								= "Me when the consumeable is squared",
-			bean_70								= "They're not even square, isn't that messed up?",
-			bean_71								= "There is a virus in this mod sorry:(",
-			bean_72								= "Also try smallpox! ... the mod.  there's a mod named smallpox, don't get the deadly disease that only exists frozen in two labs anymore",
-			bean_73								= "Me when the rules are house",
-			bean_74								= "Can't crit so it's balanced",
-			bean_75								= "Hey guys what if i made another card that's exactly the soul but just for my mod",
-			bean_76								= "Hey guys what if i made another rarity between rare and legendary",
-			bean_77								= "Hey guys what if i made reversed tarots again",
-			bean_78								= "What if instead of cold beans it was warm rice?",
-			bean_79								= "so like are beans the opposite of potatoes or what",
-			bean_80								= "Play it with cryptid! I'm sure nothing will break",
-			bean_81								= "Play cold beans",
-			bean_82								= "DO NOT play cold beans",
-			bean_83								= "I've never seen a Jimbo transformation",
-			bean_84								= "The greatest JokerForge mod to never use Jokerforge!",
-			bean_85								= "i remember you're cold",
-			bean_86								= "it's like he's in some king of... cold beans...",
-			bean_87								= "He's blue for an {C:blue}amazing{} reason",
-			bean_88								= "Also try VVVVVV!",
-			bean_89								= "{V:1} Attempt to index field 'colour' (a nil value) {}",
-			bean_90								= "try going outside",
-			bean_91								= "Also play Jimbo&! and Flying Ace. Separately. Then together. The separately again",
-			bean_92								= "https://ko-fi.com/athebyne6174",
-			bean_93								= "https://ko-fi.com/comykel",
-			bean_94								= "... Fine, go look at https://ko-fi.com/wingedcatgirl if you insist.",
-			bean_95								= "I'm literally a bean, what's your excuse?",
-			bean_96								= "SMODS next release when?",
-			bean_97								= "Deltarune tomorrow",
-			bean_98								= "Normal amount of title screen quips!",
-			bean_99								= "Reblog if you too are gay and/or don't go to bed on time!",
-			bean_100							= "Tax exemption",
-			bean_101							= "                      hi",
-			bean_102							= "According to... nah, I wouldn't do that to ya.",
-			bean_103							= "Switch to Linux!",
-			bean_104							= "I have a suggestion.",
-			bean_105							= "Come give me money at these coordinates...",
-			bean_106							= "Ghosts are awesome",
-			bean_107							= "What is wrong with you? Why are you blue?",
-			bean_108							= "MORAL: There was a Sewer Man",
-			bean_109							= "this quip is taking us to the Moose Man",
-			bean_110							= "funny joker eat a pepsi",
-			bean_111							= "Is pepsi ok?",
-			bean_112							= "This, too, is vanilla.",
-			bean_113							= "I'm always scoring 2 much, or not scoring enough, or not scoring at all",
-			bean_114							= "I know what you are.",
-			bean_115							= "awawawawa :3",
-			bean_116							= "Focus, J",
-			bean_118							= "Incompatible!",
-			bean_119							= "im colding it and by it lets just say my beans",
-			bean_120							= "Bean there, done that",
-			bean_121							= ".-.-  .-.. ..-- -... .-.. ..--  -... --- -... -.--",
-			bean_122							= "Ayo the beans, are here!",
-			bean_123							= "Did you know that this mod contains 66 binding of isaac items? Well, now you know",
-			bean_124							= "Whatever you do at ante 8 dont play small blind",
-			bean_125							= "Now here's what's gonna happen...",
-			bean_126							= "i fogor",
-			bean_127							= "I'm freezing rn",
-			bean_128							= "A visitor?",
-			bean_129							= "I love beans Charlie I LOVES BEANS",
-			bean_130							= "I'm not in cold, Bean(s). I am THE COLD!",
-			bean_131							= "Switch to Amulet",
-			bean_132							= "jimbo word of the day : death",
-			bean_133							= "Swag",
-			bean_134							= "Blueprint x Brainstrom... eeerm... wait... this isnt google...",
-			bean_135							= "And they were roommates",
-			bean_136							= "Me and the boys at 3am looking for beans",
-			bean_137							= "Entrusting this World to Jokers ~ Jokerize World",
-			bean_138							= "Which came first, ranch or cool ranch?",
-			bean_139							= "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs",
-			bean_140							= "This mod is sponsored by Bean Shadow Legend",
-			bean_141							= "what the hell did i add?" --If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16. added these 
+			bean_1                              = "Make good use of this umbrella",
+			bean_2                              = "What? No, my legal name isn't BEANIE, are you fucking stupid?",
+			bean_3                              = "It has a small comment written on it, '--J*kers fuck off'",
+			bean_4                              = "Not approved by the School of Apeiron!",
+			bean_5                              = "Mr. Localthunk, a second developer chaos has hit #modding",
+			bean_6                              = "Our code is made of trans people! They don't mind it :3",
+			bean_7                              = "Also try Hot Potato!",
+			bean_8                              = "Rated AAAAAAAAAAAAAA for mature Zoobles only!",
+			bean_9                              = "Now with the ability to have sex! (Depricated)",
+			bean_10                             = "This splash text is sentient!",
+			bean_11                             = "Changes your orientation!",
+			bean_12                             = "Could hospitalize an autistic toddler!",
+			bean_13                             = "Nature's potato': why are Jokers 'playing' Beans?",
+			bean_14                             = "5 Jokers out of 150 are employed!",
+			bean_15                             = "Mostly harmless!",
+			bean_16                             = "Jeu Malter? Hardly even know 'er!",
+			bean_17                             = "Originally called Bean's Almanac!",
+			bean_18                             = "Filled with jokers, like some kind of digital circus...",
+			bean_19                             = "Part of a breakfast that's balanced like Cryptid...",
+			bean_20                             = "This mod won't crash itself, it's happy!",
+			bean_21                             = "...why are you like this?",
+			bean_22                             = "Oops! All obscure references!",
+			bean_23                             = "I really wish I weren't here right now",
+			bean_24                             = 'She "Orta" on my "Lab" until I "Shinku" ',
+			bean_25                             = "You PARASITE!!!!!",
+			bean_26                             = "Cold Beans is based on a true story of Cole D. Beane",
+			bean_27                             = "Balatro? I hardly even know 'er o!",
+			bean_28                             = "You know I put the sauce in the can like I'm Cold Beanz",
+			bean_29                             = "It's not a self-insert if it's not yourself!",
+			bean_30                             = "This time I'm really gonna do it.",
+			bean_31                             = "This quip was added on February 5, 2026!",
+			bean_32                             = 'Let\'s pretend that "hot pot is better" is just a personal opinion',
+			bean_33                             = "it should have been called cool beans instead im just saying",
+			bean_34                             = "Am I glad that he's frozen in there and that we're out here!",
+			bean_35                             = "Me when the beans are cold",
+			bean_36                             = "Do you wanna build a beanmaaaaan?",
+			bean_37                             = "You gotta be kidding me.",
+			bean_38                             = "So! How're you finding the crashes?",
+			bean_39                             = "Joker? I barely know her!",
+			bean_40                             = "Hello there",
+			bean_41                             = ":3",
+			bean_42                             = "Stop clicking me, it tickles!",
+			bean_43                             = "Thanks for slopping by!",
+			bean_44                             = "Hotpot? Whats that? Some kinda cold beans ripoff?",
+			bean_45                             = "Are we some kinda Cold Beans?",
+			bean_46                             = "Cool explosion",
+			bean_47                             = "I have a dream - Abraham Lincoln",
+			bean_48                             = "play hotpot! it features pregnancy!",
+			bean_49                             = "your are the father",
+			bean_50                             = "Can you add me to your balatro mod",
+			bean_51                             = "Insert cash or payment type",
+			bean_52                             = "The cold never bothered me anyway...",
+			bean_53                             = "me when the pot isn't hot",
+			bean_54                             = "me when the hot isn't pot",
+			bean_55                             = "me when i overuse this joke format",
+			bean_56                             = "Watch what happens when I cast a bean I don't know!",
+			bean_57                             = "Sorry, it's just a prank",
+			bean_58                             = "LETS GO JUSTIN!!!!!!",
+			bean_59                             = "What if the world was made of pudding?",
+			bean_60                             = "Thats not... the ThornRing, is it...?",
+			bean_61                             = "THIS JOKER CARD IS THE PROPERTY OF JOHN C. BEANS",
+			bean_62                             = "... ignoring the fact that they might be Dracula",
+			bean_63                             = "LK LK Forward HP LP",
+			bean_64                             = "REDACTED is so goated",
+			bean_65                             = "I summon pot of greed to draw three additional cards from my deck!",
+			bean_66                             = "She's a killer, beeeean",
+			bean_67                             = "Me when the mystery is minty",
+			bean_68                             = "Tiger Uppercut",
+			bean_69                             = "Me when the consumeable is squared",
+			bean_70                             = "They're not even square, isn't that messed up?",
+			bean_71                             = "There is a virus in this mod sorry:(",
+			bean_72                             = "Also try smallpox! ... the mod.  there's a mod named smallpox, don't get the deadly disease that only exists frozen in two labs anymore",
+			bean_73                             = "Me when the rules are house",
+			bean_74                             = "Can't crit so it's balanced",
+			bean_75                             = "Hey guys what if i made another card that's exactly the soul but just for my mod",
+			bean_76                             = "Hey guys what if i made another rarity between rare and legendary",
+			bean_77                             = "Hey guys what if i made reversed tarots again",
+			bean_78                             = "What if instead of cold beans it was warm rice?",
+			bean_79                             = "so like are beans the opposite of potatoes or what",
+			bean_80                             = "Play it with cryptid! I'm sure nothing will break",
+			bean_81                             = "Play cold beans",
+			bean_82                             = "DO NOT play cold beans",
+			bean_83                             = "I've never seen a Jimbo transformation",
+			bean_84                             = "The greatest JokerForge mod to never use Jokerforge!",
+			bean_85                             = "i remember you're cold",
+			bean_86                             = "it's like he's in some king of... cold beans...",
+			bean_87                             = "He's blue for an {C:blue}amazing{} reason",
+			bean_88                             = "Also try VVVVVV!",
+			bean_89                             = "{V:1} Attempt to index field 'colour' (a nil value) {}",
+			bean_90                             = "try going outside",
+			bean_91                             = "Also play Jimbo&! and Flying Ace. Separately. Then together. The separately again",
+			bean_92                             = "https://ko-fi.com/athebyne6174",
+			bean_93                             = "https://ko-fi.com/comykel",
+			bean_94                             = "... Fine, go look at https://ko-fi.com/wingedcatgirl if you insist.",
+			bean_95                             = "I'm literally a bean, what's your excuse?",
+			bean_96                             = "SMODS next release when?",
+			bean_97                             = "Deltarune tomorrow",
+			bean_98                             = "Normal amount of title screen quips!",
+			bean_99                             = "Reblog if you too are gay and/or don't go to bed on time!",
+			bean_100                            = "Tax exemption",
+			bean_101                            = "                      hi",
+			bean_102                            = "According to... nah, I wouldn't do that to ya.",
+			bean_103                            = "Switch to Linux!",
+			bean_104                            = "I have a suggestion.",
+			bean_105                            = "Come give me money at these coordinates...",
+			bean_106                            = "Ghosts are awesome",
+			bean_107                            = "What is wrong with you? Why are you blue?",
+			bean_108                            = "MORAL: There was a Sewer Man",
+			bean_109                            = "this quip is taking us to the Moose Man",
+			bean_110                            = "funny joker eat a pepsi",
+			bean_111                            = "Is pepsi ok?",
+			bean_112                            = "This, too, is vanilla.",
+			bean_113                            = "I'm always scoring 2 much, or not scoring enough, or not scoring at all",
+			bean_114                            = "I know what you are.",
+			bean_115                            = "awawawawa :3",
+			bean_116                            = "Focus, J",
+			bean_118                            = "Incompatible!",
+			bean_119                            = "im colding it and by it lets just say my beans",
+			bean_120                            = "Bean there, done that",
+			bean_121                            = ".-.-  .-.. ..-- -... .-.. ..--  -... --- -... -.--",
+			bean_122                            = "Ayo the beans, are here!",
+			bean_123                            = "Did you know that this mod contains 66 binding of isaac items? Well, now you know",
+			bean_124                            = "Whatever you do at ante 8 dont play small blind",
+			bean_125                            = "Now here's what's gonna happen...",
+			bean_126                            = "i fogor",
+			bean_127                            = "I'm freezing rn",
+			bean_128                            = "A visitor?",
+			bean_129                            = "I love beans Charlie I LOVES BEANS",
+			bean_130                            = "I'm not in cold, Bean(s). I am THE COLD!",
+			bean_131                            = "Switch to Amulet",
+			bean_132                            = "jimbo word of the day : death",
+			bean_133                            = "Swag",
+			bean_134                            = "Blueprint x Brainstrom... eeerm... wait... this isnt google...",
+			bean_135                            = "And they were roommates",
+			bean_136                            = "Me and the boys at 3am looking for beans",
+			bean_137                            = "Entrusting this World to Jokers ~ Jokerize World",
+			bean_138                            = "Which came first, ranch or cool ranch?",
+			bean_139                            = "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs",
+			bean_140                            = "This mod is sponsored by Bean Shadow Legend",
+			bean_141                            = "what the hell did i add?", --If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16. added these
+			bean_142                            = "why do they call it oven when you of in the cold food of out hot eat the food",
+			bean_143                            = "How've you bean?",
+			bean_144                            = "John! What's up! Great to see ya.",
+			bean_145                            = "Get me out of this thing!",
+			bean_146                            = "What a gift to relish... A victim that can't perish.",
+			bean_147                            = "bwow tss. bwowtss, bwowow tss",
+			bean_148                            = "adriana salteee",
+			bean_149                            = "Wow! If you're reading this, you got very lucky!",
+			bean_150                            = "You are the coldest person EVER!",
+			bean_151                            = "Well, we know your mouse works now.",
+			bean_152                            = "I see you.",
+			bean_153                            = "+5 hand size, reduces by 1 each round",
+			bean_154                            = "Brrr. Have you brought a coat?",
+			bean_155                            = "hnnngggh",
+			bean_156                            = "We had to type these flavour texts out manually. Donations appreciated.",
+			bean_157                            = "Fuel my caffeine addiction! https://buymeacoffee.com/ghostsalt",
+			bean_158                            = "Win 100 runs to leak all the government files!",
+			bean_159                            = "Cold Beans: People Get Arrested For Less",
+			bean_160                            = "You are now breathing manually.",
+			bean_161                            = "FAQ: Why?",
+			bean_162                            = "If it's Valentine's Day, happy Valentine's Day! <3",
+			bean_163                            = "gwah",
+			bean_164                            = "t's th Mssng Vwls rnd!",
+			bean_165                            = "My  key stopped working. Anyway, wecome to Cod Beans!",
+			bean_166                            = "If this isn't a vibe, the code was certainly vibed.",
+			bean_167                            = "No ads, at least.",
+			bean_168                            = "Yes... Ha ha ha... YES!",
+			bean_169                            = "This is the 169th flavour text! That's 13 squared. Neat!"
 		},
 		high_scores = {},
 		labels = {
@@ -11273,6 +11301,3 @@ return {
 		},
 	},
 }
-
-
-
