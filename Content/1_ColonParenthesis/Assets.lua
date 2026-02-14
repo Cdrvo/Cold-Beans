@@ -91,7 +91,7 @@ SMODS.Atlas({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 0.71805851185,
+    pitch = 0.7,
 	key = "teeny_music",
 	path = "1_ColonParenthesis/teeny.ogg",
 	select_music_track = function(self)
@@ -101,7 +101,7 @@ SMODS.Sound ({
 
 SMODS.Sound ({
 	volume = 1.2,
-    pitch = 0.71805851185,
+    pitch = 0.7,
 	key = "ceo_music",
 	path = "1_ColonParenthesis/ceo.ogg",
 	select_music_track = function(self)
@@ -110,8 +110,16 @@ SMODS.Sound ({
 })
 
 SMODS.Sound {
+	volume = 0.8,
+    pitch = 0.7,
 	key = "zodiac_music",
 	path = "1_ColonParenthesis/chinesefixed.ogg",
+	select_music_track = function(self)
+        return (G.booster_pack
+                    and not G.booster_pack.REMOVED
+                    and SMODS.OPENED_BOOSTER
+                    and SMODS.OPENED_BOOSTER.config.center.kind == "sdown_czodiac") and 100
+    end
 }
 
 SMODS.Sound {
