@@ -100,7 +100,7 @@ target = "functions/common_events.lua"
 pattern = '''function get_current_pool(_type, _rarity, _legendary, _append)'''
 position = "after"
 payload = '''if _type == 'Joker' then
-if pseudorandom('biome') < 1*(7/10) and not _legendary and _append ~= "no_biome" then
+if pseudorandom('biome') < 1*(7/10) and not (_legendary or _rarity) and _append ~= "no_biome" then
 _type = G.GAME.round_resets.blind_biome
 --print(_append)
 end
