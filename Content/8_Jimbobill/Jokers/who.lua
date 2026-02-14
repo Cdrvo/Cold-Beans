@@ -7,7 +7,7 @@ SMODS.Joker {
     cost = 6,
     config = { extra = { xmult = 1, xmult_gain = 0.25 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain } }
+        return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
         if G.GAME.blind_on_deck == "Big" and context.ending_shop then

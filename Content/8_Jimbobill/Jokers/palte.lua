@@ -15,7 +15,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult } }
     end,
     update = function(self, card, dt)
-        if G.GAME.blind.chip_text and G.GAME.blind.chip_text ~= "???" then
+        if G.GAME.blind and G.GAME.blind.chip_text and G.GAME.blind.chip_text ~= "???" then
             G.GAME.blind.chip_text = "???"
         end
     end,
