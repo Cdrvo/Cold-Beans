@@ -55,7 +55,7 @@ G.FUNCS.nteam_exchange_stickers = function(e)
 				})
 				rew_container.config.object:recalculate()
 			end
-			SMODS.calculate_context({nteam_exchange_stationery = true})
+			SMODS.calculate_context({ nteam_exchange_stationery = true })
 			G.stationery:recalculate()
 			return true
 		end,
@@ -110,7 +110,7 @@ G.FUNCS.nteam_reroll_stationery = function(e)
 				})
 				rew_container.config.object:recalculate()
 			end
-			SMODS.calculate_context({nteam_reroll_stationery = true})
+			SMODS.calculate_context({ nteam_reroll_stationery = true })
 			G.stationery:recalculate()
 			return true
 		end,
@@ -142,10 +142,10 @@ function G.UIDEF.nteam_scholar()
 	sprite.states.drag.can = false
 	sprite.config.speech_bubble_align = { align = "bm", offset = { x = 0, y = 0.1 }, parent = sprite }
 	sprite.children.tutorial_text = not G.GAME.seen_stationery_tutorial
-			and UIBox({
-				definition = G.UIDEF.speech_bubble("cbean_nteam_tutorial_" .. NAMETEAM.TUTORIAL_STATE, { quip = true }),
-				config = sprite.config.speech_bubble_align,
-			})
+		and UIBox({
+			definition = G.UIDEF.speech_bubble("cbean_nteam_tutorial_" .. NAMETEAM.TUTORIAL_STATE, { quip = true }),
+			config = sprite.config.speech_bubble_align,
+		})
 		or nil
 	function sprite:hover()
 		Node.hover(self)
@@ -155,7 +155,10 @@ function G.UIDEF.nteam_scholar()
 				config = self.config.speech_bubble_align,
 			})
 		end
+		self:juice_up(0.05, 0.03)
+		play_sound('paper1', math.random() * 0.2 + 0.9, 0.35)
 	end
+
 	function sprite:stop_hover()
 		Node.stop_hover(self)
 		if G.GAME.seen_stationery_tutorial and NAMETEAM.TUTORIAL_STATE == 0 and self.children.tutorial_text then
@@ -163,6 +166,28 @@ function G.UIDEF.nteam_scholar()
 			self.children.tutorial_text = nil
 		end
 	end
+
+	function sprite:say_stuff(n)
+			if n <= 0 then return end
+			local new_said = math.random(1, 11)
+			while new_said == self.last_said do
+				new_said = math.random(1, 11)
+			end
+			self.last_said = new_said
+			play_sound('voice' .. new_said, math.random() * 0.3 + 1.2, 0.5)
+			self:juice_up(0.1, 0.1)
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				blockable = false,
+				blocking = false,
+				delay = 0.35,
+				func = function()
+					self:say_stuff(n - 1)
+					return true
+				end
+			}))
+	end
+
 	function sprite:click()
 		Node.click(self)
 		NAMETEAM.TUTORIAL_STATE = (NAMETEAM.TUTORIAL_STATE + 1) % 11
@@ -177,8 +202,10 @@ function G.UIDEF.nteam_scholar()
 			definition = G.UIDEF.speech_bubble("cbean_nteam_tutorial_" .. NAMETEAM.TUTORIAL_STATE, { quip = true }),
 			config = self.config.speech_bubble_align,
 		})
-		self:set_sprite_pos({x = tutorial_positions[NAMETEAM.TUTORIAL_STATE + 1], y = 2})
+		self:set_sprite_pos({ x = tutorial_positions[NAMETEAM.TUTORIAL_STATE + 1], y = 2 })
+		self:say_stuff(3)
 	end
+
 	local t = {
 		n = G.UIT.ROOT,
 		config = { align = "cm", colour = G.C.CLEAR },
@@ -454,7 +481,7 @@ G.FUNCS.show_stationery = function(e)
 	hide_location(G.main_street)
 	G.STATE_COMPLETE = false
 	G.STATE = G.STATES.STATIONERY
-	SMODS.calculate_context{cbean_entered_stationery = true}
+	SMODS.calculate_context { cbean_entered_stationery = true }
 	--local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
 	local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
 	ease_background_colour_blind(G.STATE)
@@ -507,20 +534,21 @@ end
 
 function G.UIDEF.stationery_sprite()
 	local sprite_stationery = G.ANIMATION_ATLAS
-			and AnimatedSprite(
-				0,
-				0,
-				(113 * 0.113) * 0.2,
-				(57 * 0.113) * 0.2,
-				G.ANIMATION_ATLAS[yma_can_access_location("stationery") and "cbean_NAMETEAM_stationery" or "cbean_NAMETEAM_closed"],
-				{ x = 0, y = 0 }
-			)
+		and AnimatedSprite(
+			0,
+			0,
+			(113 * 0.113) * 0.2,
+			(57 * 0.113) * 0.2,
+			G.ANIMATION_ATLAS[yma_can_access_location("stationery") and "cbean_NAMETEAM_stationery" or "cbean_NAMETEAM_closed"],
+			{ x = 0, y = 0 }
+		)
 		or nil
 	function sprite_stationery:update(dt)
 		AnimatedSprite.update(self, dt)
 		self.atlas =
 			G.ANIMATION_ATLAS[yma_can_access_location("stationery") and "cbean_NAMETEAM_stationery" or "cbean_NAMETEAM_closed"]
 	end
+
 	local t = {
 		n = G.UIT.ROOT,
 		config = { align = "cm", colour = G.C.CLEAR },
