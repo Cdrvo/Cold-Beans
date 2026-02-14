@@ -125,7 +125,7 @@ pattern = '''
 if _c.set == 'Other' then
 '''
 payload = '''
-if G.deck and card == G.deck.cards[1] and G.GAME.selected_back and G.GAME.selected_back.ability then
+if G.deck and ((card == G.deck.cards[1]) and G.deck.cards[1]) and G.GAME.selected_back and G.GAME.selected_back.ability then
   for k, v in pairs(SMODS.Stickers) do
     if G.GAME.selected_back.ability[k] then
       info_queue[#info_queue + 1] = v

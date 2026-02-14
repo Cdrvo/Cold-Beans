@@ -1137,21 +1137,6 @@ Colonparen.Architecture {
                     colonparen_in_progress = true
                 }
             end
-        elseif context.ante_change and context.ante_end then
-            if card.ability.extra.reset then
-                card.ability.extra.reset = false;
-            else
-                card.ability.extra.count = card.ability.extra.count + 1;
-                if card.ability.extra.count >= 3 then
-                    return {
-                        colonparen_complete = true,
-                    }
-                elseif card.ability.extra.count > 0 then
-                    return {
-                        colonparen_in_progress = true,
-                    }
-                end
-            end
         end
     end
 }
