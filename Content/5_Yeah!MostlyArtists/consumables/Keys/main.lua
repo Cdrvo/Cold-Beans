@@ -228,7 +228,12 @@ function yma_improveable_consumable(card)
         if not card.ability.yma_failed_pray then
             return true, card.config.center.set
         end
+    elseif (card.config.center.key == "c_cbean_jbill_blessing") or (card.config.center.key == "c_cbean_jbill_key") then
+        if not card.ability.yma_failed_pray then
+            return true, card.config.center.corresponding_set
+        end
     end
+
     return false, card.config.center.set
 end
 

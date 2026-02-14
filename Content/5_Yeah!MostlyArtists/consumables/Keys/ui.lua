@@ -811,7 +811,7 @@ G.FUNCS.can_improve_consumable_yma_dreamland = function(e)
     if #G.dreamlands_consumeable_card_holder.highlighted ~= 1 or G.CONTROLLER.locks.dreamland_improve or not has_vaild_card then 
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
-    elseif card_set == 'yma_keys' then
+    elseif (card_set == 'yma_keys') then
         e.config.colour = G.C.SECONDARY_SET.yma_keys
         e.config.button = 'improve_consumable_yma_dreamland'
         G.GAME.yma_dreamland_improve_text = localize('k_yma_polish')

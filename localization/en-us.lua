@@ -1603,7 +1603,7 @@ return {
 				name = "Blessing",
 				text = {
 					"{C:attention}Scored{} cards gain {C:mult}+#1#{} Mult",
-					"{C:inactive}({C:attention}#2#{} {C:inactive}triggers remaining)"
+					"{C:inactive}({C:attention}#2#{C:inactive} triggers remaining)",
 				},
 			},
 			c_cbean_jbill_zodiac = {
@@ -1625,7 +1625,7 @@ return {
 				text = {
 					"When entering shop,",
 					"add a {C:yma_keys}Key{} to it",
-					"{C:inactive}(Used up on beating a {C:attention}CEO Blind{}{C:inactive})"
+					"{C:inactive}(Uses #1#/#2# CEO Blinds)"
 				},
 			},
 			c_cbean_jbill_sheet = {
