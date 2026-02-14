@@ -379,22 +379,6 @@ end
 '''
 match_indent = true
 
-# Fixes problem of area not existing
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = "self.play = CardArea("
-position = "before"
-match_indent = true
-payload = '''
-self.dreamlands_consumeable_card_holder = CardArea(
-      self.hand.T.x+0,
-      self.hand.T.y+G.ROOM.T.y + 9,
-      math.min(10*1.02*self.CARD_W,4.08*self.CARD_W),
-      1.05*self.CARD_H, 
-      {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
-'''
-
 # [Side Quests] - Create a new quest upon completion
 [[patches]] #G.GAME 
 [patches.pattern]

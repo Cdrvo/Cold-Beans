@@ -653,6 +653,13 @@ end
 G.FUNCS.show_yma_dreamland = function(e)
   stop_use()
   hide_location(G.main_street)
+
+  G.dreamlands_consumeable_card_holder = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
   
   G.STATE = G.STATES.DREAMLAND
   G.STATE_COMPLETE = false
@@ -673,9 +680,11 @@ end
 G.FUNCS.hide_yma_dreamland = function(e)
     stop_use()
 	hide_location(G.yma_dreamland)
-    if #G.dreamlands_consumeable_card_holder.cards > 0 then
-        for k, v in pairs(G.dreamlands_consumeable_card_holder.cards) do 
-            draw_card(G.dreamlands_consumeable_card_holder,G.consumeables, 100/1,'up', nil, v)
+    if G.dreamlands_consumeable_card_holder then
+        if #G.dreamlands_consumeable_card_holder.cards > 0 then
+            for k, v in pairs(G.dreamlands_consumeable_card_holder.cards) do 
+                draw_card(G.dreamlands_consumeable_card_holder,G.consumeables, 100/1,'up', nil, v)
+            end
         end
     end
 	G.STATE = G.STATES.MAIN_STREET
@@ -688,7 +697,21 @@ G.FUNCS.hide_yma_dreamland = function(e)
 	--sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
     --sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-    G.dreamlands_consumeable_card_holder.states.visible = false
+    if G.dreamlands_consumeable_card_holder then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            blockable = false,
+            blocking = false,
+            delay =  0,
+            func = (function() 
+                    G.dreamlands_consumeable_card_holder.states.visible = false
+                    G.dreamlands_consumeable_card_holder:remove()
+                    G.dreamlands_consumeable_card_holder = nil;
+                return true
+            end)
+        }))
+
+    end
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
 end
@@ -781,6 +804,7 @@ end
 
 G.FUNCS.can_improve_consumable_yma_dreamland = function(e)
     local has_vaild_card, card_set = false, nil
+    if not G.dreamlands_consumeable_card_holder then return end
     if #G.dreamlands_consumeable_card_holder.highlighted == 1 then
         has_vaild_card, card_set = yma_improveable_consumable(G.dreamlands_consumeable_card_holder.highlighted[1])
     end
