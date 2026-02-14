@@ -216,9 +216,7 @@ SMODS.Consumable {
         return {}
     end,
     can_use = function(self, card)
-        if (G.consumeables.config.card_limit - #G.consumeables.cards) >= 1 then
-            return true
-        end
+       return (#G.consumeables.cards < G.consumeables.config.card_limit or card.area == G.consumeables)
     end,
     use = function(self, card, area, copier)
         local starter_pool = {}
