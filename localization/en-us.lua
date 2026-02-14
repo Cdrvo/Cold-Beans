@@ -10494,6 +10494,8 @@ return {
 			ph_choose_biome_2                   = "Destination",
 			k_select_biome                      = "Select",
 			b_reroll                            = "Reroll",
+			cbean_yma_toggle_to_items			= "Show Items",
+			cbean_yma_toggle_to_jokers			= "Show Jokers",
 			cbean_stationery_accepts            = {
 				"Only accepts Jokers",
 				"with {C:attention}1 or more{} of the",
@@ -10632,8 +10634,6 @@ return {
 			k_cbean_chomp                       = "Chomp!",
 
 			k_nteam_tboi_items                	= "Items",
-			ph_owned_items 						= "Owned items",
-			ph_no_items 						= "No items in possession",
 
 			k_cbean_yomama                      = "Yo mama...",
 

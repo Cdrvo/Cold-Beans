@@ -853,3 +853,43 @@ if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.b
     G.GAME.tboi_chest_card_amt = 3
 end
 '''
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''self.children.area_uibox = UIBox{'''
+position = "before"
+match_indent = true
+payload = '''
+if (self == G.jokers) or (self == G.tboi_items) then
+    local text = localize((self == G.jokers) and 'cbean_yma_toggle_to_items' or 'cbean_yma_toggle_to_jokers')
+    if (not self.children.cbean_yma_toggle_uibox) then
+        self.children.cbean_yma_toggle_uibox = UIBox{
+            definition = 
+                {n=G.UIT.ROOT, config = {align = 'bl', colour = G.C.CLEAR}, nodes={
+                    {n=G.UIT.R, config={align = "cl", minh = 0.1, minw = 0.9, padding = 0.1, r = 0.1, no_fill = true}, nodes={}},
+                    {n=G.UIT.R, config={align = "cl", minh = 0.4, minw = 0.9, padding = 0.1, r = 0.1, hover = true, colour =G.C.ORANGE, button = "toggle_jokers_items", func = "cbean_yma_can_toggle_jokers_items", shadow = true, no_fill = true}, nodes={
+                        {n=G.UIT.T, config={text = text, scale = 0.2, colour = G.C.UI.TEXT_LIGHT}}
+                    }}
+                }},
+            config = { align = 'bl', offset = {x=self.T.w,y=0}, major = self, parent = self}
+        }
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''self.children.area_uibox:draw()'''
+position = "after"
+match_indent = true
+payload = '''
+if self.children.cbean_yma_toggle_uibox and G.GAME.cbean_yma_obtained_item then
+    self.children.cbean_yma_toggle_uibox:draw()
+end
+'''
+
+
+
+

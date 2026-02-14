@@ -134,7 +134,10 @@ function CardArea:emplace(card, location, stay_flipped)
         G.tboi_items:emplace(card, location, stay_flipped)
         return
     end
-    if self == G.tboi_items then self:change_size(1) end
+    if self == G.tboi_items then 
+        self:change_size(1) 
+        G.GAME.cbean_yma_obtained_item = true -- flag to allow item switcher to exist
+    end
     if self == G.tboi_chest_cards then self:change_size(1) end
     if (self == G.jokers and CM.states.slot_visible ~= 1) or (self == G.tboi_items and CM.states.slot_visible ~= -1) then
         G.FUNCS.toggle_jokers_items()
@@ -154,6 +157,17 @@ G.FUNCS.toggle_jokers_items = function(e)
     CM.states.slot_visible = CM.states.slot_visible * -1
     play_sound('paper1')
     CM.animate_areas()
+end
+
+
+G.FUNCS.cbean_yma_can_toggle_jokers_items = function(e)
+    if not CM.states.areas_moving then 
+        e.config.colour = G.C.ORANGE
+        e.config.button = 'toggle_jokers_items'
+    else
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    end
 end
 
 local yma_card_juice_up = Card.juice_up
