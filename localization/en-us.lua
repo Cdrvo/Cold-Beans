@@ -2191,7 +2191,7 @@ return {
 				},
 				text = {
 					"{X:chips,C:white}X#1#{} Chips per {C:chips}+Chips{} in",
-					"{C:attention}played{} cards chip vaule"
+					"{C:attention}played{} cards chip value"
 				},
 			},
 			ti_cbean_yma_tboi_growth_hormones = {
