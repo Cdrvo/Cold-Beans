@@ -168,24 +168,24 @@ function G.UIDEF.nteam_scholar()
 	end
 
 	function sprite:say_stuff(n)
-			if n <= 0 then return end
-			local new_said = math.random(1, 11)
-			while new_said == self.last_said do
-				new_said = math.random(1, 11)
+		if n <= 0 then return end
+		local new_said = math.random(1, 11)
+		while new_said == self.last_said do
+			new_said = math.random(1, 11)
+		end
+		self.last_said = new_said
+		play_sound('voice' .. new_said, math.random() * 0.3 + 1.2, 0.5)
+		self:juice_up(0.1, 0.1)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			blockable = false,
+			blocking = false,
+			delay = 0.35,
+			func = function()
+				self:say_stuff(n - 1)
+				return true
 			end
-			self.last_said = new_said
-			play_sound('voice' .. new_said, math.random() * 0.3 + 1.2, 0.5)
-			self:juice_up(0.1, 0.1)
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				blockable = false,
-				blocking = false,
-				delay = 0.35,
-				func = function()
-					self:say_stuff(n - 1)
-					return true
-				end
-			}))
+		}))
 	end
 
 	function sprite:click()
@@ -478,7 +478,9 @@ end
 
 G.FUNCS.show_stationery = function(e)
 	stop_use()
+	play_sound("button")
 	hide_location(G.main_street)
+	play_sound("cancel")
 	G.STATE_COMPLETE = false
 	G.STATE = G.STATES.STATIONERY
 	SMODS.calculate_context { cbean_entered_stationery = true }
@@ -526,7 +528,9 @@ G.FUNCS.hide_stationery = function(e)
 			pop_in = 1.5,
 			maxw = 4.3,
 		})
+		play_sound("button")
 		show_location(G.main_street)
+		play_sound("cancel")
 		hide_location(G.stationery)
 		G.stationery.alignment.offset.y = G.ROOM.T.y + 20
 	end
