@@ -7,10 +7,8 @@ function Card:click()
             frozen_count = frozen_count + 1
         end
     end
-    print(#G.hand.highlighted)
     if frozen_count == #G.hand.cards then
         allfrozencards = true
-        print("True")
     else
         allfrozencards = false
     end
