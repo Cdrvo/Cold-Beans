@@ -98,7 +98,7 @@ SMODS.Consumable {
         end
         local amount = math.ceil(#cards/2)
         pseudoshuffle(cards)
-        print(amount)
+        --print(amount)
         for k, v in pairs(cards) do
             G.E_MANAGER:add_event(Event({
                 trigger = "after", 

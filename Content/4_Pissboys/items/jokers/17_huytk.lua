@@ -2,7 +2,7 @@ SMODS.Joker {
     key = "pboys_huythekiller",
     atlas = "pboys_joker_atlas",
     pos = { x = 7, y = 1 },
-    rarity = 1,
+    rarity = 2,
     order = 17,
     blueprint_compat = true,
     cost = 6,

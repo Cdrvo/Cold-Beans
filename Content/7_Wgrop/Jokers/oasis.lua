@@ -36,7 +36,7 @@ SMODS.Joker{
                 end
             end
             card.ability.extra.inhand = #unenhancedtable
-            print(card.ability.extra.inhand)
+            --print(card.ability.extra.inhand)
         end
         if context.repetition and context.cardarea == G.play and next(SMODS.get_enhancements(context.other_card)) and card.ability.extra.inhand ~= 0 then
             return {

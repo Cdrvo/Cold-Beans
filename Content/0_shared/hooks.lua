@@ -24,7 +24,7 @@ end
 local cant_use_combo = Card.can_use_consumeable
 function Card:can_use_consumeable(context)
     if self.ability then
-        if self.ability.set == 'Combo' then
+        if self.ability.set == 'Combo' or self.config.center.key == "c_cbean_0chill_nope_from_above" then
             if not G.GAME.blind.in_blind then
                 return false
             end
