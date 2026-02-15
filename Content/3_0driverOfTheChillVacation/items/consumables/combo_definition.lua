@@ -18,20 +18,9 @@ for k, v in pairs(combo_table) do
     end
 end
 
---[[
-SMODS.current_mod.calculate = function(self,context)
-    if context.after then
-        G.GAME.cbean_combo_index = {}
-        G.GAME.cbean_combo_unique_hand = {}
-        G.GAME.cbean_combos_used_turn = 0
-    end
-    if context.end_of_round then
-        G.GAME.cbean_combo_unique_round = {}
-    end
-end
-]]--
 
 ---Functions (By MarioFan597)
+---(Moved SMODS.current_mod.calculate to 0_shared/misc.lua. not that the stuff in there was going to use anyway...?)
 
 --Checks if given hand has been used before
 local function entry_scan(table, card_id)
