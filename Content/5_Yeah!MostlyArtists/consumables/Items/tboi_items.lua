@@ -2848,6 +2848,28 @@ YMA.TBOI_ITEMS {
                 v:juice_up(0.3, 0.3)
                 v:set_ability(center)
             end
+        elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'b_cbean_nameteam_happy') then
+            if #SMODS.find_card("j_smiley") == 0 then
+                card_def = {
+                    key = "j_smiley",
+                    area = G.jokers,
+                    edition = {negative = true}
+                }
+                card = SMODS.create_card(card_def)
+                card:add_sticker("eternal", true)
+                G.jokers:emplace(card)
+            else
+                SMODS.find_card("j_smiley")[1]:add_sticker("eternal", true)
+                SMODS.find_card("j_smiley")[1]:set_edition({negative = true}, true)
+            end
+            card_def = {
+                key = "j_scary_face",
+                area = G.jokers,
+                edition = {negative = true}
+            }
+            card = SMODS.create_card(card_def)
+            card:add_sticker("eternal", true)
+            G.jokers:emplace(card)
         else
             card.ability.extra.no_deck = true
         end
