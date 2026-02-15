@@ -2,15 +2,17 @@ local click = Card.click
 function Card:click()
     local allfrozencards = false --Checks if all cards are Frozen. Needed to prevent softlocks
     local frozen_count = 0
-    for k, v in pairs(G.hand.cards) do
-        if v.edition and v.edition.cbean_sd_frozen then
-            frozen_count = frozen_count + 1
+    if G.hand then
+        for k, v in pairs(G.hand.cards) do
+            if v.edition and v.edition.cbean_sd_frozen then
+                frozen_count = frozen_count + 1
+            end
         end
-    end
-    if frozen_count == #G.hand.cards then
-        allfrozencards = true
-    else
-        allfrozencards = false
+        if frozen_count == #G.hand.cards then
+            allfrozencards = true
+        else
+            allfrozencards = false
+        end
     end
 
     if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) and not (allfrozencards and #G.hand.highlighted == 0) then
