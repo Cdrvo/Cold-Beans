@@ -1,6 +1,7 @@
+
 local click = Card.click
 function Card:click()
-    if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) then
+    if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) and (not allfrozencards and #G.hand.highlighted > 0) then
         if self.area and self.area == G.deck and self.area.cards[1] == self then 
             G.FUNCS.deck_info()
         end
@@ -56,3 +57,20 @@ SMODS.Edition{
         code = "mys. minty",
     }
 }
+
+local allfrozencards = false --Checks
+local frozen_count = 0
+SMODS.current_mod.calculate = function(self,context)
+    for k, v in pairs(G.hand.cards) do
+        if v.edition and v.edition.cbean_sd_frozen then
+            frozen_count = frozen_count + 1
+        end
+    end
+    print(frozen_count)
+    if frozen_count == #G.hand.cards then
+        allfrozencards = true
+    else
+        allfrozencards = false
+    end
+    frozen_count = 0
+end
