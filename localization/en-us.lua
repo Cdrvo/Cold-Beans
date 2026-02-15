@@ -8261,15 +8261,21 @@ return {
 				},
 				text = {
 					{
+						"{C:green}#2# in #3#{} chance for one of below:",
+						"{s:0.8}1. {C:chips,s:0.8}+#4#{s:0.8} Chips, {C:mult,s:0.8}+#5#{s:0.8} Mult, {X:mult,C:white,s:0.8}X#6#{s:0.8} Mult",
+						"{s:0.7}Boosted by total combo length",
+						"{s:0.8}2. Add {C:dark_edition,s:0.8}Polychrome{s:0.8} to a random Joker",
+						"{s:0.8}3. Create {C:attention,s:0.8}#7#{s:0.8} {C:dark_edition,s:0.8}Negative{s:0.8} Tarot card"
+					},
+					{
 						"Counts as {C:dark_edition}#1#{} Combo cards",
 					},
 					{
 						"Combos Into:",
-						"{C:dark_edition}Anything",
+						"{X:dark_edition,C:white}Anything",
 						"{C:inactive}(Even if stated otherwise)",
 					},
 				},
-			},
 			c_cbean_0chill_for_all = {
 				name = {
 					"For All",
