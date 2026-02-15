@@ -28,20 +28,20 @@ SMODS.ObjectType {
 
 YMA.TBOI_QUALITIES = {
     {
-        label = 'q_cbean_yma_fair',
-        colour = HEX('00b7ff')
+        label = 'q_cbean_yma_quality1', --Quality 1
+        colour = HEX('adda5b')
     },
     {
-        label = 'q_cbean_yma_pristine',
-        colour = HEX('713dff')
+        label = 'q_cbean_yma_quality2', --Quality 2
+        colour = HEX('77b3fe')
     },
     {
-        label = 'q_cbean_yma_exceptional',
-        colour = HEX('b300ff')
+        label = 'q_cbean_yma_quality3', --Quality 3
+        colour = HEX('b04cca')
     },
     {
-        label = 'q_cbean_yma_magnificent',
-        colour = HEX('ff00cc')
+        label = 'q_cbean_yma_quality4', -- Quality 4
+        colour = HEX('c5b71d')
     }
 }
 

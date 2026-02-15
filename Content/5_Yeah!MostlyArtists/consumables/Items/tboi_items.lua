@@ -3,7 +3,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_sad_onion",
     set = "yma_tboi_items",
     order = 1,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -198,7 +198,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_my_reflection",
     set = "yma_tboi_items",
     order = 5,
-    quality = 2,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_my_reflection')
@@ -251,7 +251,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_steven",
     set = "yma_tboi_items",
     order = 6,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -293,7 +293,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_pentagram",
     set = "yma_tboi_items",
     order = 7,
-    quality = 3,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_pentagram')
@@ -459,7 +459,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_one_up",
     set = "yma_tboi_items",
     order = 10,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -509,7 +509,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_number_one",
     set = "yma_tboi_items",
     order = 11,
-    quality = 2,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -603,7 +603,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_virus",
     set = "yma_tboi_items",
     order = 13,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -650,7 +650,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_heart",
     set = "yma_tboi_items",
     order = 13,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -690,7 +690,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_skeleton_key",
     set = "yma_tboi_items",
     order = 14,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -772,7 +772,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_transcendence",
     set = "yma_tboi_items",
     order = 16,
-    quality = 2,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -823,7 +823,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_dinner",
     set = "yma_tboi_items",
     order = 17,
-    quality = 1,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -860,7 +860,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_breakfast",
     set = "yma_tboi_items",
     order = 18,
-    quality = 1,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -897,7 +897,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_wooden_spoon",
     set = "yma_tboi_items",
     order = 19,
-    quality = 1,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_wooden_spoon')
@@ -941,7 +941,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_belt",
     set = "yma_tboi_items",
     order = 20,
-    quality = 1,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_belt')
@@ -985,7 +985,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_wire_coat_hanger",
     set = "yma_tboi_items",
     order = 21,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1064,7 +1064,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_cupids_arrow",
     set = "yma_tboi_items",
     order = 23,
-    quality = 2,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1160,7 +1160,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_magneto",
     set = "yma_tboi_items",
     order = 25,
-    quality = 1,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1217,7 +1217,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_charm_vampire",
     set = "yma_tboi_items",
     order = 26,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1273,7 +1273,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_battery",
     set = "yma_tboi_items",
     order = 27,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_belt')
@@ -1325,7 +1325,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_steam_sale",
     set = "yma_tboi_items",
     order = 28,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1361,7 +1361,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_sister_maggy",
     set = "yma_tboi_items",
     order = 29,
-    quality = 1,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
@@ -1409,7 +1409,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_technology",
     set = "yma_tboi_items",
     order = 30,
-    quality = 3,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1566,7 +1566,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_rosary",
     set = "yma_tboi_items",
     order = 33,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1627,7 +1627,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_phd",
     set = "yma_tboi_items",
     order = 34,
-    quality = 2,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1666,7 +1666,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_x_ray_vision",
     set = "yma_tboi_items",
     order = 35,
-    quality = 2,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1760,7 +1760,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_dead_cat",
     set = "yma_tboi_items",
     order = 37,
-    quality = 3,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -1926,7 +1926,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_robo_baby",
     set = "yma_tboi_items",
     order = 40,
-    quality = 1,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
@@ -1974,7 +1974,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_halo",
     set = "yma_tboi_items",
     order = 41,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_halo')
@@ -2042,7 +2042,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_parasite",
     set = "yma_tboi_items",
     order = 42,
-    quality = 3,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2087,7 +2087,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_money_power",
     set = "yma_tboi_items",
     order = 43,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2185,7 +2185,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_dead_bird",
     set = "yma_tboi_items",
     order = 45,
-    quality = 1,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2278,7 +2278,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_blood_bag",
     set = "yma_tboi_items",
     order = 47,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2325,7 +2325,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_whore_babylon",
     set = "yma_tboi_items",
     order = 48,
-    quality = 2,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_halo')
@@ -2427,7 +2427,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_technology_two",
     set = "yma_tboi_items",
     order = 50,
-    quality = 2,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2474,7 +2474,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_ankh",
     set = "yma_tboi_items",
     order = 51,
-    quality = 1,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2674,7 +2674,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_birthright",
     set = "yma_tboi_items",
     order = 54,
-    quality = 3,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -2930,7 +2930,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_ghost_baby",
     set = "yma_tboi_items",
     order = 56,
-    quality = 1,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_cbean_wgrop_coarse
@@ -2978,7 +2978,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_cat_nine_tails",
     set = "yma_tboi_items",
     order = 57,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -3020,7 +3020,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_harlequin_baby",
     set = "yma_tboi_items",
     order = 58,
-    quality = 1,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -3065,7 +3065,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_stem_cells",
     set = "yma_tboi_items",
     order = 59,
-    quality = 1,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -3102,7 +3102,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_fate",
     set = "yma_tboi_items",
     order = 60,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_speed_ball')
@@ -3163,7 +3163,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_tooth_picks",
     set = "yma_tboi_items",
     order = 61,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         return {
@@ -3202,7 +3202,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_smb_super_fan",
     set = "yma_tboi_items",
     order = 62,
-    quality = 3,
+    quality = 4,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_smb_super_fan')
@@ -3270,7 +3270,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_fanny_pack",
     set = "yma_tboi_items",
     order = 63,
-    quality = 1,
+    quality = 3,
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_tboi_smb_super_fan')
@@ -3359,7 +3359,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_pyromaniac",
     set = "yma_tboi_items",
     order = 65,
-    quality = 4,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         return {

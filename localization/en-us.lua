@@ -3237,7 +3237,12 @@ return {
 					{
 						"Highest rank card has",
 						"{X:mult,C:white}X#1#{} Mult when scored",
-					}
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}",
+					},
 				},
 			},
 
@@ -3254,7 +3259,12 @@ return {
 						"and has a {C:green}#3# in #4#{} chance to",
 						"create a random {C:dark_edition}Negative{} {C:planet}Planet{} card",
 						"{C:inactive}Odds improve by 1 per card{}"
-					}
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}",
+					},
 				},
 			},
 
@@ -3269,7 +3279,12 @@ return {
 					{
 						"Each scored King and 2 earns {C:money}$#8#{}",
 						"Otherwise scored cards earn {C:money}$#7#{}",
-					}
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}",
+					},
 				},
 			},
 
@@ -3284,7 +3299,12 @@ return {
 					{
 						"If score catches fire,",
 						"get a {C:combo}Turbo{} tag"
-					}
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}",
+					},
 				},
 			},
 
@@ -3302,7 +3322,12 @@ return {
 					{
 						"Turns {C:dark_edition}Frozen{} cards held in hand",
 						"into {C:attention}Steel Cards{}"
-					}
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}",
+					},
 				},
 			},
 
@@ -3316,7 +3341,12 @@ return {
 					},
 					{
 						"{C:red}Destroys{} unscored played cards"
-					}
+					},
+					{
+						"Combos Into:",
+						"{X:black,C:white}Taunt{}, {X:cbean_series,C:white}Series{},",
+						"{X:red,C:white}Finisher{}, {X:purple,C:white}Special{}",
+					},
 				},
 			},
 
@@ -10506,10 +10536,10 @@ return {
 			b_reroll                            = "Reroll",
 			cbean_yma_toggle_to_items			= "Show Items",
 			cbean_yma_toggle_to_jokers			= "Show Jokers",
-			q_cbean_yma_fair					= "Fair",
-			q_cbean_yma_pristine				= "Pristine",
-			q_cbean_yma_exceptional				= "Exceptional",
-			q_cbean_yma_magnificent				= "Magnificent",
+			q_cbean_yma_quality1				= "Quality 1",
+			q_cbean_yma_quality2				= "Quality 2",
+			q_cbean_yma_quality3				= "Quality 3",
+			q_cbean_yma_quality4				= "Quality 4",
 			cbean_stationery_accepts            = {
 				"Only accepts Jokers",
 				"with {C:attention}1 or more{} of the",
