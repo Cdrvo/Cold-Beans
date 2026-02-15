@@ -14,7 +14,6 @@ SMODS.ObjectType {
     primary_colour = G.C.WHITE,
     secondary_colour = HEX("466e96"),
 
-
     process_loc_text = function(self)
         SMODS.process_loc_text(G.localization.misc.dictionary, 'k_' .. string.lower(self.key), self.loc_txt, 'name')
         SMODS.process_loc_text(G.localization.misc.dictionary, 'b_' .. string.lower(self.key) .. '_cards',
@@ -26,6 +25,26 @@ SMODS.ObjectType {
         G.C.SET[self.key] = self.primary_colour
     end,
 };
+
+YMA.TBOI_QUALITIES = {
+    {
+        label = 'q_cbean_yma_fair',
+        colour = HEX('00b7ff')
+    },
+    {
+        label = 'q_cbean_yma_pristine',
+        colour = HEX('713dff')
+    },
+    {
+        label = 'q_cbean_yma_exceptional',
+        colour = HEX('b300ff')
+    },
+    {
+        label = 'q_cbean_yma_magnificent',
+        colour = HEX('ff00cc')
+    }
+}
+
 
 YMA.TBOI_ITEMS = SMODS.Center:extend({
     set = 'yma_tboi_items',
@@ -39,6 +58,19 @@ YMA.TBOI_ITEMS = SMODS.Center:extend({
     required_params = {
         'key',
     },
+ 	set_badges = function(self, card, badges)
+        local quality = YMA.TBOI_QUALITIES[self.quality]
+ 		badges[#badges+1] = create_badge(localize(quality.label), quality.colour, nil, 1.2 )
+ 	end,
+    inject = function(self, i)
+        SMODS.Center.inject(self, i)
+        local quality_list = G.P_CBEAN_YMA_TBOI_RARITY_POOLS[self.quality]
+        SMODS.insert_pool(quality_list, self)
+    end,
+    delete = function (self)
+        SMODS.remove_pool(G.P_CBEAN_YMA_TBOI_RARITY_POOLS[self.quality], self.key)
+        SMODS.Center.delete(self)
+    end
 })
 CM = SMODS.current_mod
 

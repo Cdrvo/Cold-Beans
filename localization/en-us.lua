@@ -10506,6 +10506,10 @@ return {
 			b_reroll                            = "Reroll",
 			cbean_yma_toggle_to_items			= "Show Items",
 			cbean_yma_toggle_to_jokers			= "Show Jokers",
+			q_cbean_yma_fair					= "Fair",
+			q_cbean_yma_pristine				= "Pristine",
+			q_cbean_yma_exceptional				= "Exceptional",
+			q_cbean_yma_magnificent				= "Magnificent",
 			cbean_stationery_accepts            = {
 				"Only accepts Jokers",
 				"with {C:attention}1 or more{} of the",

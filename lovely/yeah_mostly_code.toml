@@ -874,6 +874,32 @@ if self.children.cbean_yma_toggle_uibox and G.GAME.cbean_yma_obtained_item then
 end
 '''
 
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''self.P_JOKER_RARITY_POOLS = {'''
+position = "before"
+match_indent = true
+payload = '''
+self.P_CBEAN_YMA_TBOI_RARITY_POOLS = {
+    {}, {}, {}, {}, {}
+}
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif SMODS.ObjectTypes[_type] and SMODS.ObjectTypes[_type].rarities then'''
+position = "before"
+match_indent = true
+payload = '''
+elseif _type == 'yma_tboi_items' then
+    _legendary = nil;
+    _rarity = (type(_rarity) == "number") and (_rarity) or pseudorandom(pseudoseed('CBEAN_YMA_TBOI_QUALITY'..G.GAME.round_resets.ante..(_append or '')))
+    local rarity = ((_rarity > 0.95) and 4) or (((_rarity > 0.8) and 3) or (((_rarity > 0.7) and 2) or 1))
+    _starting_pool, _pool_key = G.P_CBEAN_YMA_TBOI_RARITY_POOLS[rarity], 'CBEAN_YMA_TBOI'..rarity..(_append or '')
+'''
+
 
 
 
