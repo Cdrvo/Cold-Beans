@@ -59,9 +59,9 @@ SMODS.Consumable {
                 local effect = math.random(1, 3) --Effect 1
                 if effect == 1 then
                     return {
-                        chips = (card.ability.extra.chips * (1 + (#G.GAME.cbean_combo_index - 1)/100 )),
-                        mult = (card.ability.extra.mult * (1 + (#G.GAME.cbean_combo_index - 1)/100 )),
-                        xmult = (card.ability.extra.xmult * (1 + (#G.GAME.cbean_combo_index - 1)/100 ))
+                        chips = (card.ability.extra.chips * (1 + (#G.GAME.cbean_combo_index - 1)/10 )),
+                        mult = (card.ability.extra.mult * (1 + (#G.GAME.cbean_combo_index - 1)/10 )),
+                        xmult = (card.ability.extra.xmult * (1 + (#G.GAME.cbean_combo_index - 1)/10 ))
                     }
                 elseif effect == 2 then --Effect 2
                     --Kinda modifed from Cryptid's Kalidescope which was made by Jevonn
