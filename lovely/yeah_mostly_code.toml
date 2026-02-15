@@ -834,7 +834,7 @@ position = "before"
 match_indent = true
 payload = '''
 if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype then
-    G.GAME.tboi_chest_card_amt = 3
+    G.GAME.tboi_chest_card_amt = 1
 end
 '''
 
