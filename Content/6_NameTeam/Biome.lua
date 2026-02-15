@@ -65,7 +65,6 @@ Game.main_menu = function(change_context)
     local ret = main_menu_ref(change_context)
 
     -- Adding Dave's Lawn yard
-    if not CBWG.ColdBeans_Biomes.nameteam_davelawn then
         -- Replaces in_pool for all jokers which simply checks for the biome
         for k, v in pairs(G.P_CENTERS) do
             if string.find(k, "j_") == 1 then
@@ -94,12 +93,6 @@ Game.main_menu = function(change_context)
                 end
             end
         end
-    end
-
-    -- Adding The Afterlife
-    -- if not CBWG.ColdBeans_Biomes.nameteam_afterlife then
-    --     CBWG.ColdBeans_Biome.inject()
-    -- end
 
     return ret
 end
