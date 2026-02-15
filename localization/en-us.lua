@@ -8276,6 +8276,7 @@ return {
 						"{C:inactive}(Even if stated otherwise)",
 					},
 				},
+			},
 			c_cbean_0chill_for_all = {
 				name = {
 					"For All",
