@@ -1,22 +1,4 @@
--- idk why this is not working
-SMODS.current_mod.reset_game_globals = function(run_start)
-  if run_start then 
-    G.PISSMAX = 1
-	G.SECRET_BUTTON = localize('k_cbean_unique_ex')
-  end
-  G.GAME.current_round.gfs_card.rank = 'Ace'
-  local valid_gfs_cards = {}
-  for k, v in ipairs(G.playing_cards) do
-      if not SMODS.has_no_rank(v) then
-          valid_gfs_cards[#valid_gfs_cards+1] = v
-      end
-  end
-  if valid_gfs_cards[1] then 
-      local gfs_card = pseudorandom_element(valid_gfs_cards, pseudoseed('gfs'..G.GAME.round_resets.ante))
-      G.GAME.current_round.gfs_card.rank = gfs_card.base.value
-      G.GAME.current_round.gfs_card.id = gfs_card.base.id
-  end
-end
+-- reset_game_globals merged with the existing one in main.lua
 
 G.FUNCS.can_switch = function(e)
   G.SECRET_BUTTON = localize('k_cbean_unique_ex')

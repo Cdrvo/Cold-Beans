@@ -98,7 +98,7 @@ SMODS.Consumable {
         end
         local amount = math.ceil(#cards/2)
         pseudoshuffle(cards)
-        print(amount)
+        --print(amount)
         for k, v in pairs(cards) do
             G.E_MANAGER:add_event(Event({
                 trigger = "after", 
@@ -130,15 +130,15 @@ SMODS.Consumable {
     atlas = "jbill_consume2",
     pos = { x = 3, y = 0 },
     cost = 5,
-    config = { extra = { mult = 1, uses = 10} },
+    config = { extra = { mult = 1, times_left = 10} },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.uses } }
+        return { vars = { card.ability.extra.mult, card.ability.extra.times_left } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
-            card.ability.extra.uses = card.ability.extra.uses - 1
-            if card.ability.extra.uses <= 0 then
+            card.ability.extra.times_left = card.ability.extra.times_left - 1
+            if card.ability.extra.times_left <= 0 then
                 card.ability.extra.mult = 0
                 card:start_dissolve()
             end
@@ -168,6 +168,21 @@ SMODS.Consumable {
     pos = { x = 0, y = 1 },
     config = {max_highlighted = 3, min_highlighted = 3 },
     use = function (self, card, area)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i=1, #G.hand.highlighted do
+            local percent = 1.15 - (i-0.999)/(#G.hand.highlighted-0.998)*0.3
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() G.hand.highlighted[i]:flip();play_sound('card1', percent);G.hand.highlighted[i]:juice_up(0.3, 0.3);return true end }))
+        end
+        delay(0.2)
+    
         local rightmost = G.hand.highlighted[1]
         local string = false
         for i = 1, #G.hand.highlighted do
@@ -189,13 +204,43 @@ SMODS.Consumable {
             rightmost_rank = "Jack"
             string = true
         end
-        for i = 1, #G.hand.highlighted do
-            if not string then
-                assert(SMODS.change_base(G.hand.highlighted[i], nil, ""..rightmost_rank))
-            else
-                assert(SMODS.change_base(G.hand.highlighted[i], nil, rightmost_rank))
+
+        G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+            for i = 1, #G.hand.highlighted do
+                if not string then
+                    assert(SMODS.change_base(G.hand.highlighted[i], nil, ""..rightmost_rank))
+                else
+                    assert(SMODS.change_base(G.hand.highlighted[i], nil, rightmost_rank))
+                end
             end
+            return true
         end
+    }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     beans_credits = {
         idea = "Evgast",
@@ -216,9 +261,7 @@ SMODS.Consumable {
         return {}
     end,
     can_use = function(self, card)
-        if (G.consumeables.config.card_limit - #G.consumeables.cards) >= 1 then
-            return true
-        end
+       return (#G.consumeables.cards < G.consumeables.config.card_limit or card.area == G.consumeables)
     end,
     use = function(self, card, area, copier)
         local starter_pool = {}
@@ -251,6 +294,23 @@ SMODS.Consumable {
     atlas = "jbill_consume2",
     cost = 5,
     pos = { x = 2, y = 1 },
+
+    config = {
+        extra = {
+            uses = 1,
+            max_uses = 1,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
     calculate = function(self, card, context)
         if context.starting_shop then
             local key = SMODS.create_card({set = "yma_keys" })
@@ -258,7 +318,14 @@ SMODS.Consumable {
             G.shop_jokers:emplace(key)
         end
         if context.end_of_round and context.game_over == false and context.main_eval and (G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo") then
-            card:start_dissolve()
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1;
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+            end
         end
     end,
     can_use = function(self, card)

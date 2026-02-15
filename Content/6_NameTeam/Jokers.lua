@@ -3183,7 +3183,7 @@ SMODS.Joker({
 SMODS.Joker({
     key = "nameteam_absoluteschnozz",
     config = { extra = { retriggers = 2 } },
-    rarity = 1,
+    rarity = 2,
     atlas = "NAMETEAM_Jokers3",
     pos = { x = 0, y = 5 },
     cost = 5,

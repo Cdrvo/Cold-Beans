@@ -17,24 +17,54 @@ G.FUNCS.switch_biome = function(biome)
         G.VIBRATION = G.VIBRATION + 1
 end
 
+CBWG.ColdBeans_Biome {
+    pos = {x = 0, y = 0},
+    config = {},
+    atlas = 'cbean_NAMETEAM_Biomes',
+    key = "nameteam_davelawn",
+    calculate = function(self, context)
+    end,
+    enter = function(self, calc)
+    end,
+    exit = function(self, calc)
+    end
+}
+
+CBWG.ColdBeans_Biome {
+    pos = {x = 1, y = 0},
+    config = {},
+    atlas = 'cbean_NAMETEAM_Biomes',
+    key = "nameteam_afterlife",
+    in_pool = function() return false end,
+    calculate = function(self, context)
+    end,
+    enter = function(self, calc)
+        G.GAME.standard_shop_size = G.GAME.shop.joker_max
+        G.GAME.standard_shop_booster_size = (G.GAME.modifiers.extra_boosters or 0) + 2
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                change_shop_size(G.GAME.shop.joker_max * -1)
+                return true
+            end
+        }))
+        SMODS.change_booster_limit((G.GAME.modifiers.extra_boosters or 0) * -1 - 2)
+    end,
+    exit = function(self, calc)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                change_shop_size(G.GAME.standard_shop_size)
+                return true
+            end
+        }))
+        SMODS.change_booster_limit(G.GAME.standard_shop_booster_size)
+    end
+}
+
 local main_menu_ref = Game.main_menu
 Game.main_menu = function(change_context)
     local ret = main_menu_ref(change_context)
 
     -- Adding Dave's Lawn yard
-    if not CBWG.ColdBeans_Biomes.nameteam_davelawn then
-        CBWG.ColdBeans_Biome.inject(CBWG.ColdBeans_Biome {
-            pos = {x = 0, y = 0},
-            config = {},
-            atlas = 'cbean_NAMETEAM_Biomes',
-            key = "nameteam_davelawn",
-            calculate = function(self, context)
-            end,
-            enter = function(self, calc)
-            end,
-            exit = function(self, calc)
-            end
-        })
         -- Replaces in_pool for all jokers which simply checks for the biome
         for k, v in pairs(G.P_CENTERS) do
             if string.find(k, "j_") == 1 then
@@ -63,40 +93,6 @@ Game.main_menu = function(change_context)
                 end
             end
         end
-    end
-
-    -- Adding The Afterlife
-    if not CBWG.ColdBeans_Biomes.nameteam_afterlife then
-        CBWG.ColdBeans_Biome.inject(CBWG.ColdBeans_Biome {
-            pos = {x = 1, y = 0},
-            config = {},
-            atlas = 'cbean_NAMETEAM_Biomes',
-            key = "nameteam_afterlife",
-            in_pool = function() return false end,
-            calculate = function(self, context)
-            end,
-            enter = function(self, calc)
-                G.GAME.standard_shop_size = G.GAME.shop.joker_max
-                G.GAME.standard_shop_booster_size = (G.GAME.modifiers.extra_boosters or 0) + 2
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        change_shop_size(G.GAME.shop.joker_max * -1)
-                        return true
-                    end
-                }))
-                SMODS.change_booster_limit((G.GAME.modifiers.extra_boosters or 0) * -1 - 2)
-            end,
-            exit = function(self, calc)
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        change_shop_size(G.GAME.standard_shop_size)
-                        return true
-                    end
-                }))
-                SMODS.change_booster_limit(G.GAME.standard_shop_booster_size)
-            end
-        })
-    end
 
     return ret
 end

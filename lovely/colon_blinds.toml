@@ -760,3 +760,18 @@ G.colonparen_arch_anim_from.T.y = G.hand.T.y
 G.colonparen_arch_anim:hard_set_VT()
 
 '''
+
+
+
+# beans...
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "function CardArea:align_cards()"
+position = "after"
+payload = '''
+    if self.config.type == 'hand' then
+        self.config.temp_limit = math.min(self.config.card_limit, #G.playing_cards)
+    end
+'''
+match_indent = true

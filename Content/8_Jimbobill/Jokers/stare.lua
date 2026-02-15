@@ -11,7 +11,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.blind_defeated and (((G.GAME.chips / G.GAME.blind.chips) * 100) < 110) then
-            print(((G.GAME.chips / G.GAME.blind.chips) * 100))
+            --print(((G.GAME.chips / G.GAME.blind.chips) * 100))
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xmult",

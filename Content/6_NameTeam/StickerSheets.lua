@@ -732,58 +732,73 @@ select_card = 'consumeables',
   end
 }
 
-SMODS.Consumable {
-  set = "cbean_StickerSheet",
-select_card = 'consumeables',
-  key = "heavy_sheet",
-  pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 2 },
-  draw_extra = function(self, card, layer)
-    if self.discovered or card.params.bypass_discovery_center then
-      card.cbean_extra:draw_shader('booster', nil, card.ARGS.send_to_shader, nil, card.children.center)
-    end
-  end,
-  atlas = "NAMETEAM_StickerSheets",
-  cost = 6,
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = SMODS.Stickers["cbean_heavy"]
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-    return {}
-  end,
-  can_use = function(self, card)
-    if #G.hand.highlighted == 1 then
-      if not G.hand.highlighted[1].ability.cbean_heavy then
-        return true
-      end
-    end
-    return false
-  end,
-  use = function(self, card, area, copier)
-    local affected_card = G.hand.highlighted[1]
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound("gold_seal", 1.5, 1)
-        affected_card:add_sticker("cbean_heavy", true)
-        local edition = poll_edition('heavy_sheet', nil, true, true)
-        affected_card:set_edition(edition, true)
-        card:juice_up(0.3, 0.5)
-        affected_card:juice_up()
-        return true
-      end
-    }))
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.2,
-      func = (function()
-        return true
-      end)
-    }))
-    delay(0.6)
-  end
-}
+SMODS.Consumable({
+	set = "cbean_StickerSheet",
+	select_card = "consumeables",
+	key = "heavy_sheet",
+	pos = { x = 0, y = 0 },
+	pos_extra = { x = 3, y = 2 },
+	draw_extra = function(self, card, layer)
+		if self.discovered or card.params.bypass_discovery_center then
+			card.cbean_extra:draw_shader("booster", nil, card.ARGS.send_to_shader, nil, card.children.center)
+		end
+	end,
+	atlas = "NAMETEAM_StickerSheets",
+	cost = 6,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = SMODS.Stickers["cbean_heavy"]
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+		return {}
+	end,
+	can_use = function(self, card)
+		if #G.consumeables.highlighted == 2 and G.hand and #G.hand.cards>0 then
+			local acard = nil
+			for k, v in pairs(G.consumeables.highlighted) do
+				if v ~= card then
+					acard = G.consumeables.highlighted[k]
+				end
+			end
+			if not acard.ability.cbean_heavy then
+				return true
+			end
+		end
+		return false
+	end,
+	use = function(self, card, area, copier)
+		local affected_card, reward_card = nil, pseudorandom_element(G.hand.cards, pseudoseed("heavy_sheet"))
+		for k, v in pairs(G.consumeables.highlighted) do
+			if v ~= card then
+				affected_card = G.consumeables.highlighted[k]
+			end
+		end
+		if affected_card and reward_card then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.4,
+				func = function()
+					play_sound("gold_seal", 1.5, 1)
+					affected_card:add_sticker("cbean_heavy", true)
+					local edition = poll_edition("heavy_sheet", nil, true, true)
+					reward_card:set_edition(edition, true)
+					card:juice_up(0.3, 0.5)
+          affected_card:juice_up()
+					reward_card:juice_up()
+					return true
+				end,
+			}))
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.2,
+				func = function()
+					return true
+				end,
+			}))
+			delay(0.6)
+		end
+	end,
+})
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
@@ -802,7 +817,14 @@ select_card = 'consumeables',
     return {}
   end,
   can_use = function(self, card)
-    return count_consumables() < G.consumeables.config.card_limit
+    local mod = 0
+    for k, c in pairs(G.consumeables.cards) do
+      if c == card then
+        mod = -1
+        break
+      end
+    end
+    return Colonparen.checkForSpace(G.consumeables, mod)
   end,
   use = function(self, card, area, copier)
     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
@@ -1114,15 +1136,15 @@ SMODS.Consumable {
     return {}
   end,
   can_use = function(self, card)
-    if #G.hand.highlighted == 1 then
-      if not G.hand.highlighted[1].ability.cbean_minuscule then
+    if #G.jokers.highlighted == 1 then
+      if not G.jokers.highlighted[1].ability.cbean_minuscule then
         return true
       end
     end
     return false
   end,
   use = function(self, card, area, copier)
-    local affected_card = G.hand.highlighted[1]
+    local affected_card = G.jokers.highlighted[1]
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,

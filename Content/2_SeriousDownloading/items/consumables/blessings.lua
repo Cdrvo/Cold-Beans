@@ -658,7 +658,7 @@ SMODS.Consumable {
                             if not suits[kk] and v:is_suit(kk) then --Fucky if a card has multiple-but-not-all suits
                                 suits[kk] = true                    --but only like two mods ever do that ¯\_(ツ)_/¯
                                 count = count + 1
-                                print(count)
+                                --print(count)
                                 break
                             end
                         end

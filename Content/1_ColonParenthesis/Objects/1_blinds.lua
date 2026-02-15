@@ -274,7 +274,7 @@ function Colonparen.get_new_blind(type, startofante)
 				then
 					eligible_bosses[k] = res and true or nil
 				end
-			elseif not v.boss.showdown and ((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+			elseif (not v.boss.showdown) and (((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
 				eligible_bosses[k] = res and true or nil
 			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 				eligible_bosses[k] = res and true or nil
@@ -322,6 +322,7 @@ function Colonparen.get_new_blind(type, startofante)
             end
         end
     end
+	--print()
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)
