@@ -460,10 +460,12 @@ Colonparen.GreekBlind{
     upper = {
         calculate = function(self, blind, context)
             if context.before then
-                local card = SMODS.create_card({ set = "Joker", area = G.jokers, rarity = "Rare", edition = "e_negative" })
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                card:start_materialize()
+                for i = 1, 2 do
+                    local card = SMODS.create_card({ set = "Joker", area = G.jokers, rarity = "Rare", edition = "e_negative" })
+                    card:add_to_deck()
+                    G.jokers:emplace(card)
+                    card:start_materialize()
+                end
             end
         end,
     },

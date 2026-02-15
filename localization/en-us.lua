@@ -641,8 +641,8 @@ return {
 			bl_cbean_upper_colon_chi = { -- Glitchkat10 | George The Rat | SMG9000
 				name = "Chi",
 				text = {
-					"Create 1 random",
-					"Negative Rare Joker",
+					"Create 2 random",
+					"Negative Rare Jokers",
 					"when hand is played"
 				},
 			},
@@ -8959,7 +8959,7 @@ return {
 				name = "NTeam Stake",
 				text = {
 					"Many {C:attention}Stickers{} added by",
-					"Name Team may spawn",
+					"{E:1,V:1}Name Team{} may spawn",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},

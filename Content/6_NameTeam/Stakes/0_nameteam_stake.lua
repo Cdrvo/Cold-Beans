@@ -13,6 +13,9 @@ SMODS.Stake {
             mod = false
         }
     },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { colours = { HEX("2ecc71") } } }
+    end,
     modifiers = function()
         for k, v in pairs(SMODS.Stickers) do
             if v.sets and v.sets["Joker"] and v.beans_credits and (v.beans_credits.team == "Name Team") then
