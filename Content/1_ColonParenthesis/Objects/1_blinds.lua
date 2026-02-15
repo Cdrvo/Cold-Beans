@@ -322,7 +322,7 @@ function Colonparen.get_new_blind(type, startofante)
             end
         end
     end
-	print()
+	--print()
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)

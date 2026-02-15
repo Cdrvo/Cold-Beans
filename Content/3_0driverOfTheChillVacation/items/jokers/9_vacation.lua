@@ -132,7 +132,7 @@ SMODS.Joker {
         and (hand_chips * mult > G.GAME.blind.chips)
         and not card.debuff and card.ability.immutable.sequence > 0 
         and card.ability.immutable.member == 3 then --MarioFan597's Effect
-            print("Here")
+            --print("Here")
             G.E_MANAGER:add_event(Event({
                 func = (function()
                     add_tag(Tag('tag_cbean_0chill_combo'))
@@ -159,7 +159,7 @@ SMODS.Joker {
             local eligiblecards = {} --Modifed from cryptid sus
             for k, v in pairs(G.hand.cards) do
                 if v.edition and v.edition.cbean_sd_frozen then
-                    print(v)
+                    --print(v)
                     table.insert(eligiblecards, v)
                 end
             end

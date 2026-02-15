@@ -233,7 +233,7 @@ YMA.TBOI_ITEMS {
                 if SMODS.pseudorandom_probability(card, 'yma_tboi_my_reflection'..i, 1, card.ability.extra.odds) then
                     cards[#cards+1] = v
                 end
-                print()
+                --print()
                 i = i + 1
             end
             card.ability.extra.yma.to_hand.cards = cards
