@@ -24,14 +24,14 @@ SMODS.Sticker({
 				trigger = "after",
 				delay = 0.01,
 				func = function()
-					if SMDOS.pseudorandom_probability(card, "flag_seed", 1, 8) then
+					if SMODS.pseudorandom_probability(card, "flag_seed", 1, 8) then
 						if card:on_the("right") then
-							SMDOS.destroy_cards(card:on_the("right"))
+							SMODS.destroy_cards(card:on_the("right"))
 						end
 					end
-					if SMDOS.pseudorandom_probability(card, "flag_seed_left", 1, 8) then
+					if SMODS.pseudorandom_probability(card, "flag_seed_left", 1, 8) then
 						if card:on_the("left") then
-							SMDOS.destroy_cards(card:on_the("left"))
+							SMODS.destroy_cards(card:on_the("left"))
 						end
 					end
 					return true
