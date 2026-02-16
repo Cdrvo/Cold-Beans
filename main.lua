@@ -266,7 +266,6 @@ ColdBeans.calculate = function(mod, context)
 		blind.chip_text = number_format(blind.chips)
 	end
 	--Jbilling it
-	print(context)
 	if context.end_of_round then
 		print((G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo"))
 	end
