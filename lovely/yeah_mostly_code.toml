@@ -419,6 +419,21 @@ if context.ending_shop or context.drawing_cards or context.cashing_out or contex
 end
 '''
 
+#Gives Issac Items Unique Backs. Written by Jamirror
+[[patches]] 
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "self.children.back = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, atlas_key, self.params.bypass_back or (self.playing_card and G.GAME[self.back].pos or G.P_CENTERS['b_red'].pos))"
+position = "at"
+match_indent = true
+payload = '''
+if self.config.center.set == 'yma_tboi_items' then
+        self.children.back = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, 'cbean_yma_tboi_atlas', {x=11, y=5})
+else
+        self.children.back = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, atlas_key, self.params.bypass_back or (self.playing_card and G.GAME[self.back].pos or G.P_CENTERS['b_red'].pos))
+end
+'''
+
 [[patches]]
 [patches.pattern]
 target = 'functions/button_callbacks.lua'
