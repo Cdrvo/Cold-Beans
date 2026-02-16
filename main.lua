@@ -267,7 +267,7 @@ ColdBeans.calculate = function(mod, context)
 	end
 	--Jbilling it
 	if context.end_of_round then
-		print((G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo"))
+		--print((G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo"))
 	end
 	if context.end_of_round and context.game_over == false and context.main_eval and (G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo") then
 		G.GAME.CEO_beaten_employment = true
