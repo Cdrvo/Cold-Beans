@@ -8265,7 +8265,7 @@ return {
 				name = "The Qilin",
 				text = {
 					"Turn at least {C:attention}2{} selected cards",
-					"into the rank of the {C:attention}leftmost{}",
+					"into the rank of the {C:attention}rightmost{}",
 					"selected card and {C:dark_edition}Negative{}",
 					"{C:inactive}(Drag to rearrange)",
 				},

@@ -35,7 +35,7 @@ SMODS.Consumable {
             delay = 0.15,
             func = function()
                 for i=1, #highlighted_table do
-                    SMODS.change_base(highlighted_table[i].card, nil, highlighted_table[1].card.base.value)
+                    SMODS.change_base(highlighted_table[i].card, nil, highlighted_table[#highlighted_table].card.base.value)
                     highlighted_table[i].card:set_edition("e_negative", true)
                 end
                 return true
