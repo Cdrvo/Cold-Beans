@@ -159,6 +159,83 @@ SMODS.Consumable {
     }
 }
 
+-- Removes the USE button from the Blessings ^2 card. Directly taken and modifed from the implmentation for keys
+local sell_use_ref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+    if not card or not card.ability or ( card.config.center.key ~= "c_cbean_jbill_blessing")  then
+        return sell_use_ref(card)
+    end
+
+    local sell = {
+        n = G.UIT.C,
+        config = { align = "cr" },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card' },
+                nodes = {
+                    { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "tm" },
+                        nodes = {
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cm", maxw = 1.25 },
+                                nodes = {
+                                    { n = G.UIT.T, config = { text = localize('b_sell'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
+                                }
+                            },
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cm" },
+                                nodes = {
+                                    { n = G.UIT.T, config = { text = localize('$'), colour = G.C.WHITE, scale = 0.4, shadow = true } },
+                                    { n = G.UIT.T, config = { ref_table = card, ref_value = 'sell_cost_label', colour = G.C.WHITE, scale = 0.55, shadow = true } }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if card.area == G.pack_cards and G.pack_cards then
+        return {
+            n = G.UIT.ROOT,
+            config = { padding = 0, colour = G.C.CLEAR },
+            nodes = {
+                {
+                    n = G.UIT.R,
+                    config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card' },
+                    nodes = {
+                        { n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
+                    }
+                }
+            }
+        }
+    end
+
+    return {
+        n = G.UIT.ROOT,
+        config = { padding = 0, colour = G.C.CLEAR },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { padding = 0.15, align = 'cl' },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = { align = 'cl' },
+                        nodes = { sell }
+                    }
+                }
+            }
+        }
+    }
+end
+
 SMODS.Consumable {
     key = "jbill_zodiac",
     set = "Consumables2",
@@ -338,6 +415,83 @@ SMODS.Consumable {
         art = "D.J."
     }
 }
+
+-- Removes the USE button from the Blessings ^2 card. Directly taken and modifed from the implmentation for keys
+local sell_use_ref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+    if not card or not card.ability or ( card.config.center.key ~= "c_cbean_jbill_key")  then
+        return sell_use_ref(card)
+    end
+
+    local sell = {
+        n = G.UIT.C,
+        config = { align = "cr" },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card' },
+                nodes = {
+                    { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "tm" },
+                        nodes = {
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cm", maxw = 1.25 },
+                                nodes = {
+                                    { n = G.UIT.T, config = { text = localize('b_sell'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
+                                }
+                            },
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cm" },
+                                nodes = {
+                                    { n = G.UIT.T, config = { text = localize('$'), colour = G.C.WHITE, scale = 0.4, shadow = true } },
+                                    { n = G.UIT.T, config = { ref_table = card, ref_value = 'sell_cost_label', colour = G.C.WHITE, scale = 0.55, shadow = true } }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if card.area == G.pack_cards and G.pack_cards then
+        return {
+            n = G.UIT.ROOT,
+            config = { padding = 0, colour = G.C.CLEAR },
+            nodes = {
+                {
+                    n = G.UIT.R,
+                    config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card' },
+                    nodes = {
+                        { n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
+                    }
+                }
+            }
+        }
+    end
+
+    return {
+        n = G.UIT.ROOT,
+        config = { padding = 0, colour = G.C.CLEAR },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { padding = 0.15, align = 'cl' },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = { align = 'cl' },
+                        nodes = { sell }
+                    }
+                }
+            }
+        }
+    }
+end
 
 SMODS.Consumable {
     key = "jbill_sheet",
