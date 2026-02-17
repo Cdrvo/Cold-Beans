@@ -71,7 +71,6 @@ Game.main_menu = function(change_context)
                 if not v.pvz_plant and k ~= "j_mr_bones" then
                     local old_in_pool = nil
                     if v.in_pool then
-                        sendDebugMessage("Setting new pool for "..k, "nameteam_davelawn")
                         old_in_pool = v.in_pool
                         v.in_pool = function()
                             if G.GAME.round_resets.blind_biome == "nameteam_davelawn" then
@@ -81,7 +80,6 @@ Game.main_menu = function(change_context)
                             end
                         end
                     else
-                        sendDebugMessage("Setting non existant pool for "..k, "nameteam_davelawn")
                         v.in_pool = function()
                             if G.GAME.round_resets.blind_biome == "nameteam_davelawn" then
                                 return false
