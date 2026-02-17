@@ -4025,12 +4025,16 @@ return {
 			j_cbean_doom_shroom                         = {
 				name = "Doom Shroom",
 				text = {
-					"Sell this {C:attention}Joker{} to set",
-					"current {C:attention}Blind's{} requirement to {C:red}0",
-					"If facing a {C:attention}Boss Blind{},",
-					"halve it instead",
-					"Creates a {C:attention}Crater{}",
-					"when sold"
+					{
+						"Sell {C:attention}Joker{} to set {C:attention}Blind's{}",
+						"required Chips to {C:red}0",
+						"If facing a {C:attention}Boss{} or {C:attention}CEO{}",
+						"{C:attention}Blind{}, halve it instead",
+					},
+					{
+						"Creates a {C:attention}Crater{}",
+						"when sold"
+					},
 				},
 			},
 			j_cbean_crater                              = {
@@ -4151,10 +4155,14 @@ return {
 			j_cbean_sundew_tangler                      = {
 				name = "Sundew Tangler",
 				text = {
-					"{C:attention}Playing cards",
-					"cannot be retriggered",
-					"Each played card",
-					"gives {C:money}$#1#{} when scored"
+					{
+						"{C:attention}Playing cards",
+						"{C:red}cannot{} be retriggered",
+					},
+					{
+						"Each played card",
+						"gives {C:money}$#1#{} when scored"
+					},
 				},
 			},
 			j_cbean_bean_sprout                         = {
@@ -4607,10 +4615,11 @@ return {
 				name = "Lightning Reed",
 				text = {
 					"This and all {C:attention}Jokers{}",
-					"to the right give {X:mult,C:white}X#1#{} Mult.",
-					"Value for each {C:attention}Jokers{} is",
+					"to the right give {X:mult,C:white}X#1#{} Mult",
+					"{X:mult,C:white}XMult{} for each {C:attention}Joker{} is",
 					"reduced by {C:attention}25%{} for each",
-					"{C:attention}Jokers{} to the left "
+					"{C:attention}Joker{} to the left",
+					"{C:inactive}(Ex: X2, X1.5, X1.12, etc.)"
 				},
 			},
 			j_cbean_hot_potato                          = {
@@ -5534,7 +5543,7 @@ return {
 				text = {
 					{
 						"Playing Cards' {C:attention}scoring",
-						"order is {C:dark_edition}reversed.",
+						"order is {C:dark_edition}reversed",
 					},
 					{
 						"First scored card permantly",
@@ -5730,10 +5739,15 @@ return {
 			j_cbean_aqua_vine                           = {
 				name = "Aqua Vine",
 				text = {
-					"Gains a different",
-					"ability depending",
-					"on the {C:attention}Jokers{} on the",
-					"right"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
@@ -5742,29 +5756,73 @@ return {
 			j_cbean_aqua_vine_common                    = {
 				name = "Aqua Vine",
 				text = {
-					"{C:chips}+#1#{} Chips"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{C:chips}+#1#{} Chips"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
 			j_cbean_aqua_vine_uncommon                  = {
 				name = "Aqua Vine",
 				text = {
-					"{C:mult}+#1#{} Mult"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{C:mult}+#1#{} Mult"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
 			j_cbean_aqua_vine_rare                      = {
 				name = "Aqua Vine",
 				text = {
-					"Each scored card",
-					"gives {C:money}+$#1#{}"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"Each scored card",
+						"gives {C:money}+$#1#{}"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
 			j_cbean_aqua_vine_legendary                 = {
 				name = "Aqua Vine",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{X:mult,C:white}X#1#{} Mult"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 			--
@@ -5817,9 +5875,9 @@ return {
 				name = "Znake Lilly",
 				text = {
 					"On first {C:blue}hand{} of the",
-					"round, a random card",
-					"turns into a random",
-					"{C:attention}Zomboid{} card"
+					"round, a random card in",
+					"full deck turns into a",
+					"random {C:attention}Zomboid{} card",
 				},
 			},
 

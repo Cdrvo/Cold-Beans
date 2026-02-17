@@ -2377,6 +2377,9 @@ SMODS.Joker({
 		extra = {},
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS.m_cbean_basic_zomboid
+		info_queue[#info_queue+1] = G.P_CENTERS.m_cbean_carrot_zomboid
+		info_queue[#info_queue+1] = G.P_CENTERS.m_cbean_melon_zomboid
 		local cae = card.ability.extra
 		return { vars = {} }
 	end,
