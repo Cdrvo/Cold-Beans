@@ -7070,6 +7070,14 @@ return {
 					"when {C:attention}clicked{} on",
 				}
 			},
+			cbean_house_rules_hint = {
+				name = "Hint!",
+				text = {
+					"This joker unlocks",
+					"at least one",
+					"House Rule!"
+				}
+			},
 			--Medals
 			cbean_yma_common_medal = {
 				name = "Common Medal",

@@ -90,6 +90,14 @@ SMODS.Joker {                   --Modifed from Vanilla Remade's example
     }
 }
 
+function G.FUNCS.display_house_rules()
+    if #SMODS.find_card('j_cbean_0chill_house_rules') > 0 then
+        return { key = "cbean_house_rules_hint", set = "Other" }
+    else
+        return nil
+    end
+end
+
 --heyo its me Athebyne. we're starting to get quite a few house rule hands (and i hope we get even more, i unfortunately
 --didn't do as many as I wanted to..) might be a good idea to make all hands always visible if you can play them
 --instead of that only happening to HR House Rules?
