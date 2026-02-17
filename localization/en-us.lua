@@ -1482,7 +1482,7 @@ return {
 				name = "Orchestra Key",
 				text = {
 					"Create two {C:dark_edition}Negative{} {X:red,C:white}Starter{}",
-					"or {X:blue,C:white}Taunt{} {C:combo}Combo{} cards at",
+					"or {X:black,C:white}Taunt{} {C:combo}Combo{} cards at",
 					"the end of the {C:attention}round",
 					"{C:inactive}(Uses #1#/#2# Blinds)"
 				},
