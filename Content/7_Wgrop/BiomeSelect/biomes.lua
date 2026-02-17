@@ -67,7 +67,7 @@ CBWG.ColdBeans_Biome {
                                     local copy = copy_card(v)
                                     G.hand:emplace(copy)
                                     copy:set_ability('m_cbean_wgrop_pale_remnant')
-                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =('!'), colour = G.C.ATTENTION})
+                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =localize("k_revived_ex"), colour = G.C.ATTENTION})
                                     table.insert(G.playing_cards, copy)
                                 return true
                             end
@@ -87,7 +87,7 @@ CBWG.ColdBeans_Biome {
                                     local copy = copy_card(v)
                                     G.deck:emplace(copy)
                                     copy:set_ability('m_cbean_wgrop_pale_remnant')
-                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =('!'), colour = G.C.ATTENTION})
+                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =localize("k_revived_ex"), colour = G.C.ATTENTION})
                                     table.insert(G.playing_cards, copy)
                                 return true
                             end

@@ -10674,6 +10674,7 @@ return {
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
 			cbean_0chill_blind_strengthened     = "Blind Strengthened!",
+			k_revived_ex  						= "Revived!",
 
 			k_colon_architecture                = "Architecture",
 			ph_no_colon_architecture            = "No architecture in progress",
