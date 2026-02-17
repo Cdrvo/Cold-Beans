@@ -3048,7 +3048,7 @@ SMODS.Joker({
         info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
         return {}
     end,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     pronouns = "he_they",
@@ -3059,11 +3059,6 @@ SMODS.Joker({
         art = "GhostSalt",
         code = "GhostSalt",
     },
-    calculate = function(self, card, context)
-        if context.before and to_number(G.GAME.hands[context.scoring_name].level) == 1 then
-            return { dollars = card.ability.extra.money }
-        end
-    end,
 })
 
 SMODS.Booster:take_ownership_by_kind("Standard", {
