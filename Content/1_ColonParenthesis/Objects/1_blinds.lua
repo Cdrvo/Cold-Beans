@@ -20,33 +20,6 @@ function reset_blinds()
         G.GAME.round_resets.blind_states.CEO = 'Upcoming'
         G.GAME.blind_on_deck = 'Teeny'
 
-		if (G.GAME.round_resets.blind_choices.CEO == 'bl_cbean_colon_salesman') then
-			G.E_MANAGER:add_event(Event({
-				trigger = 'immediate',
-				func = function()
-					ease_round(1)
-					inc_career_stat('c_rounds', 1)
-					if _DEMO then
-						G.SETTINGS.DEMO_ROUNDS = (G.SETTINGS.DEMO_ROUNDS or 0) + 1
-						inc_steam_stat('demo_rounds')
-						G:save_settings()
-					end
-					G.GAME.round_resets.blind_tag = G.P_TAGS[G.GAME.round_resets.blind_tags[G.GAME.blind_on_deck]]
-					G.GAME.round_resets.blind = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices[G.GAME.blind_on_deck])
-					G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Current'
-					G.blind_select = nil
-					delay(0.2)
-					return true
-				end}))
-			G.E_MANAGER:add_event(Event({
-				trigger = 'immediate',
-				func = function()
-					new_round()
-					return true
-				end
-			}))
-		end
-
 		if G.GAME.next_colonparen_prescribed_blinds then
 			G.GAME.colonparen_prescribed_blinds = G.GAME.next_colonparen_prescribed_blinds; -- precribe blinds for this ante
 			G.GAME.next_colonparen_prescribed_blinds = nil; -- make sure carry over doesn't happen

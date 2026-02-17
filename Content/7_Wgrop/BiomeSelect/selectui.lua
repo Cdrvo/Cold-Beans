@@ -142,6 +142,7 @@ function update_wgrop_biometree()
 end
 
 G.FUNCS.select_biome = function(e)
+    sendDebugMessage("Changing biomes! Current blind: "..G.GAME.round_resets.blind_choices.CEO , "nameteam_fix")
     stop_use()
     local biome = e.config.ref_table
     if G.cb_wgrop_biome_selection then
@@ -165,8 +166,6 @@ G.FUNCS.select_biome = function(e)
           func = function()
             G.cb_wgrop_biome_selection:remove()
             G.cb_wgrop_biome_selection = nil
-            G.STATE = G.STATES.SHOP
-              G.STATE_COMPLETE = false
             return true
           end
         }))
@@ -175,6 +174,43 @@ G.FUNCS.select_biome = function(e)
           play_sound('generic1')
         G.VIBRATION = G.VIBRATION + 1
     end
-      reset_blinds()
-      delay(0.6)
+    if (G.GAME.round_resets.blind_choices.CEO == 'bl_cbean_colon_salesman') then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+                ease_round(1)
+                inc_career_stat('c_rounds', 1)
+                if _DEMO then
+                    G.SETTINGS.DEMO_ROUNDS = (G.SETTINGS.DEMO_ROUNDS or 0) + 1
+                    inc_steam_stat('demo_rounds')
+                    G:save_settings()
+                end
+                G.GAME.round_resets.blind_tag = G.P_TAGS[G.GAME.round_resets.blind_tags[G.GAME.blind_on_deck]]
+                G.GAME.round_resets.blind = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices[G.GAME.blind_on_deck])
+                G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Current'
+                G.blind_select = nil
+                delay(0.2)
+                return true
+            end}))
+        G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+                reset_blinds()
+                delay(0.6)
+                new_round()
+                return true
+            end
+        }))
+    else
+        G.E_MANAGER:add_event(Event({
+          trigger = 'immediate',
+          func = function()
+            G.STATE = G.STATES.SHOP
+              G.STATE_COMPLETE = false
+            return true
+          end
+        }))
+        reset_blinds()
+        delay(0.6)
+    end
 end
