@@ -7071,11 +7071,11 @@ return {
 				}
 			},
 			cbean_house_rules_hint = {
-				name = "Hint!",
+				name = "House Rules",
 				text = {
-					"This joker unlocks",
+					"This Joker unlocks",
 					"at least one",
-					"House Rule!"
+					"{C:attention}House Rules{} hand!"
 				}
 			},
 			--Medals
