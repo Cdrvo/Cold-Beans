@@ -2448,6 +2448,7 @@ return {
 					}
 				},
 			},
+			--Birthright and its many deck effects---------
 			ti_cbean_yma_tboi_birthright = {
 				name = {
 					"Birthright",
@@ -2457,6 +2458,258 @@ return {
 					"based on the current {C:attention}deck",
 				},
 			},
+
+			ti_cbean_yma_tboi_birthright_red_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Red Deck:",
+						"Gain {C:red}+#1#{} Discards"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_blue_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Blue Deck:",
+						"Gain {C:blue}+#1#{} Hands"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_yellow_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Yellow Deck:",
+						"Gain {C:money}$#1#{}"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_green_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Green Deck:",
+						"Gain an additional {C:money}$#1#{}",
+						"per remaining {C:blue}Hand{} and",
+						"{C:red}Discard{} at end of Round"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_black_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Black Deck:",
+						"{C:attention}+#1#{} Joker slot"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_magic_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Magic Deck:",
+						"Redeem {C:tarot}Omen Globe{} voucher",
+					},
+					{
+						"When entering the shop,",
+						"leftmost voucher pack",
+						"turns into a {C:tarot}Tarot{} pack"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_nebula_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Nebula Deck:",
+						"When entering the shop,",
+						"transforms {C:attention}rightmost{} shop",
+						"item into planet card of",
+						"last played hand"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_ghost_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Ghost Deck:",
+						"{C:spectral}Spectral{} cards appear",
+						"{C:attention}#1#X{} more frequently",
+						"in shop"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_abandoned_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Abandoned Deck:",
+						"Removes {C:attention}cards{} of the",
+						"{C:attention}#1#{} most infrequent",
+						"ranks in {C:attention}full deck{}",
+						"when picked up"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_checkered_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Checkered Deck:",
+						"All {C:clubs}Clubs{} and {C:diamonds}Diamonds{}",
+						"in full deck change into",
+						"{C:spades}Spades{} and {C:hearts}Hearts{} respectively",
+						"when a {C:attention}Blind{} is selected"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_zodiac_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Zodiac Deck:",
+						"{C:spectral}Spectral{} cards appear",
+						"at the same rate as",
+						"{C:attention}Jokers{} in the shop",
+					},
+					{
+						"{C:attention}Jokers{} can {C:red}no longer{}",
+						"appear in the shop"
+					}
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_anaglyph_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Anaglyph Deck:",
+						"Gain a {C:attention}Double Tag{}",
+						"when entering a {C:attention}Blind{}"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_plasma_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Plasma Deck:",
+						"{X:chips,C:white}X#1#{} Chips and {X:mult,C:white}X#2#{} Mult",
+						"after score balances"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_erratic_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Erratic Deck:",
+						"Gives every card in {C:attention}full deck{}",
+						"a random, non-Stone enhancment"
+					},
+				},
+			},
+			------------------------------------------------------------------------
 			ti_cbean_yma_tboi_speed_ball = {
 				name = {
 					"Speed Ball",
