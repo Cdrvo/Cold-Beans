@@ -2685,17 +2685,26 @@ YMA.TBOI_ITEMS {
             green_deck_money = 3,
             black_deck_slots = 1,
             ghost_deck_spectral_rate = 4,
-            abandoned_deck_number = 3,
+            abandoned_deck_destroy = 3,
             painted_deck_hand_size = 6,
             plasma_deck_mult = 2,
             plasma_deck_chips = 2,
+            daily_deck_vouchers = 2,
+            daily_deck_tags = 2,
+            daily_deck_destroy = 3,
+            daily_deck_bonus = 3,
+            daily_deck_consumable = 4,
+            athena_deck_uses = 5,
+            urine_deck_retrigger = 2,
+            sticky_deck_options = 2,
         }
     },
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(self, info_queue, card) --Really makes you wish lua had switch statments
         local cae = card.ability.extra
         local vars, key = {}, self.key
         if G.GAME.selected_back then
             local d = G.GAME.selected_back.name
+            --Vanilla Decks
             if d == 'Red Deck' then
                 vars = { cae.red_deck_discards }
                 key = self.key .. "_red_deck"
@@ -2722,7 +2731,7 @@ YMA.TBOI_ITEMS {
                 vars = { cae.ghost_deck_spectral_rate }
                 key = self.key .. "_ghost_deck"
             elseif d == 'Abandoned Deck' then
-                vars = { cae.abandoned_deck_number }
+                vars = { cae.abandoned_deck_destroy }
                 key = self.key .. "_abandoned_deck"
             elseif d == 'Checkered Deck' then
                 --vars = { cae.abandoned_deck_number }
@@ -2743,6 +2752,52 @@ YMA.TBOI_ITEMS {
             elseif d == 'Erratic Deck' then
                 --vars = { cae.abandoned_deck_number }
                 key = self.key .. "_erratic_deck"
+            ---Modded Decks
+
+            --Daily Decks
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 1 then
+                vars = { cae.daily_deck_vouchers }
+                key = self.key .. "_daily_deck1"
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 2 then
+                vars = { cae.daily_deck_tags }
+                key = self.key .. "_daily_deck2"
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 3 then
+                --vars = { cae.daily_deck_tags }
+                key = self.key .. "_daily_deck3"
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 4 then
+                vars = { cae.daily_deck_destroy }
+                key = self.key .. "_daily_deck4"
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 5 then
+                --vars = { cae.daily_deck_destroy }
+                key = self.key .. "_daily_deck5"
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 6 then
+                vars = { cae.daily_deck_bonus }
+                key = self.key .. "_daily_deck6"
+            elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 7 then
+                vars = { cae.daily_deck_consumable }
+                key = self.key .. "_daily_deck7"
+            --End of Daily Decks
+            
+            elseif d == 'b_cbean_pboys_athena' then
+                vars = { cae.athena_deck_uses }
+                key = self.key .. "_athena_deck"
+            elseif d == 'b_cbean_nameteam_urine' then
+                info_queue[#info_queue + 1] = G.P_CENTERS.m_cbean_pboys_piss
+                vars = { cae.urine_deck_retrigger }
+                key = self.key .. "_urine_deck"
+            elseif d == 'b_cbean_nameteam_happy' then
+                info_queue[#info_queue + 1] = G.P_CENTERS.j_smiley
+                info_queue[#info_queue + 1] = G.P_CENTERS.j_scary_face
+                info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+                info_queue[#info_queue + 1] = SMODS.Stickers["eternal"]
+                vars = { cae.urine_deck_retrigger }
+                key = self.key .. "_happy_deck"
+            elseif d == 'b_cbean_nameteam_sticky' then
+                vars = { cae.sticky_deck_options }
+                key = self.key .. "_sticky_deck"
+            elseif d == 'b_cbean_nameteam_graveyard' then
+                --vars = { cae.abandoned_deck_number }
+                key = self.key .. "_graveyard_deck"
             end
         else
             key = self.key
@@ -2814,14 +2869,44 @@ YMA.TBOI_ITEMS {
                         xmult = card.ability.extra.plasma_deck_mult
                     }
                 end
-            elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'b_cbean_nameteam_urine') then
+            ------Daily Deck
+            elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 3 then
+                if context.starting_shop and #G.shop_jokers.cards >= 1 and G.GAME.last_hand_played and card.ability.extra.first_visit then
+                    G.E_MANAGER:add_event(Event ({
+                        trigger = 'before',
+                        func = function()
+                            local _planet = 0
+                            for k, v in pairs(G.P_CENTER_POOLS.Planet) do
+                                if v.config.hand_type == G.GAME.last_hand_played then
+                                    _planet = v.key
+                                end
+                            end
+                            if _planet == 0 then _planet = nil end
+                            YMA_reroll_card(G.shop_jokers.cards[#G.shop_jokers.cards], _planet, "Planet", 'yma_tboi_birthright')
+                            card.ability.extra.first_visit = false
+                            return true
+                        end 
+                    }))
+                end
+            --------
+            elseif (d == 'b_cbean_nameteam_urine') then 
                 if context.individual and context.cardarea == G.play then
                     if SMODS.has_enhancement(context.other_card, 'm_cbean_pboys_piss') then
                          return {
                              message = localize('k_again_ex'),
-                             repetitions = 2,
+                             repetitions = card.ability.extra.urine_deck_retrigger,
                              card = card, 
                          }
+                    end
+                end
+            elseif (d == 'b_cbean_pboys_athena') then
+                if context.end_of_round and not context.game_over and context.main_eval and G.GAME.blind.colonparen_blindtype == 'CEO' then
+                    for _,consumeable in ipairs(G.consumeables.cards) do
+                        if consumeable.ability.set == 'sdown_blessing' and consumeable.ability.extra.times_left > 0 then
+                            consumeable.ability.extra.times_left = consumeable.ability.extra.times_left + card.ability.extra.athena_deck_uses
+                            consumeable:juice_up()
+                            SMODS.calculate_effect({message = localize('k_strengthened_ex')}, consumeable)
+                        end
                     end
                 end
             elseif card.ability.extra.no_deck then
@@ -2878,7 +2963,7 @@ YMA.TBOI_ITEMS {
                     ranks[v:get_id()] = ranks[v:get_id()] + 1
                 end
                 local least_vals = {}
-                for i = 1, card.ability.extra.abandoned_deck_number do
+                for i = 1, card.ability.extra.abandoned_deck_destroy do
                     local least = 0
                     local index = nil
                     for k, v in pairs(ranks) do
@@ -2918,20 +3003,93 @@ YMA.TBOI_ITEMS {
                     v:juice_up(0.3, 0.3)
                     v:set_ability(center)
                 end
-            elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'b_cbean_nameteam_happy') then
-                if #SMODS.find_card("j_smiley") == 0 then
-                    card_def = {
-                        key = "j_smiley",
-                        area = G.jokers,
-                        edition = {negative = true}
-                    }
-                    card = SMODS.create_card(card_def)
-                    card:add_sticker("eternal", true)
-                    G.jokers:emplace(card)
-                else
-                    SMODS.find_card("j_smiley")[1]:add_sticker("eternal", true)
-                    SMODS.find_card("j_smiley")[1]:set_edition({negative = true}, true)
+            ---Daily Decks (If looking for 5, check the hook to SMODS.add_to_pool in 0_shared/hooks.lua)
+            elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 1 then
+                for i=1, card.ability.extra.daily_deck_vouchers do
+                    local _pool, _pool_key = get_current_pool('Voucher')
+                    _pool_key = 'daily_deck_voucher'
+                    local center = pseudorandom_element(_pool, pseudoseed(_pool_key))
+                    local it = 1
+                    while center == 'UNAVAILABLE' do
+                        it = it + 1
+                        center = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))
+                    end
+                    G.GAME.used_vouchers[center] = true
+                    G.GAME.starting_voucher_count = (G.GAME.starting_voucher_count or 0) + 1
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            Card.apply_to_run(nil, G.P_CENTERS[center])
+                            return true
+                        end
+                    }))
                 end
+            elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 2 then
+                for i=1, card.ability.extra.daily_deck_tags do
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            yma_add_tag(get_next_tag_key("daily_deck_tag"))
+                            if (G.consumeables.config.card_limit - #G.consumeables.cards) > 0 then
+                                local card = SMODS.create_card{set = "Tarot", key_append = "daily_deck_tarot"}
+                                card:add_to_deck()
+                                G.consumeables:emplace(card)
+                            end
+                            return true
+                        end
+                    }))
+                end
+            elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 4 then
+                local ranks = {}
+                for k, v in pairs(G.playing_cards) do
+                    ranks[v:get_id()] = ranks[v:get_id()] or 0
+                    ranks[v:get_id()] = ranks[v:get_id()] + 1
+                end
+                local least_vals = {}
+                for i = 1, card.ability.extra.daily_deck_destroy do
+                    local least = 0
+                    local index = nil
+                    for k, v in pairs(ranks) do
+                        if not index or v < index then
+                            index = v
+                            least = k
+                        end
+                    end
+                    least_vals[#least_vals+1] = least
+                    ranks[least] = nil
+                end
+                local card_to_destroy = {}
+                for k, v in pairs(G.playing_cards) do
+                    for _k, _v in pairs(least_vals) do
+                        if v:get_id() == _v then
+                            card_to_destroy[#card_to_destroy+1] = v
+                        end
+                    end
+                end
+                SMODS.destroy_cards(card_to_destroy, nil, nil, true)
+            elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 6 then
+                G.E_MANAGER:add_event(Event({
+                func = function()
+                    local areas = {G.hand, G.jokers, G.consumeables}
+                    local selected_area1 = pseudorandom_element(areas, pseudoseed("daily_deck_+2_area_slot"))
+                    selected_area1:change_size(card.ability.extra.daily_deck_bonus)
+                    return true
+                end
+            }))
+            elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 7 then
+                G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.consumeables:change_size(card.ability.extra.daily_deck_consumable)
+                    return true
+                end
+            }))
+            elseif (d == 'b_cbean_nameteam_happy') then
+                card_def = {
+                    key = "j_smiley",
+                    area = G.jokers,
+                    edition = {negative = true}
+                }
+                card = SMODS.create_card(card_def)
+                card:add_sticker("eternal", true)
+                 G.jokers:emplace(card)
                 card_def = {
                     key = "j_scary_face",
                     area = G.jokers,
@@ -2940,6 +3098,8 @@ YMA.TBOI_ITEMS {
                 card = SMODS.create_card(card_def)
                 card:add_sticker("eternal", true)
                 G.jokers:emplace(card)
+            elseif (d == 'b_cbean_nameteam_sticky') then
+                G.GAME.stationery_num_rewards = G.GAME.stationery_num_rewards + card.ability.extra.sticky_deck_options
             else
                 card.ability.extra.no_deck = true
             end

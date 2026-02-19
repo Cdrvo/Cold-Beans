@@ -57,6 +57,40 @@ function SMODS.add_to_pool(prototype_obj, args)
     return add, options
 end
 
+--Birthright effect for the above daily deck. Disables vanilla consumables.
+local add_to_pool_ref = SMODS.add_to_pool
+function SMODS.add_to_pool(prototype_obj, args)
+    local add, options = add_to_pool_ref(prototype_obj, args)
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
+    and (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0) and CBEAN_DATE_TABLE.wday == 5 
+    and prototype_obj.set == "Tarot" then
+        return prototype_obj.original_mod and add or false, options
+    end
+    return add, options
+end
+
+local add_to_pool_ref = SMODS.add_to_pool
+function SMODS.add_to_pool(prototype_obj, args)
+    local add, options = add_to_pool_ref(prototype_obj, args)
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
+    and (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0) and CBEAN_DATE_TABLE.wday == 5 
+    and prototype_obj.set == "Planet" then
+        return prototype_obj.original_mod and add or false, options
+    end
+    return add, options
+end
+
+local add_to_pool_ref = SMODS.add_to_pool
+function SMODS.add_to_pool(prototype_obj, args)
+    local add, options = add_to_pool_ref(prototype_obj, args)
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
+    and (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0) and CBEAN_DATE_TABLE.wday == 5 
+    and prototype_obj.set == "Spectral" then
+        return prototype_obj.original_mod and add or false, options
+    end
+    return add, options
+end
+
 --Hook to make sure daily deck in run setup overlay snaps to today's effect
 local run_setup = G.UIDEF.run_setup
 function G.UIDEF.run_setup(from_game_over)

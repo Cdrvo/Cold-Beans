@@ -9,7 +9,7 @@ return {
 				text = {
 					"All cards of a",
 					"random {C:attention}rank{} start",
-					"as {C:money}Piss{} cards",
+					"as {C:money,T:m_cbean_pboys_piss}Piss{} cards",
 				}
 			},
 			b_cbean_nameteam_sticky = {
@@ -83,7 +83,7 @@ return {
 					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect:",
 					"Only {C:attention}modded",
-					"jokers can appear",
+					"Jokers can appear",
 				},
 			},
 			b_cbean_pboys_daily6 = {
@@ -2448,7 +2448,7 @@ return {
 					}
 				},
 			},
-			--Birthright and its many deck effects---------
+			--Birthright and its many, many, many deck effects.
 			ti_cbean_yma_tboi_birthright = {
 				name = {
 					"Birthright",
@@ -2706,6 +2706,218 @@ return {
 						"Erratic Deck:",
 						"Gives every card in {C:attention}full deck{}",
 						"a random, non-Stone enhancment"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck1 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Recieve {C:attention}#1#{} random",
+						"{C:attention}Vouchers{} on pickup"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck2 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Get {C:attention}#1# Tags{}",
+						"and {C:attention}#1#{} {C:tarot}Tarot{} Cards",
+						"{C:inactive}(Must have room)"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck3 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"When entering the shop,",
+						"transforms {C:attention}rightmost{} shop",
+						"item into planet card of",
+						"last played hand"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck4 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Removes {C:attention}cards{} of the",
+						"{C:attention}#1#{} most infrequent",
+						"ranks in {C:attention}full deck{}",
+						"when picked up"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck5 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Only {C:attention}modded{} consumables can appear",
+						"{C:inactive}(May have some vanilla items",
+						"{C:inactive}in booster packs",
+						"{C:inactive}due to pool exahustion)"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck6 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"{C:attention}+#1#{} in either {C:attention}Joker{} slots,",
+						"hand size, or consumable slots"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck7 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"{C:attention}+#1#{} consumable slots"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_athena_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Athena Deck:",
+						"When CEO Blind is defeated,",
+            			"add {C:attention}#1#{} charges to",
+            			"all held {C:attention}Blessings{}"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_urine_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Urine Deck:",
+						"Scored {C:money}Piss{} cards",
+						"are retriggered {C:attention}#1#{} times"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_happy_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Happy Deck:",
+						"Create an {C:attention}Eternal{} {C:dark_edition}Negative{}",
+						"{C:attention}Scary Face{} and {C:attention}Smiley Face{}",
+						"on pickup"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_sticky_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Sticky Deck:",
+						"The {C:attention}Stationery Shop",
+						"gives {C:attention}#1#{} more rewards",
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_graveyard_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Graveyard Deck:",
+						"{C:green}Plant Jokers{} can appear",
+						"in any {C:green}Biome{}"
 					},
 				},
 			},
@@ -10514,8 +10726,8 @@ return {
 			v_cbean_yma_krater = {
 				name = "Krater",
 				text = {
-					"{C:attention}Praying{} becomes",
-					"more {C:attention}effective",
+					"{C:attention}Praying{} becomes more ",
+					"{C:attention}effective{} in {C:dark_edition}Dreamland",
 				},
 			},
 			v_cbean_yma_grand_theft = {
