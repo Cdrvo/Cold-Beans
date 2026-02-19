@@ -2674,7 +2674,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_birthright",
     set = "yma_tboi_items",
     order = 54,
-    quality = 2,
+    quality = 3,
     config = {
         extra = {
             no_deck = false,
