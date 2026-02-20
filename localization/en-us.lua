@@ -3202,7 +3202,7 @@ return {
 			m_cbean_jbill_banknote = {
 				name = "Banknote",
 				text = {
-					"{C:money}$#1#{}",
+					"Earn {C:money}$#1#{}",
 					"{C:red}Ranked Down{} when scored",
 					"Banknote {C:attention}2s{} are {C:red}ripped{}",
 					"on scoring"
