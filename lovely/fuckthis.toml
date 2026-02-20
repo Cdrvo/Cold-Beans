@@ -1,0 +1,32 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+position = 'before'
+pattern = "return _pool, _pool_key..(not _legendary and G.GAME.round_resets.ante or '')"
+payload = '''
+    -- Somehow vouchers are in the consumeables pool. Nobody can figure out how they got there, so delete them manually. This is blinding stupid and I'm going to cry, but I at least figured out how to make it work at all, and not just get them re-added at some point afterward
+    if _type == "Consumeables" then
+        local _new_pool = {}
+        local check
+        for i,v in ipairs(_pool) do
+            if G.P_CENTERS[v] and G.P_CENTERS[v].set == "Voucher" then
+                --print("Deleting a voucher from consumeables pool") 
+                check = true
+            else
+                _new_pool[#_new_pool+1] = v 
+            end
+        end
+        for i,v in ipairs(_new_pool) do
+            assert(not (G.P_CENTERS[v] and G.P_CENTERS[v].set == "Voucher"), "FUCK THIS BLINDING BUG I'M GOING TO BE ON THE NEWS")
+        end
+        if check then sendTraceMessage("Still haven't *actually* fixed the voucher bug, for the record...", "refrigerated legumes") end
+        _pool = _new_pool
+    end
+'''
+match_indent = true
+
