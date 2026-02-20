@@ -220,6 +220,15 @@ ColdBeans.calculate = function(mod, context)
 			end
 		end
 	end
+
+    if context.other_joker and context.other_joker.ability.perma_h_chips then
+        return {
+            chips = context.other_joker.ability.perma_h_chips,
+            message_card = context.other_joker,
+            juice_card = context.other_joker
+        }
+    end
+
 	if context.destroy_card and context.cardarea == G.play and G.GAME.NAMETEAM.destroy and G.GAME.NAMETEAM.destroy > 0 then
 		G.GAME.NAMETEAM.destroy = G.GAME.NAMETEAM.destroy - 1
 		return {
@@ -257,6 +266,9 @@ ColdBeans.calculate = function(mod, context)
 		blind.chip_text = number_format(blind.chips)
 	end
 	--Jbilling it
+	if context.end_of_round then
+		--print((G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo"))
+	end
 	if context.end_of_round and context.game_over == false and context.main_eval and (G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo") then
 		G.GAME.CEO_beaten_employment = true
 		for k, v in pairs(G.playing_cards) do

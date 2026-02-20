@@ -13,6 +13,7 @@ SMODS.ObjectType {
     key = "yma_tboi_items",
     primary_colour = G.C.WHITE,
     secondary_colour = HEX("466e96"),
+    default = 'ti_cbean_yma_tboi_breakfast',
 
     process_loc_text = function(self)
         SMODS.process_loc_text(G.localization.misc.dictionary, 'k_' .. string.lower(self.key), self.loc_txt, 'name')

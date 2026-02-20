@@ -74,14 +74,14 @@ end
 
 function G.FUNCS.yma_reroll_quest()
     G.E_MANAGER:add_event(Event({
-        trigger = 'after',
+        trigger = 'before',
         func = function()
             if G.side_quests and G.side_quests.cards and #G.side_quests.cards > 0 then
-                SMODS.destroy_cards(G.side_quests.cards)
+                SMODS.destroy_cards(G.side_quests.cards[1])
+                ease_jimbux(-G.GAME.cbean.quest_reroll_cost)
+                SMODS.add_card { set = "yma_quest", area = G.side_quests }
+                return true
             end
-            ease_jimbux(-G.GAME.cbean.quest_reroll_cost)
-            SMODS.add_card { set = "yma_quest", area = G.side_quests }
-            return true
         end
     }))
 end

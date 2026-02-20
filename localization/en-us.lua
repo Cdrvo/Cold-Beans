@@ -9,7 +9,7 @@ return {
 				text = {
 					"All cards of a",
 					"random {C:attention}rank{} start",
-					"as {C:money}Piss{} cards",
+					"as {C:money,T:m_cbean_pboys_piss}Piss{} cards",
 				}
 			},
 			b_cbean_nameteam_sticky = {
@@ -83,7 +83,7 @@ return {
 					"Seed is set to {C:attention}DDMMYYYY",
 					"Today's effect:",
 					"Only {C:attention}modded",
-					"jokers can appear",
+					"Jokers can appear",
 				},
 			},
 			b_cbean_pboys_daily6 = {
@@ -1482,7 +1482,7 @@ return {
 				name = "Orchestra Key",
 				text = {
 					"Create two {C:dark_edition}Negative{} {X:red,C:white}Starter{}",
-					"or {X:blue,C:white}Taunt{} {C:combo}Combo{} cards at",
+					"or {X:black,C:white}Taunt{} {C:combo}Combo{} cards at",
 					"the end of the {C:attention}round",
 					"{C:inactive}(Uses #1#/#2# Blinds)"
 				},
@@ -2448,6 +2448,7 @@ return {
 					}
 				},
 			},
+			--Birthright and its many, many, many deck effects.
 			ti_cbean_yma_tboi_birthright = {
 				name = {
 					"Birthright",
@@ -2457,6 +2458,470 @@ return {
 					"based on the current {C:attention}deck",
 				},
 			},
+
+			ti_cbean_yma_tboi_birthright_red_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Red Deck:",
+						"Gain {C:red}+#1#{} Discards"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_blue_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Blue Deck:",
+						"Gain {C:blue}+#1#{} Hands"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_yellow_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Yellow Deck:",
+						"Gain {C:money}$#1#{}"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_green_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Green Deck:",
+						"Gain an additional {C:money}$#1#{}",
+						"per remaining {C:blue}Hand{} and",
+						"{C:red}Discard{} at end of Round"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_black_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Black Deck:",
+						"{C:attention}+#1#{} Joker slot"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_magic_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Magic Deck:",
+						"Redeem {C:tarot}Omen Globe{} voucher",
+					},
+					{
+						"When entering the shop,",
+						"leftmost voucher pack",
+						"turns into a {C:tarot}Tarot{} pack"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_nebula_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Nebula Deck:",
+						"When entering the shop,",
+						"transforms {C:attention}rightmost{} shop",
+						"item into planet card of",
+						"last played hand"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_ghost_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Ghost Deck:",
+						"{C:spectral}Spectral{} cards appear",
+						"{C:attention}#1#X{} more frequently",
+						"in shop"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_abandoned_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Abandoned Deck:",
+						"Removes {C:attention}cards{} of the",
+						"{C:attention}#1#{} most infrequent",
+						"ranks in {C:attention}full deck{}",
+						"when picked up"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_checkered_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Checkered Deck:",
+						"All {C:clubs}Clubs{} and {C:diamonds}Diamonds{}",
+						"in full deck change into",
+						"{C:spades}Spades{} and {C:hearts}Hearts{} respectively",
+						"when a {C:attention}Blind{} is selected"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_zodiac_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Zodiac Deck:",
+						"{C:spectral}Spectral{} cards appear",
+						"at the same rate as",
+						"{C:attention}Jokers{} in the shop",
+					},
+					{
+						"{C:attention}Jokers{} can {C:red}no longer{}",
+						"appear in the shop"
+					}
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_anaglyph_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Anaglyph Deck:",
+						"Gain a {C:attention}Double Tag{}",
+						"when entering a {C:attention}Blind{}"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_plasma_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Plasma Deck:",
+						"{X:chips,C:white}X#1#{} Chips and {X:mult,C:white}X#2#{} Mult",
+						"after score balances"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_erratic_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Erratic Deck:",
+						"Gives every card in {C:attention}full deck{}",
+						"a random, non-Stone enhancment"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck1 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Recieve {C:attention}#1#{} random",
+						"{C:attention}Vouchers{} on pickup"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck2 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Get {C:attention}#1# Tags{}",
+						"and {C:attention}#1#{} {C:tarot}Tarot{} Cards",
+						"{C:inactive}(Must have room)"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck3 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"When entering the shop,",
+						"transforms {C:attention}rightmost{} shop",
+						"item into planet card of",
+						"last played hand"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck4 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Removes {C:attention}cards{} of the",
+						"{C:attention}#1#{} most infrequent",
+						"ranks in {C:attention}full deck{}",
+						"when picked up"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck5 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"Only {C:attention}modded{} consumables can appear",
+						"{C:inactive}(May have some vanilla items",
+						"{C:inactive}in booster packs",
+						"{C:inactive}due to pool exahustion)"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck6 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"{C:attention}+#1#{} in either {C:attention}Joker{} slots,",
+						"hand size, or consumable slots"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_daily_deck7 = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Daily Deck:",
+						"{C:attention}+#1#{} consumable slots"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_athena_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Athena Deck:",
+						"When CEO Blind is defeated,",
+            			"add {C:attention}#1#{} charges to",
+            			"all held {C:attention}Blessings{}"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_urine_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Urine Deck:",
+						"Scored {C:money}Piss{} cards",
+						"are retriggered {C:attention}#1#{} times"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_happy_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Happy Deck:",
+						"Create an {C:attention}Eternal{} {C:dark_edition}Negative{}",
+						"{C:attention}Scary Face{} and {C:attention}Smiley Face{}",
+						"on pickup"
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_sticky_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Sticky Deck:",
+						"The {C:attention}Stationery Shop",
+						"gives {C:attention}#1#{} more rewards",
+					},
+				},
+			},
+
+			ti_cbean_yma_tboi_birthright_graveyard_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Graveyard Deck:",
+						"{C:green}Plant Jokers{} can appear",
+						"in any {C:green}Biome{}"
+					},
+				},
+			},
+			------------------------------------------------------------------------
 			ti_cbean_yma_tboi_speed_ball = {
 				name = {
 					"Speed Ball",
@@ -4025,12 +4490,16 @@ return {
 			j_cbean_doom_shroom                         = {
 				name = "Doom Shroom",
 				text = {
-					"Sell this {C:attention}Joker{} to set",
-					"current {C:attention}Blind's{} requirement to {C:red}0",
-					"If facing a {C:attention}Boss Blind{},",
-					"halve it instead",
-					"Creates a {C:attention}Crater{}",
-					"when sold"
+					{
+						"Sell {C:attention}Joker{} to set {C:attention}Blind's{}",
+						"required Chips to {C:red}0",
+						"If facing a {C:attention}Boss{} or {C:attention}CEO{}",
+						"{C:attention}Blind{}, halve it instead",
+					},
+					{
+						"Creates a {C:attention}Crater{}",
+						"when sold"
+					},
 				},
 			},
 			j_cbean_crater                              = {
@@ -4151,10 +4620,14 @@ return {
 			j_cbean_sundew_tangler                      = {
 				name = "Sundew Tangler",
 				text = {
-					"{C:attention}Playing cards",
-					"cannot be retriggered",
-					"Each played card",
-					"gives {C:money}$#1#{} when scored"
+					{
+						"{C:attention}Playing cards",
+						"{C:red}cannot{} be retriggered",
+					},
+					{
+						"Each played card",
+						"gives {C:money}$#1#{} when scored"
+					},
 				},
 			},
 			j_cbean_bean_sprout                         = {
@@ -4607,10 +5080,11 @@ return {
 				name = "Lightning Reed",
 				text = {
 					"This and all {C:attention}Jokers{}",
-					"to the right give {X:mult,C:white}X#1#{} Mult.",
-					"Value for each {C:attention}Jokers{} is",
+					"to the right give {X:mult,C:white}X#1#{} Mult",
+					"{X:mult,C:white}XMult{} for each {C:attention}Joker{} is",
 					"reduced by {C:attention}25%{} for each",
-					"{C:attention}Jokers{} to the left "
+					"{C:attention}Joker{} to the left",
+					"{C:inactive}(Ex: X2, X1.5, X1.12, etc.)"
 				},
 			},
 			j_cbean_hot_potato                          = {
@@ -5534,7 +6008,7 @@ return {
 				text = {
 					{
 						"Playing Cards' {C:attention}scoring",
-						"order is {C:dark_edition}reversed.",
+						"order is {C:dark_edition}reversed",
 					},
 					{
 						"First scored card permantly",
@@ -5730,10 +6204,15 @@ return {
 			j_cbean_aqua_vine                           = {
 				name = "Aqua Vine",
 				text = {
-					"Gains a different",
-					"ability depending",
-					"on the {C:attention}Jokers{} on the",
-					"right"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
@@ -5742,29 +6221,73 @@ return {
 			j_cbean_aqua_vine_common                    = {
 				name = "Aqua Vine",
 				text = {
-					"{C:chips}+#1#{} Chips"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{C:chips}+#1#{} Chips"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
 			j_cbean_aqua_vine_uncommon                  = {
 				name = "Aqua Vine",
 				text = {
-					"{C:mult}+#1#{} Mult"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{C:mult}+#1#{} Mult"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
 			j_cbean_aqua_vine_rare                      = {
 				name = "Aqua Vine",
 				text = {
-					"Each scored card",
-					"gives {C:money}+$#1#{}"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"Each scored card",
+						"gives {C:money}+$#1#{}"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 
 			j_cbean_aqua_vine_legendary                 = {
 				name = "Aqua Vine",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult"
+					{
+						"Gains {C:attention}ability{}",
+						"based on the",
+						"{C:attention}Joker{} to the",
+						"right's {C:dark_edition}rarity{}"
+					},
+					{
+						"{X:mult,C:white}X#1#{} Mult"
+					},
+					{
+						"{C:dark_edition}+1{C:attention} Joker Slot"
+					},
 				},
 			},
 			--
@@ -5817,9 +6340,9 @@ return {
 				name = "Znake Lilly",
 				text = {
 					"On first {C:blue}hand{} of the",
-					"round, a random card",
-					"turns into a random",
-					"{C:attention}Zomboid{} card"
+					"round, a random card in",
+					"full deck turns into a",
+					"random {C:attention}Zomboid{} card",
 				},
 			},
 
@@ -7070,6 +7593,14 @@ return {
 					"when {C:attention}clicked{} on",
 				}
 			},
+			cbean_house_rules_hint = {
+				name = "House Rules",
+				text = {
+					"This Joker unlocks",
+					"at least one",
+					"{C:attention}House Rules{} hand!"
+				}
+			},
 			--Medals
 			cbean_yma_common_medal = {
 				name = "Common Medal",
@@ -8265,7 +8796,7 @@ return {
 				name = "The Qilin",
 				text = {
 					"Turn at least {C:attention}2{} selected cards",
-					"into the rank of the {C:attention}leftmost{}",
+					"into the rank of the {C:attention}rightmost{}",
 					"selected card and {C:dark_edition}Negative{}",
 					"{C:inactive}(Drag to rearrange)",
 				},
@@ -10195,8 +10726,8 @@ return {
 			v_cbean_yma_krater = {
 				name = "Krater",
 				text = {
-					"{C:attention}Praying{} becomes",
-					"more {C:attention}effective",
+					"{C:attention}Praying{} becomes more ",
+					"{C:attention}effective{} in {C:dark_edition}Dreamland",
 				},
 			},
 			v_cbean_yma_grand_theft = {
@@ -10608,6 +11139,7 @@ return {
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
 			cbean_0chill_blind_strengthened     = "Blind Strengthened!",
+			k_revived_ex  						= "Revived!",
 
 			k_colon_architecture                = "Architecture",
 			ph_no_colon_architecture            = "No architecture in progress",

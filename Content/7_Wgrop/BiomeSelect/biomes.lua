@@ -55,7 +55,7 @@ CBWG.ColdBeans_Biome {
     key = "wgrop_graveyard",
     cards = {["j_seance"] = true, ["j_wrathful_joker"] = true, ["j_four_fingers"] = true, ["j_mime"] = true, ["j_raised_fist"] = true, ["j_pareidolia"] = true, ["j_dna"] = true, ["j_vampire"] = true, ["j_photograph"] = true, ["j_mr_bones"] = true, ["j_seeing_double"] = true, ["j_invisible"] = true, ["j_cbean_colon_mu_cube"] = true, ["j_cbean_colon_rna"] = true, ["j_cbean_colon_modernity"] = true, ["j_cbean_colon_spectaro"] = true, ["j_cbean_pboys_coriolis"] = true, ["j_cbean_pboys_gfs"] = true, ["j_cbean_pboys_ihaveagun"] = true,  ["j_cbean_nameteam_ghostimage"] = true, ["j_cbean_wgrop_withering_memory"] = true, ["j_hallucination"] = true, ["j_ceremonial"] = true, ["j_marble"] = true, ["j_scary_face"] = true, ["j_sixth_sense"] = true, ["j_faceless"] = true, ["j_idol"] = true, ["j_bloodstone"] = true, ["j_madness"] = true, ["j_cbean_wgrop_jhett_the_poltergeist"] = true},
     calculate = function(self, context)
-        if context.remove_playing_cards and not context.blueprint then
+        if context.remove_playing_cards and not context.blueprint and G.GAME.blind and G.GAME.blind.in_blind then
             local cardsdestroyed = SMODS.shallow_copy(context.removed)
             if #cardsdestroyed > 0 then
                 for i, v in ipairs(cardsdestroyed) do
@@ -67,7 +67,27 @@ CBWG.ColdBeans_Biome {
                                     local copy = copy_card(v)
                                     G.hand:emplace(copy)
                                     copy:set_ability('m_cbean_wgrop_pale_remnant')
-                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =('!'), colour = G.C.ATTENTION})
+                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =localize("k_revived_ex"), colour = G.C.ATTENTION})
+                                    table.insert(G.playing_cards, copy)
+                                return true
+                            end
+                        }))
+                    end
+                end
+            end
+        elseif context.remove_playing_cards and not context.blueprint then
+            local cardsdestroyed = SMODS.shallow_copy(context.removed)
+            if #cardsdestroyed > 0 then
+                for i, v in ipairs(cardsdestroyed) do
+                    if SMODS.pseudorandom_probability(v, pseudoseed("graveyard"), 1, 3, 'graveyard') then
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.3,
+                            func = function()
+                                    local copy = copy_card(v)
+                                    G.deck:emplace(copy)
+                                    copy:set_ability('m_cbean_wgrop_pale_remnant')
+                                    card_eval_status_text(copy, 'extra', nil, nil, nil, {message =localize("k_revived_ex"), colour = G.C.ATTENTION})
                                     table.insert(G.playing_cards, copy)
                                 return true
                             end

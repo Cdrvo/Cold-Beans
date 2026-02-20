@@ -887,7 +887,7 @@ select_card = 'consumeables',
       trigger = 'after',
       delay = 0.2,
       func = function()
-        affected_card.ability = NAMETEAM.values("*", card, 1.5)
+        NAMETEAM.values("*", affected_card, 1.5, true)
         return true
       end
     }))
