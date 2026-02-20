@@ -433,7 +433,7 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 end
 
 local smods_create_card_ref = SMODS.create_card
-function SMODS:create_card(t)
+function SMODS.create_card(t)
     local staches = SMODS.find_card("j_cbean_nameteam_stachenscarfen")
     if
         next(staches)
@@ -446,7 +446,7 @@ function SMODS:create_card(t)
         t.rarity = 0.71
         t.forced_key = nil
     end
-    return smods_create_card_ref(self, t)
+    return smods_create_card_ref(t)
 end
 
 SMODS.Joker({
