@@ -660,15 +660,13 @@ Colonparen.Architecture {
         end
     end,
     in_pool = function ()
-        local raw_pool, _ = get_current_pool('Voucher', nil, nil, nil)
         local pool = {}
-        for i = 1, #raw_pool do
-            if raw_pool[i] ~= 'UNAVAILABLE' and (G.P_CENTERS[raw_pool[i]] and G.P_CENTERS[raw_pool[i]].requires) then
-                pool[#pool+1] = raw_pool[i]
+
+        for k,v in pairs(G.P_CENTERS) do
+            if v.set == "Voucher" and v.requires and not next(SMODS.find_card(k)) then
+                return true
             end
         end
-
-        return #pool > 0
     end,
     evaluate_completion = function (self, card)
         return; -- must happen while the card is active.
