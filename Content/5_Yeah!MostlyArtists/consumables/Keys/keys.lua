@@ -943,21 +943,28 @@ SMODS.Consumable {
 
             info_queue[#info_queue + 1] = target_joker.config.center
         end
-        local compactable = 'incompatible'
-        local colour = G.C.RED
-        if target_joker and target_joker.config.center.blueprint_compat then
-            compactable = 'compatible'
-            colour = G.C.GREEN
-        end
-        return {
+        local compatible = target_joker and target_joker.config.center.blueprint_compat
+        main_end = {
+            {
+                n = G.UIT.C,
+                config = { align = "bm", minh = 0.4 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { ref_table = card, align = "m", colour = compatible and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8) or mix_colours(G.C.RED, G.C.JOKER_GREY, 0.8), r = 0.05, padding = 0.06 },
+                        nodes = {
+                            { n = G.UIT.T, config = { text = ' ' .. localize('k_' .. (compatible and 'compatible' or 'incompatible')) .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.8 } },
+                        }
+                    }
+                }
+            }
+        }
+        return { 
             vars = {
                 card.ability.consumeable.extra.uses,
                 card.ability.consumeable.extra.max_uses,
-                compactable,
-                colours = {
-                    colour
-                }
-            }
+            },
+            main_end = main_end 
         }
     end,
 

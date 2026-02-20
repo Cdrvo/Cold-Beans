@@ -4,7 +4,7 @@ SMODS.Joker {
 	atlas = 'yma_joker_atlas',
 	pos = { x = 1, y = 0 },
 	cost = 4,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	config = {
         extra = {
             xmult = 1.1

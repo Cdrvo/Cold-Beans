@@ -1384,7 +1384,6 @@ return {
 				name = "Harlequin Key",
 				text = {
 					"{C:attention}Mimics{} leftmost {C:attention}Joker",
-					"{B:1,C:white}#3#",
 					"{C:inactive}(Uses #1#/#2# Blinds)",
 				},
 			},
