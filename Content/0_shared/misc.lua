@@ -17,7 +17,7 @@ SMODS.DrawStep {
 				text_width = 45,
 				text_height = 18,
 				ref_table = self,
-                ref_value = "cost",
+                ref_value = "sell_cost",
 				prefix = "$",
 				text_colour = G.C.MONEY
 			})
