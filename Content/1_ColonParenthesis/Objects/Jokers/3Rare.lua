@@ -26,10 +26,18 @@ SMODS.Joker {
     rarity = 3,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
+        local num1 = card.ability.extra.min;
+        if num1 == -199.7 then
+            num1 = "-199.7"
+        end
+        local num2 = card.ability.extra.max;
+        if num2 == 199.7 then
+            num2 = "199.7"
+        end
         return {
             vars = {
-                card.ability.extra.min,
-                card.ability.extra.max,
+                num1,
+                num2,
             }
         }
     end,
