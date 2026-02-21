@@ -415,6 +415,7 @@ function Card:complete_arch()
         return false
     end
         local card = copy_card(self)
+        local prev_state = G.STATE
         G.TAROT_INTERRUPT = G.STATE
     if card.ability.set == 'Booster' then G.GAME.PACK_INTERRUPT = G.STATE end 
     G.STATE = (G.STATE == G.STATES.TAROT_PACK and G.STATES.TAROT_PACK) or
