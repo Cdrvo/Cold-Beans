@@ -29,8 +29,8 @@ SMODS.current_mod.optional_features = {
 local function GetJokers()
 	local jokers = {}
 	for i, card in pairs(G.jokers.cards) do
-		if card.config.center.key then
-			jokers[card.config.center.key] = card
+		if card.key then
+			jokers[card.key] = card
 		end
 	end
 
@@ -46,7 +46,7 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
-	if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.config.center.set == "Voucher" then
+	if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.set == "Voucher" then
 		G.GAME.NAMETEAM.voucher_this_ante = true
 	end
 
@@ -152,7 +152,7 @@ ColdBeans.calculate = function(mod, context)
 		end
 
 		for k, v in pairs(G.jokers.cards) do
-			if v.debuff and v.config.center.key == "j_cbean_jack_o_lantern" and v.ability.extra.hands_left <= 0 then
+			if v.debuff and v.key == "j_cbean_jack_o_lantern" and v.ability.extra.hands_left <= 0 then
 				if v.ability.extra.debuff_hands > 0 then
 					v.ability.extra.debuff_hands = v.ability.exrea.debuff_hands - 1
 					NAMETEAM.msg(v, "-1 Debuff Round")

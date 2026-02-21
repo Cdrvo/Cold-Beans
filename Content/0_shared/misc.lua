@@ -4,7 +4,69 @@ NAMETEAM = {
 
 NANEMTEAM = NAMETEAM -- revo typo protection
 
-SMODS.DrawStep({
+SMODS.DrawStep {
+    key = 'cbean_ignore', -- TRUST the process
+    order = 45,
+    func = function(self, layer)
+        if self.config.center.pvz_plant and self.config.center.key ~= "j_cbean_pboys_peashooter" and self.config.center.discovered then
+			if not self.cbean_canvas_text then
+				self.cbean_canvas_text = SMODS.CanvasSprite({
+				canvasW = 71,
+				canvasH = 95,
+				text_offset = { x = 36, y = 78 },
+				text_width = 45,
+				text_height = 18,
+				ref_table = self,
+                ref_value = "cost",
+				prefix = "$",
+				text_colour = G.C.MONEY
+			})
+			end
+		end
+    end,
+    conditions = { vortex = false, facing = 'front' },
+}
+
+SMODS.DrawStep {
+    key = 'cbean_canvas_text',
+    order = 1,
+    func = function(self, layer)
+        if self.cbean_canvas_text then
+            for _, sprite in ipairs(self.cbean_canvas_text[1] and self.cbean_canvas_text or {self.cbean_canvas_text}) do
+                love.graphics.push()
+                love.graphics.origin()
+                sprite.canvas:renderTo(love.graphics.clear, 0, 0, 0, 0)
+                local text = love.graphics.newText(
+				sprite.font,
+				 {
+				 sprite.text_colour or G.C.UI.TEXT_LIGHT,
+				 (sprite.prefix or "") .. (sprite.ref_table and sprite.ref_table[sprite.ref_value] or sprite.text)
+				})
+                local scale_fac = math.min((sprite.text_width or sprite.canvasW)/text:getWidth(), (sprite.text_height or sprite.canvasH)/text:getHeight()) * sprite.canvasScale
+                if text then 
+                    local x,y,r,sx,sy,ox,oy = unpack(sprite.text_transform or {
+                            (0 + sprite.text_offset.x) * sprite.canvasScale,
+                            (0 + sprite.text_offset.y) * sprite.canvasScale,
+                            0,
+                            scale_fac, scale_fac,
+                            text:getWidth()/2, text:getHeight()/2
+                        })
+                    sprite.canvas:renderTo(love.graphics.draw,
+                        text,
+                        x, y, r, sx, sy, ox, oy
+                    )
+                end
+                love.graphics.pop()
+                sprite.role.draw_major = self
+                sprite:draw_shader('dissolve', nil, nil, nil, self.children.center)
+            end
+        end
+    end,
+    conditions = { vortex = false, facing = 'front' },
+}
+
+
+--[[SMODS.DrawStep({
 	key = "plant_cost",
 	order = 5,
 	func = function(self, layer)
@@ -72,7 +134,8 @@ SMODS.DrawStep({
 		end
 	end,
 	conditions = { vortex = false, facing = "front" }
-})
+})]]
+
 
 _G.CBWG = {}
 
