@@ -8,7 +8,7 @@ SMODS.DrawStep {
     key = 'cbean_ignore', -- TRUST the process
     order = 45,
     func = function(self, layer)
-        if self.config.center.pvz_plant and self.config.center.key ~= "j_cbean_pboys_peashooter" and self.config.center.discovered then
+        if self.config.center.pvz_plant and self.config.center.key ~= "j_cbean_pboys_peashooter" and (self.config.center.discovered or self.bypass_discovery_center) then
 			if not self.cbean_canvas_text then
 				self.cbean_canvas_text = SMODS.CanvasSprite({
 				canvasW = 71,
