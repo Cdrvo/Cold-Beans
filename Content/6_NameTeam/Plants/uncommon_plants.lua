@@ -4254,6 +4254,7 @@ SMODS.Joker({
 					acard:juice_up()
 					SMODS.modify_rank(acard, -1)
 					SMODS.calculate_effect({ xmult = cae.xmult }, acard)
+					return true
 				end,
 			}))
 		end
