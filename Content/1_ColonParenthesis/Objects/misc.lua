@@ -36,6 +36,13 @@ if Card.is_food then
     end
 end
 
-function Colonparen.checkForSpace(area, extra_slots_used, card_limit)
+function Colonparen.checkForSpace(area, card, extra_slots_used, card_limit)
+    extra_slots_used = extra_slots_used or 0
+    for k, c in pairs(area.cards) do
+        if c == card then
+            extra_slots_used = extra_slots_used - 1
+            break
+        end
+    end
     return (#area.cards + (1 + (extra_slots_used or 0))) <= (area.config.card_limit + (card_limit or 0))
 end

@@ -817,14 +817,7 @@ select_card = 'consumeables',
     return {}
   end,
   can_use = function(self, card)
-    local mod = 0
-    for k, c in pairs(G.consumeables.cards) do
-      if c == card then
-        mod = -1
-        break
-      end
-    end
-    return Colonparen.checkForSpace(G.consumeables, mod)
+    return Colonparen.checkForSpace(G.consumeables, card)
   end,
   use = function(self, card, area, copier)
     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
