@@ -4256,8 +4256,8 @@ SMODS.Joker({
 					trigger = "after",
 					delay = 0.1,
 					func = function()
-						acard:juice_up()
-						SMODS.modify_rank(acard, -1)
+						v:juice_up()
+						SMODS.modify_rank(v, -1)
 						return true
 					end,
 				}))
