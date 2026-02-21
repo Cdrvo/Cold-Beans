@@ -300,6 +300,9 @@ G.FUNCS.show_yma_casino = function(e)
 end
 
 G.FUNCS.hide_yma_casino = function(e)
+    if G.yma_casino_slots then -- fix?
+        G.yma_casino_slots = nil
+    end
     stop_use()
 	hide_location(G.yma_casino)
 	G.STATE = G.STATES.MAIN_STREET
