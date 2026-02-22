@@ -29,7 +29,7 @@ SMODS.DrawStep {
 
 SMODS.DrawStep {
     key = 'cbean_canvas_text',
-    order = 1,
+    order = 45,
     func = function(self, layer)
         if self.cbean_canvas_text then
             for _, sprite in ipairs(self.cbean_canvas_text[1] and self.cbean_canvas_text or {self.cbean_canvas_text}) do
