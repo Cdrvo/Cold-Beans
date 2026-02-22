@@ -816,7 +816,7 @@ SMODS.Joker({
 				NAMETEAM.msg(card, "-1")
 			else
 				if cae.stage == 1 then
-					cae.rounds = 3
+					cae.rounds = 5
 					cae.stage = 2
 					NAMETEAM.msg(card, "Stage 2!")
 				elseif cae.stage == 2 then
