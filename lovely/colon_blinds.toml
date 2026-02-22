@@ -757,3 +757,27 @@ payload = '''
     end
 '''
 match_indent = true
+
+# Makes the boss reroll work on the current blind you are on. Needed for CEO Blinds
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "e.config.button = 'reroll_boss'"
+position = "at"
+payload = '''
+    if G.GAME.blind_on_deck == 'CEO' then
+        e.config.button = 'cbean_colonparen_reroll_ceo'
+    else
+        e.config.button = 'reroll_boss'
+    end
+'''
+match_indent = true
+
+# Changes it so that you have to beat the CEO Blind to win
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if not G.GAME.won and G.GAME.round_resets.ante >= G.GAME.win_ante and G.GAME.blind:get_type() == 'Boss' then"
+position = "at"
+payload = "if not G.GAME.won and G.GAME.round_resets.ante >= G.GAME.win_ante and G.GAME.blind_on_deck == 'CEO' then"
+match_indent = true
