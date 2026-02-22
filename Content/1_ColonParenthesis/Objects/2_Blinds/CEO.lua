@@ -297,7 +297,7 @@ Colonparen.CEOBlind{
     }
 }
 
-Colonparen.CEOBlind{ -- calc is in a patch or smth idk
+Colonparen.CEOBlind{ -- The check for it is in the Team Blind lovely stuff, but the actual skipping of the shop is handeled by the WGroup Biome UI
     key = "colon_salesman",
     name = "The Salesman",
     pos = { x = 0, y = 17 },
