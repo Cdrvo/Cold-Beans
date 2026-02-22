@@ -2697,6 +2697,7 @@ YMA.TBOI_ITEMS {
             athena_deck_uses = 5,
             urine_deck_retrigger = 2,
             sticky_deck_options = 2,
+            unknown_deck_xchips = 3,
         }
     },
     loc_vars = function(self, info_queue, card) --Really makes you wish lua had switch statments
@@ -2798,6 +2799,11 @@ YMA.TBOI_ITEMS {
             elseif d == 'b_cbean_nameteam_graveyard' then
                 --vars = { cae.abandoned_deck_number }
                 key = self.key .. "_graveyard_deck"
+
+            --Default effect
+            else
+                vars = { cae.unknown_deck_xchips } --A base effect for a deck unaccounted for
+                key = self.key .. "_unkown_deck"
             end
         else
             key = self.key
@@ -2909,10 +2915,10 @@ YMA.TBOI_ITEMS {
                         end
                     end
                 end
-            elseif card.ability.extra.no_deck then
+            elseif card.ability.extra.no_deck then --Default Deck Effect
                 if context.joker_main then
                     return {
-                        xchips = 5
+                        xchips = card.ability.extra.unknown_deck_xchips
                     }
                 end
             end

@@ -2920,6 +2920,21 @@ return {
 					},
 				},
 			},
+
+			ti_cbean_yma_tboi_birthright_unknown_deck = {
+				name = {
+					"Birthright",
+				},
+				text = {
+					{
+						"{C:attention}Grants{} an effect",
+						"based on current {C:attention}deck",
+					},
+					{
+						"Unknown Deck:",
+						"{X:chips,C:white}X#1#{} Chips"
+					},
+				},
 			------------------------------------------------------------------------
 			ti_cbean_yma_tboi_speed_ball = {
 				name = {
@@ -3605,6 +3620,7 @@ return {
 						"{C:attention}Chumblocks{} each hand",
 					},
 					{
+						"{C:red,E:1,s:1.1}CAN'T BE SOLD!",
 						"{C:red,E:1,s:1.1}Self destructs{}",
 						"when triggered",
 						"{C:inactive}Its so over{}"
