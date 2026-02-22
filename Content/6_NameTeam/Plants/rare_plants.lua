@@ -1339,7 +1339,7 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-	rarity = 1,
+	rarity = "cbean_token",
 	blueprint_compat = true,
 	config = {
 		extra = {

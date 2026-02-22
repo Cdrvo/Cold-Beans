@@ -208,7 +208,7 @@ SMODS.Joker({
 	key = "crater",
 	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
-	rarity = 1,
+	rarity = "cbean_token",
 	blueprint_compat = true,
 	config = {
 		extra = {
@@ -242,11 +242,11 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
+	in_pool = false,
 	key = "lava",
 	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
-	rarity = 1,
+	rarity = "cbean_token",
 	blueprint_compat = true,
 	config = {
 		extra = {

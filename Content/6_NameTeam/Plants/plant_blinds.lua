@@ -1,6 +1,8 @@
 SMODS.Blind({
 	key = "blank",
-	in_pool = false,
+	in_pool = function()
+		return false
+	end,
     boss = {
 		min = 9999,
 		max = 9999,

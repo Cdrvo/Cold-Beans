@@ -11018,6 +11018,7 @@ return {
 		},
 		collabs = {},
 		dictionary = {
+			k_cbean_token 						= "Token",
 			k_cbean_0chill_combopack            = "Combo Pack",
 
 			k_colon_architecture_pack           = "Architecture Pack",
