@@ -7595,7 +7595,7 @@ return {
 			cbean_nteam_square_scale = {
 				name = "Notice",
 				text = {
-					"Removing this sticker will",
+					"Removing Square will",
 					"{C:red}halve{} this Jokers values"
 				}
 			},
