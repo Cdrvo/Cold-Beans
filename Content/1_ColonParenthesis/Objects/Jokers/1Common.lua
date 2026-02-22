@@ -99,8 +99,8 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.cbean_colon_set_blind then
-            if context.blind == "bl_small" then
+        if context.cbean_colon_set_blind then   
+            if context.blind == "bl_small" and not context.blind_object.affected_by_pebble then
                 return {
                     blind = Colonparen.get_new_blind("Teeny")
                 }

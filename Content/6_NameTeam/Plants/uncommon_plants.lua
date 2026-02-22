@@ -3527,16 +3527,11 @@ SMODS.Joker({
 		extra = {
 			mult = 3,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.mult } }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	update = function(self, card)
 		if card and card.edition and card.edition.negative then
@@ -3590,16 +3585,11 @@ SMODS.Joker({
 		extra = {
 			chips = 10,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.chips } }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	update = function(self, card)
 		if card and card.edition and card.edition.negative then
@@ -3653,18 +3643,13 @@ SMODS.Joker({
 		extra = {
 			dollars = 4,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return {
 			vars = { cae.dollars, cae.dollars + ((card.area and NAMETEAM.all_on(card, card.area.cards, "right")) or 0) },
 		}
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	update = function(self, card)
 		if card and card.edition and card.edition.negative then
@@ -3700,16 +3685,11 @@ SMODS.Joker({
 			rounds = 3,
 			rounds_max = 3,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.xmult, cae.rounds_max, cae.rounds } }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	update = function(self, card)
 		if card and card.edition and card.edition.negative then
@@ -3753,16 +3733,11 @@ SMODS.Joker({
 		extra = {
 			chips = 15,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.chips, cae.chips + (G.jokers and NAMETEAM.pool_in("cbean_shadow", G.jokers.cards) or 0) } }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	update = function(self, card)
 		if card and card.edition and card.edition.negative then
@@ -3799,6 +3774,7 @@ SMODS.Joker({
 			value = 1.2,
 			key = nil,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
@@ -3853,75 +3829,12 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
 	config = {
 		extra = {
 			value = 1.2,
 			key = nil,
 		},
-	},
-	pools = {
-		cbean_electric = true,
-	},
-	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
-		return { vars = { cae.value } }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		local cae = card.ability.extra
-		if not cae.key then
-			cae.key = pseudorandom("ae") * pseudorandom("bc")
-		end
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		local cae = card.ability.extra
-		for k, v in pairs(G.jokers.cards) do
-			if v.ability["powed_" .. cae.key] then
-				v.ability["powed_" .. cae.key] = nil
-				NAMETEAM.values("/", v, cae.value, true)
-			end
-		end
-	end,
-	calculate = function(self, card, context)
-		local cae = card.ability.extra
-	end,
-	update = function(self, card)
-		local cae = card.ability.extra
-		if card.added_to_deck then
-			for k, v in pairs(G.jokers.cards) do
-				if
-					v.config.center.pools
-					and v.config.center.pools.cbean_electric
-					and not v.ability["powed_" .. cae.key]
-					and v.config.center.key ~= "j_cbean_power_vine"
-				then
-					v.ability["powed_" .. cae.key] = true
-					NAMETEAM.values("*", v, cae.value, true)
-				end
-			end
-		end
-	end,
-})
-
-SMODS.Joker({
-	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
-	key = "power_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	cost = 2,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
-	rarity = 2,
-	blueprint_compat = false,
-	always_buyable = true,
-	config = {
-		extra = {
-			value = 1.2,
-			key = nil,
-		},
+		extra_slots_used = -1
 	},
 	pools = {
 		cbean_electric = true,
@@ -3979,7 +3892,6 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
 	config = {
 		extra = {
 			chips = 50,
@@ -3987,6 +3899,7 @@ SMODS.Joker({
 			dollars = 3,
 			xmult = 2,
 		},
+		extra_slots_used = -1
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
@@ -4008,12 +3921,6 @@ SMODS.Joker({
 			end
 		end
 		return { vars = vars, key = key }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 	end,
 	update = function(self, card)
 		if card and card.edition and card.edition.negative then
