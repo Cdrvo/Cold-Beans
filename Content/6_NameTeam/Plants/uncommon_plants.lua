@@ -3522,7 +3522,7 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
+	
 	config = {
 		extra = {
 			mult = 3,
@@ -3580,7 +3580,7 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
+	
 	config = {
 		extra = {
 			chips = 10,
@@ -3638,7 +3638,7 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
+	
 	config = {
 		extra = {
 			dollars = 4,
@@ -3678,7 +3678,7 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
+	
 	config = {
 		extra = {
 			xmult = 1.5,
@@ -3728,7 +3728,7 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
+	
 	config = {
 		extra = {
 			chips = 15,
@@ -3768,7 +3768,7 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	always_buyable = true,
+	
 	config = {
 		extra = {
 			value = 1.2,
