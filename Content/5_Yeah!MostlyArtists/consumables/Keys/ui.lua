@@ -621,10 +621,10 @@ function G.UIDEF.yma_tboi_chest()
         1.05*G.CARD_H,
         {card_limit = _size, type = 'joker', highlight_limit = 1, no_card_count = true})
     G.GAME.tboi_chest_card_amt = G.GAME.tboi_chest_card_amt or 0
-    if G.GAME.tboi_chest_card_amt > 0 then
-        for i = 1, G.GAME.tboi_chest_card_amt do
-            local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, nil, 'for')
-            if i == G.GAME.tboi_chest_card_amt then
+    if G.GAME.tboi_chest_cards then
+        for i, key in ipairs(G.GAME.tboi_chest_cards) do
+            local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, key, 'for')
+            if i == #G.GAME.tboi_chest_cards then
                 --print("Last")
                 G.E_MANAGER:add_event(Event({
                 trigger = 'before',
@@ -635,6 +635,24 @@ function G.UIDEF.yma_tboi_chest()
                 end
             }))
             end
+            G.tboi_chest_cards:emplace(cardd)
+        end
+    elseif G.GAME.tboi_chest_card_amt > 0 then
+        G.GAME.tboi_chest_cards = {}
+        for i = 1, G.GAME.tboi_chest_card_amt do
+            local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, nil, 'for')
+            if i == G.GAME.tboi_chest_card_amt then
+                --print("Last")
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.15,
+                    func = function()
+                        cardd:flip()
+                        return true
+                    end
+                }))
+            end
+            G.GAME.tboi_chest_cards[#G.GAME.tboi_chest_cards+1] = cardd.config.center.key
             G.tboi_chest_cards:emplace(cardd)
         end
         G.GAME.tboi_chest_card_amt = 0

@@ -549,6 +549,7 @@ elseif card.ability.set == 'yma_tboi_items' then
     dont_dissolve = true
     delay_fac = 0.2
     SMODS.destroy_cards(G.tboi_chest_cards.cards, nil, nil, true)
+    G.GAME.tboi_chest_cards = nil
     G.STATE = prev_state
     G.TAROT_INTERRUPT=nil
     G.CONTROLLER.locks.use = false
