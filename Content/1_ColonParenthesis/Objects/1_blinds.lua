@@ -149,6 +149,7 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
 			Colonparen.SpecialBlinds[self.key] = self;
         end,
         inject = function(self, i)
+			self.spawn_info = self.spawn_info or {}
             -- no pools to query length of, so we assign order manually
             if not self.taken_ownership then
                 self.order = 30 + i
