@@ -175,6 +175,11 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
 end
 G.P_SMALL_BLINDS.bl_small = G.P_BLINDS.bl_small
 G.P_BIG_BLINDS.bl_big = G.P_BLINDS.bl_big
+local old_inject = SMODS.Blind.inject;
+SMODS.Blind.inject = function (self, ...)
+	self.spawn_info = self.boss or self.spawn_info or {}
+	return old_inject(self, ...)
+end
 Colonparen.BossBlind = SMODS.Blind;
 
 function Colonparen.calculateReplacedBlind(blind, slot, with)
