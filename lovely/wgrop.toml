@@ -244,7 +244,7 @@ target = 'functions/state_events.lua'
 pattern = '''dollars = dollars +  G.GAME.current_round.discards_left*(G.GAME.modifiers.money_per_discard)'''
 position = "at"
 payload = '''
-dollars = dollars +  G.GAME.current_round.discards_left*((G.GAME.modifiers.money_per_discard or 0) + G.GAME.modifiers.volcanic_money or 0)
+dollars = dollars +  G.GAME.current_round.discards_left*((G.GAME.modifiers.money_per_discard or 0) + (G.GAME.modifiers.volcanic_money or 0))
 '''
 match_indent = true
 
