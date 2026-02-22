@@ -625,13 +625,18 @@ G.GAME.shop_d6ed = nil
 G.STATE_COMPLETE = false'''
 position = "at"
 payload = '''
-if not G.COLON_SALESMAN_TOGGLE then
+if G.COLON_SALESMAN_TOGGLE then //This addition unction is now kinda pointless, but I am leaving it because it works
+    G.STATE = G.STATES.SHOP
+    G.GAME.shop_free = nil
+    G.GAME.shop_d6ed = nil
+    G.STATE_COMPLETE = false
+    G.COLON_SALESMAN_TOGGLE = nil
+else
     G.STATE = G.STATES.SHOP
     G.GAME.shop_free = nil
     G.GAME.shop_d6ed = nil
     G.STATE_COMPLETE = false
 end
-G.COLON_SALESMAN_TOGGLE = nil
 '''
 match_indent = true
 
