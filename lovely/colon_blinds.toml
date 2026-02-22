@@ -616,29 +616,6 @@ payload = '''G.deck:hard_set_T()
         end
         G.E_MANAGER:add_event(Event({'''
 match_indent = true
-[[patches]]
-[patches.pattern]
-target = 'functions/button_callbacks.lua'
-pattern = '''G.STATE = G.STATES.SHOP
-G.GAME.shop_free = nil
-G.GAME.shop_d6ed = nil
-G.STATE_COMPLETE = false'''
-position = "at"
-payload = '''
-if G.COLON_SALESMAN_TOGGLE then //This addition unction is now kinda pointless, but I am leaving it because it works
-    G.STATE = G.STATES.SHOP
-    G.GAME.shop_free = nil
-    G.GAME.shop_d6ed = nil
-    G.STATE_COMPLETE = false
-    G.COLON_SALESMAN_TOGGLE = nil
-else
-    G.STATE = G.STATES.SHOP
-    G.GAME.shop_free = nil
-    G.GAME.shop_d6ed = nil
-    G.STATE_COMPLETE = false
-end
-'''
-match_indent = true
 
 
 [[patches]]
