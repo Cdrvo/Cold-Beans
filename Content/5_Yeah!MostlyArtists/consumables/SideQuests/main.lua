@@ -77,7 +77,8 @@ function Card:set_sprites(center, front, ...)
         }
     end
 	if
-		self.children.back.atlas.key == "cbean_NAMETEAM_Decks"
+        self.children.back
+		and self.children.back.atlas.key == "cbean_NAMETEAM_Decks"
         and self.children.back.sprite_pos.x == 3
         and self.children.back.sprite_pos.y == 0
         and not self.children.nteam_sticky_back
@@ -91,7 +92,8 @@ function Card:set_sprites(center, front, ...)
 		self.children.nteam_sticky_back:set_role({ major = self, role_type = "Glued", draw_major = self })
 	end
     if
-		self.children.back.atlas.key == "cbean_pboys_daily_deck"
+        self.children.back
+		and self.children.back.atlas.key == "cbean_pboys_daily_deck"
         and G.GAME.run_back_pos
 	then
         self.children.back.sprite_pos = G.GAME.run_back_pos

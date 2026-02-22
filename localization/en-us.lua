@@ -5426,7 +5426,7 @@ return {
 			j_cbean_homing_thistle                      = {
 				name = "Homing Thistle",
 				text = {
-					"Firt scored card",
+					"First scored card",
 					"gives {C:chips}+#1#{} Chips"
 				},
 			},
@@ -6291,7 +6291,7 @@ return {
 			j_cbean_blast_spinner                       = {
 				name = "Blast Spinner",
 				text = {
-					"A random card",
+					"A random scored card",
 					"gives {X:mult,C:white}X#1#{} Mult",
 					"but is debuffed for the",
 					"entire ante afterwards"
