@@ -1385,16 +1385,18 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "N/A",
 	},
-	rarity = 1,
+	rarity = 3,
 	blueprint_compat = true,
 	config = {
 		extra = {
 			xmult_scale = 0,
+			xmult_gain = 0.1,
+			cards_effected = 3,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return { vars = { cae.xmult_scale + 1 } }
+		return { vars = { cae.xmult_scale + 1, cae.xmult_gain, cae.cards_effected } }
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -1407,15 +1409,17 @@ SMODS.Joker({
 			tab = NAMETEAM.reverse_table(tab)
 			tab = NAMETEAM.shuffle(tab, "goddamnitworkshoorray")
 
-			for i = 1, 2 do
-				table.remove(tab, 1)
+			if #tab > card.ability.extra.cards_effected then
+				for i = 1, #tab - card.ability.extra.cards_effected do
+					table.remove(tab, 1)
+				end
 			end
 
 			cae.cards = tab
 		end
 		if context.individual and context.cardarea == G.play then
 			if G.GAME.current_round.hands_left > 0 then
-				cae.xmult_scale = cae.xmult_scale + 0.1
+				cae.xmult_scale = cae.xmult_scale + card.ability.extra.xmult_gain
 			else
 				for k, v in pairs(cae.cards) do
 					if context.other_card == v then
