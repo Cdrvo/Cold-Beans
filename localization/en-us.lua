@@ -4873,7 +4873,7 @@ return {
 						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"{C:attention}shuffles{} 2 random",
+						"{C:attention}Shuffles{} 2 random",
 						"{C:attention}Jokers{} before scoring"
 					},
 				},
@@ -5871,10 +5871,11 @@ return {
 			j_cbean_tumbleweed                          = {
 				name = "Tumbleweed",
 				text = {
-					"Scored cards has",
-					"a {C:green}#2# in #3#{} Chance",
-					"to retrigger {C:attention}#1#{} Times",
-					"never trigger otherwise"
+					"Scored cards have a {C:green}#2# in #3#{}",
+					"chance to retrigger",
+					"{C:attention}#1#{} additional times",
+					"Otherwise, they don't",
+					"trigger at all"
 				},
 			},
 
@@ -6142,9 +6143,10 @@ return {
 				name = "Mega Gattling Pea",
 				text = {
 					"First scored card",
-					"is retriggered {C:attention}#1#{} Times",
-					"After scoring, has a {C:green}#2# in #3#{} Chance",
-					"to increase repetitions by {C:attention}1{}"
+					"is retriggered {C:attention}#1#{} times",
+					"After scoring, has a",
+					"{C:green}#2# in #3#{} chance to increase",
+					"repetitions by {C:attention}1{}"
 				},
 			},
 
@@ -6347,14 +6349,11 @@ return {
 			j_cbean_hammeruit                           = {
 				name = "Hammeruit",
 				text = {
-					"On the last hand",
-					"of the round,",
-					"{C:attention}3{} Random scored",
-					"cards give {X:mult,C:white}XMULT{} based",
-					"on how many playing cards were",
-					"triggered during the round",
-					"{C:inactive,s:0.85}(Increases by 0.1 per trigger, resets after the round)",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					"{C:attention}#3#{} random scored cards give", 
+					"{X:mult,C:white}X#1#{} Mult in {C:attention}final hand{} of round",
+					"Gains {X:mult,C:white}X#2#{} Mult for",
+					"each card scored",
+					"{C:inactive}(Resets each round){}"
 				},
 			},
 
@@ -7289,7 +7288,7 @@ return {
 				text =
 				{
 					"Earn {C:money}$#1#{} when buying",
-					"Jokers from the {C:money}shop{}"
+					"{C:attention}Jokers{} from the {C:money}shop{}"
 				}
 			},
 
