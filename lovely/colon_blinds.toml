@@ -790,7 +790,7 @@ position = "before"
 payload = '''
     for k, v in pairs(Colonparen.SpecialBlinds) do
         if v.name == blindname then
-            if (v.boss or v.spawn_info).showdown then 
+            if v.spawn_info.showdown then 
                 ease_background_colour{new_colour = G.C.BLUE, special_colour = G.C.RED, tertiary_colour = darken(G.C.BLACK, 0.4), contrast = 3}
                 return
             end
