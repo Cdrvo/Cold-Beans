@@ -46,6 +46,14 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
+
+	if context.starting_shop then
+		G.GAME.cbean_shop_nocontext = true
+	end
+	if context.ending_shop then
+		G.GAME.cbean_shop_nocontext = false
+	end
+
 	if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.set == "Voucher" then
 		G.GAME.NAMETEAM.voucher_this_ante = true
 	end

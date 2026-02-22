@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+# Back alley
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'before'
+pattern = '''if not nosave_shop then SMODS.calculate_context({starting_shop = true}) end'''
+payload = '''
+if not G.GAME.cbean_shop_nocontext then
+'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+position = 'after'
+pattern = '''if not nosave_shop then SMODS.calculate_context({starting_shop = true}) end'''
+payload = '''
+end
+'''
+match_indent = true
