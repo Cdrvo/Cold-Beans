@@ -811,7 +811,7 @@ SMODS.Joker({
 			end
 		end
 		if context.end_of_round and context.main_eval then
-			if cae.rounds > 1 and cae.stage ~= "Last Stage" then
+			if cae.rounds > 1 and type(cae.stage) == "string" and cae.stage ~= "Last Stage" then
 				cae.rounds = cae.rounds - 1
 				NAMETEAM.msg(card, "-1")
 			else
