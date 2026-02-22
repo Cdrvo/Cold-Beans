@@ -6,6 +6,12 @@ G.STATE_CHOOSEBALL = false
 G.STATE_SWAPBALL = false
 G.STATE_SHOWBALL = false
 
+SMODS.current_mod.calculate = function(self,context)
+    if context.round_eval then
+        G.GAME.BALLEY_WINS = 0
+  	end
+end
+
 SMODS.Sound({
 	key = "music_cbean_pboy_alleytheme",
 	path = "4_Pissboys/pboy_alleytheme.ogg",
@@ -19,13 +25,13 @@ SMODS.Sound({
 
 G.FUNCS.can_use_bet = function(e)
   if not G.STATE_CHOOSEBALL and not G.STATE_SWAPBALL and not G.STATE_SHOWBALL then
-	  if G.MODE == 3 then
+	  if G.MODE == 3 and G.GAME.dollars > 0 and G.GAME.BALLEY_WINS and G.GAME.BALLEY_WINS < 3 then
 		e.config.colour = G.C.RED
 		e.config.button = 'start_balley'
-	  elseif G.MODE == 2.5 then
+	  elseif G.MODE == 2.5 and G.GAME.dollars > 0 and G.GAME.BALLEY_WINS and G.GAME.BALLEY_WINS < 3 then
 		e.config.colour = G.C.MONEY
 		e.config.button = 'start_balley'
-	  elseif G.MODE == 2 then
+	  elseif G.MODE == 2 and G.GAME.dollars > 0 and G.GAME.BALLEY_WINS and G.GAME.BALLEY_WINS < 3 then
 		e.config.colour = G.C.GREEN
 		e.config.button = 'start_balley'
 	  else
@@ -151,15 +157,31 @@ function Controller:L_cursor_press(x, y)
 				  G.aball.states.visible = true
 				  if G.cups[key].ball then
 					ease_dollars(G.current_betmoney)
-					G.aball.config.offset.x = G.cups[key].config.offset.x
-					G.aball.config.offset.y = G.cups[key].config.offset.y+0.8
-					G.ajoker.definition.nodes[1].config.object.sprite_pos.x = 3
-					G.ajoker.config.speech_bubble_align = {align= 'bm', offset = {x=0,y=0},parent = G.ajoker}
-					G.ajoker.children.speech_bubble = 
-					UIBox{
-							definition = G.UIDEF.speech_bubble('cbean_pboys_win_'..math.random(1,7), {quip = true}),
-							config = G.ajoker.config.speech_bubble_align
-					}
+					if G.GAME.BALLEY_WINS < 2 then
+						--print("Less than 3 Wins")
+						G.GAME.BALLEY_WINS = G.GAME.BALLEY_WINS + 1
+						G.aball.config.offset.x = G.cups[key].config.offset.x
+						G.aball.config.offset.y = G.cups[key].config.offset.y+0.8
+						G.ajoker.definition.nodes[1].config.object.sprite_pos.x = 3
+						G.ajoker.config.speech_bubble_align = {align= 'bm', offset = {x=0,y=0},parent = G.ajoker}
+						G.ajoker.children.speech_bubble = 
+						UIBox{
+								definition = G.UIDEF.speech_bubble('cbean_pboys_win_'..math.random(1,7), {quip = true}),
+								config = G.ajoker.config.speech_bubble_align
+						}
+					else
+						--print("3 or More Wins")
+						G.GAME.BALLEY_WINS = G.GAME.BALLEY_WINS + 1
+						G.aball.config.offset.x = G.cups[key].config.offset.x
+						G.aball.config.offset.y = G.cups[key].config.offset.y+0.8
+						G.ajoker.definition.nodes[1].config.object.sprite_pos.x = math.random(5,6)
+						G.ajoker.config.speech_bubble_align = {align= 'bm', offset = {x=0,y=0},parent = G.ajoker}
+						G.ajoker.children.speech_bubble = 
+						UIBox{
+								definition = G.UIDEF.speech_bubble('cbean_pboys_get_out_'..math.random(1,7), {quip = true}),
+								config = G.ajoker.config.speech_bubble_align
+						}
+					end
 				  else
 					ease_dollars(-G.current_betmoney)
 					for _, v in ipairs(SMODS.find_card("j_cbean_pboys_ihaveagun")) do

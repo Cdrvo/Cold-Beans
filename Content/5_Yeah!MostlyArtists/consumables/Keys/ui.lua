@@ -90,7 +90,7 @@ local lcpref2 = Controller.L_cursor_press
 function Controller:L_cursor_press(x, y)
     lcpref2(self, x, y)
 	if G.STATE == G.STATES.MAIN_STREET and G.main_street and G.GAME then
-        if G.yma_mainstreet_alleyway and G.yma_mainstreet_alleyway.states.collide.is then
+        if G.yma_mainstreet_alleyway and G.yma_mainstreet_alleyway.states.collide.is and yma_can_access_location('balley') then
             G.FUNCS.show_balley()
         elseif G.yma_mainstreet_graveyard and G.yma_mainstreet_graveyard.states.collide.is and yma_can_access_location('graveyard') then
             G.FUNCS.show_yma_graveyard()
@@ -192,8 +192,12 @@ end
 
 function G.UIDEF.alleysprite()
   
-	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS["cbean_pboys_backalley_shop"], { x = 0, y = 0 }) or nil
-
+	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("balley")  and "cbean_pboys_backalley_shop" or "cbean_NAMETEAM_closed"], { x = 0, y = 0 }) or nil
+    function sprite_alley:update(dt)
+        AnimatedSprite.update(self, dt)
+        self.atlas =
+            G.ANIMATION_ATLAS[yma_can_access_location("balley")  and "cbean_pboys_backalley_shop" or "cbean_NAMETEAM_closed"]
+    end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_alley}},
     }}

@@ -11670,6 +11670,7 @@ return {
 			["cbean_nteam_collection_3oak"] = "HR Three of a Collection",
 		},
 		quips = {
+			--Back Alley Welcome Quotes
 			cbean_pboys_hi_1 = {
 				"I hope you'll",
 				"be interested",
@@ -11697,6 +11698,8 @@ return {
 				"Welcome to the",
 				"Back Alley!",
 			},
+
+			--Back Alley Win Quotes
 			cbean_pboys_win_1 = {
 				"{C:dark_edition}YOU WIN!",
 				"{C:inactive}sadly...",
@@ -11723,6 +11726,7 @@ return {
 			cbean_pboys_win_7 = {
 				"...",
 			},
+			--Back Alley Lose Quotes
 			cbean_pboys_lose_1 = {
 				"Better luck",
 				"next time",
@@ -11750,6 +11754,37 @@ return {
 			cbean_pboys_lose_7 = {
 				"!!!",
 			},
+			--Back Alley Too Much Winning Quotes
+			cbean_pboys_get_out_1 = {
+				"Sorry, you just",
+				"win too much",
+			},
+			cbean_pboys_get_out_2 = {
+				"Pay no attention",
+				"to the man behind",
+				"the cardboard",
+			},
+			cbean_pboys_get_out_3 = {
+				"Three strikes",
+				"and I'm out",
+			},
+			cbean_pboys_get_out_4 = {
+				"Give me a round,",
+				"gotta make a call",
+			},
+			cbean_pboys_get_out_5 = {
+				"Aw dang it",
+			},
+			cbean_pboys_get_out_6 = {
+				"Oh No What That",
+			},
+			cbean_pboys_get_out_7 = {
+				"I'll come back",
+				"when I'm a little",
+				"mmmmmm richer"
+			},
+
+			--Back Alley Tutorial 
 			cbean_pboys_tutorial_1 = {
 				"This is {C:attention}Back Alley!",
 			},

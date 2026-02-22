@@ -263,6 +263,9 @@ function yma_state_function_events(e)
 end
 
 function yma_can_access_location(location)
+    if location == 'balley' and G.GAME.BALLEY_WINS and G.GAME.BALLEY_WINS < 3 then
+        return true
+    end
     if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
         return true
     end
