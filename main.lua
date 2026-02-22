@@ -55,6 +55,7 @@ ColdBeans.calculate = function(mod, context)
 	end
 	if context.ending_shop then
 		G.GAME.cbean_shop_nocontext = false
+		G.GAME.VISITED_STREET = false
 	end
 
 	if context.buying_card and context.card and context.card.config and context.card.config.center and context.card.set == "Voucher" then

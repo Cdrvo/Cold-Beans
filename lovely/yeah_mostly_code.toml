@@ -5,6 +5,19 @@ priority = 0
 
 # Yeah Mostly Artists
 
+# Changes the entering_shop context to also check for the VISITED_STREET variable to avoid it triggering multiple times per shop. By MarioFan597
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''if not nosave_shop then SMODS.calculate_context({starting_shop = true}) end'''
+position = "at"
+match_indent = true
+payload = '''
+if not G.GAME.VISITED_STREET then
+    if not nosave_shop then SMODS.calculate_context({starting_shop = true}) end
+end
+'''
+
 # Random pool
 [[patches]]
 [patches.pattern]

@@ -23,6 +23,7 @@ G.FUNCS.show_yma_main_street = function(e)
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   cached_hand_state = G.hand.states.visible
   G.hand.states.visible = false
+  G.GAME.VISITED_STREET = true --Keeps track of if you visited the street. Need to ensure that entering shop effects only happen once per shop.
 end
 
 G.FUNCS.hide_yma_main_street = function(e)
