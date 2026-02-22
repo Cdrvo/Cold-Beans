@@ -35,7 +35,7 @@ payload = '''
 if not NAMETEAM.reduce then NAMETEAM.reduce = 0 end
 if NAMETEAM.reduce>0 and not G.GAME.current_round.any_hand_drawn and G.GAME.blind.in_blind then
     NAMETEAM.reduce = NAMETEAM.reduce - 1
-    if G.GAME.blind.boss then
+    if Colonparen.BossOrCEO() then
         G.GAME.blind.chips = G.GAME.blind.chips/(G.P_CENTERS["j_cbean_doom_shroom"].config.extra.blind)
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
     else

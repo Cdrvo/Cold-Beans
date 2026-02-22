@@ -31,7 +31,7 @@ SMODS.Joker({
 			end
 			if G.GAME.blind and G.GAME.blind.in_blind then
 				G.GAME.NAMETEAM.reduce = G.GAME.NAMETEAM.reduce + 2
-				if G.GAME.blind.boss then
+				if Colonparen.BossOrCEO() then
 					G.GAME.blind.chips = G.GAME.blind.chips / cae.blind
 					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				else
@@ -451,7 +451,7 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.selling_self then
 			if G.GAME.blind then
-				if G.GAME.blind.boss then
+				if Colonparen.BossOrCEO() then
 					NAMETEAM.msg(card, localize("k_cbean_halved"))
 					G.GAME.blind.chips = G.GAME.blind.chips / 2
 					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) --iforgotmytalismancompatibiltiy
@@ -4968,7 +4968,7 @@ SMODS.Joker({
 			context.end_of_round
 			and context.main_eval
 			and G.GAME.blind
-			and G.GAME.blind.boss
+			and Colonparen.BossOrCEO()
 			and not card.ability.no_dup
 		then
 			local acard = SMDOS.add_card({

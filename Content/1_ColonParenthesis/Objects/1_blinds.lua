@@ -140,6 +140,10 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
         get_obj = function(self, key) return G[P_STRING][key] end,
         register = function(self)
             self.name = self.name or self.key
+			if self.boss then
+				self.spawn_info = self.boss;
+				self.boss = nil
+			end
 			self.colonparen_blindtype = name;
             SMODS.Blind.super.register(self)
 			Colonparen.SpecialBlinds[self.key] = self;
@@ -234,7 +238,7 @@ function Colonparen.get_new_blind(type, startofante)
 		for k, v in pairs(G[P_STRING]) do
 			local res, options = SMODS.add_to_pool(v)
 			options = options or {}
-			if not v.boss then
+			if not v.spawn_info then
 
 			elseif options.ignore_showdown_check then
 				eligible_bosses[k] = res and true or nil
@@ -242,20 +246,20 @@ function Colonparen.get_new_blind(type, startofante)
 				if
 					(
 						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
-						(v.boss.showdown or false)
+						(v.spawn_info.showdown or false)
 					) and v:in_pool(startofante)
 				then
 					eligible_bosses[k] = res and true or nil
 				end
-			elseif (not v.boss.showdown) and (((not v.boss.min) or (v.boss.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+			elseif (not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
 				eligible_bosses[k] = res and true or nil
-			elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
+			elseif v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 				eligible_bosses[k] = res and true or nil
 			end
 		end
 	elseif type == 'Teeny' then
 		for k, v in pairs(G[P_STRING]) do
-			if not v.boss or not v.boss.min or (v.boss.min <= math.max(1, G.GAME.round_resets.ante)) then
+			if not v.spawn_info or not v.spawn_info.min or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante)) then
 				eligible_bosses[k] = SMODS.add_to_pool(v)
 				if (not G.GAME.bosses_used[k]) then
 					G.GAME.bosses_used[k] = 0
@@ -578,7 +582,7 @@ function SMODS.collection_pool(item, ...)
 				return typevalue.Small
 			elseif blind.key == "bl_big" then
 				return typevalue.Big
-			elseif (blind.colonparen_blindtype == "CEO") and blind.boss.showdown then
+			elseif (blind.colonparen_blindtype == "CEO") and blind.spawn_info.showdown then
 				return typevalue.CEOShowdown
 			elseif typevalue[blind.colonparen_blindtype] then
 				return typevalue[blind.colonparen_blindtype]
@@ -664,3 +668,29 @@ function SMODS.is_getter_context(context)
 	end
 	return is_getter_context(context)
 end
+
+function Colonparen.BossOrCEO()
+	local t = Colonparen.get_blind_type(G.GAME.blind)
+	return (t == "Boss") or (t == "CEO")
+end
+
+SMODS.Joker:take_ownership('j_matador', {
+    calculate = function(self, card, context)
+        if context.debuffed_hand or context.joker_main then
+            if G.GAME.blind.triggered and (G.GAME.blind_on_deck == "CEO") then
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra
+                return {
+                    dollars = card.ability.extra,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end
+    end,
+}, true)

@@ -12,10 +12,10 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
         return { vars = { localize { type = 'name_text', set = 'Tag', key = 'tag_double' } } }
     end,
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
-			if not(G.GAME.blind_on_deck ~= "CEO" and G.GAME.blind_on_deck ~= "Ceo") then
+        if context.end_of_round and context.game_over == false and context.main_eval then
+			if context.beat_ceo then
 				add_tag(Tag('tag_double'))
-			elseif G.GAME.blind_on_deck ~= "Teeny" then
+			elseif context.beat_boss then
 				local tag
 				repeat
 					tag = Tag(get_next_tag_key("vodka"))

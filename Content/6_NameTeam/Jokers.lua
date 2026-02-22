@@ -253,7 +253,7 @@ SMODS.Joker({
                     }))
                 end
             end
-            if context.beat_boss and Colonparen.get_blind_type(G.GAME.blind) == "CEO" then
+            if context.beat_ceo then
                 card.ability.extra.current_effect = pseudorandom_element({
                     "thunderedge",
                     "revo",
@@ -558,7 +558,7 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.before and G.GAME.current_round.hands_played == 2 and not context.blueprint then
-            if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss then
+            if G.GAME.blind and not G.GAME.blind.disabled and Colonparen.BossOrCEO() then
                 return {
                     message = localize("ph_boss_disabled"),
                     func = function()

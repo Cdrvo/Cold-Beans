@@ -317,7 +317,7 @@ YMA.TBOI_ITEMS {
     },
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval and context.beat_boss and not card.ability.extra.active and G.GAME.blind.colonparen_blindtype then 
+        if context.end_of_round and context.main_eval and context.beat_ceo and not card.ability.extra.active then 
             if SMODS.pseudorandom_probability(card, 'yma_tboi_pentagram', 1, card.ability.extra.odds) then
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_active'), colour = G.C.FILTER})
                 G.GAME.yma_everywhere_open = true
@@ -3381,7 +3381,7 @@ YMA.TBOI_ITEMS {
                 end
             end
         end
-        if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.colonparen_blindtype == "CEO" then 
+        if context.end_of_round and context.main_eval and context.beat_ceo then 
             if SMODS.pseudorandom_probability(card, 'yma_tboi_fate', 1, card.ability.extra.odds) then
                 ease_ante(-card.ability.extra.ante)
                 G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante

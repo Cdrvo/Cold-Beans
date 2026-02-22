@@ -4531,7 +4531,7 @@ return {
 				text = {
 					"Sell this {C:attention}Joker{} to {C:red}defeat",
 					"the current {C:attention}Blind",
-					"If facing a {C:attention}Boss Blind{}, halve",
+					"If facing a {C:attention}Boss{} or {C:attention}CEO Blind{}, halve",
 					"its requirement instead",
 				},
 			},
@@ -6473,7 +6473,7 @@ return {
 						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"When a {C:attention}Boss Blind{} is",
+						"When a {C:attention}Boss{} or {C:attention}CEO Blind{} is",
 						"defeated, create another",
 						"{C:dark_edition}Negative{} {C:purple}Spore-Shroom{}",
 						"{C:inactive,:s0.8}(Other Spore-Shrooms created",

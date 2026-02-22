@@ -781,3 +781,22 @@ pattern = "if not G.GAME.won and G.GAME.round_resets.ante >= G.GAME.win_ante and
 position = "at"
 payload = "if not G.GAME.won and G.GAME.round_resets.ante >= G.GAME.win_ante and G.GAME.blind_on_deck == 'CEO' then"
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "ease_background_colour{new_colour = lighten(mix_colours(boss_col, G.C.BLACK, 0.3), 0.1), special_colour = boss_col, contrast = 2}"
+position = "before"
+payload = '''
+    for k, v in pairs(Colonparen.SpecialBlinds) do
+        if v.name == blindname then
+            if (v.boss or v.spawn_info).showdown then 
+                ease_background_colour{new_colour = G.C.BLUE, special_colour = G.C.RED, tertiary_colour = darken(G.C.BLACK, 0.4), contrast = 3}
+                return
+            end
+            boss_col = v.boss_colour or G.C.BLACK
+        end
+    end
+'''
+match_indent = true
+
