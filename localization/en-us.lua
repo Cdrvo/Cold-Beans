@@ -7576,6 +7576,13 @@ return {
 					"when {C:attention}clicked{} on",
 				}
 			},
+			cbean_nteam_square_scale = {
+				name = "Notice",
+				text = {
+					"Removing this sticker will",
+					"{C:red}halve{} this Jokers values"
+				}
+			},
 			cbean_house_rules_hint = {
 				name = "House Rules",
 				text = {
@@ -9817,6 +9824,7 @@ return {
 					"{C:attention}Joker{} without {C:attention}Square{}",
 					"The selected {C:attention}Joker{}'s",
 					"values are {C:attention}doubled",
+					"while {C:attention}Square{} is applied",
 					"{C:inactive}(If applicable)"
 				},
 			},

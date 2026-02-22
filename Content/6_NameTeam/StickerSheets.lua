@@ -1378,8 +1378,7 @@ SMODS.Consumable({
 			delay = 0.4,
 			func = function()
 				play_sound("gold_seal", 2, 0.75)
-				affected_card:add_sticker("cbean_square", true)
-        NAMETEAM.values("*", affected_card, 2, true)
+        SMODS.Stickers.cbean_square:apply(affected_card, 2)
 				card:juice_up(0.3, 0.5)
 				affected_card:juice_up()
 				return true
