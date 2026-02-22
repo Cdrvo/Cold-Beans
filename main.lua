@@ -47,6 +47,9 @@ end
 
 ColdBeans.calculate = function(mod, context)
 
+	if context.round_eval then
+        G.GAME.BALLEY_WINS = 0
+  	end
 	if context.starting_shop then
 		G.GAME.cbean_shop_nocontext = true
 	end

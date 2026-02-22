@@ -6,12 +6,6 @@ G.STATE_CHOOSEBALL = false
 G.STATE_SWAPBALL = false
 G.STATE_SHOWBALL = false
 
-SMODS.current_mod.calculate = function(self,context)
-    if context.round_eval then
-        G.GAME.BALLEY_WINS = 0
-  	end
-end
-
 SMODS.Sound({
 	key = "music_cbean_pboy_alleytheme",
 	path = "4_Pissboys/pboy_alleytheme.ogg",
