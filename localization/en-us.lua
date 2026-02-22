@@ -5795,9 +5795,6 @@ return {
 						"{C:attention}Jokers{} to the right",
 						"of this gives {C:mult}+#1#{} Mult",
 					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
-					},
 				},
 			},
 
@@ -5809,9 +5806,6 @@ return {
 						"{C:attention}Jokers{} to the right",
 						"of this gives {C:chips}+#1#{} Chips",
 					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
-					},
 				},
 			},
 			j_cbean_shine_vine                          = {
@@ -5822,9 +5816,6 @@ return {
 						"Earn an extra {C:money}+$1{} for every",
 						"{C:attention}Joker{} right of this {C:attention}Joker{}",
 						"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
-					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot",
 					},
 				},
 			},
@@ -5838,9 +5829,6 @@ return {
 						"{C:red,E:1,s:1.1}Self destructs{} after",
 						"{C:attention}#2#{C:inactive} (#3#){} Rounds",
 					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot",
-					},
 				},
 			},
 			j_cbean_gloom_vine                          = {
@@ -5850,9 +5838,6 @@ return {
 						"{C:chips}+#1#{} Chips for every",
 						"shadow plant owned",
 						"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
-					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
 					},
 				},
 			},
