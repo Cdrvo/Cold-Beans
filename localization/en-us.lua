@@ -7566,7 +7566,7 @@ return {
 				text = {
 					"Gains {C:white,X:mult}X#2#{} Mult",
 					"if final score",
-					"is with in {C:attention}#3#%{}",
+					"is at most {C:attention}#3#%{}",
 					"of {C:attention}Blind{} requirement",
 					"{C:inactive}(Currently: {X:mult,C:white}X#1#{}{C:inactive} Mult)"
 				}
