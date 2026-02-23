@@ -422,11 +422,12 @@ end
 
 local add_round_eval_row_old = add_round_eval_row
 function add_round_eval_row(config)
+	---Adds the check needed for Gold shroom
 	local old_dollar =	(config.dollars or 0)
 	config.dollars = (config.dollars or 0)
 	if config.dollars and config.dollars>0 then
 		config.dollars = (( (config.dollars or 0) / ((#SMODS.find_card("j_cbean_golden_magnet"))+1) ))
-		NAMETEAM.goldenmagnet_number = old_dollar - config.dollars
+		G.GAME.NAMETEAM.goldenmagnet_number = old_dollar - config.dollars
 	end
 	
 	return add_round_eval_row_old(config)

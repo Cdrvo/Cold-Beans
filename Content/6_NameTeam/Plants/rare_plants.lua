@@ -348,8 +348,16 @@ SMODS.Joker({
 			}
 		end
 		if context.cbean_cashout and G.GAME.NAMETEAM.goldenmagnet_number then
-			cae.xmult = cae.xmult + (cae.xmult_gain * G.GAME.NAMETEAM.goldenmagnet_number)
-			NAMETEAM.msg(card, localize("k_upgrade_ex"), "mult")
+			SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_table = {
+                    empty_gain = G.GAME.NAMETEAM.goldenmagnet_number  * card.ability.extra.xmult_gain,
+                },
+                scalar_value = "empty_gain",
+                message_key = "a_xmult",
+                message_colour = G.C.MULT,
+            })
 		end
 	end,
 })
