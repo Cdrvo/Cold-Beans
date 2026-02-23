@@ -758,3 +758,19 @@ Game.main_menu = function(change_context)
 
 	return ret
 end
+
+--[[
+local main_menu_plant_check = Game.main_menu
+function Game:main_menu(change_context)
+	local plant_check = main_menu_plant_check(self, change_context)
+
+	for k, v in pairs(G.P_CENTERS) do
+		if v.atlas == 'cbean_NAMETEAM_PlantPlaceholder' then
+			local name = localize { type = 'name_text', set = "Joker", key = v.key }
+			print(name)
+		end
+	end
+
+	return plant_check
+end
+]]
