@@ -7560,6 +7560,17 @@ return {
 					"{C:money}$5{} is exchanged for {C:green}J1"
 				}
 			},
+			j_cbean_jbill_stare                      = {
+				name = {"Two-Thousand",
+					 	"Blind Stare"},
+				text = {
+					"Gains {C:white,X:mult}X#2#{} Mult",
+					"if final score",
+					"is with in {C:attention}#3#%{}",
+					"of {C:attention}Blind{} requirement",
+					"{C:inactive}(Currently: {X:mult,C:white}X#1#{}{C:inactive} Mult)"
+				}
+			},
 			j_cbean_jbill_tcna                          = {
 				name = {
 					"{s:0.8}The Campaign for",
