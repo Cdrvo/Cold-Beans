@@ -1289,7 +1289,7 @@ SMODS.Joker({
 		code = "Revo",
 		team = { "Name Team/",
             ":(" },
-		art = "cmykl",
+		art = "George T. Rat",
 	},
 	rarity = 3,
 	blueprint_compat = true,
