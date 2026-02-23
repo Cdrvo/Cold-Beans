@@ -187,7 +187,7 @@ SMODS.Joker {
     cost = 8,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
     end,
     calculate = function(self, card, context)
         if context.before then
