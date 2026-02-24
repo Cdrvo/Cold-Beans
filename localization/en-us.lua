@@ -7383,12 +7383,14 @@ return {
 				name = "Withering Memory",
 				text = {
 					{
-						"Scored {C:attention}Dark Suits{} give {C:white,X:chips}X#1#{} Chips",
-						"if a {C:attention}Light Suit{} is scored {C:attention}beforehand{}",
+						"Scored {C:attention}Dark Suits{} give",
+						"{C:white,X:chips}X#1#{} Chips if a {C:attention}Light Suit{}",
+						"is scored {C:attention}beforehand{}",
 					},
 					{
-						"Scored {C:attention}Light Suits{} give {C:white,X:mult}X#2#{} Mult",
-						"if a {C:attention}Dark Suit{} is scored {C:attention}beforehand{}",
+						"Scored {C:attention}Light Suits{} give",
+						"{C:white,X:mult}X#2#{} Mult if a {C:attention}Dark Suit{}",
+						"is scored {C:attention}beforehand{}",
 					}
 				},
 			},
@@ -7485,10 +7487,17 @@ return {
 			j_cbean_jbill_elephant                      = {
 				name = "Wonderful Elephant",
 				text = {
-					"Has 100 fake {C:attention}Achievements{} for you to complete!",
-					"{C:mult}+1{} Mult for each {C:attention}Achievement{} completed",
-					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-					"{C:inactive,s:0.8}(First trigger of each fake Achievement triggers an actual counterpart)"
+					{
+						"Has 100 fake {C:attention}Achievements{}",
+						"for you to complete!",
+						"{C:inactive,s:0.9}(First trigger of each fake Achievement",
+						"{C:inactive,s:0.9}triggers an actual counterpart)"
+					},
+					{
+						"{C:mult}+1{} Mult for each above",
+						"{C:attention}Achievement{} completed",
+						"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+					},
 				}
 			},
 			j_cbean_jbill_spill                         = {
