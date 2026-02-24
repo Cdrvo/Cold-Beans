@@ -143,11 +143,11 @@ SMODS.Joker {
             }))
         end
 
-        if context.main
+        if context.joker_main
         and card.ability.immutable.sequence > 0
         and card.ability.immutable.member == 4 then --restruct1225's Effect
             return {
-                xmult = card.ability.extra.cmykl_mult
+                xmult = card.ability.extra.restruct_mult
             }
         end
         
