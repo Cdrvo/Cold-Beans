@@ -5297,8 +5297,8 @@ return {
 				text = {
 					"Get a {C:attention}Sun Bean{} tag",
 					"and increase it's value",
-					"depending on the",
-					"current {C:attention}Blind{}",
+					"depending on the current",
+					"{C:attention}Blind{} when sold",
 					"{C:inactive,s:0.8}(e.g Small Blind = 6, Big Blind = 12)"
 				},
 			},
