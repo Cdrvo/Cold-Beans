@@ -3469,7 +3469,9 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile_mult 
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile_chips
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile_dollars
 		local cae = card.ability.extra
 		return {
 			vars = { cae.hands_max, cae.hands_left },
@@ -3493,6 +3495,71 @@ SMODS.Joker({
 			if cae.hands_left == 0 then
 				SMODS.destroy_cards(card)
 			end
+		end
+	end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "holly_projectile",
+	atlas = "NAMETEAM_PlantPlaceholder",
+	cost = 3,
+	rarity = "cbean_token",,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			mult = 5,
+			chips = 30,
+			dollars = 1,
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		if not card.cbean_type then
+			card.cbean_type = (cae.type or "unselected")
+		end
+		local key, vars = self.key, {}
+		if card.cbean_type == "mult" then
+			cae.type = "mult"
+			vars = { cae.mult }
+			key = self.key .. "_mult"
+		elseif card.cbean_type == "chips" then
+			cae.type = "chips"
+			vars = { cae.chips }
+			key = self.key .. "_chips"
+		elseif card.cbean_type == "dollars" then
+			cae.type = "dollars"
+			vars = { cae.dollars }
+			key = self.key .. "_dollars"
+		else
+			vars = {}
+			key = self.key
+		end
+		return { vars = vars, key = key }
+	end,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if context.joker_main then
+			if card.cbean_type == "mult" then
+				return {
+					mult = cae.mult,
+				}
+			elseif card.cbean_type == "chips" then
+				return {
+					chips = cae.chips,
+				}
+			end
+		end
+	end,
+	calc_dollar_bonus = function(self, card)
+		if card.cbean_type == "dollars" then
+			return card.ability.extra.dollars
 		end
 	end,
 })

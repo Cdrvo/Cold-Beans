@@ -4730,8 +4730,8 @@ return {
 				text = {
 					"On final {C:blue}hand{} of",
 					"round, {C:attention}3{} random",
-					"scored cards give",
-					"{X:mult,C:white}X#1#{} Mult"
+					"scored cards",
+					"give {X:mult,C:white}X#1#{} Mult"
 				},
 			},
 			j_cbean_tomb_tangler                        = {
@@ -4773,11 +4773,12 @@ return {
 				name = "Iceweed",
 				text = {
 					{
-						"Scored cards gain {X:mult,C:white}X#1#{} Mult",
-						"permanently but lose {C:chips}-1{} Chip",
+						"Scored cards gain",
+						"{X:mult,C:white}X#1#{} Mult permanently",
+						"but lose {C:chips}-1{} Chip",
 					},
 					{
-						"{C:red}Destroy{} scored cards if",
+						"{C:red}Destroys{} scored cards if",
 						"their total {C:chips}Chips{} value",
 						"becomes {C:attention}0{} or less"
 					},
@@ -5774,8 +5775,8 @@ return {
 			j_cbean_holly_projectile_dollars            = {
 				name = "Holly Projectile",
 				text = {
-					"{C:money}+$#1#{} after every",
-					"round"
+					"{C:money}+$#1#{} after",
+					"every round"
 				},
 			},
 			--
@@ -5812,10 +5813,15 @@ return {
 			["j_cbean_electrici-tea"]                   = {
 				name = "Electrici-tea",
 				text = {
-					"Sell while in",
-					"{C:attention}Blind{} to defeat it",
-					"Also {C:red}debuffs{} adjacent",
-					"{C:attention}Jokers{} for {C:attention}1{} round"
+					{
+						"Sell while in",
+						"{C:attention}Blind{} to defeat it",
+					},
+					{
+						"{C:red}Debuffs{} adjacent",
+						"{C:attention}Jokers{} for {C:attention}1{} round",
+						"when sold"
+					},
 				},
 			},
 
@@ -6101,12 +6107,13 @@ return {
 					{
 						"Remove any {C:attention}Seal{},",
 						"{C:dark_edition}Edition{} or {C:attention}Enhancement{}",
-						"from the {C:attention}First{} highlighted",
+						"from {C:attention}First{} highlighted",
 						"and {C:attention}Scored{} card",
 					},
 					{
-						"Gains {X:mult,C:white}X#2#{} Mult for each",
-						"modification removed this way",
+						"Gains {X:mult,C:white}X#2#{} Mult",
+						"for each modification",
+						"this Joker removes",
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 					},
 				},
@@ -6120,6 +6127,7 @@ return {
 					},
 					{
 						"Scored cards",
+						"this Joker affects"
 						"are {C:red}downgraded{}",
 						"to a rank below"
 					},
@@ -6139,8 +6147,8 @@ return {
 				text = {
 					"Selling this {C:attention}Joker{}",
 					"while in a blind {C:attention}Halfs{}",
-					"the required chips",
-					"but {C:red}prevents{} Playing Cards",
+					"the required chips but",
+					"{C:red}prevents{} Playing Cards",
 					"from scoring for the",
 					"rest of the round"
 				},
@@ -6163,7 +6171,7 @@ return {
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 					},
 					{
-						"Goes on cooldown",
+						"Gets {C:attention}debuffed{}",
 						"for {C:attention}1{} hand",
 						"when triggered"
 					},
@@ -6203,7 +6211,7 @@ return {
 						"{X:mult,C:white}X#1#{} Mult"
 					},
 					{
-						"This card and cards",
+						"This Joker and Jokers",
 						"to the right of it",
 						"{C:red}cannot{} be dragged",
 					},
@@ -6223,12 +6231,12 @@ return {
 					{
 						"{C:green}#2# in #3#{} chance",
 						"for cards to",
-						"not score",
+						"{C:red}not score{}",
 					},
 					{
 						"Cards affected",
-						"from this",
-						"gives {X:mult,C:white}X#1#{} Mult"
+						"from this Joker",
+						"give {X:mult,C:white}X#1#{} Mult"
 					},
 				},
 			},
@@ -6264,10 +6272,11 @@ return {
 			j_cbean_electric_peel                       = {
 				name = "Electric Peel",
 				text = {
-					"A random scored card",
-					"gives {C:chips}+#1#{} Chips",
-					"Other scored cards give",
-					"{C:chips}+#2#{} Chips"
+					{
+						"A random scored card",
+						"gives {C:chips}+#1#{} Chips",
+						"Other scored cards give",
+						"{C:chips}+#2#{} Chips"
 				},
 			},
 			j_cbean_guard_shroom                        = {
