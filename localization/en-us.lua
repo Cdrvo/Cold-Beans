@@ -6127,7 +6127,7 @@ return {
 					},
 					{
 						"Scored cards",
-						"this Joker affects"
+						"this Joker affects",
 						"are {C:red}downgraded{}",
 						"to a rank below"
 					},
@@ -6272,11 +6272,10 @@ return {
 			j_cbean_electric_peel                       = {
 				name = "Electric Peel",
 				text = {
-					{
-						"A random scored card",
-						"gives {C:chips}+#1#{} Chips",
-						"Other scored cards give",
-						"{C:chips}+#2#{} Chips"
+					"A random scored card",
+					"gives {C:chips}+#1#{} Chips",
+					"Other scored cards give",
+					"{C:chips}+#2#{} Chips"
 				},
 			},
 			j_cbean_guard_shroom                        = {
