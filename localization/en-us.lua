@@ -4405,7 +4405,9 @@ return {
 				name = "Wall-Nut",
 				text = {
 					"Joker to the {C:attention}right{}",
-					"cannot be {C:red}debuffed{}"
+					"cannot be {C:red}debuffed{}",
+					"and {C:red}cannot{} have",
+					"stickers"
 				},
 			},
 			j_cbean_potatomine                          = {
@@ -4435,11 +4437,12 @@ return {
 			j_cbean_chomper                             = {
 				name = "Chomper",
 				text = {
-					"If played hand contains",
-					"only {C:attention}1{} card, destroy it",
+					"After scoring, {C:red}destroy{}",
+					"a random card in",
+					"scoring hand.",
 					"This Joker's destruction",
 					"effect becomes inactive",
-					"for {C:attention}2{C:inactive} [#1#]{} rounds",
+					"for {C:attention}3{C:inactive} [#1#]{} rounds",
 					"after it triggers",
 				},
 			},
@@ -4564,15 +4567,15 @@ return {
 				name = "Jalapeno",
 				text = {
 					"Sell this {C:attention}Joker",
-					"to {C:red}destroy{} all cards in",
-					"the next played hand"
+					"to {C:red}destroy{} all",
+					"cards in hand"
 				},
 			},
 			j_cbean_grave_buster                        = {
 				name = "Grave Buster",
 				text = {
 					"Sell this {C:attention}Joker",
-					"to {C:red}remove{} all {C:attention}Stickers",
+					"to {C:red}remove{} all {C:red}Negative {C:attention}Stickers",
 					"from a random {C:attention}Joker"
 				},
 			},
@@ -5228,8 +5231,7 @@ return {
 					},
 					{
 						"First {C:attention}3{} scored cards",
-						"are {C:attention}debuffed{} for",
-						"the rest of the ante"
+						"cannot {C:attention}score{}"
 					},
 				},
 			},
@@ -5351,12 +5353,12 @@ return {
 				name = "Primal Wall-nut",
 				text = {
 					{
-						"Playing cards cannot",
+						"Jokers cannot",
 						"be debuffed",
 					},
 					{
 						"{C:red,E:1,s:1.1}Self destruct{} after",
-						"preventing {C:attention}#1#{C:inactive} [#2#]{} debuffs"
+						"{C:attention}#1#{C:inactive} [#2#]{} rounds"
 					},
 				},
 			},
@@ -5393,7 +5395,7 @@ return {
 				text = {
 					{
 						"First scored card",
-						"gives {X:mult,C:white}X#1#{} Mult",
+						"gives {C:chips}+#3#{} Chips"
 					},
 					{
 						"Second scored card",
@@ -5401,7 +5403,7 @@ return {
 					},
 					{
 						"Third scored card",
-						"gives {C:chips}+#3#{} Chips"
+						"gives {X:mult,C:white}X#1#{} Mult",
 					},
 				},
 			},

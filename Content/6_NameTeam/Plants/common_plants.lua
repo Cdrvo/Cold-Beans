@@ -194,7 +194,7 @@ SMODS.Joker({
 			local _card = pseudorandom_element(tab, pseudoseed("GRAVEBUSINGIT"))
 			if _card then
 				for k, v in pairs(SMODS.Stickers) do
-					if _card.ability[v.key] then
+					if _card.ability[v.key] and (v.sticker_type and sticker_type == "Negative" or not v.sticker_type) then
 						_card:remove_sticker(v.key, true)
 					end
 				end
@@ -348,11 +348,8 @@ SMODS.Joker({
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.selling_self then
-			if not G.GAME.NAMETEAM.jal_sold then
-				G.GAME.NAMETEAM.jal_sold = 0
-			end
-			G.GAME.NAMETEAM.jal_sold = G.GAME.NAMETEAM.jal_sold + 1
+		if context.selling_self and #G.hand.cards>0 then
+			SMODS.destroy_cards(G.hand.cards)
 		end
 	end,
 })
@@ -584,7 +581,7 @@ SMODS.Joker({
 	blueprint_compat = false,
 	config = {
 		extra = {
-			mult = 3,
+			mult = 2,
 		},
 	},
 	loc_vars = function(self, info_queue, card)

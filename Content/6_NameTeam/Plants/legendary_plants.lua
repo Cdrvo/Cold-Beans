@@ -142,7 +142,7 @@ SMODS.Joker({
 		end
 
 		if context.individual and not context.repetition and context.cardarea == G.play then
-			return { xmult = card.ability.extra.xmult }
+			return { xmult = card.ability.extra.xmukt }
 		end
 	end,
 })
