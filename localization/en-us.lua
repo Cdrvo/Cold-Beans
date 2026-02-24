@@ -4533,8 +4533,8 @@ return {
 				text = {
 					"Sell this {C:attention}Joker{} to {C:red}defeat",
 					"the current {C:attention}Blind",
-					"If facing a {C:attention}Boss{} or {C:attention}CEO Blind{}, halve",
-					"its requirement instead",
+					"If facing a {C:attention}Boss{} or {C:attention}CEO Blind{},",
+					"halve its requirement instead",
 				},
 			},
 			j_cbean_threepeater                         = {
@@ -5196,9 +5196,9 @@ return {
 			j_cbean_red_stinger                         = {
 				name = "Red Stinger",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult.",
-					"Give {X:mult,C:white}X#2#{} less mult",
-					"for every {C:attention}Jokers{} on the left of this card.",
+					"Gives {X:mult,C:white}X#2#{} {C:red}less{} Mult",
+					"for every {C:attention}Joker{} to",
+					"the left of this card.",
 					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
 				},
 			},

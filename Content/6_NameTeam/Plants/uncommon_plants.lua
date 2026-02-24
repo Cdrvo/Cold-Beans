@@ -2103,7 +2103,7 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = 'tag_cbean_sunbean', set = 'Tag' }
+		info_queue[#info_queue + 1] = G.P_CENTERS.tag_cbean_sunbean
 		local cae = card.ability.extra
 		return { vars = { cae.dollars } }
 	end,
