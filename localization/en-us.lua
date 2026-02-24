@@ -5285,9 +5285,7 @@ return {
 				name = "Magnifying Grass",
 				text = {
 					"Gains {X:mult,C:white}X#3#{} Mult",
-					"when clicked",
-					"but costs {C:money}$#1#{}",
-					"to do so",
+					"when given {C:money}$#1#{}",
 					"{C:inactive,s:0.9}(Resets each round)",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
 				},

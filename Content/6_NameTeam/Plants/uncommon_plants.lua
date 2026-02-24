@@ -2164,21 +2164,207 @@ SMODS.Joker({
 				xmult = cae.xmult,
 			}
 		end
-		if context.cbean_clicked and context.card == card then
-			ease_dollars(-cae.dollars)
-			SMODS.scale_card(card, {
-				ref_table = cae,
-				ref_value = "xmult",
-				scalar_value = "xmult_gain",
-			})
-		end
-
+		--Gain is handled by below button
 		if context.end_of_round and context.main_eval and not context.blueprint then
 			cae.xmult = 1
 			return { message = localize("k_reset") }
 		end
 	end,
 })
+
+--This is used with the magnifying glass for it's effect
+local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+    local abc = G_UIDEF_use_and_sell_buttons_ref(card)
+    if (card.area == G.jokers and G.jokers and card.config.center.key == "j_cbean_magnifying_grass") and not card.debuff then --Gives buttons to entropic marble Joker
+        sell = {
+            n = G.UIT.C,
+            config = { align = "cr" },
+            nodes = { --Default Sell Button
+                {
+                    n = G.UIT.C,
+                    config = {
+                        ref_table = card,
+                        align = "cr",
+                        padding = 0.1,
+                        r = 0.08,
+                        minw = 1.25,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.UI.BACKGROUND_INACTIVE,
+                        one_press = true,
+                        button = "sell_card",
+                        func = "can_sell_card",
+                        handy_insta_action = "sell",
+                    },
+                    nodes = {
+                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                        {
+                            n = G.UIT.C,
+                            config = { align = "tm" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("b_sell"),
+                                                colour = G.C.UI.TEXT_LIGHT,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm" },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("$"),
+                                                colour = G.C.WHITE,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                ref_table = card,
+                                                ref_value = "sell_cost_label",
+                                                colour = G.C.WHITE,
+                                                scale = 0.55,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        }
+        magnifying_grass_button = { --Our new button that activates the card
+            n = G.UIT.C,
+            config = { align = "cr" },
+            nodes = { --Button to Sell Stone Cards
+                {
+                    n = G.UIT.C,
+                    config = {
+                        ref_table = card,
+                        align = "cr",
+                        padding = 0.1,
+                        r = 0.08,
+                        minw = 1.25,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.UI.BACKGROUND_INACTIVE,
+                        button = "strengthen_magnifying_grass",
+                        func = "can_strengthen_magnifying_grass",
+                    },
+                    nodes = {
+                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                        {
+                            n = G.UIT.C,
+                            config = { align = "tm" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("b_buy"),
+                                                colour = G.C.UI.TEXT_LIGHT,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm" },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("$"),
+                                                colour = G.C.WHITE,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                ref_table = card.ability.extra,
+                                                ref_value = "dollars",
+                                                colour = G.C.WHITE,
+                                                scale = 0.55,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        }
+        return {
+            n = G.UIT.ROOT,
+            config = { padding = 0, colour = G.C.CLEAR },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = { padding = 0.1, align = "cl" },
+                    nodes = {
+                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
+                            sell,
+                        } },
+                        {
+                            n = G.UIT.R,
+                            config = { align = "cl" },
+                            nodes = {
+                                magnifying_grass_button,
+                            },
+                        },
+                    },
+                },
+            },
+        }
+    end
+    return abc
+end
+
+
+G.FUNCS.can_strengthen_magnifying_grass = function(e)
+    if (G.GAME.dollars - G.GAME.bankrupt_at) >= e.config.ref_table.ability.extra.dollars and not G.CONTROLLER.locked then
+        e.config.colour = G.C.RED
+        e.config.button = "strengthen_magnifying_grass"
+    else
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    end
+end
+
+
+G.FUNCS.strengthen_magnifying_grass = function(e)
+    ease_dollars(-e.config.ref_table.ability.extra.dollars)
+		SMODS.scale_card(e.config.ref_table, {
+			ref_table = e.config.ref_table.ability.extra,
+			ref_value = "xmult",
+			scalar_value = "xmult_gain",
+	})
+end
 
 SMODS.Joker({
 	pvz_plant = true,

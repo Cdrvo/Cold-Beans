@@ -375,7 +375,7 @@ function G.UIDEF.use_and_sell_buttons(card)
         }
         return {
             n = G.UIT.ROOT,
-            config = { padding = 0, colour = G.C.CLEAR },
+            config = { padding = 0.1, colour = G.C.CLEAR },
             nodes = {
                 {
                     n = G.UIT.C,
@@ -403,11 +403,11 @@ end
 G.FUNCS.can_use_combo = function(e)
     if G.GAME.blind.in_blind and CanCombo(e.config.ref_table) and not G.CONTROLLER.locked then
         --print("Yes")
-        e.config.colour = G.C.ORANGE
+        e.config.colour = G.C.RED
         e.config.button = "can_combo"
     elseif G.GAME.blind.in_blind and CanUncombo(e.config.ref_table) and not G.CONTROLLER.locked then
         --print("Yes")
-        e.config.colour = G.C.ORANGE
+        e.config.colour = G.C.RED
         e.config.button = "can_uncombo"
     else
         --print("Nope")
