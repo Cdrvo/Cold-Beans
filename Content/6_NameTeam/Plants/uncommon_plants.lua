@@ -2141,7 +2141,7 @@ SMODS.Joker({
 	cost = 5,
 	beans_credits = {
 		code = {"Revo",
-				"MarioFan597"}
+				"MarioFan597"},
 		team = "Name Team",
 		art = "Doggfly",
 	},
