@@ -4764,7 +4764,7 @@ return {
 					{
 						"Destroy scored cards",
 						"if their total",
-						"Chip value becomes"
+						"Chip value becomes",
 						"{C:attention}0{} or less"
 					},
 				},
@@ -5237,7 +5237,7 @@ return {
 					"{C:mult}+#1#*N{} Mult.",
 					"where {C:attention}N{} is the",
 					"number of cards",
-					"on their right"
+					"on their right",
 					"{C:inactive}Currently {C:mult}+#2#{} {C:inactive}Mult)"
 				},
 			},
@@ -6119,7 +6119,7 @@ return {
 						"give {X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"Scored cards"
+						"Scored cards",
 						"are {C:red}downgraded{}",
 						"to a rank below"
 					},
@@ -6140,7 +6140,7 @@ return {
 					"Selling this {C:attention}Joker{}",
 					"while in a blind {C:attention}Halfs{}",
 					"the required chips",
-					"but {C:red}prevents{} Playing Cards"
+					"but {C:red}prevents{} Playing Cards",
 					"from scoring for the",
 					"rest of the round"
 				},
@@ -6150,7 +6150,7 @@ return {
 				text = {
 					"{C:green}Sell{} this {C:attention}Jokers{}",
 					"to {C:attention}half{} all",
-					"{C:attention}"Blinds'{} requirements",
+					"{C:attention}Blinds{} requirements",
 					"for this ante"
 				},
 			},
