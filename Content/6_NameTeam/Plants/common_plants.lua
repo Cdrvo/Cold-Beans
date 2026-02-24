@@ -1366,6 +1366,7 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
+	key = "electric_peashooter",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 6, y = 11 },
 	cost = 4,

@@ -3299,6 +3299,7 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
+	key = "escape_root",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 10, y = 11 },
 	atlas = "NAMETEAM_PlantPlaceholder",
