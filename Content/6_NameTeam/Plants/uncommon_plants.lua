@@ -2957,12 +2957,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "electric_currant",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 9, y = 11 },
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -3232,7 +3235,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "cold_snapdragon",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 0, y = 12 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3249,8 +3253,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	remove_from_deck = function(self, card, from_debuff)
 		for k, v in pairs(G.playing_cards) do
@@ -3293,7 +3299,8 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	key = "escape_root",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 10, y = 11 },
 	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
 	rarity = 2,
@@ -3311,8 +3318,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -3536,7 +3545,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "holly_barrier",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 11, y = 11 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3557,8 +3567,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -3680,7 +3692,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "electrici-tea",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 5, y = 11 },
 	cost = 0,
 	rarity = 2,
 	blueprint_compat = true,
@@ -3696,7 +3709,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "DoggFly",
 	},
 	pools = {
 		cbean_electric = true,
@@ -5206,8 +5219,10 @@ SMODS.Joker({
 	cost = 3,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "DogFly",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -5347,8 +5362,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "solar_tomato",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	pos = { x = 0, y = 0 },
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 1, y = 12 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -5366,8 +5381,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "ThunderEdge",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
