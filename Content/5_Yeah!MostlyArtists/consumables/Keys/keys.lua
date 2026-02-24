@@ -1692,10 +1692,24 @@ SMODS.Consumable {
                             end
                         end
                         local ran_combo = pseudorandom_element(pool, pseudoseed('yma_giant'))
-                        local cardd = create_card('Combo',G.consumeables, nil, nil, nil, nil, ran_combo, 'yma_orchestra')
+                        for k, v in pairs(pool) do
+                            if v == ran_combo then
+                                table.remove(pool, k)
+                            end
+                        end
+                        
+                        local cardd = SMODS.add_card{
+                            key = ran_combo,
+                            area = G.consumeables,
+                            edition = "e_negative",
+                            key_append = "yma_orchestra",
+                            set = "Combo"
+                        }
+                        
+                        --[[local cardd = create_card('Combo',G.consumeables, nil, nil, nil, nil, ran_combo, 'yma_orchestra')
                         cardd:set_edition({ negative = true })
                         cardd:add_to_deck()
-                        G.consumeables:emplace(cardd)
+                        G.consumeables:emplace(cardd)]]
                     end
                     return true
                 end)
