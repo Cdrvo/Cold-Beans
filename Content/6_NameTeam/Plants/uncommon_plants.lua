@@ -3302,7 +3302,6 @@ SMODS.Joker({
 	key = "escape_root",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 10, y = 11 },
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = true,
