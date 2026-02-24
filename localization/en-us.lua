@@ -248,7 +248,7 @@ return {
 			bl_cbean_colon_compass = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Compass",
 				text = {
-					"{X:purple}+X1{} base when",
+					"{X:purple,C:white}+X1{} base when",
 					"a hand is played"
 				}
 			},
@@ -4662,12 +4662,16 @@ return {
 			j_cbean_night_cap                           = {
 				name = "Night Cap",
 				text = {
-					"All other {C:attention}Jokers{} lose",
-					"{C:red}-$1{} of sell value at",
-					"end of round, gains",
-					"{X:mult,C:white}X#2#{} Mult per {C:attention}Joker",
-					"affected by this",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					{
+						"All other {C:attention}Jokers{} lose",
+						"{C:red}$1{} of sell value at",
+						"end of round",
+					},
+					{
+						"This Joker gains {X:mult,C:white}X#2#{} Mult",
+						"per {C:attention}Joker{} it affects",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					},
 				},
 			},
 			j_cbean_bamboo_spartan                      = {
@@ -4754,12 +4758,14 @@ return {
 						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"Scored cards lose {C:chips}-#1#{} Chips",
+						"Scored cards",
+						"lose {C:chips}-#1#{} Chips",
 					},
 					{
-						"Destroy scored cards if",
-						"their total Chip value",
-						"becomes {C:attention}0{} or less"
+						"Destroy scored cards",
+						"if their total",
+						"Chip value becomes"
+						"{C:attention}0{} or less"
 					},
 				},
 			},
@@ -4828,12 +4834,16 @@ return {
 			j_cbean_magnet_shroom                       = {
 				name = "Magnet Shroom",
 				text = {
-					"Remove {C:attention}Gold{} and {C:attention}Steel{}",
-					"from all scored cards",
-					"Gains {X:mult,C:white}X#2#{} Mult per",
-					"removed enhancement",
-					"Earn {C:money}$#3#{} at end of round",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					{
+						"Removes {C:attention}Gold{} and {C:attention}Steel{}",
+						"from all scored cards",
+						"Gains {X:mult,C:white}X#2#{} Mult per",
+						"removed enhancement",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+					},
+					{
+						"Earn {C:money}$#3#{} at end of round",
+					},
 				},
 			},
 			j_cbean_flower_pot                          = {
@@ -4914,9 +4924,13 @@ return {
 			j_cbean_melon_pult                          = {
 				name = "Melon Pult",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult,",
-					"adjacent {C:attention}Jokers{} give",
+					{
+					"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+					"Adjacent {C:attention}Jokers{} give",
 					"{C:mult}+#2#{} Mult"
+					},
 				},
 			},
 			j_cbean_twin_sunflower                      = {
@@ -4989,7 +5003,7 @@ return {
 					},
 					{
 						"Destroy scored cards if",
-						"their total Chip value",
+						"their {C:attention}total{} Chip value",
 						"is {C:attention}0{} or less"
 					},
 				},
@@ -5043,9 +5057,9 @@ return {
 				name = "Bloomerang",
 				text = {
 					"If played hand has",
-					"{C:attention}2{} or more cards,",
-					"retrigger the {C:attention]first{} scored card",
-					"when the {C:attention]last{} is scored"
+					"{C:attention}2{} or more cards, {C:attention}retrigger{}",
+					"the {C:attention}first{} scored card",
+					"when the {C:attention}last{} is scored"
 				},
 			},
 			j_cbean_snap_dragon                         = {
@@ -5106,10 +5120,10 @@ return {
 			j_cbean_hot_potato                          = {
 				name = "Hot Potato",
 				text = {
-					"When {C:green}sold{}",
-					"{C:attention}undebuff{}",
-					"up to {C:attention}2{}",
-					"highlighted {C:attention}Jokers{}"
+					"When {C:green}sold{}, {C:attention}Undebuffs{}",
+					"{C:attention}2{} highlighted {C:attention}Jokers{}",
+					"{C:inactive}I think this guy",
+					"{C:inactive}is in the wrong mod"
 				},
 			},
 			j_cbean_robotga                             = {
@@ -5135,9 +5149,14 @@ return {
 			j_cbean_stunion                             = {
 				name = "Stunion",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"scored cards are debuffed",
-					"until the end of the ante"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Scored cards are",
+						"debuffed until the",
+						"end of the ante"
+					},
 				},
 			},
 			j_cbean_chard_guard                         = {
@@ -5155,8 +5174,8 @@ return {
 			j_cbean_pepper_pult                         = {
 				name = "Pepper Pult",
 				text = {
-					"{C:attention}Undebuff{} all",
-					"debuffed cards before scoring",
+					"{C:attention}Undebuff{} all debuffed",
+					"cards before scoring",
 					"Gains {C:mult}+#2#{} Mult per",
 					"undebuffed card",
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
@@ -5184,8 +5203,7 @@ return {
 				name = "A.K.E.E.",
 				text = {
 					"All {C:attention}Jokers{} on the right",
-					"of this card give",
-					"{C:mult}+#1#{} Mult",
+					"of this card give {C:mult}+#1#{} Mult",
 					"if they are triggered",
 					"{C:attention}during{} scoring"
 				},
@@ -5202,19 +5220,25 @@ return {
 			j_cbean_stallia                             = {
 				name = "Stallia",
 				text = {
-					"{C:mult}+#1#{} Mult",
-					"First 3 scored cards",
-					"are debuffed for", "the rest of the ante"
+					{
+						"{C:mult}+#1#{} Mult",
+					},
+					{
+						"First {C:attention}3{} scored cards",
+						"are {C:attention}debuffed{} for",
+						"the rest of the ante"
+					},
 				},
 			},
 			j_cbean_laser_bean                          = {
 				name = "Laser Bean",
 				text = {
 					"Scored cards give",
-					"{C:mult}+2*N{} Mult.",
-					"where N is the",
+					"{C:mult}+#1#*N{} Mult.",
+					"where {C:attention}N{} is the",
 					"number of cards",
 					"on their right"
+					"{C:inactive}Currently {C:mult}+#2#{} {C:inactive}Mult)"
 				},
 			},
 			j_cbean_citron                              = {
@@ -5231,16 +5255,16 @@ return {
 					"Lose {C:mult}-#2#{} Mult",
 					"when triggered.",
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-					"{C:inactive}(Resets when mult hits {C:red}0{C:inactive})"
+					"{C:inactive}(Resets when Mult hits {C:red}0{C:inactive})"
 				},
 			},
 			j_cbean_tile_turnip                         = {
 				name = "Tile Turnip",
 				text = {
-					"{C:attention}Retrigger{} the card",
+					"{C:attention}Retrigger{} the {C:attention}Joker{}",
 					"on the right {C:attention}#1#{} Time",
-					"if the card on the left",
-					"triggeres"
+					"if the {C:attention}Joker{} on",
+					"the left triggeres"
 				},
 			},
 			j_cbean_EM_peach                            = {
@@ -5259,9 +5283,11 @@ return {
 			j_cbean_magnifying_grass                    = {
 				name = "Magnifying Grass",
 				text = {
-					"Gain {X:mult,C:white}X#3#{} Mult",
-					"when clicked but lose {C:money}-$#1#{}",
-					"{C:inactive,s:0.8}(Resets at the end of a round)",
+					"Gains {X:mult,C:white}X#3#{} Mult",
+					"when clicked",
+					"but costs {C:money}$#1#{}",
+					"to do so",
+					"{C:inactive,s:0.9}(Resets each round)",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
 				},
 			},
@@ -5270,7 +5296,8 @@ return {
 				text = {
 					"Get a {C:attention}Sun Bean{} tag",
 					"and increase it's value",
-					"depending on the current blind",
+					"depending on the",
+					"current {C:attention}Blind{}",
 					"{C:inactive,s:0.8}(e.g Small Blind = 6, Big Blind = 12)"
 				},
 			},
@@ -5279,8 +5306,7 @@ return {
 				text = {
 					"Scored cards and",
 					"triggered adjacent",
-					"{C:attention}Jokers{} give",
-					"{C:mult}+#1#{} Mult"
+					"{C:attention}Jokers{} give {C:mult}+#1#{} Mult"
 				},
 			},
 			j_cbean_intensive_carrot                    = {
@@ -5288,15 +5314,15 @@ return {
 				text = {
 					"When sold, gives",
 					"a random previously",
-					"sold {C:attention}Jokers{}"
+					"sold {C:attention}Joker{}"
 				},
 			},
 			j_cbean_thyme_warp                          = {
 				name = "Thyme Warp",
 				text = {
 					"When sold during",
-					"blind select, go back",
-					"a blind and round",
+					"{C:attention}Blind{} select, go back",
+					"a {C:attention}Blind{} and {C:attention}Round{}",
 					"{C:inactive}(Cannot go back an ante)"
 				},
 			},
@@ -5323,18 +5349,27 @@ return {
 			j_cbean_primal_wallnut                      = {
 				name = "Primal Wall-nut",
 				text = {
-					"Playing cards cannot",
-					"be debuffed.",
-					"{C:red,E:1,s:1.1}self destruct{} after",
-					"preventing {C:attention}#1#{C:inactive} [#2#]{} debuffs "
+					{
+						"Playing cards cannot",
+						"be debuffed",
+					},
+					{
+						"{C:red,E:1,s:1.1}Self destruct{} after",
+						"preventing {C:attention}#1#{C:inactive} [#2#]{} debuffs"
+					},
 				},
 			},
 			j_cbean_primal_potato                       = {
 				name = "Primal Potato",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"Sell while in {C:attention}Blind{} to",
-					"destroy cards held in hand"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Sell while in {C:attention}Blind{}",
+						"to destroy cards",
+						"held in hand"
+					},
 				},
 			},
 			j_cbean_guacodile                           = {
@@ -5374,8 +5409,8 @@ return {
 				text = {
 					"First scored card",
 					"gives {X:mult,C:white}X#1#{} Mult",
-					"and gets debuffed for {C:attention}3{}",
-					"rounds"
+					"and gets debuffed",
+					"for {C:attention}3{} rounds"
 				},
 			},
 			j_cbean_moonflower                          = {
@@ -5406,18 +5441,24 @@ return {
 			j_cbean_primal_peashooter                   = {
 				name = "Primal Peashooter",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"1 random {C:attention}Jokers{} is {C:attention}shuffled",
-					"before scoring"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"{C:attention}1{} random {C:attention}Joker{}",
+						"is {C:attention}shuffled",
+						"before scoring"
+					},
 				},
 			},
 			j_cbean_perfume_shroom                      = {
 				name = "Perfume Shroom",
 				text = {
-					"Reduce the next blind's",
-					"requirements by {C:attention}%#2#{}",
-					"when the current blind is triggered",
-					"{C:inactive}(Currently reducing by {C:attention}%#1#{C:inactive})"
+					"Reduce the next {C:attention}Blind's{}",
+					"requirements by {C:attention}#2#%{}",
+					"when the current",
+					"{C:attention}Blind{} is triggered",
+					"{C:inactive}(Currently reducing {C:attention}#1#%{C:inactive})"
 				},
 			},
 			j_cbean_nightshade                          = {
@@ -5463,9 +5504,13 @@ return {
 			j_cbean_sweet_potato                        = {
 				name = "Sweet Potato",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"Playing card scoring",
-					"order is {C:dark_edition}randomized{}"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Playing card scoring",
+						"order is {C:dark_edition}randomized{}"
+					},
 				},
 			},
 			j_cbean_sap_fling                           = {
@@ -5479,9 +5524,14 @@ return {
 			j_cbean_lava_guava                          = {
 				name = "Lava Guava",
 				text = {
-					"{C:green}Sell{} to defeat",
-					"current blind",
-					"Leaves behind {C:attention}Lava{}",
+					{
+						"Sell to defeat",
+						"current {C:attention}Blind{}",
+					},
+					{
+						"Leaves behind {C:attention}Lava{}",
+						"when sold"
+					},
 				},
 			},
 			j_cbean_lava                                = {
@@ -5511,7 +5561,8 @@ return {
 				name = "Electric Currant",
 				text = {
 					"Cards between your",
-					"scored {C:attention}Rightmost{} and {C:attention}Leftmost{}",
+					"scored {C:attention}Leftmost{}",
+					"and {C:attention}Rightmost{}",
 					"cards give {C:mult}+#1#{} Mult"
 				},
 			},
@@ -5529,8 +5580,7 @@ return {
 				text = {
 					"{C:attention}Doubles{} the values",
 					"of the card on the right",
-					"for {C:attention}2{} rounds",
-					"when {C:green}sold{}"
+					"for {C:attention}2{} rounds when {C:green}sold{}"
 				},
 			},
 			j_cbean_toad_stool                          = {
@@ -5571,8 +5621,8 @@ return {
 					},
 					{
 						"After {C:attention}#1#{} hands,",
-						"{C:red}debuffs{} itself for",
-						"{C:attention}#5#{} hands"
+						"{C:red}debuffs{} itself",
+						"for {C:attention}#5#{} hands"
 					},
 				},
 			},
@@ -5589,7 +5639,7 @@ return {
 				text = {
 					"First 3 scoring cards",
 					"give {X:chips,C:white}X#1#{} Chips but are",
-					"{C:red}debuffed{} for the current",
+					"{C:red}debuffed{} for current",
 					"{C:attention}Ante{} afterwards"
 				},
 			},
@@ -5830,9 +5880,9 @@ return {
 				text = {
 					{
 						"Earn {C:money}$#1#{} after every round",
-						"Earn an extra {C:money}+$1{} for every",
+						"and an extra {C:money}$1{} for every",
 						"{C:attention}Joker{} right of this {C:attention}Joker{}",
-						"{C:inactive}(Currently {C:money}+$#2#{C:inactive})"
+						"{C:inactive}(Currently {C:money}$#2#{C:inactive})"
 					},
 				},
 			},
@@ -5878,10 +5928,15 @@ return {
 			j_cbean_ice_bloom                           = {
 				name = "Ice Bloom",
 				text = {
+					{
 					"Scored cards give",
 					"{X:mult,C:white}X#1#{} Mult",
-					"{C:green}#2# in #3#{} Chance to",
-					"{C:red}debuff{} them permanently"
+					},
+					{
+					"Scored cards have a",
+					"{C:green}#2# in #3#{} chance to be",
+					"{C:red}debuffed{} permanently"
+					},
 				},
 			},
 
@@ -5967,8 +6022,8 @@ return {
 				name = "Olive Pit",
 				text = {
 					"When a {C:attention}Jokers{} is sold",
-					"this card gains 1/20 of its",
-					"sell value as {X:mult,C:white}XMULT",
+					"this card gains {C:attention}1/20{} of",
+					"its sell value as {X:mult,C:white}XMULT",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},
 			},
@@ -6030,10 +6085,14 @@ return {
 			j_cbean_draftodil                           = {
 				name = "Draftodil",
 				text = {
+					{
 					"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
 					"Played cards has a",
-					"{C:green}#2# in [RANK]{} Chance to",
+					"{C:green}#2# in [RANK]{} chance to",
 					"to be discarded instead"
+					},
 				},
 			},
 			j_cbean_boom_ballon_flower                  = {
@@ -6055,10 +6114,15 @@ return {
 			j_cbean_inferno                             = {
 				name = "Inferno",
 				text = {
-					"Scored cards give",
-					"{X:mult,C:white}X#1#{} Mult but",
-					"are downgraded",
-					"to a rank below"
+					{
+						"Scored cards",
+						"give {X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"Scored cards"
+						"are {C:red}downgraded{}",
+						"to a rank below"
+					},
 				},
 			},
 			j_cbean_solar_sage                          = {
@@ -6073,30 +6137,36 @@ return {
 			j_cbean_noctairne                           = {
 				name = "Noctarine",
 				text = {
-					"{C:green}Sell{} this {C:attention}Joker{}",
-					"while in a blind to",
-					"{C:attention}Half{} the required chips",
-					"Playing Cards {C:red}cannot{} score",
-					"for the rest of the round"
+					"Selling this {C:attention}Joker{}",
+					"while in a blind {C:attention}Halfs{}",
+					"the required chips",
+					"but {C:red}prevents{} Playing Cards"
+					"from scoring for the",
+					"rest of the round"
 				},
 			},
 			j_cbean_health_seeker                       = {
 				name = "Health Seeker",
 				text = {
 					"{C:green}Sell{} this {C:attention}Jokers{}",
-					"to {C:attention}Half{} all",
-					"blinds' requirements",
+					"to {C:attention}half{} all",
+					"{C:attention}"Blinds'{} requirements",
 					"for this ante"
 				},
 			},
 			j_cbean_tiger_grass                         = {
 				name = "Tiger Grass",
 				text = {
-					"{C:red}Destroys{} the leftmost played",
-					"card and gains {X:mult,C:white}X#2#{} Mult",
-					"Goes on cooldown",
-					"for {C:attention}1{} hand after",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					{
+						"{C:red}Destroys{} the {C:attention}Leftmost{} played",
+						"card and gains {X:mult,C:white}X#2#{} Mult",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+					},
+					{
+						"Goes on cooldown",
+						"for {C:attention}1{} hand",
+						"when triggered"
+					},
 				},
 			},
 			j_cbean_teleporto_mine                      = {
@@ -6111,9 +6181,9 @@ return {
 			j_cbean_blockoli                            = {
 				name = "Blockoli",
 				text = {
-					"{C:attention}Retrigger{} adjacent {C:attention}Jokers{}",
-					"but they have a {C:green}chance{} to",
-					"{C:red}don't{} trigger at all",
+					"{C:attention}Retriggers{} adjacent {C:attention}Jokers{},",
+					"but they have a {C:green}chance{}",
+					"they {C:red}don't{} trigger at all",
 					"{C:inactive}(Only works during scoring)"
 				},
 			},
@@ -6129,10 +6199,14 @@ return {
 			j_cbean_bramble_bush                        = {
 				name = "Bramble Bush",
 				text = {
-					"This card and cards",
-					"to the right of it",
-					"{C:red}cannot{} be dragged",
-					"{X:mult,C:white}X#1#{} Mult"
+					{
+						"{X:mult,C:white}X#1#{} Mult"
+					},
+					{
+						"This card and cards",
+						"to the right of it",
+						"{C:red}cannot{} be dragged",
+					},
 				},
 			},
 			j_cbean_rhubarbarian                        = {
@@ -6147,11 +6221,13 @@ return {
 				name = "Levitater",
 				text = {
 					{
-						"{C:green}#2# in #3#{} chance for",
-						"cards to not score",
+						"{C:green}#2# in #3#{} chance",
+						"for cards to",
+						"not score",
 					},
 					{
-						"Cards affected from this",
+						"Cards affected",
+						"from this",
 						"gives {X:mult,C:white}X#1#{} Mult"
 					},
 				},
@@ -6213,9 +6289,6 @@ return {
 						"{C:attention}Joker{} to the",
 						"right's {C:dark_edition}rarity{}"
 					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
-					},
 				},
 			},
 
@@ -6233,9 +6306,6 @@ return {
 					{
 						"{C:chips}+#1#{} Chips"
 					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
-					},
 				},
 			},
 
@@ -6250,9 +6320,6 @@ return {
 					},
 					{
 						"{C:mult}+#1#{} Mult"
-					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
 					},
 				},
 			},
@@ -6270,9 +6337,6 @@ return {
 						"Each scored card",
 						"gives {C:money}+$#1#{}"
 					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
-					},
 				},
 			},
 
@@ -6287,9 +6351,6 @@ return {
 					},
 					{
 						"{X:mult,C:white}X#1#{} Mult"
-					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
 					},
 				},
 			},
@@ -11523,6 +11584,7 @@ return {
 			["cbean_sdown_bobtail"] = {
 				"4 cards in a row (consecutive ranks) with",
 				"all cards sharing the same suit",
+				"Prioritized below Straights"
 			},
 
 			--House Rules Hands

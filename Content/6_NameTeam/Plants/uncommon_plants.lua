@@ -810,6 +810,8 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
 		local cae = card.ability.extra
 		return { vars = { cae.xmult, cae.xmult_gain, cae.dollars } }
 	end,
@@ -1876,7 +1878,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return {
-			vars = { cae.mult },
+			vars = { cae.mult, cae.mult * NAMETEAM.all_on(context.other_card, G.play.cards) },
 		}
 	end,
 	beans_credits = {
@@ -2101,6 +2103,7 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = { key = 'tag_cbean_sunbean', set = 'Tag' }
 		local cae = card.ability.extra
 		return { vars = { cae.dollars } }
 	end,
@@ -2951,9 +2954,11 @@ SMODS.Joker({
 			end
 		end
 
+		--[[Commenting this out since it doesnt reset
 		if context.end_of_round and context.main_eval then
 			NAMETEAM.msg(card, localize("k_reset"))
 		end
+		]]
 
 		if context.joker_main then
 			return {
