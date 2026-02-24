@@ -309,7 +309,7 @@ YMA.SideQuests.quest {
     end,
 
     atlas = 'yma_quest_atlas',
-    pos = { x = 3, y = 0 },
+    pos = { x = 3, y = 3 },
     display_size = { w = 65, h = 65 },
     pixel_size = { w = 65, h = 65 },
     config = {
