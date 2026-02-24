@@ -5358,7 +5358,7 @@ return {
 					},
 					{
 						"{C:red,E:1,s:1.1}Self destruct{} after",
-						"{C:attention}#1#{C:inactive} [#2#]{} rounds"
+						"{C:attention}#1#{C:inactive} [#2#]{} antes"
 					},
 				},
 			},
