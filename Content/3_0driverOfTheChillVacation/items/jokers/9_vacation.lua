@@ -375,11 +375,11 @@ function G.UIDEF.use_and_sell_buttons(card)
         }
         return {
             n = G.UIT.ROOT,
-            config = { padding = 0.1, colour = G.C.CLEAR },
+            config = { padding = 0.0, colour = G.C.CLEAR },
             nodes = {
                 {
                     n = G.UIT.C,
-                    config = { padding = 0, align = "cl" },
+                    config = { padding = 0.2, align = "cl" },
                     nodes = {
                         { n = G.UIT.R, config = { align = "cl" }, nodes = {
                             sell,
