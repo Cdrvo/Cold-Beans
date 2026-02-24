@@ -1873,13 +1873,12 @@ SMODS.Joker({
 	config = {
 		extra = {
 			mult = 2,
-			ex_mult = 10
 		},
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return {
-			vars = { cae.mult, cae.ex_mult},
+			vars = { cae.mult, (cae.mult *5)},
 		}
 	end,
 	beans_credits = {
@@ -2141,7 +2140,8 @@ SMODS.Joker({
 	pos = { x = 6, y = 3 },
 	cost = 5,
 	beans_credits = {
-		code = "Revo",
+		code = {"Revo",
+				"MarioFan597"}
 		team = "Name Team",
 		art = "Doggfly",
 	},
