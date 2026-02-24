@@ -548,6 +548,7 @@ if (card.area == G.tboi_chest_cards and G.tboi_chest_cards) and not card.ability
 '''
 match_indent = true
 
+#What happens when you grab an issac item from the chest
 [[patches]]
 [patches.pattern]
 target = 'functions/button_callbacks.lua'
@@ -565,6 +566,7 @@ elseif card.ability.set == 'yma_tboi_items' then
     G.GAME.tboi_chest_cards = nil
     G.STATE = prev_state
     G.TAROT_INTERRUPT=nil
+    G.GAME.tboi_chest_selected_item = true
     G.CONTROLLER.locks.use = false
     return
 '''

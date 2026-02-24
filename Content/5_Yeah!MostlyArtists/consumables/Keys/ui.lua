@@ -591,7 +591,6 @@ function update_yma_tboi_chest()
             definition = G.UIDEF.yma_tboi_chest(),
             config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
         }
-        if #G.tboi_chest_cards.cards > 0 then G.GAME.tboi_chest_choiceless = true else G.GAME.tboi_chest_choiceless = false end
         G.E_MANAGER:add_event(Event({
             func = function()
                 G.yma_tboi_chest.alignment.offset.y = -5.3
@@ -627,6 +626,7 @@ function G.UIDEF.yma_tboi_chest()
         {card_limit = _size, type = 'joker', highlight_limit = 1, no_card_count = true})
     G.GAME.tboi_chest_card_amt = G.GAME.tboi_chest_card_amt or 0
     if G.GAME.tboi_chest_cards then
+        G.GAME.tboi_chest_selected_item = false
         for i, key in ipairs(G.GAME.tboi_chest_cards) do
             local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, key, 'for')
             if i == #G.GAME.tboi_chest_cards then
@@ -643,6 +643,7 @@ function G.UIDEF.yma_tboi_chest()
             G.tboi_chest_cards:emplace(cardd)
         end
     elseif G.GAME.tboi_chest_card_amt > 0 then
+        G.GAME.tboi_chest_selected_item = false
         G.GAME.tboi_chest_cards = {}
         for i = 1, G.GAME.tboi_chest_card_amt do
             local cardd = create_card('yma_tboi_items',G.tboi_chest_cards, nil, nil, nil, nil, nil, 'for')
