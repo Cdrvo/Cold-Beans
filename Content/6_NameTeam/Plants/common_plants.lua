@@ -194,7 +194,7 @@ SMODS.Joker({
 			local _card = pseudorandom_element(tab, pseudoseed("GRAVEBUSINGIT"))
 			if _card then
 				for k, v in pairs(SMODS.Stickers) do
-					if _card.ability[v.key] then
+					if _card.ability[v.key] and (v.sticker_type and sticker_type == "Negative" or not v.sticker_type) then
 						_card:remove_sticker(v.key, true)
 					end
 				end
@@ -348,11 +348,8 @@ SMODS.Joker({
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.selling_self then
-			if not G.GAME.NAMETEAM.jal_sold then
-				G.GAME.NAMETEAM.jal_sold = 0
-			end
-			G.GAME.NAMETEAM.jal_sold = G.GAME.NAMETEAM.jal_sold + 1
+		if context.selling_self and #G.hand.cards>0 then
+			SMODS.destroy_cards(G.hand.cards)
 		end
 	end,
 })
@@ -584,7 +581,7 @@ SMODS.Joker({
 	blueprint_compat = false,
 	config = {
 		extra = {
-			mult = 3,
+			mult = 2,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -1370,15 +1367,12 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "electric_peashooter",
-	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 6, y = 11 },
+	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = { "Name Team/",
-            "0 Drivers of",
-            "The Chill Vaction" },
-		art = "cmykl",
+		team = "Name Team",
+		art = "Doggfly",
 	},
 	rarity = 1,
 	blueprint_compat = true,
@@ -1548,8 +1542,7 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "dartichoke",
-	atlas = "NAMETEAM_PlantJokers",
-	pos = {x=8,y=11},
+	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 0,
 	rarity = 1,
 	blueprint_compat = true,
@@ -1567,7 +1560,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Doggfly",
+		art = "N/A",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
