@@ -99,7 +99,6 @@ SMODS.Joker({
 	},
 	rarity = 2,
 	blueprint_compat = false,
-	perishable_compat = false,
 	config = {
 		extra = {},
 	},
@@ -117,9 +116,9 @@ SMODS.Joker({
 					rr = i
 				end
 			end
-			if rr and card.area.cards[rr - 1] then
-				if card.area.cards[rr - 1].debuff then
-					card.area.cards[rr - 1].debuff = nil
+			if rr and card.area.cards[rr + 1] then
+				if card.area.cards[rr + 1].debuff then
+					card.area.cards[rr + 1].debuff = nil
 				end
 			end
 		end
@@ -254,12 +253,10 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.destroy_card and context.cardarea == G.play and not context.blueprint and cae.active then
-			local a = pseudorandom_element(context.scoring_hand, "seed_jhere")
-			-- print(a, context.destroy_card)
-			if context.destroy_card == a then
+			if #context.scoring_hand == 1 and #G.play.cards == 1 then
 				cae.active = false
 				cae.active_this_round = true
-				cae.rounds_current = 3
+				cae.rounds_current = 2
 				return {
 					remove = true,
 					message = localize("k_cbean_chomp"),
@@ -694,6 +691,49 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
+	key = "blover",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 10, y = 3 },
+	cost = 3,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "Doggfly",
+	},
+	rarity = 2,
+	blueprint_compat = true,
+	config = {
+		extra = {
+			xmult = 1,
+			xmult_gain = 0.05,
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.xmult, cae.xmult_gain } }
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if context.after and G.GAME.NAMETEAM.blover_number and not context.blueprint then
+			for i = 1, G.GAME.NAMETEAM.blover_number do
+				SMODS.scale_card(card, {
+					ref_table = cae,
+					ref_value = "xmult",
+					scalar_value = "xmult_gain",
+				})
+			end
+		end
+		if context.joker_main then
+			return {
+				xmult = cae.xmult,
+			}
+		end
+	end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
 	key = "pumpkin",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 2, y = 8 },
@@ -968,6 +1008,58 @@ SMODS.Joker({
 		team = "Name Team",
 		art = "Crazy Dave",
 	},
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "coffee_bean",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 1, y = 5 },
+	cost = 3,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "Crazy Dave",
+	},
+	rarity = 2,
+	blueprint_compat = true,
+	config = {
+		extra = {
+			rep1 = 1,
+			rep2 = 2,
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.rep1, cae.rep2 } }
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if
+			context.retrigger_joker_check
+			and not context.retrigger_joker
+			and card:on_the("right")
+			and context.other_card == card:on_the("right")
+		then
+			if
+				string.find(card:on_the("right").config.center.key, "shroom")
+				or card:on_the("right").ability.cbean_shroom
+			then
+				return {
+					message = localize("k_again_ex"),
+					repetitions = cae.rep2,
+					card = card,
+				}
+			else
+				return {
+					message = localize("k_again_ex"),
+					repetitions = cae.rep1,
+					card = card,
+				}
+			end
+		end
+	end,
 })
 
 SMODS.Joker({
@@ -1734,12 +1826,37 @@ SMODS.Joker({
             "The Chill Vaction" },
 		art = "MarioFan597",
 	},
+	remove_from_deck = function(self, card, from_debuff)
+		for k, v in pairs(G.playing_cards) do
+			SMODS.debuff_card(v, false, "debuff_by_stallia")
+		end
+	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.joker_main then
 			return {
 				mult = cae.mult,
 			}
+		end
+		if context.final_scoring_step then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.01,
+				func = function()
+					for k, v in pairs(context.scoring_hand) do
+						local c = context.scoring_hand
+						if v == c[1] or v == c[2] or v == c[3] then
+							SMODS.debuff_card(v, true, "debuff_by_stallia")
+						end
+					end
+					return true
+				end,
+			}))
+		end
+		if context.ante_change and context.ante_end and not context.blueprint then
+			for k, v in pairs(G.playing_cards) do
+				SMODS.debuff_card(v, false, "debuff_by_stallia")
+			end
 		end
 	end,
 })
@@ -1790,7 +1907,7 @@ SMODS.Joker({
 	blueprint_compat = false,
 	config = {
 		extra = {
-			chips = 200,
+			chips = 150,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -2509,34 +2626,26 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			rounds = 2,
-			rounds_max = 2,
+			rounds = 3,
+			rounds_max = 3,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.rounds_max, cae.rounds } }
 	end,
-	calculate = function(self,card,context)
-		local cae = card.ability.extra
-		if context.ante_change then
-			if cae.rounds>1 then
-				cae.rounds = cae.rounds-1
-				NAMETEAM.msg(card, "-1")
-			else
-				cae.rounds =0
-				SMODS.destroy_cards(card)
-			end
-		end
-	end,
 	update = function(self, card)
 		local cae = card.ability.extra
 		if card.added_to_deck then
-			for k, v in pairs(G.jokers.cards) do
-				if v and v.debuff then
+			for k, v in pairs(G.playing_cards) do
+				if v.debuff and cae.rounds > 0 then
 					v.debuff = false
 					cae.rounds = cae.rounds - 1
+					NAMETEAM.msg(card, "-1")
 				end
+			end
+			if cae.rounds <= 0 then
+				SMODS.destroy_cards(card)
 			end
 		end
 	end,
@@ -2699,8 +2808,8 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			xmult = 2,
-			mult = 7,
+			xmult = 1.5,
+			mult = 8,
 			chips = 20,
 		},
 	},
@@ -2712,19 +2821,19 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.individual and context.cardarea == G.play then
 			local gp, c = context.scoring_hand, context.other_card
-			if c == gp[1+1+1] and gp[1+1+1] then
+			if c == gp[1] and gp[1] then
 				return {
 					xmult = cae.xmult,
 				}
 			end
-			if c == gp[1] and gp[1] then
-				return {
-					chips = cae.chips,
-				}
-			end
-			if c == gp[1+1] and gp[1 + 1] then
+			if c == gp[2] and gp[1 + 1] then
 				return {
 					mult = cae.mult,
+				}
+			end
+			if c == gp[3] and gp[1 + 1 + 1] then
+				return {
+					chips = cae.chips,
 				}
 			end
 		end
@@ -2955,14 +3064,16 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
 	key = "electric_currant",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 9, y = 11 },
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -3232,7 +3343,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "cold_snapdragon",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 0, y = 12 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3249,8 +3361,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	remove_from_deck = function(self, card, from_debuff)
 		for k, v in pairs(G.playing_cards) do
@@ -3294,7 +3408,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "escape_root",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 10, y = 11 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = true,
@@ -3311,8 +3426,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -3536,7 +3653,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "holly_barrier",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 11, y = 11 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3557,8 +3675,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -3680,7 +3800,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "electrici-tea",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 5, y = 11 },
 	cost = 0,
 	rarity = 2,
 	blueprint_compat = true,
@@ -3696,7 +3817,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "DoggFly",
 	},
 	pools = {
 		cbean_electric = true,
@@ -5206,8 +5327,10 @@ SMODS.Joker({
 	cost = 3,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "DogFly",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -5347,8 +5470,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "solar_tomato",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	pos = { x = 0, y = 0 },
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 1, y = 12 },
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -5366,8 +5489,10 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "ThunderEdge",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra

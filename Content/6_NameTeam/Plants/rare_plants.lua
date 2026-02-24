@@ -446,7 +446,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			xmult = 2,
+			xmult = 3,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -898,7 +898,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "imp_pear",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 2, y = 12 },
 	cost = 3,
 	rarity = 3,
 	blueprint_compat = false,
@@ -917,8 +918,9 @@ SMODS.Joker({
 	end,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            ":("},
+		art = "George T. Rat",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -1231,13 +1233,14 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = {x=7,y=11},
 	key = "cran_jelly",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
 	rarity = 3,
 	blueprint_compat = true,
@@ -1282,14 +1285,17 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 4, y = 11 },
+	pos = { x = 4, y = 12 },
 	key = "dragon_bruit",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
 		team = { "Name Team/",
-            ":(" },
-		art = "George T. Rat",
+            ":(/",
+            "0 Drivers of",
+            "The Chill Vacation" },
+		art = {"George T. Rat",
+				"MarioFan597"},
 	},
 	rarity = 3,
 	blueprint_compat = true,
@@ -1344,13 +1350,15 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = false,
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 4, y = 11 },
 	key = "baby_bruit",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            ":("},
+		art = "George T. Rat",
 	},
 	rarity = "cbean_token",
 	blueprint_compat = true,
@@ -1515,99 +1523,4 @@ SMODS.Joker({
 	pools = {
 		cbean_pea = true,
 	},
-})
-
-SMODS.Joker({
-	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
-	key = "blover",
-	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 10, y = 3 },
-	cost = 3,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "Doggfly",
-	},
-	rarity = 3,
-	blueprint_compat = true,
-	config = {
-		extra = {
-			xmult = 1,
-			xmult_gain = 0.04,
-		},
-	},
-	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
-		return { vars = { cae.xmult, cae.xmult_gain } }
-	end,
-	calculate = function(self, card, context)
-		local cae = card.ability.extra
-		if context.after and G.GAME.NAMETEAM.blover_number and not context.blueprint then
-			for i = 1, G.GAME.NAMETEAM.blover_number do
-				SMODS.scale_card(card, {
-					ref_table = cae,
-					ref_value = "xmult",
-					scalar_value = "xmult_gain",
-				})
-			end
-		end
-		if context.joker_main then
-			return {
-				xmult = cae.xmult,
-			}
-		end
-	end,
-})
-
-SMODS.Joker({
-	pvz_plant = true,
-	in_pool = NAMETEAM.plant_in_pool,
-	key = "coffee_bean",
-	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 1, y = 5 },
-	cost = 3,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "Crazy Dave",
-	},
-	rarity = 3,
-	blueprint_compat = true,
-	config = {
-		extra = {
-			rep1 = 1,
-			rep2 = 2,
-		},
-	},
-	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
-		return { vars = { cae.rep1, cae.rep2 } }
-	end,
-	calculate = function(self, card, context)
-		local cae = card.ability.extra
-		if
-			context.retrigger_joker_check
-			and not context.retrigger_joker
-			and card:on_the("right")
-			and context.other_card == card:on_the("right")
-		then
-			if
-				string.find(card:on_the("right").config.center.key, "shroom")
-				or card:on_the("right").ability.cbean_shroom
-			then
-				return {
-					message = localize("k_again_ex"),
-					repetitions = cae.rep2,
-					card = card,
-				}
-			else
-				return {
-					message = localize("k_again_ex"),
-					repetitions = cae.rep1,
-					card = card,
-				}
-			end
-		end
-	end,
 })
