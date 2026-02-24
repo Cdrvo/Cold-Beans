@@ -479,20 +479,21 @@ end
 
 function Card:on_the(direction)
 	local rr = nil
-	for i = 1, #self.area.cards do
-		if self.area.cards[i] == self then rr = i end
-	end
-
-	if direction == "left" then
-		if self.area.cards[rr-1] then
-			return self.area.cards[rr-1]
+	if self.area then
+		for i = 1, #self.area.cards do
+			if self.area.cards[i] == self then rr = i end
 		end
-	else
-		if self.area.cards[rr+1] then
-			return self.area.cards[rr+1]
+
+		if direction == "left" then
+			if self.area.cards[rr-1] then
+				return self.area.cards[rr-1]
+			end
+		else
+			if self.area.cards[rr+1] then
+				return self.area.cards[rr+1]
+			end
 		end
 	end
-
 	return false
 end
 
