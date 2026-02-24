@@ -3484,7 +3484,7 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         local cae = card.ability.extra
-        if context.joker_main and context.scoring_name ~= NAMETEAM.most_played() and (cae.hands_given or 0) < 2 then
+        if context.joker_main then
             return {
                 xmult = cae.xmult,
             }
