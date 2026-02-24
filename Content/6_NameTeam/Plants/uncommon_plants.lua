@@ -3505,7 +3505,7 @@ SMODS.Joker({
 	key = "holly_projectile",
 	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 3,
-	rarity = "cbean_token",,
+	rarity = "cbean_token",
 	blueprint_compat = false,
 	config = {
 		extra = {
@@ -5407,4 +5407,5 @@ SMODS.Joker({
 			end
 		end
 	end,
+
 })
