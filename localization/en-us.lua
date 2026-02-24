@@ -3707,6 +3707,7 @@ return {
 				},
 			},
 
+			--Chill Formation
 			j_cbean_0chill_vacation_member0 = {
 				name = {"Chill Formation", "{s:0.7}Cmykl:{} {B:1,C:white,s:0.7}Red Dot"},
 				text = {
@@ -3736,9 +3737,10 @@ return {
 						"effect each use"	
 					},
 					{
-						"Each scored Hearts card grants {C:mult}+#2#{} Mult",
-						"and has a {C:green}#3# in #4#{} chance to",
-						"create a random {C:dark_edition}Negative{} {C:planet}Planet{} card",
+						"Each scored {C:hearts}Hearts{} card",
+						"grants {C:mult}+#2#{} Mult and has a",
+						"{C:green}#3# in #4#{} chance to create a",
+						"random {C:dark_edition}Negative{} {C:planet}Planet{} card",
 						"{C:inactive}Odds improve by 1 per card{}"
 					},
 					{
@@ -3758,7 +3760,7 @@ return {
 						"effect each use"	
 					},
 					{
-						"Each scored King and 2 earns {C:money}$#8#{}",
+						"Each scored {C:attention}King{} and {C:attention}2{} earns {C:money}$#8#{}",
 						"Otherwise scored cards earn {C:money}$#7#{}",
 					},
 					{
@@ -5234,12 +5236,12 @@ return {
 			j_cbean_laser_bean                          = {
 				name = "Laser Bean",
 				text = {
-					"Scored cards give",
-					"{C:mult}+#1#*N{} Mult.",
-					"where {C:attention}N{} is the",
-					"number of cards",
-					"on their right",
-					"{C:inactive}Currently {C:mult}+#2#{} {C:inactive}Mult)"
+					"Scored cards give {C:mult}+#1#*N{} Mult",
+					"where {C:attention}N{} is the number of",
+					"cards on their right",
+					"{C:inactive,s:0.9}(ex: First card in a hand{}",
+					"{C:inactive,s:0.9}of five cards would{}",
+					"{C:inactive,s:0.9}get +#2# Mult when scored){}"
 				},
 			},
 			j_cbean_citron                              = {

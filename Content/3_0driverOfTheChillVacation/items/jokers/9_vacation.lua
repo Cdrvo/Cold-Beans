@@ -34,6 +34,7 @@ SMODS.Joker {
             info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
         end
         info_queue[#info_queue + 1] = { key = "cbean_combo_starter", set = "Other" }
+        local num, denom = SMODS.get_probability_vars(card, card.ability.extra.CapitalChirp_num, card.ability.extra.CapitalChirp_denom, "Vacation")
         return {
             key = self.key .. '_member' .. tostring(card.ability.immutable.member),
             vars = {
@@ -255,7 +256,7 @@ SMODS.Joker {
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
     local abc = G_UIDEF_use_and_sell_buttons_ref(card)
-    if (card.area == G.jokers and G.jokers and card.config.center.key == "j_cbean_0chill_vacation") and not card.debuff then --Gives buttons to entropic marble Joker
+    if (card.area == G.jokers and G.jokers and card.config.center.key == "j_cbean_0chill_vacation") and not card.debuff and not G.CONTROLLER.locked then --Gives buttons to entropic marble Joker
         sell = {
             n = G.UIT.C,
             config = { align = "cr" },
@@ -379,7 +380,7 @@ function G.UIDEF.use_and_sell_buttons(card)
             nodes = {
                 {
                     n = G.UIT.C,
-                    config = { padding = 0.2, align = "cl" },
+                    config = { padding = 0.1, align = "cl" },
                     nodes = {
                         { n = G.UIT.R, config = { align = "cl" }, nodes = {
                             sell,
@@ -400,12 +401,12 @@ function G.UIDEF.use_and_sell_buttons(card)
 end
 
 
-G.FUNCS.can_use_combo = function(e)
-    if G.GAME.blind.in_blind and CanCombo(e.config.ref_table) and not G.CONTROLLER.locked then
+G.FUNCS.can_use_combo = function(e) --Last part of the condition past the second and is the standard consumable restruction
+    if G.GAME.blind.in_blind and CanCombo(e.config.ref_table) and not (not skip_check and ((G.play and #G.play.cards > 0) or (G.CONTROLLER.locked) or (G.GAME.STOP_USE and G.GAME.STOP_USE > 0))) then
         --print("Yes")
         e.config.colour = G.C.RED
         e.config.button = "can_combo"
-    elseif G.GAME.blind.in_blind and CanUncombo(e.config.ref_table) and not G.CONTROLLER.locked then
+    elseif G.GAME.blind.in_blind and CanUncombo(e.config.ref_table) and not (not skip_check and ((G.play and #G.play.cards > 0) or (G.CONTROLLER.locked) or (G.GAME.STOP_USE and G.GAME.STOP_USE > 0))) then
         --print("Yes")
         e.config.colour = G.C.RED
         e.config.button = "can_uncombo"

@@ -1873,12 +1873,13 @@ SMODS.Joker({
 	config = {
 		extra = {
 			mult = 2,
+			ex_mult = 10
 		},
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return {
-			vars = { cae.mult, cae.mult * NAMETEAM.all_on(context.other_card, G.play.cards) },
+			vars = { cae.mult, cae.ex_mult},
 		}
 	end,
 	beans_credits = {
@@ -2346,8 +2347,8 @@ function G.UIDEF.use_and_sell_buttons(card)
 end
 
 
-G.FUNCS.can_strengthen_magnifying_grass = function(e)
-    if (G.GAME.dollars - G.GAME.bankrupt_at) >= e.config.ref_table.ability.extra.dollars and not G.CONTROLLER.locked then
+G.FUNCS.can_strengthen_magnifying_grass = function(e) --Eveything past the and is the standard consumable use condition
+    if (G.GAME.dollars - G.GAME.bankrupt_at) >= e.config.ref_table.ability.extra.dollars and not (not skip_check and ((G.play and #G.play.cards > 0) or (G.CONTROLLER.locked) or (G.GAME.STOP_USE and G.GAME.STOP_USE > 0))) then
         e.config.colour = G.C.RED
         e.config.button = "strengthen_magnifying_grass"
     else
