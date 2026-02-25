@@ -36,16 +36,14 @@ SMODS.PokerHand{
     mult = 0.5,
     cb_house_rules = true,
     visible = function (self)
-        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and (next(SMODS.find_card('j_sixth_sense'))) or next(SMODS.find_card('j_cbean_colon_mu_cube')))
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
                 if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
             end
         end
-        local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
-
-        return joker and (played or clicked)
+        return jokers or clicked
     end,
     example = {
         { "S_6", true },
@@ -66,16 +64,14 @@ SMODS.PokerHand{
     mult = 0.5,
     cb_house_rules = true,
     visible = function (self)
-        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and (next(SMODS.find_card('j_sixth_sense'))) or next(SMODS.find_card('j_cbean_colon_mu_cube')))
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
                 if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
             end
         end
-        local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
-
-        return joker and (played or clicked)
+        return jokers or clicked
     end,
     example = {
         { "S_6", true },

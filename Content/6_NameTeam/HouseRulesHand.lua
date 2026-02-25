@@ -5,20 +5,16 @@ SMODS.PokerHand({
 	chips = 100,
 	mult = 20,
 	cb_house_rules = true,
-	visible = function(self)
-		local joker = not not next(SMODS.find_card("j_cbean_0chill_house_rules"))
-		local clicked
-		if G.jokers and G.jokers.highlighted then
-			for _, v in ipairs(G.jokers.highlighted) do
-				if v.config.center.key == "j_cbean_0chill_house_rules" then
-					clicked = true
-				end
-			end
-		end
-		local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
-
-		return joker and (played or clicked)
-	end,
+	visible = function (self)
+        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card("j_cbean_nameteam_sticker_collection")))
+        local clicked
+        if G.jokers and G.jokers.highlighted then
+            for _,v in ipairs(G.jokers.highlighted) do
+                if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
+            end
+        end
+        return jokers or clicked
+    end,
 	example = {
 		{ "D_3", true, stickers = { "eternal", "cbean_hooking" } },
 		{ "H_K", true, stickers = { "cbean_mailed" } },
@@ -40,20 +36,16 @@ SMODS.PokerHand({
 	chips = 150,
 	mult = 30,
 	cb_house_rules = true,
-	visible = function(self)
-		local joker = not not next(SMODS.find_card("j_cbean_0chill_house_rules"))
-		local clicked
-		if G.jokers and G.jokers.highlighted then
-			for _, v in ipairs(G.jokers.highlighted) do
-				if v.config.center.key == "j_cbean_0chill_house_rules" then
-					clicked = true
-				end
-			end
-		end
-		local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
-
-		return joker and (played or clicked)
-	end,
+	visible = function (self)
+        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card("j_cbean_nameteam_sticker_collection")))
+        local clicked
+        if G.jokers and G.jokers.highlighted then
+            for _,v in ipairs(G.jokers.highlighted) do
+                if v.config.center.key == "j_cbean_0chill_house_rules" then clicked = true end
+            end
+        end
+        return jokers or clicked
+    end,
 	example = {
 		{ "D_3", true, stickers = { "eternal", "cbean_hooking" } },
 		{ "H_3", true, stickers = { "cbean_mailed" } },
