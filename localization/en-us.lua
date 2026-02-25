@@ -11722,14 +11722,14 @@ return {
 				"A hand that contains at least {C:attention}3{} cards with a {C:attention}Sticker",
 				"The cards must also have at least {C:attention}3{}",
 				"different {C:attention}Stickers{} among them",
-				"Must have {C:attention}House Rules{} to play"
+				"Must have {C:attention}House Rules{} and {C:attention}Sticker Collection or Stickerbomb{} to play"
 			},
 			["cbean_nteam_collection_3oak"] = {
 				"A hand that contains 3 cards with the same rank and",
 				"at least {C:attention}3{} cards with a {C:attention}Sticker",
 				"The cards must also have at least {C:attention}3{}",
 				"different {C:attention}Stickers{} among them",
-				"Must have {C:attention}House Rules{} to play"
+				"Must have {C:attention}House Rules{} and {C:attention}Sticker Collection or Stickerbomb{} to play"
 			},
 		},
 		poker_hands = {
