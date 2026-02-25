@@ -800,3 +800,37 @@ payload = '''
 '''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "self.boss = blind and not not blind.boss"
+position = "before"
+payload = '''
+self.teeny = blind and (blind.colonparen_blindtype == 'Teeny')
+self.small = blind and ((self.name == "Small Blind") or (blind.colonparen_blindtype == 'Small'))
+self.big = blind and ((self.name == "Big Blind") or (blind.colonparen_blindtype == 'Big'))
+self.ceo = blind and (blind.colonparen_blindtype == 'CEO')
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "and context.blind.boss and not self.getting_sliced then"
+position = "at"
+payload = '''
+and (context.blind.boss or context.blind.ceo) and not self.getting_sliced then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Chicot' and G.GAME.blind and G.GAME.blind.boss and not G.GAME.blind.disabled then"
+position = "at"
+payload = '''
+if self.ability.name == 'Chicot' and G.GAME.blind and (G.GAME.blind.boss or G.GAME.blind.ceo) and not G.GAME.blind.disabled then
+'''
+match_indent = true
+
+

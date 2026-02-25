@@ -7675,6 +7675,18 @@ return {
 					}
 				}
 			},
+
+
+            j_chicot={
+                name="Chicot",
+                text={
+                    "Disables effect of",
+                    "every {C:attention}Boss{} or {C:attention}CEO Blind",
+                },
+                unlock={
+                    "{E:1,s:1.3}?????",
+                },
+            },
 		},
 		Other = {
 			cbean_nteam_secret = {

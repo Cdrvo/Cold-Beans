@@ -145,6 +145,10 @@ for i, name in ipairs({'Teeny', 'Small', 'Big', 'CEO'}) do
 				self.boss = nil
 			end
 			self.colonparen_blindtype = name;
+			self.teeny = self.colonparen_blindtype == 'Teeny'
+			self.small = self.colonparen_blindtype == 'Small'
+			self.big = self.colonparen_blindtype == 'Big'
+			self.ceo = self.colonparen_blindtype == 'CEO'
             SMODS.Blind.super.register(self)
 			Colonparen.SpecialBlinds[self.key] = self;
         end,
