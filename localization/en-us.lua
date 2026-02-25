@@ -3157,12 +3157,15 @@ return {
 			m_cbean_wgrop_pale_remnant = {
 				name = "Pale Remnant",
 				text = {
-					{ "{C:attention}Decrease{} this card's",
-						"{C:attention}rank{} when {C:attention}scored{}" },
-					{ " Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
+					{ 	"{C:attention}Decrease{} this card's",
+						"{C:attention}rank{} when {C:attention}scored{}" 
+					},
+					{ 	"Gains {C:white,X:red}X#1#{} {C:red}Mult{}",
 						"for everytime it was {C:attention}scored{}",
-						"at end of scoring" },
-					{ "{C:inactive}(Currently{} {C:white,X:red}X#2#{C:inactive})" }
+						"at end of scoring",
+						"{C:inactive}(Currently{} {C:white,X:red}X#2#{C:inactive})"
+					},
+					
 				},
 			},
 			m_cbean_wgrop_coarse = {
@@ -5830,8 +5833,8 @@ return {
 			j_cbean_sling_pea                           = {
 				name = "Sling-Pea",
 				text = {
-					"Scored Cards give",
-					"{C:mult}+#1#{} Mult",
+					"Scored Cards",
+					"give {C:mult}+#1#{} Mult",
 					"{C:mult}-#2#{} Mult per trigger"
 				},
 			},
@@ -6371,7 +6374,7 @@ return {
 				text = {
 					"Every played {C:red}even{}",
 					"hand gives {X:mult,C:white}X#1#{} Mult",
-					"white every {C:blue}odd{} hand",
+					"while every {C:blue}odd{} hand",
 					"gives {X:mult,C:white}X#2#{} Mult"
 				},
 			},
@@ -6437,11 +6440,15 @@ return {
 			j_cbean_hammeruit                           = {
 				name = "Hammeruit",
 				text = {
-					"{C:attention}#3#{} random scored cards give", 
-					"{X:mult,C:white}X#1#{} Mult in {C:attention}final hand{} of round",
-					"Gains {X:mult,C:white}X#2#{} Mult for",
-					"each card scored",
-					"{C:inactive}(Resets each round){}"
+					{
+						"{C:attention}#3#{} random scored cards give", 
+						"{X:mult,C:white}X#1#{} Mult in {C:attention}final hand{} of round",
+						"{C:inactive}(Resets each round){}"
+					},
+					{
+						"Above effect gains {X:mult,C:white}X#2#{} Mult",
+						"for each card scored",
+					},
 				},
 			},
 
@@ -6513,7 +6520,7 @@ return {
 				text = {
 					"Scored cards lose",
 					"{C:red}-1{} Chips but",
-					"give {C:money}+$#1#{}"
+					"give {C:money}$#1#{}"
 				},
 			},
 
@@ -7396,16 +7403,32 @@ return {
 					}
 				},
 			},
+			--[[ Old Poltergeist Description
 			j_cbean_wgrop_jhett_the_poltergeist         = {
 				name = "Jhett the Poltergeist",
 				text = {
-					{ "{C:red}Destroy{} all {C:attention}Pale Remnant{} cards",
-						"in {C:attention}Hand{} after scoring" },
-					{ "Gain {C:white,X:red}X#1#{} {C:attention}for every{} held",
-						"{C:attention}Pale Remnant{} card at",
+					{ "{C:red}Destroys{} all {C:attention}Pale Remnant{} cards",
+						"{C:attention}held in hand{} after scoring" },
+					{ "This Joker gains {C:white,X:red}X#1#{} Mult {C:attention}for{}",
+						"{C:attention}every{} held {C:attention}Pale Remnant{} card at",
 						"the start of the hand when",
-						"destroying one" },
-					{ "{C:inactive}Currently{} {C:white,X:mult}X#2#{}" }
+						"above ability destroys one",
+						"{C:inactive}(Currently{} {C:white,X:mult}X#2#{} {C:inactive}Mult){}"
+					},
+				}
+			},
+			]]
+
+			j_cbean_wgrop_jhett_the_poltergeist         = {
+				name = "Jhett the Poltergeist",
+				text = {
+					{ "{C:red}Destroys{} all {C:attention}Pale Remnant{} cards",
+						"{C:attention}held in hand{} after scoring" },
+					{ "This Joker gains {C:white,X:red}X#1#{} Mult {C:attention}for{}",
+						"{C:attention}every{} {C:attention}Pale Remnant{} card",
+						"above ability destroys",
+						"{C:inactive}(Currently{} {C:white,X:mult}X#2#{} {C:inactive}Mult){}"
+					},
 				}
 			},
 			j_cbean_wgrop_oasis                         = {
@@ -11287,6 +11310,7 @@ return {
 			k_cbean_burned                      = "Burned!",
 			k_cbean_piss_ex                     = "Piss!",
 			k_cbean_mash_ex                     = "Mash!",
+			k_cbean_munch_ex					= "Munched!",
 			k_cbean_pboys_abet                  = "Bet",
 			k_cbean_unique_ex                   = "???",
 			k_cbean_balley_ex                   = "Alley!",
