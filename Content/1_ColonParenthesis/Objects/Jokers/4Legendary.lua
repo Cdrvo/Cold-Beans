@@ -28,6 +28,7 @@ SMODS.Joker {
         team = ":(",
         idea = "bitter",
         code = "bitter",
+        art = "George The Rat",
     }
 }
 
@@ -100,7 +101,12 @@ SMODS.Joker {
     config = {
         extra = {
             xmult_mod = 0.1,
-            xmult = 1
+            xmult = 1,
+        },
+        immutable = {
+            last_track = "",
+            laster_track = "", --The track before the last track
+
         }
     },
     rarity = 4,
@@ -115,13 +121,44 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
+        card.ability.immutable.last_track = tostring(SMODS.previous_track) --Checks if the song is not the same as the last
+        if (card.ability.immutable.last_track ~= card.ability.immutable.laster_track) and (card.ability.immutable.laster_track ~= "") then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.1,
+                func = function()
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_mod",
+                        message_key = "a_xmult",
+                        message_colour = G.C.MULT,
+                    })
+                    return true
+                end,
+            }))
+            card.ability.immutable.laster_track = card.ability.immutable.last_track
+                                                                            --This is here to prevent a boost when first aquired
+        elseif  (card.ability.immutable.last_track ~= card.ability.immutable.laster_track) and (card.ability.immutable.laster_track == "") then
+            card.ability.immutable.laster_track = card.ability.immutable.last_track
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
     end,
     beans_credits = {
-        team = ":(",
+        team = { ":(/",
+            "0 Drivers of",
+            "The Chill Vaction" },
         idea = "Glitchkat10",
-        code = "N/A",
+        code = "MarioFan597",
+        art = "George The Rat",
     }
 }
+
+
 
 
 
