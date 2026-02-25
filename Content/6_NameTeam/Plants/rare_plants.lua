@@ -1058,6 +1058,47 @@ SMODS.Joker({
 
 SMODS.Joker({
 	pvz_plant = true,
+	key = "tofu_turkey",
+	atlas = "NAMETEAM_PlantPlaceholder",
+	cost = 5,
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "N/A",
+	},
+	rarity = "cbean_token",
+	always_buyable = true,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			chips = 20,
+		},
+		extra_slots_used = -1
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.chips } }
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+		if context.joker_main then
+			return {
+				chips = 20,
+			}
+		end
+	end,
+	update = function(self, card)
+		if card and card.edition and card.edition.negative then
+			card:set_edition(nil, true, true)
+		end
+	end,
+	in_pool = function(self, card)
+		return false
+	end,
+})
+
+SMODS.Joker({
+	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "draftodil",
 	atlas = "NAMETEAM_PlantPlaceholder",

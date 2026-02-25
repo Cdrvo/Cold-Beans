@@ -762,13 +762,8 @@ SMODS.Joker({
 		extra = {
 			dollars = 2,
 		},
+		extra_slots_used = -1
 	},
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
-	end,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 		local cae = card.ability.extra
@@ -1654,52 +1649,6 @@ SMODS.Joker({
 			if not G.GAME.NAMETEAM.no_progress then G.GAME.NAMETEAM.no_progress = 0 end
 			G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress + cae.rounds
 		end
-	end,
-})
-
-SMODS.Joker({
-	pvz_plant = true,
-	key = "tofu_turkey",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	cost = 5,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
-	rarity = 1,
-	always_buyable = true,
-	blueprint_compat = false,
-	config = {
-		extra = {
-			chips = 20,
-		},
-	},
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - 1
-	end,
-	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
-		return { vars = { cae.chips } }
-	end,
-	calculate = function(self, card, context)
-		local cae = card.ability.extra
-		if context.joker_main then
-			return {
-				chips = 20,
-			}
-		end
-	end,
-	update = function(self, card)
-		if card and card.edition and card.edition.negative then
-			card:set_edition(nil, true, true)
-		end
-	end,
-	in_pool = function(self, card)
-		return false
 	end,
 })
 

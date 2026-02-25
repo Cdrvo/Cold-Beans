@@ -5150,7 +5150,6 @@ return {
 						"end of round",
 					},
 					{
-						"{C:dark_edition}+1{} Joker Slot",
 						"{C:inactive}(Cannot appear {C:dark_edition}Negative{C:inactive})"
 					},
 				},
@@ -6051,9 +6050,6 @@ return {
 				text = {
 					{
 						"{C:chips}+#1#{} Chips",
-					},
-					{
-						"{C:dark_edition}+1{C:attention} Joker Slot"
 					},
 				},
 			},
