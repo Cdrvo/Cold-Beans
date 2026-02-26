@@ -11,6 +11,10 @@ G.FUNCS.can_switch = function(e)
 	  G.SECRET_BUTTON=localize('k_cbean_yma_street')
 	  e.config.colour = G.C.GREEN
 	  e.config.button = 'show_yma_main_street'
+  elseif G.STATE == G.STATES.FORGERY then
+	  G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
+	  e.config.colour = G.C.RED
+	  e.config.button = 'hide_yma_forgery'
   elseif G.STATE == G.STATES.BALLEY then
 	  G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED

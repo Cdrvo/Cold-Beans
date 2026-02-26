@@ -177,9 +177,9 @@ YMA.MEDAL {
 
     config = {
         extra = {
-            xchips = 0.01,
+            xchips = 0.05,
             cur_xchips = 1,
-            xmult = 0.01,
+            xmult = 0.05,
             cur_xmult = 1
         }
     },

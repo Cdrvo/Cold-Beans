@@ -2,11 +2,11 @@ G.STATES.FORGERY = 82398283798298
 
 function G.UIDEF.forgery_sprite()
   
-	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("forgery")  and "cbean_pboys_backalley_shop" or "cbean_NAMETEAM_closed"], { x = 0, y = 0 }) or nil
+	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("forgery")  and "cbean_pboys_backalley_shop" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
     function sprite_alley:update(dt)
         AnimatedSprite.update(self, dt)
         self.atlas =
-            G.ANIMATION_ATLAS[yma_can_access_location("balley")  and "cbean_pboys_backalley_shop" or "cbean_NAMETEAM_closed"]
+            G.ANIMATION_ATLAS[yma_can_access_location("forgery")  and "cbean_pboys_backalley_shop" or "cbean_yma_locked_sign"]
     end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_alley}},
@@ -71,6 +71,7 @@ G.FUNCS.hide_yma_forgery = function(e)
             func = (function() 
                     G.yma_forgery_card_sac:remove()
                     G.yma_forgery_card_sac = nil;
+                    G.yma_forgery = nil;
                 return true
             end)
         }))
