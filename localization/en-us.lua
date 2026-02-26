@@ -4754,9 +4754,13 @@ return {
 			j_cbean_tallnut                             = {
 				name = "Tall-Nut",
 				text = {
-					"Future cards can have",
-					"at most {C:attention}1{} Sticker",
-					"Cards {C:red}cannot{} be debuffed"
+					{
+						"Future cards can have",
+						"at most {C:attention}1{} Sticker",
+					},
+					{
+						"Cards {C:red}cannot{} be debuffed"
+					},
 				},
 			},
 			j_cbean_spikeweed                           = {
@@ -5729,7 +5733,7 @@ return {
 						"If a Blind is defeated",
 						"in a {C:attention}single{} hand,",
 						"{:green}store{} its required chips",
-						"{C:inactive}(Stored: {C:chips}#3#{C:inactive})"
+						"{C:inactive}(Stored: {C:chips}#3#{C:inactive} Chips)"
 					},
 					{
 						"When a {:attention}Blind{} is selected,",
@@ -6221,9 +6225,13 @@ return {
 			j_cbean_rhubarbarian                        = {
 				name = "Rhubarbarian",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"when a hand is played,", "all cards left",
-					"in hand are {C:red}discarded"
+					{
+						"{X:mult,C:white}X#1#{} Mult",
+					},
+					{
+						"when a hand is played,", "all cards left",
+						"in hand are {C:red}discarded"
+					},
 				},
 			},
 			j_cbean_levitater                           = {
@@ -6577,8 +6585,8 @@ return {
 				name = "Solar Tomato",
 				text = {
 					"When sold, gives {C:money}$#1#{} per",
-					"card in the most recent",
-					"scored hand",
+					"card in the most",
+					"recent scored hand",
 					"{C:inactive}(Will give {C:money}$#2#{C:inactive})"
 				},
 			},
