@@ -932,7 +932,7 @@ SMODS.Joker({
 				main_end = {
 					{
 						n = G.UIT.C,
-						--config = { align = "bm", padding = 0.02 },
+						config = { align = "bm", padding = 0.02 },
 						nodes = {
 							{ n = G.UIT.O, config = { object = G.next_fivcards_cbean } },
 						},

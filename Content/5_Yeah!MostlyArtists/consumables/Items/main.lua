@@ -194,7 +194,7 @@ end
 
 
 G.FUNCS.cbean_yma_can_toggle_jokers_items = function(e)
-    if not CM.states.areas_moving then 
+    if not CM.states.areas_moving and not (not skip_check and ((G.play and #G.play.cards > 0) or (G.CONTROLLER.locked) or (G.GAME.STOP_USE and G.GAME.STOP_USE > 0))) then 
         e.config.colour = G.C.ORANGE
         e.config.button = 'toggle_jokers_items'
     else

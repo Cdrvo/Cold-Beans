@@ -4053,6 +4053,7 @@ return {
 					"Upgrade every held",
 					"{C:tarot}Tarot{} card",
 					"at end of round",
+					"{C:inactive}(If possible)"
 				},
 			},
 			j_cbean_yma_flerp                           = {
