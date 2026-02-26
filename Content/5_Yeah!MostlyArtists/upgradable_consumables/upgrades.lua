@@ -157,6 +157,9 @@ SMODS.Consumable {
             end
         end
         if _hand then
+            if G.GAME.hands[_hand].cb_house_rules then
+                _planet = "c_cbean_0chill_house_rules_planet"
+            end
             for _, v in pairs(G.P_CENTER_POOLS.Planet) do
                 if v.config.hand_type == _hand then
                     _planet = v.key
@@ -211,6 +214,9 @@ SMODS.Consumable {
             end
         end
         if _hand then
+            if G.GAME.hands[_hand].cb_house_rules then
+                _planet = "c_cbean_0chill_house_rules_planet"
+            end
             for _, v in pairs(G.P_CENTER_POOLS.Planet) do
                 if v.config.hand_type == _hand then
                     _planet = v.key
@@ -268,6 +274,9 @@ SMODS.Consumable {
             end
         end
         if _hand then
+            if G.GAME.hands[_hand].cb_house_rules then
+                _planet = "c_cbean_0chill_house_rules_planet"
+            end
             for _, v in pairs(G.P_CENTER_POOLS.Planet) do
                 if v.config.hand_type == _hand then
                     _planet = v.key
@@ -325,6 +334,9 @@ SMODS.Consumable {
             end
         end
         if _hand then
+            if G.GAME.hands[_hand].cb_house_rules then
+                _planet = "c_cbean_0chill_house_rules_planet"
+            end
             for _, v in pairs(G.P_CENTER_POOLS.Planet) do
                 if v.config.hand_type == _hand then
                     _planet = v.key
@@ -378,6 +390,9 @@ SMODS.Consumable {
             end
         end
         if _hand then
+            if G.GAME.hands[_hand].cb_house_rules then
+                _planet = "c_cbean_0chill_house_rules_planet"
+            end
             for _, v in pairs(G.P_CENTER_POOLS.Planet) do
                 if v.config.hand_type == _hand then
                     _planet = v.key

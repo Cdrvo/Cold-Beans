@@ -3128,8 +3128,8 @@ return {
 				name = "Steel Card",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"when this card is played",
-					"or in hand",
+					"when played or",
+					"held in hand",
 				},
 			},
 			m_cbean_yma_glass_1 = {
@@ -10137,10 +10137,15 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Lucky cards{} have {C:green}double odds{}",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Lucky cards{}",
+						"have {C:green}double odds{}",
+					},
 				},
 			},
 			c_cbean_yma_magician_level5 = {
@@ -10149,10 +10154,15 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Lucky cards{} have {C:green}triple odds{}",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Lucky cards{}",
+						"have {C:green}triple odds{}",
+					},
 				},
 			},
 			c_cbean_yma_high_priestess_level1 = {
@@ -10161,13 +10171,16 @@ return {
 					"{C:attention,s:0.7}Level 1{}",
 				},
 				text = {
-					"Creates up to {C:attention}#1#",
-					"random {C:planet}Planet{} cards",
-					"One of those {C:planet}Planet{} cards",
-					"is guranteed to be your",
-					"{C:attention}Highest played hand's{}",
-					"{C:planet}Planet{} card",
-					"{C:inactive}(Must have room)",
+					{
+						"Creates up to {C:attention}#1#",
+						"random {C:planet}Planet{} cards",
+						"{C:inactive}(Must have room)",
+					},
+					{
+						"One created {C:planet}Planet{}",
+						"is guranteed to be your",
+						"{C:attention}most played hand's{}",
+					},
 				},
 			},
 			c_cbean_yma_high_priestess_level2 = {
@@ -10176,13 +10189,16 @@ return {
 					"{C:attention,s:0.7}Level 2{}",
 				},
 				text = {
-					"Creates up to {C:attention}#1#",
-					"random {C:planet}Planet{} cards",
-					"One of those {C:planet}Planet{} cards",
-					"is guranteed to be your",
-					"{C:attention}Highest played hand's{}",
-					"{C:planet}Planet{} card",
-					"{C:inactive}(Must have at least 2 slots)",
+					{
+						"Creates up to {C:attention}#1#",
+						"random {C:planet}Planet{} cards",
+						"{C:inactive}(Can overflow 1 slot)",
+					},
+					{
+						"One created {C:planet}Planet{}",
+						"is guranteed to be your",
+						"{C:attention}most played hand's{}",
+					},
 				},
 			},
 			c_cbean_yma_high_priestess_level3 = {
@@ -10191,13 +10207,16 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Creates up to {C:attention}#1#",
-					"random {C:planet}Planet{} cards",
-					"Two of those {C:planet}Planet{} cards",
-					"are guranteed to be your",
-					"{C:attention}Highest played hand's{}",
-					"{C:planet}Planet{} card",
-					"{C:inactive}(Must have at least 2 slots)",
+					{
+						"Creates up to {C:attention}#1#",
+						"random {C:planet}Planet{} cards",
+						"{C:inactive}(Can overflow 1 slot)",
+					},
+					{
+						"Two created {C:planet}Planets{}",
+						"are guranteed to be your",
+						"{C:attention}most played hand's{}",
+					},
 				},
 			},
 			c_cbean_yma_high_priestess_level4 = {
@@ -10206,12 +10225,15 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Creates up to {C:attention}#1#",
-					"random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
-					"Two of those {C:planet}Planet{} cards",
-					"are guranteed to be your",
-					"{C:attention}Highest played hand's{}",
-					"{C:planet}Planet{} card",
+					{
+						"Creates up to {C:attention}#1# random",
+						"{C:dark_edition}Negative{} {C:planet}Planet{} cards",
+					},
+					{
+						"Two created {C:planet}Planets{}",
+						"are guranteed to be your",
+						"{C:attention}most played hand's{}",
+					},
 				},
 			},
 			c_cbean_yma_high_priestess_level5 = {
@@ -10221,9 +10243,8 @@ return {
 				},
 				text = {
 					"Creates up to {C:attention}#1#",
-					"random {C:dark_edition}Negative{} {C:planet}Planet{} cards",
-					"of your {C:attention}Highest played hand's{}",
-					"{C:planet}Planet{} card",
+					"{C:dark_edition}Negative{} {C:planet}Planet{} cards",
+					"of your {C:attention}most played hand{}",
 				},
 			},
 			c_cbean_yma_empress_level1 = {
@@ -10265,11 +10286,15 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Mult{} cards give {C:mult}+4{}",
-					"extra Mult",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Mult Cards{} give",
+						"an additional {C:mult}+4{} Mult",
+					},	
 				},
 			},
 			c_cbean_yma_empress_level5 = {
@@ -10278,12 +10303,16 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Mult{} cards give {C:mult}+4{}",
-					"extra Mult, plus an additional",
-					"{C:attention}5%{} of your current Mult",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Mult Cards{} give",
+						"and additional {C:mult}+4{} Mult",
+						"plus {C:mult}5%{} of current Chips",
+					},
 				},
 			},
 			c_cbean_yma_heirophant_level1 = {
@@ -10325,11 +10354,15 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Bonus{} cards give {C:chips}+20{}",
-					"extra Chips",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Bonus Cards{} give",
+						"an additional {C:chips}+20{} Chips",
+					},
 				},
 			},
 			c_cbean_yma_heirophant_level5 = {
@@ -10338,12 +10371,16 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Bonus{} cards give {C:chips}+20{}",
-					"extra Chips, plus an additional",
-					"{C:attention}5%{} of your current Chips",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Bonus Cards{} give",
+						"an additional {C:chips}+20{} Chips",
+						"plus {C:chips}5%{} of current Chips",
+					},
 				},
 			},
 			c_cbean_yma_chariot_level1 = {
@@ -10385,11 +10422,15 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Steel Cards{} give",
-					"{X:mult,C:white}+X0.5{} more Mult",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Steel Cards{} give",
+						"an additional {X:mult,C:white}X0.5{} Mult",
+					},
 				},
 			},
 			c_cbean_yma_chariot_level5 = {
@@ -10398,12 +10439,16 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Steel Cards{} give",
-					"{X:mult,C:white}+X0.5{} more Mult and",
-					"work {C:attention}when played{}",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Steel Cards{} give",
+						"an additional {X:mult,C:white}X0.5{} Mult",
+						"and work {C:attention}when played{}",
+					},
 				},
 			},
 			c_cbean_yma_justice_level1 = {
@@ -10445,11 +10490,15 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Glass Cards{} are",
-					"{C:attention}half as likely{} to {C:attention}break",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Glass Cards{} are",
+						"{C:green}half as likely{} to {C:attention}break",
+					},
 				},
 			},
 			c_cbean_yma_justice_level5 = {
@@ -10458,12 +10507,16 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Enhances {C:attention}#1#{}",
-					"selected cards to",
-					"{C:attention}#2#s",
-					"Created {C:attention}Glass Cards{} are",
-					"{C:attention}half as likely{} to {C:attention}break",
-					"and give {X:mult,C:white}+X1{} more Mult",
+					{
+						"Enhances {C:attention}#1#{}",
+						"selected cards to",
+						"{C:attention}#2#s",
+					},
+					{
+						"Created {C:attention}Glass Cards{} are",
+						"{C:green}half as likely{} to {C:attention}break",
+						"and give {X:mult,C:white}X1{} more Mult",
+					},
 				},
 			},
 			c_cbean_yma_hermit_level1 = {
@@ -10472,7 +10525,8 @@ return {
 					"{C:attention,s:0.7}Level 1{}",
 				},
 				text = {
-					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"Earn {C:money}$#2#{}, then",
+					"double money",
 					"{C:inactive}(Max of $#1#){}",
 				},
 			},
@@ -10482,7 +10536,8 @@ return {
 					"{C:attention,s:0.7}Level 2{}",
 				},
 				text = {
-					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"Earn {C:money}$#2#{}, then",
+					"double money",
 					"{C:inactive}(Max of $#1#){}",
 				},
 			},
@@ -10492,7 +10547,8 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"Earn {C:money}$#2#{}, then",
+					"double money",
 					"{C:inactive}(Max of $#1#){}",
 				},
 			},
@@ -10502,7 +10558,8 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Earn {C:money}$#2#{}, then {C:money}doubles{} it",
+					"Earn {C:money}$#2#{}, then",
+					"double money",
 					"{C:inactive}(Max of $#1#){}",
 				},
 			},
@@ -10512,7 +10569,8 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Earn {C:money}$#2#{}, then {C:money}triples{} it",
+					"Earn {C:money}$#2#{}, then",
+					"triple money",
 					"{C:inactive}(Max of $#1#){}",
 				},
 			},

@@ -15,7 +15,7 @@ SMODS.Joker {
             for _, consumable in ipairs(G.consumeables.cards) do
                 if consumable.ability.set == "Tarot" and yma_can_upgrade_consumable(consumable) then
                     yma_upgrade_consumable(consumable)
-                    return { message = localize('k_upgrade_ex') }
+                    SMODS.calculate_effect({ message = localize('k_upgrade_ex') }, card)
                 end
             end
         end

@@ -10,7 +10,7 @@ SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
             "The Chill Vacation"
         },
         idea = "MarioFan597",
-        art =  "NA",
+        art =  "cmykl",
         code = "MarioFan597",
     },
     use = function(self, card, area, copier)
