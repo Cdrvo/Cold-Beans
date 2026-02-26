@@ -195,6 +195,9 @@ end
 if self.STATE == self.STATES.DREAMLAND then
   update_yma_dreamland()
 end
+if self.STATE == self.STATES.AUGMENTATION then
+  update_yma_augmentation()
+end
 if self.STATE == self.STATES.TBOI_CHEST then
   update_yma_tboi_chest()
 end
@@ -661,7 +664,7 @@ position = 'before'
 match_indent = true
 payload = '''
 if self.yma_medal ~= nil then
-    local obj = G.P_YMA_MEDAlS[self.yma_medal] or {}
+    local obj = G.P_YMA_MEDALS[self.yma_medal] or {}
     if obj.update and type(obj.update) == 'function' then
         obj:update(self, dt)
     end
@@ -675,7 +678,7 @@ pattern = '''local seal = G.P_SEALS[v] or G.P_SEALS[SMODS.Seal.badge_to_key[v] o
 position = 'before'
 match_indent = true
 payload = '''
-local yma_medal = G.P_YMA_MEDAlS[v] or G.P_YMA_MEDAlS[YMA.MEDAL.badge_to_key[v] or '']
+local yma_medal = G.P_YMA_MEDALS[v] or G.P_YMA_MEDALS[YMA.MEDAL.badge_to_key[v] or '']
 if yma_medal and yma_medal.generate_ui ~= 0 then
     local t = { key = v, set = 'Other' }
     info_queue[#info_queue+1] = t
@@ -734,7 +737,7 @@ function Card:yma_set_medal(_medal, silent)
 
     self.yma_medal = _medal
 
-    for k, v in pairs(G.P_YMA_MEDAlS[_medal].config or {}) do
+    for k, v in pairs(G.P_YMA_MEDALS[_medal].config or {}) do
         self.ability.yma_medal[k] = type(v) == 'table' and copy_table(v) or v
     end
 
@@ -752,7 +755,7 @@ payload = '''
 function Card:calculate_medal(context)
     if self.debuff then return nil end   
     if self.yma_medal ~= nil then
-        local obj = G.P_YMA_MEDAlS[self.yma_medal] or {}
+        local obj = G.P_YMA_MEDALS[self.yma_medal] or {}
         if obj.calculate and type(obj.calculate) == 'function' then
             local o = obj:calculate(self, context)
             if o then

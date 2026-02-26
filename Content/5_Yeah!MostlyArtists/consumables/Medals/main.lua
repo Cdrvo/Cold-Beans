@@ -9,7 +9,7 @@ SMODS.Atlas({
     py = 113,
 })
 
-G.P_YMA_MEDAlS = G.P_YMA_MEDAlS or {}
+G.P_YMA_MEDALS = G.P_YMA_MEDALS or {}
 G.shared_yma_medals = {}
 
 YMA.MEDAL = SMODS.GameObject:extend({
@@ -28,13 +28,13 @@ YMA.MEDAL = SMODS.GameObject:extend({
         'key',
     },
     inject = function(self)
-        G.P_YMA_MEDAlS[self.key] = self
+        G.P_YMA_MEDALS[self.key] = self
         G.shared_yma_medals[self.key] = SMODS.create_sprite(0, 0, G.CARD_W, G.CARD_H, SMODS.get_atlas(self.atlas) or SMODS.get_atlas('centers'), self.pos)
         self.badge_to_key[self.key:lower() .. '_medal'] = self.key
         SMODS.insert_pool(G.P_CENTER_POOLS[self.set], self)
         self.rng_buffer[#self.rng_buffer + 1] = self.key
     end,
-    get_obj = function(self, key) return G.P_YMA_MEDAlS[key] end,
+    get_obj = function(self, key) return G.P_YMA_MEDALS[key] end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         local target = {
             type = 'other',

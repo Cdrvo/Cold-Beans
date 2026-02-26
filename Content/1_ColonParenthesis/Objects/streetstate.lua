@@ -1,4 +1,4 @@
-Colonparen.StreetStates = {'EMPLOY', 'BALLEY', 'MAIN_STREET', 'STATIONERY', 'GRAVEYARD', 'HELL', 'DREAMLAND', 'TBOI_CHEST', 'CASINO', 'CASINO_SPIN'}
+Colonparen.StreetStates = {'EMPLOY', 'BALLEY', 'MAIN_STREET', 'STATIONERY', 'GRAVEYARD', 'HELL', 'DREAMLAND', 'TBOI_CHEST', 'CASINO', 'CASINO_SPIN', 'AUGMENTATION'}
 
 local old_save_run = save_run;
 function save_run()
