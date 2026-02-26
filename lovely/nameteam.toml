@@ -167,7 +167,8 @@ payload = '''local house_rules = {
             j_cbean_wgrop_withering_memory = {"wgrop_thorny_boquete"},
             j_seeing_double = {"sdown_true_home"},
             j_cbean_nameteam_diamondshapewithadotinside = {"sdown_true_home"},
-            j_cbean_nameteam_sticker_collection = {"nteam_collection", "nteam_collection_3oak"}
+            j_cbean_nameteam_sticker_collection = {"nteam_collection", "nteam_collection_3oak"},
+            j_cbean_nameteam_stickerbomb = {"nteam_collection", "nteam_collection_3oak"}
 }
 '''
 match_indent = true
