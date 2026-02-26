@@ -3557,9 +3557,8 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile_mult 
-		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile_chips
-		info_queue[#info_queue + 1] = G.P_CENTERS.j_cbean_holly_projectile_dollars
+		info_queue[#info_queue + 1] = G.P_CENTERS["j_cbean_holly_projectile"]
+		--info_queue[#info_queue+1] = {set = "Joker", key = j_cbean_holly_projectile_mult, specific_vars = {card.ability.extra.mult}}
 		local cae = card.ability.extra
 		return {
 			vars = { cae.hands_max, cae.hands_left },
@@ -3604,8 +3603,14 @@ SMODS.Joker({
 			dollars = 1,
 		},
 	},
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(self, info_queue, card)  --full_UI_table.name = localize{type = 'name', key = desc_key, set = self.set, name_nodes = {}, vars = specific_vars or {}}
 		local cae = card.ability.extra
+		--info_queue[#info_queue+1] = {set = "Joker", key = j_cbean_holly_projectile, specific_vars = {card.ability.extra.mult}}
+		--table.insert(info_queue, {set = 'Joker', key = 'j_cbean_holly_projectile', specific_vars = card:generate_UIBox_ability_table(true)})
+		--info_queue[#info_queue+1] = {set = 'Joker', key = 'j_cbean_holly_projectile'}
+		--info_queue[#info_queue+1] = {set = "Joker", key = "j_cbean_holly_projectile_mult", specific_vars = {5}}
+		--info_queue[#info_queue+1] = {set = "Joker", key = "j_cbean_holly_projectile_chips", specific_vars = {30}}
+		--info_queue[#info_queue+1] = {set = "Joker", key = "j_cbean_holly_projectile_dollars", specific_vars = {1}}
 		if not card.cbean_type then
 			card.cbean_type = (cae.type or "unselected")
 		end
@@ -3736,12 +3741,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "blastberry_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 9, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -3794,12 +3802,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "pyre_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 8, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -3852,12 +3863,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "shine_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 7, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -3892,12 +3906,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "explode_o_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 6, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -3942,12 +3959,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "gloom_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 5, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -4043,12 +4063,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "power_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 11, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -4106,12 +4129,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "aqua_vine",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 10, y = 12 },
 	cost = 2,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = false,

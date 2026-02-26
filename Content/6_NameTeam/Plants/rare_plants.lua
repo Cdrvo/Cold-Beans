@@ -1280,8 +1280,10 @@ SMODS.Joker({
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "DoggFly",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = 3,
 	blueprint_compat = true,
