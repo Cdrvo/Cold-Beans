@@ -888,23 +888,30 @@ SMODS.Joker({
 	rarity = 2,
 	blueprint_compat = true,
 	config = {
-		extra = {},
+		extra = {num_cards = 5},
 	},
 	loc_vars = function(self, info_queue, card)
 		local vars, key = {}, self.key
 		local cae = card.ability.extra
+		local rounded_card_num = math.floor(cae.num_cards+0.5)
+		local max_card_display
+		if G.deck and G.deck.cards then
+			max_card_display = math.min(rounded_card_num, #G.deck.cards) --Gets the smaller number between display card size and deck size
+		else
+			max_card_display = rounded_card_num
+		end
 		if not card.area.config.collection then
 			if G.next_fivcards_cbean then
 				G.next_fivcards_cbean:remove()
 				G.next_fivcards_cbean = nil
 			end
 
-				G.next_fivcards_cbean = CardArea(
+				G.next_fivcards_cbean = CardArea( --Defines the card area in plantern description
 					G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2,
 					G.ROOM.T.h,
-					G.CARD_W * 2,
+					G.CARD_W * (math.min((1.1 + (max_card_display / 5)), 8)),
 					G.CARD_H * 1.1,
-					{ card_limit = 5, type = "joker", highlight_limit = 0, no_card_count = true }
+					{ card_limit = rounded_card_num, type = "joker", highlight_limit = 0, no_card_count = true }
 				)
 
 				local carea = nil
@@ -913,27 +920,11 @@ SMODS.Joker({
 				end
 
 				if carea then
-					local card_1, card_2, card_3, card_4, card_5 =
-						carea[#carea] and copy_card(carea[#carea]),
-						carea[#carea - 1] and copy_card(carea[#carea - 1]),
-						carea[#carea - 2] and copy_card(carea[#carea - 2]),
-						carea[#carea - 3] and copy_card(carea[#carea - 3]),
-						carea[#carea - 4] and copy_card(carea[#carea - 4])
-
-					if card_1 then
-						G.next_fivcards_cbean:emplace(card_1)
-					end
-					if card_2 then
-						G.next_fivcards_cbean:emplace(card_2)
-					end
-					if card_3 then
-						G.next_fivcards_cbean:emplace(card_3)
-					end
-					if card_4 then
-						G.next_fivcards_cbean:emplace(card_4)
-					end
-					if card_5 then
-						G.next_fivcards_cbean:emplace(card_5)
+					for i = 0, rounded_card_num - 1 do
+						if carea[i+1] and carea[i+1] ~= nil then
+							local copy_card = copy_card(carea[#carea - i], nil, nil, G.playing_card)
+							G.next_fivcards_cbean:emplace(copy_card)
+						end
 					end
 				end
 
@@ -941,17 +932,17 @@ SMODS.Joker({
 				main_end = {
 					{
 						n = G.UIT.C,
-						config = { align = "bm", padding = 0.02 },
+						--config = { align = "bm", padding = 0.02 },
 						nodes = {
 							{ n = G.UIT.O, config = { object = G.next_fivcards_cbean } },
 						},
 					},
 				},
-				vars = { cae.cj1, cae.cj2, cae.c1, cae.c2 },
+				vars = { cae.num_cards, max_card_display, cae.cj1, cae.cj2, cae.c1, cae.c2 },
 			}
 		else
 			key = self.key .. "_collection"
-			return { key = key }
+			return { key = key, vars = { cae.num_cards, max_card_display }}
 		end
 	end,
 	update = function(self, card)
@@ -973,8 +964,11 @@ SMODS.Joker({
 		end
 	end,
 	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
+		code = {"Revo",
+				"MarioFan597"},
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
 		art = "Crazy Dave",
 	},
 })

@@ -4897,10 +4897,28 @@ return {
 			j_cbean_plantern                            = {
 				name = "Plantern",
 				text = {
-					"Cards {C:red}cannot{} be flipped",
-					"{C:attention}Shows{} the next ",
-					"{C:attention}5{} cards in deck",
-					"<-1 -- 5->"
+					{
+						"{C:attention}Shows{} the next ",
+						"{C:attention}#1#{} cards in deck",
+						"<-1 -- #2#->"
+					},
+					{
+						"Cards {C:red}cannot{} be flipped",
+					},
+				},
+			},
+			j_cbean_plantern_collection                 = {
+				name = "Plantern",
+				text = {
+					{
+						"{C:attention}Shows{} the next ",
+						"{C:attention}#1#{} cards in deck",
+						"{C:inactive}(Doesn't show cards",
+						"{C:inactive}in the collection)"
+					},
+					{
+						"Cards {C:red}cannot{} be flipped",
+					},
 				},
 			},
 			j_cbean_cactus                              = {
