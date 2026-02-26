@@ -4838,10 +4838,14 @@ return {
 			j_cbean_pumpkin                             = {
 				name = "Pumpkin",
 				text = {
-					"{C:attention}Joker to the {C:attention}left",
-					"cannot be {C:attention}flipped{} or {C:red}debuffed{}",
-					"{C:red}Self-destructs{} after preventing",
-					"{C:attention}#1#{C:inactive} [#2#]{} flips or debuffs"
+					{
+						"{C:attention}Joker to the {C:attention}left",
+						"cannot be {C:attention}flipped{} or {C:red}debuffed{}",
+					},
+					{
+						"{C:red}Self-destructs{} after preventing",
+						"{C:attention}#1#{C:inactive} [#2#]{} flips or debuffs"
+					},
 				},
 			},
 			j_cbean_magnet_shroom                       = {
@@ -4889,10 +4893,28 @@ return {
 			j_cbean_plantern                            = {
 				name = "Plantern",
 				text = {
-					"Cards {C:red}cannot{} be flipped",
-					"{C:attention}Shows{} the next ",
-					"{C:attention}5{} cards in deck",
-					"<-1 -- 5->"
+					{
+						"{C:attention}Shows{} the next ",
+						"{C:attention}5{} cards in deck",
+						"<-1 -- 5->"
+					},
+					{
+						"Cards {C:red}cannot{} be flipped",
+					},
+				},
+			},
+			j_cbean_plantern_collection                 = {
+				name = "Plantern",
+				text = {
+					{
+						"{C:attention}Shows{} the next ",
+						"{C:attention}5{} cards in deck",
+						"{C:inactive}(Doesn't show cards",
+						"{C:inactive}in the collection)"
+					},
+					{
+						"Cards {C:red}cannot{} be flipped",
+					},
 				},
 			},
 			j_cbean_cactus                              = {
