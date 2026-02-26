@@ -82,6 +82,7 @@ SMODS.Joker {
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
+        art = "George The Rat",
         code = "bitter",
     }
 }
@@ -134,6 +135,7 @@ SMODS.Joker {
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
+        art = "George The Rat",
         code = "Glitchkat10",
     }
 }
@@ -186,6 +188,7 @@ SMODS.Joker {
     beans_credits = {
         team = ":(",
         idea = "Glitchkat10",
+        art = "George The Rat",
         code = "Glitchkat10",
     }
 }
@@ -223,6 +226,7 @@ SMODS.Joker {
     end,
     beans_credits = {
         idea = "George The Rat",
+        art = "George The Rat",
         code = "bitter",
         team = ":(",
     }
@@ -290,6 +294,12 @@ SMODS.Joker {
             end
         end
     end,
+    beans_credits = {
+        team = ":(",
+        idea = "George The Rat",
+        art = "George The Rat",
+        code = "bitter",
+    }
 }
 
 

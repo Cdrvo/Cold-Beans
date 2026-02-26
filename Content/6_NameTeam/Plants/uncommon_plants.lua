@@ -4496,12 +4496,14 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "tiger_grass",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = {
+			"Name Team & :("
+		},
+		art = "Glitchkat10",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -4512,6 +4514,7 @@ SMODS.Joker({
 			on_cooldown = false,
 		},
 	},
+	pos = { x = 1, y = 13 },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.xmult, cae.xmult_gain } }

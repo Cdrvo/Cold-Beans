@@ -5321,7 +5321,7 @@ return {
 			j_cbean_intensive_carrot                    = {
 				name = "Intensive Carrot",
 				text = {
-					"When sold, gives",
+					"When sold, creates",
 					"a random previously",
 					"sold {C:attention}Joker{}"
 				},
@@ -6176,7 +6176,7 @@ return {
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 					},
 					{
-						"Gets {C:attention}debuffed{}",
+						"{C:attention}Debuffs{} self",
 						"for {C:attention}1{} hand",
 						"when triggered"
 					},
