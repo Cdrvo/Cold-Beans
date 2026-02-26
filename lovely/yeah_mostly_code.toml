@@ -195,8 +195,8 @@ end
 if self.STATE == self.STATES.DREAMLAND then
   update_yma_dreamland()
 end
-if self.STATE == self.STATES.AUGMENTATION then
-  update_yma_augmentation()
+if self.STATE == self.STATES.FORGERY then
+  update_yma_forgery()
 end
 if self.STATE == self.STATES.TBOI_CHEST then
   update_yma_tboi_chest()

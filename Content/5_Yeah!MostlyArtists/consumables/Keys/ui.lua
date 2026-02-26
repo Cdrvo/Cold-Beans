@@ -56,7 +56,7 @@ function update_main_street()
         G.yma_mainstreet_graveyard:recalculate()
         G.yma_mainstreet_hell:recalculate()
         G.yma_mainstreet_dreamland:recalculate()
-        G.yma_mainstreet_augmentation:recalculate()
+        G.yma_mainstreet_forgery:recalculate()
         G.yma_mainstreet_tboi_chest:recalculate()
         G.yma_mainstreet_casino:recalculate()
         G.yma_mainstreet_stationery:recalculate()
@@ -109,8 +109,8 @@ function Controller:L_cursor_press(x, y)
         --Evil ass Jbill employment gimmick appears!
         elseif G.jbill_employed and G.jbill_employed.states.collide.is then
             G.FUNCS.show_employ()
-        elseif G.yma_mainstreet_augmentation and  G.yma_mainstreet_augmentation.states.collide.is and yma_can_access_location('augmentation') then
-            G.FUNCS.show_yma_augmentation()
+        elseif G.yma_mainstreet_forgery and  G.yma_mainstreet_forgery.states.collide.is and yma_can_access_location('forgery') then
+            G.FUNCS.show_yma_forgery()
         end
 	end
 end
@@ -133,8 +133,8 @@ function G.UIDEF.yma_main_street()
         definition = G.UIDEF.dreamlandsprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
-    G.yma_mainstreet_augmentation = UIBox{
-        definition = G.UIDEF.augment_sprite(),
+    G.yma_mainstreet_forgery = UIBox{
+        definition = G.UIDEF.forgery_sprite(),
         config = {align='cm', offset = {x=0,y=-0.2}, major = G.hand, bond = 'Weak', draggable = false, collideable = true, can_collide = true}
     }
     G.yma_mainstreet_tboi_chest = UIBox{
@@ -183,7 +183,7 @@ function G.UIDEF.yma_main_street()
             {n=G.UIT.O, config={object = G.yma_mainstreet_casino}},
         }}
     table3[#table3+1] = {n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, minh = 1.5, colour = G.C.DYN_UI.BOSS_MAIN, emboss = 0.05}, nodes={
-            {n=G.UIT.O, config={object =  G.yma_mainstreet_augmentation}},
+            {n=G.UIT.O, config={object =  G.yma_mainstreet_forgery}},
         }}
 
 
