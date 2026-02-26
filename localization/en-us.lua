@@ -1446,8 +1446,8 @@ return {
 					"{C:inactive}(Uses #1#/#2#)",
 				},
 			},
-			c_cbean_yma_ankh = {
-				name = "Ankh Key",
+			c_cbean_yma_small_world = {
+				name = "Small World Key",
 				text = {
 					"{C:attention}Grants{} access to the {C:blue}Forgery Closet",
 					"in the {C:attention}Street{}",

@@ -1269,7 +1269,7 @@ SMODS.Consumable {
 --Ankh Key
 SMODS.Consumable {
     set = "yma_keys",
-    key = "yma_ankh",
+    key = "yma_small_world",
 
     loc_vars = function(self, info_queue, card)
         return {
