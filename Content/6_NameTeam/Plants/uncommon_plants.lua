@@ -909,7 +909,7 @@ SMODS.Joker({
 				G.next_fivcards_cbean = CardArea( --Defines the card area in plantern description
 					G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2,
 					G.ROOM.T.h,
-					G.CARD_W * (math.min((1.1 + (max_card_display / 5)), 8)),
+					G.CARD_W * (math.min((1.1 + (max_card_display / 5)), 7)),
 					G.CARD_H * 1.1,
 					{ card_limit = rounded_card_num, type = "joker", highlight_limit = 0, no_card_count = true }
 				)
