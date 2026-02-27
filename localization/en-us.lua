@@ -2562,9 +2562,9 @@ return {
 						"Redeem {C:tarot}Omen Globe{} voucher",
 					},
 					{
-						"When entering the shop,",
-						"leftmost voucher pack",
-						"turns into a {C:tarot}Tarot{} pack"
+						"When entering a shop,",
+						"adds a {C:tarot}Tarot{} pack",
+						"to the shop"
 					},
 				},
 			},
@@ -2580,10 +2580,13 @@ return {
 					},
 					{
 						"Nebula Deck:",
-						"When entering the shop,",
-						"transforms {C:attention}rightmost{} shop",
-						"item into planet card of",
-						"last played hand"
+						"Redeem {C:planet}Observatory{} voucher",
+					},
+					{
+						"When entering a shop,",
+						"adds {C:planet}Planet Card{}",
+						"of last played hand",
+						"to the shop"
 					},
 				},
 			},
@@ -2763,10 +2766,11 @@ return {
 					},
 					{
 						"Daily Deck:",
-						"When entering the shop,",
-						"transforms {C:attention}rightmost{} shop",
-						"item into planet card of",
-						"last played hand"
+						"When entering a shop,",
+						"adds {C:attention}#1#{} copies",
+						"of the {C:planet}Planet Card{}",
+						"of {C:attention}highest level{} hand",
+						"to the shop"
 					},
 				},
 			},
