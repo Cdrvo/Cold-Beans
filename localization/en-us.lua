@@ -12097,6 +12097,30 @@ return {
 				"{C:attention}Stationery Shop{}.",
 				"{C:inactive}(10/10)",
 			},
+			cbean_yma_forgery_tutorial_0 = {
+				"Heya! Want to know what I can do?",
+				"Then {C:attention}click me{}."
+			},
+			cbean_yma_forgery_tutorial_1 = {
+				"Welcome to the {C:attention}Forge Shop{}!"
+			},
+			cbean_yma_forgery_tutorial_2 = {
+				"This {C:attention}Medal{} thing is an item that",
+				"can buff any Joker you think of!"
+			},
+			cbean_yma_forgery_tutorial_3 = {
+				"To create it, simply select the \"scrap\" button while selecting a Joker."
+			},
+			cbean_yma_forgery_tutorial_4 = {
+				"Then, you'll click on \"Upgrade\" below me!"
+			},
+			cbean_yma_forgery_tutorial_5 = {
+				"After so, I'll {C:red}kill{} the scrapped Joker",
+			},
+			cbean_yma_forgery_tutorial_6 = {
+				"and upgrade your selected joker with the {C:attention}Medal",
+				"that matches the scrapped rarity."
+			},
 		},
 		ranks = {
 			["cbean_yma_s"] = "Star",

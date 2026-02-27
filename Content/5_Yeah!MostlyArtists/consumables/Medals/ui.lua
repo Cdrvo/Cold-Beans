@@ -121,20 +121,37 @@ function G.UIDEF.yma_forgery()
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.BLACK}, nodes={
                     {n=G.UIT.C, config={align = "cm", padding = 0.05}, nodes={
-                        {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
+                        {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={								
+                            {
+                                n = G.UIT.C,
+                                config = { align = "cm" },
+                                nodes = {
+                                    {
+                                        n = G.UIT.O,
+                                        config = {
+                                            object = UIBox({
+                                                definition = G.UIDEF.yma_forgery_square(),
+                                                config = { align = "cm" },
+                                            }),
+                                        },
+                                    },
+                                },
+                            },
+                            {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+                            }},
                             {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 2}, nodes={
                                 {n=G.UIT.O, config={object = G.yma_forgery_card_sac}},
                             }},
                         }},
-                        {n=G.UIT.R, config={align = "cm", padding = 0.05}, nodes={
-                            {n=G.UIT.C, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.SECONDARY_SET.yma_keys, button = 'yma_forgery_upgrade', func = 'can_upgrade_joker_yma_aug', hover = true,shadow = true}, nodes = {
+                        {n=G.UIT.R, config={align = "cr", padding = 0.05}, nodes={
+                            {n=G.UIT.C, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.RED, button = 'yma_forgery_upgrade', func = 'can_upgrade_joker_yma_aug', hover = true,shadow = true}, nodes = {
                                 {n=G.UIT.R, config={align = "cm", maxw = 2.5}, nodes={
                                     {n=G.UIT.T, config={text = localize('k_upgrade_ex'), scale = 0.6, colour = G.C.WHITE, shadow = true}},
                                 }}
                             }},
                             {n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
                             }},
-                            {n=G.UIT.C, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.SECONDARY_SET.yma_keys, button = 'yma_forgery_select_scrap', func = 'can_scrap_joker_yma_aug', hover = true,shadow = true}, nodes = {
+                            {n=G.UIT.C, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.ORANGE, button = 'yma_forgery_select_scrap', func = 'can_scrap_joker_yma_aug', hover = true,shadow = true}, nodes = {
                                 {n=G.UIT.R, config={align = "cm", maxw = 2.5}, nodes={
                                     {n=G.UIT.T, config={ref_value = 'yma_forgery_text', ref_table = G.GAME, scale = 0.6, colour = G.C.WHITE, shadow = true}},
                                 }}
@@ -146,6 +163,90 @@ function G.UIDEF.yma_forgery()
               }, false)
         }}
     return t
+end
+
+YMA.TUTORIAL_STATE = 0
+function G.UIDEF.yma_forgery_square()
+	local tutorial_positions = { 0, 1, 2, 0, 1, 4, 0 }
+
+	local sprite =
+		Sprite(0, 0, G.CARD_W * 1.5, G.CARD_H * 1.5, G.ASSET_ATLAS["cbean_yma_squimbo"], { x = 0, y = 0 })
+	sprite.states.collide.can = true
+	sprite.states.drag.can = false
+	sprite.config.speech_bubble_align = { align = "bm", offset = { x = 0, y = 0.1 }, parent = sprite }
+	sprite.children.tutorial_text = not G.GAME.seen_medal_tutorial
+		and UIBox({
+			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. YMA.TUTORIAL_STATE, { quip = true }),
+			config = sprite.config.speech_bubble_align,
+		})
+		or nil
+	function sprite:hover()
+		Node.hover(self)
+		if G.GAME.seen_medal_tutorial and YMA.TUTORIAL_STATE == 0 then
+			self.children.tutorial_text = UIBox({
+				definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. YMA.TUTORIAL_STATE, { quip = true }),
+				config = self.config.speech_bubble_align,
+			})
+		end
+		self:juice_up(0.05, 0.03)
+		play_sound('paper1', math.random() * 0.2 + 0.9, 0.35)
+	end
+
+	function sprite:stop_hover()
+		Node.stop_hover(self)
+		if G.GAME.seen_medal_tutorial and YMA.TUTORIAL_STATE == 0 and self.children.tutorial_text then
+			self.children.tutorial_text:remove()
+			self.children.tutorial_text = nil
+		end
+	end
+
+	function sprite:say_stuff(n, sprite)
+		if n <= 0 then return end
+		local new_said = math.random(1, 11)
+		while new_said == self.last_said do
+			new_said = math.random(1, 11)
+		end
+		self.last_said = new_said
+		play_sound('voice' .. new_said, math.random() * 0.3 + 1.2, 0.5)
+		self:juice_up(0.1, 0.1)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			blockable = false,
+			blocking = false,
+			delay = 0.35,
+			func = function()
+				self:say_stuff(n - 1)
+				return true
+			end
+		}))
+	end
+
+	function sprite:click()
+		Node.click(self)
+		YMA.TUTORIAL_STATE = (YMA.TUTORIAL_STATE + 1) % 7
+		if YMA.TUTORIAL_STATE == 6 then
+			G.GAME.seen_medal_tutorial = true
+		end
+		if self.children.tutorial_text then
+			self.children.tutorial_text:remove()
+			self.children.tutorial_text = nil
+		end
+		self.children.tutorial_text = UIBox({
+			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. YMA.TUTORIAL_STATE, { quip = true }),
+			config = self.config.speech_bubble_align,
+		})
+		self:set_sprite_pos({ x = tutorial_positions[YMA.TUTORIAL_STATE + 1], y = 0 })
+		self:say_stuff(3)
+	end
+
+	local t = {
+		n = G.UIT.ROOT,
+		config = { align = "cm", colour = G.C.CLEAR },
+		nodes = {
+			{ n = G.UIT.O, config = { object = sprite } },
+		},
+	}
+	return t
 end
 
 local function get_rarity(jok)
@@ -179,7 +280,7 @@ G.FUNCS.can_scrap_joker_yma_aug = function(e)
     if (not G.yma_forgery_card_sac) then return end
     if (#G.yma_forgery_card_sac.cards < 1) or G.CONTROLLER.locks.yma_aug_scrap then 
         if (#G.jokers.highlighted == 1) and get_medal(G.jokers.highlighted[1]) then
-            e.config.colour = G.C.SECONDARY_SET.yma_keys
+            e.config.colour = G.C.ORANGE
             e.config.button = 'yma_forgery_select_scrap'
         else
             e.config.colour = G.C.UI.BACKGROUND_INACTIVE
@@ -187,7 +288,7 @@ G.FUNCS.can_scrap_joker_yma_aug = function(e)
         end
         G.GAME.yma_forgery_text = localize('k_yma_aug_scrap')
     elseif #G.yma_forgery_card_sac.cards == 1 then
-        e.config.colour = G.C.SECONDARY_SET.yma_keys
+        e.config.colour = G.C.ORANGE
         e.config.button = 'yma_forgery_unselect_scrap'
         G.GAME.yma_forgery_text = localize('b_back')
     else
@@ -202,7 +303,7 @@ G.FUNCS.can_upgrade_joker_yma_aug = function(e)
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
     elseif (#G.yma_forgery_card_sac.cards == 1) and (#G.jokers.highlighted == 1) and (not (G.jokers.highlighted[1]).yma_medal) then
-        e.config.colour = G.C.SECONDARY_SET.yma_keys
+        e.config.colour = G.C.RED
         e.config.button = 'yma_forgery_upgrade'
     else
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
