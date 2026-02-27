@@ -900,7 +900,7 @@ SMODS.Joker({
 		else
 			max_card_display = rounded_card_num
 		end
-		if not card.area.config.collection then
+		if card.area and card.area.config and not card.area.config.collection then
 			if G.next_fivcards_cbean then
 				G.next_fivcards_cbean:remove()
 				G.next_fivcards_cbean = nil
