@@ -1466,8 +1466,8 @@ return {
 			c_cbean_yma_moon = {
 				name = "Moon Key",
 				text = {
-					"Allows {C:red}destroyed{} Jokers",
-					"to be {C:attention}bought{} in shop",
+					"{C:attention}Grants{} access to {C:dark_edition}The{}",
+					"{C:dark_edition}Graveyard{} in the {C:attention}Street{}",
 					"{C:inactive}(Uses #1#/#2# shops)",
 				},
 			},
