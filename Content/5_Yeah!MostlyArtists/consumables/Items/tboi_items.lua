@@ -2678,7 +2678,6 @@ YMA.TBOI_ITEMS {
     config = {
         extra = {
             no_deck = false,
-            first_visit = true,
             red_deck_discards = 3,
             blue_deck_hands = 2,
             yellow_deck_money = 60,
@@ -2692,6 +2691,7 @@ YMA.TBOI_ITEMS {
             daily_deck_vouchers = 2,
             daily_deck_tags = 2,
             daily_deck_destroy = 3,
+            daily_deck_three = 2,
             daily_deck_bonus = 3,
             daily_deck_consumable = 4,
             athena_deck_uses = 5,
@@ -2763,7 +2763,7 @@ YMA.TBOI_ITEMS {
                 vars = { cae.daily_deck_tags }
                 key = self.key .. "_daily_deck2"
             elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 3 then
-                --vars = { cae.daily_deck_tags }
+                vars = { cae.daily_deck_three }
                 key = self.key .. "_daily_deck3"
             elseif d == 'b_cbean_pboys_daily' and CBEAN_DATE_TABLE.wday == 4 then
                 vars = { cae.daily_deck_destroy }
@@ -2819,30 +2819,55 @@ YMA.TBOI_ITEMS {
         if G.GAME.selected_back then
             local d = G.GAME.selected_back.name
             if (d == 'Magic Deck') then
-                if context.starting_shop and #G.shop_booster.cards >= 1 and card.ability.extra.first_visit then
+                if context.starting_shop and #G.shop_booster.cards >= 1 then
                     G.E_MANAGER:add_event(Event ({
                         trigger = 'before',
-                        func = function()
-                            YMA_reroll_card(G.shop_booster.cards[1], get_pack('yma_tboi_birthright', 'Arcana').key, "Booster", 'yma_tboi_birthright')
-                            card.ability.extra.first_visit = false
+                        func = function() 
+                            --Grabbed this effect from Ortalb's Loteria Patch since our Reroll stopped working on shop cards
+                            local pack = Card(G.shop_booster.T.x + G.shop_booster.T.w/2, G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[get_pack('yma_tboi_birthright', 'Arcana').key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                            create_shop_card_ui(pack, 'Booster', G.shop_booster)
+                            pack.ability.booster_pos = #G.shop_booster.cards + 1
+                            pack:start_materialize()
+                            G.shop_booster:emplace(pack)
+                            pack:set_cost()
+                            --YMA_reroll_card(G.shop_booster.cards[1], get_pack('yma_tboi_birthright', 'Arcana').key, "Booster", 'yma_tboi_birthright')
+                            --G.shop_booster.cards[1]:set_cost()
+                            --G.shop:recalculate()
+                            --create_shop_card_ui(G.shop_booster.cards[1], 'Booster', G.shop_booster)
+                            --G.shop_booster:emplace( get_pack('yma_tboi_birthright', 'Arcana').key)
                             return true
                         end 
                     }))
                 end
-            elseif (d == 'Nebula Deck') then
-                if context.starting_shop and #G.shop_jokers.cards >= 1 and G.GAME.last_hand_played and card.ability.extra.first_visit then
+            elseif (d == 'Nebula Deck') then --We kinda have to have it be when its two or else it obstructs the other 
+                if context.starting_shop and #G.shop_jokers.cards >= 1 and G.GAME.last_hand_played then
                     G.E_MANAGER:add_event(Event ({
                         trigger = 'before',
                         func = function()
-                            local _planet = 0
-                            for k, v in pairs(G.P_CENTER_POOLS.Planet) do
-                                if v.config.hand_type == G.GAME.last_hand_played then
-                                    _planet = v.key
+                            local _planet, _hand, _tally = nil, nil, 0
+                            for _, handname in ipairs(G.handlist) do
+                                if SMODS.is_poker_hand_visible(handname) and handname == G.GAME.last_hand_played then
+                                    _hand = handname
+                                    _tally = G.GAME.hands[handname].played
                                 end
                             end
-                            if _planet == 0 then _planet = nil end
-                            YMA_reroll_card(G.shop_jokers.cards[#G.shop_jokers.cards], _planet, "Planet", 'yma_tboi_birthright')
-                            card.ability.extra.first_visit = false
+                            if _hand then
+                                if G.GAME.hands[_hand].cb_house_rules then
+                                    _planet = "c_cbean_0chill_house_rules_planet"
+                                end
+                                for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+                                    if v.config.hand_type == _hand then
+                                        _planet = v.key
+                                    end
+                                end
+                            end
+                            local _card = create_card('Planet', G.shop_jokers, nil, nil, nil, nil, _planet)
+                            create_shop_card_ui(_card, 'Planet', G.shop_jokers)
+                            _card.ability.joker_pos = #G.shop_jokers + 1
+                            --_card:start_materialize()
+                            G.shop_jokers:emplace(_card)
+                            _card:set_cost()
+                            --YMA_reroll_card(G.shop_jokers.cards[#G.shop_jokers.cards], _planet, "Planet", 'yma_tboi_birthright')
                             return true
                         end 
                     }))
@@ -2877,22 +2902,42 @@ YMA.TBOI_ITEMS {
                 end
             ------Daily Deck
             elseif (d == 'b_cbean_pboys_daily') and CBEAN_DATE_TABLE.wday == 3 then
-                if context.starting_shop and #G.shop_jokers.cards >= 1 and G.GAME.last_hand_played and card.ability.extra.first_visit then
-                    G.E_MANAGER:add_event(Event ({
-                        trigger = 'before',
-                        func = function()
-                            local _planet = 0
-                            for k, v in pairs(G.P_CENTER_POOLS.Planet) do
-                                if v.config.hand_type == G.GAME.last_hand_played then
-                                    _planet = v.key
+                if context.starting_shop and #G.shop_jokers.cards >= 1 then
+                    for i = 1, card.ability.extra.daily_deck_three do
+                        G.E_MANAGER:add_event(Event ({
+                            trigger = 'before',
+                            func = function()
+                                local _planet, _hand, _last_hand = nil, nil, 0, 0
+                                for _, handname in ipairs(G.handlist) do
+                                    if _last_hand == 0 then
+                                        _hand = handname
+                                        _last_hand = G.GAME.hands[handname].level
+                                    elseif SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].level >= _last_hand then
+                                        _hand = handname
+                                        _last_hand = G.GAME.hands[handname].level
+                                    end
                                 end
-                            end
-                            if _planet == 0 then _planet = nil end
-                            YMA_reroll_card(G.shop_jokers.cards[#G.shop_jokers.cards], _planet, "Planet", 'yma_tboi_birthright')
-                            card.ability.extra.first_visit = false
-                            return true
-                        end 
-                    }))
+                                if _hand then
+                                    if G.GAME.hands[_hand].cb_house_rules then
+                                        _planet = "c_cbean_0chill_house_rules_planet"
+                                    end
+                                    for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+                                        if v.config.hand_type == _hand then
+                                            _planet = v.key
+                                        end
+                                    end
+                                end
+                                local _card = create_card('Planet', G.shop_jokers, nil, nil, nil, nil, _planet)
+                                create_shop_card_ui(_card, 'Planet', G.shop_jokers)
+                                _card.ability.joker_pos = #G.shop_jokers + 1
+                                --_card:start_materialize()
+                                G.shop_jokers:emplace(_card)
+                                _card:set_cost()
+                                --YMA_reroll_card(G.shop_jokers.cards[#G.shop_jokers.cards], _planet, "Planet", 'yma_tboi_birthright')
+                                return true
+                            end 
+                        }))
+                    end
                 end
             --------
             elseif (d == 'b_cbean_nameteam_urine') then 
@@ -2922,9 +2967,6 @@ YMA.TBOI_ITEMS {
                     }
                 end
             end
-        end
-        if context.cashing_out then --makes sure that shop based effects only happen once per actual visit
-            card.ability.extra.first_visit = true
         end
     end,
     add_to_deck = function(self, card, from_debuff)
@@ -2959,6 +3001,22 @@ YMA.TBOI_ITEMS {
     					new_card:start_dissolve()                    
     					return true
     				end
+                )}))
+            elseif (d == 'Nebula Deck') then
+                local voucher_key = 'v_observatory'
+                
+                local new_card = create_card("Voucher", G.play, nil, nil, nil, nil, voucher_key, nil)
+                new_card:start_materialize()
+                new_card.cost = 0
+                new_card.from_tag = true
+                new_card:redeem()
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = (function()
+                        new_card:start_dissolve()                    
+                        return true
+                    end
                 )}))
             elseif (d == 'Ghost Deck') then
                 G.GAME.spectral_rate = G.GAME.spectral_rate + card.ability.extra.ghost_deck_spectral_rate
