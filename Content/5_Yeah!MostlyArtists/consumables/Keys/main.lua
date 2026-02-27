@@ -773,7 +773,7 @@ SMODS.Atlas({
 
 SMODS.ConsumableType {
     key = "yma_keys",
-    collection_rows = { 5, 6 },
+    collection_rows = { 6, 5, 6 },
     primary_colour = HEX("9e8662"),
     secondary_colour = HEX("9e8662"),
     default = 'c_aij_algol',
