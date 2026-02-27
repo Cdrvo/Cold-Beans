@@ -2562,9 +2562,9 @@ return {
 						"Redeem {C:tarot}Omen Globe{} voucher",
 					},
 					{
-						"When entering the shop,",
-						"leftmost voucher pack",
-						"turns into a {C:tarot}Tarot{} pack"
+						"When entering a shop,",
+						"adds a {C:tarot}Tarot{} pack",
+						"to the shop"
 					},
 				},
 			},
@@ -2580,10 +2580,13 @@ return {
 					},
 					{
 						"Nebula Deck:",
-						"When entering the shop,",
-						"transforms {C:attention}rightmost{} shop",
-						"item into planet card of",
-						"last played hand"
+						"Redeem {C:planet}Observatory{} voucher",
+					},
+					{
+						"When entering a shop,",
+						"adds {C:planet}Planet Card{}",
+						"of last played hand",
+						"to the shop"
 					},
 				},
 			},
@@ -2763,10 +2766,11 @@ return {
 					},
 					{
 						"Daily Deck:",
-						"When entering the shop,",
-						"transforms {C:attention}rightmost{} shop",
-						"item into planet card of",
-						"last played hand"
+						"When entering a shop,",
+						"adds {C:attention}#1#{} copies",
+						"of the {C:planet}Planet Card{}",
+						"of {C:attention}highest level{} hand",
+						"to the shop"
 					},
 				},
 			},
@@ -11014,6 +11018,15 @@ return {
 					},
 				},
 			},
+			c_cbean_journey = {
+				name = 'The Journey',
+				text = {
+					"Enhances {C:attention}#1#",
+					"selected cards to",
+					"#2#{C:attention}#3#s",
+					"{C:inactive,s:0.8}(Enhancement changes based on current Biome)"
+				}
+			}
 		},
 		Voucher = {
 			--Yeah! Mostly Artists
@@ -11541,6 +11554,12 @@ return {
 			k_dollar_jimbux                     = "Exchnaged!",
 
 			k_yma_aug_scrap  					= "Scrap",
+
+			b_cbean_plants = "Plants",
+			k_cbean_cap_jokers = "JOKERS",
+
+			k_c_journey_zomboid = "random ",
+			k_c_journey_m_zomboid = "Zomboid Card",
 
 			cbean_copyright_headsup_1           = "Heads up!",
 			cbean_copyright_headsup_2           = "If you are streaming this mod,",

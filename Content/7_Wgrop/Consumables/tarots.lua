@@ -6,19 +6,15 @@
   wgrop_glaciers = 'm_cbean_wgrop_ice',
   wgrop_city = 'm_cbean_wgrop_graffiti',
  }
+ CBWG.LawnBiomeConsumables = {
+  "m_cbean_basic_zomboid",
+  "m_cbean_carrot_zomboid",
+  "m_cbean_melon_zomboid"
+ }
  
  SMODS.Consumable {
     key = 'journey',
     set = 'Tarot',
-    loc_txt = {
-      name = 'The Journey',
-      text = {
-        "Enhances {C:attention}#1#",
-        "selected cards to",
-        "{C:attention}#2#s",
-        "{C:inactive,s:0.8}(Enhancement changes based on current Biome)"
-      }
-    },
   
     atlas = 'wgrop_tarot_atlas', pos = { x = 0, y = 0 },
       config = { max_highlighted = 2, extra = "m_cbean_wgrop_thistled", cbean_banned_by_aldus = true},
@@ -38,7 +34,12 @@
           end
           delay(0.2)
           for i=1, #G.hand.highlighted do
+            if G.GAME.round_resets.blind_biome == "nameteam_davelawn" then
+              local lawn_ability = pseudorandom_element(CBWG.LawnBiomeConsumables, pseudoseed("journey_lawn"))
+              G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function() G.hand.highlighted[i]:set_ability(lawn_ability);return true end }))
+            else
               G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function() G.hand.highlighted[i]:set_ability(card.ability.extra);return true end }))
+            end
           end 
           for i=1, #G.hand.highlighted do
               local percent = 0.85 + (i-0.999)/(#G.hand.highlighted-0.998)*0.3
@@ -49,7 +50,13 @@
       end,
       loc_vars = function(self, info_queue, card)
           info_queue[#info_queue+1] = G.P_CENTERS[CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome]]
-          return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.extra } or 'Biome Card' }}
+          local sentence_bit = ""
+          local enhancement = (localize({ type = 'name_text', set = 'Enhanced', key = card.ability.extra }) or 'Biome Card')
+          if G.GAME.round_resets.blind_biome == "nameteam_davelawn" then
+            sentence_bit = localize("k_c_journey_zomboid")
+            enhancement = localize("k_c_journey_m_zomboid")
+          end
+          return { vars = { card.ability.max_highlighted, sentence_bit, enhancement}}
       end,
   
   }
