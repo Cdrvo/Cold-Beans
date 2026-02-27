@@ -11542,6 +11542,8 @@ return {
 
 			k_yma_aug_scrap  					= "Scrap",
 
+			b_cbean_plants = "Plants",
+
 			cbean_copyright_headsup_1           = "Heads up!",
 			cbean_copyright_headsup_2           = "If you are streaming this mod,",
 			cbean_copyright_headsup_3a          = "you should turn on the ",
