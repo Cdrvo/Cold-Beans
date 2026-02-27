@@ -1266,59 +1266,6 @@ SMODS.Consumable {
     }
 }
 
---Ankh Key
-SMODS.Consumable {
-    set = "yma_keys",
-    key = "yma_small_world",
-
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
-            }
-        }
-    end,
-
-    atlas = 'yea_art_key_atlas',
-    pos = { x = 3, y = 4 },
-
-    config = {
-        extra = {
-            uses = 1,
-            max_uses = 1,
-            usage_type = 'shops',
-        }
-    },
-
-    calculate = function(self, card, context)
-        if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
-
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
-                SMODS.destroy_cards(card, nil, nil, true)
-                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
-            else
-                return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
-                }
-            end
-        end
-    end,
-
-    in_pool = function(self, args)
-        return true
-    end,
-
-    beans_credits = {
-        team = { "Yeah! Mostly Artists" },
-        idea = "RattlingSnow353",
-        art = "jamirror",
-        code = "jamirror",
-    }
-}
-
 --Matchstick Key
 SMODS.Consumable {
     set = "yma_keys",
@@ -1903,6 +1850,59 @@ SMODS.Consumable {
         idea = "RattlingSnow353",
         art = "RattlingSnow353",
         code = "RattlingSnow353",
+    }
+}
+
+--Small World Key
+SMODS.Consumable {
+    set = "yma_keys",
+    key = "yma_small_world",
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.consumeable.extra.uses,
+                card.ability.consumeable.extra.max_uses,
+            }
+        }
+    end,
+
+    atlas = 'yea_art_key_atlas',
+    pos = { x = 3, y = 4 },
+
+    config = {
+        extra = {
+            uses = 1,
+            max_uses = 1,
+            usage_type = 'shops',
+        }
+    },
+
+    calculate = function(self, card, context)
+        if context.ending_shop then
+            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+
+            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
+            else
+                return {
+                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end,
+
+    beans_credits = {
+        team = { "Yeah! Mostly Artists" },
+        idea = "RattlingSnow353",
+        art = "jamirror",
+        code = "jamirror",
     }
 }
 --Stamp Key
