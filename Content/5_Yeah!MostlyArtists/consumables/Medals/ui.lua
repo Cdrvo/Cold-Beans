@@ -1,12 +1,12 @@
 G.STATES.FORGERY = 82398283798298
 
 function G.UIDEF.forgery_sprite()
-  
-	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[yma_can_access_location("forgery")  and "cbean_pboys_backalley_shop" or "cbean_yma_locked_sign"], { x = 0, y = 0 }) or nil
+    local atlas = yma_can_access_location("forgery") and "cbean_pboys_backalley_shop" or ((G.GAME.yma_forge_closed and "cbean_NAMETEAM_closed") or "cbean_yma_locked_sign")
+	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[atlas], { x = 0, y = 0 }) or nil
     function sprite_alley:update(dt)
         AnimatedSprite.update(self, dt)
         self.atlas =
-            G.ANIMATION_ATLAS[yma_can_access_location("forgery")  and "cbean_pboys_backalley_shop" or "cbean_yma_locked_sign"]
+            G.ANIMATION_ATLAS[atlas]
     end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             {n=G.UIT.O, config={object = sprite_alley}},
@@ -17,14 +17,15 @@ end
 G.FUNCS.show_yma_forgery = function(e)
   stop_use()
   hide_location(G.main_street)
-
-  G.yma_forgery_card_sac = CardArea(
-      G.hand.T.x+0,
-      G.hand.T.y+G.ROOM.T.y + 9,
-      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
-      1.05*G.CARD_H, 
-      {card_limit = 1, type = 'consumeable', highlight_limit = 1})
   
+
+G.yma_forgery_card_sac = CardArea(
+    G.hand.T.x+0,
+    G.hand.T.y+G.ROOM.T.y + 9,
+    math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+    1.05*G.CARD_H, 
+    {card_limit = 1, type = 'consumeable', highlight_limit = 1})
+
   G.STATE = G.STATES.FORGERY
   G.STATE_COMPLETE = false
   
@@ -38,10 +39,14 @@ G.FUNCS.show_yma_forgery = function(e)
   --sign_sprite.states.visible = true
   sign_text = DynaText({string = {localize('ph_dreamland')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
-  show_location(G.yma_forgery)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        func = function()show_location(G.yma_forgery)return true end
+    }))
 end
 
 G.FUNCS.hide_yma_forgery = function(e)
+    if G.yma_aug_scrapping_rn then return end
     stop_use()
 	hide_location(G.yma_forgery)
     if G.yma_forgery_card_sac then
@@ -67,11 +72,12 @@ G.FUNCS.hide_yma_forgery = function(e)
             trigger = 'after',
             blockable = false,
             blocking = false,
-            delay =  0,
+            delay =  5,
             func = (function() 
-                    G.yma_forgery_card_sac:remove()
+                    G.yma_forgery:remove()
                     G.yma_forgery_card_sac = nil;
                     G.yma_forgery = nil;
+                    G.yma_forgery_square = nil;
                 return true
             end)
         }))
@@ -84,6 +90,7 @@ function update_yma_forgery()
     if not G.STATE_COMPLETE then
         stop_use()
         ease_background_colour_blind(G.STATES.FORGERY)
+
         local yma_forgery_exists = not not G.yma_forgery
         G.yma_forgery = G.yma_forgery or UIBox{
             definition = G.UIDEF.yma_forgery(),
@@ -200,7 +207,7 @@ function G.UIDEF.yma_forgery_square()
 		end
 	end
 
-	function sprite:say_stuff(n, sprite)
+	function sprite:say_stuff(n)
 		if n <= 0 then return end
 		local new_said = math.random(1, 11)
 		while new_said == self.last_said do
@@ -221,6 +228,21 @@ function G.UIDEF.yma_forgery_square()
 		}))
 	end
 
+    function sprite:say(loc, pos, n) 
+		if self.children.tutorial_text then
+			self.children.tutorial_text:remove()
+			self.children.tutorial_text = nil
+		end
+		self.children.tutorial_text = UIBox({
+			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_" .. loc, { quip = true }),
+			config = self.config.speech_bubble_align,
+		})
+        if pos then
+		    self:set_sprite_pos({ x = pos, y = 0 })
+        end
+		self:say_stuff(n or 3)
+    end
+
 	function sprite:click()
 		Node.click(self)
 		YMA.TUTORIAL_STATE = (YMA.TUTORIAL_STATE + 1) % 7
@@ -238,6 +260,7 @@ function G.UIDEF.yma_forgery_square()
 		self:set_sprite_pos({ x = tutorial_positions[YMA.TUTORIAL_STATE + 1], y = 0 })
 		self:say_stuff(3)
 	end
+    G.yma_forgery_square = sprite;
 
 	local t = {
 		n = G.UIT.ROOT,
@@ -278,7 +301,12 @@ end
 
 G.FUNCS.can_scrap_joker_yma_aug = function(e)
     if (not G.yma_forgery_card_sac) then return end
-    if (#G.yma_forgery_card_sac.cards < 1) or G.CONTROLLER.locks.yma_aug_scrap then 
+    if G.yma_aug_scrapping_rn then
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+        return
+    end
+    if (#G.yma_forgery_card_sac.cards < 1) then 
         if (#G.jokers.highlighted == 1) and get_medal(G.jokers.highlighted[1]) then
             e.config.colour = G.C.ORANGE
             e.config.button = 'yma_forgery_select_scrap'
@@ -299,7 +327,7 @@ end
 
 G.FUNCS.can_upgrade_joker_yma_aug = function(e)
     if (not G.yma_forgery_card_sac) then return end
-    if  G.CONTROLLER.locks.yma_aug_scrap then 
+    if  G.yma_aug_scrapping_rn then 
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
     elseif (#G.yma_forgery_card_sac.cards == 1) and (#G.jokers.highlighted == 1) and (not (G.jokers.highlighted[1]).yma_medal) then
@@ -312,24 +340,74 @@ G.FUNCS.can_upgrade_joker_yma_aug = function(e)
 end
 
 G.FUNCS.yma_forgery_select_scrap = function (e)
+    if (not G.yma_forgery_card_sac) then return end
     local jokertomove = G.jokers.highlighted[1];
-    draw_card(G.jokers, G.yma_forgery_card_sac, 1,'up', nil, jokertomove,  0.08)
+    draw_card(G.jokers, G.yma_forgery_card_sac, 1,'down', nil, jokertomove,  0.08)
 end
 
 G.FUNCS.yma_forgery_unselect_scrap = function (e)
+    if (not G.yma_forgery_card_sac) then return end
     local jokertomove = G.yma_forgery_card_sac.cards[1];
     draw_card(G.yma_forgery_card_sac, G.jokers, 1,'up', nil, jokertomove,  0.08)
 end
 
 G.FUNCS.yma_forgery_upgrade = function (e)
+    if (not G.yma_forgery_card_sac) then return end
     local medal = get_medal(G.yma_forgery_card_sac.cards[1])
     local joker = G.jokers.highlighted[1]
-    G.CONTROLLER.locks.yma_aug_scrap = true
+    G.yma_aug_scrapping_rn = true
 
     local percent = 0.85 + (1-0.999)/(1-0.998)*0.3
     G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() joker:flip();play_sound('tarot2', percent, 0.6);return true end }))
 
     G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() SMODS.destroy_cards(G.yma_forgery_card_sac.cards[1]);joker:yma_set_medal(medal);return true end }))
     
-    G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() joker:flip();play_sound('tarot2', percent, 0.6);joker:juice_up(0.3, 0.3);G.CONTROLLER.locks.yma_aug_scrap = false;return true end }))
+    G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() joker:flip();play_sound('tarot2', percent, 0.6);joker:juice_up(0.3, 0.3);return true end }))
+
+    if not G.GAME.yma_forgery_square_aura then
+        G.GAME.yma_forgery_square_aura = true
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.5,func = function() 
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0,func = function() 
+                G.GAME.yma_forge_closed = true;
+                G.yma_forgery_square:say('leave1_0', 1)
+                return true
+            end}))
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 4,func = function()
+                G.yma_forgery_square:say('leave1_1', 0)
+                return true
+            end}))
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 5,func = function()
+                G.yma_forgery_square:say('leave1_2', 0)
+                return true
+            end}))
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 4, func = function()
+                G.yma_forgery_square:say('leave1_3', 3)
+                return true
+            end}))
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 2,func = function()
+                G.yma_aug_scrapping_rn = false
+                G.GAME.yma_forge_closed = true;
+                G.FUNCS.hide_yma_forgery()
+                return true
+            end}))
+            return true
+        end}))
+    else
+        local dia = math.random(2, 6);
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.5,func = function() 
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0,func = function() 
+                G.GAME.yma_forge_closed = true;
+                G.yma_forgery_square:say('leave' .. dia, 3)
+                return true
+            end}))
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 4,func = function()
+                G.yma_aug_scrapping_rn = false
+                G.GAME.yma_forge_closed = true;
+                G.FUNCS.hide_yma_forgery()
+                return true
+            end}))
+            return true
+        end}))
+
+    end
 end

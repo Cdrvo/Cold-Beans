@@ -12116,11 +12116,38 @@ return {
 				"Then, you'll click on {C:red}\"Upgrade\"{} below me!"
 			},
 			cbean_yma_forgery_tutorial_5 = {
-				"After so, I'll {C:red}kill{} the scrapped Joker",
+				"After so, I'll... {C:red}\"get rid of\"{} the scrapped Joker",
 			},
 			cbean_yma_forgery_tutorial_6 = {
 				"and upgrade your selected joker with the {C:attention}Medal",
 				"that matches the scrapped rarity."
+			},
+			cbean_yma_forgery_leave1_0 = {
+				"That should do it! Enjoy your medal!"
+			},
+			cbean_yma_forgery_leave1_1 = {
+				"Now, I have to dust this room.",
+			},
+			cbean_yma_forgery_leave1_2 = {
+				"So, If you can excuse me..."
+			},
+			cbean_yma_forgery_leave1_3 = {
+				"Go."
+			},
+			cbean_yma_forgery_leave2 = {
+				"Let’s just skip the formalities."
+			},
+			cbean_yma_forgery_leave3 = {
+				"Time to leave."
+			},
+			cbean_yma_forgery_leave4 = {
+				"You know the drill now."
+			},
+			cbean_yma_forgery_leave5 = {
+				"I won't repeat myself again."
+			},
+			cbean_yma_forgery_leave6 = {
+				"Mr. Ceremony isn't going to wait any longer."
 			},
 		},
 		ranks = {
