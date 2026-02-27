@@ -1,7 +1,7 @@
 G.STATES.FORGERY = 82398283798298
 
 function G.UIDEF.forgery_sprite()
-    local atlas = yma_can_access_location("forgery") and "cbean_pboys_backalley_shop" or ((G.GAME.yma_forge_closed and "cbean_NAMETEAM_closed") or "cbean_yma_locked_sign")
+    local atlas = yma_can_access_location("forgery") and "cbean_yma_forgery_sign" or ((G.GAME.yma_forge_closed and "cbean_NAMETEAM_closed") or "cbean_yma_locked_sign")
 	local sprite_alley = G.ASSET_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[atlas], { x = 0, y = 0 }) or nil
     function sprite_alley:update(dt)
         AnimatedSprite.update(self, dt)
@@ -33,7 +33,7 @@ G.yma_forgery_card_sac = CardArea(
   --local sign_sprite = G.SHOP_SIGN.UIRoot.children[1].children[1].children[1].config.object
   local sign_text = G.SHOP_SIGN.UIRoot.children[1].children[2].children[1].config.object
   ease_background_colour_blind(G.STATE)
-  NAMETEAM.shop_sign("cbean_yma_dreamland_sign")
+  NAMETEAM.shop_sign("cbean_yma_forgery_sign")
   --sign_sprite.atlas = G.ANIMATION_ATLAS["cbean_yma_dreamland_sign"]
   G.hand.states.visible = false
   --sign_sprite.states.visible = true

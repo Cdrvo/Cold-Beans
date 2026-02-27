@@ -719,6 +719,14 @@ SMODS.Atlas {
     px = 113, py = 57,
     frames = 4, atlas_table = 'ANIMATION_ATLAS'
 }
+
+SMODS.Atlas {
+    key = "yma_forgery_sign",
+    path = "5_Yeah!MostlyArtists/forgery_sign.png",
+    px = 113, py = 57,
+    frames = 4, atlas_table = 'ANIMATION_ATLAS'
+}
+
 SMODS.Atlas {
     key = "yma_dreamland_sign",
     path = "5_Yeah!MostlyArtists/dreamland_sign.png",
