@@ -1,5 +1,29 @@
 G.STATES.FORGERY = 82398283798298
 
+function YMA.can_transition()
+    return not (G.YMA_SHOP_STATE_CHANGE and (G.YMA_SHOP_STATE_CHANGE > 0))
+end
+function YMA.start_shop_transition()
+    G.YMA_SHOP_STATE_CHANGE = (G.YMA_SHOP_STATE_CHANGE or 0) + 1
+end
+function YMA.end_shop_transition(t)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = t or 3,
+        blockable = false,
+        func = function()
+            G.YMA_SHOP_STATE_CHANGE = (G.YMA_SHOP_STATE_CHANGE or 0) - 1
+            return true
+        end
+    })) 
+end
+
+local old_start_run = Game.start_run;
+function Game:start_run(...)
+    G.YMA_SHOP_STATE_CHANGE = 0;
+    return old_start_run(self, ...)
+end
+
 function G.UIDEF.forgery_sprite()
     local atlas = yma_can_access_location("forgery") and "cbean_yma_forgery_sign" or ((G.GAME.yma_forge_closed and "cbean_NAMETEAM_closed") or "cbean_yma_locked_sign")
     local sprite_forgery = G.ANIMATION_ATLAS and AnimatedSprite(0, 0, (113*0.113)*0.2, (71*0.057)*0.2, G.ANIMATION_ATLAS[atlas], { x = 0, y = 0 }) or nil
@@ -15,17 +39,10 @@ function G.UIDEF.forgery_sprite()
 end
 
 G.FUNCS.show_yma_forgery = function(e)
+YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
   
-
-G.yma_forgery_card_sac = CardArea(
-    G.hand.T.x+0,
-    G.hand.T.y+G.ROOM.T.y + 9,
-    math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
-    1.05*G.CARD_H, 
-    {card_limit = 1, type = 'consumeable', highlight_limit = 1})
-
   G.STATE = G.STATES.FORGERY
   G.STATE_COMPLETE = false
   
@@ -43,10 +60,12 @@ G.yma_forgery_card_sac = CardArea(
         trigger = 'after',
         func = function()show_location(G.yma_forgery)return true end
     }))
+    YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_forgery = function(e)
     if G.yma_aug_scrapping_rn then return end
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.yma_forgery)
     if G.yma_forgery_card_sac then
@@ -68,22 +87,27 @@ G.FUNCS.hide_yma_forgery = function(e)
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     if G.yma_forgery_card_sac then
         G.yma_forgery_card_sac.states.visible = false
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            blockable = false,
-            blocking = false,
-            delay =  5,
-            func = (function() 
-                    G.yma_forgery:remove()
-                    G.yma_forgery_card_sac = nil;
-                    G.yma_forgery = nil;
-                    G.yma_forgery_square = nil;
-                return true
-            end)
-        }))
     end
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        delay =  5,
+        func = (function() 
+                if G.yma_forgery then
+                    G.yma_forgery:remove()
+                end
+                if G.yma_forgery_card_sac then
+                    G.yma_forgery_card_sac = nil;
+                end
+                G.yma_forgery = nil;
+                G.yma_forgery_square = nil;
+            return true
+        end)
+    }))
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+    YMA.end_shop_transition()
 end
 
 function update_yma_forgery()
@@ -92,6 +116,14 @@ function update_yma_forgery()
         ease_background_colour_blind(G.STATES.FORGERY)
 
         local yma_forgery_exists = not not G.yma_forgery
+
+        G.yma_forgery_card_sac = G.yma_forgery_card_sac or CardArea(
+            G.hand.T.x+0,
+            G.hand.T.y+G.ROOM.T.y + 9,
+            math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+            1.05*G.CARD_H, 
+            {card_limit = 1, type = 'consumeable', highlight_limit = 1})
+
         G.yma_forgery = G.yma_forgery or UIBox{
             definition = G.UIDEF.yma_forgery(),
             config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
@@ -99,6 +131,19 @@ function update_yma_forgery()
         
         G.E_MANAGER:add_event(Event({
             func = function()
+                if not G.yma_forgery then -- fix inexplicable glitch
+                    G.yma_forgery_card_sac = G.yma_forgery_card_sac or CardArea(
+                        G.hand.T.x+0,
+                        G.hand.T.y+G.ROOM.T.y + 9,
+                        math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+                        1.05*G.CARD_H, 
+                        {card_limit = 1, type = 'consumeable', highlight_limit = 1})
+
+                    G.yma_forgery = G.yma_forgery or UIBox{
+                        definition = G.UIDEF.yma_forgery(),
+                        config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+                    }
+                end
                 G.yma_forgery.alignment.offset.y = -5.3
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
