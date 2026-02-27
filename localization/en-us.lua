@@ -12176,30 +12176,34 @@ return {
 				"{C:attention}Stationery Shop{}.",
 				"{C:inactive}(10/10)",
 			},
-			cbean_yma_forgery_tutorial_0 = {
-				"Heya! Want to know what I can do?",
-				"Then {C:attention}click me{}."
-			},
 			cbean_yma_forgery_tutorial_1 = {
-				"Welcome to the {C:attention}Forge Shop{}!"
+				"Welcome to the",
+				"{C:attention,s:1.5}Forge Shop!{}"
 			},
 			cbean_yma_forgery_tutorial_2 = {
-				"This {C:attention}Medal{} thing is an item that",
-				"can buff any Joker you think of!"
+				"This {C:attention}Medal{} thing is an",
+				"item that can buff any",
+				"{C:attention}Joker{} you could think of!"
 			},
 			cbean_yma_forgery_tutorial_3 = {
-				"To create it, simply select the {C:attention}\"Scrap\"",
-				"button while selecting a Joker."
+				"To get one, simply select",
+				"the {C:attention}\"Scrap\"{} button",
+				"while selecting a {C:attention}Joker.{}"
 			},
 			cbean_yma_forgery_tutorial_4 = {
-				"Then, you'll click on {C:red}\"Upgrade\"{} below me!"
+				"Then, you'll click on",
+				"{C:red}\"Upgrade\"{} below me!"
 			},
 			cbean_yma_forgery_tutorial_5 = {
-				"After so, I'll... {C:red}\"get rid of\"{} the scrapped Joker",
+				"After doing so, I'll...",
+				"{C:red,s:2,E:2}\"GET RID OF\"{}",
+				"       the scrapped {C:attention}Joker.{}",
 			},
 			cbean_yma_forgery_tutorial_6 = {
-				"and upgrade your selected joker with the {C:attention}Medal",
-				"that matches the scrapped rarity."
+				"In exchange, I'll give",
+				"the selected {C:attention}Joker{}",
+				"a {C:attention}Medal{} to match",
+				"the scrapped {C:dark_edition}rarity."
 			},
 			cbean_yma_forgery_leave1_0 = {
 				"That should do it! Enjoy your medal!"
