@@ -1,5 +1,7 @@
--- ok i will admit i stole the original code for all of these from vremade because making them from scratch would TAKE TOO LONG
+--MarioFan597 here, just cleaned some stuff up to get it working and hopefully imporve cross mod support
 
+
+-- ok i will admit i stole the original code for all of these from vremade because making them from scratch would TAKE TOO LONG
 -- magician
 SMODS.Consumable {
     key = 'yma_magician_level1',
@@ -1275,9 +1277,67 @@ SMODS.Consumable {
     key = 'yma_star_level3',
     set = 'Tarot',
     pos = { x = 7, y = 1 },
-    config = { max_highlighted = 5, suit_conv = 'Diamonds', mod_conv = 'm_gold' },
+    config = { max_highlighted = 5},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_gold")
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1289,40 +1349,68 @@ SMODS.Consumable {
     key = 'yma_star_level4',
     set = 'Tarot',
     pos = { x = 7, y = 1 },
-    config = { max_highlighted = 5, suit_conv = 'Diamonds', mod_conv = 'm_gold' },
+    config = { max_highlighted = 5},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Blue', nil, true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_gold")
+                    G.hand.highlighted[i]:set_seal('Blue', nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1340,36 +1428,64 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Blue', nil, true)
-                    conv_card:set_edition('e_negative', true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_gold")
+                    G.hand.highlighted[i]:set_seal('Blue', nil, true)
+                    G.hand.highlighted[i]:set_edition('e_negative', true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1417,6 +1533,64 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_glass")
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
+    end,
     in_pool = function(self, args)
         return false
     end,
@@ -1432,35 +1606,63 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Purple', nil, true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_glass")
+                    G.hand.highlighted[i]:set_seal('Purple', nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1478,36 +1680,64 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Purple', nil, true)
-                    conv_card:set_edition('e_foil', true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_glass")
+                    G.hand.highlighted[i]:set_seal('Purple', nil, true)
+                    G.hand.highlighted[i]:set_edition('e_foil', true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1554,6 +1784,64 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_steel")
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
+    end,
     in_pool = function(self, args)
         return false
     end,
@@ -1569,35 +1857,63 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Red', nil, true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_steel")
+                    G.hand.highlighted[i]:set_seal('Red', nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1615,36 +1931,64 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Red', nil, true)
-                    conv_card:set_edition('e_polychrome', true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_steel")
+                    G.hand.highlighted[i]:set_seal('Red', nil, true)
+                    G.hand.highlighted[i]:set_edition('e_polychrome', true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1691,6 +2035,64 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_lucky")
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
+    end,
     in_pool = function(self, args)
         return false
     end,
@@ -1706,35 +2108,63 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Gold', nil, true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_lucky")
+                    G.hand.highlighted[i]:set_seal('Gold', nil, true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1752,36 +2182,64 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] }, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, card.ability.max_highlighted do
-            local conv_card = G.hand.highlighted[i]
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    conv_card:set_seal('Gold', nil, true)
-                    conv_card:set_edition('e_holo', true)
-                    return true
-                end
-            }))
-
-            delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
-                delay = 0.2,
+                delay = 0.15,
                 func = function()
-                    G.hand:unhighlight_all()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
                     return true
                 end
             }))
         end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(G.hand.highlighted[i], card.ability.suit_conv)
+                    G.hand.highlighted[i]:set_ability("m_lucky")
+                    G.hand.highlighted[i]:set_seal('Gold', nil, true)
+                    G.hand.highlighted[i]:set_edition('e_holo', true)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
     end,
     in_pool = function(self, args)
         return false
@@ -1796,6 +2254,7 @@ SMODS.Consumable {
     pos = { x = 0, y = 2 },
     config = { extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_buffoon', set = 'Tag' }
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_glass')
         return { vars = { numerator, denominator } }
     end,
@@ -1808,7 +2267,7 @@ SMODS.Consumable {
                 SMODS.add_card({ set = 'Joker' })
                 card:juice_up(0.3, 0.5)
                 if SMODS.pseudorandom_probability(card, 'judgement_level1', 1, card.ability.extra.odds) then
-                    add_tag(Tag("buffoon"))
+                    add_tag(Tag("tag_buffoon"))
                     card:juice_up(0.3, 0.5)
                 end
                 return true
@@ -1830,6 +2289,9 @@ SMODS.Consumable {
     key = 'yma_judgement_level2',
     set = 'Tarot',
     pos = { x = 0, y = 2 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_buffoon', set = 'Tag' }
+    end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
@@ -1838,7 +2300,7 @@ SMODS.Consumable {
                 play_sound('timpani')
                 SMODS.add_card({ set = 'Joker' })
                 card:juice_up(0.3, 0.5)
-                add_tag(Tag("buffoon"))
+                add_tag(Tag("tag_buffoon"))
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -1858,22 +2320,29 @@ SMODS.Consumable {
     key = 'yma_judgement_level3',
     set = 'Tarot',
     pos = { x = 0, y = 2 },
+    config = { extra = {cards = 2}},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_buffoon', set = 'Tag' }
+        return { vars = {card.ability.extra.cards} }
+    end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                add_tag(Tag("buffoon"))
-                card:juice_up(0.3, 0.5)
-                return true
+        for i = 1, card.ability.extra.cards do
+            if (G.jokers and #G.jokers.cards + (i - 1)) < G.jokers.config.card_limit then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.4,
+                    func = function()
+                        play_sound('timpani')
+                        SMODS.add_card({ set = 'Joker' })
+                        card:juice_up(0.3, 0.5)
+                        if i == 1 then
+                            add_tag(Tag("tag_buffoon"))
+                        end
+                        return true
+                    end
+                }))
             end
-        }))
+        end
         delay(0.6)
     end,
     can_use = function(self, card)
@@ -1885,42 +2354,73 @@ SMODS.Consumable {
     no_collection = true,
 }
 
+--Ignore these
+--print(v.key)
+--print(v.default_weight)
+--table.insert(rarities, v.key)
+--table.insert(weights, v.default_weight)
+--print((pseudorandom_element(SMODS.Rarities, 'key').key))
+--[[
+for k, v in pairs(SMODS.Rarities) do
+    if v.key ~= "Common" then --Not considering Common Jokers
+        weight_pool[]
+    end
+end
+]]
+
 SMODS.Consumable {
     key = 'yma_judgement_level4',
     set = 'Tarot',
     pos = { x = 0, y = 2 },
-    config = { extra = { odds = 4 } },
+    config = { extra = { odds = 4, cards = 2 } },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_buffoon', set = 'Tag' }
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'judgement_level4')
-        return { vars = { numerator, denominator } }
+        return { vars = { numerator, denominator,  card.ability.extra.cards } }
     end,
     use = function(self, card, area, copier)
-        local rarities = {}
-        for i=1, #G.P_JOKER_RARITY_POOLS do
-            if G.P_JOKER_RARITY_POOLS[i] ~= 1 then
-                rarities = rarities + G.P_JOKER_RARITY_POOLS[i]
+        for i = 1, card.ability.extra.cards do
+            local joker_rarity 
+            repeat
+                joker_rarity  = SMODS.poll_rarity('Joker', "What")
+                print(joker_rarity )
+            until joker_rarity  ~= 1
+
+            if type(joker_rarity) == "number" then
+                joker_rarity = ({"Common", "Uncommon", "Rare", "Legendary"})[joker_rarity]
+            end
+            if (G.jokers and #G.jokers.cards + (i - 1)) < G.jokers.config.card_limit then
+                if SMODS.pseudorandom_probability(card, 'judgement_level5', 1, card.ability.extra.odds) then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            play_sound('timpani')
+                            SMODS.add_card({ set = 'Joker', rarity = joker_rarity })
+                            card:juice_up(0.3, 0.5)
+                            if i == 1 then
+                                add_tag(Tag("tag_buffoon"))
+                            end
+                            return true
+                        end
+                    }))
+                else
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            play_sound('timpani')
+                            SMODS.add_card({ set = 'Joker'})
+                            card:juice_up(0.3, 0.5)
+                            if i == 1 then
+                                add_tag(Tag("tag_buffoon"))
+                            end
+                            return true
+                        end
+                    }))
+                end
             end
         end
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                if SMODS.pseudorandom_probability(card, 'judgement_level4', 1, card.ability.extra.odds) then
-                    play_sound('timpani')
-                    SMODS.add_card({ set = 'Joker', rarity = rarities[math.random(1, #rarities)] })
-                    card:juice_up(0.3, 0.5)
-                end
-                add_tag(Tag("buffoon"))
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
         delay(0.6)
     end,
     can_use = function(self, card)
@@ -1937,38 +2437,55 @@ SMODS.Consumable {
     key = 'yma_judgement_level5',
     set = 'Tarot',
     pos = { x = 0, y = 2 },
-    config = { extra = { odds = 4 } },
+    config = { extra = { odds = 2, cards = 2 } },
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 2, card.ability.extra.odds, 'judgement_level5')
-        return { vars = { numerator, denominator } }
+        info_queue[#info_queue + 1] = { key = 'tag_buffoon', set = 'Tag' }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'judgement_level5')
+        return { vars = { numerator, denominator,  card.ability.extra.cards } }
     end,
     use = function(self, card, area, copier)
-        local rarities = {}
-        for i=1, #G.P_JOKER_RARITY_POOLS do
-            if G.P_JOKER_RARITY_POOLS[i] ~= 1 then
-                rarities = rarities + G.P_JOKER_RARITY_POOLS[i]
+        for i = 1, card.ability.extra.cards do
+            local joker_rarity 
+            repeat
+                joker_rarity  = SMODS.poll_rarity('Joker', "What")
+                print(joker_rarity )
+            until joker_rarity  ~= 1
+
+            if type(joker_rarity) == "number" then
+                joker_rarity = ({"Common", "Uncommon", "Rare", "Legendary"})[joker_rarity]
+            end
+            if (G.jokers and #G.jokers.cards + (i - 1)) < G.jokers.config.card_limit then
+                if SMODS.pseudorandom_probability(card, 'judgement_level5', 1, card.ability.extra.odds) then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            play_sound('timpani')
+                            SMODS.add_card({ set = 'Joker', rarity = joker_rarity })
+                            card:juice_up(0.3, 0.5)
+                            if i == 1 then
+                                add_tag(Tag("tag_buffoon"))
+                            end
+                            return true
+                        end
+                    }))
+                else
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            play_sound('timpani')
+                            SMODS.add_card({ set = 'Joker'})
+                            card:juice_up(0.3, 0.5)
+                            if i == 1 then
+                                add_tag(Tag("tag_buffoon"))
+                            end
+                            return true
+                        end
+                    }))
+                end
             end
         end
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                if SMODS.pseudorandom_probability(card, 'judgement_level5', 2, card.ability.extra.odds) then
-                    play_sound('timpani')
-                    SMODS.add_card({ set = 'Joker', rarity = rarities[math.random(1, #rarities)] })
-                    card:juice_up(0.3, 0.5)
-                end
-                add_tag(Tag("buffoon"))
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
         delay(0.6)
     end,
     can_use = function(self, card)

@@ -10658,10 +10658,15 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Gold Cards{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Gold Cards{}",
+					}
 				},
 			},
 			c_cbean_yma_star_level4 = {
@@ -10670,11 +10675,16 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Gold Cards{}",
-					"and have {C:attention}Blue Seals{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Gold Cards{}",
+						"with {C:attention}Blue Seals{}",
+					}
 				},
 			},
 			c_cbean_yma_star_level5 = {
@@ -10683,11 +10693,17 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Gold Cards{}",
-					"and have {C:attention}Blue Seals{} and {C:dark_edition}Negative{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:dark_edition}Negative{}",
+						"{C:attention}Gold Cards{}",
+						"with {C:attention}Blue Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_moon_level1 = {
@@ -10718,10 +10734,15 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Glass Cards{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Glass Cards{}",
+					},
 				},
 			},
 			c_cbean_yma_moon_level4 = {
@@ -10730,11 +10751,16 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Glass Cards{}",
-					"and have {C:attention}Purple Seals{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Glass Cards{}",
+						"with {C:attention}Purple Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_moon_level5 = {
@@ -10743,11 +10769,17 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Glass Cards{}",
-					"and have {C:attention}Purple Seals{} and {C:dark_edition}Foil{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:dark_edition}Foil{}",
+						"{C:attention}Glass Cards{}",
+						"with {C:attention}Purple Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_sun_level1 = {
@@ -10778,10 +10810,15 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Steel Cards{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Steel Cards{}",
+					},
 				},
 			},
 			c_cbean_yma_sun_level4 = {
@@ -10790,11 +10827,16 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Steel Cards{}",
-					"and have {C:attention}Red Seals{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Steel Cards{}",
+						"with {C:attention}Red Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_sun_level5 = {
@@ -10803,11 +10845,17 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Steel Cards{}",
-					"and have {C:attention}Red Seals{} and {C:dark_edition}Polychrome{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:dark_edition}Polychrome{}",
+						"{C:attention}Steel Cards{}",
+						"with {C:attention}Red Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_world_level1 = {
@@ -10838,10 +10886,15 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Lucky Cards{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Lucky Cards{}",
+					},
 				},
 			},
 			c_cbean_yma_world_level4 = {
@@ -10850,11 +10903,16 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Lucky Cards{}",
-					"and have {C:attention}Gold Seals{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:attention}Lucky Cards{}",
+						"with {C:attention}Gold Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_world_level5 = {
@@ -10863,11 +10921,17 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Converts up to",
-					"{C:attention}#1#{} selected cards",
-					"to {V:1}#2#{}",
-					"Converted cards also become {C:attention}Lucky Cards{}",
-					"and have {C:attention}Gold Seals{} and {C:dark_edition}Holographic{}",
+					{
+						"Converts up to",
+						"{C:attention}#1#{} selected cards",
+						"to {V:1}#2#{}",
+					},
+					{
+						"Converted cards also",
+						"become {C:dark_edition}Holographic{}",
+						"{C:attention}Lucky Cards{}",
+						"with {C:attention}Gold Seals{}",
+					},
 				},
 			},
 			c_cbean_yma_judgement_level1 = {
@@ -10876,11 +10940,15 @@ return {
 					"{C:attention,s:0.7}Level 1{}",
 				},
 				text = {
-					"Creates a random",
-					"{C:attention}Joker{} card",
-					"{C:green}#1# in #2#{} chance to",
-					"create a {C:attention}Buffoon Tag{}",
-					"{C:inactive}(Must have room)",
+					{
+						"Creates a random",
+						"{C:attention}Joker{} card",
+						"{C:inactive}(Must have room)",
+					},
+					{
+						"{C:green}#1# in #2#{} chance to",
+						"create a {C:attention}Buffoon Tag{}",
+					},
 				},
 			},
 			c_cbean_yma_judgement_level2 = {
@@ -10901,7 +10969,7 @@ return {
 					"{C:attention,s:0.7}Level 3{}",
 				},
 				text = {
-					"Creates 2 random",
+					"Creates {C:attention}#1#{} random",
 					"{C:attention}Jokers{} and a",
 					"{C:attention}Buffoon Tag{}",
 					"{C:inactive}(Must have room)",
@@ -10913,12 +10981,18 @@ return {
 					"{C:attention,s:0.7}Level 4{}",
 				},
 				text = {
-					"Creates 2 random",
-					"{C:attention}Jokers{} and a",
-					"{C:attention}Buffoon Tag{}",
-					"{C:green}#1# in #2#{} chance to",
-					"create a random {C:attention}Non-Common Joker{}",
-					"{C:inactive}(Must have room)",
+					{
+						"Creates {C:attention}#3#{} random",
+						"{C:attention}Jokers{} and a",
+						"{C:attention}Buffoon Tag{}",
+						"{C:inactive}(Must have room)",
+					},
+					{
+						"{C:green}#1# in #2#{} chance to",
+						"create a random",
+						"{C:attention}Non-Common Joker{}",
+					},
+						
 				},
 			},
 			c_cbean_yma_judgement_level5 = {
@@ -10927,12 +11001,17 @@ return {
 					"{C:attention,s:0.7}Level 5{}",
 				},
 				text = {
-					"Creates 2 random",
-					"{C:attention}Jokers{} and a",
-					"{C:attention}Buffoon Tag{}",
-					"{C:green}#1# in #2#{} chance to",
-					"create a random {C:attention}Non-Common Joker{}",
-					"{C:inactive}(Must have room)",
+					{
+						"Creates {C:attention}#3#{} random",
+						"{C:attention}Jokers{} and a",
+						"{C:attention}Buffoon Tag{}",
+						"{C:inactive}(Must have room)",
+					},
+					{
+						"{C:green}#1# in #2#{} chance to",
+						"create a random",
+						"{C:attention}Non-Common Joker{}",
+					},
 				},
 			},
 		},
