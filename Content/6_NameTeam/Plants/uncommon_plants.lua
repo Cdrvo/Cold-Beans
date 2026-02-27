@@ -4514,7 +4514,7 @@ SMODS.Joker({
 			on_cooldown = false,
 		},
 	},
-	pos = { x = 1, y = 13 },
+	pos = { x = 2, y = 13 },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 		return { vars = { cae.xmult, cae.xmult_gain } }

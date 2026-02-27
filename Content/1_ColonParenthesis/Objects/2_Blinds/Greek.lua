@@ -191,8 +191,6 @@ Colonparen.GreekBlind{
         config = {
             xmult = 0.5
         },
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
                 if card.config.center.key == "m_glass" then
@@ -203,8 +201,6 @@ Colonparen.GreekBlind{
         end
     },
     upper = {
-        set_blind = function(self, card, from_blind)
-        end,
         calculate = function(self, blind, context)
             if context.individual and context.cardarea == G.play and not context.end_of_round then
                 if card.config.center.key == "m_glass" then
@@ -214,10 +210,13 @@ Colonparen.GreekBlind{
         end
     },
     beans_credits = {
-        team = ":(",
+        team = "::( & Yeah! Mostly Artists",
         idea = "Glitchkat10",
         art = "George The Rat",
-        code = "Bitter",
+        code = { 
+            "bitter",
+            "RattlingSnow353"
+        },
     }
 }
 
@@ -316,7 +315,7 @@ Colonparen.GreekBlind{
         team = ":(",
         idea = "Glitchkat10",
         art = "George The Rat",
-        code = "",
+        code = "Glitchkat10",
     }
 }
 
