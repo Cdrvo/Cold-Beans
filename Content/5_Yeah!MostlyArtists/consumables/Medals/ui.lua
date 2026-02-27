@@ -313,12 +313,12 @@ end
 
 G.FUNCS.yma_forgery_select_scrap = function (e)
     local jokertomove = G.jokers.highlighted[1];
-    draw_card(G.jokers, G.yma_forgery_card_sac, 100,'up', nil, jokertomove,  0.08)
+    draw_card(G.jokers, G.yma_forgery_card_sac, 1,'up', nil, jokertomove,  0.08)
 end
 
 G.FUNCS.yma_forgery_unselect_scrap = function (e)
     local jokertomove = G.yma_forgery_card_sac.cards[1];
-    draw_card(G.yma_forgery_card_sac, G.jokers, 100,'up', nil, jokertomove,  0.08)
+    draw_card(G.yma_forgery_card_sac, G.jokers, 1,'up', nil, jokertomove,  0.08)
 end
 
 G.FUNCS.yma_forgery_upgrade = function (e)

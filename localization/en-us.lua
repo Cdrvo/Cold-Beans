@@ -12109,10 +12109,11 @@ return {
 				"can buff any Joker you think of!"
 			},
 			cbean_yma_forgery_tutorial_3 = {
-				"To create it, simply select the \"scrap\" button while selecting a Joker."
+				"To create it, simply select the {C:attention}\"Scrap\"",
+				"button while selecting a Joker."
 			},
 			cbean_yma_forgery_tutorial_4 = {
-				"Then, you'll click on \"Upgrade\" below me!"
+				"Then, you'll click on {C:red}\"Upgrade\"{} below me!"
 			},
 			cbean_yma_forgery_tutorial_5 = {
 				"After so, I'll {C:red}kill{} the scrapped Joker",
