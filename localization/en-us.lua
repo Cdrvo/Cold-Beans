@@ -12176,6 +12176,10 @@ return {
 				"{C:attention}Stationery Shop{}.",
 				"{C:inactive}(10/10)",
 			},
+			cbean_yma_forgery_tutorial_0 = {
+				"Heya! Want to know",
+				"what I can do? {C:attention}Click me!"
+			},
 			cbean_yma_forgery_tutorial_1 = {
 				"Welcome to the",
 				"{C:attention,s:1.5}Forge Shop!{}"

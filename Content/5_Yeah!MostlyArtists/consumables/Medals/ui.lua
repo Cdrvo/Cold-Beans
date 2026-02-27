@@ -172,8 +172,9 @@ function G.UIDEF.yma_forgery()
     return t
 end
 
-YMA.TUTORIAL_STATE = 0
 function G.UIDEF.yma_forgery_square()
+    G.GAME.YMA_TUTORIAL_STATE = G.GAME.YMA_TUTORIAL_STATE or 0
+
 	local tutorial_positions = { 0, 1, 2, 0, 1, 4, 0 }
 
 	local sprite =
@@ -183,15 +184,15 @@ function G.UIDEF.yma_forgery_square()
 	sprite.config.speech_bubble_align = { align = "bm", offset = { x = 0, y = 0.1 }, parent = sprite }
 	sprite.children.tutorial_text = not G.GAME.seen_medal_tutorial
 		and UIBox({
-			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. YMA.TUTORIAL_STATE, { quip = true }),
+			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. G.GAME.YMA_TUTORIAL_STATE, { quip = true }),
 			config = sprite.config.speech_bubble_align,
 		})
 		or nil
 	function sprite:hover()
 		Node.hover(self)
-		if G.GAME.seen_medal_tutorial and YMA.TUTORIAL_STATE == 0 then
+		if G.GAME.seen_medal_tutorial and G.GAME.YMA_TUTORIAL_STATE == 0 then
 			self.children.tutorial_text = UIBox({
-				definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. YMA.TUTORIAL_STATE, { quip = true }),
+				definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. G.GAME.YMA_TUTORIAL_STATE, { quip = true }),
 				config = self.config.speech_bubble_align,
 			})
 		end
@@ -201,7 +202,7 @@ function G.UIDEF.yma_forgery_square()
 
 	function sprite:stop_hover()
 		Node.stop_hover(self)
-		if G.GAME.seen_medal_tutorial and YMA.TUTORIAL_STATE == 0 and self.children.tutorial_text then
+		if G.GAME.seen_medal_tutorial and G.GAME.YMA_TUTORIAL_STATE == 0 and self.children.tutorial_text then
 			self.children.tutorial_text:remove()
 			self.children.tutorial_text = nil
 		end
@@ -245,19 +246,22 @@ function G.UIDEF.yma_forgery_square()
 
 	function sprite:click()
 		Node.click(self)
-		YMA.TUTORIAL_STATE = (YMA.TUTORIAL_STATE + 1) % 7
-		if YMA.TUTORIAL_STATE == 6 then
+		G.GAME.YMA_TUTORIAL_STATE = (G.GAME.YMA_TUTORIAL_STATE + 1) % 7
+		if G.GAME.YMA_TUTORIAL_STATE == 6 then
 			G.GAME.seen_medal_tutorial = true
 		end
+        if G.GAME.YMA_TUTORIAL_STATE == 0 then
+            G.GAME.YMA_TUTORIAL_STATE = 1
+        end
 		if self.children.tutorial_text then
 			self.children.tutorial_text:remove()
 			self.children.tutorial_text = nil
 		end
 		self.children.tutorial_text = UIBox({
-			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. YMA.TUTORIAL_STATE, { quip = true }),
+			definition = G.UIDEF.speech_bubble("cbean_yma_forgery_tutorial_" .. G.GAME.YMA_TUTORIAL_STATE, { quip = true }),
 			config = self.config.speech_bubble_align,
 		})
-		self:set_sprite_pos({ x = tutorial_positions[YMA.TUTORIAL_STATE + 1], y = 0 })
+		self:set_sprite_pos({ x = tutorial_positions[G.GAME.YMA_TUTORIAL_STATE + 1], y = 0 })
 		self:say_stuff(3)
 	end
     G.yma_forgery_square = sprite;
