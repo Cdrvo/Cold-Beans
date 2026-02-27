@@ -180,8 +180,15 @@ target = "functions/UI_definitions.lua"
 pattern = "UIBox_button({button = 'your_collection_jokers', label = {localize('b_jokers')}, count = G.DISCOVER_TALLIES.jokers,  minw = 5, minh = 1.7, scale = 0.6, id = 'your_collection_jokers'}),"
 position = "at"
 payload = '''
-UIBox_button({button = 'your_collection_jokers_not_pvz', label = {localize('b_jokers')}, count = G.DISCOVER_TALLIES.jokers,  minw = 5, minh = 1.7, scale = 0.6, id = 'your_collection_jokers'}),
-UIBox_button({button = 'your_collection_jokers_pvz', label = {localize('b_cbean_plants')}, count = G.DISCOVER_TALLIES.plants,  minw = 5, minh = 1.7, scale = 0.6, id = 'your_collection_jokers'}),
+{n=G.UIT.R, config={align = "cm", padding = 0.1, r=0.2, colour = G.C.BLACK}, nodes={
+        {n=G.UIT.C, config={align = "cm", maxh=2.9}, nodes={
+          {n=G.UIT.T, config={text = localize('k_cbean_cap_jokers'), scale = 0.45, colour = G.C.L_BLACK, vert = true, maxh=2.2}},
+        }},
+        {n=G.UIT.C, config={align = "cm", padding = 0.15}, nodes = {
+            UIBox_button({button = 'your_collection_jokers_not_pvz', label = {localize('b_jokers')}, count = G.DISCOVER_TALLIES.jokers,  minw = 4, scale = 0.6, id = 'your_collection_jokers'}),
+            UIBox_button({button = 'your_collection_jokers_pvz', label = {localize('b_cbean_plants')}, count = G.DISCOVER_TALLIES.plants,  minw = 4, scale = 0.6, id = 'your_collection_jokers'}),
+        }}
+      }},
 '''
 match_indent = true
 
