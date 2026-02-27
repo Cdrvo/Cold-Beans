@@ -1314,7 +1314,7 @@ SMODS.Consumable {
     beans_credits = {
         team = { "Yeah! Mostly Artists" },
         idea = "RattlingSnow353",
-        art = "RattlingSnow353",
+        art = "jamirror",
         code = "jamirror",
     }
 }
