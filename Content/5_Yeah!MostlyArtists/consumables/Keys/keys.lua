@@ -1281,7 +1281,7 @@ SMODS.Consumable {
     end,
 
     atlas = 'yea_art_key_atlas',
-    pos = { x = 1, y = 2 },
+    pos = { x = 3, y = 4 },
 
     config = {
         extra = {
