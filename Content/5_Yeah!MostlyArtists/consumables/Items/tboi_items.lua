@@ -1225,7 +1225,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_charm_vampire",
     set = "yma_tboi_items",
     order = 26,
-    quality = 3,
+    quality = 1,
 
     loc_vars = function(self, info_queue, card)
         return {
