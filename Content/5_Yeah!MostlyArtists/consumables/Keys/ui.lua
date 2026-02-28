@@ -778,17 +778,7 @@ end
 G.FUNCS.hide_yma_dreamland = function(e)
     YMA.start_shop_transition()
     stop_use()
-    G.E_MANAGER:add_event(Event({
-        trigger = "before",
-        func = function()
-            if G.dreamlands_consumeable_card_holder then
-                if #G.dreamlands_consumeable_card_holder.cards > 0 then
-                    G.FUNCS.draw_from_card_area_to_card_area(G.dreamlands_consumeable_card_holder, G.consumeables, true)
-                end
-            end
-            return true
-        end
-    }))
+    G.FUNCS.draw_from_card_area_to_card_area(G.dreamlands_consumeable_card_holder, G.consumeables, true)
     hide_location(G.yma_dreamland)
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
