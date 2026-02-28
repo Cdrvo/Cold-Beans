@@ -21,7 +21,13 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context, ins
 
 
     local replacement_pool = {}
-    for _, center_data in ipairs(G.P_CENTER_POOLS[set or temp_set]) do
+    local available_joker_pool_keys, available_joker_pool_centers = get_current_pool(set or temp_set), {}
+    for k, v in ipairs(available_joker_pool_keys) do
+        if G.P_CENTERS[v] then
+            available_joker_pool_centers[#available_joker_pool_centers+1] = G.P_CENTERS[v]
+        end
+    end
+    for _, center_data in ipairs(available_joker_pool_centers) do
         local current_rarity = center_data.rarity or 1
         if current_rarity == victim_rarity then
             if center_data.key ~= victim_key then
