@@ -592,3 +592,10 @@ function Card:add_to_deck(from_debuff)
 	end
 	return add_to_deck_old(self, from_debuff)
 end
+
+local eval_card_old = eval_card
+function eval_card(card, context, ...)
+	if card then
+		return eval_card_old(card, context, ...)
+	end
+end
