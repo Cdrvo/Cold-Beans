@@ -603,7 +603,7 @@ Colonparen.Architecture {
                 }
             end
         elseif context.end_of_round and (G.GAME.current_round.hands_left ~= 0) then
-            card.ability.extra.count = 0;
+            card.ability.count = 0;
             return {
                 colonparen_base = true
             }
