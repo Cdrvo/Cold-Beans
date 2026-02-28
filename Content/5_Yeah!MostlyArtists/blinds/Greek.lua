@@ -534,11 +534,7 @@ Colonparen.GreekBlind{
                 end
                 if context.scoring_name == most_played_hand then
                     delay(1.3)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            NAMETEAM.blackhole(G.GAME.blind, true)
-                        end
-                    }))
+                    NAMETEAM.blackhole(G.GAME.blind, true)
                 end
             end
         end
