@@ -25,7 +25,7 @@ function NAMETEAM.create_UIBox_your_collection_jokers_not_pvz()
 
   local jokers_in_collection = 0
   for _,v in pairs(G.P_CENTER_POOLS.Joker) do
-	if not v.pvz_plant then
+	if not v.pvz_plant and not v.no_collection then
 		jokers_in_collection = jokers_in_collection+1
 	end
   end
@@ -128,7 +128,7 @@ function NAMETEAM.create_UIBox_your_collection_jokers_pvz()
 
   local pvz_jokers = {}
   for _,v in pairs(G.P_CENTER_POOLS["Joker"]) do
-	if v.pvz_plant then
+	if v.pvz_plant and not v.no_collection then
 	  pvz_jokers[#pvz_jokers+1] = v
 	end
   end
