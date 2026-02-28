@@ -83,6 +83,7 @@ end
 local start_run_hook = Game.start_run
 function Game:start_run(args)
 	start_run_hook(self, args)
+	if G.dreamlands_consumeable_card_holder_default_pos then G.dreamlands_consumeable_card_holder_default_pos = nil end
 	if G.consumeables and G.consumeables.config.highlighted_limit < 2 then
 		 G.consumeables.config.highlighted_limit =  G.consumeables.config.highlighted_limit + 1
 	end

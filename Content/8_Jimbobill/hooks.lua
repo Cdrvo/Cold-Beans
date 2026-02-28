@@ -71,6 +71,12 @@ end
 local highlight_hooky = Card.highlight
 function Card:highlight(is_highlighted)
     highlight_hooky(self, is_highlighted)
+    if self.highlighted and self.area == G.dreamlands_consumeable_card_holder then
+        if self.children.use_button then
+            self.children.use_button:remove()
+            self.children.use_button = nil
+        end
+    end
     if self.highlighted and self.ability.set == "Employed" then
         self.children.use_button = UIBox({    
             definition = G.UIDEF.employed_use(self),
