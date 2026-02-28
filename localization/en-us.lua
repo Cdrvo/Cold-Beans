@@ -25,9 +25,11 @@ return {
 			b_cbean_nameteam_happy = {
 				name = "Happy Deck",
 				text = {
-					"Start run with",
-					"a copy of",
-					"{C:attention,T:j_smiley}Smiley Face{}"
+					"Start run with double",
+					"the {C:attention}Face Cards{}",
+					"in your deck and",
+					"a copy of {C:attention,T:j_smiley}Smiley Face{}",
+					"{C:inactive}(So that's where they went...)"
 				}
 			},
 			b_cbean_nameteam_graveyard = {

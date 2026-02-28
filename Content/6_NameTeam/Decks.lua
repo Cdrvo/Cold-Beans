@@ -35,9 +35,19 @@ SMODS.Back({
 	key = "nameteam_happy",
 	atlas = "NAMETEAM_Decks",
 	pos = { x = 2, y = 0 },
-	apply = function(self, back)
+	apply = function(self, back)                 
 		G.E_MANAGER:add_event(Event({
 			func = function()
+				local face_card
+		        for i = 1, #G.playing_cards do
+		            if G.playing_cards[i]:is_face() then 
+		              	face_card = copy_card(G.playing_cards[i], nil, nil, G.playing_card)
+		              	face_card:add_to_deck()
+	                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+	                    table.insert(G.playing_cards, face_card)
+	                    G.deck:emplace(face_card)
+		            end
+		        end
 				if G.jokers then
 					local card = SMODS.create_card({
 						set = "Joker",

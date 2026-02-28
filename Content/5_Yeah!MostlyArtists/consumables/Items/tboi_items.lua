@@ -1185,20 +1185,28 @@ YMA.TBOI_ITEMS {
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 func = (function() 
-                    juice_card:juice_up()
+                    card:juice_up()
                     play_sound('tarot1')
                     for i = 1, #G.shop_booster.cards do
                         if #G.shop_booster.cards > 0 then
-                            local booster = pseudorandom_element(G.shop_booster.cards, pseudoseed('yma_tboi_magneto'))
-                            booster.ability.couponed = true
-                            booster:set_cost() 
-                            booster:juice_up()
                             for k, v in pairs(G.shop_booster.cards) do
-                                if v == booster then
+                            G.shop_booster.cards[i].ability.couponed = true
+                            G.shop_booster.cards[i]:set_cost() 
+                            G.shop_booster.cards[i]:juice_up()
+                                if v == G.shop_booster.cards[i] then
                                     v = nil
                                 end
                             end
                         end
+                    end
+                    return true
+                end)
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                func = (function() 
+                    if CM.states.slot_visible == -1 then
+                        G.FUNCS.toggle_jokers_items()
                     end
                     return true
                 end)

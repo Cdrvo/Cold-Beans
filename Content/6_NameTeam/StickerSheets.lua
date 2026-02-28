@@ -930,7 +930,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.2,
       func = function()
-        card:set_edition("e_negative")
+        affected_card:set_edition("e_negative")
         return true
       end
     }))
