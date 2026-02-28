@@ -369,7 +369,9 @@ Colonparen.CEOBlind{
                 
                 if #editionless_jokers > 0 then
                     local eligible_card = pseudorandom_element(editionless_jokers, 'cbean_promiseCEO')
-                    eligible_card:set_edition('e_polychrome', true)
+                    if eligible_card then
+                        eligible_card:set_edition('e_polychrome', true)
+                    end
                 end
             else
                 if G.jokers and G.jokers.cards then

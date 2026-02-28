@@ -1686,7 +1686,7 @@ SMODS.Consumable {
                 delay = 0.0,
                 func = (function()
                     for i = 1, 2 do
-                        local pool = {}
+                        local pool = {} 
                         for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
                             if v.config.immutable.combo_type == "taunt" or v.config.immutable.combo_type == "starter" then
                                 pool[#pool+1] = v.key
