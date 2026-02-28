@@ -7,6 +7,7 @@ G.STATES.CASINO = 7326724673643838
 G.STATES.SPIN_CASINO = 3576567567567
 
 G.FUNCS.show_yma_main_street = function(e)
+    YMA.start_shop_transition()
   stop_use()
   hide_location(G.shop)
   
@@ -24,9 +25,11 @@ G.FUNCS.show_yma_main_street = function(e)
   cached_hand_state = G.hand.states.visible
   G.hand.states.visible = false
   G.GAME.VISITED_STREET = true --Keeps track of if you visited the street. Need to ensure that entering shop effects only happen once per shop.
+  YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_main_street = function(e)
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.main_street)
 	G.hand.states.visible = cached_hand_state
@@ -42,6 +45,7 @@ G.FUNCS.hide_yma_main_street = function(e)
     --sign_sprite.states.visible = true
     sign_text = DynaText({string = {localize('ph_improve_run')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
+    YMA.end_shop_transition()
 end
 
 function update_main_street()
@@ -297,6 +301,7 @@ function G.UIDEF.employsprite()
 end
 
 G.FUNCS.show_yma_casino = function(e)
+    YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
   
@@ -313,9 +318,11 @@ G.FUNCS.show_yma_casino = function(e)
   --sign_sprite.states.visible = true
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   show_location(G.yma_casino)
+  YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_casino = function(e)
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.yma_casino)
 	G.STATE = G.STATES.MAIN_STREET
@@ -329,6 +336,34 @@ G.FUNCS.hide_yma_casino = function(e)
     --sign_sprite.states.visible = false
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+        G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        delay =  5,
+        func = (function() 
+                if G.casino_slots_holder then
+                    G.casino_slots_holder:remove()
+                end
+                if G.yma_casino then
+                    G.yma_casino:remove()
+                end
+                if G.yma_casino_slot_machine then
+                    G.yma_casino_slot_machine:remove()
+                end
+                if G.yma_casino_slots then
+                    for i = 3, 1, -1 do
+                        G.yma_casino_slots[i - 1]:remove()
+                    end
+                end
+                G.yma_casino_slots = nil
+                G.casino_slots_holder = nil
+                G.yma_casino = nil;
+                G.yma_casino_slot_machine = nil;
+            return true
+        end)
+    }))
+    YMA.end_shop_transition()
 end
 
 function update_yma_casino()
@@ -343,6 +378,12 @@ function update_yma_casino()
         
         G.E_MANAGER:add_event(Event({
             func = function()
+                if not G.yma_casino then
+                    G.yma_casino = G.yma_casino or UIBox{
+                        definition = G.UIDEF.yma_casino(),
+                        config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+                    }
+                end
                 G.yma_casino.alignment.offset.y = -5.3
                 if not G.yma_casino_slots then
                     for i = 1, 3 do
@@ -554,6 +595,7 @@ G.FUNCS.spin_yma_casino = function(e)
 end
 
 G.FUNCS.show_yma_tboi_chest = function(e)
+YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
   if CM.states.slot_visible == 1 then
@@ -572,9 +614,11 @@ G.FUNCS.show_yma_tboi_chest = function(e)
   --sign_sprite.states.visible = true
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   show_location(G.yma_tboi_chest)
+  YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_tboi_chest = function(e)
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.yma_tboi_chest) 
     if CM.states.slot_visible == -1 then
@@ -591,6 +635,7 @@ G.FUNCS.hide_yma_tboi_chest = function(e)
     --sign_sprite.states.visible = false
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+    YMA.end_shop_transition()
 end
 
 function update_yma_tboi_chest()
@@ -697,6 +742,7 @@ function G.UIDEF.yma_tboi_chest()
 end
 
 G.FUNCS.show_yma_dreamland = function(e)
+YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
 
@@ -721,9 +767,11 @@ G.FUNCS.show_yma_dreamland = function(e)
   sign_text = DynaText({string = {localize('ph_dreamland')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   show_location(G.yma_dreamland)
+  YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_dreamland = function(e)
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.yma_dreamland)
     if G.dreamlands_consumeable_card_holder then
@@ -760,6 +808,7 @@ G.FUNCS.hide_yma_dreamland = function(e)
     end
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+    YMA.end_shop_transition()
 end
 
 function update_yma_dreamland()
@@ -921,6 +970,7 @@ G.FUNCS.improve_consumable_yma_dreamland = function(e)
 end
 
 G.FUNCS.show_yma_hell = function(e)
+YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
   
@@ -938,9 +988,11 @@ G.FUNCS.show_yma_hell = function(e)
   sign_text = DynaText({string = {localize('ph_hell')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   show_location(G.yma_hell)
+  YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_hell = function(e)
+    YMA.start_shop_transition()
     stop_use()
     G.FUNCS.draw_from_card_area_to_card_area(G.hells_playing_card_holder, G.deck)
 	hide_location(G.yma_hell)
@@ -957,6 +1009,7 @@ G.FUNCS.hide_yma_hell = function(e)
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+    YMA.end_shop_transition()
 end
 
 function update_yma_hell()
@@ -1082,6 +1135,7 @@ G.FUNCS.upgrade_yma_hell = function(e)
 end
 
 G.FUNCS.show_yma_graveyard = function(e)
+YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
   
@@ -1098,9 +1152,11 @@ G.FUNCS.show_yma_graveyard = function(e)
   --sign_sprite.states.visible = true
   sign_text = DynaText({string = {localize('ph_graveyard')}, colours = {lighten(G.C.RED, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
   show_location(G.graveyard)
+  YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_yma_graveyard = function(e)
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.graveyard)
 	G.STATE = G.STATES.MAIN_STREET
@@ -1114,6 +1170,7 @@ G.FUNCS.hide_yma_graveyard = function(e)
    -- sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
     show_location(G.main_street)
+    YMA.end_shop_transition()
 end
 
 function update_graveyard()

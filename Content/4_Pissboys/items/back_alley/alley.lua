@@ -328,6 +328,7 @@ end
 -- Clicked back to shop
 G.FUNCS.hide_balley = function(e)
   if not G.STATE_CHOOSEBALL and not G.STATE_SWAPBALL and not G.STATE_SHOWBALL then
+	 	YMA.start_shop_transition()
 	  stop_use()
 	  for key, ad in pairs(G.cups) do
 			G.cups[key]:remove()
@@ -360,6 +361,7 @@ G.FUNCS.hide_balley = function(e)
 			G.cups[key].balley.config.offset.y = G.ROOM.T.y + 22
 			G.cups[key]:remove()
 	  end
+		YMA.end_shop_transition()
 	  
 		-- TODO
 	  --[[G.CONTROLLER.locks.toggle_shop = true

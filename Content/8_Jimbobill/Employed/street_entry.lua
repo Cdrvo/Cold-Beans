@@ -1,6 +1,7 @@
 G.STATES.EMPLOY = 42676980085
 
 G.FUNCS.show_employ = function(e)
+YMA.start_shop_transition()
     stop_use()
     hide_location(G.main_street)
 
@@ -48,9 +49,11 @@ G.FUNCS.show_employ = function(e)
     --sign_sprite.states.visible = true
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.jbill_employed_screen)
+    YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_employ = function(e)
+    YMA.start_shop_transition()
     stop_use()
 	hide_location(G.jbill_employed_screen)
 
@@ -85,6 +88,8 @@ G.FUNCS.hide_employ = function(e)
     end
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+    YMA.end_shop_transition()
+
 end
 
 

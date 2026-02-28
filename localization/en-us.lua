@@ -11018,6 +11018,15 @@ return {
 					},
 				},
 			},
+			c_cbean_journey = {
+				name = 'The Journey',
+				text = {
+					"Enhances {C:attention}#1#",
+					"selected cards to",
+					"#2#{C:attention}#3#s",
+					"{C:inactive,s:0.8}(Enhancement changes based on current Biome)"
+				}
+			}
 		},
 		Voucher = {
 			--Yeah! Mostly Artists
@@ -11548,6 +11557,9 @@ return {
 
 			b_cbean_plants = "Plants",
 			k_cbean_cap_jokers = "JOKERS",
+
+			k_c_journey_zomboid = "random ",
+			k_c_journey_m_zomboid = "Zomboid Card",
 
 			cbean_copyright_headsup_1           = "Heads up!",
 			cbean_copyright_headsup_2           = "If you are streaming this mod,",

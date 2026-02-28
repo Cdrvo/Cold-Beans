@@ -3,6 +3,12 @@
 G.FUNCS.can_switch = function(e)
   G.SECRET_BUTTON = localize('k_cbean_unique_ex')
   
+  if not YMA.can_transition() then
+	  e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+	  e.config.button = nil
+    return
+  end
+
   if G.STATE == G.STATES.MAIN_STREET then
 	  G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
 	  e.config.colour = G.C.RED
@@ -13,8 +19,8 @@ G.FUNCS.can_switch = function(e)
 	  e.config.button = 'show_yma_main_street'
   elseif G.STATE == G.STATES.FORGERY then
 	  G.SECRET_BUTTON=localize('k_cbean_aexit_ex')
-    if G.CONTROLLER.locks.yma_aug_scrap then
-	    e.config.colour = G.C.INACTIVE
+    if (G.yma_aug_scrapping_rn) then
+	    e.config.colour = G.C.UI.BACKGROUND_INACTIVE
 	    e.config.button = nil
     else
       e.config.colour = G.C.RED

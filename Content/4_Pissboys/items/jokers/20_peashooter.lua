@@ -1,7 +1,6 @@
 SMODS.Joker {
     key = "pboys_peashooter",
     atlas = "pboys_joker_atlas",
-    pvz_plant = true,
     pools = {
 		cbean_pea = true,
 	},

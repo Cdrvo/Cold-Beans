@@ -477,6 +477,7 @@ G.UIDEF.nteam_stationery = function()
 end
 
 G.FUNCS.show_stationery = function(e)
+YMA.start_shop_transition()
 	stop_use()
 	play_sound("button")
 	hide_location(G.main_street)
@@ -503,10 +504,12 @@ G.FUNCS.show_stationery = function(e)
 		pop_in = 1.5,
 		maxw = 4.3,
 	})
+	YMA.end_shop_transition()
 end
 
 G.FUNCS.hide_stationery = function(e)
 	if true then
+		YMA.start_shop_transition()
 		stop_use()
 		G.STATE = G.STATES.MAIN_STREET
 		G.STATE_COMPLETE = false
@@ -533,6 +536,8 @@ G.FUNCS.hide_stationery = function(e)
 		play_sound("cancel")
 		hide_location(G.stationery)
 		G.stationery.alignment.offset.y = G.ROOM.T.y + 20
+
+		YMA.end_shop_transition()
 	end
 end
 
