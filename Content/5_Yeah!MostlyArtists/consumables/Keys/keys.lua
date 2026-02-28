@@ -1679,7 +1679,7 @@ SMODS.Consumable {
     },
 
     calculate = function(self, card, context)
-        if context.before then
+        if context.end_of_round and context.main_eval then
             card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
