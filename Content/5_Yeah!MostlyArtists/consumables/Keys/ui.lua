@@ -336,6 +336,33 @@ G.FUNCS.hide_yma_casino = function(e)
     --sign_sprite.states.visible = false
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
+        G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        delay =  5,
+        func = (function() 
+                if G.casino_slots_holder then
+                    G.casino_slots_holder:remove()
+                end
+                if G.yma_casino then
+                    G.yma_casino:remove()
+                end
+                if G.yma_casino_slot_machine then
+                    G.yma_casino_slot_machine:remove()
+                end
+                if G.yma_casino_slots then
+                    for i = 3, 1, -1 do
+                        G.yma_casino_slots[i - 1]:remove()
+                    end
+                end
+                G.yma_casino_slots = nil
+                G.casino_slots_holder = nil
+                G.yma_casino = nil;
+                G.yma_casino_slot_machine = nil;
+            return true
+        end)
+    }))
     YMA.end_shop_transition()
 end
 
@@ -351,6 +378,12 @@ function update_yma_casino()
         
         G.E_MANAGER:add_event(Event({
             func = function()
+                if not G.yma_casino then
+                    G.yma_casino = G.yma_casino or UIBox{
+                        definition = G.UIDEF.yma_casino(),
+                        config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+20},major = G.hand, bond = 'Weak'}
+                    }
+                end
                 G.yma_casino.alignment.offset.y = -5.3
                 if not G.yma_casino_slots then
                     for i = 1, 3 do
