@@ -41,7 +41,7 @@ function NAMETEAM.poll_sticker(guaranteed, check, check_allowed, set, test)
 					finaltab[#finaltab + 1] = v
 				end
 			else
-			finaltab[#finaltab + 1] = v
+				finaltab[#finaltab + 1] = v
 			end
 		end
 	end
@@ -221,7 +221,10 @@ function NAMETEAM.create_localized_rows(set, key, args)
 			table.insert(text_rows, {
 				n = G.UIT.R,
 				config = { align = "cm" },
-				nodes = SMODS.localize_box(loc_parse_string(line), { scale = 0.9 * args.text_scale, vars = args.loc_vars }),
+				nodes = SMODS.localize_box(
+					loc_parse_string(line),
+					{ scale = 0.9 * args.text_scale, vars = args.loc_vars }
+				),
 			})
 		end
 		table.insert(rows, {
@@ -268,25 +271,29 @@ function NAMETEAM.filter(t, func)
 end
 
 -- Both of these take sticker tables, not keys to strings
-function Card:NAMETEAM_remove_sticker_calc(sticker) 
+function Card:NAMETEAM_remove_sticker_calc(sticker)
 	if sticker and not self:in_collection() then
-    	if sticker.NAMETEAM_removed then sticker:NAMETEAM_removed(self) end
+		if sticker.NAMETEAM_removed then
+			sticker:NAMETEAM_removed(self)
+		end
 		if not self.nteam_hand_preview then
-			SMODS.calculate_context({sticker_removed = true, other_sticker = sticker, other_card = self})
+			SMODS.calculate_context({ sticker_removed = true, other_sticker = sticker, other_card = self })
 		end
 	end
 end
 
-function Card:NAMETEAM_apply_sticker_calc(sticker) 
+function Card:NAMETEAM_apply_sticker_calc(sticker)
 	if sticker and not self:in_collection() then
-    	if sticker.NAMETEAM_applied then sticker:NAMETEAM_applied(self) end
+		if sticker.NAMETEAM_applied then
+			sticker:NAMETEAM_applied(self)
+		end
 		if not self.nteam_hand_preview then
-			SMODS.calculate_context({sticker_applied = true, other_sticker = sticker, other_card = self})
+			SMODS.calculate_context({ sticker_applied = true, other_sticker = sticker, other_card = self })
 		end
 	end
 end
 
-ColdBeans.OnCalculate(function (mod, context)
+ColdBeans.OnCalculate(function(mod, context)
 	if context.sticker_applied and (context.is_deck_sticker or context.other_card.added_to_deck) then
 		G.GAME.total_stickers_applied = (G.GAME.total_stickers_applied or 0) + 1
 	end
@@ -319,79 +326,79 @@ function NAMETEAM.simple_apply(sticker, card, val, on_apply, on_remove)
 end
 
 function NAMETEAM.get_amount_of_unique_stickers()
-    -- Starting by listing all sticker keys
-    local sticker_keys = {}
-    local sticker_gotten = {}
-    local unique_stickers = 0
-    for k, v in pairs(SMODS.Stickers) do
-        sticker_keys[#sticker_keys+1] = v.key
-    end
-    for k, v in ipairs(G.jokers.cards) do
-        for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) and jv then
-                sticker_gotten[jk] = true
-            end
-        end
-    end
-    for k, v in ipairs(G.playing_cards) do
-        for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) and jv then
-                sticker_gotten[jk] = true
-            end
-        end
-    end
-    for k, v in ipairs(G.consumeables.cards) do
-        for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) and jv then
-                sticker_gotten[jk] = true
-            end
-        end
-    end
-    for jk, jv in pairs(G.GAME.selected_back.ability) do
-        if NAMETEAM.contains(sticker_keys, jk) and jv then
-            sticker_gotten[jk] = true
-        end
-    end
-    for _ in pairs(sticker_gotten) do
-        unique_stickers = unique_stickers +1 
-    end
-    return unique_stickers
+	-- Starting by listing all sticker keys
+	local sticker_keys = {}
+	local sticker_gotten = {}
+	local unique_stickers = 0
+	for k, v in pairs(SMODS.Stickers) do
+		sticker_keys[#sticker_keys + 1] = v.key
+	end
+	for k, v in ipairs(G.jokers.cards) do
+		for jk, jv in pairs(v.ability) do
+			if NAMETEAM.contains(sticker_keys, jk) and jv then
+				sticker_gotten[jk] = true
+			end
+		end
+	end
+	for k, v in ipairs(G.playing_cards) do
+		for jk, jv in pairs(v.ability) do
+			if NAMETEAM.contains(sticker_keys, jk) and jv then
+				sticker_gotten[jk] = true
+			end
+		end
+	end
+	for k, v in ipairs(G.consumeables.cards) do
+		for jk, jv in pairs(v.ability) do
+			if NAMETEAM.contains(sticker_keys, jk) and jv then
+				sticker_gotten[jk] = true
+			end
+		end
+	end
+	for jk, jv in pairs(G.GAME.selected_back.ability) do
+		if NAMETEAM.contains(sticker_keys, jk) and jv then
+			sticker_gotten[jk] = true
+		end
+	end
+	for _ in pairs(sticker_gotten) do
+		unique_stickers = unique_stickers + 1
+	end
+	return unique_stickers
 end
 
 function NAMETEAM.get_amount_of_stickers()
-    -- Starting by listing all sticker keys
-    local sticker_keys = {}
-    local sticker_amount = 0
-    for k, v in pairs(SMODS.Stickers) do
-        sticker_keys[#sticker_keys+1] = v.key
-    end
-    for k, v in ipairs(G.jokers.cards) do
-        for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) and jv then
-                sticker_amount = sticker_amount + 1
-            end
-        end
-    end
-    for k, v in ipairs(G.playing_cards) do
-        for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) and jv then
-                sticker_amount = sticker_amount + 1
-            end
-        end
-    end
-    for k, v in ipairs(G.consumeables.cards) do
-        for jk, jv in pairs(v.ability) do
-            if NAMETEAM.contains(sticker_keys, jk) and jv then
-                sticker_amount = sticker_amount + 1
-            end
-        end
-    end
-    for jk, jv in pairs(G.GAME.selected_back.ability) do
-        if NAMETEAM.contains(sticker_keys, jk) and jv then
-            sticker_amount = sticker_amount + 1
-        end
-    end
-    return sticker_amount
+	-- Starting by listing all sticker keys
+	local sticker_keys = {}
+	local sticker_amount = 0
+	for k, v in pairs(SMODS.Stickers) do
+		sticker_keys[#sticker_keys + 1] = v.key
+	end
+	for k, v in ipairs(G.jokers.cards) do
+		for jk, jv in pairs(v.ability) do
+			if NAMETEAM.contains(sticker_keys, jk) and jv then
+				sticker_amount = sticker_amount + 1
+			end
+		end
+	end
+	for k, v in ipairs(G.playing_cards) do
+		for jk, jv in pairs(v.ability) do
+			if NAMETEAM.contains(sticker_keys, jk) and jv then
+				sticker_amount = sticker_amount + 1
+			end
+		end
+	end
+	for k, v in ipairs(G.consumeables.cards) do
+		for jk, jv in pairs(v.ability) do
+			if NAMETEAM.contains(sticker_keys, jk) and jv then
+				sticker_amount = sticker_amount + 1
+			end
+		end
+	end
+	for jk, jv in pairs(G.GAME.selected_back.ability) do
+		if NAMETEAM.contains(sticker_keys, jk) and jv then
+			sticker_amount = sticker_amount + 1
+		end
+	end
+	return sticker_amount
 end
 
 function NAMETEAM.random_joker(area, exclude_card)
@@ -407,16 +414,18 @@ end
 
 function Card:in_collection()
 	if G.your_collection then
-        for i = 1, #G.your_collection do
-            if self and self.area and (self.area == G.your_collection[i]) then
-                return true
-            end
-        end
-    end
+		for i = 1, #G.your_collection do
+			if self and self.area and (self.area == G.your_collection[i]) then
+				return true
+			end
+		end
+	end
 end
 
 function NAMETEAM.msg(card, message, type)
-	if not type then type = "extra" end
+	if not type then
+		type = "extra"
+	end
 	card_eval_status_text(card, type, nil, nil, nil, { message = message })
 end
 
@@ -436,17 +445,19 @@ function NAMETEAM.defeat()
 end
 
 function Card:closer_to()
-	local a,b,c = 0,0,0
+	local a, b, c = 0, 0, 0
 	if self.area then
 		a = #self.area.cards
-		b = a/2
+		b = a / 2
 	end
 
 	for i = 1, #self.area.cards do
-		if self.area.cards[i] == self then c = i end
+		if self.area.cards[i] == self then
+			c = i
+		end
 	end
 
-	if c<=b then
+	if c <= b then
 		return "left"
 	else
 		return "right"
@@ -481,16 +492,18 @@ function Card:on_the(direction)
 	local rr = nil
 	if self.area then
 		for i = 1, #self.area.cards do
-			if self.area.cards[i] == self then rr = i end
+			if self.area.cards[i] == self then
+				rr = i
+			end
 		end
 
 		if direction == "left" then
-			if self.area.cards[rr-1] then
-				return self.area.cards[rr-1]
+			if self.area.cards[rr - 1] then
+				return self.area.cards[rr - 1]
 			end
 		else
-			if self.area.cards[rr+1] then
-				return self.area.cards[rr+1]
+			if self.area.cards[rr + 1] then
+				return self.area.cards[rr + 1]
 			end
 		end
 	end
@@ -501,7 +514,7 @@ function NAMETEAM.get_all_stickers(card)
 	local keys = {}
 	for key, _ in pairs(SMODS.Stickers) do
 		if card.ability[key] then
-			keys[#keys+1] = key
+			keys[#keys + 1] = key
 		end
 	end
 	return keys
@@ -516,13 +529,18 @@ function NAMETEAM.len(t)
 end
 
 function NAMETEAM.perc(mod, p)
-	local per = ((mod) / (100)) * (p)
-	return (per)
+	local per = (mod / 100) * p
+	return per
 end
 
 function NAMETEAM.attention_text(_text, _hold, _major, _scale, _offset, _align)
 	attention_text({
-		scale = (_scale or 1.4), text = _text, hold = (_hold or 2), align = (_align or 'cm'), offset = (_offset or {x = 0,y = -2.7}),major = (_major or G.play)
+		scale = (_scale or 1.4),
+		text = _text,
+		hold = (_hold or 2),
+		align = (_align or "cm"),
+		offset = (_offset or { x = 0, y = -2.7 }),
+		major = (_major or G.play),
 	})
 end
 
@@ -530,41 +548,40 @@ function NAMETEAM.all_on(card, area, direction, ability, check_for_key_only) -- 
 	local cae = {
 		rr = nil,
 		num = 0,
-		tab = {}
+		tab = {},
 	}
 	for i = 1, #area do
-        if area[i] == card then
-            cae.rr = i
-        end
-    end
+		if area[i] == card then
+			cae.rr = i
+		end
+	end
 
 	if cae.rr then
 		for i = 1, #area do
 			if not direction or (direction and direction ~= "left") then
 				if i > cae.rr then
 					if ability then
-						
-						cae.tab[#cae.tab+1] = area[i]
+						cae.tab[#cae.tab + 1] = area[i]
 						area[i].ability[ability] = true
 					end
 					if area[i].config.center.key == check_for_key_only and not area[i].debuff then
-							return true
-						elseif (check_for_key_only) and area[i].debuff then
-							return false
-						end
+						return true
+					elseif check_for_key_only and area[i].debuff then
+						return false
+					end
 					cae.num = cae.num + 1
 				end
 			else
 				if i < cae.rr then
 					if ability then
-						cae.tab[#cae.tab+1] = area[i]
+						cae.tab[#cae.tab + 1] = area[i]
 						area[i].ability[ability] = true
 					end
 					if area[i].config.center.key == check_for_key_only and not area[i].debuff then
-							return true
-						elseif (check_for_key_only) and area[i].debuff then
-							return false
-						end
+						return true
+					elseif check_for_key_only and area[i].debuff then
+						return false
+					end
 					cae.num = cae.num + 1
 				end
 			end
@@ -588,62 +605,63 @@ function NAMETEAM.remove_element(t, element)
 	return ret
 end
 
-
 function NAMETEAM.goback()
-    --G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
-    if G.GAME.round_resets.blind_states.Teeny == 'Select' then return nil end
-
-	if not NAMETEAM.skipped then
-    	ease_round(-1)
+	--G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
+	if G.GAME.round_resets.blind_states.Teeny == "Select" then
+		return nil
 	end
 
-    if G.GAME.round_resets.blind_states.Small == 'Select' then
-        G.blind_select.alignment.offset.x = 5
-        G.GAME.round_resets.blind_states.Teeny = "Select"
+	if not NAMETEAM.skipped then
+		ease_round(-1)
+	end
+
+	if G.GAME.round_resets.blind_states.Small == "Select" then
+		G.blind_select.alignment.offset.x = 5
+		G.GAME.round_resets.blind_states.Teeny = "Select"
 		G.blind_select_opts.teeny.children.alert = nil
-        G.GAME.round_resets.blind_states.Small = 'Upcoming'
-        G.GAME.round_resets.blind_states.Big = 'Upcoming'
-        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
-        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
-        G.GAME.blind_on_deck = 'Teeny'
-    elseif G.GAME.round_resets.blind_states.Big == "Select" then
-        G.blind_select.alignment.offset.x = 1
-        G.GAME.round_resets.blind_states.Teeny = "Defeated"
-        G.GAME.round_resets.blind_states.Small = 'Select'
+		G.GAME.round_resets.blind_states.Small = "Upcoming"
+		G.GAME.round_resets.blind_states.Big = "Upcoming"
+		G.GAME.round_resets.blind_states.Boss = "Upcoming"
+		G.GAME.round_resets.blind_states.CEO = "Upcoming"
+		G.GAME.blind_on_deck = "Teeny"
+	elseif G.GAME.round_resets.blind_states.Big == "Select" then
+		G.blind_select.alignment.offset.x = 1
+		G.GAME.round_resets.blind_states.Teeny = "Defeated"
+		G.GAME.round_resets.blind_states.Small = "Select"
 		G.blind_select_opts.small.children.alert = nil
-        G.GAME.round_resets.blind_states.Big = 'Upcoming'
-        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
-        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
-        G.GAME.blind_on_deck = 'Small'
-    elseif G.GAME.round_resets.blind_states.Boss == "Select" then
-        G.blind_select.alignment.offset.x = -4
-        G.GAME.round_resets.blind_states.Teeny = "Defeated"
-        G.GAME.round_resets.blind_states.Small = 'Defeated'
-        G.GAME.round_resets.blind_states.Big = 'Select'
+		G.GAME.round_resets.blind_states.Big = "Upcoming"
+		G.GAME.round_resets.blind_states.Boss = "Upcoming"
+		G.GAME.round_resets.blind_states.CEO = "Upcoming"
+		G.GAME.blind_on_deck = "Small"
+	elseif G.GAME.round_resets.blind_states.Boss == "Select" then
+		G.blind_select.alignment.offset.x = -4
+		G.GAME.round_resets.blind_states.Teeny = "Defeated"
+		G.GAME.round_resets.blind_states.Small = "Defeated"
+		G.GAME.round_resets.blind_states.Big = "Select"
 		G.blind_select_opts.big.children.alert = nil
-        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
-        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
-        G.GAME.blind_on_deck = 'Big'
-    elseif G.GAME.round_resets.blind_states.CEO == "Select" then
-        G.GAME.round_resets.blind_states.Teeny = "Defeated"
-        G.GAME.round_resets.blind_states.Small = 'Defeated'
-        G.GAME.round_resets.blind_states.Big = 'Defeated'
-        G.GAME.round_resets.blind_states.Boss = 'Select'
+		G.GAME.round_resets.blind_states.Boss = "Upcoming"
+		G.GAME.round_resets.blind_states.CEO = "Upcoming"
+		G.GAME.blind_on_deck = "Big"
+	elseif G.GAME.round_resets.blind_states.CEO == "Select" then
+		G.GAME.round_resets.blind_states.Teeny = "Defeated"
+		G.GAME.round_resets.blind_states.Small = "Defeated"
+		G.GAME.round_resets.blind_states.Big = "Defeated"
+		G.GAME.round_resets.blind_states.Boss = "Select"
 		G.blind_select_opts.boss.children.alert = nil
-        G.GAME.round_resets.blind_states.CEO = 'Upcoming'
-        G.GAME.blind_on_deck = 'Boss'
-    end
+		G.GAME.round_resets.blind_states.CEO = "Upcoming"
+		G.GAME.blind_on_deck = "Boss"
+	end
 end
 
 function NAMETEAM.values(operator, card, num)
 	-- proxy the cryptid stuff since this manipulate function was made for no reason and was bugged anyway.
 	-- extra parameters never used and as such obliterated
-	if operator == '*' then
-		operator = 'X'
+	if operator == "*" then
+		operator = "X"
 	end
 	return Colonparen.manipulate(card, {
 		type = operator,
-		value = num
+		value = num,
 	})
 end
 
@@ -680,16 +698,17 @@ function NAMETEAM.pool_in(pool, area)
 end
 
 function NAMETEAM.shuffle(table, seed)
-	if not seed then seed = pseudorandom("random_seed") end
+	if not seed then
+		seed = pseudorandom("random_seed")
+	end
 
 	local tab = {}
 
 	for i = 1, #table do
-		tab[#tab+1] = table[i]
+		tab[#tab + 1] = table[i]
 	end
 
 	pseudoshuffle(tab, pseudoseed(seed))
-
 
 	return tab
 end
@@ -703,12 +722,11 @@ function Card:NAMETEAM_enhancement()
 	return nil
 end
 
-
 function NAMETEAM.reverse_table(table)
 	local tab = {}
 
 	for i = 1, #table do
-		tab[#tab+1] = table[#table-(i-1)]
+		tab[#tab + 1] = table[#table - (i - 1)]
 	end
 
 	return tab
@@ -725,76 +743,92 @@ end
 function NAMETEAM.plant_in_pool()
 	if G.GAME.round_resets.blind_biome == "nameteam_davelawn" then
 		return true
-	elseif (G.GAME.selected_back and G.GAME.selected_back.name == 'b_cbean_nameteam_graveyard') and #SMODS.find_card("ti_cbean_yma_tboi_birthright") > 0 then
+	elseif
+		(G.GAME.selected_back and G.GAME.selected_back.name == "b_cbean_nameteam_graveyard")
+		and #SMODS.find_card("ti_cbean_yma_tboi_birthright") > 0
+	then
 		return true
 	else
 		return false
 	end
 end
 
-
 function NAMETEAM.set_blind(blind)
-    stop_use()
+	stop_use()
 
-    G.CONTROLLER.locks.boss_reroll = true
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-          play_sound('other1')
-          G.blind_select_opts.boss:set_role({xy_bond = 'Weak'})
-          G.blind_select_opts.boss.alignment.offset.y = 20
-          return true
-        end
-      }))
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.3,
-      func = (function()
-        local par = G.blind_select_opts.boss.parent
-        G.GAME.round_resets.blind_choices.Boss = blind
+	G.CONTROLLER.locks.boss_reroll = true
+	G.E_MANAGER:add_event(Event({
+		trigger = "immediate",
+		func = function()
+			play_sound("other1")
+			G.blind_select_opts.boss:set_role({ xy_bond = "Weak" })
+			G.blind_select_opts.boss.alignment.offset.y = 20
+			return true
+		end,
+	}))
+	G.E_MANAGER:add_event(Event({
+		trigger = "after",
+		delay = 0.3,
+		func = function()
+			local par = G.blind_select_opts.boss.parent
+			G.GAME.round_resets.blind_choices.Boss = blind
 
-        G.blind_select_opts.boss:remove()
-        G.blind_select_opts.boss = UIBox{
-          T = {par.T.x, 0, 0, 0, },
-          definition =
-            {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
-              UIBox_dyn_container({create_UIBox_blind_choice('Boss')},false,get_blind_main_colour('Boss'), mix_colours(G.C.BLACK, get_blind_main_colour('Boss'), 0.8))
-            }},
-          config = {align="bmi",
-                    offset = {x=0,y=G.ROOM.T.y + 9},
-                    major = par,
-                    xy_bond = 'Weak'
-                  }
-        }
-        par.config.object = G.blind_select_opts.boss
-        par.config.object:recalculate()
-        G.blind_select_opts.boss.parent = par
-        G.blind_select_opts.boss.alignment.offset.y = 0
-        
-        G.E_MANAGER:add_event(Event({blocking = false, trigger = 'after', delay = 0.5,func = function()
-            G.CONTROLLER.locks.boss_reroll = nil
-            return true
-          end
-        }))
+			G.blind_select_opts.boss:remove()
+			G.blind_select_opts.boss = UIBox({
+				T = { par.T.x, 0, 0, 0 },
+				definition = {
+					n = G.UIT.ROOT,
+					config = { align = "cm", colour = G.C.CLEAR },
+					nodes = {
+						UIBox_dyn_container(
+							{ create_UIBox_blind_choice("Boss") },
+							false,
+							get_blind_main_colour("Boss"),
+							mix_colours(G.C.BLACK, get_blind_main_colour("Boss"), 0.8)
+						),
+					},
+				},
+				config = {
+					align = "bmi",
+					offset = { x = 0, y = G.ROOM.T.y + 9 },
+					major = par,
+					xy_bond = "Weak",
+				},
+			})
+			par.config.object = G.blind_select_opts.boss
+			par.config.object:recalculate()
+			G.blind_select_opts.boss.parent = par
+			G.blind_select_opts.boss.alignment.offset.y = 0
 
-        save_run()
-        for i = 1, #G.GAME.tags do
-          if G.GAME.tags[i]:apply_to_run({type = 'new_blind_choice'}) then break end
-        end
-          return true
-      end)
-    }))
-  end
+			G.E_MANAGER:add_event(Event({
+				blocking = false,
+				trigger = "after",
+				delay = 0.5,
+				func = function()
+					G.CONTROLLER.locks.boss_reroll = nil
+					return true
+				end,
+			}))
 
-  function Card:cbean_has_sticker()
+			save_run()
+			for i = 1, #G.GAME.tags do
+				if G.GAME.tags[i]:apply_to_run({ type = "new_blind_choice" }) then
+					break
+				end
+			end
+			return true
+		end,
+	}))
+end
+
+function Card:cbean_has_sticker()
 	for k, v in pairs(SMODS.Stickers) do
 		if self.ability[k] then
 			return true
 		end
 	end
 	return false
-  end
-
+end
 
 function Card:cbean_is_consumable()
 	for k, v in pairs(SMODS.ConsumableTypes) do
@@ -842,4 +876,36 @@ function NAMETEAM.shop_sign(sign)
 			return true
 		end,
 	}))
+end
+
+function NAMETEAM.blackhole(from, allow_sound)
+	update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize('k_all_hands'),chips = '...', mult = '...', level=''})
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2, func = function()
+			if allow_sound then
+            	play_sound('tarot1')
+			end
+            from:juice_up(0.8, 0.5)
+            G.TAROT_INTERRUPT_PULSE = true
+            return true end }))
+        update_hand_text({delay = 0}, {mult = '+', StatusText = true})
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
+            if allow_sound then
+            	play_sound('tarot1')
+			end
+            from:juice_up(0.8, 0.5)
+            return true end }))
+        update_hand_text({delay = 0}, {chips = '+', StatusText = true})
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
+           	if allow_sound then
+            	play_sound('tarot1')
+			end
+            from:juice_up(0.8, 0.5)
+            G.TAROT_INTERRUPT_PULSE = nil
+            return true end }))
+        update_hand_text({sound = 'button', volume = 0.7, pitch = 0.9, delay = 0}, {level='+1'})
+        delay(1.3)
+        for k, v in pairs(G.GAME.hands) do
+            level_up_hand(from, k, true)
+        end
+        update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
 end
