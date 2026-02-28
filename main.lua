@@ -764,13 +764,15 @@ end
 local main_menu_plant_check = Game.main_menu
 function Game:main_menu(change_context)
 	local plant_check = main_menu_plant_check(self, change_context)
-
+	local plant_count = 0
 	for k, v in pairs(G.P_CENTERS) do
 		if v.atlas == 'cbean_NAMETEAM_PlantPlaceholder' then
 			local name = localize { type = 'name_text', set = "Joker", key = v.key }
+			plant_count = plant_count + 1
 			print(name)
 		end
 	end
+	print("Plants missing art: " .. plant_count)
 
 	return plant_check
 end
