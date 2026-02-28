@@ -748,7 +748,7 @@ YMA.start_shop_transition()
 
   G.dreamlands_consumeable_card_holder = CardArea(
       G.hand.T.x+0,
-      G.dreamlands_consumeable_card_holder_default_pos or (G.hand.T.y+G.ROOM.T.y + 9),
+      (G.hand.T.y+G.ROOM.T.y + 9),
       math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
       1.05*G.CARD_H, 
       {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
@@ -768,7 +768,6 @@ YMA.start_shop_transition()
   G.SHOP_SIGN.UIRoot.UIBox:recalculate()
   show_location(G.yma_dreamland)
   YMA.end_shop_transition()
-  G.dreamlands_consumeable_card_holder_default_pos = G.dreamlands_consumeable_card_holder_default_pos or G.dreamlands_consumeable_card_holder.T.y
 end
 
 G.FUNCS.hide_yma_dreamland = function(e)
