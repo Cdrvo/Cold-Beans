@@ -29,7 +29,7 @@ return {
 					"the {C:attention}Face Cards{}",
 					"in your deck and",
 					"a copy of {C:attention,T:j_smiley}Smiley Face{}",
-					"{C:inactive}(So thats where they went...)"
+					"{C:inactive}(So that's where they went...)"
 				}
 			},
 			b_cbean_nameteam_graveyard = {
