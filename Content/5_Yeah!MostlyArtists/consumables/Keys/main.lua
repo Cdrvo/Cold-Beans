@@ -12,6 +12,8 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context, ins
         temp_table[k] = v
     end
 
+    card.config.center.pvz_plant = false
+
     local temp_card = victim_joker
     local temp_set = victim_joker.config.center.set
 
