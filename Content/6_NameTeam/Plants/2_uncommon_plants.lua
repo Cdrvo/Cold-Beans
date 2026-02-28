@@ -4909,15 +4909,18 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers",
+	pos = { x = 7, y = 13 },
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "night_cap",
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = true,

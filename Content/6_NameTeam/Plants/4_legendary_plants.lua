@@ -53,7 +53,8 @@ SMODS.Joker({
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "mega_gattling_pea",
 	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 0, y = 10 },
+	pos = { x = 3, y = 13 },
+	soul_pos = {x= 4, y=13 },
 	cost = 10,
 	beans_credits = {
 		code = "Revo",
@@ -100,7 +101,8 @@ SMODS.Joker({
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "gloom_shroom",
 	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 5, y = 6 },
+	pos = { x = 5, y = 13 },
+	soul_pos = { x = 6, y = 13 },
 	cost = 10,
 	beans_credits = {
 		code = "Revo",
