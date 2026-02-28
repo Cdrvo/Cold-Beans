@@ -83,6 +83,9 @@ end
 local start_run_hook = Game.start_run
 function Game:start_run(args)
 	start_run_hook(self, args)
+	if G.consumeables and G.consumeables.config.highlighted_limit < 2 then
+		 G.consumeables.config.highlighted_limit =  G.consumeables.config.highlighted_limit + 1
+	end
 	---@type integer
 	G.GAME.stationery_num_accepted = G.GAME.stationery_num_accepted or 2
 	---@type string[]
