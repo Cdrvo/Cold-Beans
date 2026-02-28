@@ -11026,6 +11026,16 @@ return {
 					"#2#{C:attention}#3#s",
 					"{C:inactive,s:0.8}(Enhancement changes based on current Biome)"
 				}
+			},
+			c_cbean_journey_afterlife = {
+				name = 'The Journey',
+				text = {
+					"{C:attention}#1# {}selected cards",
+					"permanently gain",
+					"{C:mult}+#2#{} Mult",
+					"{C:inactive,s:0.8}(Enhancement changes based on current Biome)",
+					"{C:inactive,s:0.8}(Special effect while in The Afterlife)"
+				}
 			}
 		},
 		Voucher = {
