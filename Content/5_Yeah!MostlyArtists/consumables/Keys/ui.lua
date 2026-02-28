@@ -783,9 +783,7 @@ G.FUNCS.hide_yma_dreamland = function(e)
         func = function()
             if G.dreamlands_consumeable_card_holder then
                 if #G.dreamlands_consumeable_card_holder.cards > 0 then
-                    for k, v in pairs(G.dreamlands_consumeable_card_holder.cards) do 
-                        G.FUNCS.draw_from_card_area_to_card_area(G.dreamlands_consumeable_card_holder, G.consumeables, true)
-                    end
+                    G.FUNCS.draw_from_card_area_to_card_area(G.dreamlands_consumeable_card_holder, G.consumeables, true)
                 end
             end
             return true
