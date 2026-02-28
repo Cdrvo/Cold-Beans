@@ -402,11 +402,11 @@ Colonparen.LowerGreekBlind = SMODS.Blind:extend {
 	register = function(self)
 		self.name = self.name or self.key
 		self.colonparen_blindtype = 'Greek';
-
 		SMODS.Blind.super.register(self)
 		Colonparen.SpecialBlinds[self.key] = self;
 	end,
 	inject = function(self, i)
+		self.spawn_info = {}
 		-- no pools to query length of, so we assign order manually
 		if not self.taken_ownership then
 			self.order = 30 + i
@@ -440,6 +440,7 @@ Colonparen.UpperGreekBlind = SMODS.Blind:extend {
 		Colonparen.SpecialBlinds[self.key] = self;
 	end,
 	inject = function(self, i)
+		self.spawn_info = {}
 		-- no pools to query length of, so we assign order manually
 		if not self.taken_ownership then
 			self.order = 30 + i
