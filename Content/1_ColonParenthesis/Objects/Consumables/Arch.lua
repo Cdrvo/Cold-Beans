@@ -898,7 +898,7 @@ Colonparen.Architecture {
             end
             card.ability.extra.count = card.ability.extra.count + 1;
 
-            if (card.ability.extra.count > 3) then
+            if (card.ability.extra.count > 2) then
                 return {
                     colonparen_complete = true,
                     colonparen_card = card
