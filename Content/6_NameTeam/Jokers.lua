@@ -3494,7 +3494,6 @@ SMODS.Joker({
             local tester = math.random(1, 20)
             if tester == 1 then
                 card.ability.extra.vid_played = false
-                print("Can watch again")
             end
         end
         if context.before and not context.blueprint then
