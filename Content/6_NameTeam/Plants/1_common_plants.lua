@@ -2001,6 +2001,7 @@ SMODS.Joker({
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 0, y = 10 },
 	key = "sea_flora",
