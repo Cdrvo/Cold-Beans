@@ -12,15 +12,6 @@ NAMETEAM.secret_video = love_video
 
 function NAMETEAM.start_secret_video()
 	NAMETEAM.secret_video:play()
-	G.E_MANAGER:add_event(Event({
-		trigger = "after",
-		delay = 213,
-		timer = "REAL",
-		func = function()
-			NAMETEAM.end_secret_video()
-			return true
-		end,
-	}))
 end
 
 function NAMETEAM.end_secret_video()
@@ -42,6 +33,9 @@ end
 local keypress_hook = love.keypressed
 function love.keypressed(key)
 	if NAMETEAM.secret_video:isPlaying() then
+		if key == "escape" then
+	      NAMETEAM.end_secret_video()
+	   	end
 		return
 	end
     return keypress_hook(key)

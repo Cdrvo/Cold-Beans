@@ -3455,13 +3455,13 @@ SMODS.Joker({
 
 SMODS.Joker({
     key = "nteam_rick_astley",
-    config = { extra = { xmult = 1, xmult_inc = 0.1, vid_played = false } },
+    config = { extra = { xmult = 1, xmult_inc = 0.1, vid_played = false, played_once = false } },
     rarity = 2,
     atlas = "NAMETEAM_Jokers3",
     pos = { x = 3, y = 5 },
     cost = 6,
     loc_vars = function(self, info_queue, card)
-        if not card.ability.extra.vid_played
+        if not card.ability.extra.played_once
             and not (ColdBeansConfig and ColdBeansConfig["copyright_disabled"])
         then
             info_queue[#info_queue + 1] = {
@@ -3488,6 +3488,14 @@ SMODS.Joker({
             return {
                 xmult = cae.xmult,
             }
+        end
+        --Its not important for the reload to be seed dependent, so I am just doing math.random()
+        if context.after then
+            local tester = math.random(1, 20)
+            if tester == 1 then
+                card.ability.extra.vid_played = false
+                print("Can watch again")
+            end
         end
         if context.before and not context.blueprint then
             local ranks = {}
