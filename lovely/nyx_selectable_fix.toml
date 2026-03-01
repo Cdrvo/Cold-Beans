@@ -14,11 +14,9 @@ e.config.button = 'use_card'
 '''
 payload = '''
 if area and #G[area].cards < G[area].config.card_limit + edition_card_limit then
-        print("Help!!!")
         e.config.colour = G.C.GREEN
         e.config.button = 'use_card'
 elseif card.ability.consumeable and next(SMODS.find_card("c_cbean_sdown_nyx")) then
-        print("Help!!!")
         e.config.colour = G.C.GREEN
         e.config.button = 'use_card'
 '''
