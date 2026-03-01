@@ -250,7 +250,7 @@ return {
 			bl_cbean_colon_compass = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Compass",
 				text = {
-					"{X:purple,C:white}+X1{} base when",
+					"Gains {X:purple,C:white}X1{} base when",
 					"a hand is played"
 				}
 			},
@@ -11485,6 +11485,7 @@ return {
 			b_yma_keys_cards                    = "Keys",
 			k_yma_key_plus_use                  = "Use",
 			k_cbean_yma_street                  = "Street",
+			k_cbean_all_hr_hands				= "All HR Hands"
 			k_hell_sac                          = "Sacrifice",
 			k_yma_chance_to_fail_key            = "(Chance to break)",
 			k_yma_chance_to_fail_belssing       = "(Chance to fail)",

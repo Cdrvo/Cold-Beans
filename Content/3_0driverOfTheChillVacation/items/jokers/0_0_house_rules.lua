@@ -90,6 +90,17 @@ SMODS.Joker {                   --Modifed from Vanilla Remade's example
     }
 }
 
+local atp = SMODS.add_to_pool
+function SMODS.add_to_pool(prototype_obj, args)
+    local ret = atp(prototype_obj, args)
+
+    if not(next(SMODS.find_card('j_cbean_0chill_house_rules'))) and prototype_obj.key == "0chill_house_rules_planet" then
+        ret = false
+    end
+
+    return ret
+end
+
 function G.FUNCS.display_house_rules()
     if #SMODS.find_card('j_cbean_0chill_house_rules') > 0 then
         return { key = "cbean_house_rules_hint", set = "Other" }

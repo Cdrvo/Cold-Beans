@@ -15,7 +15,7 @@ SMODS.Consumable { --Modifed from Vanilla Remade's Black Hole
     },
     use = function(self, card, area, copier)
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
+            { handname = localize('k_cbean_all_hr_hands'), chips = '...', mult = '...', level = '' })
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.2,
