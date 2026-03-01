@@ -11840,7 +11840,7 @@ return {
 			["cbean_sdown_bobtail"] = {
 				"4 cards in a row (consecutive ranks) with",
 				"all cards sharing the same suit",
-				"Prioritized below Straights"
+				"Prioritized below Straights and Flushes"
 			},
 
 			--House Rules Hands
