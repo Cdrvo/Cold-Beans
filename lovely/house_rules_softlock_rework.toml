@@ -7,14 +7,13 @@ priority = 0
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
-pattern = '''if (not v.config.softlock or G.GAME.hands[v.config.hand_type].played > 0) then
+pattern = '''elseif v.enhancement_gate then'''
+position = "before"
+payload = '''if (not v.config.softlock or (v.key == "c_cbean_0chill_house_rules_planet" and (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) )) then
 add = true
-'''
-position = "at"
-payload = '''if (not v.config.softlock or G.GAME.hands[v.config.hand_type].played > 0) then
-add = true
-elseif (not v.config.softlock or (v.key == "c_cbean_0chill_house_rules_planet" and (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) )) then
-add = true
+elseif (v.key == "c_cbean_0chill_house_rules_planet" and not (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) ) then
+add = false
+end
 '''
 match_indent = true
 overide = true
