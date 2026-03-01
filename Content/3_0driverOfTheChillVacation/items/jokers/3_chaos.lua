@@ -6,7 +6,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     order = 3,
     blueprint_compat = true,
     cost = 8,
-    config = { extra = { x_mult = 2, type = "cbean_sdown_antistraight" }, },
+    config = { extra = { x_mult = 3, type = "cbean_sdown_antistraight" }, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.x_mult, localize(card.ability.extra.type, 'poker_hands') } }
     end,

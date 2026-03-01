@@ -90,15 +90,14 @@ SMODS.Joker {                   --Modifed from Vanilla Remade's example
     }
 }
 
-local atp = SMODS.add_to_pool
+local add_to_pool_ref = SMODS.add_to_pool
 function SMODS.add_to_pool(prototype_obj, args)
-    local ret = atp(prototype_obj, args)
-
-    if not(next(SMODS.find_card('j_cbean_0chill_house_rules'))) and prototype_obj.key == "0chill_house_rules_planet" then
-        ret = false
+    local add, options = add_to_pool_ref(prototype_obj, args)
+    if (not next(SMODS.find_card('j_cbean_0chill_house_rules')))
+    and prototype_obj.key == "c_cbean_0chill_house_rules_planet" then
+        return prototype_obj.original_mod and add or false, options
     end
-
-    return ret
+    return add, options
 end
 
 function G.FUNCS.display_house_rules()

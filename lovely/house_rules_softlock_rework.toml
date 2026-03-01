@@ -13,7 +13,7 @@ add = true
 position = "at"
 payload = '''if (not v.config.softlock or G.GAME.hands[v.config.hand_type].played > 0) then
 add = true
-elseif (not v.config.softlock or SMODS.is_poker_hand_visible(v.config.hand_type)) then
+elseif (not v.config.softlock or (v.key == "c_cbean_0chill_house_rules_planet" and (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) )) then
 add = true
 '''
 match_indent = true
