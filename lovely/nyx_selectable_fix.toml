@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 2
+
+# Patches can_select_from_booster to allow nyx to work
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "at"
+pattern = '''if area and #G[area].cards < G[area].config.card_limit + edition_card_limit then
+e.config.colour = G.C.GREEN
+e.config.button = 'use_card'
+'''
+payload = '''
+if area and #G[area].cards < G[area].config.card_limit + edition_card_limit then
+        print("Help!!!")
+        e.config.colour = G.C.GREEN
+        e.config.button = 'use_card'
+elseif card.ability.consumeable and next(SMODS.find_card("c_cbean_sdown_nyx")) then
+        print("Help!!!")
+        e.config.colour = G.C.GREEN
+        e.config.button = 'use_card'
+'''
+match_indent = true

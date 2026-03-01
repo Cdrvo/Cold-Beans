@@ -12,8 +12,6 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context, ins
         temp_table[k] = v
     end
 
-    card.config.center.pvz_plant = false
-
     local temp_card = victim_joker
     local temp_set = victim_joker.config.center.set
 
@@ -23,13 +21,7 @@ function YMA_reroll_card(card, key, set, append, temp_key, ability, context, ins
 
 
     local replacement_pool = {}
-        local available_joker_pool_keys, available_joker_pool_centers = get_current_pool(set or temp_set), {}
-        for k, v in ipairs(available_joker_pool_keys) do
-            if G.P_CENTERS[v] then
-                available_joker_pool_centers[#available_joker_pool_centers+1] = G.P_CENTERS[v]
-            end
-        end
-    for _, center_data in ipairs(available_joker_pool_centers) do
+    for _, center_data in ipairs(G.P_CENTER_POOLS[set or temp_set]) do
         local current_rarity = center_data.rarity or 1
         if current_rarity == victim_rarity then
             if center_data.key ~= victim_key then
@@ -546,158 +538,101 @@ function yam_ease_blind_requirement(mod_mult, mod_add)
     end
 end
 
--- Removes the USE button from Keys
-local sell_use_ref = G.UIDEF.use_and_sell_buttons
+--Removes use buttons off of the keys and their spectral
+local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
-    if not card or not card.ability or card.ability.set ~= "yma_keys" then
-        return sell_use_ref(card)
-    end
-
-    local sell = {
-        n = G.UIT.C,
-        config = { align = "cr" },
-        nodes = {
-            {
-                n = G.UIT.C,
-                config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card' },
-                nodes = {
-                    { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
-                    {
-                        n = G.UIT.C,
-                        config = { align = "tm" },
-                        nodes = {
-                            {
-                                n = G.UIT.R,
-                                config = { align = "cm", maxw = 1.25 },
-                                nodes = {
-                                    { n = G.UIT.T, config = { text = localize('b_sell'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
-                                }
+    local abc = G_UIDEF_use_and_sell_buttons_ref(card)
+    if (card.area == G.consumeables and (card.ability.set == "yma_keys" or card.config.center.key == "c_cbean_yma_omega")) then 
+        sell = {
+            n = G.UIT.C,
+            config = { align = "cr" },
+            nodes = { --Default Sell Button
+                {
+                    n = G.UIT.C,
+                    config = {
+                        ref_table = card,
+                        align = "cr",
+                        padding = 0.1,
+                        r = 0.08,
+                        minw = 1.25,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.UI.BACKGROUND_INACTIVE,
+                        one_press = true,
+                        button = "sell_card",
+                        func = "can_sell_card",
+                        handy_insta_action = "sell",
+                    },
+                    nodes = {
+                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                        {
+                            n = G.UIT.C,
+                            config = { align = "tm" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("b_sell"),
+                                                colour = G.C.UI.TEXT_LIGHT,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm" },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("$"),
+                                                colour = G.C.WHITE,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                ref_table = card,
+                                                ref_value = "sell_cost_label",
+                                                colour = G.C.WHITE,
+                                                scale = 0.55,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
                             },
-                            {
-                                n = G.UIT.R,
-                                config = { align = "cm" },
-                                nodes = {
-                                    { n = G.UIT.T, config = { text = localize('$'), colour = G.C.WHITE, scale = 0.4, shadow = true } },
-                                    { n = G.UIT.T, config = { ref_table = card, ref_value = 'sell_cost_label', colour = G.C.WHITE, scale = 0.55, shadow = true } }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+                        },
+                    },
+                },
+            },
         }
-    }
-
-    if card.area == G.pack_cards and G.pack_cards then
         return {
             n = G.UIT.ROOT,
             config = { padding = 0, colour = G.C.CLEAR },
             nodes = {
                 {
-                    n = G.UIT.R,
-                    config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card' },
+                    n = G.UIT.C,
+                    config = { padding = 0.1, align = "cl" },
                     nodes = {
-                        { n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
-                    }
-                }
-            }
+                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
+                            sell,
+                        } 
+                    },
+                    },
+                },
+            },
         }
     end
-
-    return {
-        n = G.UIT.ROOT,
-        config = { padding = 0, colour = G.C.CLEAR },
-        nodes = {
-            {
-                n = G.UIT.C,
-                config = { padding = 0.15, align = 'cl' },
-                nodes = {
-                    {
-                        n = G.UIT.R,
-                        config = { align = 'cl' },
-                        nodes = { sell }
-                    }
-                }
-            }
-        }
-    }
-end
-
--- Another definition to cover the spectral card
-local sell_use_ref = G.UIDEF.use_and_sell_buttons
-function G.UIDEF.use_and_sell_buttons(card)
-    if not card or not card.ability or (card.config.center.key ~= "c_cbean_yma_omega") then
-        return sell_use_ref(card)
-    end
-
-    local sell = {
-        n = G.UIT.C,
-        config = { align = "cr" },
-        nodes = {
-            {
-                n = G.UIT.C,
-                config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card' },
-                nodes = {
-                    { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
-                    {
-                        n = G.UIT.C,
-                        config = { align = "tm" },
-                        nodes = {
-                            {
-                                n = G.UIT.R,
-                                config = { align = "cm", maxw = 1.25 },
-                                nodes = {
-                                    { n = G.UIT.T, config = { text = localize('b_sell'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
-                                }
-                            },
-                            {
-                                n = G.UIT.R,
-                                config = { align = "cm" },
-                                nodes = {
-                                    { n = G.UIT.T, config = { text = localize('$'), colour = G.C.WHITE, scale = 0.4, shadow = true } },
-                                    { n = G.UIT.T, config = { ref_table = card, ref_value = 'sell_cost_label', colour = G.C.WHITE, scale = 0.55, shadow = true } }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    if card.area == G.pack_cards and G.pack_cards then
-        return {
-            n = G.UIT.ROOT,
-            config = { padding = 0, colour = G.C.CLEAR },
-            nodes = {
-                {
-                    n = G.UIT.R,
-                    config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card' },
-                    nodes = {
-                        { n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
-                    }
-                }
-            }
-        }
-    end
-
-    return {
-        n = G.UIT.ROOT,
-        config = { padding = 0, colour = G.C.CLEAR },
-        nodes = {
-            {
-                n = G.UIT.C,
-                config = { padding = 0.15, align = 'cl' },
-                nodes = {
-                    {
-                        n = G.UIT.R,
-                        config = { align = 'cl' },
-                        nodes = { sell }
-                    }
-                }
-            }
-        }
-    }
+    return abc
 end
 
 SMODS.Atlas({
