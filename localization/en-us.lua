@@ -3638,7 +3638,6 @@ return {
 						"{C:attention}Chumblocks{} each hand",
 					},
 					{
-						"{C:red,E:1,s:1.1}CAN'T BE SOLD!",
 						"{C:red,E:1,s:1.1}Self destructs{}",
 						"when triggered",
 						"{C:inactive}Its so over{}"
