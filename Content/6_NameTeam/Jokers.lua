@@ -1676,7 +1676,7 @@ SMODS.Joker({
 
 SMODS.Joker({
     key = "nameteam_riverstyx",
-    config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false } },
+    config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false }, immutable = {previous_slots = 0} },
     rarity = 3,
     atlas = "NAMETEAM_Jokers2",
     pos = { x = 10, y = 8 },
@@ -1707,23 +1707,27 @@ SMODS.Joker({
             context.selling_card
             and context.card.config.center.set == "Joker"
             and context.card ~= card
-            and not card.ability.extra.slots_given
             and not context.blueprint
         then
             card.ability.extra.current_sold = card.ability.extra.current_sold + 1
 
-            if card.ability.extra.current_sold >= card.ability.extra.target_sold then
+            if ((card.ability.extra.current_sold >= card.ability.extra.target_sold) and not card.ability.extra.slots_given) then
                 card.ability.extra.slots_given = true
-                G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
+                --G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
 
                 return { message = localize("k_active_ex") }
             else
                 return { message = card.ability.extra.current_sold .. "/" .. card.ability.extra.target_sold }
             end
         end
+        if card.ability.extra.slots_given and (card.ability.extra.joker_slots ~= card.ability.immutable.previous_slots) then
+            G.jokers.config.card_limit = G.jokers.config.card_limit + (card.ability.extra.joker_slots - card.ability.immutable.previous_slots)
+            card.ability.immutable.previous_slots = card.ability.extra.joker_slots
+            --print(card.ability.immutable.previous_slots)
+        end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        if card.ability.extra.slots_given then
+        if card.ability.extra.slots_given and not from_debuff then
             G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
         end
     end,
