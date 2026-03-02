@@ -3694,12 +3694,14 @@ YMA.TBOI_ITEMS {
                         table.insert(vaild_cards, G.play.cards[i])
                     end
                 end
-                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                    local eligible_card = pseudorandom_element(vaild_cards, pseudoseed('yma_tboi_rubber_cement'))
-                    local edition = poll_edition('yma_tboi_rubber_cement', nil, false, true)
-                    eligible_card:set_edition(edition, true)
-                    card:juice_up(0.3, 0.5)
-                return true end }))
+                if #vaild_cards > 0 then
+                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                        local eligible_card = pseudorandom_element(vaild_cards, pseudoseed('yma_tboi_rubber_cement'))
+                        local edition = poll_edition('yma_tboi_rubber_cement', nil, false, true)
+                        eligible_card:set_edition(edition, true)
+                        card:juice_up(0.3, 0.5)
+                    return true end }))
+                end
             end
         end
     end,

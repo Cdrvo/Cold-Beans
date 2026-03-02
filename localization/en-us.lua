@@ -8363,8 +8363,8 @@ return {
 			cbean_poor = {
 				name = "Poor",
 				text = {
-					"All earned money",
-					"is halved",
+					"All money earned",
+					"or lost is halved",
 				},
 			},
 			cbean_square = {
