@@ -1,3 +1,4 @@
+--Commented out all placeholder plants for now. There is simply no time before realse
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -975,6 +976,7 @@ SMODS.Joker({
 	end,
 })
 
+--[[
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -999,6 +1001,7 @@ SMODS.Joker({
 		local cae = card.ability.extra
 	end,
 })
+]]
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -1223,6 +1226,7 @@ SMODS.Joker({
 	end,
 })
 
+--[[
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1292,6 +1296,7 @@ SMODS.Joker({
 		end
 	end,
 })
+]]
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -1421,6 +1426,7 @@ SMODS.Joker({
 	end,
 })
 
+--[[
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1473,6 +1479,7 @@ SMODS.Joker({
 		end
 	end,
 })
+]]
 
 --[[SMODS.Joker({
 	pvz_plant = true,
@@ -1658,6 +1665,7 @@ SMODS.Joker({
 	end,
 })
 
+--[[
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1689,6 +1697,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1884,6 +1893,7 @@ SMODS.Joker({
 		end
 	end,
 })
+]]
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantJokers",
@@ -1918,6 +1928,8 @@ SMODS.Joker({
 		end
 	end,
 })
+
+--[[
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
@@ -2031,6 +2043,7 @@ SMODS.Joker({
 		end
 	end,
 })
+]]
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantJokers",
@@ -2119,6 +2132,7 @@ SMODS.Joker({
 	end,
 })
 
+--[[
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
@@ -2431,6 +2445,7 @@ SMODS.Joker({
 		end
 	end,
 })
+]]
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -2468,7 +2483,7 @@ SMODS.Joker({
 	end,
 })
 
-
+--[[
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -2515,3 +2530,4 @@ SMODS.Joker({
         end
     end
 })
+]]
