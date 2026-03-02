@@ -18,7 +18,7 @@ SMODS.Joker {  -- Modified from Cryptid's Cotton Candy
 		then
 			for i = 1, #G.jokers.cards do
                 local j = G.jokers.cards[i]
-                if j ~= card and j.edition ~= "e_cbean_sd_frozen" then
+                if j ~= card and j.edition == nil then
                     j:set_edition("e_cbean_sd_frozen")
                 end
             end
