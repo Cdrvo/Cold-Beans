@@ -542,6 +542,7 @@ end
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
     local abc = G_UIDEF_use_and_sell_buttons_ref(card)
+    local sell, use = nil, nil
     if (card.area == G.consumeables and (card.ability.set == "yma_keys" or card.config.center.key == "c_cbean_yma_omega")) then 
         sell = {
             n = G.UIT.C,
@@ -633,6 +634,113 @@ function G.UIDEF.use_and_sell_buttons(card)
         }
     end
     return abc
+end
+
+
+G.FUNCS.cbean_pre_use = function(e)
+    local card = e.config.ref_table
+    card.ability.cbean_dont_select = true
+	G.FUNCS.use_card(e)
+end
+
+G.FUNCS.cbean_can_use_consumeable = function(e)
+	if e.config.ref_table:can_use_consumeable() then
+		e.config.colour = G.C.RED
+		e.config.button = "cbean_pre_use"
+	else
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+		e.config.button = nil
+	end
+end
+
+local G_UIDEF_use_and_sell_buttons_ref2 = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+	local abc = G_UIDEF_use_and_sell_buttons_ref2(card)
+	if
+		card.ability
+		and card.ability.consumeable
+		and G.pack_cards
+		and card.area == G.pack_cards
+		and G.GAME.used_vouchers["v_cbean_yma_grand_theft"]
+	then
+		print("True")
+		return {
+			n = G.UIT.ROOT,
+			config = { padding = 0, colour = G.C.CLEAR },
+			nodes = {
+				{
+					n = G.UIT.C,
+					config = {
+						ref_table = card,
+						align = "bm",
+						padding = 0.1,
+						r = 0.08,
+						minw = 0.5,
+						hover = true,
+						shadow = true,
+						colour = G.C.UI.BACKGROUND_INACTIVE,
+						one_press = true,
+						button = "cbean_pre_use",
+						func = "cbean_can_use_consumeable",
+					},
+					nodes = {
+						--{n=G.UIT.B, config = {w=0.1,h=0.6}},
+						{
+							n = G.UIT.C,
+							config = { align = "bm" },
+							nodes = {
+								{
+									n = G.UIT.R,
+									config = { align = "bm", maxw = 0.75 },
+									nodes = {
+										{
+											n = G.UIT.T,
+											config = {
+												text = localize("b_use"),
+												colour = G.C.UI.TEXT_LIGHT,
+												scale = 0.35,
+												shadow = true,
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					n = G.UIT.C,
+					config = {
+						ref_table = card,
+						r = 0.08,
+						padding = 0.1,
+						align = "bm",
+						minw = 0.25 * card.T.w - 0.15,
+						maxw = 0.5 * card.T.w - 0.15,
+						minh = 0.3 * card.T.h,
+						hover = true,
+						shadow = true,
+						colour = G.C.UI.BACKGROUND_INACTIVE,
+						one_press = true,
+						button = "use_card",
+						func = "can_select_from_booster",
+					},
+					nodes = {
+						{
+							n = G.UIT.T,
+							config = {
+								text = localize("b_select"),
+								colour = G.C.UI.TEXT_LIGHT,
+								scale = 0.35,
+								shadow = true,
+							},
+						},
+					},
+				},
+			},
+		}
+	end
+	return abc
 end
 
 SMODS.Atlas({
