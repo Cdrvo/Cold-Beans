@@ -20,6 +20,103 @@ SMODS.ConsumableType{
     },
 }
 
+-- Removes the USE button from Blessings and their spectral
+local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+    local abc = G_UIDEF_use_and_sell_buttons_ref(card)
+    if ( card.area == G.consumeables and G.consumeables and (card.config.center.key == "c_cbean_jbill_key" or card.config.center.key == "c_cbean_jbill_blessing")) then 
+        sell = {
+            n = G.UIT.C,
+            config = { align = "cr" },
+            nodes = { --Default Sell Button
+                {
+                    n = G.UIT.C,
+                    config = {
+                        ref_table = card,
+                        align = "cr",
+                        padding = 0.1,
+                        r = 0.08,
+                        minw = 1.25,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.UI.BACKGROUND_INACTIVE,
+                        one_press = true,
+                        button = "sell_card",
+                        func = "can_sell_card",
+                        handy_insta_action = "sell",
+                    },
+                    nodes = {
+                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                        {
+                            n = G.UIT.C,
+                            config = { align = "tm" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("b_sell"),
+                                                colour = G.C.UI.TEXT_LIGHT,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm" },
+                                    nodes = {
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                text = localize("$"),
+                                                colour = G.C.WHITE,
+                                                scale = 0.4,
+                                                shadow = true,
+                                            },
+                                        },
+                                        {
+                                            n = G.UIT.T,
+                                            config = {
+                                                ref_table = card,
+                                                ref_value = "sell_cost_label",
+                                                colour = G.C.WHITE,
+                                                scale = 0.55,
+                                                shadow = true,
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        }
+        return {
+            n = G.UIT.ROOT,
+            config = { padding = 0, colour = G.C.CLEAR },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = { padding = 0.1, align = "cl" },
+                    nodes = {
+                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
+                            sell,
+                        } 
+                    },
+                    },
+                },
+            },
+        }
+    end
+    return abc
+end
+
 -- Hi, HuyTheKiller from Pissboys here
 -- I just don't like undiscovered sprites not being used or being used inappropriately ;p
 SMODS.UndiscoveredSprite {
@@ -89,7 +186,7 @@ SMODS.Consumable {
     cost = 6,
     pos = { x = 2, y = 0 },
     can_use = function(self, card)
-        return true
+        return G.hand and #G.hand.cards > 2
     end,
     use = function (self, card, area)
         local cards = {}
