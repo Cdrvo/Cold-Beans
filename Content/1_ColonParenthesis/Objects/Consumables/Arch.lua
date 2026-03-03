@@ -1497,6 +1497,9 @@ Colonparen.Architecture {
         local most = {
 
         }
+        if card then
+            most[card.config.center.key] = 1
+        end
         for i = 1, #G.jokers.cards do
             local key = G.jokers.cards[i].config.center.key;
             most[key] = (most[key] or 0) + 1;
@@ -1513,7 +1516,7 @@ Colonparen.Architecture {
     end,
     calculate = function (self, card, context)
         if context.card_added then
-            return self:evaluate_completion()
+            return self:evaluate_completion(context.card)
         end
     end
 }

@@ -427,24 +427,6 @@ function Card:complete_arch()
       G.STATES.PLAY_TAROT
       
     G.CONTROLLER.locks.use = true
-    local nc
-    if G.booster_pack and not G.booster_pack.alignment.offset.py and ((not select_to and card.ability.consumeable) or not (G.GAME.pack_choices and G.GAME.pack_choices > 1)) then
-    
-      G.booster_pack.alignment.offset.py = G.booster_pack.alignment.offset.y
-      G.booster_pack.alignment.offset.y = G.ROOM.T.y + 29
-    end
-    if G.shop and not G.shop.alignment.offset.py then
-      G.shop.alignment.offset.py = G.shop.alignment.offset.y
-      G.shop.alignment.offset.y = G.ROOM.T.y + 29
-    end
-    if G.blind_select and not G.blind_select.alignment.offset.py then
-      G.blind_select.alignment.offset.py = G.blind_select.alignment.offset.y
-      G.blind_select.alignment.offset.y = G.ROOM.T.y + 39
-    end
-    if G.round_eval and not G.round_eval.alignment.offset.py then
-      G.round_eval.alignment.offset.py = G.round_eval.alignment.offset.y
-      G.round_eval.alignment.offset.y = G.ROOM.T.y + 29
-    end
 
     if card.children.use_button then card.children.use_button:remove(); card.children.use_button = nil end
     if card.children.sell_button then card.children.sell_button:remove(); card.children.sell_button = nil end
@@ -502,8 +484,8 @@ SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, f
         
         if (key == 'colonparen_complete') and (scored_card.ability and scored_card.ability.colon_Architecture) then
             if scored_card.area == G.cbean_colon_arch then
+                scored_card.ability.colonparen_state = 2;
                 G.E_MANAGER:add_event(Event({trigger = 'immediate', func = function()
-                    scored_card.ability.colonparen_state = 2;
                     for i = 1, #G.cbean_colon_arch.cards do 
                         if G.cbean_colon_arch.cards[i] == scored_card then
                             table.remove(G.cbean_colon_arch.cards, i)
