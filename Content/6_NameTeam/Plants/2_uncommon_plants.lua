@@ -2974,7 +2974,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			mult = 10,
+			mult = 8,
 		},
 	},
 	pools = {
@@ -3013,7 +3013,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			hands = 3,
+			hands = 2,
 			xmult = 1,
 			xmult_gain = 0.5,
 		},
@@ -3024,6 +3024,12 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
+		if context.beat_boss and G.GAME.blind_on_deck == "CEO" then
+			card.ability.extra.xmult = 1
+			return{
+				message = localize("k_reset_ex")
+			}
+		end
 		if context.after and not context.blueprint and not context.repetition and not context.end_of_round then
 			if cae.hands > 1 then
 				cae.hands = cae.hands - 1
@@ -3246,6 +3252,7 @@ SMODS.Joker({
 	config = {
 		extra = {
 			xchips = 2,
+			trigger = true
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -3261,39 +3268,14 @@ SMODS.Joker({
             "The Chill Vaction" },
 		art = "cmykl",
 	},
-	remove_from_deck = function(self, card, from_debuff)
-		for k, v in pairs(G.playing_cards) do
-			SMODS.debuff_card(v, false, "debuff_by_cold_snapdragon")
-		end
-	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.individual and context.cardarea == G.play then
+		if context.individual and context.cardarea == G.play and not context.repetition then
 			local c, gp = context.other_card, context.scoring_hand
 			if c == gp[1] or c == gp[1 + 1] or c == gp[1 + 1 + 1] then
 				return {
 					xchips = cae.xchips,
 				}
-			end
-		end
-		if context.final_scoring_step then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 0.01,
-				func = function()
-					for k, v in pairs(context.scoring_hand) do
-						local c = context.scoring_hand
-						if v == c[1] or v == c[2] or v == c[3] then
-							SMODS.debuff_card(v, true, "debuff_by_cold_snapdragon")
-						end
-					end
-					return true
-				end,
-			}))
-		end
-		if context.ante_change and context.ante_end and not context.blueprint then
-			for k, v in pairs(G.playing_cards) do
-				SMODS.debuff_card(v, false, "debuff_by_cold_snapdragon")
 			end
 		end
 	end,

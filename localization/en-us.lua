@@ -5526,7 +5526,8 @@ return {
 				name = "Homing Thistle",
 				text = {
 					"First scored card",
-					"gives {C:chips}+#1#{} Chips"
+					"gains {C:chips}+#1#{} Chips",
+					"permanently"
 				},
 			},
 			j_cbean_ghost_pepper                        = {
@@ -5679,9 +5680,7 @@ return {
 				name = "Cold Snapdragon",
 				text = {
 					"First 3 scoring cards",
-					"give {X:chips,C:white}X#1#{} Chips but are",
-					"{C:red}debuffed{} for current",
-					"{C:attention}Ante{} afterwards"
+					"give {X:chips,C:white}X#1#{} Chips once",
 				},
 			},
 			j_cbean_escape_root                         = {

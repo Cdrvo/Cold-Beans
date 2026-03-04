@@ -910,7 +910,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			chips = 20,
+			chips = 15,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -925,8 +925,11 @@ SMODS.Joker({
 			and context.scoring_hand
 			and context.other_card == context.scoring_hand[1]
 		then
-			return {
-				chips = cae.chips,
+			context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chips
+			return{
+				message = localize("k_upgrade_ex"),
+				message_card = context.other_card,
+				colour = G.C.CHIPS
 			}
 		end
 	end,
@@ -948,7 +951,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			chips = 15,
+			mult = 10,
 			rounds = 5,
 			rounds_max = 5,
 		},
@@ -961,7 +964,7 @@ SMODS.Joker({
 		local cae = card.ability.extra
 		if context.individual and context.cardarea == G.play then
 			return {
-				chips = cae.chips,
+				mult = cae.mult,
 			}
 		end
 		if context.end_of_round and context.main_eval then
@@ -1081,6 +1084,7 @@ SMODS.Joker({
 			and context.cardarea == G.play
 			and #context.scoring_hand == 1
 			and #G.play.cards == 1
+			and G.GAME.current_round.hands_played == 1 
 		then
 			return {
 				message = "Destroyed!",
@@ -1152,7 +1156,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			dollars = 1,
+			dollars = 2,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
