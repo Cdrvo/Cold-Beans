@@ -805,6 +805,16 @@ SMODS.Consumable {
         }
     },
 
+    remove_from_deck = function(self,card,from_debuff)
+        for k, v in pairs(G.jokers.cards) do
+            if v.ability and v.ability.yma_ghost_temporary then
+                v.ability.yma_ghost_temporary = nil
+                SMODS.destroy_cards(v, nil, nil, true)
+                SMODS.calculate_effect({ message = localize("k_yma_key_faded") }, v)
+            end
+        end
+    end,
+
     calculate = function(self, card, context)
         if context.setting_blind then 
             G.E_MANAGER:add_event(Event({
