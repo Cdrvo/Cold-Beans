@@ -1,4 +1,4 @@
-if not Cryptid then
+if true then
     local Cryptid = {}
     Cryptid.base_values = {}
     function Cryptid.with_deck_effects(card, func)
@@ -401,10 +401,6 @@ if not Cryptid then
         end
         return val
     end
-    Colonparen.manipulate = Cryptid.manipulate
-    Colonparen.manipulate_value = Cryptid.manipulate_value
-    Colonparen.is_big = Cryptid.is_big
-else
     Colonparen.manipulate = Cryptid.manipulate
     Colonparen.manipulate_value = Cryptid.manipulate_value
     Colonparen.is_big = Cryptid.is_big
