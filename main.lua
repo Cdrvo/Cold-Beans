@@ -777,3 +777,18 @@ function Game:main_menu(change_context)
 	return plant_check
 end
 ]]
+
+-- replacing
+SMODS.current_mod.menu_cards = function()
+	return {
+		{key = 'j_cbean_coldbean'},  
+		remove_original = true,
+		func = function()
+			for k, v in pairs(G.title_top.cards) do
+				if v.config.center.key == "j_cbean_coldbean" then
+					v.edition = {cbean_sd_frozen = true} -- <- crashes with mods like Hyperfixation otherwise
+				end
+			end
+		end
+	}
+end
