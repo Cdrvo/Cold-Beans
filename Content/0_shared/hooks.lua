@@ -11,7 +11,7 @@ end
 local cant_sell_combo = Card.can_sell_card
 function Card:can_sell_card(context)
     if G.GAME.cbean_combo_index then
-        if self.ability.immutable then
+        if self.ability.immutable and self.ability.immutable.combo_type then
             if (self.ability.immutable.sequence ~= 0) or (self.ability.immutable.sequence ~= #G.GAME.cbean_combo_index) then 
                 return false 
             end
