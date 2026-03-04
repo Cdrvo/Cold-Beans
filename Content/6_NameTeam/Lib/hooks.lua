@@ -310,6 +310,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 			a[#a+1] = i
 		end
 		b = pseudorandom_element(a,pseudoseed("j_cbean_cactiyessir")) 
+		d = d + 1
 		--[[for k, v in pairs(NAMETEAM.general_area) do
 			if v == NAMETEAM.scoring_area[b] then
 				c = v
@@ -322,7 +323,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 		end]]
 		if b ~= 0 and #NAMETEAM.scoring_area>1 then
 			table.remove(NAMETEAM.scoring_area, b)
-			if not G.GAME.NAMETEAM.cactus_number then G.GAME.NAMETEAM.cactus_number = 1 else G.GAME.NAMETEAM.cactus_number = G.GAME.NAMETEAM.cactus_number + 1 end
+			G.GAME.NAMETEAM.cactus_number = d 
 		end
 		--[[if d ~= 0 then  -- YEETS the card lmao
 			table.remove(NAMETEAM.general_area, d)
