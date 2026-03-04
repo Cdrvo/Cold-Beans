@@ -661,7 +661,8 @@ function G.UIDEF.use_and_sell_buttons(card)
 		and card.ability.consumeable
 		and G.pack_cards
 		and card.area == G.pack_cards
-		and G.GAME.used_vouchers["v_cbean_yma_grand_theft"]
+		and (G.GAME.used_vouchers["v_cbean_yma_grand_theft"]
+        or card.config.center.set == "Consumables2")
 	then
 		print("True")
 		return {

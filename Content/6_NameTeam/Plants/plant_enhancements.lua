@@ -9,7 +9,7 @@ SMODS.Enhancement({
 	no_suit = true,
 	overrides_base_rank = false,
 	any_suit = false,
-	always_scores = false,
+	always_scores = true,
 	weight = 0,
 	config = { extra = { mult = 6 } },
 	loc_vars = function(self, info_queue, card)
@@ -45,7 +45,7 @@ SMODS.Enhancement({
 	no_suit = true,
 	overrides_base_rank = false,
 	any_suit = false,
-	always_scores = false,
+	always_scores = true,
 	weight = 0,
 	config = { extra = { chips = 40 } },
 	loc_vars = function(self, info_queue, card)
@@ -81,7 +81,7 @@ SMODS.Enhancement({
 	no_suit = true,
 	overrides_base_rank = false,
 	any_suit = false,
-	always_scores = false,
+	always_scores = true,
 	weight = 0,
 	config = { extra = { xmult = 1.5 } },
 	loc_vars = function(self, info_queue, card)

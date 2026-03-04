@@ -1099,6 +1099,7 @@ SMODS.Joker({
 		return false
 	end,
 })
+]]
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -1134,6 +1135,7 @@ SMODS.Joker({
 	end,
 })
 
+--[[
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
