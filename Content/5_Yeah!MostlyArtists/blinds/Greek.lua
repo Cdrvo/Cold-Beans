@@ -534,9 +534,7 @@ Colonparen.GreekBlind{
                 end
                 if context.scoring_name == most_played_hand then
                     delay(1.3)
-                    for k, v in pairs(G.GAME.hands) do
-                        level_up_hand(nil, k, true)
-                    end
+                    NAMETEAM.blackhole(G.GAME.blind, true)
                 end
             end
         end
@@ -552,6 +550,7 @@ Colonparen.GreekBlind{
                 end
             end
             if most_played_hand then
+                G.GAME.blind:juice_up()
                 update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(most_played_hand, 'poker_hands'),chips = G.GAME.hands[most_played_hand].chips, mult = G.GAME.hands[most_played_hand].mult, level=G.GAME.hands[most_played_hand].level})
                 level_up_hand(nil, most_played_hand, nil, val)
                 update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})

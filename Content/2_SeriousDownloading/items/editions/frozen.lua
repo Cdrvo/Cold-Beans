@@ -33,7 +33,7 @@ SMODS.Edition{
     config = {
         extra = {
             odds = 3,
-            h_chips = 5
+            h_chips = 20
         }
     },
     loc_vars = function (self, info_queue, card)

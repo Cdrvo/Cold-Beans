@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# previous check
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''if select_to then'''
+position = "at"
+payload = '''
+if select_to and not card.ability.cbean_dont_select then
+'''
+match_indent = true

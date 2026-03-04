@@ -10,6 +10,7 @@ SMODS.Booster {
     end,
     kind = "Consumables2",
     group_key = "k_jbill_metapack",
+    draw_hand = true,
     select_card = "consumeables",
     create_card = function(self, card)
         local newCard = SMODS.create_card({set = "Consumables2", area = G.pack_cards, skip_materialize = true })
@@ -33,6 +34,7 @@ SMODS.Booster {
     pos = { x = 1, y = 0 },
     config = { extra = 3, choose = 1},
     cost = 4,
+    draw_hand = true,
     weight = 0.5,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra } } 
@@ -62,6 +64,7 @@ SMODS.Booster {
     pos = { x = 2, y = 0 },
     config = { extra = 5, choose = 1},
     cost = 4,
+    draw_hand = true,
     weight = 0.5,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra } } 
@@ -91,6 +94,7 @@ SMODS.Booster {
     pos = { x = 3, y = 0 },
     config = { extra = 5, choose = 2},
     cost = 4,
+    draw_hand = true,
     weight = 0.1,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.choose, card.ability.extra } } 

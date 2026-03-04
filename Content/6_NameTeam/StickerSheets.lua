@@ -31,7 +31,6 @@ SMODS.UndiscoveredSprite({
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "plasma_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 1 },
   draw_extra = function(self, card, layer)
@@ -72,7 +71,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "black_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 1 },
   draw_extra = function(self, card, layer)
@@ -113,7 +111,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "painted_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 2 },
   draw_extra = function(self, card, layer)
@@ -154,7 +151,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "nebula_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 2 },
   draw_extra = function(self, card, layer)
@@ -195,7 +191,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "green_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 2 },
   draw_extra = function(self, card, layer)
@@ -238,7 +233,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "eternal_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 0 },
   draw_extra = function(self, card, layer)
@@ -296,7 +290,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "perishable_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 0 },
   draw_extra = function(self, card, layer)
@@ -354,7 +347,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "rental_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 0 },
   draw_extra = function(self, card, layer)
@@ -408,7 +400,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "mailed_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 1 },
   draw_extra = function(self, card, layer)
@@ -451,7 +442,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "hooking_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 1 },
   draw_extra = function(self, card, layer)
@@ -518,7 +508,6 @@ end
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "flashcard_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 6 },
   draw_extra = function(self, card, layer)
@@ -574,7 +563,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "frowning_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 1 },
   draw_extra = function(self, card, layer)
@@ -645,7 +633,6 @@ SMODS.Sound({
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "shield_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 3, y = 4 },
   draw_extra = function(self, card, layer)
@@ -692,7 +679,6 @@ SMODS.Sound({
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "brainrot_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 5 },
   draw_extra = function(self, card, layer)
@@ -734,7 +720,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable({
 	set = "cbean_StickerSheet",
-	select_card = "consumeables",
 	key = "heavy_sheet",
 	pos = { x = 0, y = 0 },
 	pos_extra = { x = 3, y = 2 },
@@ -802,7 +787,6 @@ SMODS.Consumable({
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "dangerous_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 2 },
   draw_extra = function(self, card, layer)
@@ -841,7 +825,6 @@ select_card = 'consumeables',
 
 SMODS.Consumable {
   set = "cbean_StickerSheet",
-select_card = 'consumeables',
   key = "hungry_sheet",
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 3 },
   draw_extra = function(self, card, layer)
@@ -891,7 +874,6 @@ select_card = 'consumeables',
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "misprinted_sheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 5 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
@@ -930,7 +912,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.2,
       func = function()
-        card:set_edition("e_negative")
+        affected_card:set_edition("e_negative")
         return true
       end
     }))
@@ -942,7 +924,6 @@ SMODS.Consumable {
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "egg_sheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 6 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
@@ -988,7 +969,6 @@ SMODS.Consumable {
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "spore_sheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 4 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
@@ -1069,7 +1049,6 @@ SMODS.Consumable {
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "shuffle_sheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 2, y = 4 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
@@ -1115,7 +1094,6 @@ SMODS.Consumable {
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "minuscule_sheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 4, y = 4 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
@@ -1158,7 +1136,6 @@ SMODS.Consumable {
   key = "nteam_mitosis_sheet",
   hidden = true,
   soul_set = "cbean_StickerSheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 1, y = 7 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then
@@ -1199,7 +1176,6 @@ SMODS.Consumable {
 SMODS.Consumable({
 	set = "cbean_StickerSheet",
 	key = "locked_sheet",
-  select_card = 'consumeables',
 	pos = { x = 0, y = 0 },
 	pos_extra = { x = 1, y = 5 },
 	draw_extra = function(self, card, layer)
@@ -1258,7 +1234,6 @@ SMODS.Consumable({
 SMODS.Consumable({
 	set = "cbean_StickerSheet",
 	key = "healing_sheet",
-  select_card = 'consumeables',
 	pos = { x = 0, y = 0 },
 	pos_extra = { x = 2, y = 6 },
 	draw_extra = function(self, card, layer)
@@ -1306,7 +1281,6 @@ SMODS.Consumable({
 	key = "barren_sheet",
 	pos = { x = 0, y = 0 },
 	pos_extra = { x = 3, y = 6 },
-  select_card = 'consumeables',
 	draw_extra = function(self, card, layer)
 		if self.discovered or card.params.bypass_discovery_center then
 			card.cbean_extra:draw_shader("booster", nil, card.ARGS.send_to_shader, nil, card.children.center)
@@ -1350,7 +1324,6 @@ SMODS.Consumable({
 SMODS.Consumable({
 	set = "cbean_StickerSheet",
 	key = "square_sheet",
-  select_card = 'consumeables',
 	pos = { x = 0, y = 0 },
 	pos_extra = { x = 4, y = 6 },
 	draw_extra = function(self, card, layer)
@@ -1391,7 +1364,6 @@ SMODS.Consumable({
 SMODS.Consumable {
   set = "cbean_StickerSheet",
   key = "poor_sheet",
-  select_card = 'consumeables',
   pos = { x = 0, y = 0 }, pos_extra = { x = 0, y = 7 },
   draw_extra = function(self, card, layer)
     if self.discovered or card.params.bypass_discovery_center then

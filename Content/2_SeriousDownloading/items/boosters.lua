@@ -21,7 +21,7 @@ SMODS.Booster {
     atlas = "blessingpack_atlas",
     weight = 1,
     pos = { x = 0, y = 0 },
-    draw_hand = true,
+    draw_hand = false,
     kind = "sdown_blessing",
     select_card = "consumeables",
     create_card = function(self, card, i)
@@ -57,7 +57,7 @@ SMODS.Booster {
     atlas = "blessingpack_atlas",
     weight = 1,
     pos = { x = 1, y = 0 },
-    draw_hand = true,
+    draw_hand = false,
     kind = "sdown_blessing",
     select_card = "consumeables",
     create_card = function(self, card, i)
@@ -93,7 +93,7 @@ SMODS.Booster {
     atlas = "blessingpack_atlas",
     weight = 1,
     pos = { x = 0, y = 1 },
-    draw_hand = true,
+    draw_hand = false,
     kind = "sdown_blessing",
     select_card = "consumeables",
     create_card = function(self, card, i)
@@ -129,7 +129,7 @@ SMODS.Booster {
     atlas = "blessingpack_atlas",
     weight = 0.75,
     pos = { x = 2, y = 1 },
-    draw_hand = true,
+    draw_hand = false,
     kind = "sdown_blessing",
     select_card = "consumeables",
     create_card = function(self, card, i)

@@ -748,7 +748,7 @@ YMA.start_shop_transition()
 
   G.dreamlands_consumeable_card_holder = CardArea(
       G.hand.T.x+0,
-      G.hand.T.y+G.ROOM.T.y + 9,
+      (G.hand.T.y+G.ROOM.T.y + 9),
       math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
       1.05*G.CARD_H, 
       {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
@@ -773,14 +773,8 @@ end
 G.FUNCS.hide_yma_dreamland = function(e)
     YMA.start_shop_transition()
     stop_use()
-	hide_location(G.yma_dreamland)
-    if G.dreamlands_consumeable_card_holder then
-        if #G.dreamlands_consumeable_card_holder.cards > 0 then
-            for k, v in pairs(G.dreamlands_consumeable_card_holder.cards) do 
-                draw_card(G.dreamlands_consumeable_card_holder,G.consumeables, 100/1,'up', nil, v)
-            end
-        end
-    end
+    G.FUNCS.draw_from_card_area_to_card_area(G.dreamlands_consumeable_card_holder, G.consumeables, true)
+    hide_location(G.yma_dreamland)
 	G.STATE = G.STATES.MAIN_STREET
 	G.STATE_COMPLETE = false
     
@@ -797,14 +791,14 @@ G.FUNCS.hide_yma_dreamland = function(e)
             trigger = 'after',
             blockable = false,
             blocking = false,
-            delay =  0,
+            delay =  1.1 * ( 2 + #G.dreamlands_consumeable_card_holder.cards), --idk numbers go brr
             func = (function() 
                     G.dreamlands_consumeable_card_holder.states.visible = false
                     G.dreamlands_consumeable_card_holder:remove()
                     G.dreamlands_consumeable_card_holder = nil;
                 return true
             end)
-        }))
+        }), "other")
     end
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
@@ -1349,10 +1343,14 @@ function create_card_for_graveyard_jokers(area)
     end
   end
 
-G.FUNCS.draw_from_card_area_to_card_area = function(card_area, card_area2)
+G.FUNCS.draw_from_card_area_to_card_area = function(card_area, card_area2, no_limit)
     local hand_count = #card_area.cards
     for i=1, hand_count do --draw cards from deck
-        draw_card(card_area, card_area2, i*100/hand_count,'down', nil, nil,  0.08)
+        if not no_limit then
+            draw_card(card_area, card_area2, i*100/hand_count,'down', nil, nil,  0.08)
+        else
+            draw_card(card_area,card_area2, 100/1,'up', nil, card_area.cards[i])
+        end
     end
 end
 

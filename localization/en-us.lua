@@ -25,9 +25,11 @@ return {
 			b_cbean_nameteam_happy = {
 				name = "Happy Deck",
 				text = {
-					"Start run with",
-					"a copy of",
-					"{C:attention,T:j_smiley}Smiley Face{}"
+					"Start run with double",
+					"the {C:attention}Face Cards{}",
+					"in your deck and",
+					"a copy of {C:attention,T:j_smiley}Smiley Face{}",
+					"{C:inactive}(So that's where they went...)"
 				}
 			},
 			b_cbean_nameteam_graveyard = {
@@ -248,7 +250,7 @@ return {
 			bl_cbean_colon_compass = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Compass",
 				text = {
-					"{X:purple,C:white}+X1{} base when",
+					"Gains {X:purple,C:white}X1{} base when",
 					"a hand is played"
 				}
 			},
@@ -3636,7 +3638,6 @@ return {
 						"{C:attention}Chumblocks{} each hand",
 					},
 					{
-						"{C:red,E:1,s:1.1}CAN'T BE SOLD!",
 						"{C:red,E:1,s:1.1}Self destructs{}",
 						"when triggered",
 						"{C:inactive}Its so over{}"
@@ -8362,8 +8363,8 @@ return {
 			cbean_poor = {
 				name = "Poor",
 				text = {
-					"All earned money",
-					"is halved",
+					"All money earned",
+					"or lost is halved",
 				},
 			},
 			cbean_square = {
@@ -11026,6 +11027,16 @@ return {
 					"#2#{C:attention}#3#s",
 					"{C:inactive,s:0.8}(Enhancement changes based on current Biome)"
 				}
+			},
+			c_cbean_journey_afterlife = {
+				name = 'The Journey',
+				text = {
+					"{C:attention}#1# {}selected cards",
+					"permanently gain",
+					"{C:mult}+#2#{} Mult",
+					"{C:inactive,s:0.8}(Enhancement changes based on current Biome)",
+					"{C:inactive,s:0.8}(Special effect while in The Afterlife)"
+				}
 			}
 		},
 		Voucher = {
@@ -11473,6 +11484,7 @@ return {
 			b_yma_keys_cards                    = "Keys",
 			k_yma_key_plus_use                  = "Use",
 			k_cbean_yma_street                  = "Street",
+			k_cbean_all_hr_hands				= "All HR Hands",
 			k_hell_sac                          = "Sacrifice",
 			k_yma_chance_to_fail_key            = "(Chance to break)",
 			k_yma_chance_to_fail_belssing       = "(Chance to fail)",
@@ -11828,7 +11840,7 @@ return {
 			["cbean_sdown_bobtail"] = {
 				"4 cards in a row (consecutive ranks) with",
 				"all cards sharing the same suit",
-				"Prioritized below Straights"
+				"Prioritized below Straights and Flushes"
 			},
 
 			--House Rules Hands

@@ -17,13 +17,14 @@
     set = 'Tarot',
   
     atlas = 'wgrop_tarot_atlas', pos = { x = 0, y = 0 },
-      config = { max_highlighted = 2, extra = "m_cbean_wgrop_thistled", cbean_banned_by_aldus = true},
+      config = { max_highlighted = 2, extra = "m_cbean_wgrop_thistled", cbean_banned_by_aldus = true, afterlife_mult = 8},
       update = function(self, card, dt)
         if card.ability.extra ~= CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome] then
           card.ability.extra = CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome]
         end
       end,
       use = function(self, card, area)
+        if G.GAME.round_resets.blind_biome ~= "nameteam_afterlife" then
           G.E_MANAGER:add_event(Event({func = function()
               play_sound('tarot1')
               card:juice_up(0.3, 0.5)
@@ -47,8 +48,37 @@
           end
           G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:unhighlight_all(); return true end }))
           delay(0.5)
+        else -- Afterlife effect
+          delay(0.4)
+          for i=1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+              trigger = 'after',
+              delay = 0.1,
+              func = function() 
+                play_sound('multhit1', percent)
+                G.hand.highlighted[i].ability.perma_mult = G.hand.highlighted[i].ability.perma_mult+card.ability.afterlife_mult
+                G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                attention_text({
+                    text = localize('k_upgrade_ex'),
+                    scale = 1.3, 
+                    hold = 1.4,
+                    major = G.hand.highlighted[i],
+                    backdrop_colour = G.C.MULT,
+                    align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and 'tm' or 'cm',
+                    offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0},
+                    silent = true
+                    })
+                return true 
+              end
+            }))
+          end 
+          delay(0.4)
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:unhighlight_all(); return true end }))
+          delay(0.5)
+        end
       end,
       loc_vars = function(self, info_queue, card)
+        if G.GAME.round_resets.blind_biome ~= "nameteam_afterlife" then
           info_queue[#info_queue+1] = G.P_CENTERS[CBWG.BiomeConsumables[G.GAME.round_resets.blind_biome]]
           local sentence_bit = ""
           local enhancement = (localize({ type = 'name_text', set = 'Enhanced', key = card.ability.extra }) or 'Biome Card')
@@ -57,6 +87,9 @@
             enhancement = localize("k_c_journey_m_zomboid")
           end
           return { vars = { card.ability.max_highlighted, sentence_bit, enhancement}}
+        else
+          return { key = "c_cbean_journey_afterlife", vars = { card.ability.max_highlighted, card.ability.afterlife_mult}}
+        end
       end,
   
   }

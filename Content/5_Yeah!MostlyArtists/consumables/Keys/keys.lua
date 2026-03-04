@@ -1679,14 +1679,14 @@ SMODS.Consumable {
     },
 
     calculate = function(self, card, context)
-        if context.before then
+        if context.end_of_round and context.main_eval then
             card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
                 delay = 0.0,
                 func = (function()
                     for i = 1, 2 do
-                        local pool = {}
+                        local pool = {} 
                         for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
                             if v.config.immutable.combo_type == "taunt" or v.config.immutable.combo_type == "starter" then
                                 pool[#pool+1] = v.key

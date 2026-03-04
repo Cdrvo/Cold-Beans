@@ -12,10 +12,10 @@ SMODS.PokerHandPart {
 
 SMODS.PokerHand{
     key = "sdown_antistraight",
-    l_chips = 10,
-    l_mult = 1,
-    chips = 15,
-    mult = 1,
+    l_chips = 35,
+    l_mult = 3,
+    chips = 25,
+    mult = 4,
     visible = true,
     example = {
         { "H_4", true },
@@ -31,10 +31,10 @@ SMODS.PokerHand{
 
 SMODS.PokerHand{
     key = "sdown_antistraight_flush",
-    l_chips = 20,
-    l_mult = 3,
-    chips = 45,
-    mult = 5,
+    l_chips = 45,
+    l_mult = 4,
+    chips = 90,
+    mult = 8,
     visible = true,
     example = {
         { "D_4", true },

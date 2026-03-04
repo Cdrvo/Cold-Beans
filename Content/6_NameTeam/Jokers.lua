@@ -1676,7 +1676,7 @@ SMODS.Joker({
 
 SMODS.Joker({
     key = "nameteam_riverstyx",
-    config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false } },
+    config = { extra = { joker_slots = 2, target_sold = 13, current_sold = 0, slots_given = false }, immutable = {previous_slots = 0} },
     rarity = 3,
     atlas = "NAMETEAM_Jokers2",
     pos = { x = 10, y = 8 },
@@ -1707,23 +1707,27 @@ SMODS.Joker({
             context.selling_card
             and context.card.config.center.set == "Joker"
             and context.card ~= card
-            and not card.ability.extra.slots_given
             and not context.blueprint
         then
             card.ability.extra.current_sold = card.ability.extra.current_sold + 1
 
-            if card.ability.extra.current_sold >= card.ability.extra.target_sold then
+            if ((card.ability.extra.current_sold >= card.ability.extra.target_sold) and not card.ability.extra.slots_given) then
                 card.ability.extra.slots_given = true
-                G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
+                --G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
 
                 return { message = localize("k_active_ex") }
             else
                 return { message = card.ability.extra.current_sold .. "/" .. card.ability.extra.target_sold }
             end
         end
+        if card.ability.extra.slots_given and (card.ability.extra.joker_slots ~= card.ability.immutable.previous_slots) then
+            G.jokers.config.card_limit = G.jokers.config.card_limit + (card.ability.extra.joker_slots - card.ability.immutable.previous_slots)
+            card.ability.immutable.previous_slots = card.ability.extra.joker_slots
+            --print(card.ability.immutable.previous_slots)
+        end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        if card.ability.extra.slots_given then
+        if card.ability.extra.slots_given and not from_debuff then
             G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
         end
     end,
@@ -3455,13 +3459,13 @@ SMODS.Joker({
 
 SMODS.Joker({
     key = "nteam_rick_astley",
-    config = { extra = { xmult = 1, xmult_inc = 0.1, vid_played = false } },
+    config = { extra = { xmult = 1, xmult_inc = 0.1, vid_played = false, played_once = false } },
     rarity = 2,
     atlas = "NAMETEAM_Jokers3",
     pos = { x = 3, y = 5 },
     cost = 6,
     loc_vars = function(self, info_queue, card)
-        if not card.ability.extra.vid_played
+        if not card.ability.extra.played_once
             and not (ColdBeansConfig and ColdBeansConfig["copyright_disabled"])
         then
             info_queue[#info_queue + 1] = {
@@ -3488,6 +3492,13 @@ SMODS.Joker({
             return {
                 xmult = cae.xmult,
             }
+        end
+        --Its not important for the reload to be seed dependent, so I am just doing math.random()
+        if context.after then
+            local tester = math.random(1, 20)
+            if tester == 1 then
+                card.ability.extra.vid_played = false
+            end
         end
         if context.before and not context.blueprint then
             local ranks = {}

@@ -83,6 +83,10 @@ end
 local start_run_hook = Game.start_run
 function Game:start_run(args)
 	start_run_hook(self, args)
+	if G.dreamlands_consumeable_card_holder_default_pos then G.dreamlands_consumeable_card_holder_default_pos = nil end
+	if G.consumeables and G.consumeables.config.highlighted_limit < 2 then
+		 G.consumeables.config.highlighted_limit =  G.consumeables.config.highlighted_limit + 1
+	end
 	---@type integer
 	G.GAME.stationery_num_accepted = G.GAME.stationery_num_accepted or 2
 	---@type string[]
@@ -588,4 +592,11 @@ function Card:add_to_deck(from_debuff)
 		G.GAME.NAMETEAM.unique_consumables[#G.GAME.NAMETEAM.unique_consumables+1] = self.config.center.key
 	end
 	return add_to_deck_old(self, from_debuff)
+end
+
+local eval_card_old = eval_card
+function eval_card(card, context, ...)
+	if card then
+		return eval_card_old(card, context, ...)
+	end
 end
