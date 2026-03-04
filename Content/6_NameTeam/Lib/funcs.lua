@@ -656,6 +656,8 @@ end
 function NAMETEAM.values(operator, card, num)
 	-- proxy the cryptid stuff since this manipulate function was made for no reason and was bugged anyway.
 	-- extra parameters never used and as such obliterated
+
+	-- im sorry that i couldn't figure out how to make a great value manip function in 4 days time but you could've aleast added divison to the function
 	if operator == "*" then
 		operator = "X"
 	end

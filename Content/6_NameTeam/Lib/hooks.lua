@@ -543,9 +543,31 @@ function Card:highlight(is_highlighted)
 		if not NAMETEAM.highlight_order then NAMETEAM.highlight_order = 1 else NAMETEAM.highlight_order = NAMETEAM.highlight_order + 1 end
 		self.highlight_order_cbean = NAMETEAM.highlight_order
 		-- print("highlighted " .. self.highlight_order_cbean, NAMETEAM.highlight_order)
-	else
-		return cardhighold(self, is_highlighted)
 	end
+	if self.edition and self.edition.cbean_sd_frozen then
+		local allfrozencards = false --Checks if all cards are Frozen. Needed to prevent softlocks
+		local frozen_count = 0
+		if G.hand then
+			for k, v in pairs(G.hand.cards) do
+				if v.edition and v.edition.cbean_sd_frozen then
+					frozen_count = frozen_count + 1
+				end
+			end
+			if frozen_count == #G.hand.cards then
+				allfrozencards = true
+			else
+				allfrozencards = false
+			end
+		end
+
+		if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) and not (self.area == G.hand and allfrozencards and #G.hand.highlighted == 0) then
+			if self.area and self.area == G.deck and self.area.cards[1] == self then 
+				G.FUNCS.deck_info()
+			end
+			return nil
+		end
+	end
+	return cardhighold(self, is_highlighted)
 end
 
 

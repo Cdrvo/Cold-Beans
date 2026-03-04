@@ -312,6 +312,12 @@ if not Cryptid then
                     then
                         num = num * new_value
                     end
+                elseif args.type == "/" then
+                    if
+                        to_big(num) ~= to_big(0) and (to_big(num) ~= to_big(1) or (name ~= "x_chips" and name ~= "x_mult"))
+                    then
+                        num = num / new_value
+                    end
                 elseif args.type == "^" then
                     num = to_big(num) ^ new_value
                 elseif args.type == "hyper" and SMODS.Mods.Talisman and SMODS.Mods.Talisman.can_load then
@@ -329,6 +335,12 @@ if not Cryptid then
                         to_big(num) ~= to_big(0) and (to_big(num) ~= to_big(1) or (name ~= "x_chips" and name ~= "x_mult"))
                     then
                         num = num * args.value
+                    end
+                elseif args.type == "/" then
+                    if
+                        to_big(num) ~= to_big(0) and (to_big(num) ~= to_big(1) or (name ~= "x_chips" and name ~= "x_mult"))
+                    then
+                        num = num / args.value
                     end
                 elseif args.type == "^" then
                     num = to_big(num) ^ args.value
