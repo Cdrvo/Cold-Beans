@@ -3270,12 +3270,20 @@ SMODS.Joker({
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.individual and context.cardarea == G.play and not context.repetition then
+		if context.individual and context.cardarea == G.play and not context.other_card.cbean_repped then
 			local c, gp = context.other_card, context.scoring_hand
+			c.cbean_repped = true
 			if c == gp[1] or c == gp[1 + 1] or c == gp[1 + 1 + 1] then
 				return {
 					xchips = cae.xchips,
 				}
+			end
+		end
+		if context.after then
+			for k, v in pairs(G.playing_cards) do
+				if v.cbean_repped then
+					v.cbean_repped = nil
+				end
 			end
 		end
 	end,
