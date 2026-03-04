@@ -26,11 +26,10 @@ SMODS.ObjectType {
         G.C.SECONDARY_SET[self.key] = self.secondary_colour
         G.C.SET[self.key] = self.primary_colour
     end,
-    -- Rarities don't seem to work
     rarities = {
-        { key = 'Common',    weight = 60 },
-        { key = 'Uncommon',  weight = 25 },
-        { key = 'Rare',      weight = 12 },
+        { key = 'Common', weight = 60 },
+        { key = 'Uncommon', weight = 25 },
+        { key = 'Rare', weight = 12 },
         { key = 'Legendary', weight = 3 },
     },
 
@@ -76,47 +75,36 @@ function Card:set_sprites(center, front, ...)
             y = G.ASSET_ATLAS.cbean_yma_quest_atlas.py
         }
     end
-	if
-        self.children.back
-		and self.children.back.atlas.key == "cbean_NAMETEAM_Decks"
-        and self.children.back.sprite_pos.x == 3
-        and self.children.back.sprite_pos.y == 0
-        and not self.children.nteam_sticky_back
-	then
-		self.children.nteam_sticky_back =
-			SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, "cbean_NAMETEAM_Decks", { x = 4, y = 0 })
-		self.children.nteam_sticky_back.states.hover = self.states.hover
-		self.children.nteam_sticky_back.states.click = self.states.click
-		self.children.nteam_sticky_back.states.drag = self.states.drag
-		self.children.nteam_sticky_back.states.collide.can = false
-		self.children.nteam_sticky_back:set_role({ major = self, role_type = "Glued", draw_major = self })
-	end
     if
-        self.children.back
-		and self.children.back.atlas.key == "cbean_pboys_daily_deck"
-        and G.GAME.run_back_pos
-	then
+    self.children.back
+    and self.children.back.atlas.key == "cbean_NAMETEAM_Decks"
+    and self.children.back.sprite_pos.x == 3
+    and self.children.back.sprite_pos.y == 0
+    and not self.children.nteam_sticky_back
+    then
+        self.children.nteam_sticky_back =
+            SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, "cbean_NAMETEAM_Decks", { x = 4, y = 0 })
+        self.children.nteam_sticky_back.states.hover = self.states.hover
+        self.children.nteam_sticky_back.states.click = self.states.click
+        self.children.nteam_sticky_back.states.drag = self.states.drag
+        self.children.nteam_sticky_back.states.collide.can = false
+        self.children.nteam_sticky_back:set_role({ major = self, role_type = "Glued", draw_major = self })
+    end
+    if
+    self.children.back
+    and self.children.back.atlas.key == "cbean_pboys_daily_deck"
+    and G.GAME.run_back_pos
+    then
         self.children.back.sprite_pos = G.GAME.run_back_pos
     end
 end
 
-local set_screen_positions_ref = set_screen_positions
-function set_screen_positions()
-    set_screen_positions_ref()
-
-    if G.STAGE == G.STAGES.RUN and G.side_quests then
-        G.side_quests.T.x = G.TILE_W - G.side_quests.T.w - 0.3
-        G.side_quests.T.y = 3
-        G.side_quests:hard_set_VT()
-    end
-end
-
--- note: no_card_count only works on latest smods
-local start_run_ref = Game.start_run
-function Game:start_run(args)
-    self.side_quests = CardArea(
-        0, 0,
-        2, 2,
+SMODS.current_mod.custom_card_areas = function(game)
+    game.side_quests = CardArea(
+        G.consumeables.T.x + 2.75,
+        G.consumeables.T.y + G.consumeables.T.h + 0.5,
+        0.95 * G.CARD_W,
+        0.75 * G.CARD_H,
         {
             card_limit = 1,
             type = 'joker',
@@ -124,9 +112,12 @@ function Game:start_run(args)
             no_card_count = true,
         }
     )
+end
 
+-- note: no_card_count only works on latest smods
+local start_run_ref = Game.start_run
+function Game:start_run(args)
     start_run_ref(self, args)
-    set_screen_positions()
     YMA.add_random_quest()
 end
 
@@ -144,7 +135,7 @@ YMA.complete_quest = function(card, set, key, add_card)
         if #G.jokers.cards < G.jokers.config.card_limit then
             SMODS.add_card { set = set, key = key }
         else
-            SMODS.calculate_effect({ message = localize('k_no_room_ex')}, card)
+            SMODS.calculate_effect({ message = localize('k_no_room_ex') }, card)
         end
     end
     SMODS.destroy_cards(card)
