@@ -385,7 +385,9 @@ SMODS.Consumable {
         func = function()
             for i = 1, #G.hand.highlighted do
                 if not string then
-                    assert(SMODS.change_base(G.hand.highlighted[i], nil, ""..rightmost_rank))
+                    if rightmost_rank > 0 then
+                        assert(SMODS.change_base(G.hand.highlighted[i], nil, ""..rightmost_rank))
+                    end
                 else
                     assert(SMODS.change_base(G.hand.highlighted[i], nil, rightmost_rank))
                 end
