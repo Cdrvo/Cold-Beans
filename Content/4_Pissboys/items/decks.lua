@@ -14,8 +14,6 @@ function set_dow(num)
     G.P_CENTERS.b_cbean_pboys_daily.pos.y = CBEAN_DATE_TABLE.wday - 1
 end
 
-math.randomseed(os.time())
-
 SMODS.Back {
     key = 'pboys_daily',
     atlas = 'pboys_daily_deck',
@@ -169,3 +167,5 @@ SMODS.Back{
         code = "HuyTheKiller",
     }
 }
+
+math.randomseed(os.time())

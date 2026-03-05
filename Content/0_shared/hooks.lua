@@ -99,6 +99,31 @@ function G.UIDEF.run_setup(from_game_over)
     return ret
 end
 
+-- Saved daily deck runs on previous days properly use their own back pos
+local back_init = Back.init
+function Back:init(selected_back)
+    back_init(self, selected_back)
+    if self == G.GAME.selected_back or (self == G.GAME.viewed_back and G.STATE == G.STATES.MENU) then
+        if self.name == "b_cbean_pboys_daily" then
+            local pos = (self.effect.center.unlocked and self.effect.center.pos) or {x = 4, y = 0}
+            self.pos.x = (G.GAME.run_back_pos or {}).x or (G.SAVED_GAME or {BACK = {pos = {}}}).BACK.pos.x or pos.x
+            self.pos.y = (G.GAME.run_back_pos or {}).y or (G.SAVED_GAME or {BACK = {pos = {}}}).BACK.pos.y or pos.y
+        end
+    end
+end
+
+local back_change_to = Back.change_to
+function Back:change_to(new_back)
+    back_change_to(self, new_back)
+    if self == G.GAME.selected_back or (self == G.GAME.viewed_back and G.STATE == G.STATES.MENU) then
+        if self.name == "b_cbean_pboys_daily" then
+            local pos = (self.effect.center.unlocked and self.effect.center.pos) or {x = 4, y = 0}
+            self.pos.x = (G.GAME.run_back_pos or {}).x or (G.SAVED_GAME or {BACK = {pos = {}}}).BACK.pos.x or pos.x
+            self.pos.y = (G.GAME.run_back_pos or {}).y or (G.SAVED_GAME or {BACK = {pos = {}}}).BACK.pos.y or pos.y
+        end
+    end
+end
+
 --Steamer's effect: if Aura is duplicated, send custom context (Aura farming go brrrrrr)
 local copy_card_ref = copy_card
 function copy_card(other, new_card, card_scale, playing_card, strip_edition)
