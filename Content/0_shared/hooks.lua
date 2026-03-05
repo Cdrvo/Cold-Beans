@@ -47,46 +47,16 @@ end
 
 --One of Daily deck's effect: only allows modded jokers to appear
 --(ignoring take_ownership on vanilla jokers, at least I think so)
+--Also handle birthright effect for it, which disables vanilla consumables.
 local add_to_pool_ref = SMODS.add_to_pool
 function SMODS.add_to_pool(prototype_obj, args)
     local add, options = add_to_pool_ref(prototype_obj, args)
     if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
-    and CBEAN_DATE_TABLE.wday == 5 and prototype_obj.set == "Joker" then
-        return prototype_obj.original_mod and add or false, options
-    end
-    return add, options
-end
-
---Birthright effect for the above daily deck. Disables vanilla consumables.
-local add_to_pool_ref = SMODS.add_to_pool
-function SMODS.add_to_pool(prototype_obj, args)
-    local add, options = add_to_pool_ref(prototype_obj, args)
-    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
-    and (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0) and CBEAN_DATE_TABLE.wday == 5 
-    and prototype_obj.set == "Tarot" then
-        return prototype_obj.original_mod and add or false, options
-    end
-    return add, options
-end
-
-local add_to_pool_ref = SMODS.add_to_pool
-function SMODS.add_to_pool(prototype_obj, args)
-    local add, options = add_to_pool_ref(prototype_obj, args)
-    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
-    and (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0) and CBEAN_DATE_TABLE.wday == 5 
-    and prototype_obj.set == "Planet" then
-        return prototype_obj.original_mod and add or false, options
-    end
-    return add, options
-end
-
-local add_to_pool_ref = SMODS.add_to_pool
-function SMODS.add_to_pool(prototype_obj, args)
-    local add, options = add_to_pool_ref(prototype_obj, args)
-    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
-    and (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0) and CBEAN_DATE_TABLE.wday == 5 
-    and prototype_obj.set == "Spectral" then
-        return prototype_obj.original_mod and add or false, options
+    and CBEAN_DATE_TABLE.wday == 5 then
+        if prototype_obj.set == "Joker" or (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0
+        and (prototype_obj.set == "Tarot" or prototype_obj.set == "Planet" or prototype_obj.set == "Spectral")) then
+            return prototype_obj.original_mod and add or false, options
+        end
     end
     return add, options
 end
