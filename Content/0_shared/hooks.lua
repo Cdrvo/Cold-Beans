@@ -189,8 +189,28 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
     if self.ability.cbean_shield then
         self:remove_sticker("cbean_shield")
         play_sound("cbean_shielddefend", 1, 0.5)
-        SMODS.calculate_effect({ message = "Shielded!"}, self)
-        if self.config.center.consumeable and self.area == G.play then
+        G.E_MANAGER:add_event(Event({
+            trigger = "before",
+            delay = 0.75*1.25,
+            blocking = blocking,
+            blockable = blockable,
+            func = function()
+                attention_text({
+                    text = "Shielded!",
+                    scale = 1, 
+                    hold = 0.75*1.25 - 0.2,
+                    backdrop_colour = G.C.FILTER,
+                    align = 'bm',
+                    major = self,
+                    offset = {x = 0, y = 0.15*G.CARD_H}
+                })
+                play_sound("generic1", 0.8+(0.9 + 0.2*math.random())*0.2, volume)
+                self:juice_up(0.6, 0.1)
+                G.ROOM.jiggle = G.ROOM.jiggle + 0.7
+                return true
+            end
+        }))
+        if self.config.center.consumeable and (self.area == G.play or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) then
             draw_card(G.play,G.consumeables, 1,'down', false, self)
         end
         return nil
