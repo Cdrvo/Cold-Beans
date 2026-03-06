@@ -11359,6 +11359,7 @@ return {
 		},
 		collabs = {},
 		dictionary = {
+			k_cbean_bonus_chips                 = "Bonus Chips", 
 			k_cbean_token 						= "Token",
 			k_cbean_0chill_combopack            = "Combo Pack",
 

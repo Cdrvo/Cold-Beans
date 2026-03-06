@@ -147,7 +147,7 @@ ColdBeans.calculate = function(mod, context)
 	end
 
 	if context.cbean_first then
-		G.GAME.NAMETEAM.hands = G.GAME.hands
+		G.GAME.NAMETEAM.hands = G.GAME.hands --???
 	end
 
 	if context.after then
@@ -234,11 +234,11 @@ ColdBeans.calculate = function(mod, context)
 		end
 	end
 
-    if context.other_joker and context.other_joker.ability.perma_h_chips then
+    if context.other_joker and (context.other_joker.ability.perma_h_chips>0 or context.other_joker.ability.perma_h_chips<0) then
         return {
             chips = context.other_joker.ability.perma_h_chips,
             message_card = context.other_joker,
-            juice_card = context.other_joker
+			no_juice = true,
         }
     end
 
