@@ -953,21 +953,25 @@ Colonparen.Architecture {
             local least_level = 1e999;
             local least_leveled = {}
             for k, v in pairs(G.GAME.hands) do
-                if v.level < least_level then
-                    least_level = v.level
-                    least_leveled = {v.key}
-                elseif v.level == least_level then
-                    least_leveled[#least_leveled+1] = v.key
+                if v.visible then
+                    if v.level < least_level then
+                        least_level = v.level
+                        least_leveled = {v.key}
+                    elseif v.level == least_level then
+                        least_leveled[#least_leveled+1] = v.key
+                    end
                 end
             end
 
             local least_score = 1e999;
             local least_scored = nil
             for k, v in pairs(G.GAME.hands) do
-                local score = v.mult * v.chips;
-                if score < least_score then
-                    least_score = score
-                    least_scored = v.key
+                if v.visible then
+                    local score = v.mult * v.chips;
+                    if score < least_score then
+                        least_score = score
+                        least_scored = v.key
+                    end
                 end
             end
 
