@@ -10,7 +10,7 @@ SMODS.Enhancement {
     end,
     calculate = function (self, card, context)
         if context.main_scoring and context.cardarea == G.play then
-            if pseudorandom('riceshowermwa') < G.GAME.probabilities.normal/card.ability.odds then
+            if pseudorandom('riceshowermwa') < G.GAME.probabilities.normal/card.ability.extra.odds then
                 local tag_pool = get_current_pool('Tag')
                 local selected_tag = pseudorandom_element(tag_pool, pseudoseed('tagsed'))
                 local check = 1
