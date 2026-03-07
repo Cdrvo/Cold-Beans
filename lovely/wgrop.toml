@@ -200,7 +200,7 @@ target = '=[SMODS _ "src/utils.lua"]'
 pattern = '''-- TARGET: add your own individual scoring targets'''
 position = "before"
 payload = '''
-        if CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome] then t[#t + 1] = { object = CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome], scored_card = G.GAME.blind.children.animatedSprite } end
+if G.GAME.blind and CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome] then t[#t + 1] = { object = CBWG.ColdBeans_Biomes[G.GAME.round_resets.blind_biome], scored_card = G.GAME.blind.children.animatedSprite } end
 '''
 match_indent = true
 
