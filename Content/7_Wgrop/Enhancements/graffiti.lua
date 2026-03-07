@@ -3,9 +3,9 @@ SMODS.Enhancement {
     key = 'wgrop_graffiti',
     pos = {x = 0, y = 3}, 
     atlas = 'wgrop_enhancement_atlas',
-    config = {tax = 10, odds = 4, scale = 7.5, retrigger = 0},
+    config = { extra = {tax = 10, odds = 4, scale = 7.5, retrigger = 0}},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.tax+(card.ability.scale*card.ability.retrigger), G.GAME.probabilities.normal, card.ability.odds, card.ability.scale
+        return { vars = { card.ability.extra.tax+(card.ability.extra.scale*card.ability.extra.retrigger), G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.scale
         }}
     end,
     calculate = function (self, card, context)
@@ -28,16 +28,16 @@ SMODS.Enhancement {
             else
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message =('Caught!'), colour = G.C.RED})
             end
-            if card.ability.retrigger < (100-card.ability.tax)/card.ability.scale then
-                card.ability.retrigger = card.ability.retrigger+1
+            if card.ability.extra.retrigger < (100-card.ability.extra.tax)/card.ability.extra.scale then
+                card.ability.extra.retrigger = card.ability.extra.retrigger+1
             end
             return {
-                chip_mod = -1*(math.floor((card.ability.tax+(card.ability.scale*card.ability.retrigger))*(hand_chips/100))),
-                mult_mod = -1*(math.floor((card.ability.tax+(card.ability.scale*card.ability.retrigger))*(mult/100)))
+                chip_mod = -1*(math.floor((card.ability.extra.tax+(card.ability.extra.scale*card.ability.extra.retrigger))*(hand_chips/100))),
+                mult_mod = -1*(math.floor((card.ability.extra.tax+(card.ability.extra.scale*card.ability.extra.retrigger))*(mult/100)))
             }
         end
         if context.end_of_round then
-            card.ability.retrigger = 0
+            card.ability.extra.retrigger = 0
         end
     end,
     beans_credits = {
