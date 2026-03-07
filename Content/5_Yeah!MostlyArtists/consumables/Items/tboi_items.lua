@@ -1497,7 +1497,7 @@ YMA.TBOI_ITEMS {
         if temp_context and temp_context.modify_card_effects and card.ability.extra.effect_table[temp_context.effect_type] then
             if temp_context.card.area == G.play then
                 local key = temp_context.effect_type
-                card.ability.extra.amt = card.ability.extra.amt + (temp_context.effects[key] * card.ability.extra.x_val)
+                card.ability.extra.amt = card.ability.extra.amt + ((temp_context.effects[key] or 0) * card.ability.extra.x_val)
             end
         end
         if context.joker_main then
