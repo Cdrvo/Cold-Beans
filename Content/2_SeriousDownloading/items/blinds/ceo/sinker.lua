@@ -68,12 +68,16 @@ Colonparen.CEOBlind {
     end,
     defeat = function (self)
         if #G.jokers.cards > 0 then
-            SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+            for i = 1, #G.jokers.cards do 
+                SMODS.debuff_card(G.jokers.cards[i], false, 'the_sinker')
+            end
         end
     end,
     disable = function (self)
         if #G.jokers.cards > 0 then
-            SMODS.debuff_card(G.jokers.cards[1], false, 'the_sinker')
+            for i = 1, #G.jokers.cards do 
+                SMODS.debuff_card(G.jokers.cards[i], false, 'the_sinker')
+            end
         end
     end,
     beans_credits = {
