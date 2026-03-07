@@ -99,21 +99,6 @@ function Card:set_sprites(center, front, ...)
     end
 end
 
-SMODS.current_mod.custom_card_areas = function(game)
-    game.side_quests = CardArea(
-        G.consumeables.T.x + 2.75,
-        G.consumeables.T.y + G.consumeables.T.h + 0.5,
-        0.95 * G.CARD_W,
-        0.75 * G.CARD_H,
-        {
-            card_limit = 1,
-            type = 'joker',
-            highlight_limit = 1,
-            no_card_count = true,
-        }
-    )
-end
-
 -- note: no_card_count only works on latest smods
 local start_run_ref = Game.start_run
 function Game:start_run(args)

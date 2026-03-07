@@ -81,6 +81,19 @@ CM.states = {
 }
 
 CM.custom_card_areas = function(game)
+    -- moved Sidequest cardarea definition here
+    game.side_quests = CardArea(
+        G.consumeables.T.x + 2.75,
+        G.consumeables.T.y + G.consumeables.T.h + 0.5,
+        0.95 * G.CARD_W,
+        0.75 * G.CARD_H,
+        {
+            card_limit = 1,
+            type = 'joker',
+            highlight_limit = 1,
+            no_card_count = true,
+        }
+    )
     game.tboi_items = CardArea(
         game.jokers.T.x, game.jokers.T.y - 4,
         game.jokers.T.w, game.jokers.T.h,
