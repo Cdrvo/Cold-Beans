@@ -1527,7 +1527,7 @@ Colonparen.Architecture {
     key = 'colon_entablazure',
     base_pos = { x = 0, y = 3 },
     progress_pos = { x = 1, y = 3 },
-    done_pos = { x = 1, y = 3 },
+    done_pos = { x = 2, y = 3 },
 
     beans_credits = {
         team = ":(",
