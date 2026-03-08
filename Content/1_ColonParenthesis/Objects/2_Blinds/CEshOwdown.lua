@@ -1,11 +1,11 @@
 Colonparen.CEOBlind{
     key = "colon_eclipse",
     name = "Entrepreneur of the Eclipse",
-    pos = { x = 0, y = 0 },
+    pos = { x = 0, y = 2 },
     boss = { showdown = true },
 	atlas = "colon_CEshOwdown",
     mult = 5,
-	boss_colour = HEX("459373"),
+	boss_colour = HEX("fd7857"),
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
@@ -94,7 +94,7 @@ Colonparen.CEOBlind{
     boss = { showdown = true },
 	atlas = "colon_CEshOwdown",
     mult = 4,
-	boss_colour = HEX("459373"),
+	boss_colour = HEX("d271e1"),
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
@@ -114,14 +114,23 @@ function Colonparen.GainBlindBase(amount)
     G.GAME.blind:juice_up()
 end
 
+Colonparen.IZAR_GRADIENT = SMODS.Gradient{
+    key = "COLON_IZAR_GRADIENT",
+    colours = {
+        HEX('81cefd'), 
+        HEX('fd7857')
+    },
+    cycle = 10
+}
+
 Colonparen.CEOBlind{
     key = "colon_izar",
     name = "Investor of the Izar",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 4 },
     boss = { showdown = true },
 	atlas = "colon_CEshOwdown",
     mult = 4,
-	boss_colour = HEX("459373"),
+	boss_colour = Colonparen.IZAR_GRADIENT,
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
@@ -142,7 +151,7 @@ Colonparen.CEOBlind{
     boss = { showdown = true },
 	atlas = "colon_CEshOwdown",
     mult = 4,
-	boss_colour = HEX("459373"),
+	boss_colour = HEX("6b8084"),
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
@@ -198,11 +207,11 @@ Colonparen.CEOBlind{
 Colonparen.CEOBlind{
     key = "colon_satellite",
     name = "Speculator of the Satellite",
-    pos = { x = 0, y = 4 },
+    pos = { x = 0, y = 0 },
     boss = { showdown = true },
 	atlas = "colon_CEshOwdown",
     mult = 10,
-	boss_colour = HEX("459373"),
+	boss_colour = HEX("008be3"),
     beans_credits = {
         team = ":(",
         idea = "George The Rat",
