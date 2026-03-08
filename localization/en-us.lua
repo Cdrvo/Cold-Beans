@@ -8913,7 +8913,7 @@ return {
 				}
 			},
 			c_cbean_colon_entablazure = {
-				name = "Entablazure",
+				name = "Entablature",
 				text = {
 					"{C:attention}Chi{} appears next Ante when",
 					"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#]{},",
