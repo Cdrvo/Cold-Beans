@@ -11,11 +11,20 @@ SMODS.Joker {
         info_queue[#info_queue+1] = G.P_CENTERS.c_aura
         return {vars = {card.ability.extra.dollar_min, card.ability.extra.dollar_max, localize{type = 'name_text', set = "Spectral", key = "c_aura", nodes = {}}}}
     end,
-    calculate = function(self, card, context)
-        if context.using_consumeable or context.cbean_streamer_hype
+    calculate = function(self, card, context) --Making an exception for combo card since using them doesn't actually use them
+        if (context.using_consumeable and context.consumeable.ability.set ~= "Combo") or context.cbean_streamer_hype
         or (context.end_of_round and context.main_eval and G.GAME.current_round.hands_played == 1) then
             return {
                 dollars = pseudorandom("streamer_donate", card.ability.extra.dollar_min, card.ability.extra.dollar_max)
+            }
+        end
+        if context.before and G.GAME.cbean_combo_index and #G.GAME.cbean_combo_index > 0 then
+            local money = 0
+            for i = 1, #G.GAME.cbean_combo_index do
+                money = money + pseudorandom("streamer_donate", card.ability.extra.dollar_min, card.ability.extra.dollar_max)
+            end
+            return {
+                dollars = money
             }
         end
     end,
