@@ -309,6 +309,7 @@ end
 
 -- Let's go gambling
 G.FUNCS.show_balley = function(e)
+	YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
   
@@ -323,6 +324,7 @@ G.FUNCS.show_balley = function(e)
   G.hand.states.visible = false
   --sign_sprite.states.visible = true
   sign_text = DynaText({string = {localize('ph_alley_wager')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
+  	 	YMA.end_shop_transition()
 end
 
 -- Clicked back to shop
