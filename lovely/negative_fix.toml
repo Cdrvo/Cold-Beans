@@ -1,0 +1,37 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# 0 Drivers of the chill vaction
+# Negative Card Lovely Patch to make them only give 0.25 slots on combo cards to avoid getting free slots
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''
+self.ability.card_limit = self.ability.card_limit - (self.edition.card_limit or 0)
+'''
+position = "at"
+payload = '''
+if self.ability.consumeable and self.ability.set == "Combo" and self.ability.card_limit == 0.25 then
+    self.ability.card_limit = self.ability.card_limit - (0.25)
+else
+    self.ability.card_limit = self.ability.card_limit - (self.edition.card_limit or 0)
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''
+self.ability.card_limit = self.ability.card_limit + (self.edition.card_limit or 0)
+'''
+position = "at"
+payload = '''
+if self.ability.consumeable and self.ability.set == "Combo" and (edition == "e_negative") then
+    self.ability.card_limit = self.ability.card_limit + 0.25
+else
+    self.ability.card_limit = self.ability.card_limit + (self.edition.card_limit or 0)
+end
+'''
+match_indent = true
