@@ -833,15 +833,3 @@ if self.ability.name == 'Chicot' and G.GAME.blind and (G.GAME.blind.boss or G.GA
 '''
 match_indent = true
 
-
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = "{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.blind, ref_value = 'loc_name'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, rotate = true, silent = true, float = true, scale = 1.6*scale, y_offset = -4}),id = 'HUD_blind_name'}},"
-position = "at"
-payload = '''
-{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.blind, ref_value = 'loc_name'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, rotate = true, silent = true, float = true, scale = 1.6*scale, y_offset = -4}),id = 'HUD_blind_name'}},
-'''
-match_indent = true
-
-

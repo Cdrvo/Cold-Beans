@@ -8736,13 +8736,13 @@ return {
 					"in your full deck are {C:attention}Lucky"
 				}
 			},
-			c_cbean_colon_stylobate = {
-				name = "Stylobate",
+			c_cbean_colon_crepidoma = {
+				name = "Crepidoma",
 				text = {
 					"{C:attention}Omega{} appears next Ante when",
 					"you have {C:attention}3{} {C:inactive}[#1#]{} other {C:attention}Architecture",
 					"{C:attention}Cards{} in their {C:red}base form",
-					"{C:inactive,s:0.8}(Excluding Stylobate)"
+					"{C:inactive,s:0.8}(Excluding Crepidoma)"
 				}
 			},
 			c_cbean_colon_raking = {
@@ -8929,15 +8929,15 @@ return {
 			},
 		},
 		Spectral = {
-			c_cbean_colon_stereobate = {
-				name = "Stereobate",
+			c_cbean_colon_parthenon = {
+				name = "Parthenon",
 				text = {
 					"A random {C:legendary,E:1}Greek Blind",
 					"appears next Ante"
 				}
 			},
-			c_cbean_colon_stereobate_queued = {
-				name = "Stereobate",
+			c_cbean_colon_parthenon_queued = {
+				name = "Parthenon",
 				text = {
 					"A random {C:legendary,E:1}Greek Blind",
 					"will appear in #1# Antes"

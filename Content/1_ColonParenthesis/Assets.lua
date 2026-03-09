@@ -165,5 +165,5 @@ SMODS.ConsumableType({
     text_colour = HEX('4f6367'), --0chill here. Making the text black for readabiity
     collection_rows = { 4, 4 },
     shop_rate = 0,
-    default = "c_cbean_colon_stylobate"
+    default = "c_cbean_colon_crepidoma"
 })
