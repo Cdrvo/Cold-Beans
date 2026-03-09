@@ -132,3 +132,12 @@ YMA.complete_quest = function(card, set, key, add_card)
         end
     }))
 end
+
+local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+    local sell = G_UIDEF_use_and_sell_buttons_ref(card)
+    if card.ability and card.ability.set == "yma_quest" then
+        table.remove(sell.nodes[1].nodes, 1)
+    end
+    return sell
+end
