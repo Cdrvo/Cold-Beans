@@ -605,7 +605,7 @@ position = "at"
 payload = '''G.deck:hard_set_T()
         delay(0.3)
         if G.GAME.round_resets.blind_choices[G.GAME.blind_on_deck] == 'bl_cbean_colon_salesman' then
-            G.COLON_SALESMAN_TOGGLE = true
+            G.GAME.COLON_SALESMAN_TOGGLE = true
         end
         if  G.GAME and G.GAME.blind and G.GAME.blind.get_type then
             if ((G.GAME.blind:get_type() == 'Teeny') or (G.GAME.blind:get_type() == 'Boss')) then

@@ -182,8 +182,8 @@ return {
 			bl_cbean_colon_salesman = { -- George The Rat | George The Rat | jamirror
 				name = "The Salesman",
 				text = {
-					"Next shop and blind",
-					"select screen is skipped"
+					"Next blind select",
+					"screen is skipped"
 				}
 			},
 			bl_cbean_colon_assassination = { -- Glitchkat10 | George The Rat | Glitchkat10
