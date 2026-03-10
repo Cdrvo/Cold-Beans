@@ -21,7 +21,7 @@ SMODS.Consumable {
     end,
     pos = { x = 6, y = 0 },
     can_use = function(self, card)
-        return true
+        if CanCombo(card) or CanUncombo(card) then return true end
     end,
     use = function(self, card, area, copier) --Each card will have two uses. The first is when it is selected  and the second is when it is de-selected
 

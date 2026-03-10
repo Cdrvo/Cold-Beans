@@ -708,12 +708,13 @@ SMODS.Joker:take_ownership('j_matador', {
 
 local old_upt = DynaText.update_text;
 function DynaText:update_text(first_pass)
-	if (self.config.cbean_colon_maxw) and (not first_pass) then
-		local val = old_upt(self, true)
+	if (self.config.cbean_colon_maxw) then
+		self.scale = self.config.scale
+		local val = old_upt(self, first_pass)
 		if self.config.cbean_colon_maxw and self.config.W > self.config.cbean_colon_maxw then
 			self.start_pop_in = self.config.pop_in
-			self.scale = self.config.scale*(self.config.cbean_colon_maxw/self.config.W)
-			return old_upt(self, true)
+			self.scale = self.scale*(self.config.cbean_colon_maxw/self.config.W)
+			return old_upt(self, first_pass)
 		end
 		return val
 	else
