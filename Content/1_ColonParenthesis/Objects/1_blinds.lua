@@ -246,7 +246,7 @@ function Colonparen.get_new_blind(type, startofante)
 
 	if type == 'CEO' then
 		for k, v in pairs(G[P_STRING]) do
-			local res, options = SMODS.add_to_pool(v)
+			local res, options = SMODS.add_to_pool(v, startofante)
 			options = options or {}
 			if not v.spawn_info then
 
@@ -255,8 +255,8 @@ function Colonparen.get_new_blind(type, startofante)
 			elseif v.in_pool and type_(v.in_pool) == 'function' then
 				if
 					(
-						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
-						(v.spawn_info.showdown or false)
+						((not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2))) or 
+						(v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2)
 					) and v:in_pool(startofante)
 				then
 					eligible_bosses[k] = res and true or nil
