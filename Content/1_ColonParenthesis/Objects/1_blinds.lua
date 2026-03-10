@@ -348,6 +348,24 @@ function get_blind_main_colour(blind) --either in the form of the blind key for 
 end
 
 function Colonparen.set_upcoming_blind(blind)
+	if G.blind_select and ((G.blind_select.VT.y >= 10) or G.CONTROLLER.lock_input or (not G.STATE_COMPLETE)) then
+		G.E_MANAGER:add_event(Event({
+			blocking = false,
+			blockable = true,
+			func = function()
+				if G.blind_select and ((G.blind_select.VT.y >= 10) or G.CONTROLLER.lock_input or (not G.STATE_COMPLETE)) then return end
+				G.E_MANAGER:add_event(Event({
+					blocking = false,
+					blockable = true,
+					func = function()
+						Colonparen.set_upcoming_blind(blind)
+						return true
+				end}))
+				return true
+			end
+		}))
+		return
+	end
 	if blind.key then
 		blind = blind.key
 	elseif blind == 'Boss' or blind == 'Teeny' or blind == 'CEO' or blind == 'Small' or blind == 'Big' then
