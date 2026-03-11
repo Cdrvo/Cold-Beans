@@ -1,9 +1,13 @@
 local G_UIDEF_current_blinds = G.UIDEF.current_blinds;
 function G.UIDEF.current_blinds()
 	local value = G_UIDEF_current_blinds();
-	table.insert(value.nodes, 1, G.GAME.round_resets.blind_states['Teeny'] ~= 'Hide' and {n=G.UIT.C, config={align = "tm", padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
-      create_UIBox_blind_choice('Teeny', true)
-    }} or nil)
+	if G.GAME.round_resets.blind_choices.CEO == 'bl_cbean_colon_magnetar' then
+		value.nodes = {}
+	else
+		table.insert(value.nodes, 1, G.GAME.round_resets.blind_states['Teeny'] ~= 'Hide' and {n=G.UIT.C, config={align = "tm", padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
+		create_UIBox_blind_choice('Teeny', true)
+		}} or nil)
+	end
 	value.nodes[#value.nodes+1] = G.GAME.round_resets.blind_states['CEO'] ~= 'Hide' and {n=G.UIT.C, config={align = "tm", padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
       create_UIBox_blind_choice('CEO', true)
     }} or nil;
