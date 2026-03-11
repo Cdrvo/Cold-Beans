@@ -501,7 +501,7 @@ Colonparen.GreekBlind = function (config)
 	local mult = config.mult;
 	local pos = config.pos;
 	local boss_colour = config.boss_colour;
-	config.lower.key = config.lower.key or "lower_" .. key;
+	config.lower.key = config.lower.key or ("lower_" .. key);
 	config.lower.name = config.lower.name or name;
 	config.lower.mult = config.lower.mult or mult;
 	config.lower.pos = config.lower.pos or pos;
@@ -511,7 +511,7 @@ Colonparen.GreekBlind = function (config)
 	config.lower.is_lower = true;
 	local lowercase = Colonparen.LowerGreekBlind(config.lower)
 
-	config.upper.key = config.upper.key or "upper_" .. key;
+	config.upper.key = config.upper.key or ("upper_" .. key);
 	config.upper.name = config.upper.name or name;
 	config.upper.mult = config.upper.mult or mult;
 	config.upper.pos = config.upper.pos or pos;
