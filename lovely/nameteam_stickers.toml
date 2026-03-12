@@ -302,6 +302,16 @@ SMODS.calculate_context({end_of_round = true, game_over = game_over, beat_boss =
 position = "at"
 payload = '''
 SMODS.calculate_context({end_of_round = true, game_over = game_over, beat_boss = G.GAME.blind.boss, beat_ceo = (Colonparen.get_blind_type(G.GAME.blind)=="CEO"), beat_teeny = (Colonparen.get_blind_type(G.GAME.blind)=="Teeny"), scoring_hand = SMODS.last_hand.scoring_hand, scoring_name = SMODS.last_hand.scoring_name, full_hand = SMODS.last_hand.full_hand })
+if (G.GAME.blind_on_deck == "CEO" or G.GAME.blind_on_deck == "Ceo") then
+    G.GAME.cbean_beaten_ceos = G.GAME.cbean_beaten_ceos or {}
+    G.GAME.cbean_beaten_ceos[G.GAME.round_resets.blind_choices["CEO"]] = true
+    G.GAME.beaten_ceo_num = G.GAME.beaten_ceo_num + 1
+end
+
+if G.GAME.beaten_ceo_num == G.GAME.loaded_ceo_blinds then
+    G.GAME.cbean_beaten_ceos = {}
+end
+
 if G.GAME.round_resets.ante > 7 and G.GAME.modifiers.blind_stickers and not G.GAME.modifiers.showdown_stickers then
     G.GAME.modifiers.showdown_stickers = true
 end

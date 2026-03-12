@@ -233,7 +233,8 @@ end
 
 --why did you use Type as a variable what are you doing
 local type_ = type
-function Colonparen.get_new_blind(type, startofante)
+function Colonparen.get_new_blind(type, startofante, rerun)
+	G.GAME.cbean_beaten_ceos= G.GAME.cbean_beaten_ceos or {}
 	--Okay, this seems super redundant but I can't seem to work out how to get the modifier to already prescribe blinds?
 	if G.GAME.modifiers.cbean_sdown_all_blinds_are then
 		return G.GAME.modifiers.cbean_sdown_all_blinds_are
@@ -252,23 +253,26 @@ function Colonparen.get_new_blind(type, startofante)
 		for k, v in pairs(G[P_STRING]) do
 			local res, options = SMODS.add_to_pool(v, startofante)
 			options = options or {}
-			if not v.spawn_info then
+			--print(G.GAME.cbean_beaten_ceos[k]==true)
+			if not G.GAME.cbean_beaten_ceos[k] then
+				if not v.spawn_info then
 
-			elseif options.ignore_showdown_check then
-				eligible_bosses[k] = res and true or nil
-			elseif v.in_pool and type_(v.in_pool) == 'function' then
-				if
-					(
-						((not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2))) or 
-						(v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2)
-					) and v:in_pool(startofante)
-				then
+				elseif options.ignore_showdown_check then
+					eligible_bosses[k] = res and true or nil
+				elseif v.in_pool and type_(v.in_pool) == 'function' then
+					if
+						(
+							((not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2))) or 
+							(v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2)
+						) and v:in_pool(startofante)
+					then
+						eligible_bosses[k] = res and true or nil
+					end
+				elseif (not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+					eligible_bosses[k] = res and true or nil
+				elseif v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 					eligible_bosses[k] = res and true or nil
 				end
-			elseif (not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
-				eligible_bosses[k] = res and true or nil
-			elseif v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
-				eligible_bosses[k] = res and true or nil
 			end
 		end
 	elseif type == 'Teeny' then
@@ -314,6 +318,15 @@ function Colonparen.get_new_blind(type, startofante)
         end
     end
 	--print()
+	local el_num = 0
+	for k, v in pairs(eligible_bosses) do
+		el_num = el_num + 1
+	end
+	if el_num<=0 and type == "CEO" and not rerun then
+		G.GAME.cbean_beaten_ceos = {}
+		--print("never do this omg")
+		return Colonparen.get_new_blind(type, startofante, true)
+	end
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)
