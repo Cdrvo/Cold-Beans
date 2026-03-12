@@ -497,8 +497,14 @@ end'''
 position = "after"
 payload = '''
 for k, v in pairs((Colonparen or {}).SpecialBlinds or {}) do
-    if v and v.name and v.name == blindTable.name then
-        blindTable.config_blind = k
+    if blindTable.key then
+        if v and v.key and v.key == blindTable.key then
+            blindTable.config_blind = k
+        end
+    else
+        if v and v.name and v.name == blindTable.name then
+            blindTable.config_blind = k
+        end
     end
 end'''
 match_indent = true
@@ -810,6 +816,16 @@ self.teeny = blind and (blind.colonparen_blindtype == 'Teeny')
 self.small = blind and ((self.name == "Small Blind") or (blind.colonparen_blindtype == 'Small'))
 self.big = blind and ((self.name == "Big Blind") or (blind.colonparen_blindtype == 'Big'))
 self.ceo = blind and (blind.colonparen_blindtype == 'CEO')
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "name = self.name,"
+position = "after"
+payload = '''
+key = (self.config.blind or {}).key,
 '''
 match_indent = true
 
