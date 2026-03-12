@@ -745,13 +745,6 @@ G.FUNCS.show_yma_dreamland = function(e)
 YMA.start_shop_transition()
   stop_use()
   hide_location(G.main_street)
-
-  G.dreamlands_consumeable_card_holder = CardArea(
-      G.hand.T.x+0,
-      (G.hand.T.y+G.ROOM.T.y + 9),
-      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
-      1.05*G.CARD_H, 
-      {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
   
   G.STATE = G.STATES.DREAMLAND
   G.STATE_COMPLETE = false
@@ -785,21 +778,7 @@ G.FUNCS.hide_yma_dreamland = function(e)
 	--sign_sprite.atlas = G.ANIMATION_ATLAS["shop_sign"]
     --sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-    if G.dreamlands_consumeable_card_holder then
-        G.dreamlands_consumeable_card_holder.states.visible = false
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            blockable = false,
-            blocking = false,
-            delay =  1.1 * ( 2 + #G.dreamlands_consumeable_card_holder.cards), --idk numbers go brr
-            func = (function() 
-                    G.dreamlands_consumeable_card_holder.states.visible = false
-                    G.dreamlands_consumeable_card_holder:remove()
-                    G.dreamlands_consumeable_card_holder = nil;
-                return true
-            end)
-        }), "other")
-    end
+    G.dreamlands_consumeable_card_holder.states.visible = false
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
     YMA.end_shop_transition()
@@ -849,7 +828,12 @@ function G.UIDEF.yma_dreamland()
     G.GAME.yma_dreamland_improve_text = localize('k_yma_polish')
     G.GAME.yma_dreamland_chance_text = localize('k_yma_chance_to_fail_key')
     G.GAME.yma_upgradecost_text = G.GAME.yma_upgradecost_text or 5
-
+    G.dreamlands_consumeable_card_holder = CardArea(
+      G.hand.T.x+0,
+      (G.hand.T.y+G.ROOM.T.y + 9),
+      math.min(10*1.02*G.CARD_W,4.08*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = 999999999999, type = 'consumeable', highlight_limit = 1})
 
     local t = {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
