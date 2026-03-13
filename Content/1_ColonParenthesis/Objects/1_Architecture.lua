@@ -390,7 +390,7 @@ G.UIDEF.cbean_colon_started_arch = function ()
         copy:hard_set_T()
         copy:start_materialize(nil, silent)
         silent = true
-        copy:add_to_deck()
+        --copy:add_to_deck()
         cardarea:emplace(copy)
     end
 
