@@ -14,7 +14,7 @@ end
 Colonparen.changeBlind = function(blindType, after) -- blindType | A string containing the type of blind, before | the blind name to be changed, after | the blind key to be changed into
     local before = blindType:lower()
     G.blind_select_opts = G.blind_select_opts or {}
-    if not (G.GAME.round_resets.blind_choices[before]) then
+    if not (G.GAME.round_resets.blind_choices[blindType]) then
         print("before ", G.blind_select_opts)
         error("Could not update blind, as its not in current blinds", 1)
         return
