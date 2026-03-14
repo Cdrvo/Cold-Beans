@@ -11721,7 +11721,7 @@ return {
 			bean_138                            = "Which came first, ranch or cool ranch?",
 			bean_139                            = "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs",
 			bean_140                            = "This mod is sponsored by Bean Shadow Legend",
-			bean_141                            = "what the hell did i add?", --If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16. added these
+			bean_141                            = "what the hell did i add?", 
 			bean_142                            = "why do they call it oven when you of in the cold food of out hot eat the food",
 			bean_143                            = "How've you bean?",
 			bean_144                            = "John! What's up! Great to see ya.",
@@ -11754,6 +11754,8 @@ return {
 			bean_171 							= "You should play Revo's Vault..",
 			bean_172 							= "Bean Printer",
 			bean_173							= "Revo was here",
+			--If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16.
+			--TODO add a way to get them automagically?
 		},
 		high_scores = {},
 		labels = {
