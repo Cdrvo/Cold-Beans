@@ -14,9 +14,10 @@ function Card:click()
     --Card:click is a terrible place to put this, but G:set_language didn't work for some reason so whaddayagonnado
     if not (G.beancount and G.localization.misc.dictionary["bean_"..G.beancount] and not G.localization.misc.dictionary["bean_"..(G.beancount+1)]) then
         local i = 0
+        local dic = G.localization.misc.dictionary
         repeat
             i = i + 1
-        until not G.localization.misc.dictionary["bean_"..i]
+        until not dic["bean_"..i]
         G.beancount = i - 1
     end
     local t = {n=G.UIT.ROOT, config = {align = "cm", minh = 1,r = 0.3, padding = 0.07, minw = 1, colour = G.C.JOKER_GREY, shadow = true}, nodes={
