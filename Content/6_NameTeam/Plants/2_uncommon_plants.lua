@@ -3073,19 +3073,61 @@ SMODS.Joker({
 	rarity = 2,
 	blueprint_compat = true,
 	config = {
-		extra = {},
+		extra = {rounds = 2},
 	},
-	loc_vars = function(self, info_queue, card)
-		local cae = card.ability.extra
-		return { vars = { cae.hands, cae.xmult_gain, cae.xmult } }
+	loc_vars = function(self, info_queue, card) --Compatible label taken and modifed from Cryptid's oil lamp
+		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
+		card.ability.blueprint_compat_check = nil
+		return {
+			vars = { card.ability.extra.rounds },
+			main_end = (card.area and card.area == G.jokers) and {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = {
+								ref_table = card,
+								align = "m",
+								colour = G.C.JOKER_GREY,
+								r = 0.05,
+								padding = 0.06,
+								func = "blueprint_compat",
+							},
+							nodes = {
+								{
+									n = G.UIT.T,
+									config = {
+										ref_table = card.ability,
+										ref_value = "blueprint_compat_ui",
+										colour = G.C.UI.TEXT_LIGHT,
+										scale = 0.32 * 0.8,
+									},
+								},
+							},
+						},
+					},
+				},
+			} or nil,
+		}
+	end,
+	update = function(self, card, front)
+		if G.STAGE == G.STAGES.RUN then
+			if card:on_the("right") and card:on_the("right").ability and ((not card:on_the("right").ability.immutable) or  (card:on_the("right").ability.immutable and not card:on_the("right").ability.immutable.cbean_lily_power )) and ( not Card.no(card:on_the("right"), "immutable", true)) then
+				card.ability.blueprint_compat = "compatible"
+			else
+				card.ability.blueprint_compat = "incompatible"
+			end
+		end
 	end,
 	calculate = function(self, card, context)
-		local cae = card.ability.extra
-		if context.selling_self then
-			if card:on_the("right") then
-				card:on_the("right").ability.cbean_lily_power = 2
-				NAMETEAM.values("*", card:on_the("right"), 2, true)
+		if context.selling_self and card:on_the("right") and card:on_the("right").ability and ((not card:on_the("right").ability.immutable) or  (card:on_the("right").ability.immutable and not card:on_the("right").ability.immutable.cbean_lily_power )) then
+			if not card:on_the("right").ability.immutable then
+				card:on_the("right").ability.immutable = {}
 			end
+			card:on_the("right").ability.immutable.cbean_lily_power = card.ability.extra.rounds
+			NAMETEAM.values("*", card:on_the("right"), 2, true)
 		end
 	end,
 })

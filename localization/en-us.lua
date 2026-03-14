@@ -5622,7 +5622,8 @@ return {
 				text = {
 					"{C:attention}Doubles{} the values",
 					"of the card on the right",
-					"for {C:attention}2{} rounds when {C:green}sold{}"
+					"for {C:attention}#1#{} rounds when {C:green}sold{}",
+					"{C:inactive,s:0.8}(Can't use multiple simultaneously)"
 				},
 			},
 			j_cbean_toad_stool                          = {
@@ -11504,6 +11505,7 @@ return {
 			k_cbean_piss_ex                     = "Piss!",
 			k_cbean_mash_ex                     = "Mash!",
 			k_cbean_munch_ex					= "Munched!",
+			k_cbean_lily						= "Lily Rounds",
 			k_cbean_pboys_abet                  = "Bet",
 			k_cbean_unique_ex                   = "???",
 			k_cbean_balley_ex                   = "Alley!",

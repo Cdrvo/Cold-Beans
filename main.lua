@@ -215,11 +215,11 @@ ColdBeans.calculate = function(mod, context)
 			end
 
 			for k, v in pairs(G.jokers.cards) do -- needs a check for other values ( iwanted to use - instead of / but i got other jokers to code)
-				if v.ability.cbean_lily_power and v.ability.cbean_lily_power > 0 then
-					v.ability.cbean_lily_power = v.ability.cbean_lily_power - 1
-					NAMETEAM.msg(v, "-1")
-				elseif v.ability.cbean_lily_power then
-					v.ability.cbean_lily_power = nil
+				if v.ability.immutable and v.ability.immutable.cbean_lily_power and v.ability.immutable.cbean_lily_power > 1 then
+					v.ability.immutable.cbean_lily_power = v.ability.immutable.cbean_lily_power - 1
+					NAMETEAM.msg(v, "-1 " .. localize("k_cbean_lily"))
+				elseif v.ability.immutable and v.ability.immutable.cbean_lily_power and v.ability.immutable.cbean_lily_power <= 1 then
+					v.ability.immutable.cbean_lily_power = nil
 					NAMETEAM.msg(v, localize("k_reset"))
 					NAMETEAM.values("/", v, 2, true)
 				end
