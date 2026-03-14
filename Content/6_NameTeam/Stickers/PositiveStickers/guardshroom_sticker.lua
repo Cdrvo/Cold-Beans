@@ -19,10 +19,18 @@ SMODS.Sticker({
 	}
 	end,
 	NAMETEAM_applied = function(self, card)
-        NAMETEAM.values("*", card, 1.05, true)
+		Colonparen.manipulate(card, {
+			type = "X",
+			value = 1.05,
+			no_deck_effects = true
+		})
     end,
     NAMETEAM_removed = function(self,card)
-        NAMETEAM.values("/", card, 1.05, true)
+		Colonparen.manipulate(card, {
+			type = "/",
+			value = 1.05,
+			no_deck_effects = true
+		})
     end,
     beans_credits = {
         code = "Revo",
