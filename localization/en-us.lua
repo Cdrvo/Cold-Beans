@@ -11698,6 +11698,7 @@ return {
 			bean_114                            = "I know what you are.",
 			bean_115                            = "awawawawa :3",
 			bean_116                            = "Focus, J",
+			bean_117							= "C! B! Cold Beans!",
 			bean_118                            = "Incompatible!",
 			bean_119                            = "im colding it and by it lets just say my beans",
 			bean_120                            = "Bean there, done that",
@@ -11754,8 +11755,7 @@ return {
 			bean_171 							= "You should play Revo's Vault..",
 			bean_172 							= "Bean Printer",
 			bean_173							= "Revo was here",
-			--If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16.
-			--TODO add a way to get them automagically?
+			--I figured out how to count them automagically, just don't miss any numbers. We could probably do something about that too with cleverness but it's 3 am and I really should be sleeping now.
 		},
 		high_scores = {},
 		labels = {
