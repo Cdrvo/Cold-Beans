@@ -11832,7 +11832,7 @@ return {
 			bean_114                            = "I know what you are.",
 			bean_115                            = "awawawawa :3",
 			bean_116                            = "Focus, J",
-			bean_117			    = "C! B! Cold Beans!",
+			bean_117			 			    = "C! B! Cold Beans!",
 			bean_118                            = "Incompatible!",
 			bean_119                            = "im colding it and by it lets just say my beans",
 			bean_120                            = "Bean there, done that",
@@ -11939,7 +11939,11 @@ return {
 			bean_221							= "Actually, My name is Collin.",
 			bean_222							= "so what now",
 			bean_223							= "I've come to make an announcement: Jimbo the Joker is a Cavendish Extinct Hit",
-			bean_223							= "I've come to make an announcement: Jimbo the Joker is a Wheel Nope!"
+			bean_224							= "I've come to make an announcement: Jimbo the Joker is a Wheel Nope!"
+			bean_225							= "By the code these aren't quips, this is a yap box and these are yaps :speaking:"
+			bean_226							= "It's me, John Bean, they trapped me here HELP"
+			bean_227							= ".--. . -. .. ..."
+			bean_228							= "This mod was sponsored by RAID SHADOW LEGENDS"
 			--I figured out how to count them automagically, just don't miss any numbers. We could probably do something about that too with cleverness but it's 3 am and I really should be sleeping now.
 		},
 		high_scores = {},

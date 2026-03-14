@@ -24,7 +24,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "ThunderEdge",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -80,7 +80,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -281,7 +281,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 3,
 	blueprint_compat = true,
@@ -440,7 +440,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 3,
 	blueprint_compat = true,

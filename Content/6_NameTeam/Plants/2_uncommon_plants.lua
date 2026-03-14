@@ -136,7 +136,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -181,7 +181,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Doggfly",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -291,7 +291,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -1085,7 +1085,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -1118,7 +1118,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -1162,7 +1162,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -1227,7 +1227,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -1452,7 +1452,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Doggfly",
+		art = "GeorgeTheRat",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -5578,7 +5578,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra

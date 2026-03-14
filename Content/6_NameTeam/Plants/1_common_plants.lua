@@ -25,7 +25,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "Comykel",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -69,7 +69,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -379,7 +379,7 @@ SMODS.Joker({
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "Crazy Dave",
+		art = "GeorgeTheRat",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
