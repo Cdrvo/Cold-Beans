@@ -4942,46 +4942,7 @@ SMODS.Consumable {
     hidden = true,
     soul_set = 'Planet',
     use = function(self, card, area, copier)
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+2' })
-        delay(1.3)
-        for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.level = poker_hand_key.level + 2
-        end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
-            { mult = 0, chips = 0, handname = '', level = '' })
+        NAMETEAM.blackhole(card, true, 2)
     end,
     can_use = function(self, card)
         return true
@@ -5006,99 +4967,31 @@ SMODS.Consumable {
     hidden = true,
     soul_set = 'Planet',
     use = function(self, card, area, copier)
-        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
-                _hand1 = handname
-                _tally1 = G.GAME.hands[handname].played
-            end
-            if tally1 > tally2 then
-                _hand2 = handname
-                _tally2 = G.GAME.hands[handname].played
-            end
-            if tally2 > tally3 then
-                _hand3 = handname
-                _tally3 = G.GAME.hands[handname].played
+        local s = {_hand1 = nil, _hand2 = nil, _hand3 = nil, _tally1 = 0, _tally2 = 0, _tally3 = 0, handkey = nil}
+        local handlist = {}
+        for _, handname in pairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) then
+                handlist[#handlist+1] = handname
             end
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
+        for i = 1, 3 do
+            for _, handname in pairs(handlist) do
+                if SMODS.is_poker_hand_visible(handname) then
+                    if G.GAME.hands[handname].played > s["_tally" .. i] then
+                        s["_tally" .. i] = G.GAME.hands[handname].played
+                        s["_hand" .. i] = handname
+                        s["handkey"] = _
+                    end
+                end
             end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
+            table.remove(handlist, s["handkey"])
+            if s["_hand" .. i] == nil then
+                s["_hand" .. i] = "Straight Flush" -- default most played (idk)
             end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+2' })
-        delay(1.3)
-        for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.level = poker_hand_key.level + 2
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
-        delay(1.3)
-        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
-        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
-        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
-            { mult = 0, chips = 0, handname = '', level = '' })
+
+        NAMETEAM.blackhole(card, true, 2)
+        SMODS.upgrade_poker_hands({from = card, hands = {s["_hand1"],s["_hand2"],s["_hand3"]},level_up = 3})
     end,
     can_use = function(self, card)
         return true
@@ -5123,106 +5016,43 @@ SMODS.Consumable {
     hidden = true,
     soul_set = 'Planet',
     use = function(self, card, area, copier)
-        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
-                _hand1 = handname
-                _tally1 = G.GAME.hands[handname].played
-            end
-            if tally1 > tally2 then
-                _hand2 = handname
-                _tally2 = G.GAME.hands[handname].played
-            end
-            if tally2 > tally3 then
-                _hand3 = handname
-                _tally3 = G.GAME.hands[handname].played
+        local s = {_hand1 = nil, _hand2 = nil, _hand3 = nil, _tally1 = 0, _tally2 = 0, _tally3 = 0, handkey = nil}
+        local a = math.huge
+        local handlist = {}
+        for _, handname in pairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) then
+                handlist[#handlist+1] = handname
             end
         end
-        local lowest, lowesttally = nil, 1000000
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played < lowesttally then
-                lowest = handname
-                lowesttally = G.GAME.hands[handname].level
+        for i = 1, 3 do
+            for _, handname in pairs(handlist) do
+                if SMODS.is_poker_hand_visible(handname) then
+                    if G.GAME.hands[handname].played > s["_tally" .. i] then
+                        s["_tally" .. i] = G.GAME.hands[handname].played
+                        s["_hand" .. i] = handname
+                        s["handkey"] = _
+                    end
+                end
+            end
+            table.remove(handlist, s["handkey"])
+            if s["_hand" .. i] == nil then
+                s["_hand" .. i] = "Straight Flush" -- default most played (idk)
             end
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
+        for _, handname in pairs(handlist) do
+            if G.GAME.hands[handname] and G.GAME.hands[handname].level then
+                if G.GAME.hands[handname].level < a then
+                    a = G.GAME.hands[handname].level
+                end
             end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' .. 2 + G.GAME.hands[lowest].level })
-        delay(1.3)
-        for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.level = poker_hand_key.level + 2 + G.GAME.hands[lowest].level
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
-        delay(1.3)
-        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
-        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
-        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
-            { mult = 0, chips = 0, handname = '', level = '' })
+
+        if a == math.huge then
+            a = 1
+        end
+
+        NAMETEAM.blackhole(card, true, 2+a)
+        SMODS.upgrade_poker_hands({from = card, hands = {s["_hand1"],s["_hand2"],s["_hand3"]},level_up = 3})
     end,
     can_use = function(self, card)
         return true
@@ -5247,104 +5077,44 @@ SMODS.Consumable {
     hidden = true,
     soul_set = 'Planet',
     use = function(self, card, area, copier)
-        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
-                _hand1 = handname
-                _tally1 = G.GAME.hands[handname].played
-            end
-            if tally1 > tally2 then
-                _hand2 = handname
-                _tally2 = G.GAME.hands[handname].played
-            end
-            if tally2 > tally3 then
-                _hand3 = handname
-                _tally3 = G.GAME.hands[handname].played
+        local s = {_hand1 = nil, _hand2 = nil, _hand3 = nil, _tally1 = 0, _tally2 = 0, _tally3 = 0, handkey = nil}
+        local a = math.huge
+        local handlist = {}
+        for _, handname in pairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) then
+                handlist[#handlist+1] = handname
             end
         end
-        local lowest, lowesttally = nil, 1000000
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played < lowesttally then
-                lowest = handname
-                lowesttally = G.GAME.hands[handname].level
+        for i = 1, 3 do
+            for _, handname in pairs(handlist) do
+                if SMODS.is_poker_hand_visible(handname) then
+                    if G.GAME.hands[handname].played > s["_tally" .. i] then
+                        s["_tally" .. i] = G.GAME.hands[handname].played
+                        s["_hand" .. i] = handname
+                        s["handkey"] = _
+                    end
+                end
+            end
+            table.remove(handlist, s["handkey"])
+            if s["_hand" .. i] == nil then
+                s["_hand" .. i] = "Straight Flush" -- default most played (idk)
             end
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
+        for _, handname in pairs(handlist) do
+            if G.GAME.hands[handname] and G.GAME.hands[handname].level then
+                if G.GAME.hands[handname].level < a then
+                    a = G.GAME.hands[handname].level
+                end
             end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' .. 2 + G.GAME.hands[lowest].level })
-        delay(1.3)
-        for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.level = poker_hand_key.level + 2 + G.GAME.hands[lowest].level
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
-        delay(1.3)
-        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
-        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
-        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
+
+        if a == math.huge then
+            a = 1
+        end
+
+        NAMETEAM.blackhole(card, true, 2+a)
+        SMODS.upgrade_poker_hands({from = card, hands = {s["_hand1"],s["_hand2"],s["_hand3"]},level_up = 3})
+       
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
             { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
         G.E_MANAGER:add_event(Event({
@@ -5381,8 +5151,8 @@ SMODS.Consumable {
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { })
         delay(1.3)
         for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.chips = poker_hand_key.chips * 2
-            poker_hand_key.mult = poker_hand_key.mult * 2
+            G.GAME.hands[poker_hand_key].chips = G.GAME.hands[poker_hand_key].chips * 2
+            G.GAME.hands[poker_hand_key].mult = G.GAME.hands[poker_hand_key].mult * 2
         end
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
             { mult = 0, chips = 0, handname = '', level = '' })
@@ -5403,104 +5173,45 @@ SMODS.Consumable {
     hidden = true,
     soul_set = 'Planet',
     use = function(self, card, area, copier)
-        local _hand1, _hand2, _hand3, _tally1, _tally2, _tally3 = nil, nil, nil, 0, 0, 0
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally1 then
-                _hand1 = handname
-                _tally1 = G.GAME.hands[handname].played
-            end
-            if tally1 > tally2 then
-                _hand2 = handname
-                _tally2 = G.GAME.hands[handname].played
-            end
-            if tally2 > tally3 then
-                _hand3 = handname
-                _tally3 = G.GAME.hands[handname].played
+                local s = {_hand1 = nil, _hand2 = nil, _hand3 = nil, _tally1 = 0, _tally2 = 0, _tally3 = 0, handkey = nil}
+        local a = math.huge
+        local handlist = {}
+        for _, handname in pairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) then
+                handlist[#handlist+1] = handname
             end
         end
-        local lowest, lowesttally = nil, 1000000
-        for _, handname in ipairs(G.handlist) do
-            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played < lowesttally then
-                lowest = handname
-                lowesttally = G.GAME.hands[handname].level
+        for i = 1, 3 do
+            for _, handname in pairs(handlist) do
+                if SMODS.is_poker_hand_visible(handname) then
+                    if G.GAME.hands[handname].played > s["_tally" .. i] then
+                        s["_tally" .. i] = G.GAME.hands[handname].played
+                        s["_hand" .. i] = handname
+                        s["handkey"] = _
+                    end
+                end
+            end
+            table.remove(handlist, s["handkey"])
+            if s["_hand" .. i] == nil then
+                s["_hand" .. i] = "Straight Flush" -- default most played (idk)
             end
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
+        for _, handname in pairs(handlist) do
+            if G.GAME.hands[handname] and G.GAME.hands[handname].level then
+                if G.GAME.hands[handname].level < a then
+                    a = G.GAME.hands[handname].level
+                end
             end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' .. 2 + G.GAME.hands[lowest].level })
-        delay(1.3)
-        for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.level = poker_hand_key.level + 2 + G.GAME.hands[lowest].level
         end
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            { handname = '3 most played hands', chips = '...', mult = '...', level = '' })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = true
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                return true
-            end
-        }))
-        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.9,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.8, 0.5)
-                G.TAROT_INTERRUPT_PULSE = nil
-                return true
-            end
-        }))
-        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+3' })
-        delay(1.3)
-        G.GAME.hands[_hand1].level = G.GAME.hands[_hand1].level + 3
-        G.GAME.hands[_hand2].level = G.GAME.hands[_hand2].level + 3
-        G.GAME.hands[_hand3].level = G.GAME.hands[_hand3].level + 3
+
+        if a == math.huge then
+            a = 1
+        end
+
+        NAMETEAM.blackhole(card, true, 2+a)
+        SMODS.upgrade_poker_hands({from = card, hands = {s["_hand1"],s["_hand2"],s["_hand3"]},level_up = 3})
+
+
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
             { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
         G.E_MANAGER:add_event(Event({
@@ -5537,10 +5248,10 @@ SMODS.Consumable {
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { })
         delay(1.3)
         for poker_hand_key, _ in pairs(G.GAME.hands) do
-            poker_hand_key.chips = poker_hand_key.chips * 2
-            poker_hand_key.mult = poker_hand_key.mult * 2
-            poker_hand_key.level_chips = poker_hand_key.level_chips * 2
-            poker_hand_key.level_mult = poker_hand_key.level_mult * 2
+            G.GAME.hands[poker_hand_key].chips = G.GAME.hands[poker_hand_key].chips * 2
+            G.GAME.hands[poker_hand_key].mult = G.GAME.hands[poker_hand_key].mult * 2
+            G.GAME.hands[poker_hand_key].l_chips = G.GAME.hands[poker_hand_key].l_chips * 2
+            G.GAME.hands[poker_hand_key].l_mult = G.GAME.hands[poker_hand_key].l_mult * 2
         end
         update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
             { mult = 0, chips = 0, handname = '', level = '' })

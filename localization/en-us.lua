@@ -182,8 +182,8 @@ return {
 			bl_cbean_colon_salesman = { -- George The Rat | George The Rat | jamirror
 				name = "The Salesman",
 				text = {
-					"Next shop and blind",
-					"select screen is skipped"
+					"Next blind select",
+					"screen is skipped"
 				}
 			},
 			bl_cbean_colon_assassination = { -- Glitchkat10 | George The Rat | Glitchkat10
@@ -8736,13 +8736,13 @@ return {
 					"in your full deck are {C:attention}Lucky"
 				}
 			},
-			c_cbean_colon_stylobate = {
-				name = "Stylobate",
+			c_cbean_colon_crepidoma = {
+				name = "Crepidoma",
 				text = {
 					"{C:attention}Omega{} appears next Ante when",
 					"you have {C:attention}3{} {C:inactive}[#1#]{} other {C:attention}Architecture",
 					"{C:attention}Cards{} in their {C:red}base form",
-					"{C:inactive,s:0.8}(Excluding Stylobate)"
+					"{C:inactive,s:0.8}(Excluding Crepidoma)"
 				}
 			},
 			c_cbean_colon_raking = {
@@ -8913,7 +8913,7 @@ return {
 				}
 			},
 			c_cbean_colon_entablazure = {
-				name = "Entablazure",
+				name = "Entablature",
 				text = {
 					"{C:attention}Chi{} appears next Ante when",
 					"you have {C:red}exactly{} {C:attention}1{} {C:blue}Common{} {C:inactive}[#1#]{},",
@@ -8929,15 +8929,15 @@ return {
 			},
 		},
 		Spectral = {
-			c_cbean_colon_stereobate = {
-				name = "Stereobate",
+			c_cbean_colon_parthenon = {
+				name = "Parthenon",
 				text = {
 					"A random {C:legendary,E:1}Greek Blind",
 					"appears next Ante"
 				}
 			},
-			c_cbean_colon_stereobate_queued = {
-				name = "Stereobate",
+			c_cbean_colon_parthenon_queued = {
+				name = "Parthenon",
 				text = {
 					"A random {C:legendary,E:1}Greek Blind",
 					"will appear in #1# Antes"
@@ -11698,6 +11698,7 @@ return {
 			bean_114                            = "I know what you are.",
 			bean_115                            = "awawawawa :3",
 			bean_116                            = "Focus, J",
+			bean_117							= "C! B! Cold Beans!",
 			bean_118                            = "Incompatible!",
 			bean_119                            = "im colding it and by it lets just say my beans",
 			bean_120                            = "Bean there, done that",
@@ -11721,7 +11722,7 @@ return {
 			bean_138                            = "Which came first, ranch or cool ranch?",
 			bean_139                            = "I warned you about stairs, bro!!!! I told you dog! I told you man! I told you about stairs",
 			bean_140                            = "This mod is sponsored by Bean Shadow Legend",
-			bean_141                            = "what the hell did i add?", --If you add more quips, go to Jimbobills hooks.lua and look for math.random at line 16. added these
+			bean_141                            = "what the hell did i add?", 
 			bean_142                            = "why do they call it oven when you of in the cold food of out hot eat the food",
 			bean_143                            = "How've you bean?",
 			bean_144                            = "John! What's up! Great to see ya.",
@@ -11754,6 +11755,7 @@ return {
 			bean_171 							= "You should play Revo's Vault..",
 			bean_172 							= "Bean Printer",
 			bean_173							= "Revo was here",
+			--I figured out how to count them automagically, just don't miss any numbers. We could probably do something about that too with cleverness but it's 3 am and I really should be sleeping now.
 		},
 		high_scores = {},
 		labels = {

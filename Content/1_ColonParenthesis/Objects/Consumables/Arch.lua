@@ -9,7 +9,7 @@ SMODS.UndiscoveredSprite {
 }
 
 Colonparen.Architecture {
-    key = 'colon_stereobate',
+    key = 'colon_parthenon',
     done_pos = { x = 6, y = 6 },
     set = "Spectral",
     hidden = true,
@@ -28,7 +28,7 @@ Colonparen.Architecture {
         }
     end,
     spawn = function (self, card)
-        local greek = pseudorandom_element(Colonparen.GreekBlinds, pseudoseed("colon_stereobate"))
+        local greek = pseudorandom_element(Colonparen.GreekBlinds, pseudoseed("colon_parthenon"))
         Colonparen.spawnGreekBlind(greek.key)
     end,
     loc_vars = function (self, info_queue, card)
@@ -38,7 +38,7 @@ Colonparen.Architecture {
                     if ID == card.ability.colonparen_archid then
                         local amount_away = #G.GAME.cbean_colonparen_queue - i + 1;
                         return {
-                            key = "c_cbean_colon_stereobate_queued",
+                            key = "c_cbean_colon_parthenon_queued",
                             vars = {
                                 number_format(amount_away)
                             }
@@ -54,10 +54,10 @@ Colonparen.Architecture {
 }
 
 Colonparen.Architecture {
-    key = 'colon_stylobate',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    key = 'colon_crepidoma',
+    base_pos = { x = 9, y = 0 },
+    progress_pos = { x = 10, y = 0 },
+    done_pos = { x = 11, y = 0 },
 
     beans_credits = {
         team = ":(",
@@ -73,7 +73,7 @@ Colonparen.Architecture {
 
         local amount = 0;
         for i, card in ipairs(G.cbean_colon_arch.cards) do
-            if (card.config.center.key ~= "c_cbean_colon_stylobate") and (card.ability.colonparen_state == 0) then
+            if (card.config.center.key ~= "c_cbean_colon_crepidoma") and (card.ability.colonparen_state == 0) then
                 amount = amount + 1
             end
         end
@@ -271,9 +271,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_flute',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 6, y = 1 },
+    progress_pos = { x = 7, y = 1 },
+    done_pos = { x = 8, y = 1 },
 
     beans_credits = {
         team = ":(",
@@ -323,9 +323,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_necking',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 6, y = 0 },
+    progress_pos = { x = 7, y = 0 },
+    done_pos = { x = 8, y = 0 },
 
     beans_credits = {
         team = ":(",
@@ -689,9 +689,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_triglyph',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 6, y = 3 },
+    progress_pos = { x = 7, y = 3 },
+    done_pos = { x = 8, y = 3 },
 
     beans_credits = {
         team = ":(",
@@ -801,9 +801,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_metope',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 9, y = 1 },
+    progress_pos = { x = 10, y = 1 },
+    done_pos = { x = 11, y = 1 },
 
     beans_credits = {
         team = ":(",
@@ -1234,9 +1234,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_echinus',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 9, y = 2 },
+    progress_pos = { x = 10, y = 2 },
+    done_pos = { x = 11, y = 2 },
 
     beans_credits = {
         team = ":(",
@@ -1468,9 +1468,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_base',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 6, y = 2 },
+    progress_pos = { x = 7, y = 2 },
+    done_pos = { x = 8, y = 2 },
 
     beans_credits = {
         team = ":(",
@@ -1529,9 +1529,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_entablazure',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 0, y = 3 },
+    progress_pos = { x = 1, y = 3 },
+    done_pos = { x = 2, y = 3 },
 
     beans_credits = {
         team = ":(",

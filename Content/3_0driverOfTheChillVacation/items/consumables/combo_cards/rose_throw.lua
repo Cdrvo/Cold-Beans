@@ -23,7 +23,7 @@ SMODS.Consumable {
     end,
     pos = { x = 0, y = 1 },
     can_use = function(self, card)
-        return true
+        if CanCombo(card) or CanUncombo(card) then return true end
     end,
     use = function(self, card, area, copier) --Each card will have two uses. The first is when it is selected  and the second is when it is de-selected
         if G.GAME.blind.in_blind and CanCombo(card) --Selecting Card

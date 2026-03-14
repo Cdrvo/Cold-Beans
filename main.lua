@@ -485,6 +485,9 @@ SMODS.Atlas({
 
 SMODS.current_mod.reset_game_globals = function(run_start)
 	if run_start then
+		
+		G.GAME.beaten_ceo_num = 0
+		G.GAME.cbean_beaten_ceos = {}
 		G.GAME.NAMETEAM.unique_consumables = {}
 		G.PISSMAX = 1
 		G.SECRET_BUTTON = localize('k_cbean_unique_ex')

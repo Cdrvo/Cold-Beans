@@ -390,7 +390,7 @@ G.UIDEF.cbean_colon_started_arch = function ()
         copy:hard_set_T()
         copy:start_materialize(nil, silent)
         silent = true
-        copy:add_to_deck()
+        --copy:add_to_deck()
         cardarea:emplace(copy)
     end
 
@@ -414,6 +414,25 @@ function Card:complete_arch()
     if not (self.ability and self.ability.colon_Architecture) then
         return false
     end
+    if G.blind_select and ((G.blind_select.VT.y >= 10) or G.CONTROLLER.lock_input or (not G.STATE_COMPLETE)) then
+		G.E_MANAGER:add_event(Event({
+			blocking = false,
+			blockable = true,
+			func = function()
+				if G.blind_select and ((G.blind_select.VT.y >= 10) or G.CONTROLLER.lock_input or (not G.STATE_COMPLETE)) then return end
+				G.E_MANAGER:add_event(Event({
+					blocking = false,
+					blockable = true,
+					func = function()
+						self:complete_arch()
+						return true
+				end}))
+				return true
+			end
+		}))
+		return
+	end
+
         local card = copy_card(self)
         local prev_state = G.STATE
         G.TAROT_INTERRUPT = G.STATE

@@ -6,8 +6,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -39,7 +39,7 @@ SMODS.Consumable {
                 end
             end
             if #vaild_jokers > 0 then
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                card.ability.extra.uses = card.ability.extra.uses - 1
                 local ran_selection = pseudorandom_element(vaild_jokers, pseudoseed('yma_alpha'))
                 local sticker = pseudorandom_element(ran_selection.stickers, pseudoseed('yma_alpha'))
                 G.E_MANAGER:add_event(Event({
@@ -49,13 +49,13 @@ SMODS.Consumable {
                         return true
                     end)
                 }))
-                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                 else
                     return {
-                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                        message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                     }
                 end
             end
@@ -98,8 +98,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -119,7 +119,7 @@ SMODS.Consumable {
         if context.open_booster then 
             if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                 G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                card.ability.extra.uses = card.ability.extra.uses - 1
                 G.E_MANAGER:add_event(Event({
                     trigger = 'before',
                     delay = 0.0,
@@ -135,13 +135,13 @@ SMODS.Consumable {
                         return true
                     end)
                 }))
-                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                 else
                     return {
-                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                        message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                     }
                 end
             end
@@ -167,8 +167,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -186,7 +186,7 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.setting_blind then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
                 delay = 0.0,
@@ -198,13 +198,13 @@ SMODS.Consumable {
                     return true
                 end)
             }))
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -229,8 +229,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -248,15 +248,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -281,9 +281,9 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
-                card.ability.consumeable.extra.mult_mod,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
+                card.ability.extra.mult_mod,
             }
         }
     end,
@@ -311,7 +311,7 @@ SMODS.Consumable {
             if enhanced_cards_amt >= 1 then
                 for k, v in ipairs(context.scoring_hand) do
                     if v.config.center ~= G.P_CENTERS.c_base and not v.debuff and not v.vampired then 
-                        card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                        card.ability.extra.uses = card.ability.extra.uses - 1
                         v.vampired = true
                         v:set_ability(G.P_CENTERS.c_base, nil, true)
                         v.ability.perma_mult = v.ability.perma_mult or 0
@@ -324,12 +324,12 @@ SMODS.Consumable {
                                 return true
                             end
                         })) 
-                        SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                        if card.ability.consumeable.extra.uses <= 0 then
+                        SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                        if card.ability.extra.uses <= 0 then
                             SMODS.destroy_cards(card, nil, nil, true)
                             SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                         else
-                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)})
                         end
                     end
                 end
@@ -356,8 +356,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -391,16 +391,16 @@ SMODS.Consumable {
                 end
             end
             if left_card and right_card then
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
-                right_card.ability.consumeable.extra.uses = right_card.ability.consumeable.extra.uses + 1
+                card.ability.extra.uses = card.ability.extra.uses - 1
+                right_card.ability.extra.uses = right_card.ability.extra.uses + 1
                 SMODS.calculate_effect({message = localize('k_cbean_pboys_aplus')..' 1 '..localize('k_yma_key_plus_use') }, right_card)
-                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                 else
                     return {
-                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                        message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                     }
                 end
             end
@@ -437,8 +437,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -456,17 +456,17 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.starting_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             local booster_card = SMODS.add_booster_to_shop()
             booster_card.ability.couponed = true
             booster_card:set_cost()
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -489,11 +489,11 @@ SMODS.Consumable {
     key = "yma_demon",
 
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.consumeable.extra.odds, 'yma_demon')
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_demon')
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
                 numerator, denominator,
             }
         }
@@ -538,15 +538,15 @@ SMODS.Consumable {
             end
         end
         if context.after then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -571,8 +571,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -599,7 +599,7 @@ SMODS.Consumable {
                 end
             end
             if left_card then
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                card.ability.extra.uses = card.ability.extra.uses - 1
                 local used_consumeable = copy_card(left_card)
                 local prev_state = G.STATE
                 G.STATE = G.STATES.PLAY_TAROT
@@ -621,13 +621,13 @@ SMODS.Consumable {
                         return true
                     end
                 }))
-                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                 else
                     return {
-                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                        message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                     }
                 end
             end
@@ -682,10 +682,10 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.end_of_round and not context.blueprint and context.main_eval then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
@@ -696,8 +696,8 @@ SMODS.Consumable {
 
     add_to_deck = function(self, card, from_debuff)
         local uses = pseudorandom_element({1,2,3}, pseudoseed('yma_enigma'))
-        card.ability.consumeable.extra.uses = uses
-        card.ability.consumeable.extra.max_uses = uses
+        card.ability.extra.uses = uses
+        card.ability.extra.max_uses = uses
     end,
 
     in_pool = function(self, args)
@@ -719,8 +719,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -747,7 +747,7 @@ SMODS.Consumable {
             if face_cards_amt >= 1 then
                 for k, v in ipairs(context.scoring_hand) do
                     if v:is_face() and not v.debuff then 
-                        card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                        card.ability.extra.uses = card.ability.extra.uses - 1
                         
                         if v:get_id() ~= 12 then
                             SMODS.modify_rank(v, 12-v:get_id())
@@ -756,12 +756,12 @@ SMODS.Consumable {
                             SMODS.modify_rank(v, rank-v:get_id())
                         end
 
-                        SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                        if card.ability.consumeable.extra.uses <= 0 then
+                        SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                        if card.ability.extra.uses <= 0 then
                             SMODS.destroy_cards(card, nil, nil, true)
                             SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                         else
-                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)})
                         end
                     end
                 end
@@ -788,8 +788,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -834,7 +834,7 @@ SMODS.Consumable {
             }))
         end
         if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             for k, v in pairs(G.jokers.cards) do
                 if v.ability and v.ability.yma_ghost_temporary then
                     v.ability.yma_ghost_temporary = nil
@@ -842,13 +842,13 @@ SMODS.Consumable {
                     SMODS.calculate_effect({message = localize('k_yma_key_faded') }, v)
                 end
             end
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -873,8 +873,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -892,7 +892,7 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.end_of_round and not context.blueprint and context.main_eval then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             local pool = {}
             for k, v in pairs(G.P_CENTER_POOLS['Combo']) do
                 if v.config.immutable.combo_type == "ultimate" or v.config.immutable.combo_type == "finisher" then
@@ -903,13 +903,13 @@ SMODS.Consumable {
             local cardd = create_card('Combo',G.consumeables, nil, nil, nil, nil, ran_combo, 'yma_giant')
             cardd:add_to_deck()
             G.consumeables:emplace(cardd)
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -971,8 +971,8 @@ SMODS.Consumable {
         }
         return { 
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             },
             main_end = main_end 
         }
@@ -992,15 +992,15 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         local target_joker = G.jokers and #G.jokers.cards >= 1 and G.jokers.cards[1]
         if context.end_of_round and not context.blueprint and context.main_eval and target_joker and target_joker.config.center.blueprint_compat then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1026,11 +1026,11 @@ SMODS.Consumable {
     key = "yma_head",
 
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.consumeable.extra.odds, 'yma_head')
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'yma_head')
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
                 numerator, denominator,
             }
         }
@@ -1051,7 +1051,7 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         if context.end_of_round and not context.blueprint and context.main_eval and context.beat_boss then 
             if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                card.ability.extra.uses = card.ability.extra.uses - 1
                 if SMODS.pseudorandom_probability(card, 'yma_head', 1, card.ability.extra.odds) then
                     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                     G.E_MANAGER:add_event(Event({
@@ -1066,13 +1066,13 @@ SMODS.Consumable {
                         end)
                     }))
                 end
-                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                 else
                     return {
-                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                        message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                     }
                 end
             end
@@ -1098,8 +1098,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1132,19 +1132,19 @@ SMODS.Consumable {
             }))
         end
         if context.end_of_round and not context.blueprint and context.main_eval then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             for k, v in pairs(G.consumeables.cards) do
                 if v.config.center.set == 'sdown_blessing' then
                     SMODS.destroy_cards(v, nil, nil, true)
                 end
             end
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1169,8 +1169,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1198,15 +1198,15 @@ SMODS.Consumable {
             YMA_reroll_card(card, ran_combo, 'Combo', 'yma_identity', card.config.center.key)
         end
         if context.yma and context.yma.after_reroll and context.yma.card == card then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1231,8 +1231,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1250,15 +1250,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1284,8 +1284,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1315,19 +1315,19 @@ SMODS.Consumable {
             end
         end
         if context.end_of_round and not context.blueprint and context.main_eval then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             for k, v in pairs(G.consumeables.cards) do
                 if v.config.center.set == 'sdown_blessing' then
                     SMODS.destroy_cards(v, nil, nil, true)
                 end
             end
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1352,8 +1352,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1382,16 +1382,16 @@ SMODS.Consumable {
                 end
             end
             if left_card then
-                card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
-                left_card.ability.consumeable.extra.uses = left_card.ability.consumeable.extra.uses + 1
+                card.ability.extra.uses = card.ability.extra.uses - 1
+                left_card.ability.extra.uses = left_card.ability.extra.uses + 1
                 SMODS.calculate_effect({message = localize('k_cbean_pboys_aplus')..' 1 '..localize('k_yma_key_plus_use') }, left_card)
-                SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                if card.ability.consumeable.extra.uses <= 0 then
+                SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                if card.ability.extra.uses <= 0 then
                     SMODS.destroy_cards(card, nil, nil, true)
                     SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                 else
                     return {
-                        message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                        message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                     }
                 end
             end
@@ -1428,8 +1428,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1448,15 +1448,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.setting_blind then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             YMA_reroll_card(G.consumeables.cards[#G.consumeables.cards], G.consumeables.cards[1].config.center.key, G.consumeables.cards[1].config.center.set)
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1481,8 +1481,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1500,15 +1500,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1533,8 +1533,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1574,15 +1574,15 @@ SMODS.Consumable {
             end
         end
         if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1609,8 +1609,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1628,7 +1628,7 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.before then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
                 delay = 0.0,
@@ -1640,13 +1640,13 @@ SMODS.Consumable {
                     return true
                 end)
             }))
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1671,8 +1671,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1690,7 +1690,7 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
                 delay = 0.0,
@@ -1730,13 +1730,13 @@ SMODS.Consumable {
                     SMODS.destroy_cards(v, nil, nil, true)
                 end
             end
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1761,8 +1761,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1780,15 +1780,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1813,8 +1813,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1837,15 +1837,15 @@ SMODS.Consumable {
             end
         end
         if context.yma and context.yma.shadow_trigged and context.yma.decrease then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             context.yma.decrease = false
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1871,8 +1871,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1890,15 +1890,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.ending_shop then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -1923,8 +1923,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -1951,7 +1951,7 @@ SMODS.Consumable {
             if blue_seal_cards_amt >= 1 then
                 for k, v in ipairs(context.scoring_hand) do
                     if v.seal == 'Blue' then 
-                        card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                        card.ability.extra.uses = card.ability.extra.uses - 1
                         v.ability.perma_repetitions = v.ability.perma_repetitions or 0
                         v.ability.perma_repetitions = v.ability.perma_repetitions + 1
                         card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.FILTER })
@@ -1961,12 +1961,12 @@ SMODS.Consumable {
                                 return true
                             end
                         })) 
-                        SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                        if card.ability.consumeable.extra.uses <= 0 then
+                        SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                        if card.ability.extra.uses <= 0 then
                             SMODS.destroy_cards(card, nil, nil, true)
                             SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                         else
-                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)})
                         end
                     end
                 end
@@ -2005,8 +2005,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -2024,7 +2024,7 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.first_hand_drawn then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             yam_ease_blind_requirement(nil, -1 * math.ceil(G.GAME.blind.chips * 50 * 0.01))
             G.E_MANAGER:add_event(Event({
                 trigger = 'immediate',
@@ -2036,12 +2036,12 @@ SMODS.Consumable {
                     return true
                 end
             }))
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)})
             end
         end
     end,
@@ -2065,9 +2065,9 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
-                card.ability.consumeable.extra.discards_and_hands,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
+                card.ability.extra.discards_and_hands,
             }
         }
     end,
@@ -2086,15 +2086,15 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if context.first_hand_drawn then
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
-            ease_hands_played(card.ability.consumeable.extra.discards_and_hands)
-            ease_discard(card.ability.consumeable.extra.discards_and_hands)
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            card.ability.extra.uses = card.ability.extra.uses - 1
+            ease_hands_played(card.ability.extra.discards_and_hands)
+            ease_discard(card.ability.extra.discards_and_hands)
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)})
             end
         end
     end,
@@ -2118,8 +2118,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -2140,15 +2140,15 @@ SMODS.Consumable {
             YMA_reroll_card(card, nil, 'Joker', 'yma_identity', card.config.center.key, nil, 'after')
         end
         if context.yma and context.yma.after_reroll and context.yma.card == card then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -2173,8 +2173,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -2198,15 +2198,15 @@ SMODS.Consumable {
             }
         end
         if context.end_of_round and not context.blueprint and context.main_eval and #G.jokers.cards >= 1 then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
 
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -2231,8 +2231,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -2255,15 +2255,15 @@ SMODS.Consumable {
             end
         end
         if context.yma and context.yma.timeshift_trigged and context.yma.decrease then 
-            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+            card.ability.extra.uses = card.ability.extra.uses - 1
             context.yma.decrease = false
-            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-            if card.ability.consumeable.extra.uses <= 0 then
+            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+            if card.ability.extra.uses <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
             else
                 return {
-                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                 }
             end
         end
@@ -2288,8 +2288,8 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.consumeable.extra.uses,
-                card.ability.consumeable.extra.max_uses,
+                card.ability.extra.uses,
+                card.ability.extra.max_uses,
             }
         }
     end,
@@ -2319,17 +2319,17 @@ SMODS.Consumable {
                             end
                         end
                         if #vaild_cards >= 1 then
-                            card.ability.consumeable.extra.uses = card.ability.consumeable.extra.uses - 1
+                            card.ability.extra.uses = card.ability.extra.uses - 1
                             local upgraded_tarot = pseudorandom_element(vaild_cards, pseudoseed('yma_undertree'))
                             yma_upgrade_consumable(upgraded_tarot)
                 
-                            SMODS.calculate_context({yma = {uses_left = card.ability.consumeable.extra.uses, max_uses = card.ability.consumeable.extra.max_uses, key = card, key_triggered = true}})
-                            if card.ability.consumeable.extra.uses <= 0 then
+                            SMODS.calculate_context({yma = {uses_left = card.ability.extra.uses, max_uses = card.ability.extra.max_uses, key = card, key_triggered = true}})
+                            if card.ability.extra.uses <= 0 then
                                 SMODS.destroy_cards(card, nil, nil, true)
                                 SMODS.calculate_effect({message = localize('k_yma_key_broke') }, card)
                             else
                                 return {
-                                    message = (card.ability.consumeable.extra.uses).."/"..(card.ability.consumeable.extra.max_uses)
+                                    message = (card.ability.extra.uses).."/"..(card.ability.extra.max_uses)
                                 }
                             end
                         end

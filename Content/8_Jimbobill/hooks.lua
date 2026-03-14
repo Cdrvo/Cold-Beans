@@ -11,9 +11,18 @@ end
 local card_click_ref = Card.click
 function Card:click()
     card_click_ref(self)
+    --Card:click is a terrible place to put this, but G:set_language didn't work for some reason so whaddayagonnado
+    if not (G.beancount and G.localization.misc.dictionary["bean_"..G.beancount] and not G.localization.misc.dictionary["bean_"..(G.beancount+1)]) then
+        local i = 0
+        local dic = G.localization.misc.dictionary
+        repeat
+            i = i + 1
+        until not dic["bean_"..i]
+        G.beancount = i - 1
+    end
     local t = {n=G.UIT.ROOT, config = {align = "cm", minh = 1,r = 0.3, padding = 0.07, minw = 1, colour = G.C.JOKER_GREY, shadow = true}, nodes={
         {n=G.UIT.C, config={align = "cm", minh = 1,r = 0.2, padding = 0.1, minw = 1, colour = G.C.WHITE}, nodes={
-            {n = G.UIT.T, config = {text = localize("bean_"..math.random(1, 173)), colour = G.C.CHIPS, scale = 0.5}}
+            {n = G.UIT.T, config = {text = localize("bean_"..math.random(1, G.beancount)), colour = G.C.CHIPS, scale = 0.5}}
         }}
     }}
     local time = love.timer.getTime()

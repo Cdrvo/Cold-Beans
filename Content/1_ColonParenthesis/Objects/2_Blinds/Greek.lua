@@ -8,10 +8,12 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
             for i, area in ipairs(SMODS.get_card_areas('jokers')) do
                 for q, card in ipairs(area.cards) do
-                    Colonparen.manipulate(card, {
-                        value = 1.1,
-                        type = "X"
-                    })
+                    if card.ability.set == "Joker" then
+                        Colonparen.manipulate(card, {
+                            value = 1.1,
+                            type = "X"
+                        })
+                    end
                 end
             end
         end,
@@ -25,10 +27,12 @@ Colonparen.GreekBlind{
             if context.press_play then
                 for i, area in ipairs(SMODS.get_card_areas('jokers')) do
                     for q, card in ipairs(area.cards) do
-                        Colonparen.manipulate(card, {
-                            value = 1.2,
-                            type = "X"
-                        })
+                        if card.ability.set == "Joker" then
+                            Colonparen.manipulate(card, {
+                                value = 1.2,
+                                type = "X"
+                            })
+                        end
                     end
                 end
             end
@@ -341,7 +345,7 @@ Colonparen.GreekBlind{
         set_blind = function(self, card, from_blind)
             G.GAME.round_resets.hands = G.GAME.round_resets.hands + self.config.hands
             ease_hands_played(self.config.hands)
-            G.play:change_size(self.config.hand_size)
+            G.hand:change_size(self.config.hand_size)
         end,
     },
     beans_credits = {

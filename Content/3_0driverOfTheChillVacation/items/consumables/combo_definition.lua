@@ -86,7 +86,7 @@ end
 
 function CanUncombo(card) --Checks if the card can uncombo.
     if G.GAME.cbean_combo_index then
-        if card.ability.immutable.sequence == #G.GAME.cbean_combo_index then
+        if card.ability.immutable.sequence > 0 and (card.ability.immutable.sequence == #G.GAME.cbean_combo_index) then
             return true
         else
             return false

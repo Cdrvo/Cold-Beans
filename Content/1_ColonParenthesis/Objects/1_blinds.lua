@@ -1,9 +1,13 @@
 local G_UIDEF_current_blinds = G.UIDEF.current_blinds;
 function G.UIDEF.current_blinds()
 	local value = G_UIDEF_current_blinds();
-	table.insert(value.nodes, 1, G.GAME.round_resets.blind_states['Teeny'] ~= 'Hide' and {n=G.UIT.C, config={align = "tm", padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
-      create_UIBox_blind_choice('Teeny', true)
-    }} or nil)
+	if G.GAME.round_resets.blind_choices.CEO == 'bl_cbean_colon_magnetar' then
+		value.nodes = {}
+	else
+		table.insert(value.nodes, 1, G.GAME.round_resets.blind_states['Teeny'] ~= 'Hide' and {n=G.UIT.C, config={align = "tm", padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
+		create_UIBox_blind_choice('Teeny', true)
+		}} or nil)
+	end
 	value.nodes[#value.nodes+1] = G.GAME.round_resets.blind_states['CEO'] ~= 'Hide' and {n=G.UIT.C, config={align = "tm", padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
       create_UIBox_blind_choice('CEO', true)
     }} or nil;
@@ -229,7 +233,8 @@ end
 
 --why did you use Type as a variable what are you doing
 local type_ = type
-function Colonparen.get_new_blind(type, startofante)
+function Colonparen.get_new_blind(type, startofante, rerun)
+	G.GAME.cbean_beaten_ceos= G.GAME.cbean_beaten_ceos or {}
 	--Okay, this seems super redundant but I can't seem to work out how to get the modifier to already prescribe blinds?
 	if G.GAME.modifiers.cbean_sdown_all_blinds_are then
 		return G.GAME.modifiers.cbean_sdown_all_blinds_are
@@ -246,25 +251,28 @@ function Colonparen.get_new_blind(type, startofante)
 
 	if type == 'CEO' then
 		for k, v in pairs(G[P_STRING]) do
-			local res, options = SMODS.add_to_pool(v)
+			local res, options = SMODS.add_to_pool(v, startofante)
 			options = options or {}
-			if not v.spawn_info then
+			--print(G.GAME.cbean_beaten_ceos[k]==true)
+			if not G.GAME.cbean_beaten_ceos[k] then
+				if not v.spawn_info then
 
-			elseif options.ignore_showdown_check then
-				eligible_bosses[k] = res and true or nil
-			elseif v.in_pool and type_(v.in_pool) == 'function' then
-				if
-					(
-						((G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) ==
-						(v.spawn_info.showdown or false)
-					) and v:in_pool(startofante)
-				then
+				elseif options.ignore_showdown_check then
+					eligible_bosses[k] = res and true or nil
+				elseif v.in_pool and type_(v.in_pool) == 'function' then
+					if
+						(
+							((not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2))) or 
+							(v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2)
+						) and v:in_pool(startofante)
+					then
+						eligible_bosses[k] = res and true or nil
+					end
+				elseif (not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+					eligible_bosses[k] = res and true or nil
+				elseif v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
 					eligible_bosses[k] = res and true or nil
 				end
-			elseif (not v.spawn_info.showdown) and (((not v.spawn_info.min) or (v.spawn_info.min <= math.max(1, G.GAME.round_resets.ante))) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
-				eligible_bosses[k] = res and true or nil
-			elseif v.spawn_info.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
-				eligible_bosses[k] = res and true or nil
 			end
 		end
 	elseif type == 'Teeny' then
@@ -310,6 +318,15 @@ function Colonparen.get_new_blind(type, startofante)
         end
     end
 	--print()
+	local el_num = 0
+	for k, v in pairs(eligible_bosses) do
+		el_num = el_num + 1
+	end
+	if el_num<=0 and type == "CEO" and not rerun then
+		G.GAME.cbean_beaten_ceos = {}
+		--print("never do this omg")
+		return Colonparen.get_new_blind(type, startofante, true)
+	end
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
     G.GAME.bosses_used[boss] = (G.GAME.bosses_used[boss] or 0) + 1
 	return Colonparen.calculateReplacedBlind(boss, type)
@@ -348,6 +365,24 @@ function get_blind_main_colour(blind) --either in the form of the blind key for 
 end
 
 function Colonparen.set_upcoming_blind(blind)
+	if G.blind_select and ((G.blind_select.VT.y >= 10) or G.CONTROLLER.lock_input or (not G.STATE_COMPLETE)) then
+		G.E_MANAGER:add_event(Event({
+			blocking = false,
+			blockable = true,
+			func = function()
+				if G.blind_select and ((G.blind_select.VT.y >= 10) or G.CONTROLLER.lock_input or (not G.STATE_COMPLETE)) then return end
+				G.E_MANAGER:add_event(Event({
+					blocking = false,
+					blockable = true,
+					func = function()
+						Colonparen.set_upcoming_blind(blind)
+						return true
+				end}))
+				return true
+			end
+		}))
+		return
+	end
 	if blind.key then
 		blind = blind.key
 	elseif blind == 'Boss' or blind == 'Teeny' or blind == 'CEO' or blind == 'Small' or blind == 'Big' then
@@ -479,7 +514,7 @@ Colonparen.GreekBlind = function (config)
 	local mult = config.mult;
 	local pos = config.pos;
 	local boss_colour = config.boss_colour;
-	config.lower.key = config.lower.key or "lower_" .. key;
+	config.lower.key = config.lower.key or ("lower_" .. key);
 	config.lower.name = config.lower.name or name;
 	config.lower.mult = config.lower.mult or mult;
 	config.lower.pos = config.lower.pos or pos;
@@ -489,7 +524,7 @@ Colonparen.GreekBlind = function (config)
 	config.lower.is_lower = true;
 	local lowercase = Colonparen.LowerGreekBlind(config.lower)
 
-	config.upper.key = config.upper.key or "upper_" .. key;
+	config.upper.key = config.upper.key or ("upper_" .. key);
 	config.upper.name = config.upper.name or name;
 	config.upper.mult = config.upper.mult or mult;
 	config.upper.pos = config.upper.pos or pos;
@@ -705,3 +740,19 @@ SMODS.Joker:take_ownership('j_matador', {
         end
     end,
 }, true)
+
+local old_upt = DynaText.update_text;
+function DynaText:update_text(first_pass)
+	if (self.config.cbean_colon_maxw) then
+		self.scale = self.config.scale
+		local val = old_upt(self, first_pass)
+		if self.config.cbean_colon_maxw and self.config.W > self.config.cbean_colon_maxw then
+			self.start_pop_in = self.config.pop_in
+			self.scale = self.scale*(self.config.cbean_colon_maxw/self.config.W)
+			return old_upt(self, first_pass)
+		end
+		return val
+	else
+		return old_upt(self, first_pass)
+	end
+end

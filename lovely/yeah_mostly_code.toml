@@ -299,9 +299,6 @@ payload = '''
     if G.tboi_items then
         table.insert(t, G.tboi_items)
     end
-    if G.dreamlands_consumeable_card_holder then
-        table.insert(t, 1, G.dreamlands_consumeable_card_holder)
-    end
 '''
 match_indent = true
 

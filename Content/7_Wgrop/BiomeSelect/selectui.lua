@@ -174,7 +174,7 @@ G.FUNCS.select_biome = function(e)
           play_sound('generic1')
         G.VIBRATION = G.VIBRATION + 1
     end
-    if G.COLON_SALESMAN_TOGGLE then
+    if G.GAME.COLON_SALESMAN_TOGGLE then
         G.E_MANAGER:add_event(Event({
             trigger = 'immediate',
             func = function()
@@ -190,7 +190,7 @@ G.FUNCS.select_biome = function(e)
                 G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Current'
                 G.blind_select = nil
                 delay(0.2)
-                G.COLON_SALESMAN_TOGGLE = false
+                G.GAME.COLON_SALESMAN_TOGGLE = false
                 return true
             end}))
         G.E_MANAGER:add_event(Event({

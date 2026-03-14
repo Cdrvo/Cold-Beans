@@ -71,17 +71,17 @@ G.FUNCS.hide_employ = function(e)
     NAMETEAM.shop_sign("cbean_NAMETEAM_street")
     --sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-    if G.dreamlands_consumeable_card_holder then
-        G.dreamlands_consumeable_card_holder.states.visible = false
+    if G.jbill_employed_area then
+        G.jbill_employed_area.states.visible = false
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             blockable = false,
             blocking = false,
             delay =  0,
             func = (function() 
-                    G.dreamlands_consumeable_card_holder.states.visible = false
-                    G.dreamlands_consumeable_card_holder:remove()
-                    G.dreamlands_consumeable_card_holder = nil;
+                    G.jbill_employed_area.states.visible = false
+                    G.jbill_employed_area:remove()
+                    G.jbill_employed_area = nil;
                 return true
             end)
         }))
