@@ -2860,8 +2860,8 @@ return {
 					{
 						"Athena Deck:",
 						"When CEO Blind is defeated,",
-            			"add {C:attention}#1#{} charges to",
-            			"all held {C:attention}Blessings{}"
+						"add {C:attention}#1#{} charges to",
+						"all held {C:attention}Blessings{}"
 					},
 				},
 			},
@@ -3724,13 +3724,13 @@ return {
 			},
 
 			--Chill Formation
-			j_cbean_0chill_vacation_member0 = {
-				name = {"Chill Formation", "{s:0.7}Cmykl:{} {B:1,C:white,s:0.7}Red Dot"},
+			j_cbean_0chill_vacation_member0             = {
+				name = { "Chill Formation", "{s:0.7}Cmykl:{} {B:1,C:white,s:0.7}Red Dot" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"Highest rank card has",
@@ -3744,13 +3744,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member1 = {
-				name = {"Chill Formation", "{s:0.7}Capital Chirp:{} {B:1,C:white,s:0.7}Alien Invasion"},
+			j_cbean_0chill_vacation_member1             = {
+				name = { "Chill Formation", "{s:0.7}Capital Chirp:{} {B:1,C:white,s:0.7}Alien Invasion" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"Each scored {C:hearts}Hearts{} card",
@@ -3767,13 +3767,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member2 = {
-				name = {"Chill Formation", "{s:0.7}InspectorB:{} {B:2,C:white,s:0.7}Gluten Ray"},
+			j_cbean_0chill_vacation_member2             = {
+				name = { "Chill Formation", "{s:0.7}InspectorB:{} {B:2,C:white,s:0.7}Gluten Ray" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"Each scored {C:attention}King{} and {C:attention}2{} earns {C:money}$#8#{}",
@@ -3787,13 +3787,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member3 = {
-				name = {"Chill Formation", "{s:0.7}MarioFan597:{} {B:1,C:white,s:0.7}Trailblazer"},
+			j_cbean_0chill_vacation_member3             = {
+				name = { "Chill Formation", "{s:0.7}MarioFan597:{} {B:1,C:white,s:0.7}Trailblazer" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"If score catches fire,",
@@ -3807,13 +3807,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member4 = {
-				name = {"Chill Formation", "{s:0.7}Restruct:{} {B:3,C:white,s:0.7}Metal Pipe"},
+			j_cbean_0chill_vacation_member4             = {
+				name = { "Chill Formation", "{s:0.7}Restruct:{} {B:3,C:white,s:0.7}Metal Pipe" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"{X:mult,C:white}X#5#{} Mult",
@@ -3830,13 +3830,13 @@ return {
 				},
 			},
 
-			j_cbean_0chill_vacation_member5 = {
-				name = {"Chill Formation", "{s:0.7}Monachrome:{} {B:4,C:white,s:0.7}Smoke and Mirrors"},
+			j_cbean_0chill_vacation_member5             = {
+				name = { "Chill Formation", "{s:0.7}Monachrome:{} {B:4,C:white,s:0.7}Smoke and Mirrors" },
 				text = {
 					{
 						"Can be used as a {X:green,C:white}Starter{} Card",
 						"in a {C:combo}Combo{} and changes",
-						"effect each use"	
+						"effect each use"
 					},
 					{
 						"{C:red}Destroys{} unscored played cards"
@@ -4970,11 +4970,11 @@ return {
 				name = "Melon Pult",
 				text = {
 					{
-					"{X:mult,C:white}X#1#{} Mult",
+						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-					"Adjacent {C:attention}Jokers{} give",
-					"{C:mult}+#2#{} Mult"
+						"Adjacent {C:attention}Jokers{} give",
+						"{C:mult}+#2#{} Mult"
 					},
 				},
 			},
@@ -5975,13 +5975,13 @@ return {
 				name = "Ice Bloom",
 				text = {
 					{
-					"Scored cards give",
-					"{X:mult,C:white}X#1#{} Mult",
+						"Scored cards give",
+						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-					"Scored cards have a",
-					"{C:green}#2# in #3#{} chance to be",
-					"{C:red}debuffed{} permanently"
+						"Scored cards have a",
+						"{C:green}#2# in #3#{} chance to be",
+						"{C:red}debuffed{} permanently"
 					},
 				},
 			},
@@ -6015,7 +6015,7 @@ return {
 			j_cbean_dazey_chain                         = {
 				name = "Dazey Chain",
 				text = {
-					{	
+					{
 						"{C:chips}+#1#{} Chips",
 					},
 					{
@@ -6129,12 +6129,12 @@ return {
 				name = "Draftodil",
 				text = {
 					{
-					"{X:mult,C:white}X#1#{} Mult",
+						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-					"Played cards has a",
-					"{C:green}#2# in [RANK]{} chance to",
-					"to be discarded instead"
+						"Played cards has a",
+						"{C:green}#2# in [RANK]{} chance to",
+						"to be discarded instead"
 					},
 				},
 			},
@@ -6477,7 +6477,7 @@ return {
 				name = "Hammeruit",
 				text = {
 					{
-						"{C:attention}#3#{} random scored cards give", 
+						"{C:attention}#3#{} random scored cards give",
 						"{X:mult,C:white}X#1#{} Mult in {C:attention}final hand{} of round",
 						"{C:inactive}(Resets each round){}"
 					},
@@ -7455,7 +7455,7 @@ return {
 			},
 			]]
 
-			j_cbean_wgrop_jhett_the_poltergeist         = {
+			j_cbean_wgrop_jhett_the_poltergeist = {
 				name = "Jhett the Poltergeist",
 				text = {
 					{ "{C:red}Destroys{} all {C:attention}Pale Remnant{} cards",
@@ -7467,7 +7467,7 @@ return {
 					},
 				}
 			},
-			j_cbean_wgrop_oasis                         = {
+			j_cbean_wgrop_oasis                 = {
 				name = "Oasis",
 				text = {
 					"Retrigger {C:attention}Enhanced{} cards {C:attention}#2#{}",
@@ -7475,7 +7475,7 @@ return {
 					"{C:attention}Unenhanced{} cards in hand"
 				}
 			},
-			j_cbean_wgrop_glass_spire                   = {
+			j_cbean_wgrop_glass_spire           = {
 				name = "Glass Spire",
 				text = {
 					"When a {C:attention}Glass{} card",
@@ -7484,7 +7484,7 @@ return {
 					"to your hand"
 				}
 			},
-			j_cbean_wgrop_scorched_hands                = {
+			j_cbean_wgrop_scorched_hands        = {
 				name = "Scorched Hands",
 				text = {
 					{ "Discarded cards have",
@@ -7497,7 +7497,7 @@ return {
 						"give {C:money}$#4#{} instead" }
 				}
 			},
-			j_cbean_wgrop_starry_reflection             = {
+			j_cbean_wgrop_starry_reflection     = {
 				name = "Starry Reflection",
 				text = {
 					{ "Score {C:chips}Chips{} equal to",
@@ -7508,14 +7508,14 @@ return {
 						"a {C:planet}Planet{} card" }
 				}
 			},
-			j_cbean_wgrop_stop_sign                     = {
+			j_cbean_wgrop_stop_sign             = {
 				name = "Stop Sign",
 				text = {
 					"{C:inactive,s:0.75}Perhaps some things are better...{}",
 					"{C:inactive,s:0.95}Left Behind.{}"
 				}
-			},                                     --jokers jbill pokers woah woah jokercards yo jokers yo jbill
-			j_cbean_jbill_who                           = { -- added by nteam
+			},                             --jokers jbill pokers woah woah jokercards yo jokers yo jbill
+			j_cbean_jbill_who                   = { -- added by nteam
 				name = "Who can Placehold Now?",
 				text = {
 					{
@@ -7529,14 +7529,14 @@ return {
 					}
 				},
 			},
-			j_cbean_jbill_98                            = { -- added by nteam
+			j_cbean_jbill_98                    = { -- added by nteam
 				name = "98%",
 				text = {
 					"{C:attention}Teeny{} blind is",
 					"always {C:legendary}Estrogen{}"
 				}
 			},
-			j_cbean_jbill_tlane                         = {
+			j_cbean_jbill_tlane                 = {
 				name = "Triple Lane",
 				text = {
 					"{X:mult,C:white}X3{} Mult if poker hand",
@@ -7545,7 +7545,7 @@ return {
 					"contains a {C:attention}5{} and a {C:attention}#3#{}"
 				}
 			},
-			j_cbean_jbill_elephant                      = {
+			j_cbean_jbill_elephant              = {
 				name = "Wonderful Elephant",
 				text = {
 					{
@@ -7561,14 +7561,14 @@ return {
 					},
 				}
 			},
-			j_cbean_jbill_spill                         = {
+			j_cbean_jbill_spill                 = {
 				name = "Spill the Beans",
 				text = {
 					"Adds {C:attention}#1# Bean Cards{} to deck",
 					"when Small Blind is selected"
 				}
 			},
-			j_cbean_jbill_pizzazzy                      = {
+			j_cbean_jbill_pizzazzy              = {
 				name = "Pizzazzy Joker",
 				text = {
 					"Gives {C:mult}Scrabble Value{}",
@@ -7577,7 +7577,7 @@ return {
 					"{C:inactive,s:0.8}(Appears when chosen language is English)"
 				}
 			},
-			j_cbean_jbill_leak                          = {
+			j_cbean_jbill_leak                  = {
 				name = "Jimboleaks",
 				text = {
 					"Can't take {C:attention}Booster Pack{} cards",
@@ -7586,7 +7586,7 @@ return {
 					"{C:money}Leaking{} refunds it"
 				}
 			},
-			j_cbean_jbill_redbull                       = {
+			j_cbean_jbill_redbull               = {
 				name = "RedBull 67",
 				text = {
 					"{C:red}+#1#{} Discards",
@@ -7594,7 +7594,7 @@ return {
 					"{C:hands}#2#{} hands are played"
 				}
 			},
-			j_cbean_jbill_palte                         = {
+			j_cbean_jbill_palte                 = {
 				name = "My Palte ToT",
 				text = {
 					{
@@ -7606,7 +7606,7 @@ return {
 					},
 				}
 			},
-			j_cbean_jbill_schneider                     = {
+			j_cbean_jbill_schneider             = {
 				name = {
 					"{C:inactive,s:0.8}Don't forget...{}",
 					"...My {C:white,X:mult}Heartbeat{} on the Right"
@@ -7621,7 +7621,7 @@ return {
 					"{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive})"
 				}
 			},
-			j_cbean_jbill_gameshow                      = {
+			j_cbean_jbill_gameshow              = {
 				name = {
 					"Intestinal Game Show",
 				},
@@ -7631,7 +7631,7 @@ return {
 					"drawn cards"
 				}
 			},
-			j_cbean_jbill_ante_lock                     = {
+			j_cbean_jbill_ante_lock             = {
 				name = "Ante Lock",
 				text = {
 					"When ante increases, gains {C:white,X:chips}X#2#{} Chips,",
@@ -7639,7 +7639,7 @@ return {
 					"{C:inactive}(Currently: {C:white,X:chips}X#1#{C:inactive}, #3#/#4#)"
 				}
 			},
-			j_cbean_jbill_manos                         = {
+			j_cbean_jbill_manos                 = {
 				name = "Hands of Fate",
 				text = {
 					{
@@ -7654,7 +7654,7 @@ return {
 					},
 				},
 			},
-			j_cbean_jbill_pythagoras                    = {
+			j_cbean_jbill_pythagoras            = {
 				name = "Pythagoreanistic Joker",
 				text = {
 					"This Joker gains {C:white,X:mult}X#2#{} Mult",
@@ -7663,7 +7663,7 @@ return {
 					"{C:inactive}(Currently: {C:white,X:mult}X#1#{C:inactive} Mult)"
 				}
 			},
-			j_cbean_jbill_wee_bottle                    = {
+			j_cbean_jbill_wee_bottle            = {
 				name = "Wee inside the Bottle",
 				text = {
 					"Scoring {C:attention}2s{}",
@@ -7671,7 +7671,7 @@ return {
 					"{C:inactive,s:0.7}Thank god there's no root ranks"
 				}
 			},
-			j_cbean_jbill_dj                            = {
+			j_cbean_jbill_dj                    = {
 				name = "Deejay",
 				text = {
 					{
@@ -7684,7 +7684,7 @@ return {
 					},
 				}
 			},
-			j_cbean_jbill_jimbill                       = {
+			j_cbean_jbill_jimbill               = {
 				name = "Jim Bill",
 				text = {
 					"{C:green}#2# in #3#{} chance for",
@@ -7692,16 +7692,16 @@ return {
 					"to give {C:green}+J#1#{} when scored"
 				}
 			},
-			j_cbean_jbill_exchange                      = {
+			j_cbean_jbill_exchange              = {
 				name = "Currency Exchange",
 				text = {
 					"When {C:attention}Blind{} is selected,",
 					"{C:money}$5{} is exchanged for {C:green}J1"
 				}
 			},
-			j_cbean_jbill_stare                      = {
-				name = {"Two-Thousand",
-					 	"Blind Stare"},
+			j_cbean_jbill_stare                 = {
+				name = { "Two-Thousand",
+					"Blind Stare" },
 				text = {
 					"Gains {C:white,X:mult}X#2#{} Mult",
 					"if final score",
@@ -7710,7 +7710,7 @@ return {
 					"{C:inactive}(Currently: {X:mult,C:white}X#1#{}{C:inactive} Mult)"
 				}
 			},
-			j_cbean_jbill_tcna                          = {
+			j_cbean_jbill_tcna                  = {
 				name = {
 					"{s:0.8}The Campaign for",
 					"North Africa",
@@ -7736,16 +7736,16 @@ return {
 			},
 
 
-            j_chicot={
-                name="Chicot",
-                text={
-                    "Disables effect of",
-                    "every {C:attention}Boss{} or {C:attention}CEO Blind",
-                },
-                unlock={
-                    "{E:1,s:1.3}?????",
-                },
-            },
+			j_chicot = {
+				name = "Chicot",
+				text = {
+					"Disables effect of",
+					"every {C:attention}Boss{} or {C:attention}CEO Blind",
+				},
+				unlock = {
+					"{E:1,s:1.3}?????",
+				},
+			},
 		},
 		Other = {
 			cbean_nteam_secret = {
@@ -10299,7 +10299,7 @@ return {
 					{
 						"Created {C:attention}Mult Cards{} give",
 						"an additional {C:mult}+4{} Mult",
-					},	
+					},
 				},
 			},
 			c_cbean_yma_empress_level5 = {
@@ -10997,7 +10997,7 @@ return {
 						"create a random",
 						"{C:attention}Non-Common Joker{}",
 					},
-						
+
 				},
 			},
 			c_cbean_yma_judgement_level5 = {
@@ -11145,6 +11145,134 @@ return {
 				},
 			},
 		},
+	},
+	cbean_credits = {
+		[1] = {
+			name = "Team :(",
+			members = {
+				"GeorgeTheRat",
+				"jamirror",
+				"BitterDoes",
+				"arc",
+				"kierkat10",
+				"smg9000"
+			},
+			atlas = "CParenLogo",
+			description = {
+				"SERIOUS TESTING LOL"
+			}
+		},
+		[2] = {
+			name = "SeriousDownloading",
+			members = {
+				"Athebyne",
+				"crabus",
+				"candycane",
+				"mys. minty",
+				"L'",
+				"notmario",
+				"Slipstream"
+			},
+			atlas = "SDownLogo",
+			description = {
+				"pluh"
+			}
+		},
+		[3] = {
+			name = "0 driver of the chill vacation",
+			members = {
+				"MarioFan597",
+				"Inspector_B",
+				"comykel",
+				"CapitalChirp",
+				"monachromee",
+				"restruct"
+			},
+			atlas = "ZDOTCVacLogo",
+			description = {
+				"fghgfhs"
+			}
+		},
+		[4] = {
+			name = "Pissboys",
+			members = {
+				"gfsgfs",
+				"Breuhh",
+				"FlameThrowerFIM",
+				"Pumpkin man",
+				"theambushingbush",
+				"Nrio"
+			},
+			atlas = "PBoysLogo",
+			description = {
+				"fgdhhfdhfgd",
+				"{C:attention}dfgdf{}"
+			}
+		},
+		[5] = {
+			name = "Yeah! Mostly artists",
+			members = {
+				"Rainstar",
+				"cloudz",
+				"Flynn",
+				"lyrelyre",
+				"FirstTry",
+				"RattlingSnow353"
+			},
+			atlas = "YMArtistsLogo",
+			description = {
+				"aaaaaaaaaaaaaaaaaaa"
+			}
+		},
+		[6] = {
+			name = "Name Team",
+			members = {
+				"GhostSalt",
+				"Crazy Dave",
+				"TheAlternateDoctor",
+				"ThunderEdge",
+				"Revo",
+				"Inkyst",
+				"Dogg-Fly"
+			},
+			atlas = "NTeamLogo",
+			description = {
+				"Responsible for:",
+				"{C:dark_edition}Stickers{} / {C:attention}Sticker Sheets{},",
+				"{C:green}Plant Jokers{}, regular {C:attention}Jokers{}",
+				"{C:inactive}We wholeheartedly apologise.{}"
+			}
+		},
+		[7] = {
+			name = "Wgrop",
+			members = {
+				"iroyokia",
+				"tje.tsu",
+				"gudusername",
+				"Garb",
+				"iwas_nevergood",
+				"justauserr13"
+			},
+			atlas = "WGropLogo",
+			description = {
+				"waw"
+			}
+		},
+		[8] = {
+			name = "Jimbobill",
+			members = {
+				"D.J.",
+				"senfinbrare",
+				"Crimson Heart",
+				"Evgast",
+				"ZayDerg",
+				"Somethingcom515"
+			},
+			atlas = "JBillLogo",
+			description = {
+				"dfkjgnd"
+			}
+		}
 	},
 	misc = {
 		achievement_descriptions = {
@@ -11360,8 +11488,8 @@ return {
 		},
 		collabs = {},
 		dictionary = {
-			k_cbean_bonus_chips                 = "Bonus Chips", 
-			k_cbean_token 						= "Token",
+			k_cbean_bonus_chips                 = "Bonus Chips",
+			k_cbean_token                       = "Token",
 			k_cbean_0chill_combopack            = "Combo Pack",
 
 			k_colon_architecture_pack           = "Architecture Pack",
@@ -11393,12 +11521,12 @@ return {
 			ph_choose_biome_2                   = "Destination",
 			k_select_biome                      = "Select",
 			b_reroll                            = "Reroll",
-			cbean_yma_toggle_to_items			= "Show Items",
-			cbean_yma_toggle_to_jokers			= "Show Jokers",
-			q_cbean_yma_quality1				= "Quality 1",
-			q_cbean_yma_quality2				= "Quality 2",
-			q_cbean_yma_quality3				= "Quality 3",
-			q_cbean_yma_quality4				= "Quality 4",
+			cbean_yma_toggle_to_items           = "Show Items",
+			cbean_yma_toggle_to_jokers          = "Show Jokers",
+			q_cbean_yma_quality1                = "Quality 1",
+			q_cbean_yma_quality2                = "Quality 2",
+			q_cbean_yma_quality3                = "Quality 3",
+			q_cbean_yma_quality4                = "Quality 4",
 			cbean_stationery_accepts            = {
 				"Only accepts Jokers",
 				"with {C:attention}1 or more{} of the",
@@ -11467,7 +11595,7 @@ return {
 			k_cbean_yma_keypack                 = "Key Pack",
 			cbean_0chill_blind_weakend          = "Blind Weakened!",
 			cbean_0chill_blind_strengthened     = "Blind Strengthened!",
-			k_revived_ex  						= "Revived!",
+			k_revived_ex                        = "Revived!",
 
 			k_colon_architecture                = "Architecture",
 			ph_no_colon_architecture            = "No architecture in progress",
@@ -11485,7 +11613,7 @@ return {
 			b_yma_keys_cards                    = "Keys",
 			k_yma_key_plus_use                  = "Use",
 			k_cbean_yma_street                  = "Street",
-			k_cbean_all_hr_hands				= "All HR Hands",
+			k_cbean_all_hr_hands                = "All HR Hands",
 			k_hell_sac                          = "Sacrifice",
 			k_yma_chance_to_fail_key            = "(Chance to break)",
 			k_yma_chance_to_fail_belssing       = "(Chance to fail)",
@@ -11504,8 +11632,8 @@ return {
 			k_cbean_burned                      = "Burned!",
 			k_cbean_piss_ex                     = "Piss!",
 			k_cbean_mash_ex                     = "Mash!",
-			k_cbean_munch_ex					= "Munched!",
-			k_cbean_lily						= "Lily Rounds",
+			k_cbean_munch_ex		    = "Munched!",
+			k_cbean_lily			    = "Lily Rounds",
 			k_cbean_pboys_abet                  = "Bet",
 			k_cbean_unique_ex                   = "???",
 			k_cbean_balley_ex                   = "Alley!",
@@ -11540,7 +11668,7 @@ return {
 			k_cbean_halved                      = "Halved!",
 			k_cbean_chomp                       = "Chomp!",
 
-			k_nteam_tboi_items                	= "Items",
+			k_nteam_tboi_items                  = "Items",
 
 			k_cbean_yomama                      = "Yo mama...",
 
@@ -11567,13 +11695,17 @@ return {
 			k_astro_upg                         = "Unbalanced!",
 			k_dollar_jimbux                     = "Exchnaged!",
 
-			k_yma_aug_scrap  					= "Scrap",
+			k_yma_aug_scrap                     = "Scrap",
 
-			b_cbean_plants = "Plants",
-			k_cbean_cap_jokers = "JOKERS",
+			b_cbean_plants                      = "Plants",
+			k_cbean_cap_jokers                  = "JOKERS",
 
-			k_c_journey_zomboid = "random ",
-			k_c_journey_m_zomboid = "Zomboid Card",
+			k_c_journey_zomboid                 = "random ",
+			k_c_journey_m_zomboid               = "Zomboid Card",
+
+			b_cbean_credits                     = "Credits",
+			cbean_credits_title                 = "Credits",
+			cbean_credits_team                  = "Team",
 
 			cbean_copyright_headsup_1           = "Heads up!",
 			cbean_copyright_headsup_2           = "If you are streaming this mod,",
@@ -11700,7 +11832,7 @@ return {
 			bean_114                            = "I know what you are.",
 			bean_115                            = "awawawawa :3",
 			bean_116                            = "Focus, J",
-			bean_117							= "C! B! Cold Beans!",
+			bean_117			    = "C! B! Cold Beans!",
 			bean_118                            = "Incompatible!",
 			bean_119                            = "im colding it and by it lets just say my beans",
 			bean_120                            = "Bean there, done that",
@@ -11753,10 +11885,10 @@ return {
 			bean_167                            = "No ads, at least.",
 			bean_168                            = "Yes... Ha ha ha... YES!",
 			bean_169                            = "This is the 169th flavour text! That's 13 squared. Neat!",
-			bean_170							= "This is the 170th flavour text! 170 is deficient by 16, it is utterly useless!",
-			bean_171 							= "You should play Revo's Vault..",
-			bean_172 							= "Bean Printer",
-			bean_173							= "Revo was here",
+			bean_170                            = "This is the 170th flavour text! 170 is deficient by 16, it is utterly useless!",
+			bean_171                            = "You should play Revo's Vault..",
+			bean_172                            = "Bean Printer",
+			bean_173                            = "Revo was here",
 			--I figured out how to count them automagically, just don't miss any numbers. We could probably do something about that too with cleverness but it's 3 am and I really should be sleeping now.
 		},
 		high_scores = {},
@@ -12120,7 +12252,7 @@ return {
 				"mmmmmm richer"
 			},
 
-			--Back Alley Tutorial 
+			--Back Alley Tutorial
 			cbean_pboys_tutorial_1 = {
 				"This is {C:attention}Back Alley!",
 			},

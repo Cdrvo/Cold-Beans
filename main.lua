@@ -46,11 +46,10 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
-
 	if context.round_eval then
-        G.GAME.BALLEY_WINS = 0
+		G.GAME.BALLEY_WINS = 0
 		G.GAME.yma_forge_closed = nil;
-  	end
+	end
 	if context.starting_shop then
 		G.GAME.cbean_shop_nocontext = true
 	end
@@ -234,13 +233,13 @@ ColdBeans.calculate = function(mod, context)
 		end
 	end
 
-    if context.other_joker and (context.other_joker.ability.perma_h_chips>0 or context.other_joker.ability.perma_h_chips<0) then
-        return {
-            chips = context.other_joker.ability.perma_h_chips,
-            message_card = context.other_joker,
+	if context.other_joker and (context.other_joker.ability.perma_h_chips > 0 or context.other_joker.ability.perma_h_chips < 0) then
+		return {
+			chips = context.other_joker.ability.perma_h_chips,
+			message_card = context.other_joker,
 			no_juice = true,
-        }
-    end
+		}
+	end
 
 	if context.destroy_card and context.cardarea == G.play and G.GAME.NAMETEAM.destroy and G.GAME.NAMETEAM.destroy > 0 then
 		G.GAME.NAMETEAM.destroy = G.GAME.NAMETEAM.destroy - 1
@@ -485,7 +484,6 @@ SMODS.Atlas({
 
 SMODS.current_mod.reset_game_globals = function(run_start)
 	if run_start then
-		
 		G.GAME.beaten_ceo_num = 0
 		G.GAME.cbean_beaten_ceos = {}
 		G.GAME.NAMETEAM.unique_consumables = {}
@@ -497,11 +495,11 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 	local valid_gfs_cards = {}
 	for k, v in ipairs(G.playing_cards) do
 		if not SMODS.has_no_rank(v) then
-			valid_gfs_cards[#valid_gfs_cards+1] = v
+			valid_gfs_cards[#valid_gfs_cards + 1] = v
 		end
 	end
-	if valid_gfs_cards[1] then 
-		local gfs_card = pseudorandom_element(valid_gfs_cards, pseudoseed('gfs'..G.GAME.round_resets.ante))
+	if valid_gfs_cards[1] then
+		local gfs_card = pseudorandom_element(valid_gfs_cards, pseudoseed('gfs' .. G.GAME.round_resets.ante))
 		G.GAME.current_round.gfs_card.rank = gfs_card.base.value
 		G.GAME.current_round.gfs_card.id = gfs_card.base.id
 	end
@@ -784,14 +782,237 @@ end
 -- replacing
 SMODS.current_mod.menu_cards = function()
 	return {
-		{key = 'j_cbean_coldbean'},  
+		{ key = 'j_cbean_coldbean' },
 		remove_original = true,
 		func = function()
 			for k, v in pairs(G.title_top.cards) do
 				if v.config.center.key == "j_cbean_coldbean" then
-					v.edition = {cbean_sd_frozen = true} -- <- crashes with mods like Hyperfixation otherwise
+					v.edition = { cbean_sd_frozen = true } -- <- crashes with mods like Hyperfixation otherwise
 				end
 			end
 		end
+	}
+end
+
+
+
+-- Thanks, Hot Potato! (gosh we really have used a lot of its code, huh)
+ColdBeans.custom_ui = function(mod_nodes)
+	mod_nodes[#mod_nodes + 1] = {
+		n = G.UIT.R,
+		config = { minw = 4, minh = 4, align = "cm", padding = 0.2 },
+		nodes = {
+			UIBox_button({
+				label = { localize("b_cbean_credits") },
+				minw = 5,
+				colour = ColdBeans.badge_colour,
+				button = "cbean_create_credits_thingy"
+			})
+		}
+	}
+end
+
+
+function G.FUNCS.cbean_create_credits_thingy(e)
+	local uibox = ColdBeans.make_me_a_credits_page_please(1)
+	local options = {}
+	for i, team in ipairs(G.localization.cbean_credits) do
+		options[#options + 1] = localize("cbean_credits_team") .. " " .. i .. " - " .. team.name
+	end
+	options[#options + 1] = "the goo"
+
+	SMODS.LAST_SELECTED_MOD_TAB = nil
+	local t = create_UIBox_generic_options({
+		colour = G.ACTIVE_MOD_UI and
+			((G.ACTIVE_MOD_UI.ui_config or {}).collection_colour or (G.ACTIVE_MOD_UI.ui_config or {}).colour),
+		bg_colour = G.ACTIVE_MOD_UI and
+			((G.ACTIVE_MOD_UI.ui_config or {}).collection_bg_colour or (G.ACTIVE_MOD_UI.ui_config or {}).bg_colour),
+		back_colour = G.ACTIVE_MOD_UI and
+			((G.ACTIVE_MOD_UI.ui_config or {}).collection_back_colour or (G.ACTIVE_MOD_UI.ui_config or {}).back_colour),
+		outline_colour = G.ACTIVE_MOD_UI and ((G.ACTIVE_MOD_UI.ui_config or {}).collection_outline_colour or
+			(G.ACTIVE_MOD_UI.ui_config or {}).outline_colour),
+		back_func = G.ACTIVE_MOD_UI and "openModUI_" .. G.ACTIVE_MOD_UI.id or 'your_collection',
+		contents = {
+			{
+				n = G.UIT.C,
+				config = { align = "cm", r = 0.1, colour = G.C.BLACK, emboss = 0.05 },
+				nodes = {
+					{
+						n = G.UIT.R,
+						config = { align = "cm", padding = 0.2 },
+						nodes = {
+							{
+								n = G.UIT.O,
+								config = {
+									object = DynaText {
+										string = localize('cbean_credits_title'),
+										float = true,
+										pop_in = 0,
+										pop_in_rate = 4,
+										silent = true,
+										shadow = true,
+										scale = 1,
+										rotate = true,
+										colours = { G.C.EDITION }
+									}
+								}
+							}
+						}
+					},
+					{
+						n = G.UIT.R,
+						config = { align = "cm", minh = 6 },
+						nodes = {
+							uibox
+						}
+					},
+					{
+						n = G.UIT.R,
+						config = {
+							align = "cm"
+						},
+						nodes = {
+							create_option_cycle({
+								options = options,
+								w = 9,
+								scale = 0.75,
+								cycle_shoulders = true,
+								opt_callback = "regenerate_cbean_credits_thingy",
+								current_option = 1,
+								colour = G.ACTIVE_MOD_UI and
+									(G.ACTIVE_MOD_UI.ui_config or {}).collection_option_cycle_colour or G.C.RED,
+								focus_args = { snap_to = true, nav = 'wide' }
+							})
+						}
+					}
+				}
+			},
+		}
+	})
+	G.FUNCS.overlay_menu { definition = t }
+end
+
+function G.FUNCS.regenerate_cbean_credits_thingy(e)
+	if not e then return end
+	if not e.cycle_config then return end
+	local page = G.OVERLAY_MENU:get_UIE_by_ID("cbean_credits_page")
+	if page then
+		page:remove()
+		local uibox = ColdBeans.make_me_a_credits_page_please(e.cycle_config.current_option)
+		page.UIBox:add_child(uibox, page)
+		page.UIBox:recalculate()
+	end
+end
+
+local atlases = {
+	{ name = "JBillLogo", px = 114, py = 34 },
+	{ name = "WGropLogo", px = 104, py = 40 },
+	{ name = "NTeamLogo", px = 60, py = 42 },
+	{ name = "YMArtistsLogo", px = 79, py = 53 },
+	{ name = "PBoysLogo", px = 67, py = 51 },
+	{ name = "ZDOTCVacLogo", px = 109, py = 34 },
+	{ name = "SDownLogo", px = 106, py = 54 },
+	{ name = "CParenLogo", px = 104, py = 42 }
+}
+for _, atlas in ipairs(atlases) do
+	SMODS.Atlas {
+		key = atlas.name,
+		path = "General/" .. atlas.name .. ".png",
+		px = atlas.px,
+		py = atlas.py
+	}
+end
+
+SMODS.Atlas {
+	key = "goo",
+	path = "General/goo.png",
+	px = 121,
+	py = 75
+}
+
+local localize_table = function(table_thing, args, config)
+	local t = {}
+	if table_thing then
+		for _, line in ipairs(table_thing) do
+			local localised = SMODS.localize_box(type(line) == "string" and loc_parse_string(line) or line, args)
+			table.insert(t, {
+				n = G.UIT.R,
+				config = { align = args.align, minh = args.minh },
+				nodes = localised,
+			})
+		end
+	end
+	return { n = G.UIT.C, config = config, nodes = t }
+end
+
+ColdBeans.make_me_a_credits_page_please = function(team)
+	if team == 9 then
+		local goo_atlas = "cbean_goo"
+		local goo_sprite = Sprite(0, 0, 4 * (G.ASSET_ATLAS[goo_atlas].px / G.ASSET_ATLAS[goo_atlas].py), 4, G.ASSET_ATLAS[goo_atlas], { x = 0, y = 0 })
+		goo_sprite.states.drag.can = false
+  		goo_sprite.states.hover.can = false
+  		goo_sprite.states.collide.can = false
+		return {
+			n = G.UIT.C,
+			config = { minw = 8, colour = G.C.CLEAR, align = "cm", id = "cbean_credits_page" },
+			nodes = {
+				{ n = G.UIT.R, config = { align = "tm", padding = 0.1 }, nodes = { { n = G.UIT.O, config = { object = goo_sprite, align = "cm" } } } }
+			}
+		}
+	end
+	local columns = 3
+	local t = {}
+
+	local team_atlas = "cbean_"..G.localization.cbean_credits[team or 1].atlas
+	local team_sprite = Sprite(0, 0, 2 * (G.ASSET_ATLAS[team_atlas].px / G.ASSET_ATLAS[team_atlas].py), 2, G.ASSET_ATLAS[team_atlas], { x = 0, y = 0 })
+	team_sprite.states.drag.can = false
+  	team_sprite.states.hover.can = false
+  	team_sprite.states.collide.can = false
+	t[#t + 1] = { n = G.UIT.R, config = { align = "tm", padding = 0.1 }, nodes = { { n = G.UIT.O, config = { object = team_sprite, align = "tm" } } } }
+
+	local team_guys = G.localization.cbean_credits[team or 1].members
+	-- Don't look ;u; this loop logic works for teams of 6 and 7
+	for i = 0, 1 do
+		local guys = {}
+		for j = 1, columns + i do
+			local guy = team_guys[(i * columns) + j]
+			if guy then
+				guys[#guys + 1] = {
+					n = G.UIT.C,
+					config = { align = "cm", padding = 0.15 },
+					nodes = {
+						{
+							n = G.UIT.R,
+							config = { align = "cm" },
+							nodes = { localize_table({ "{E:2,C:white}" .. guy .. "{}" }, { default_col = G.C.UI.TEXT_LIGHT, align = "cm", scale = 1.2 }) }
+						}
+					}
+				}
+			else
+				break
+			end
+		end
+
+		local guys_row = {
+			n = G.UIT.R,
+			config = { align = "cm", id = "team_member_row_" .. i },
+			nodes = guys
+		}
+
+		t[#t + 1] = guys_row
+	end
+
+	local team_desc = G.localization.cbean_credits[team or 1].description
+	local loc = localize_table(team_desc, { default_col = G.C.UI.TEXT_LIGHT, align = "cm", scale = 1 })
+	t[#t + 1] = {
+		n = G.UIT.R,
+		config = { align = "cm", padding = 0.2 },
+		nodes = { loc }
+	}
+
+	return {
+		n = G.UIT.C,
+		config = { minw = 8, colour = G.C.CLEAR, align = "cm", id = "cbean_credits_page" },
+		nodes = t
 	}
 end
