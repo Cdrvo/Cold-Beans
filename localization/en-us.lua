@@ -11189,7 +11189,11 @@ return {
 			},
 			atlas = "ZDOTCVacLogo",
 			description = {
-				"fghgfhs"
+				"Responsible for:",
+				"{C:attention}Combo Cards{}, {C:attention}House Rules{}, {C:attention}Poker Hands{}",
+				"some {C:green}Booster Packs{} and {C:dark_edition}Spectral Cards{},",
+				"hella art and bugfixing",
+				"{C:inactive}(hey, for 0 drivers they DO have gas)"
 			}
 		},
 		[4] = {
@@ -11204,8 +11208,12 @@ return {
 			},
 			atlas = "PBoysLogo",
 			description = {
-				"fgdhhfdhfgd",
-				"{C:attention}dfgdf{}"
+				"Responsible for:",
+				"{C:money}Piss{} Cards, {C:money}Piss{} Button",
+				"{C:money}Piss{} related {C:attention}Jokers{}",
+				"{C:dark_edition}Back Alley{}, some art,",
+				"and a {C:attention}Deck{}",
+				"{C:inactive}(They live up to their name)"
 			}
 		},
 		[5] = {
