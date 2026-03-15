@@ -198,11 +198,13 @@ SMODS.Joker({
 			local _card = pseudorandom_element(tab, pseudoseed("GRAVEBUSINGIT"))
 			if _card then
 				for k, v in pairs(SMODS.Stickers) do
-					if _card.ability[v.key] and (v.sticker_type and sticker_type == "Negative" or not v.sticker_type) then
+					if _card.ability[v.key] and (v.sticker_type and v.sticker_type == "Negative" or not v.sticker_type) then
 						_card:remove_sticker(v.key, true)
 					end
 				end
 			end
+
+			G.jokers:unhighlight_all()
 		end
 	end,
 })
