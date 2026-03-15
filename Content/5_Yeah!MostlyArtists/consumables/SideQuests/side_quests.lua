@@ -255,12 +255,14 @@ YMA.SideQuests.quest {
     },
 
     calculate = function(self, card, context)
-        if G.num and G.MODE and G.cups and #G.cups and G.GAME then
+        if G.num and G.MODE and G.cups and #G.cups and G.GAME and not card.ability.extra.dont_repeat then
             if G.MODE >= 3 and G.STATE_CHOOSEBALL then
                 for key, ad in pairs(G.cups) do
                     if G.cups[key].states.collide.is then
                         if G.cups[key].ball then
                             card.ability.extra.cup_won = true
+                            card.ability.extra.dont_repeat = true
+                            break
                         end
                     end
                 end
@@ -268,20 +270,7 @@ YMA.SideQuests.quest {
         end
         if card.ability.extra.cup_won then
             card.ability.extra.cup_won = false
-            G.E_MANAGER:add_event(Event({
-                trigger = 'before',
-                delay = 0.0,
-                func = (function()
-                    local leg = create_card('Joker', G.jokers, true, nil, nil, nil, nil, 'yma_ghost')
-                    leg:set_edition({ negative = true })
-                    leg:add_to_deck()
-                    leg.ability = leg.ability or {}
-                    leg.ability.yma_quest_temporary = true
-                    G.jokers:emplace(leg)
-                    YMA.complete_quest(card, nil, nil, false)
-                    return true
-                end)
-            }))
+            YMA.complete_quest(card, "Joker", "j_invisible")
         end
     end,
     beans_credits = {
