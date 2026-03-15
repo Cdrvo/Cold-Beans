@@ -6189,8 +6189,8 @@ return {
 					"rest of the round"
 				},
 			},
-			j_cbean_health_seeker                       = {
-				name = "Health Seeker",
+			j_cbean_heath_seeker                       = {
+				name = "Heath Seeker",
 				text = {
 					"{C:green}Sell{} this {C:attention}Jokers{}",
 					"to {C:attention}half{} all",

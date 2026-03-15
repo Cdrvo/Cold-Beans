@@ -3449,7 +3449,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "missle_toe",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 6, y = 0 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3464,11 +3472,6 @@ SMODS.Joker({
 			vars = { cae.xmult },
 		}
 	end,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.before then
@@ -4305,13 +4308,16 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "puffball",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 1, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
+	cost = 4,
 	rarity = 2,
 	blueprint_compat = false,
 	config = {
@@ -4390,7 +4396,8 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "boingsetta",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 0, y = 1 },
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
@@ -4511,14 +4518,17 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	key = "health_seeker",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	cost = 4,
+	key = "heath_seeker",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 0, y = 0 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
+	cost = 4,
 	rarity = 2,
 	blueprint_compat = true,
 	config = {
@@ -4594,12 +4604,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "blockoli",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 8, y = 0 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -5225,12 +5238,13 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "devour_bloom",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 11, y = 0 },
 	cost = 4,
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "Doggfly",
 	},
 	rarity = 2,
 	blueprint_compat = false,
@@ -5513,8 +5527,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "snap_pea",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	pos = { x = 0, y = 0 },
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 4, y = 0 },
+	beans_credits = {
+		code = "ThunderEdge",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = true,
@@ -5530,11 +5551,6 @@ SMODS.Joker({
 			vars = { cae.mult, 3, cae.rounds_remaining, },
 		}
 	end,
-	beans_credits = {
-		code = "ThunderEdge",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.before and not context.blueprint then
@@ -5598,4 +5614,54 @@ SMODS.Joker({
 		end
 	end,
 
+})
+
+SMODS.Joker({
+	pvz_plant = true,
+	in_pool = NAMETEAM.plant_in_pool,
+	key = "dandelion",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 3, y = 0 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
+	cost = 3,
+	rarity = 2,
+	blueprint_compat = false,
+	config = {
+		extra = {
+			mult = 2,
+            _card = nil
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.mult }}
+	end,
+	calculate = function(self, card, context)
+		local cae = card.ability.extra
+        if context.before then
+            if G.play.cards and #G.play.cards == 3 then
+                cae._card = pseudorandom_element(G.play.cards)
+            end
+        end
+        if context.individual and (context.cardarea == G.play or context.cardarea == "unscored") then
+            if context.other_card == cae._card then
+                context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+				context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + cae.mult
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+					message_card = context.other_card,
+				}
+            end
+        end
+        if context.after then
+            cae._card = nil
+        end
+    end
 })

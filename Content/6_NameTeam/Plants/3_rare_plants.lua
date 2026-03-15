@@ -777,7 +777,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "dazey_chain",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 2, y = 0 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
 	cost = 3,
 	rarity = 3,
 	blueprint_compat = false,
@@ -798,11 +806,6 @@ SMODS.Joker({
 			key = key,
 		}
 	end,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.joker_main then
@@ -844,7 +847,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "pokra",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 5, y = 0 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
 	cost = 3,
 	rarity = 3,
 	blueprint_compat = false,
@@ -861,11 +872,6 @@ SMODS.Joker({
 			vars = { cae.xmult, cae.trigs, cae.needed_trigs },
 		}
 	end,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.individual then

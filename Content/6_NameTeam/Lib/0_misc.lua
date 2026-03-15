@@ -73,6 +73,13 @@ SMODS.Atlas({
 	py = 95,
 })
 
+SMODS.Atlas({ --Added another atlas for the plants to avoid memory issues
+	key = "NAMETEAM_PlantJokers2",
+	path = "6_NameTeam/ColdBeansPlantJokers2.png",
+	px = 71,
+	py = 95,
+})
+
 SMODS.Atlas({
 	key = "NAMETEAM_PlantPlaceholder",
 	path = "6_NameTeam/ColdBeansPlantPlaceholder.png",
