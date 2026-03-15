@@ -933,7 +933,15 @@ SMODS.Joker {
 
 --Now to more bullshittery, I'm putting achievements HERE
 
+SMODS.Atlas({
+    key = "cbean_elephant",
+    path = "3_0driverOfTheChillVacation/elephant_achievment.png",
+    px = 66,
+    py = 66,
+})
+
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "address_me",
     unlock_condition = function(self, args) 
     end,
@@ -943,6 +951,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "highlight",
     unlock_condition = function(self, args) 
     end,
@@ -952,6 +961,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "highlight2",
     unlock_condition = function(self, args) 
     end,
@@ -961,6 +971,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "highlight3",
     unlock_condition = function(self, args) 
     end,
@@ -970,6 +981,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "highlight4",
     unlock_condition = function(self, args) 
     end,
@@ -979,6 +991,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "highlight5",
     unlock_condition = function(self, args) 
     end,
@@ -988,6 +1001,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "play",
     unlock_condition = function(self, args) 
     end,
@@ -997,6 +1011,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "play1",
     unlock_condition = function(self, args) 
     end,
@@ -1006,6 +1021,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "play2",
     unlock_condition = function(self, args) 
     end,
@@ -1015,6 +1031,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "play3",
     unlock_condition = function(self, args) 
     end,
@@ -1024,6 +1041,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "play4",
     unlock_condition = function(self, args) 
     end,
@@ -1033,6 +1051,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "play5",
     unlock_condition = function(self, args) 
     end,
@@ -1042,6 +1061,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playhigh",
     unlock_condition = function(self, args) 
     end,
@@ -1051,6 +1071,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playpair",
     unlock_condition = function(self, args) 
     end,
@@ -1060,6 +1081,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playtwopair",
     unlock_condition = function(self, args) 
     end,
@@ -1069,6 +1091,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playthree",
     unlock_condition = function(self, args) 
     end,
@@ -1078,6 +1101,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playfour",
     unlock_condition = function(self, args) 
     end,
@@ -1087,6 +1111,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playflush",
     unlock_condition = function(self, args) 
     end,
@@ -1096,6 +1121,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playstraight",
     unlock_condition = function(self, args) 
     end,
@@ -1105,6 +1131,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playfstraight",
     unlock_condition = function(self, args) 
     end,
@@ -1114,6 +1141,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playgay",
     unlock_condition = function(self, args) 
     end,
@@ -1123,6 +1151,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playfgay",
     unlock_condition = function(self, args) 
     end,
@@ -1132,6 +1161,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playhouse",
     unlock_condition = function(self, args) 
     end,
@@ -1141,6 +1171,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playbob",
     unlock_condition = function(self, args) 
     end,
@@ -1150,6 +1181,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playsecret",
     unlock_condition = function(self, args) 
     end,
@@ -1159,6 +1191,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playunscoring",
     unlock_condition = function(self, args) 
     end,
@@ -1168,6 +1201,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playunscoring2",
     unlock_condition = function(self, args) 
     end,
@@ -1177,6 +1211,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playunscoring3",
     unlock_condition = function(self, args) 
     end,
@@ -1186,6 +1221,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "playunscoring4",
     unlock_condition = function(self, args) 
     end,
@@ -1195,6 +1231,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "discard",
     unlock_condition = function(self, args) 
     end,
@@ -1204,6 +1241,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "discard2",
     unlock_condition = function(self, args) 
     end,
@@ -1213,6 +1251,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "discard3",
     unlock_condition = function(self, args) 
     end,
@@ -1222,6 +1261,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "discard4",
     unlock_condition = function(self, args) 
     end,
@@ -1231,6 +1271,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "discard5",
     unlock_condition = function(self, args) 
     end,
@@ -1240,6 +1281,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "yorick",
     unlock_condition = function(self, args) 
     end,
@@ -1249,6 +1291,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "six7",
     unlock_condition = function(self, args) 
     end,
@@ -1258,6 +1301,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "meaning",
     unlock_condition = function(self, args) 
     end,
@@ -1267,6 +1311,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "nice",
     unlock_condition = function(self, args) 
     end,
@@ -1276,6 +1321,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "nine10",
     unlock_condition = function(self, args) 
     end,
@@ -1285,6 +1331,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "leet",
     unlock_condition = function(self, args) 
     end,
@@ -1294,6 +1341,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "boob",
     unlock_condition = function(self, args) 
     end,
@@ -1303,6 +1351,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "four20",
     unlock_condition = function(self, args) 
     end,
@@ -1312,6 +1361,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "pi",
     unlock_condition = function(self, args) 
     end,
@@ -1321,6 +1371,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "sparta",
     unlock_condition = function(self, args) 
     end,
@@ -1330,6 +1381,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "math",
     unlock_condition = function(self, args) 
     end,
@@ -1339,6 +1391,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "math2",
     unlock_condition = function(self, args) 
     end,
@@ -1348,6 +1401,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "homestuck",
     unlock_condition = function(self, args) 
     end,
@@ -1357,6 +1411,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "nend",
     unlock_condition = function(self, args) 
     end,
@@ -1366,6 +1421,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "bhack",
     unlock_condition = function(self, args) 
     end,
@@ -1375,6 +1431,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "konami",
     unlock_condition = function(self, args) 
     end,
@@ -1384,6 +1441,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "teeny_blind",
     unlock_condition = function(self, args) 
     end,
@@ -1393,6 +1451,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "small_blind",
     unlock_condition = function(self, args) 
     end,
@@ -1402,6 +1461,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "big_blind",
     unlock_condition = function(self, args) 
     end,
@@ -1411,6 +1471,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "boss_blind",
     unlock_condition = function(self, args) 
     end,
@@ -1420,6 +1481,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "ceo_blind",
     unlock_condition = function(self, args) 
     end,
@@ -1429,6 +1491,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "beaten1",
     unlock_condition = function(self, args) 
     end,
@@ -1438,6 +1501,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "beaten3",
     unlock_condition = function(self, args) 
     end,
@@ -1447,6 +1511,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "beaten6",
     unlock_condition = function(self, args) 
     end,
@@ -1456,6 +1521,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "tenprocent",
     unlock_condition = function(self, args) 
     end,
@@ -1465,6 +1531,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "thirtyprocent",
     unlock_condition = function(self, args) 
     end,
@@ -1474,6 +1541,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "halfway_mark",
     unlock_condition = function(self, args) 
     end,
@@ -1483,6 +1551,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "seventyprocent",
     unlock_condition = function(self, args) 
     end,
@@ -1492,6 +1561,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "ninetyprocent",
     unlock_condition = function(self, args) 
     end,
@@ -1501,6 +1571,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "slot1",
     unlock_condition = function(self, args) 
     end,
@@ -1510,6 +1581,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "slot2",
     unlock_condition = function(self, args) 
     end,
@@ -1519,6 +1591,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "slot3",
     unlock_condition = function(self, args) 
     end,
@@ -1528,6 +1601,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "slot4",
     unlock_condition = function(self, args) 
     end,
@@ -1537,6 +1611,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "tarot",
     unlock_condition = function(self, args) 
     end,
@@ -1546,6 +1621,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "planet",
     unlock_condition = function(self, args) 
     end,
@@ -1555,6 +1631,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "spectral",
     unlock_condition = function(self, args) 
     end,
@@ -1564,6 +1641,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "consumesquared",
     unlock_condition = function(self, args) 
     end,
@@ -1573,6 +1651,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "blessing",
     unlock_condition = function(self, args) 
     end,
@@ -1582,6 +1661,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "combo",
     unlock_condition = function(self, args) 
     end,
@@ -1591,6 +1671,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "sticker_sheet",
     unlock_condition = function(self, args) 
     end,
@@ -1600,6 +1681,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "zodiac",
     unlock_condition = function(self, args) 
     end,
@@ -1609,6 +1691,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "keys",
     unlock_condition = function(self, args) 
     end,
@@ -1618,6 +1701,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "mutemusic",
     unlock_condition = function(self, args) 
     end,
@@ -1627,6 +1711,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "maxmusic",
     unlock_condition = function(self, args) 
     end,
@@ -1636,6 +1721,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "contrast",
     unlock_condition = function(self, args) 
     end,
@@ -1645,6 +1731,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "consumefull",
     unlock_condition = function(self, args) 
     end,
@@ -1654,6 +1741,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "jokerfull",
     unlock_condition = function(self, args) 
     end,
@@ -1663,6 +1751,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "ante",
     unlock_condition = function(self, args) 
     end,
@@ -1672,6 +1761,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "dollars5",
     unlock_condition = function(self, args) 
     end,
@@ -1681,6 +1771,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "dollars10",
     unlock_condition = function(self, args) 
     end,
@@ -1690,6 +1781,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "dollars25",
     unlock_condition = function(self, args) 
     end,
@@ -1699,6 +1791,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "dollars40",
     unlock_condition = function(self, args) 
     end,
@@ -1708,6 +1801,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "reroll",
     unlock_condition = function(self, args) 
     end,
@@ -1717,6 +1811,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "reroll5",
     unlock_condition = function(self, args) 
     end,
@@ -1726,6 +1821,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "reroll10",
     unlock_condition = function(self, args) 
     end,
@@ -1735,6 +1831,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "click1",
     unlock_condition = function(self, args) 
     end,
@@ -1744,6 +1841,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "click5",
     unlock_condition = function(self, args) 
     end,
@@ -1753,6 +1851,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "click10",
     unlock_condition = function(self, args) 
     end,
@@ -1762,6 +1861,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "click20",
     unlock_condition = function(self, args) 
     end,
@@ -1771,6 +1871,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "click35",
     unlock_condition = function(self, args) 
     end,
@@ -1780,6 +1881,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "scoring1000",
     unlock_condition = function(self, args) 
     end,
@@ -1789,6 +1891,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "scoring10000",
     unlock_condition = function(self, args) 
     end,
@@ -1798,6 +1901,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "scoring50000",
     unlock_condition = function(self, args) 
     end,
@@ -1807,6 +1911,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "scoring100000",
     unlock_condition = function(self, args) 
     end,
@@ -1816,6 +1921,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "scoring200000",
     unlock_condition = function(self, args) 
     end,
@@ -1825,6 +1931,7 @@ SMODS.Achievement {
 }
 
 SMODS.Achievement {
+    atlas = "cbean_elephant",
     key = "complete",
     unlock_condition = function(self, args) 
     end,
