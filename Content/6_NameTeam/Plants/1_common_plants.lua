@@ -987,7 +987,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1012,7 +1012,7 @@ SMODS.Joker({
 		local cae = card.ability.extra
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -1238,7 +1238,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1308,7 +1308,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -1438,7 +1438,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1491,7 +1491,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 --[[SMODS.Joker({
 	pvz_plant = true,
@@ -1559,8 +1559,8 @@ SMODS.Joker({
 			}
 		end
 	end,
-})
-]]
+})]]
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1677,7 +1677,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1748,6 +1748,7 @@ SMODS.Joker({
 	end,
 })
 
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1782,6 +1783,7 @@ SMODS.Joker({
 	end,
 })
 
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -1810,6 +1812,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -1905,7 +1908,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantJokers",
@@ -1941,7 +1944,6 @@ SMODS.Joker({
 	end,
 })
 
---[[
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
@@ -2022,8 +2024,8 @@ SMODS.Joker({
 	end,
 })
 
+
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	atlas = "NAMETEAM_PlantJokers",
@@ -2055,7 +2057,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantJokers",
@@ -2144,7 +2146,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
@@ -2190,6 +2192,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -2255,6 +2258,7 @@ SMODS.Joker({
 	end,
 })
 
+
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
@@ -2294,6 +2298,7 @@ SMODS.Joker({
 	end,
 })
 
+
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
@@ -2319,8 +2324,8 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.final_scoring_step then
-			local acard = pseudorandom_element(context.scoring_hand)
+		if context.final_scoring_step and G.GAME.current_round.hands_played==1 then
+			local acard = pseudorandom_element(G.playing_cards)
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 0.01,
@@ -2338,6 +2343,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
@@ -2363,13 +2369,11 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.individual and context.cardarea == G.play then
-			if context.other_card == context.scoring_hand[1] then
+		if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
 				return {
-					mult = cae.mult * NAMETEAM.all_on(card, context.scoring_hand, "right"),
+					mult = cae.mult * NAMETEAM.all_on(context.scoring_hand[1], context.scoring_hand, "right"),
 				}
 			end
-		end
 	end,
 })
 
@@ -2422,7 +2426,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			dollars = 1,
+			dollars = 5,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -2457,7 +2461,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -2495,7 +2499,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -2542,4 +2546,3 @@ SMODS.Joker({
         end
     end
 })
-]]

@@ -92,6 +92,15 @@ ColdBeans.calculate = function(mod, context)
 			SMODS.smart_level_up_hand(nil, context.scoring_name, nil, 1)
 		end
 
+		if G.GAME.NAMETEAM.gold_rush and G.GAME.NAMETEAM.gold_rush > 0 then
+			G.GAME.NAMETEAM.gold_rush = G.GAME.NAMETEAM.gold_rush - 1
+			for k, v in pairs(context.scoring_hand) do
+				v:set_seal("Gold")
+				v:juice_up()
+				v:set_ability("m_gold")
+			end
+		end
+
 		--[[if G.GAME.NAMETEAM.hands then
 			print(context.scoring_name)
 			if not G.GAME.NAMETEAM.redacted_scale then G.GAME.NAMETEAM.redacted_scale = {} end
@@ -126,22 +135,6 @@ ColdBeans.calculate = function(mod, context)
 					end
 				}))
 			end
-		end
-
-		if G.GAME.NAMETEAM.gold_rush and G.GAME.NAMETEAM.gold_rush > 0 then
-			G.GAME.NAMETEAM.gold_rush = G.GAME.NAMETEAM.gold_rush - 1
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 0,
-				func = function()
-					for k, v in pairs(G.play.cards) do
-						v:set_seal("Gold")
-						v:juice_up()
-						v:set_ability("m_gold")
-					end
-					return true
-				end
-			}))
 		end
 	end
 
