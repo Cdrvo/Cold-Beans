@@ -1474,21 +1474,18 @@ SMODS.Joker({
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.individual and context.cardarea == G.play and cae.mult > 0 then
-			if not cae.no_lose then
-				cae.mult = cae.mult - cae.mult_lose
-				NAMETEAM.msg(card, "-" .. cae.mult_lose)
-			else
-				cae.no_lose = false
+
+		if context.before then
+			local total_mult = cae.mult
+			for i = 1, #context.scoring_hand do
+				context.scoring_hand[i].sling_mult = total_mult - ((i-1)*2)
 			end
-			return {
-				mult = cae.mult,
-			}
-		elseif context.individual and context.cardarea == G.play and cae.mult <= 0 then
-			SMODS.destroy_cards(card)
 		end
-		if context.after and cae.mult <= 0 then
-			SMODS.destroy_cards(card)
+
+		if context.individual and context.cardarea == G.play then
+			return{
+				mult = context.other_card.sling_mult
+			}
 		end
 	end,
 })
