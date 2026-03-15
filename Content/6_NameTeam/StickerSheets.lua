@@ -738,7 +738,7 @@ SMODS.Consumable({
 		return {}
 	end,
 	can_use = function(self, card)
-		if #G.consumeables.highlighted == 2 and G.hand and #G.hand.cards>0 then
+		if ((#G.consumeables.highlighted == 2 and card.ara == G.consumeables) or (#G.consumeables.highlighted == 1)) and G.hand and #G.hand.cards>0 then
 			local acard = nil
 			for k, v in pairs(G.consumeables.highlighted) do
 				if v ~= card then

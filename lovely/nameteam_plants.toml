@@ -10,15 +10,15 @@ target = "game.lua"
 pattern = "G.STATE = G.STATES.NEW_ROUND"
 position = "at"
 payload = '''
-if (NAMETEAM.no_progress and NAMETEAM.no_progress>0 and #G.deck.cards > 0 or (#SMODS.find_card("j_cbean_sweetheart_snare")>0)) and not NAMETEAM.focre_progress then
-    if G.GAME.current_round.hands_left == 1 then 
-        NAMETEAM.no_progress = NAMETEAM.no_progress - 1  
+if ((G.GAME.NAMETEAM.no_progress and G.GAME.NAMETEAM.no_progress>0 and #G.deck.cards > 0) or (#SMODS.find_card("j_cbean_sweetheart_snare")>0)) and not NAMETEAM.focre_progress then
+    if G.GAME.current_round.hands_left <= 1 then 
+        G.GAME.NAMETEAM.no_progress = G.GAME.NAMETEAM.no_progress - 1  
         NAMETEAM.focre_progress = true
     end
     G.STATE = G.STATES.DRAW_TO_HAND
 else
-    if NAMETEAM.no_progress and NAMETEAM.no_progress>0 then
-        NAMETEAM.msg((G.deck.cards[1] or G.deck), (NAMETEAM.no_progress .. " Rounds"))
+    if G.GAME.NAMETEAM.no_progress and G.GAME.NAMETEAM.no_progress>0 then
+        NAMETEAM.msg((G.deck.cards[1] or G.deck), (G.GAME.NAMETEAM.no_progress .. " Rounds"))
     end
     NAMETEAM.focre_progress = false
     G.STATE = G.STATES.NEW_ROUND

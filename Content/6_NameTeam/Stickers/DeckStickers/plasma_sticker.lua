@@ -32,6 +32,9 @@ SMODS.Sticker({
                         colour = { 0.8, 0.45, 0.85, 1 },
                         instant = true
                     }, card)
+
+					save_run()
+					
 					return true
 				end,
 			}))

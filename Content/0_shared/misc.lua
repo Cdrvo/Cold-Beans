@@ -1,6 +1,4 @@
-NAMETEAM = {
-	no_progress = 0,
-}
+NAMETEAM = {}
 
 NANEMTEAM = NAMETEAM -- revo typo protection
 
