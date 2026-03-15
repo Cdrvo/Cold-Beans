@@ -154,7 +154,7 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "Slipstream",
-        code = "notmario",
+        code = "John Balatro",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }
@@ -207,7 +207,7 @@ SMODS.Consumable {
         team = "SeriousDownloading",
         idea = "kars",
         art = "Slipstream",
-        code = "notmario",
+        code = "John Balatro",
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.times_left } }

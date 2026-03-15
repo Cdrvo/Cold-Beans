@@ -11170,7 +11170,7 @@ return {
 				"candycane",
 				"mys. minty",
 				"L'",
-				"notmario",
+				"John Balatro",
 				"Slipstream"
 			},
 			atlas = "SDownLogo",

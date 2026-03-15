@@ -48,7 +48,7 @@ end
 ColdBeans.calculate = function(mod, context)
 	if context.round_eval then
 		G.GAME.BALLEY_WINS = 0
-		G.GAME.yma_forge_closed = nil;
+		G.GAME.yma_forge_closed = nil
 	end
 	if context.starting_shop then
 		G.GAME.cbean_shop_nocontext = true
@@ -272,7 +272,7 @@ ColdBeans.calculate = function(mod, context)
 		local blind = G.GAME.blind
 		if count > 0 then
 			G.GAME.BlindCurse = G.GAME.BlindCurse - 1
-			blind.mult = blind.mult + 0.5;
+			blind.mult = blind.mult + 0.5
 		end
 		blind.chips = get_blind_amount(G.GAME.round_resets.ante) * blind.mult * G.GAME.starting_params.ante_scaling + folly
 		blind.chip_text = number_format(blind.chips)
@@ -301,12 +301,12 @@ ColdBeans.calculate = function(mod, context)
 		G.GAME.pack_choices = 0
 	end
 	-- dunno this, but I'm needing this after
-	local haspost = false;
+	local haspost = false
 	local results = {}
 	for i, cb in ipairs(on_calculate_cbs) do
 		local result, post = cb(mod, context)
 		if result then
-			results[#results + 1] = result;
+			results[#results + 1] = result
 		end
 		if post then
 			haspost = true
@@ -797,19 +797,15 @@ end
 
 
 -- Thanks, Hot Potato! (gosh we really have used a lot of its code, huh)
-ColdBeans.custom_ui = function(mod_nodes)
-	mod_nodes[#mod_nodes + 1] = {
-		n = G.UIT.R,
-		config = { minw = 4, minh = 4, align = "cm", padding = 0.2 },
-		nodes = {
-			UIBox_button({
-				label = { localize("b_cbean_credits") },
-				minw = 5,
-				colour = ColdBeans.badge_colour,
-				button = "cbean_create_credits_thingy"
-			})
-		}
-	}
+
+SMODS.current_mod.extra_tabs = function()
+    return {
+        {
+            label = localize("b_cbean_credits"),
+            tab_definition_function = G.FUNCS.cbean_create_credits_thingy
+        },
+
+    }
 end
 
 
@@ -822,17 +818,10 @@ function G.FUNCS.cbean_create_credits_thingy(e)
 	options[#options + 1] = "the goo"
 
 	SMODS.LAST_SELECTED_MOD_TAB = nil
-	local t = create_UIBox_generic_options({
-		colour = G.ACTIVE_MOD_UI and
-			((G.ACTIVE_MOD_UI.ui_config or {}).collection_colour or (G.ACTIVE_MOD_UI.ui_config or {}).colour),
-		bg_colour = G.ACTIVE_MOD_UI and
-			((G.ACTIVE_MOD_UI.ui_config or {}).collection_bg_colour or (G.ACTIVE_MOD_UI.ui_config or {}).bg_colour),
-		back_colour = G.ACTIVE_MOD_UI and
-			((G.ACTIVE_MOD_UI.ui_config or {}).collection_back_colour or (G.ACTIVE_MOD_UI.ui_config or {}).back_colour),
-		outline_colour = G.ACTIVE_MOD_UI and ((G.ACTIVE_MOD_UI.ui_config or {}).collection_outline_colour or
-			(G.ACTIVE_MOD_UI.ui_config or {}).outline_colour),
-		back_func = G.ACTIVE_MOD_UI and "openModUI_" .. G.ACTIVE_MOD_UI.id or 'your_collection',
-		contents = {
+	local t = {
+		n = G.UIT.ROOT,
+		config = { align = "cm", colour = G.C.CLEAR },
+		nodes = {
 			{
 				n = G.UIT.C,
 				config = { align = "cm", r = 0.1, colour = G.C.BLACK, emboss = 0.05 },
@@ -844,8 +833,8 @@ function G.FUNCS.cbean_create_credits_thingy(e)
 							{
 								n = G.UIT.O,
 								config = {
-									object = DynaText {
-										string = localize('cbean_credits_title'),
+									object = DynaText({
+										string = localize("cbean_credits_title"),
 										float = true,
 										pop_in = 0,
 										pop_in_rate = 4,
@@ -853,23 +842,23 @@ function G.FUNCS.cbean_create_credits_thingy(e)
 										shadow = true,
 										scale = 1,
 										rotate = true,
-										colours = { G.C.EDITION }
-									}
-								}
-							}
-						}
+										colours = { G.C.EDITION },
+									}),
+								},
+							},
+						},
 					},
 					{
 						n = G.UIT.R,
 						config = { align = "cm", minh = 6 },
 						nodes = {
-							uibox
-						}
+							uibox,
+						},
 					},
 					{
 						n = G.UIT.R,
 						config = {
-							align = "cm"
+							align = "cm",
 						},
 						nodes = {
 							create_option_cycle({
@@ -879,17 +868,18 @@ function G.FUNCS.cbean_create_credits_thingy(e)
 								cycle_shoulders = true,
 								opt_callback = "regenerate_cbean_credits_thingy",
 								current_option = 1,
-								colour = G.ACTIVE_MOD_UI and
-									(G.ACTIVE_MOD_UI.ui_config or {}).collection_option_cycle_colour or G.C.RED,
-								focus_args = { snap_to = true, nav = 'wide' }
-							})
-						}
-					}
-				}
+								colour = G.ACTIVE_MOD_UI
+										and (G.ACTIVE_MOD_UI.ui_config or {}).collection_option_cycle_colour
+									or G.C.RED,
+								focus_args = { snap_to = true, nav = "wide" },
+							}),
+						},
+					},
+				},
 			},
-		}
-	})
-	G.FUNCS.overlay_menu { definition = t }
+		},
+	}
+	return t
 end
 
 function G.FUNCS.regenerate_cbean_credits_thingy(e)
