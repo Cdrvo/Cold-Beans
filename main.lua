@@ -146,10 +146,12 @@ ColdBeans.calculate = function(mod, context)
 		G.GAME.cbean_combo_index = {}
 		G.GAME.cbean_combo_unique_hand = {}
 		G.GAME.cbean_combos_used_turn = 0
-		if G.GAME.NAMETEAM.jal_triggered then
+
+		if G.GAME.NAMETEAM.jal_triggered and G.GAME.NAMETEAM.jal_sold then
 			G.GAME.NAMETEAM.jal_sold = G.GAME.NAMETEAM.jal_sold - 1
 			G.GAME.NAMETEAM.jal_triggered = false
 		end
+
 		if G.GAME.NAMETEAM.first_hand_disable then
 			G.GAME.NAMETEAM.first_hand_disable = false
 			--idk what im doing
