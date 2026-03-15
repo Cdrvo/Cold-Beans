@@ -6429,11 +6429,11 @@ return {
 				name = "Blaze Leaf",
 				text = {
 					{
-						"Cards on the left",
+						"Jokers on the left",
 						"give {X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"Cards on the right",
+						"Jokers on the right",
 						"give {C:mult}+#2#{} Mult"
 					},
 				},

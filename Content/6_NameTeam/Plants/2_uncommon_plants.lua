@@ -3396,7 +3396,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -3443,6 +3443,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -3501,6 +3502,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -3576,7 +3578,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -3615,8 +3617,8 @@ SMODS.Joker({
 			local acard = SMODS.add_card({
 				key = "j_cbean_holly_projectile",
 			})
-			acard.cbean_type = pseudorandom_element({ "mult", "chips", "dollars" })
-			card.ability.type = acard.cbean_type
+			acard.ability.cbean_type = pseudorandom_element({ "mult", "chips", "dollars" })
+			card.ability.type = acard.ability.cbean_type
 			acard:set_edition("e_negative")
 			if cae.hands_left == 0 then
 				SMODS.destroy_cards(card)
@@ -3650,19 +3652,19 @@ SMODS.Joker({
 		--info_queue[#info_queue+1] = {set = "Joker", key = "j_cbean_holly_projectile_mult", specific_vars = {5}}
 		--info_queue[#info_queue+1] = {set = "Joker", key = "j_cbean_holly_projectile_chips", specific_vars = {30}}
 		--info_queue[#info_queue+1] = {set = "Joker", key = "j_cbean_holly_projectile_dollars", specific_vars = {1}}
-		if not card.cbean_type then
-			card.cbean_type = (cae.type or "unselected")
+		if not card.ability.cbean_type then
+			card.ability.cbean_type = (cae.type or "unselected")
 		end
 		local key, vars = self.key, {}
-		if card.cbean_type == "mult" then
+		if card.ability.cbean_type == "mult" then
 			cae.type = "mult"
 			vars = { cae.mult }
 			key = self.key .. "_mult"
-		elseif card.cbean_type == "chips" then
+		elseif card.ability.cbean_type == "chips" then
 			cae.type = "chips"
 			vars = { cae.chips }
 			key = self.key .. "_chips"
-		elseif card.cbean_type == "dollars" then
+		elseif card.ability.cbean_type == "dollars" then
 			cae.type = "dollars"
 			vars = { cae.dollars }
 			key = self.key .. "_dollars"
@@ -3680,11 +3682,11 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.joker_main then
-			if card.cbean_type == "mult" then
+			if card.ability.cbean_type == "mult" then
 				return {
 					mult = cae.mult,
 				}
-			elseif card.cbean_type == "chips" then
+			elseif card.ability.cbean_type == "chips" then
 				return {
 					chips = cae.chips,
 				}
@@ -3692,13 +3694,14 @@ SMODS.Joker({
 		end
 	end,
 	calc_dollar_bonus = function(self, card)
-		if card.cbean_type == "dollars" then
+		if card.ability.cbean_type == "dollars" then
 			return card.ability.extra.dollars
 		end
 	end,
 })
 
---[[SMODS.Joker({
+--[[
+SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "melon_z",
@@ -4297,7 +4300,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -4342,7 +4345,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -4382,7 +4385,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -4420,6 +4423,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -4465,7 +4469,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -4503,7 +4507,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -4534,7 +4538,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -4585,7 +4589,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -4667,6 +4671,7 @@ SMODS.Joker({
 	end,
 })
 
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -4710,14 +4715,16 @@ SMODS.Joker({
 				NAMETEAM.all_on(card, G.jokers.cards, "right", "on_brambles_right")
 				if v.ability.on_brambles_right then
 					v.states.drag.can = false
-				elseif v ~= card then
+					v.ability.bramble = card
+				elseif v ~= card and v.ability.bramble == card then
 					v.states.drag.can = true
+					v.ability.bramble = nil
 				end
 			end
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -4849,8 +4856,6 @@ SMODS.Joker({
 	end,
 })
 
---[[
-
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
@@ -4955,7 +4960,6 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantJokers",
@@ -5014,7 +5018,6 @@ SMODS.Joker({
 	end,
 })
 
---[[
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantPlaceholder",
@@ -5044,7 +5047,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	atlas = "NAMETEAM_PlantJokers",
@@ -5131,7 +5134,7 @@ SMODS.Joker({
 		end
 	end,
 })
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -5181,6 +5184,7 @@ SMODS.Joker({
 })
 
 
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -5206,7 +5210,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.end_of_scoring and context.main_eval then
+		if context.end_of_round and context.main_eval then
 			if cae.rounds > 1 then
 				cae.rounds = cae.rounds - 1
 			else
@@ -5215,6 +5219,7 @@ SMODS.Joker({
 		end
 	end,
 })
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -5246,7 +5251,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
@@ -5503,7 +5508,7 @@ SMODS.Joker({
 	end,
 })
 
---[[
+
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
@@ -5558,7 +5563,7 @@ SMODS.Joker({
 		end
 	end,
 })
-]]
+
 
 SMODS.Joker({
 	pvz_plant = true,
