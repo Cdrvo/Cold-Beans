@@ -535,7 +535,7 @@ end
 
 local calc_reps_old = SMODS.calculate_repetitions
 function SMODS.calculate_repetitions(card,context,reps)
-	if next(SMODS.find_card("j_cbean_power_vine")) and next(SMODS.find_card("j_cbean_sundew_tangler")) then
+	if not next(SMODS.find_card("j_cbean_power_vine")) and not next(SMODS.find_card("j_cbean_sundew_tangler")) then
 		calc_reps_old(card, context, reps)
 	end
 end

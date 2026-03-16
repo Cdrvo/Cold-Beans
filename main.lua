@@ -279,7 +279,7 @@ ColdBeans.calculate = function(mod, context)
 	if context.final_scoring_step then
 		if G.GAME.NAMETEAM.grimrose_triggered then
 			G.GAME.NAMETEAM.grimrose_triggered = false
-			local acard                        = pseudorandom_element(context.scoring_hand, pseudoseed("grimyrosu"))
+			local acard = pseudorandom_element(context.scoring_hand, pseudoseed("grimyrosu"))
 			if acard then
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
