@@ -9703,7 +9703,7 @@ return {
 				name = "Consumed Stake",
 				text = {
 					"{C:attention}Consumables{} may spawn",
-					"with specific {C:attention}Stickers{}",
+					"with applicable {C:attention}Stickers{}",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
@@ -9718,18 +9718,16 @@ return {
 			stake_cbean_deck = {
 				name = "Painted Stake",
 				text = {
-					"{C:green}1 in 4{} chance to apply",
-					"a {C:attention}Sticker{} to your deck",
-					"at the end of the shop",
+					"{C:green}1 in 4{} chance to apply a {C:attention}Sticker{}",
+					"to your {C:attention}deck{} at the end of the shop",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
 			stake_cbean_blind = {
 				name = "Plant Stake",
 				text = {
-					"Apply a random {C:attention}Blind Sticker",
-					"to your deck when",
-					"{C:attention}CEO Blind{} is defeated",
+					"Apply a random {C:attention}Blind Sticker{} to",
+					"your deck when {C:attention}CEO Blind{} is defeated",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
