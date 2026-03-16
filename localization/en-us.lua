@@ -215,10 +215,10 @@ return {
 				}
 			},
 			bl_cbean_colon_pipeline = { -- Glitchkat10 | George The Rat | Glitchkat10
-				name = "The Pipeline",
+				name = "The Pipeline", -- what a jd nightmare, actually take from baseball card
 				text = {
-					"All jokers give 1.2X mult but...", -- what a jd nightmare, actually take from baseball card
-					"X0.1 mult less than the last"
+					"All Jokers give 1.2X Mult but", -- read like a middle schooler before
+					"X0.1 Mult less than the last"
 				}
 			},
 			bl_cbean_colon_button = { -- Glitchkat10 | George The Rat | Glitchkat10
