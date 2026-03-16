@@ -1584,16 +1584,18 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
-		if context.after and G.GAME.NAMETEAM.blover_number and not context.blueprint then
-			for i = 1, G.GAME.NAMETEAM.blover_number do
-				SMODS.scale_card(card, {
-					ref_table = cae,
-					ref_value = "xmult",
-					scalar_value = "xmult_gain",
-				})
-			end
-		end
 		if context.joker_main then
+			if G.GAME.NAMETEAM.blover_number and not context.blueprint then
+				for i = 1, G.GAME.NAMETEAM.blover_number do
+					SMODS.scale_card(card, {
+						ref_table = cae,
+						ref_value = "xmult",
+						scalar_value = "xmult_gain",
+						no_message = true
+					})
+				end
+				SMODS.calculate_effect({message = localize("k_upgrade_ex")}, card)
+			end
 			return {
 				xmult = cae.xmult,
 			}

@@ -404,9 +404,6 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 			end
         end
     end
-	if not G.GAME.NAMETEAM.no_score_cards and next(SMODS.find_card("j_cbean_blover")) then
-		return calculate_main_scoring_old(context, scoring_hand)
-	end
 end
 
 
