@@ -2915,7 +2915,7 @@ YMA.TBOI_ITEMS {
                         G.E_MANAGER:add_event(Event ({
                             trigger = 'before',
                             func = function()
-                                local _planet, _hand, _last_hand = nil, nil, 0, 0
+                                local _planet, _hand, _last_hand = nil, nil, 0
                                 for _, handname in ipairs(G.handlist) do
                                     if _last_hand == 0 then
                                         _hand = handname

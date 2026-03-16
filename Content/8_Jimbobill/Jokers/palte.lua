@@ -9,15 +9,13 @@ SMODS.Joker {
         if G.STATE == G.STATES.SELECTING_HAND then
             G.GAME.blind.chip_text = "???"
         end
+        if G.GAME.blind and G.GAME.blind.chip_text and G.GAME.blind.chip_text ~= "???" then
+            G.GAME.blind.chip_text = "???"
+        end
     end,
     config = { extra = { xmult = 2 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
-    end,
-    update = function(self, card, dt)
-        if G.GAME.blind and G.GAME.blind.chip_text and G.GAME.blind.chip_text ~= "???" then
-            G.GAME.blind.chip_text = "???"
-        end
     end,
     calculate = function(self, card, context)
         if context.joker_main then

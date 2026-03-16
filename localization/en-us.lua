@@ -202,9 +202,9 @@ return {
 			bl_cbean_colon_promise = { -- Glitchkat10 | George The Rat | Bitter
 				name = "The Promise",
 				text = {
-					"If blind is defeated in 1 hand",
-					"add polychrome to a random joker",
-					"else, remove all non-Negative editions"
+					"If defeated in 1 hand, apply",
+					"Polychrome to a random Joker",
+					"Else, remove all non-Negative editions"
 				}
 			},
 			bl_cbean_colon_seed = { -- Glitchkat10 | George The Rat | Bitter
