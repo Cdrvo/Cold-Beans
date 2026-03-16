@@ -12494,10 +12494,10 @@ return {
 				"{C:attention}All Blinds{} are {C:attention}The Folly",
 			},
 			ch_c_cbean_nteam_all_stickers = {
-				"All {C:attention}Jokers{}, {C:attention}consumables{},"
+				"All {C:attention}Jokers{}, {C:attention}consumables{}, and"
 			},
 			ch_c_cbean_nteam_all_stickers_2 = {
-				"and {C:attention}playing cards{} (including starting ones)",
+				"{C:attention}playing cards{} (including starting ones)",
 			},
 			ch_c_cbean_nteam_all_stickers_3 = {
 				"have {C:attention}Stickers",
