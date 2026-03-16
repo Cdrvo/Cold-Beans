@@ -11156,7 +11156,11 @@ return {
 			},
 			atlas = "CParenLogo",
 			description = {
-				"SERIOUS TESTING LOL"
+				"Responsible for:",
+				"{C:dark_edition}5-Blind Antes{}, {C:blue}Teeny Blinds,",
+				"{C:purple}Ceo Blinds{}, {C:money}Greek Blinds{},",
+				"{C:attention}Architecture cards{}, some {C:attention}Jokers",
+				"and a bunch of misc. functions"
 			}
 		},
 		[2] = {
@@ -11172,7 +11176,9 @@ return {
 			},
 			atlas = "SDownLogo",
 			description = {
-				"pluh"
+				"Responsible for:",
+				"{C:attention}Chinese Zodiacs{}, {C:dark_edition}Blessings,{C:attention} Poker Hands",
+				"{C:blue}Frozen{} edition, some {C:red}Blinds{} and {C:attention}Jokers{}"
 			}
 		},
 		[3] = {
@@ -11260,7 +11266,9 @@ return {
 			},
 			atlas = "WGropLogo",
 			description = {
-				"waw"
+				"Responsible for:",
+				"{C:dark_edition}Biomes{}, some {C:attention}Consumables",
+				"and art"
 			}
 		},
 		[8] = {
