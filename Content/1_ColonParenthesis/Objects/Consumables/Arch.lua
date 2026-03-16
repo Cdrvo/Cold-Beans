@@ -950,7 +950,7 @@ Colonparen.Architecture {
     greek_blind = "cbean_colon_xi",
     set_ability = function (self, card, initial, delay_sprites)
         if (G.STAGE == G.STAGES.RUN) and (not card.ability.extra) then
-            local least_level = 1e999;
+            local least_level = 1e308;
             local least_leveled = {}
             for k, v in pairs(G.GAME.hands) do
                 if v.visible then
@@ -963,7 +963,7 @@ Colonparen.Architecture {
                 end
             end
 
-            local least_score = 1e999;
+            local least_score = 1e308;
             local least_scored = nil
             for k, v in pairs(G.GAME.hands) do
                 if v.visible then
@@ -983,7 +983,7 @@ Colonparen.Architecture {
     end,
     calculate = function (self, card, context)
         if context.cbean_colon_level_up then
-            local most_level = -1e999;
+            local most_level = -1e308;
             for k, v in pairs(G.GAME.hands) do
                 if v.level > most_level then
                     most_level = v.level
