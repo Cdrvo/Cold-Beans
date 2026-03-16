@@ -56,7 +56,7 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         if context.joker_main and card.ability.immutable.sequence > 0 then
             if SMODS.pseudorandom_probability(card, "Nope!", card.ability.extra.chance_num, card.ability.extra.chance_denom, "Nope!") then
-                local effect = math.random(1, 3) --Effect 1
+                local effect = pseudorandom('LETS GO GAMBLING!!!', 1, 3) --Effect 1
                 if effect == 1 then
                     return {
                         chips = (card.ability.extra.chips * (1 + (#G.GAME.cbean_combo_index - 1)/10 )),
