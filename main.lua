@@ -91,8 +91,6 @@ ColdBeans.joker_cache = {
     
     -- add more jokers as needed for other house rules hands
 
-    --Don't know why this is here
-    manos = false,
 }
 
 -- update the entire joker cache at once
@@ -156,8 +154,6 @@ function ColdBeans.update_joker_cache()
     --PROCEED
     ColdBeans.joker_cache.thorn_ring = next(SMODS.find_card("j_cbean_0chill_thorn_ring")) ~= nil
 
-    ---------------------------Misc Jokers----------------------------
-	ColdBeans.joker_cache.manos = next(SMODS.find_card("j_cbean_jbill_manos")) ~= nil --I don't know why we are checking for Manos. Its not used in a hand
 
 end
 
