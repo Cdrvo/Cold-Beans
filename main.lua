@@ -28,6 +28,7 @@ SMODS.current_mod.optional_features = {
 
 -- global joker cache for house rules performance
 -- this eliminates repeated SMODS.find_card() calls across all house rules hands
+-- If you want to add the infoqueue to the ne
 ColdBeans.joker_cache = {
     -- house rules
     house_rules = false,
@@ -48,37 +49,62 @@ ColdBeans.joker_cache = {
     nat20 = false,
     set_of_dice = false,
     
-    -- other (too lazy to separate)
+   -- lucky 8re8k
     eight_ball = false,
+
+    --sacrifice
     obelisk = false,
+
+    --Yet Another Stone Card Hand
     marble = false,
     stone = false,
+    walled_in = false,
+
+    --Favorite Year and Favorite Year Flush
     big_shot = false,
+
+    --Thorny Boquet
     withering_memory = false,
-    manos = false,
-    zany = false,
-    wily = false,
-    trio = false,
+
+    --Flush Tuah
     jolly = false,
     sly = false,
     duo = false,
+
+    --Flush Threeah
+    zany = false,
+    wily = false,
+    trio = false,
+    
+    --Pansexual
     shortcut = false,
+
+    --True Home
     seeing_double = false,
     diamondshapewithadotinside = false,
+
+    --Deer in Headlights
     driving_in_my_truck = false,
+
+    --PROCEED
     thorn_ring = false,
     
     -- add more jokers as needed for other house rules hands
+
+    --Don't know why this is here
+    manos = false,
 }
 
 -- update the entire joker cache at once
 function ColdBeans.update_joker_cache()
-    -- house rules jokers
+    --------------------House Rules Jokers-----------------
     ColdBeans.joker_cache.house_rules = next(SMODS.find_card("j_cbean_0chill_house_rules")) ~= nil
+
+    --Collection and Collection 3oak
     ColdBeans.joker_cache.sticker_collection = next(SMODS.find_card("j_cbean_nameteam_sticker_collection")) ~= nil
     ColdBeans.joker_cache.stickerbomb = next(SMODS.find_card("j_cbean_nameteam_stickerbomb")) ~= nil
     
-    -- 67!!!
+    -- 67 and 67 flush!!! 
     ColdBeans.joker_cache.sixth_sense = next(SMODS.find_card("j_sixth_sense")) ~= nil
     ColdBeans.joker_cache.mu_cube = next(SMODS.find_card("j_cbean_colon_mu_cube")) ~= nil
     
@@ -90,25 +116,49 @@ function ColdBeans.update_joker_cache()
     ColdBeans.joker_cache.nat20 = next(SMODS.find_card("j_cbean_0chill_nat20")) ~= nil
     ColdBeans.joker_cache.set_of_dice = next(SMODS.find_card("j_cbean_yma_set_of_dice")) ~= nil
     
-    -- other
+    -- lucky 8re8k
     ColdBeans.joker_cache.eight_ball = next(SMODS.find_card("j_8_ball")) ~= nil
+
+    --sacrifice
     ColdBeans.joker_cache.obelisk = next(SMODS.find_card("j_obelisk")) ~= nil
+
+    --Yet another stone card hand
     ColdBeans.joker_cache.marble = next(SMODS.find_card("j_marble")) ~= nil
     ColdBeans.joker_cache.stone = next(SMODS.find_card("j_stone")) ~= nil
+    ColdBeans.joker_cache.walled_in = next(SMODS.find_card("j_cbean_nameteam_walledin")) ~= nil
+
+   	--Favorite Year and Favorite Year Flush
     ColdBeans.joker_cache.big_shot = next(SMODS.find_card("j_cbean_colon_big_shot")) ~= nil
+
+    --thorny_boquete
     ColdBeans.joker_cache.withering_memory = next(SMODS.find_card("j_cbean_wgrop_withering_memory")) ~= nil
-    ColdBeans.joker_cache.manos = next(SMODS.find_card("j_cbean_jbill_manos")) ~= nil
-    ColdBeans.joker_cache.zany = next(SMODS.find_card("j_zany")) ~= nil
-    ColdBeans.joker_cache.wily = next(SMODS.find_card("j_wily")) ~= nil
-    ColdBeans.joker_cache.trio = next(SMODS.find_card("j_trio")) ~= nil
+
+    --Flush Tuah
     ColdBeans.joker_cache.jolly = next(SMODS.find_card("j_jolly")) ~= nil
     ColdBeans.joker_cache.sly = next(SMODS.find_card("j_sly")) ~= nil
     ColdBeans.joker_cache.duo = next(SMODS.find_card("j_duo")) ~= nil
+
+    --Flush Threeah
+    ColdBeans.joker_cache.zany = next(SMODS.find_card("j_zany")) ~= nil
+    ColdBeans.joker_cache.wily = next(SMODS.find_card("j_wily")) ~= nil
+    ColdBeans.joker_cache.trio = next(SMODS.find_card("j_trio")) ~= nil
+
+    --Pansexual and Pansexual Flush
     ColdBeans.joker_cache.shortcut = next(SMODS.find_card("j_shortcut")) ~= nil
+
+    --True Home
     ColdBeans.joker_cache.seeing_double = next(SMODS.find_card("j_seeing_double")) ~= nil
     ColdBeans.joker_cache.diamondshapewithadotinside = next(SMODS.find_card("j_cbean_nameteam_diamondshapewithadotinside")) ~= nil
+
+    --Deer in Headlights
     ColdBeans.joker_cache.driving_in_my_truck = next(SMODS.find_card("j_cbean_0chill_driving_in_my_truck")) ~= nil
+
+    --PROCEED
     ColdBeans.joker_cache.thorn_ring = next(SMODS.find_card("j_cbean_0chill_thorn_ring")) ~= nil
+
+    ---------------------------Misc Jokers----------------------------
+	ColdBeans.joker_cache.manos = next(SMODS.find_card("j_cbean_jbill_manos")) ~= nil --I don't know why we are checking for Manos. Its not used in a hand
+
 end
 
 -- helper functions for common house rules patterns

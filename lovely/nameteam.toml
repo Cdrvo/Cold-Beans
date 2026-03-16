@@ -138,35 +138,66 @@ end
 match_indent = true
 
 #Adds the House Rules tooltip to all House Rules jokers. Thank you hexacryonic for the code.
+#If you want to Add your own hand, make an entry, add effected Jokers here, and head to the main file to make a cache for them
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = "local info_queue = {}"
 position = "after"
 payload = '''local house_rules = {
+            --Flush Threeah
             j_zany = {"sdown_flush_three"},
             j_wily = {"sdown_flush_three"},
             j_trio = {"sdown_flush_three"},
+
+            --Flush Tuah
             j_jolly = {"sdown_flush_two"},
             j_sly = {"sdown_flush_two"},
             j_duo = {"sdown_flush_two"},
+
+            --Lucky 8re8k
             j_8_ball = {"sdown_8r8k"},
+
+            --Pansexual and Pansexual Flush
             j_shortcut = {"sdown_pansexual","sdown_pansexual_flush"},
+
+            --Sacrifice
             j_obelisk = {"sdown_sacrifice"},
+
+            --67 and 67 flush
             j_sixth_sense = {"sdown_67", "sdown_flush_67"},
             j_cbean_colon_mu_cube = {"sdown_67", "sdown_flush_67"},
+
+            --Yet another stone card hand
             j_marble = {"sdown_stone_hand"},
             j_stone = {"sdown_stone_hand"},
+            j_cbean_nameteam_walledin = {"sdown_stone_hand"},
+
+            --Deer in headlights
             j_cbean_0chill_driving_in_my_truck = {"0chill_deer_in_headlights"},
+
+            --Favorite year and Favorite year flush
             j_cbean_colon_big_shot = {"0chill_favorite_year","0chill_favorite_year_flush"},
+
+            --Fibonacci
             j_fibonacci = {"0chill_fibonacci", "0chill_fibonacci_flush"},
+
+            --Jackpot
             j_oops = {"0chill_jackpot"},
             j_cbean_0chill_nat20 = {"0chill_jackpot"},
             j_cbean_yma_set_of_dice = {"0chill_jackpot"},
+
+            --PROCEED
             j_cbean_0chill_thorn_ring = {"0chill_proceed"},
+
+            --Thorny Boquete
             j_cbean_wgrop_withering_memory = {"wgrop_thorny_boquete"},
+
+            --True Home
             j_seeing_double = {"sdown_true_home"},
             j_cbean_nameteam_diamondshapewithadotinside = {"sdown_true_home"},
+
+            --Collection and 3oak collection
             j_cbean_nameteam_sticker_collection = {"nteam_collection", "nteam_collection_3oak"},
             j_cbean_nameteam_stickerbomb = {"nteam_collection", "nteam_collection_3oak"}
 }

@@ -12043,7 +12043,7 @@ return {
 				"Prioritized below Straights and Flushes"
 			},
 
-			--House Rules Hands
+			-------------House Rules Hands----------------------------------------
 			["cbean_sdown_sacrifice"] = {
 				"A hand that contains five cards that have not been played before",
 				"Must have {C:attention}House Rules{} and {C:attention}Obelisk{} to play",
@@ -12069,7 +12069,8 @@ return {
 
 			["cbean_sdown_stone_hand"] = {
 				"Daring today, aren't we?",
-				"Must have {C:attention}House Rules{} and {C:attention}Marble Joker or Stone Joker{} to play",
+				"Must have {C:attention}House Rules{} and {C:attention}Marble Joker,",
+				"{C:attention}Stone Joker, or Walled In{} to play",
 			},
 
 			["cbean_sdown_true_home"] = {
