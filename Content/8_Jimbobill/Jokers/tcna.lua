@@ -67,6 +67,6 @@ SMODS.Joker {
         idea = "D.J.",
         code = "Evgast",
         team = "Jimbobill",
-        art = "None Yet!"
+        art = "D.J."
     }
 }
