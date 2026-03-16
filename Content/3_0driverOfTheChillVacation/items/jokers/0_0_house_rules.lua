@@ -104,7 +104,7 @@ end
 ]]
 
 function G.FUNCS.display_house_rules()
-    if #SMODS.find_card('j_cbean_0chill_house_rules') > 0 then
+    if next(SMODS.find_card('j_cbean_0chill_house_rules')) then
         return { key = "cbean_house_rules_hint", set = "Other" }
     else
         return nil

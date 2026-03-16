@@ -48,7 +48,7 @@ SMODS.Joker { --Modifed from Vanilla Remade's example
     end,
 
     add_to_deck = function(self, card, from_debuff)
-        if #SMODS.find_card('j_cbean_0chill_noelle') > 0 then
+        if next(SMODS.find_card('j_cbean_0chill_noelle')) then
             play_sound('cbean_0chill_ominous')
         end
         play_sound('cbean_0chill_thorn_ring_equip')

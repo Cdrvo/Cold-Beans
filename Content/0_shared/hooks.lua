@@ -53,7 +53,7 @@ function SMODS.add_to_pool(prototype_obj, args)
     local add, options = add_to_pool_ref(prototype_obj, args)
     if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_cbean_pboys_daily"
     and CBEAN_DATE_TABLE.wday == 5 then
-        if prototype_obj.set == "Joker" or (#SMODS.find_card('ti_cbean_yma_tboi_birthright') > 0
+        if prototype_obj.set == "Joker" or (next(SMODS.find_card('ti_cbean_yma_tboi_birthright'))
         and (prototype_obj.set == "Tarot" or prototype_obj.set == "Planet" or prototype_obj.set == "Spectral")) then
             return prototype_obj.original_mod and add or false, options
         end
@@ -149,7 +149,7 @@ end
 --All cards selectable with Engima Key
 local yma_card_select_area_ref = SMODS.card_select_area
 function SMODS.card_select_area(card, pack)
-    if card.ability and card.ability.consumeable and #SMODS.find_card("c_cbean_yma_enigma") >= 1 then 
+    if card.ability and card.ability.consumeable and next(SMODS.find_card("c_cbean_yma_enigma")) then 
         return "consumeables" 
     end
     if G.GAME and G.GAME.used_vouchers['v_cbean_yma_grand_theft'] and card.ability.consumeable and card.area == G.pack_cards and G.pack_cards then
@@ -160,7 +160,7 @@ end
 
 local yma_selectable_from_pack_ref = Card.selectable_from_pack
 function Card.selectable_from_pack(card, pack)
-    if card.ability and card.ability.consumeable and #SMODS.find_card("c_cbean_yma_enigma") >= 1 then 
+    if card.ability and card.ability.consumeable and next(SMODS.find_card("c_cbean_yma_enigma")) then 
         return "consumeables" 
     end
     if G.GAME and G.GAME.used_vouchers['v_cbean_yma_grand_theft'] and card.ability.consumeable and card.area == G.pack_cards and G.pack_cards then
@@ -245,8 +245,8 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
     return
   end
   if G.consumeables and self.ability.set == 'Combo' then
-    local has_shadow_key = #SMODS.find_card("c_cbean_yma_shadow")
-    if has_shadow_key >= 1 and self.ability.yma_cant_be_copied == nil and self.ability.yma_sold_self == nil then
+    local has_shadow_key = next(SMODS.find_card("c_cbean_yma_shadow"))
+    if has_shadow_key and self.ability.yma_cant_be_copied == nil and self.ability.yma_sold_self == nil then
         SMODS.calculate_context({yma = {shadow_trigged = true, decrease = true}})
         G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
             local card = copy_card(self, nil, nil, nil, false)
@@ -268,8 +268,8 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
     if yma_can_add then
         G.GAME.cbean.destroyed_jokers[#G.GAME.cbean.destroyed_jokers+1] = self.config.center.key
     end
-    local has_timeshift_key = #SMODS.find_card("c_cbean_yma_timeshift")
-    if has_timeshift_key >= 1 and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
+    local has_timeshift_key = next(SMODS.find_card("c_cbean_yma_timeshift"))
+    if has_timeshift_key and self.ability.yma_sold_self == nil and (#G.jokers.cards <= G.jokers.config.card_limit or (self.edition ~= nil and self.edition.negative)) then
         SMODS.calculate_context({yma = {timeshift_trigged = true, decrease = true}})
         G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function()
             local card = copy_card(self, nil, nil, nil, false)

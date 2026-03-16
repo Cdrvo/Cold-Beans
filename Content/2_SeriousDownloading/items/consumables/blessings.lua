@@ -168,7 +168,7 @@ SMODS.Consumable {
                 repetitions = 1
             }
         end
-        if context.after and card.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.after and card.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
@@ -221,7 +221,7 @@ SMODS.Consumable {
                 repetitions = 1
             }
         end
-        if context.after and card.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.after and card.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
@@ -282,7 +282,7 @@ SMODS.Consumable {
                             return true
                         end
                     }))
-                    if not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+                    if not next(SMODS.find_card('c_cbean_0chill_cronus')) then
                         card.ability.extra.times_left = card.ability.extra.times_left - 1
                     end
                     SMODS.calculate_effect({message = localize('k_copied_ex'),colour = G.C.CHIPS }, context.scoring_hand[i])
@@ -390,7 +390,7 @@ SMODS.Consumable {
             end
         end
 
-        if context.after and card.ability.extra.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.after and card.ability.extra.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.ability.extra.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if not card.ability.extra.success then
@@ -452,7 +452,7 @@ SMODS.Consumable {
                 }
             end
         end
-        if context.after and card.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.after and card.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
@@ -501,7 +501,7 @@ SMODS.Consumable {
     calc_dollar_bonus = function (self, card)
         local amt = card.ability.extra.dollars * G.GAME.current_round.hands_left
         if amt == 0 then return end --Disable this line if we want it to still tick down if you don't earn money
-            if not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+            if not next(SMODS.find_card('c_cbean_0chill_cronus')) then
                 card.ability.extra.times_left = card.ability.extra.times_left - 1
             end
         G.E_MANAGER:add_event(Event({
@@ -556,7 +556,7 @@ SMODS.Consumable {
             for i = 1, #context.scoring_hand do
                 if card.ability.extra.times_left > 0 then
                     SMODS.destroy_cards(context.scoring_hand[i])
-                    if not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+                    if not next(SMODS.find_card('c_cbean_0chill_cronus')) then
                         card.ability.extra.times_left = card.ability.extra.times_left - 1
                     end
                 end
@@ -619,7 +619,7 @@ SMODS.Consumable {
                 end
             end
         end
-        if context.after and card.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.after and card.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
@@ -701,7 +701,7 @@ SMODS.Consumable {
             return
         end
 
-        if context.after and card.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.after and card.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then
@@ -747,7 +747,7 @@ SMODS.Consumable {
     end,
     calculate = function(self, card, context)
         if context.card_added and context.card.ability.consumeable and card.ability.extra.times_left > 0 and (not context.card.edition or not context.card.edition.negative) and not context.card.nyxed then
-            if not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+            if not next(SMODS.find_card('c_cbean_0chill_cronus')) then
                 card.ability.extra.times_left = card.ability.extra.times_left - 1
             end
             local bought = context.card
@@ -806,7 +806,7 @@ SMODS.Consumable {
     calculate = function(self, card, context)
         if context.open_booster then
             G.GAME.pack_choices = G.GAME.pack_choices + 1
-            if not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+            if not next(SMODS.find_card('c_cbean_0chill_cronus')) then
                 card.ability.extra.times_left = card.ability.extra.times_left - 1
             end
             G.E_MANAGER:add_event(Event({
@@ -826,7 +826,7 @@ SMODS.Consumable {
                 SMODS.destroy_cards(card, nil, nil, true)
                 SMODS.calculate_effect({message = localize('k_dispelled_ex') }, card)
             else
-                if not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+                if not next(SMODS.find_card('c_cbean_0chill_cronus')) then
                     return {
                         message = (card.ability.extra.times_left).."/2"
                     }
@@ -887,7 +887,7 @@ SMODS.Consumable {
                 SMODS.calculate_effect({message = (localize("k_nope_ex")) }, card)
             end
         end
-        if context.end_of_round and not context.game_over and card.should_tick_down and not (#SMODS.find_card('c_cbean_0chill_cronus') > 0) then
+        if context.end_of_round and not context.game_over and card.should_tick_down and not next(SMODS.find_card('c_cbean_0chill_cronus')) then
             card.should_tick_down = false
             card.ability.extra.times_left = card.ability.extra.times_left - 1
             if card.ability.extra.times_left <= 0 then

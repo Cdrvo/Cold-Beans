@@ -263,19 +263,19 @@ function yma_state_function_events(e)
 end
 
 function yma_can_access_location(location)
-    if location == 'forgery' and (#SMODS.find_card("c_cbean_yma_small_world") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) and (not G.GAME.yma_forge_closed) then
+    if location == 'forgery' and (next(SMODS.find_card("c_cbean_yma_small_world")) or next(SMODS.find_card("c_cbean_yma_anywhere")) or G.GAME.yma_everywhere_open) and (not G.GAME.yma_forge_closed) then
         return true
     end
     if location == 'balley' and G.GAME.BALLEY_WINS and G.GAME.BALLEY_WINS < 3 then
         return true
     end
-    if location == 'graveyard' and (#SMODS.find_card("c_cbean_yma_moon") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
+    if location == 'graveyard' and (next(SMODS.find_card("c_cbean_yma_moon")) or next(SMODS.find_card("c_cbean_yma_anywhere")) or G.GAME.yma_everywhere_open) and G.GAME.cbean and #G.GAME.cbean.destroyed_jokers > 0 then
         return true
     end
-    if location == 'hell' and (#SMODS.find_card("c_cbean_yma_key_to_hell") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) then
+    if location == 'hell' and (next(SMODS.find_card("c_cbean_yma_key_to_hell")) or next(SMODS.find_card("c_cbean_yma_anywhere")) or G.GAME.yma_everywhere_open) then
         return true
     end
-    if location == 'dreamland' and (#SMODS.find_card("c_cbean_yma_reali") >= 1 or #SMODS.find_card("c_cbean_yma_anywhere") >= 1 or G.GAME.yma_everywhere_open) then
+    if location == 'dreamland' and (next(SMODS.find_card("c_cbean_yma_reali")) or next(SMODS.find_card("c_cbean_yma_anywhere")) or G.GAME.yma_everywhere_open) then
         return true
     end
     if location == 'tboi_chest' and  ((G.GAME.tboi_chest_card_amt and G.GAME.tboi_chest_card_amt > 0) or (not(G.GAME.tboi_chest_selected_item)) and (G.GAME.tboi_chest_cards)) then

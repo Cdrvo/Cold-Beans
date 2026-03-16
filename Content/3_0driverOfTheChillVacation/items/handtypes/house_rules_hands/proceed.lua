@@ -29,7 +29,7 @@ SMODS.PokerHand{
     mult = 99,
     cb_house_rules = true,
     visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card('j_cbean_0chill_thorn_ring')))
+        local jokers = ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.thorn_ring
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -46,7 +46,7 @@ SMODS.PokerHand{
         { "H_9", true },
     },
     evaluate = function(parts, hand) --Was going to track hearts but ran out of time
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.thorn_ring then --Checks if house rules and required joker are owned
             if not next(parts.cbean_0chill_proceed) or not next(parts._flush) then 
                 return {} 
             end

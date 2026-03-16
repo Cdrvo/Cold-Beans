@@ -15,7 +15,7 @@ SMODS.Joker {
     end,
 
     load = function(self, card, card_table, other_card)
-        if #SMODS.find_card('j_cbean_0chill_thorn_ring') > 0 then
+        if next(SMODS.find_card('j_cbean_0chill_thorn_ring')) then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     card.children.center:set_sprite_pos({x = 2, y = 3})
@@ -26,13 +26,13 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-        if context.setting_blind and #SMODS.find_card('j_cbean_0chill_thorn_ring') > 0 then
+        if context.setting_blind and next(SMODS.find_card('j_cbean_0chill_thorn_ring')) then
             card.children.center:set_sprite_pos({x = 2, y = 3})
         elseif context.setting_blind then
             card.children.center:set_sprite_pos({x = 1, y = 3})
         end
         if context.end_of_round and context.cardarea == G.jokers and (#G.hand.cards >= 1) then
-            if (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0) then
+            if next(SMODS.find_card('j_cbean_0chill_thorn_ring')) then
                 G.E_MANAGER:add_event(Event({
                         trigger = "before",
                         delay = 1.25,
@@ -72,7 +72,7 @@ SMODS.Joker {
     end,
 
     add_to_deck = function(self, card, from_debuff)
-        if #SMODS.find_card('j_cbean_0chill_thorn_ring') > 0 then
+        if next(SMODS.find_card('j_cbean_0chill_thorn_ring')) then
             play_sound('cbean_0chill_ominous')
             card.children.center:set_sprite_pos({x = 2, y = 3})
         end

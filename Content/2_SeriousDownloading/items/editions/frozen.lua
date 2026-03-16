@@ -15,7 +15,7 @@ function Card:click()
         end
     end
 
-    if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) and not (self.area == G.hand and allfrozencards and #G.hand.highlighted == 0) then
+    if self.edition and self.edition.type == "cbean_sd_frozen" and not ((next(SMODS.find_card('j_cbean_0chill_noelle')) and next(SMODS.find_card('j_cbean_0chill_thorn_ring'))) and not (self.area == G.hand and allfrozencards and #G.hand.highlighted == 0)) then
         if self.area and self.area == G.deck and self.area.cards[1] == self then 
             G.FUNCS.deck_info()
         end
@@ -49,7 +49,7 @@ SMODS.Edition{
     end,
     calculate = function (self, card, context)
         if context.after then
-            if SMODS.pseudorandom_probability(card, "cb_sd_frozen_thaw", 1, self.config.extra.odds) and (#SMODS.find_card('j_cbean_0chill_permafrost') < 1) then
+            if SMODS.pseudorandom_probability(card, "cb_sd_frozen_thaw", 1, self.config.extra.odds) and not next(SMODS.find_card('j_cbean_0chill_permafrost')) then
                 card:set_edition()
                 return {
                     message = 'Thawed!',

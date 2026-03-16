@@ -8,7 +8,7 @@ SMODS.PokerHand{
     l_mult = 2,
     cb_house_rules = true,
     visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card('j_cbean_wgrop_withering_memory')))
+        local jokers = ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.withering_memory
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -25,7 +25,7 @@ SMODS.PokerHand{
         { "H_6", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_wgrop_withering_memory') > 0) then --Checks if house rules and required joker are owned 
+        if ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.withering_memory then --Checks if house rules and required joker are owned 
             local lightcount = 0
             local darkcount = 0
 

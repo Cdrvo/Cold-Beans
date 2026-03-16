@@ -43,7 +43,7 @@ SMODS.PokerHand{
     l_mult = 3,
     cb_house_rules = true,
     visible = function (self)
-        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local joker = ColdBeans.joker_cache.house_rules
         local played = G.GAME.hands and G.GAME.hands[self.key] and (G.GAME.hands[self.key].played or 0) > 0
 
         return joker or played
@@ -56,7 +56,7 @@ SMODS.PokerHand{
         { "C_J", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules then --Checks if house rules and required joker are owned
             return parts.cbean_0chill_house_rules
         end
     end

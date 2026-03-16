@@ -26,6 +26,108 @@ SMODS.current_mod.optional_features = {
 	}
 }
 
+-- global joker cache for house rules performance
+-- this eliminates repeated SMODS.find_card() calls across all house rules hands
+ColdBeans.joker_cache = {
+    -- house rules
+    house_rules = false,
+
+	-- collection
+    sticker_collection = false,
+    stickerbomb = false,
+    
+    -- 67!!!
+    sixth_sense = false,
+    mu_cube = false,
+    
+    -- fibonacci
+    fibonacci = false,
+    
+    -- jackpot
+    oops = false,
+    nat20 = false,
+    set_of_dice = false,
+    
+    -- other (too lazy to separate)
+    eight_ball = false,
+    obelisk = false,
+    marble = false,
+    stone = false,
+    big_shot = false,
+    withering_memory = false,
+    manos = false,
+    zany = false,
+    wily = false,
+    trio = false,
+    jolly = false,
+    sly = false,
+    duo = false,
+    shortcut = false,
+    seeing_double = false,
+    diamondshapewithadotinside = false,
+    driving_in_my_truck = false,
+    thorn_ring = false,
+    
+    -- add more jokers as needed for other house rules hands
+}
+
+-- update the entire joker cache at once
+function ColdBeans.update_joker_cache()
+    -- house rules jokers
+    ColdBeans.joker_cache.house_rules = next(SMODS.find_card("j_cbean_0chill_house_rules")) ~= nil
+    ColdBeans.joker_cache.sticker_collection = next(SMODS.find_card("j_cbean_nameteam_sticker_collection")) ~= nil
+    ColdBeans.joker_cache.stickerbomb = next(SMODS.find_card("j_cbean_nameteam_stickerbomb")) ~= nil
+    
+    -- 67!!!
+    ColdBeans.joker_cache.sixth_sense = next(SMODS.find_card("j_sixth_sense")) ~= nil
+    ColdBeans.joker_cache.mu_cube = next(SMODS.find_card("j_cbean_colon_mu_cube")) ~= nil
+    
+    -- fibonacci
+    ColdBeans.joker_cache.fibonacci = next(SMODS.find_card("j_fibonacci")) ~= nil
+    
+    -- jackpot
+    ColdBeans.joker_cache.oops = next(SMODS.find_card("j_oops")) ~= nil
+    ColdBeans.joker_cache.nat20 = next(SMODS.find_card("j_cbean_0chill_nat20")) ~= nil
+    ColdBeans.joker_cache.set_of_dice = next(SMODS.find_card("j_cbean_yma_set_of_dice")) ~= nil
+    
+    -- other
+    ColdBeans.joker_cache.eight_ball = next(SMODS.find_card("j_8_ball")) ~= nil
+    ColdBeans.joker_cache.obelisk = next(SMODS.find_card("j_obelisk")) ~= nil
+    ColdBeans.joker_cache.marble = next(SMODS.find_card("j_marble")) ~= nil
+    ColdBeans.joker_cache.stone = next(SMODS.find_card("j_stone")) ~= nil
+    ColdBeans.joker_cache.big_shot = next(SMODS.find_card("j_cbean_colon_big_shot")) ~= nil
+    ColdBeans.joker_cache.withering_memory = next(SMODS.find_card("j_cbean_wgrop_withering_memory")) ~= nil
+    ColdBeans.joker_cache.manos = next(SMODS.find_card("j_cbean_jbill_manos")) ~= nil
+    ColdBeans.joker_cache.zany = next(SMODS.find_card("j_zany")) ~= nil
+    ColdBeans.joker_cache.wily = next(SMODS.find_card("j_wily")) ~= nil
+    ColdBeans.joker_cache.trio = next(SMODS.find_card("j_trio")) ~= nil
+    ColdBeans.joker_cache.jolly = next(SMODS.find_card("j_jolly")) ~= nil
+    ColdBeans.joker_cache.sly = next(SMODS.find_card("j_sly")) ~= nil
+    ColdBeans.joker_cache.duo = next(SMODS.find_card("j_duo")) ~= nil
+    ColdBeans.joker_cache.shortcut = next(SMODS.find_card("j_shortcut")) ~= nil
+    ColdBeans.joker_cache.seeing_double = next(SMODS.find_card("j_seeing_double")) ~= nil
+    ColdBeans.joker_cache.diamondshapewithadotinside = next(SMODS.find_card("j_cbean_nameteam_diamondshapewithadotinside")) ~= nil
+    ColdBeans.joker_cache.driving_in_my_truck = next(SMODS.find_card("j_cbean_0chill_driving_in_my_truck")) ~= nil
+    ColdBeans.joker_cache.thorn_ring = next(SMODS.find_card("j_cbean_0chill_thorn_ring")) ~= nil
+end
+
+-- helper functions for common house rules patterns
+function ColdBeans.has_house_rules_and(collection_jokers)
+    return ColdBeans.joker_cache.house_rules and collection_jokers
+end
+
+function ColdBeans.has_any_of(joker_keys)
+    for _, key in ipairs(joker_keys) do
+        if ColdBeans.joker_cache[key] then
+            return true
+        end
+    end
+    return false
+end
+
+-- initialize cache on load
+ColdBeans.update_joker_cache()
+
 local function GetJokers()
 	local jokers = {}
 	for i, card in pairs(G.jokers.cards) do
@@ -46,6 +148,13 @@ function count_consumables()
 end
 
 ColdBeans.calculate = function(mod, context)
+	-- update global joker cache when jokers are added/removed/sold
+	if context.cbean_destroyed or context.buying_card or context.selling_card then
+		if ColdBeans.update_joker_cache then
+			ColdBeans.update_joker_cache()
+		end
+	end
+	
 	if context.round_eval then
 		G.GAME.BALLEY_WINS = 0
 		G.GAME.yma_forge_closed = nil

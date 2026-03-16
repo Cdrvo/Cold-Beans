@@ -31,7 +31,7 @@ SMODS.PokerHand{
     mult = 7,
     cb_house_rules = true,
     visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and (next(SMODS.find_card('j_oops'))) or next(SMODS.find_card('j_cbean_0chill_nat20'))or next(SMODS.find_card('j_cbean_yma_set_of_dice')))
+        local jokers = ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.oops or ColdBeans.joker_cache.nat20 or ColdBeans.joker_cache.set_of_dice)
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -48,7 +48,7 @@ SMODS.PokerHand{
         { "H_K", false }
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and ((#SMODS.find_card('j_oops') > 0) or (#SMODS.find_card('j_cbean_0chill_nat20') > 0) or (#SMODS.find_card('j_cbean_yma_set_of_dice') > 0)) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.oops or ColdBeans.joker_cache.nat20 or ColdBeans.joker_cache.set_of_dice) then --Checks if house rules and required joker are owned
             return parts.cbean_0chill_jackpot
         end
     end

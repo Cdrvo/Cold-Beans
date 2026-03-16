@@ -9,9 +9,9 @@ priority = 0
 target = 'functions/common_events.lua'
 pattern = '''elseif v.enhancement_gate then'''
 position = "before"
-payload = '''if (not v.config.softlock or (v.key == "c_cbean_0chill_house_rules_planet" and (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) )) then
+payload = '''if (not v.config.softlock or (v.key == "c_cbean_0chill_house_rules_planet" and next(SMODS.find_card('j_cbean_0chill_house_rules')) )) then
 add = true
-elseif (v.key == "c_cbean_0chill_house_rules_planet" and not (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) ) then
+elseif (v.key == "c_cbean_0chill_house_rules_planet" and not next(SMODS.find_card('j_cbean_0chill_house_rules')) ) then
 add = false
 end
 '''

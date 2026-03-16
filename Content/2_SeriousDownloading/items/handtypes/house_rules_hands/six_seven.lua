@@ -1,4 +1,3 @@
-
 -- six seven
 SMODS.PokerHandPart { --Modifed from Potassium Remake
     key = "sdown_67",
@@ -36,7 +35,7 @@ SMODS.PokerHand{
     mult = 0.5,
     cb_house_rules = true,
     visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and (next(SMODS.find_card('j_sixth_sense'))) or next(SMODS.find_card('j_cbean_colon_mu_cube')))
+        local jokers = ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.sixth_sense or ColdBeans.joker_cache.mu_cube)
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -50,7 +49,7 @@ SMODS.PokerHand{
         { "D_7", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and ((#SMODS.find_card('j_sixth_sense') > 0) or (#SMODS.find_card('j_cbean_colon_mu_cube') > 0)) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.sixth_sense or ColdBeans.joker_cache.mu_cube) then --Checks if house rules and required joker are owned
             return parts.cbean_sdown_67
         end
     end
@@ -64,7 +63,7 @@ SMODS.PokerHand{
     mult = 0.5,
     cb_house_rules = true,
     visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and (next(SMODS.find_card('j_sixth_sense'))) or next(SMODS.find_card('j_cbean_colon_mu_cube')))
+        local jokers = ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.sixth_sense or ColdBeans.joker_cache.mu_cube)
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -78,9 +77,9 @@ SMODS.PokerHand{
         { "S_7", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and ((#SMODS.find_card('j_sixth_sense') > 0) or (#SMODS.find_card('j_cbean_colon_mu_cube') > 0)) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.sixth_sense or ColdBeans.joker_cache.mu_cube) then --Checks if house rules and required joker are owned
             if not parts.cbean_sdown_67 then return {} end
-            flush_67s = {}
+            local flush_67s = {}
             for _, six_seven in pairs(parts.cbean_sdown_67) do
                 --have to reimplement the flush calc because unlike get_straight, smods doesn't modify it
                 for suit,_ in pairs(SMODS.Suits) do
@@ -104,7 +103,7 @@ SMODS.PokerHand{
                     end
                 end
             end
-            if next(flush_67s) == nil then return {} end
+            if not next(flush_67s) then return {} end
             return flush_67s
         end
     end

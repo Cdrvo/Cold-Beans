@@ -751,7 +751,7 @@ function NAMETEAM.plant_in_pool()
 		return true
 	elseif
 		(G.GAME.selected_back and G.GAME.selected_back.name == "b_cbean_nameteam_graveyard")
-		and #SMODS.find_card("ti_cbean_yma_tboi_birthright") > 0
+		and next(SMODS.find_card("ti_cbean_yma_tboi_birthright"))
 	then
 		return true
 	else

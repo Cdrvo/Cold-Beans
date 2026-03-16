@@ -6,7 +6,7 @@ SMODS.PokerHand({
 	mult = 15,
 	cb_house_rules = true,
 	visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and (next(SMODS.find_card("j_seeing_double"))) or next(SMODS.find_card("j_cbean_nameteam_diamondshapewithadotinside")))
+        local jokers = ColdBeans.joker_cache.house_rules and (ColdBeans.joker_cache.seeing_double or ColdBeans.joker_cache.diamondshapewithadotinside)
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -24,10 +24,10 @@ SMODS.PokerHand({
 	},
 	evaluate = function(parts, hand)
 		if
-			(#SMODS.find_card("j_cbean_0chill_house_rules") > 0)
+			ColdBeans.joker_cache.house_rules
 			and (
-				(#SMODS.find_card("j_seeing_double") > 0)
-				or (#SMODS.find_card("j_cbean_nameteam_diamondshapewithadotinside") > 0)
+				ColdBeans.joker_cache.seeing_double
+				or ColdBeans.joker_cache.diamondshapewithadotinside
 			)
 		then --Checks if house rules and required joker are owned
 			if #parts._3 < 1 or #parts._2 < 2 then

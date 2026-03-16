@@ -60,7 +60,7 @@ function Game:update(dt)
 
 
 		for i, j in ipairs(G.jokers.cards) do
-			if (#SMODS.find_card("j_cbean_torchwood")>0) and
+			if next(SMODS.find_card("j_cbean_torchwood")) and
 				NAMETEAM.all_on(j, G.jokers.cards, "right", nil, "j_cbean_torchwood")
 			then
 				if not j.ability.nteam_torchwood then
@@ -180,7 +180,7 @@ local apply_sticker_hook = Card.add_sticker
 function Card:add_sticker(sticker, bypass_check) -- fuck me
 	local already_had = self.ability[sticker]
 	if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
-	if ((#SMODS.find_card("j_cbean_tallnut")==0)) and not (self:on_the("right") and self:on_the("right").config.center.key == "j_cbean_wallnut") then
+	if next(SMODS.find_card("j_cbean_tallnut")) and not (self:on_the("right") and self:on_the("right").config.center.key == "j_cbean_wallnut") then
 		apply_sticker_hook(self, sticker, bypass_check)
 		if not already_had and self.ability[sticker] then
 			if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
@@ -226,7 +226,7 @@ local old_play_highlighted = G.FUNCS.play_cards_from_highlighted
 function G.FUNCS.play_cards_from_highlighted(e)
 	NAMETEAM.highlight_order = 0
 	SMODS.calculate_context({cbean_first = true})
-	if (#SMODS.find_card("j_cbean_draftodil")>0) or NAMETEAM.testing_discard then
+	if next(SMODS.find_card("j_cbean_draftodil")) or NAMETEAM.testing_discard then
 		for i=1, #G.hand.highlighted do
 			if SMODS.pseudorandom_probability(nil, "SEED", 1, G.hand.highlighted[i].base.id) then
 				draw_card(G.hand, G.discard, i*100/#G.hand.highlighted, 'up', nil, G.hand.highlighted[i])
@@ -235,7 +235,7 @@ function G.FUNCS.play_cards_from_highlighted(e)
 			end
 		end
 	end
-	if (#SMODS.find_card("j_cbean_rhubarbarian")>0) or NAMETEAM.testing_discard_2 then
+	if next(SMODS.find_card("j_cbean_rhubarbarian")) or NAMETEAM.testing_discard_2 then
 		for i=1, #G.hand.cards do
 			if not G.hand.cards[i].highlighted then
 				draw_card(G.hand, G.discard, i*100/#G.hand.cards, 'up', nil, G.hand.cards[i])
@@ -304,7 +304,7 @@ local calculate_main_scoring_old = SMODS.calculate_main_scoring
 function SMODS.calculate_main_scoring(context, scoring_hand)
 	NAMETEAM.general_area = context.cardarea.cards
 	NAMETEAM.scoring_area = context.scoring_hand
-	if (#SMODS.find_card("j_cbean_cactus")>0) then
+	if #SMODS.find_card("j_cbean_cactus") > 0 then
 		local a,b,c,d = {},0,nil,0
 		for i = 1, #NAMETEAM.scoring_area do
 			a[#a+1] = i
@@ -331,17 +331,17 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 
 	end
 
-	if (#SMODS.find_card("j_cbean_cattail")>0) and #NAMETEAM.scoring_area>2 then
+	if next(SMODS.find_card("j_cbean_cattail")) and #NAMETEAM.scoring_area>2 then
 		table.remove(NAMETEAM.scoring_area, 1)
 		table.remove(NAMETEAM.scoring_area,  #NAMETEAM.scoring_area)
 		if not G.GAME.NAMETEAM.cattail_number then G.GAME.NAMETEAM.cattail_number = 1 else G.GAME.NAMETEAM.cattail_number = G.GAME.NAMETEAM.cattail_number + 1 end
 	end
 	
-	if (#SMODS.find_card("j_cbean_sweet_potato")>0) then
+	if next(SMODS.find_card("j_cbean_sweet_potato")) then
 		NAMETEAM.general_area = NAMETEAM.shuffle(NAMETEAM.general_area, "sweet_lil_potato")
 	end
 
-	if (#SMODS.find_card("j_cbean_hocus_crocus")>0) then
+	if next(SMODS.find_card("j_cbean_hocus_crocus")) then
 		NAMETEAM.general_area = NAMETEAM.reverse_table(NAMETEAM.general_area)
 	end
     for _, card in ipairs(NAMETEAM.general_area) do
@@ -355,7 +355,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
         end
 
 		for i = 1, #NAMETEAM.scoring_area do
-			if i < 4 and NAMETEAM.scoring_area[i] and (#SMODS.find_card("j_cbean_stallia")>0) then
+			if i < 4 and NAMETEAM.scoring_area[i] and next(SMODS.find_card("j_cbean_stallia")) then
 				NAMETEAM.scoring_area[i].mark_for_no_score = true
 			end
 		end
@@ -368,7 +368,7 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
                     func = (function() SMODS.juice_up_blind() return true end)
                 }))
                 card_eval_status_text(card, 'debuff')
-				if (#SMODS.find_card("j_cbean_EM_peach")>0) then
+				if next(SMODS.find_card("j_cbean_EM_peach")) then
 					SMODS.calculate_effect({xmult = 2.5}, card)
 				end
             end
@@ -397,14 +397,14 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
             if scoring_hand then
                 if in_scoring then context.cardarea = G.play else context.cardarea = 'unscored' end
             end
-			if (#SMODS.find_card("j_cbean_blover")>0) then
+			if next(SMODS.find_card("j_cbean_blover")) then
 				G.GAME.NAMETEAM.blover_number = #context.scoring_hand
 			else
 				SMODS.score_card(card, context)
 			end
         end
     end
-	if not G.GAME.NAMETEAM.no_score_cards and not (#SMODS.find_card("j_cbean_blover")) then
+	if not G.GAME.NAMETEAM.no_score_cards and next(SMODS.find_card("j_cbean_blover")) then
 		return calculate_main_scoring_old(context, scoring_hand)
 	end
 end
@@ -437,7 +437,7 @@ function add_round_eval_row(config)
 	local old_dollar =	(config.dollars or 0)
 	config.dollars = (config.dollars or 0)
 	if config.dollars and config.dollars>0 then
-		config.dollars = (( (config.dollars or 0) / ((#SMODS.find_card("j_cbean_golden_magnet"))+1) ))
+		config.dollars = (( (config.dollars or 0) / (next(SMODS.find_card("j_cbean_golden_magnet")) and 1 or 1) ))
 		G.GAME.NAMETEAM.goldenmagnet_number = old_dollar - config.dollars
 	end
 	
@@ -467,7 +467,7 @@ function NAMETEAM.bean_spring_suit_check(card, suit)
         return false
     end
 
-    if (#SMODS.find_card("j_cbean_spring_bean") > 0) and card.area == G.play and G.play.cards[1] == card then
+    if next(SMODS.find_card("j_cbean_spring_bean")) and card.area == G.play and G.play.cards[1] == card then
 		--print("inital check")
 		local suits = {}
 		for i = 1, #G.play.cards do
@@ -491,7 +491,7 @@ end
 local is_suit_old = Card.is_suit
 function Card:is_suit(suit, bypass_debuff, flush_calc)
 
-	if (#SMODS.find_card("j_cbean_spring_bean") > 0) then
+	if next(SMODS.find_card("j_cbean_spring_bean")) then
 		if flush_calc then
 			return is_suit_old(self, suit, bypass_debuff, flush_calc)
 		else
@@ -536,45 +536,9 @@ function Card:sell_card()
 	table.insert(G.GAME.NAMETEAM_sold_jokers, self.config.center.key)
 end
 
-
-local cardhighold = Card.highlight
-function Card:highlight(is_highlighted)
-	self.highlighted = is_highlighted
-	if self.area == G.hand and self.highlighted and ((#SMDOS.find_card("j_cbean_missle_toe")>0) or (#SMDOS.find_card("j_cbean_boom_ballon_flower")>0) ) then
-		if not NAMETEAM.highlight_order then NAMETEAM.highlight_order = 1 else NAMETEAM.highlight_order = NAMETEAM.highlight_order + 1 end
-		self.highlight_order_cbean = NAMETEAM.highlight_order
-		-- print("highlighted " .. self.highlight_order_cbean, NAMETEAM.highlight_order)
-	end
-	if self.edition and self.edition.cbean_sd_frozen then
-		local allfrozencards = false --Checks if all cards are Frozen. Needed to prevent softlocks
-		local frozen_count = 0
-		if G.hand then
-			for k, v in pairs(G.hand.cards) do
-				if v.edition and v.edition.cbean_sd_frozen then
-					frozen_count = frozen_count + 1
-				end
-			end
-			if frozen_count == #G.hand.cards then
-				allfrozencards = true
-			else
-				allfrozencards = false
-			end
-		end
-
-		if self.edition and self.edition.type == "cbean_sd_frozen" and not ((#SMODS.find_card('j_cbean_0chill_noelle') > 0) and (#SMODS.find_card('j_cbean_0chill_thorn_ring') > 0)) and not (self.area == G.hand and allfrozencards and #G.hand.highlighted == 0) then
-			if self.area and self.area == G.deck and self.area.cards[1] == self then 
-				G.FUNCS.deck_info()
-			end
-			return nil
-		end
-	end
-	return cardhighold(self, is_highlighted)
-end
-
-
 local calc_reps_old = SMODS.calculate_repetitions
 function SMODS.calculate_repetitions(card,context,reps)
-	if (#SMODS.find_card("j_cbean_power_vine")==0) and (#SMODS.find_card("j_cbean_sundew_tangler")==0) then
+	if next(SMODS.find_card("j_cbean_power_vine")) and next(SMODS.find_card("j_cbean_sundew_tangler")) then
 		calc_reps_old(card, context, reps)
 	end
 end

@@ -7,7 +7,7 @@ SMODS.PokerHand{
     mult = 4,
     cb_house_rules = true,
     visible = function (self)
-        local jokers = not not (next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card('j_shortcut')))
+        local jokers = ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.shortcut
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -24,7 +24,7 @@ SMODS.PokerHand{
         { "H_Q", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_shortcut') > 0) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.shortcut then --Checks if house rules and required joker are owned
             if not next(parts.cbean_sdown_antistraight) or not next(parts._straight) then return {} end
             return { SMODS.merge_lists(parts.cbean_sdown_antistraight, parts._straight) }
         end
@@ -40,7 +40,7 @@ SMODS.PokerHand{
     mult = 5,
     cb_house_rules = true,
     visible = function (self)
-        local joker = not not next(SMODS.find_card('j_cbean_0chill_house_rules'))
+        local joker = ColdBeans.joker_cache.house_rules
         local clicked
         if G.jokers and G.jokers.highlighted then
             for _,v in ipairs(G.jokers.highlighted) do
@@ -59,7 +59,7 @@ SMODS.PokerHand{
         { "S_Q", true },
     },
     evaluate = function(parts, hand)
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_shortcut') > 0) then --Checks if house rules and required joker are owned
+        if ColdBeans.joker_cache.house_rules and ColdBeans.joker_cache.shortcut then --Checks if house rules and required joker are owned
             if not next(parts.cbean_sdown_antistraight) or not next(parts._straight) or not next(parts._flush) then return {} end
             return { SMODS.merge_lists(parts.cbean_sdown_antistraight, parts._straight, parts._flush) }
         end

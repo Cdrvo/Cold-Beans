@@ -59,7 +59,7 @@ SMODS.PokerHand{
         { "C_3", false },
     },
     evaluate = function(parts, hand) 
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_colon_big_shot') > 0) then --Checks if house rules and required joker are owned
+        if next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card('j_cbean_colon_big_shot')) then --Checks if house rules and required joker are owned
             if not next(parts.cbean_0chill_favorite_year) then 
                 return {} 
             end
@@ -93,7 +93,7 @@ SMODS.PokerHand{
         { "H_3", true },
     },
     evaluate = function(parts, hand) 
-        if (#SMODS.find_card('j_cbean_0chill_house_rules') > 0) and (#SMODS.find_card('j_cbean_colon_big_shot') > 0) then --Checks if house rules and required joker are owned
+        if next(SMODS.find_card('j_cbean_0chill_house_rules')) and next(SMODS.find_card('j_cbean_colon_big_shot')) then --Checks if house rules and required joker are owned
             if not next(parts.cbean_0chill_favorite_year) or not next(parts._flush) then 
                 return {} 
             end
