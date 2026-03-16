@@ -6216,8 +6216,8 @@ return {
 			j_cbean_teleporto_mine                      = {
 				name = "Teleporto Mine",
 				text = {
-					"{C:green}Sell{} this card",
-					"to move the current {C:attention}Boss{}",
+					"{C:green}Sell{} this card to move",
+					"the current {C:attention}Boss Blind{}",
 					"to the next {C:attention}Ante{}",
 					"{C:inactive,s:0.8}(Blank excluded)"
 				},

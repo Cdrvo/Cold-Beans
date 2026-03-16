@@ -16,4 +16,5 @@ SMODS.Blind({
 		team = "Name Team",
 		art = "Revo",
 	},
+	no_collection = true
 })

@@ -1842,7 +1842,7 @@ SMODS.Joker({
 			G.GAME.NAMETEAM.stored_boss = Colonparen.get_blind_by_key(G.GAME.round_resets.blind_choices["Boss"]).key
 			NAMETEAM.set_blind("bl_cbean_blank")
 		end
-	end,
+	end
 })
 
 SMODS.Joker({
