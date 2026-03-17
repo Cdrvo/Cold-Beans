@@ -724,7 +724,6 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "cauli_power",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
 	rarity = 3,
 	blueprint_compat = false,
@@ -741,10 +740,14 @@ SMODS.Joker({
 			vars = { num, den, cae.stored_chips },
 		}
 	end,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 2, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -1228,14 +1231,17 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	atlas = "NAMETEAM_PlantPlaceholder",
-	key = "bz_button",
-	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 3, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
+	key = "bz_button",
+	cost = 4,
 	rarity = 3,
 	blueprint_compat = true,
 	config = {

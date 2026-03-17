@@ -2,7 +2,7 @@ SMODS.Joker {
 	key = 'yma_unicorn',
 	rarity = 3,
 	atlas = 'yma_joker_atlas',
-	pos = { x = 0, y = 0 },
+	pos = { x = 0, y = 3 },
 	cost = 9,
 	blueprint_compat = false,
 	config = {
@@ -59,9 +59,11 @@ SMODS.Joker {
         end
 	end,
     beans_credits = {
-        team = { "Yeah! Mostly Artists" },
+        team = { "Yeah! Mostly Artists/",
+                "0 Driver Of",
+            "The Chill Vacation" },
         idea = "Firsttry",
-        art = "None",
+        art = "cymkl",
         code = "Rainstar",
     }
 }

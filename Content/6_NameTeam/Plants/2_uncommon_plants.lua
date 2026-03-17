@@ -4870,15 +4870,18 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "maybee",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 7, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -5033,15 +5036,18 @@ SMODS.Joker({
 
 
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "bud_uh_boom",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 8, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = true,
