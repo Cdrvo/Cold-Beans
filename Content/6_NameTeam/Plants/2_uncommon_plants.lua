@@ -5378,7 +5378,7 @@ SMODS.Joker({
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "bombegranate",
 	atlas = "NAMETEAM_PlantJokers",
-	pos = { x = 11, y = 10 },
+	pos = { x = 7, y = 10 },
 	cost = 3,
 	beans_credits = {
 		code = "Revo",
