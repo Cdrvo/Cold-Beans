@@ -1125,7 +1125,7 @@ SMODS.Joker({
 	config = {
 		extra = {
 			xmukt = 1,
-			xmult_gain = 0.75,
+			xmult_gain = 0.25,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
@@ -1139,15 +1139,13 @@ SMODS.Joker({
 				xmult = cae.xmukt,
 			}
 		end
-		if context.after and G.GAME.NAMETEAM.cattail_number then
-			for i = 1, G.GAME.NAMETEAM.cattail_number do
-				G.GAME.NAMETEAM.cattail_number = G.GAME.NAMETEAM.cattail_number - 1
-				SMODS.scale_card(card, {
-					ref_table = cae,
-					ref_value = "xmukt",
-					scalar_value = "xmult_gain",
-				})
-			end
+		if context.after and G.GAME.NAMETEAM.cattail_check then
+			print(G.GAME.NAMETEAM.cattail_check)
+			SMODS.scale_card(card, {
+				ref_table = cae,
+				ref_value = "xmukt",
+				scalar_value = "xmult_gain",
+			})
 		end
 	end,
 })

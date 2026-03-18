@@ -5073,9 +5073,9 @@ return {
 				name = "Cattail",
 				text = {
 					"If played hand has",
-					"{C:attention}2{} or more cards,",
-					"its {C:attention}first{} and {C:attention}last{} cards",
-					"don't trigger and this",
+					"{C:attention}2{} or more scoring cards,",
+					"its {C:attention}first{} and {C:attention}last{} scoring",
+					"cards don't trigger and this",
 					"{C:attention}Joker{} gains {X:mult,C:white}X#2#{} mult",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
 				},

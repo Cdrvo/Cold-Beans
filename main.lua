@@ -298,6 +298,7 @@ ColdBeans.calculate = function(mod, context)
 	end
 
 	if context.after then
+		G.GAME.NAMETEAM.cattail_check = false
 		G.GAME.cbean_combo_index = {}
 		G.GAME.cbean_combo_unique_hand = {}
 		G.GAME.cbean_combos_used_turn = 0

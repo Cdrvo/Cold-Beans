@@ -331,10 +331,10 @@ function SMODS.calculate_main_scoring(context, scoring_hand)
 
 	end
 
-	if next(SMODS.find_card("j_cbean_cattail")) and #NAMETEAM.scoring_area>2 then
+	if next(SMODS.find_card("j_cbean_cattail")) and #NAMETEAM.scoring_area>=2 then
 		table.remove(NAMETEAM.scoring_area, 1)
 		table.remove(NAMETEAM.scoring_area,  #NAMETEAM.scoring_area)
-		if not G.GAME.NAMETEAM.cattail_number then G.GAME.NAMETEAM.cattail_number = 1 else G.GAME.NAMETEAM.cattail_number = G.GAME.NAMETEAM.cattail_number + 1 end
+		G.GAME.NAMETEAM.cattail_check = true
 	end
 	
 	if next(SMODS.find_card("j_cbean_sweet_potato")) then
