@@ -3011,14 +3011,15 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = {
 		extra = {
-			hands = 2,
+			hands = 3,
 			xmult = 1,
 			xmult_gain = 0.5,
+			hands_needed = 3,
 		},
 	},
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return { vars = { cae.hands, cae.xmult_gain, cae.xmult } }
+		return { vars = { cae.hands, cae.xmult_gain, cae.xmult, cae.hands_needed } }
 	end,
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
@@ -3028,12 +3029,14 @@ SMODS.Joker({
 				message = localize("k_reset_ex")
 			}
 		end
-		if context.after and not context.blueprint and not context.repetition and not context.end_of_round then
+		if context.after
+        and not (G.GAME.chips + (hand_chips * mult) >= G.GAME.blind['chips'])
+        and not card.debuff and not context.blueprint and not context.repetition then
 			if cae.hands > 1 then
 				cae.hands = cae.hands - 1
 				NAMETEAM.msg(card, "-1")
 			else
-				cae.hands = 3
+				cae.hands = cae.hands_needed
 				SMODS.scale_card(card, {
 					ref_table = cae,
 					ref_value = "xmult",

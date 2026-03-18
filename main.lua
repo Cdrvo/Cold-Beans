@@ -654,6 +654,26 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 		G.GAME.current_round.gfs_card.rank = gfs_card.base.value
 		G.GAME.current_round.gfs_card.id = gfs_card.base.id
 	end
+	for k, v in pairs(SMDOS.ConsumableTypes) do
+			if G.P_CENTER_POOLS[k] then
+				for _, _card in pairs(G.P_CENTER_POOLS[k]) do
+					if _card and _card.config.max_highlighted and _card.cbean_shrunk_by_violet then
+						_card.cbean_shrunk_by_violet = nil
+						_card.config.max_highlighted = _card.config.max_highlighted / 2
+					elseif
+						_card
+						and _card.config
+						and _card.config.extra
+						and type(_card.config.extra) == "table"
+						and _card.config.extra.max_highlighted
+						and _card.cbean_shrunk_by_violet
+					then
+						_card.cbean_shrunk_by_violet = nil
+						_card.config.extra.max_highlighted = _card.config.extra.max_highlighted / 2
+					end
+				end
+			end
+		end
 end
 
 

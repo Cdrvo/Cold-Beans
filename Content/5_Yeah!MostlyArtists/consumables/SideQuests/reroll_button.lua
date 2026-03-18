@@ -63,7 +63,7 @@ end
 
 G.FUNCS.yma_can_reroll_quest = function(e)
     local can_afford = G.GAME.jimbux >= G.GAME.cbean.quest_reroll_cost
-    if can_afford then
+    if can_afford and not (not skip_check and ((G.play and #G.play.cards > 0) or (G.CONTROLLER.locked) or (G.GAME.STOP_USE and G.GAME.STOP_USE > 0))) then
         e.config.colour = G.C.GREEN
         e.config.button = 'yma_reroll_quest'
     else

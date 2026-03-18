@@ -5611,7 +5611,7 @@ return {
 				name = "Kiwibeast",
 				text = {
 					"This Joker gains {X:mult,C:white}X#2#{} Mult",
-					"every {C:attention}#1#{} hands you",
+					"every {C:attention}#4#{} {C:inactive}[#1#]{} hands you",
 					"don't defeat a {C:attention}Blind",
 					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
 				},
