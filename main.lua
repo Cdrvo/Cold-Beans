@@ -26,6 +26,10 @@ SMODS.current_mod.optional_features = {
 	}
 }
 
+SMODS.current_mod.description_loc_vars = function() --Makes mod description background clear
+    return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+end
+
 -- global joker cache for house rules performance
 -- this eliminates repeated SMODS.find_card() calls across all house rules hands
 -- If you want to add the infoqueue to the ne

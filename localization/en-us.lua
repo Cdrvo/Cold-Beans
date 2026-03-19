@@ -3,6 +3,22 @@
 
 return {
 	descriptions = {
+		Mod = {
+            ColdBeans = {
+                name = "Cold Beans",
+                text = {
+                    "{C:dark_edition,E:1,s:2.0}Coldest Beans Ever!{}",
+                    "{s:1.5} {}",
+                    "{s:1.3}A community Balatro Mod where",
+                    "{s:1.3}teams had one week to add",
+                    "{s:1.3}whatever they wanted then got",
+                    "{s:1.3}a second round to do it again!",
+                    "{s:1.3} {}",
+                    "{C:inactive}(And also like a month of bugfixing",
+                    "{C:inactive}but we don't talk about that)"
+                },
+            },
+        },
 		Back = {
 			b_cbean_nameteam_urine = {
 				name = "Urine Deck",
@@ -3250,19 +3266,22 @@ return {
 			m_cbean_basic_zomboid = {
 				name = "Basic Zomboid",
 				text = {
-					"{C:mult}+#1#{} Mult"
+					"{C:mult}+#1#{} Mult",
+					"no rank or suit"
 				}
 			},
 			m_cbean_carrot_zomboid = {
 				name = "Carrothead Zomboid",
 				text = {
-					"{C:chips}+#1#{} chips"
+					"{C:chips}+#1#{} chips",
+					"no rank or suit"
 				}
 			},
 			m_cbean_melon_zomboid = {
 				name = "Melonhead Zomboid",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult"
+					"{X:mult,C:white}X#1#{} Mult",
+					"no rank or suit"
 				}
 			},
 		},
@@ -5832,19 +5851,23 @@ return {
 			j_cbean_basic_z                             = {
 				name = "Basiz Zomboid",
 				text = {
-					"{C:mult}+#1#{} Mult"
+					"{C:mult}+#1#{} Mult",
+					"no rank or suit"
+
 				},
 			},
 			j_cbean_carrot_z                            = {
 				name = "Carrothead Zomboid",
 				text = {
-					"{C:chips}+#1#{} Chips"
+					"{C:chips}+#1#{} Chips",
+					"no rank or suit"
 				},
 			},
 			j_cbean_melon_z                             = {
 				name = "Melonhead Zomboid",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult"
+					"{X:mult,C:white}X#1#{} Mult",
+					"no rank or suit"
 				},
 			},
 			--
@@ -8317,7 +8340,7 @@ return {
 				name = "Hungry",
 				text = {
 					"When a {C:attention}Blind{} is selected",
-					"{C:red}consumes{} a card",
+					"{C:red}consumes{} the card",
 					"next to it",
 				},
 			},
