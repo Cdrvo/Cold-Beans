@@ -194,6 +194,8 @@ function Card:add_sticker(sticker, bypass_check) -- fuck me
 			self.ability.NAMETEAM_sticker_count = self.ability.NAMETEAM_sticker_count + 1
 			self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
 		end
+	else
+		apply_sticker_hook(self, sticker, bypass_check)
 	end
 end
 
