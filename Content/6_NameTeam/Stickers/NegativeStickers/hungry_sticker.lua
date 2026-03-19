@@ -27,9 +27,15 @@ SMODS.Sticker({
                     rr = i
                 end
            end
-           if card.area.cards[rr+1] then
+           local random = pseudorandom('Eenie Meanie',0,1)
+           if card.area.cards[rr+1] and random == 1 then --First tries to destroy card on the right if random lets it
                 SMODS.destroy_cards(card.area.cards[rr+1])
+           elseif card.area.cards[rr-1] then
+                SMODS.destroy_cards(card.area.cards[rr-1]) --Then it tries to destroy the card on the left if above failed
+           elseif card.area.cards[rr+1] then
+                SMODS.destroy_cards(card.area.cards[rr+1]) --Finally, if random was 0 but there is no card on the left, destroys the card on the right card anyway
            end
+
         end
     end,
     beans_credits = {

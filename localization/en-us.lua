@@ -8317,7 +8317,7 @@ return {
 				name = "Hungry",
 				text = {
 					"When a {C:attention}Blind{} is selected",
-					"{C:red}consumes{} the card",
+					"{C:red}consumes{} a card",
 					"next to it",
 				},
 			},
