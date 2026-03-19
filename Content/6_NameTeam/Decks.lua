@@ -144,33 +144,23 @@ SMODS.Back({
 	apply = function(self, back)
 		G.E_MANAGER:add_event(Event({
 			func = function()
-				if G.jokers then
-					local eligible_jokers = {}
-					for k, v in pairs(G.P_CENTERS) do
-						if string.find(k, "j_") == 1 then
-							if v.pvz_plant then
-								eligible_jokers[#eligible_jokers + 1] = k
-							end
+				G.FUNCS.switch_biome("nameteam_davelawn")
+				add_tag(Tag('tag_top_up'))
+                play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+				local chosen_suit = pseudorandom_element(G.playing_cards, pseudoseed("nameteam_graveyard")).base.suit or "Hearts"
+				for i = 1, #G.playing_cards do
+					if G.playing_cards[i]:is_suit(chosen_suit) then
+						if G.playing_cards[i]:get_id() == 14 then
+							G.playing_cards[i]:set_ability(G.P_CENTERS["m_cbean_melon_zomboid"])
+						elseif G.playing_cards[i]:is_face() then
+							G.playing_cards[i]:set_ability(G.P_CENTERS["m_cbean_carrot_zomboid"])
+						else
+							G.playing_cards[i]:set_ability(G.P_CENTERS["m_cbean_basic_zomboid"])
 						end
 					end
-					for i = 1, 5 do
-						if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
-							local joker = pseudorandom_element(eligible_jokers, "nameteam_graveyard")
-							local joker_index = NAMETEAM.find(eligible_jokers, joker)
-							table.remove(eligible_jokers, joker_index)
-							local card = SMODS.create_card({
-								set = "Joker",
-								area = G.jokers,
-								key = joker,
-								no_edition = true,
-							})
-							card:add_to_deck()
-							card:start_materialize()
-							G.jokers:emplace(card)
-						end
-					end
-					return true
 				end
+				return true
 			end,
 		}))
 	end,

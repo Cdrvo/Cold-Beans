@@ -51,8 +51,10 @@ return {
 			b_cbean_nameteam_graveyard = {
 				name = "Graveyard Deck",
 				text = {
-					"Start run with",
-					"five {C:attention}Plant{} Jokers"
+					"Start run in {C:attention,T:nameteam_davelawn}Dave's Lawn{}",
+					"with a {C:attention,T:tag_top_up}Top-up Tag",
+					"A random Suit is",
+					"replaced with {C:attention,T:m_cbean_basic_zomboid}Zomboids{}"
 				}
 			},
 			b_cbean_pboys_daily = { -- crashes without, so this is here Ig
