@@ -180,22 +180,20 @@ local apply_sticker_hook = Card.add_sticker
 function Card:add_sticker(sticker, bypass_check) -- fuck me
 	local already_had = self.ability[sticker]
 	if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
-	if next(SMODS.find_card("j_cbean_tallnut")) and not (self:on_the("right") and self:on_the("right").config.center.key == "j_cbean_wallnut") then
+	if not next(SMODS.find_card("j_cbean_tallnut")) and not (self:on_the("right") and self:on_the("right").config.center.key == "j_cbean_wallnut") then
 		apply_sticker_hook(self, sticker, bypass_check)
 		if not already_had and self.ability[sticker] then
 			if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
 			self.ability.NAMETEAM_sticker_count = self.ability.NAMETEAM_sticker_count + 1
 			self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
 		end
-	elseif self.ability.NAMETEAM_sticker_count==0 and not (self:on_the("right") and self:on_the("right").config.center.key == "j_cbean_wallnut") then
+	elseif self.ability.NAMETEAM_sticker_count==0 then
 		apply_sticker_hook(self, sticker, bypass_check)
 		if not already_had and self.ability[sticker] then
 			if not self.ability.NAMETEAM_sticker_count then self.ability.NAMETEAM_sticker_count = 0 end
 			self.ability.NAMETEAM_sticker_count = self.ability.NAMETEAM_sticker_count + 1
 			self:NAMETEAM_apply_sticker_calc(SMODS.Stickers[sticker])
 		end
-	else
-		apply_sticker_hook(self, sticker, bypass_check)
 	end
 end
 
