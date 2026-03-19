@@ -13,9 +13,14 @@ function YMA.end_shop_transition(t)
         blockable = false,
         func = function()
             G.YMA_SHOP_STATE_CHANGE = (G.YMA_SHOP_STATE_CHANGE or 0) - 1
+            if G.STATES.MAIN_STREET and not G.cbean_has_seen_street_headsup_this_session
+                and not G.PROFILES[G.SETTINGS.profile].cbean_has_seen_street_headsup then
+                G.FUNCS.run_cbean_street_menu()
+            end
             return true
         end
     })) 
+    
 end
 
 local old_start_run = Game.start_run;
