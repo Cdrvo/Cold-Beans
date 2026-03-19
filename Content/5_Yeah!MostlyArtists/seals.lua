@@ -28,12 +28,12 @@ SMODS.Seal {
                 end
                 if #keys >= 1 and SMODS.pseudorandom_probability(card, 'yma_cipher', 1, card.ability.seal.extra.odds, nil) then
                     local other_card = pseudorandom_element(keys, pseudoseed('yma_cipher'))
-                    if other_card.ability.consumeable.extra.type == 'cards' then
-                        other_card.ability.consumeable.extra.uses = other_card.ability.consumeable.extra.uses + 2
-                        other_card.ability.consumeable.extra.max_uses = other_card.ability.consumeable.extra.max_uses + 2 
+                    if other_card.ability.extra.type == 'cards' then
+                        other_card.ability.extra.uses = other_card.ability.extra.uses + 2
+                        other_card.ability.extra.max_uses = other_card.ability.extra.max_uses + 2 
                     end
-                    other_card.ability.consumeable.extra.uses = other_card.ability.consumeable.extra.uses + 1 
-                    other_card.ability.consumeable.extra.max_uses = other_card.ability.consumeable.extra.max_uses + 1 
+                    other_card.ability.extra.uses = other_card.ability.extra.uses + 1 
+                    other_card.ability.extra.max_uses = other_card.ability.extra.max_uses + 1 
                     card_eval_status_text(other_card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
                 elseif #keys >= 1 then
                     card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_nope_ex')})
