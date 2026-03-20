@@ -4,38 +4,6 @@ G.FUNCS.show_employ = function(e)
 YMA.start_shop_transition()
     stop_use()
     hide_location(G.main_street)
-
-    if G.jbill_employed_area and G.jbill_employed_area.round == G.GAME.round then
-        G.jbill_employed_area = G.jbill_employed_area
-    else
-        if G.jbill_employed_area then
-            G.jbill_employed_area:remove()
-            G.jbill_employed_area = nil
-        end
-        G.jbill_employed_area = CardArea(
-            0, 0, G.jokers.T.w, G.jokers.T.h, 
-            {
-                card_limit = 5,
-                type = 'joker',
-                highlight_limit = 1,
-                no_card_count = true
-            })
-        G.jbill_employed_area.round = G.GAME.round
-    end
-    
-
-    if G.GAME.round and (not G.GAME.employ_round) or (G.GAME.employ_round ~= G.GAME.round) then
-        G.GAME.employ_round = G.GAME.round
-    end
-
-    local area = G.jbill_employed_area
-
-    if area and not area._populated then
-        for _, v in pairs(G.P_CENTER_POOLS.Employed) do
-            SMODS.add_card({key = v.key, area = area})
-        end
-        area._populated = true
-    end
     
 
     G.STATE_COMPLETE = false
@@ -71,21 +39,7 @@ G.FUNCS.hide_employ = function(e)
     NAMETEAM.shop_sign("cbean_NAMETEAM_street")
     --sign_sprite.states.visible = false
     sign_text = DynaText({string = {''}, colours = {lighten(G.C.BLACK, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})
-    if G.jbill_employed_area then
-        G.jbill_employed_area.states.visible = false
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            blockable = false,
-            blocking = false,
-            delay =  0,
-            func = (function() 
-                    G.jbill_employed_area.states.visible = false
-                    G.jbill_employed_area:remove()
-                    G.jbill_employed_area = nil;
-                return true
-            end)
-        }))
-    end
+
     G.SHOP_SIGN.UIRoot.UIBox:recalculate()
     show_location(G.main_street)
     YMA.end_shop_transition()
@@ -124,6 +78,35 @@ function update_jbill_employed()
 end
 
 function G.UIDEF.jbill_employed()
+    if G.jbill_employed_area then
+        G.jbill_employed_area:remove()
+        G.jbill_employed_area = nil
+    end
+    G.jbill_employed_area = CardArea(
+        0, 0, G.jokers.T.w, G.jokers.T.h, 
+        {
+            card_limit = 5,
+            type = 'joker',
+            highlight_limit = 1,
+            no_card_count = true
+    })
+    if not (G.jbill_employed_area and G.jbill_employed_area.round == G.GAME.round) then
+        
+        G.jbill_employed_area.round = G.GAME.round
+    end
+
+    if G.GAME.round and (not G.GAME.employ_round) or (G.GAME.employ_round ~= G.GAME.round) then
+        G.GAME.employ_round = G.GAME.round
+    end
+
+    local area = G.jbill_employed_area
+
+    if area and not area._populated then
+        for _, v in pairs(G.P_CENTER_POOLS.Employed) do
+            SMODS.add_card({key = v.key, area = area})
+        end
+        area._populated = true
+    end
     local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
             UIBox_dyn_container({
                 {n=G.UIT.C, config={align = "cm", colour = G.C.CLEAR, minw = 1, minh = 1, padding = 0.3}, nodes = {
