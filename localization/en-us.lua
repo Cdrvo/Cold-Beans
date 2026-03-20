@@ -7483,13 +7483,12 @@ return {
 			]]
 
 			j_cbean_wgrop_jhett_the_poltergeist = {
-				name = "Jhett the Poltergeist",
+				name = "Sumi's Lunch Time",
 				text = {
 					{ "{C:red}Destroys{} all {C:attention}Pale Remnant{} cards",
 						"{C:attention}held in hand{} after scoring" },
 					{ "This Joker gains {C:white,X:red}X#1#{} Mult {C:attention}for{}",
-						"{C:attention}every{} {C:attention}Pale Remnant{} card",
-						"above ability destroys",
+						"{C:attention}each{} one destroyed",
 						"{C:inactive}(Currently{} {C:white,X:mult}X#2#{} {C:inactive}Mult){}"
 					},
 				}
