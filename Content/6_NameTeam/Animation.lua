@@ -65,8 +65,13 @@ function Game:update(dt)
         for k, v in pairs(G.P_CENTERS) do
             if not v.default_pos then v.default_pos = v.pos end
             if not v.default_pos_extra then v.default_pos_extra = v.pos_extra end
-            v.pos = v.default_pos
-            v.pos_extra = v.default_pos_extra
+            if v.key == "j_cbean_nameteam_trafficlight" then
+                handle_cbean_anim(v, dt)
+                handle_cbean_anim_extra(v, dt)
+            else
+                v.pos = v.default_pos
+                v.pos_extra = v.default_pos_extra
+            end
         end
     end
     return update_ref(self, dt)

@@ -11696,7 +11696,7 @@ return {
 			k_cbean_nteam_doubled               = "Doubled!",
 			k_cbean_nteam_tripled               = "Tripled!",
 			k_cbean_nteam_halved                = "Halved!",
-			cbean_disable_animations            = "Disable Joker Animations",
+			cbean_disable_animations            = "Disable Most Joker Animations",
 			cbean_disable_copyright             = "Disable Copyrighted Material",
 			k_cbean_stickersheet                = "Sticker Sheet",
 			b_cbean_stickersheet_cards          = "Sticker Sheets",
