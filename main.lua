@@ -199,7 +199,7 @@ end
 
 ColdBeans.calculate = function(mod, context)
 	-- update global joker cache when jokers are added/removed/sold
-	if context.cbean_destroyed or context.buying_card or context.selling_card then
+	if context.cbean_destroyed or context.card_added or context.buying_card or context.selling_card then
 		if ColdBeans.update_joker_cache then
 			ColdBeans.update_joker_cache()
 		end
