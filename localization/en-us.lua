@@ -11790,7 +11790,7 @@ return {
 			cbean_blind_headsup_2a             	= "Each ",
 			cbean_blind_headsup_2b				= " now includes ",
 			cbean_blind_headsup_3				= " and ",
-			cbean_blind_headsup_4          		= " have a beneifcial",
+			cbean_blind_headsup_4          		= " have a beneficial",
 			cbean_blind_headsup_5				= "effect with no shop afterwards",
 			cbean_blind_headsup_6          		= " have a monstrous",
 			cbean_blind_headsup_7				= "effect with no shop before",
