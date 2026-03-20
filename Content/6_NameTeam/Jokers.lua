@@ -424,7 +424,10 @@ SMODS.Joker({
 local create_card_ref = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
     local staches = SMODS.find_card("j_cbean_nameteam_stachenscarfen")
-    if next(staches) and not (forced_key and G.P_CENTERS[forced_key] and G.P_CENTERS[forced_key].rarity == 2) then
+    if next(staches)
+    and (_type == "Joker"
+    or (forced_key and G.P_CENTERS[forced_key] and G.P_CENTERS[forced_key].set == "Joker" and G.P_CENTERS[forced_key].rarity ~= 2)) then
+        _type = "Joker"
         legendary = nil
         _rarity = 0.71
         forced_key = nil
@@ -436,15 +439,14 @@ local smods_create_card_ref = SMODS.create_card
 function SMODS.create_card(t)
     local staches = SMODS.find_card("j_cbean_nameteam_stachenscarfen")
     if
-        next(staches)
-        and not (t and t.forced_key and G.P_CENTERS[t.forced_key] and G.P_CENTERS[t.forced_key].rarity == 2)
+        next(staches) and t
+        and (t.set == "Joker"
+        or (t.key and G.P_CENTERS[t.key] and G.P_CENTERS[t.key].set == "Joker" and G.P_CENTERS[t.key].rarity ~= 2))
     then
-        if not t then
-            t = {}
-        end
+        t.set = "Joker"
         t.legendary = nil
         t.rarity = 0.71
-        t.forced_key = nil
+        t.key = nil
     end
     return smods_create_card_ref(t)
 end
