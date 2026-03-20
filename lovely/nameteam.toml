@@ -199,7 +199,11 @@ payload = '''local house_rules = {
 
             --Collection and 3oak collection
             j_cbean_nameteam_sticker_collection = {"nteam_collection", "nteam_collection_3oak"},
-            j_cbean_nameteam_stickerbomb = {"nteam_collection", "nteam_collection_3oak"}
+            j_cbean_nameteam_stickerbomb = {"nteam_collection", "nteam_collection_3oak"},
+
+            --Zomboids
+            j_cbean_znake_lilly = {"0chill_zomboid"},
+            j_cbean_zoybean_pod = {"0chill_zomboid"}
 }
 '''
 match_indent = true

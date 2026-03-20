@@ -11790,9 +11790,9 @@ return {
 			cbean_blind_headsup_2a             	= "Each ",
 			cbean_blind_headsup_2b				= " now includes ",
 			cbean_blind_headsup_3				= " and ",
-			cbean_blind_headsup_4          		= " have a beneficial",
+			cbean_blind_headsup_4          		= " have a beneifcial",
 			cbean_blind_headsup_5				= "effect with no shop afterwards",
-			cbean_blind_headsup_6          		= " have a monstrous",
+			cbean_blind_headsup_6          		= " have a monsterous",
 			cbean_blind_headsup_7				= "effect with no shop before",
 			cbean_blind_headsup_8				= " provide passive effects",
 			cbean_blind_headsup_9				= "that change how you play",
@@ -12150,6 +12150,13 @@ return {
 				"{C:attention}Stone Joker, or Walled In{} to play",
 			},
 
+			["cbean_0chill_zomboid"] = {
+				"5 Zomboids of any type but must include",
+				"at least 1 Basic, 1 Carrothead, and 1 Melonhead",
+				"Must have {C:attention}House Rules{} and {C:attention}Znake Lily",
+				"{C:attention}or Zoybean Pod{} to play",
+			},
+
 			["cbean_sdown_true_home"] = {
 				"Three cards with a matching rank and suit,",
 				"and two cards with a different matching rank and suit",
@@ -12259,6 +12266,7 @@ return {
 			["cbean_sdown_pansexual"] = "HR Pansexual",
 			["cbean_sdown_pansexual_flush"] = "HR Pansexual Flush",
 			["cbean_sdown_stone_hand"] = "HR Yet Another 5 Stone Cards Hand",
+			["cbean_0chill_zomboid"] = "HR Zombies on the Lawn",
 			["cbean_sdown_true_home"] = "HR True Home",
 			["cbean_sdown_67"] = "HR 67",
 			["cbean_sdown_flush_67"] = "HR Flush 67",

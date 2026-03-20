@@ -32,7 +32,7 @@ end
 
 -- global joker cache for house rules performance
 -- this eliminates repeated SMODS.find_card() calls across all house rules hands
--- If you want to add the infoqueue to the ne
+-- If you want to add the infoqueue to them, check out the nameteam lovely file
 ColdBeans.joker_cache = {
     -- house rules
     house_rules = false,
@@ -92,6 +92,10 @@ ColdBeans.joker_cache = {
 
     --PROCEED
     thorn_ring = false,
+
+    --Zomboids
+    znake = false,
+    zoybean = false,
     
     -- add more jokers as needed for other house rules hands
 
@@ -157,6 +161,9 @@ function ColdBeans.update_joker_cache()
 
     --PROCEED
     ColdBeans.joker_cache.thorn_ring = next(SMODS.find_card("j_cbean_0chill_thorn_ring")) ~= nil
+
+    ColdBeans.joker_cache.znake = next(SMODS.find_card("j_cbean_znake_lilly")) ~= nil
+    ColdBeans.joker_cache.zoybean = next(SMODS.find_card("j_cbean_zoybean_pod")) ~= nil
 
 
 end
