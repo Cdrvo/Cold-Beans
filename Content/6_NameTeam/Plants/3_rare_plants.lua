@@ -1040,7 +1040,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "turkey_pult",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 11, y = 2 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
+	},
 	cost = 3,
 	rarity = 3,
 	blueprint_compat = true,
@@ -1054,11 +1062,6 @@ SMODS.Joker({
 			vars = { cae.mult, cae.mult_gain },
 		}
 	end,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.setting_blind then
@@ -1074,12 +1077,15 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	key = "tofu_turkey",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 5,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 10, y = 2 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = "cbean_token",
 	always_buyable = true,
@@ -1156,7 +1162,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "rhubarbarian",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 6, y = 2 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
 	cost = 3,
 	rarity = 3,
 	blueprint_compat = true,
@@ -1190,14 +1204,17 @@ SMODS.Joker({
 SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
-	atlas = "NAMETEAM_PlantPlaceholder",
-	key = "tomb_tangler",
-	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 9, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
+	key = "tomb_tangler",
+	cost = 4,
 	rarity = 3,
 	blueprint_compat = true,
 	config = {

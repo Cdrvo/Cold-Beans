@@ -4,12 +4,12 @@ SMODS.Joker({
 	key = "blooming_heart",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 3, y = 11 },
-	cost = 3,
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
 		art = "Doggfly",
 	},
+	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
 	config = {
@@ -2022,13 +2022,13 @@ SMODS.Joker({
 	key = "magnifying_grass",
 	atlas = "NAMETEAM_PlantJokers",
 	pos = { x = 6, y = 3 },
-	cost = 5,
 	beans_credits = {
 		code = {"Revo",
 				"MarioFan597"},
 		team = "Name Team",
 		art = "Doggfly",
 	},
+	cost = 5,
 	rarity = 2,
 	blueprint_compat = false,
 	config = {
@@ -3402,7 +3402,13 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "wasabi_whip",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 5, y = 3 },
+	beans_credits = {
+		code = "Revo",
+		team = "Name Team",
+		art = "InkyknI",
+	},
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3419,11 +3425,6 @@ SMODS.Joker({
 			vars = { cae.xmult, num, den },
 		}
 	end,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.individual and context.cardarea == G.play then
@@ -3512,7 +3513,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "boom_ballon_flower",
-	atlas = "NAMETEAM_PlantPlaceholder",
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 4, y = 2 },
+	beans_credits = {
+		code = "Revo",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
+	},
 	cost = 3,
 	rarity = 2,
 	blueprint_compat = false,
@@ -3528,11 +3537,6 @@ SMODS.Joker({
 			vars = { cae.xmult, cae.xmult_gain },
 		}
 	end,
-	beans_credits = {
-		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
-	},
 	calculate = function(self, card, context)
 		local cae = card.ability.extra
 		if context.before then
@@ -4437,13 +4441,17 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "inferno",
-	atlas = "NAMETEAM_PlantPlaceholder",
-	cost = 3,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 10, y = 1 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = {"Inspector B",
+				"cmykl"},
 	},
+	cost = 3,
 	rarity = 2,
 	blueprint_compat = true,
 	config = {
@@ -4690,12 +4698,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "bramble_bush",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 1, y = 2 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -4926,15 +4937,16 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	atlas = "NAMETEAM_PlantPlaceholder",
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "bamboo_spartan",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 5, y = 3 },
 	beans_credits = {
 		code = "Revo",
 		team = "Name Team",
-		art = "N/A",
+		art = "InkyknI",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -5159,12 +5171,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "blaze_leaf",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 1, y = 3 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "cmykl",
 	},
 	rarity = 2,
 	blueprint_compat = true,
@@ -5209,12 +5224,15 @@ SMODS.Joker({
 	pvz_plant = true,
 	in_pool = NAMETEAM.plant_in_pool,
 	key = "sweetheart_snare",
-	atlas = "NAMETEAM_PlantPlaceholder",
 	cost = 4,
+	atlas = "NAMETEAM_PlantJokers2",
+	pos = { x = 3, y = 2 },
 	beans_credits = {
 		code = "Revo",
-		team = "Name Team",
-		art = "N/A",
+		team = { "Name Team/",
+            "0 Drivers of",
+            "The Chill Vaction" },
+		art = "MarioFan597",
 	},
 	rarity = 2,
 	blueprint_compat = true,
