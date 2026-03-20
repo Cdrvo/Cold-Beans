@@ -677,7 +677,11 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 					end
 				end
 			end
-		end
+	end
+	if not G.cbean_has_seen_blind_headsup_this_session
+		and not G.PROFILES[G.SETTINGS.profile].cbean_has_seen_blind_headsup then
+		G.FUNCS.run_cbean_blind_menu()
+	end
 end
 
 
@@ -1251,7 +1255,433 @@ G.FUNCS.exit_cbean_street_overlay_menu = function()
 	G:save_settings()
 end
 
---The call function for the street UI is directly attached to the show street function
+--The call function for the street UI is directly attached to the show street function. Look for it in the medal UI file
+
+--Blind Explanation UI
+--Explains the basic mechanics of the teeny/ceo blinds and biomes on first entry
+
+G.FUNCS.run_cbean_blind_menu = function() --I am not pausing as it has a visual glitch with the blinds
+	--G.SETTINGS.paused = true
+	G.FUNCS.overlay_menu {
+		definition = create_cbean_blind_menu()
+	}
+end
+
+function create_cbean_blind_menu()
+	local dontshowagainblind = create_toggle({
+		label = localize("cbean_dontshowagain"),
+		active_colour = HEX("40c76d"),
+		ref_table = G,
+		ref_value = "cbean_did_player_no_show_again_blind",
+		callback = function()
+		end,
+	})
+
+	local other_t = create_UIBox_generic_options({
+		contents = {
+			{
+				n = G.UIT.R,
+				config = { align = "cm", padding = 0.1 },
+				nodes = {
+					{
+						n = G.UIT.T,
+						config = {
+							align = "tm",
+							text = "Cold Beans",
+							colour = G.C.UI.TEXT_LIGHT,
+							scale = 1
+						}
+					}
+				}
+			},
+			{
+				n = G.UIT.R,
+				config = { align = "cm", minw = 7, minh = 7, colour = G.C.BLACK, emboss = 0.05, r = 0.1 },
+				nodes = {
+					{
+						n = G.UIT.C,
+						config = { align = "cm" },
+						nodes = {
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_1a"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.7
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("b_blinds"),
+											colour = G.C.FILTER,
+											scale = 0.7
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_1b"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.7
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_biomes"),
+											colour = G.C.FILTER,
+											scale = 0.7
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.5 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_2a"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("k_ante"),
+											colour = G.C.FILTER,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_2b"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									},
+
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_teeny_blinds"),
+											colour = G.C.FILTER,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_3"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_ceo_blinds"),
+											colour = G.C.FILTER,
+											scale = 0.5
+										}
+									},
+
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.3 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_teeny_blinds"),
+											colour = G.C.FILTER,
+											scale = 0.4
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_4"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.4
+										}
+									},
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_5"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.4
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.3 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_ceo_blinds"),
+											colour = G.C.FILTER,
+											scale = 0.4
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_6"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.4
+										}
+									},
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_7"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.4
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.5 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_biomes"),
+											colour = G.C.FILTER,
+											scale = 0.5
+										}
+									},
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_8"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									},
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_9"),
+											colour = G.C.UI.TEXT_LIGHT,
+											scale = 0.5
+										}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.B,
+										config = { align = "cm", w = 1, h = 0.1 },
+										nodes = {}
+									}
+								}
+							},
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.T,
+										config = {
+											align = "cm",
+											text = localize("cbean_blind_headsup_10"),
+											colour = G.C.GREY,
+											scale = 0.4
+										}
+									}
+								}
+							},
+						}
+					}
+				}
+			},
+			{
+				n = G.UIT.R,
+				config = { align = "cm" },
+				nodes = {
+					dontshowagainblind
+				}
+			}
+		},
+		back_label = localize("b_continue"),
+		back_func = "exit_cbean_blind_overlay_menu"
+	})
+	return other_t
+end
+
+G.FUNCS.exit_cbean_blind_overlay_menu = function()
+	if not G.OVERLAY_MENU then return end
+
+	G.CONTROLLER.locks.frame_set = true
+	G.CONTROLLER.locks.frame = true
+	G.CONTROLLER:mod_cursor_context_layer(-1000)
+	G.OVERLAY_MENU:remove()
+	G.OVERLAY_MENU = nil
+	G.VIEWING_DECK = nil
+	--G.SETTINGS.paused = false
+
+	G:save_settings()
+
+	G.cbean_has_seen_blind_headsup_this_session = true
+	G.PROFILES[G.SETTINGS.profile].cbean_has_seen_blind_headsup = G.cbean_did_player_no_show_again_blind
+	G:save_settings()
+end
+
+
+
+
 
 --[[
 local main_menu_plant_check = Game.main_menu
