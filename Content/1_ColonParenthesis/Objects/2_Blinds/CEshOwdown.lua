@@ -26,7 +26,7 @@ end
 
 local old_is_active_blind = SMODS.is_active_blind;
 function SMODS.is_active_blind(key, ignore_disabled)
-    if G and G.GAME and G.GAME.blind.config and G.GAME.blind.config.blind and (G.GAME.blind.config.blind.key == key) and (not G.GAME.blind.disabled or ignore_disabled) then
+    if G and G.GAME and G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and (G.GAME.blind.config.blind.key == key) and (not G.GAME.blind.disabled or ignore_disabled) then
         return true
     end
     return old_is_active_blind(key, ignore_disabled)
