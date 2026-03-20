@@ -12,8 +12,8 @@ SMODS.Joker{
     pos = {x = 0, y = 0},
     config = {
         extra = {
-            xchips = 3.5,
-            xmult = 2.5,
+            xchips = 2.5,
+            xmult = 2,
             lastsuit = "none",
             lastmixed = "none"
         }
@@ -39,28 +39,21 @@ SMODS.Joker{
 
             if is_mixed then
                 if extra.lastsuit == "mixed" then
-
-                    if extra.lastmixed == "xchips" then
-                        return { xmult = extra.xmult}
-
-                    elseif extra.lastmixed == 'xmult' then
-                        return { xchips = extra.xchips}
-                    end
-
+                    return { xchips = extra.xchips, xmult = extra.xmult}
                 elseif extra.lastsuit == "lightsuit" then
 
-                    extra.lastsuit = "darksuit"
+                    extra.lastsuit = "mixed"
                     extra.lastmixed = "xchips"
                     return { xchips = extra.xchips}
-
                 elseif extra.lastsuit == "darksuit" then
 
-                    extra.lastsuit = "lightsuit"
+                    extra.lastsuit = "mixed"
                     extra.lastmixed = "xmult"
                     return { xmult = extra.xmult}
 
                 end
                 extra.lastsuit = "mixed"
+                return
             end
             if is_light then
                 if extra.lastsuit == "darksuit" or extra.lastsuit == "mixed" then
@@ -90,4 +83,3 @@ SMODS.Joker{
     code = "Tje.tsu",
     }
 }
-
