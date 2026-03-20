@@ -11792,7 +11792,7 @@ return {
 			cbean_blind_headsup_3				= " and a ",
 			cbean_blind_headsup_4          		= " have a beneifcial",
 			cbean_blind_headsup_5				= "effect with no shop afterwards",
-			cbean_blind_headsup_6          		= " have a monsterous",
+			cbean_blind_headsup_6          		= " have a monstrous",
 			cbean_blind_headsup_7				= "effect with no shop before",
 			cbean_blind_headsup_8				= " provide passive effects",
 			cbean_blind_headsup_9				= "that change how you play",
