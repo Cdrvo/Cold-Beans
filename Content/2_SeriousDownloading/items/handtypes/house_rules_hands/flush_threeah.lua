@@ -48,7 +48,6 @@ SMODS.PokerHand{
         { "S_6", true },
         { "S_6", true },
         { "S_6", true },
-        { "S_6", true },
         { "C_6", false },
         { "S_7", false }
     },
