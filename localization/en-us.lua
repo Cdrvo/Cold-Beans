@@ -12076,12 +12076,12 @@ return {
 		},
 		poker_hand_descriptions = {
 			["cbean_sdown_antistraight"] = {
-				"5 cards, with no two cards having the same",
-				"or consecutive ranks",
+				"5 ranked cards, with no two cards",
+				"having the same or consecutive ranks",
 			},
 			["cbean_sdown_antistraight_flush"] = {
-				"5 cards, all sharing the same suit, with no two cards",
-				"having the same or consecutive ranks",
+				"5 ranked cards, all sharing the same suit, with no",
+				"two cards having the same or consecutive ranks",
 			},
 			["cbean_sdown_bobtail"] = {
 				"4 cards in a row (consecutive ranks) with",
