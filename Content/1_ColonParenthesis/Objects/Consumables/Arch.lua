@@ -403,9 +403,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_acanthus_leaf',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 3, y = 5 },
+    progress_pos = { x = 4, y = 5 },
+    done_pos = { x = 5, y = 5 },
 
     beans_credits = {
         team = ":(",
@@ -561,9 +561,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_fillet',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 6, y = 4 },
+    progress_pos = { x = 7, y = 4 },
+    done_pos = { x = 8, y = 4 },
 
     beans_credits = {
         team = ":(",
@@ -614,9 +614,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_boss',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 6, y = 5 },
+    progress_pos = { x = 7, y = 5 },
+    done_pos = { x = 8, y = 45},
 
     beans_credits = {
         team = ":(",
@@ -1354,9 +1354,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_molding',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 9, y = 4 },
+    progress_pos = { x = 10, y = 4 },
+    done_pos = { x = 11, y = 4 },
 
     beans_credits = {
         team = ":(",
@@ -1407,9 +1407,9 @@ Colonparen.Architecture {
 
 Colonparen.Architecture {
     key = 'colon_pediment',
-    base_pos = { x = 9, y = 6 },
-    progress_pos = { x = 10, y = 6 },
-    done_pos = { x = 11, y = 6 },
+    base_pos = { x = 9, y = 3 },
+    progress_pos = { x = 10, y = 3 },
+    done_pos = { x = 11, y = 3 },
 
     beans_credits = {
         team = ":(",
