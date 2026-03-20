@@ -5,14 +5,14 @@ SMODS.Joker {
     pos = { x = 1, y = 4 },
     rarity = 1,
     cost = 3,
-    config = { extra = { jimbux = 2, odds = 4 } },
+    config = { extra = { jimbux = 1, cost = 5 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.jimbux, card.ability.extra.odds } }
+        return { vars = { card.ability.extra.jimbux, card.ability.extra.cost } }
     end,
     calculate = function(self, card, context)
-        if context.setting_blind and G.GAME.dollars >= 5 then
-            ease_dollars(-5)
-            ease_jimbux(1)
+        if context.setting_blind and G.GAME.dollars >= card.ability.extra.cost then
+            ease_dollars(-card.ability.extra.cost)
+            ease_jimbux(card.ability.extra.jimbux)
             return {
                 message = localize("k_dollar_jimbux"),
                 colour = G.C.PURPLE

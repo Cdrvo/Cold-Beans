@@ -334,7 +334,7 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.bankrupt_at } }
     end,
-    rarity = 3,
+    rarity = 2,
     atlas = "NAMETEAM_Jokers",
     pos = { x = 1, y = 0 },
     draw = function(self, card, layer)

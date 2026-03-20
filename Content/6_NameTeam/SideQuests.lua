@@ -80,7 +80,7 @@ YMA.SideQuests.quest {
 YMA.SideQuests.quest {
     key = "nteam_showman",
     order = 16,
-    rarity = 3,
+    rarity = 2,
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_ring_master
@@ -108,7 +108,7 @@ YMA.SideQuests.quest {
                     trigger = "after",
                     delay = 0.2,
                     func = function()
-                        for i = 1, 2 do
+                        --for i = 1, 2 do
                             local pool = {}
                             for _, j in ipairs(G.jokers.cards) do
                                 if not j.edition then
@@ -117,9 +117,9 @@ YMA.SideQuests.quest {
                             end
                             local target = pseudorandom_element(pool, "nteam_showman")
                             if target then
-                                target:set_edition("e_negative", nil, i ~= 1)
+                                target:set_edition("e_foil", nil, i ~= 1)
                             end
-                        end
+                        --end
                         return true
                     end
                 }))

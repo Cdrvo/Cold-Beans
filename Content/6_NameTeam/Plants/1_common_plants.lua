@@ -10,7 +10,7 @@ SMODS.Joker({
 	blueprint_compat = false,
 	config = {
 		extra = {
-			blind = 0.9,
+			blind = 0.75,
 		},
 	},
 	pools = {

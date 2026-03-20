@@ -145,22 +145,12 @@ YMA.TBOI_ITEMS {
     set = "yma_tboi_items",
     order = 4,
     quality = 4,
-
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.xmult
-            }
-        }
-    end,
-
     atlas = 'yma_tboi_atlas',
     pos = { x = 0, y = 0 },
     soul_pos = { x = 7, y = 2 },
 
     config = {
         extra = {
-            xmult = 1.5,
             effect_table = {
                 ['x_mult'] = true,
                 ['xmult'] = true,
@@ -178,12 +168,6 @@ YMA.TBOI_ITEMS {
             if temp_context.effects['message'] then
                 temp_context.effects['message'] = localize{type='variable',key='a_xmult',vars={temp_context.effects[temp_context.effect_type]}} --Potentally problomatic, Fixes visual junk with vanilla Jokers
             end
-        end
-        if context.joker_main then
-            return {
-                xmult = card.ability.extra.xmult,
-                yma_avoid_modification = true,
-            }
         end
     end,
     beans_credits = {
@@ -2384,7 +2368,7 @@ YMA.TBOI_ITEMS {
     key = "yma_tboi_lump_coal",
     set = "yma_tboi_items",
     order = 49,
-    quality = 3,
+    quality = 2,
 
     loc_vars = function(self, info_queue, card)
         return {

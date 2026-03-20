@@ -1908,8 +1908,8 @@ return {
 					"If a {C:attention}Shop{} item reappeared",
 					"within the same {C:attention}Shop{},",
 					"create {C:attention}Showman{}",
-					"and adds {C:dark_edition}Negative",
-					"to 2 random {C:attention}Jokers",
+					"and adds {C:dark_edition}Foil",
+					"to 1 random {C:attention}Jokers",
 					"without an {C:attention}Edition",
 				},
 			},
@@ -1954,10 +1954,7 @@ return {
 				},
 				text = {
 					{
-						"{X:mult,C:white}X#1#{} Mult",
-					},
-					{
-						"All other {C:white,X:mult}XMult{} sources are",
+						"All {C:white,X:mult}XMult{} sources are",
 						"multiplied by {C:white,X:mult}X#1#"
 					}
 				},
@@ -5790,8 +5787,8 @@ return {
 					{
 						"When a {:attention}Blind{} is selected,",
 						"{C:green}#1# in #2#{} Chance to {C:red}remove{}",
-						"the {C:chips}stored chips{} from",
-						"the current blind's required chips",
+						"the {C:chips}stored chips{} from the",
+						"current blind's required chips",
 					}
 				},
 			},
@@ -6285,8 +6282,9 @@ return {
 						"{X:mult,C:white}X#1#{} Mult",
 					},
 					{
-						"when a hand is played,", "all cards left",
-						"in hand are {C:red}discarded"
+						"When a hand is played,", 
+						"all cards left in",
+						"hand are {C:red}discarded"
 					},
 				},
 			},
@@ -6319,11 +6317,16 @@ return {
 			j_cbean_dragon_bruit                        = {
 				name = "Dragon Bruit",
 				text = {
-					"{C:mult}+#1#{} Mult, {C:chips}+#2#{} Chips",
-					"and {X:mult,C:white}X#3#{} Mult.",
-					"Saves you from {C:red}death{} once then",
-					"spawns {C:attention}2{} {C:green}Baby Bruits{}",
-					"{C:inactive}(Must have room)"
+					{
+						"{C:mult}+#1#{} Mult, {C:chips}+#2#{} Chips",
+						"and {X:mult,C:white}X#3#{} Mult",
+					},
+					{
+						"Saves you from",
+						"{C:red}death{} once then",
+						"spawns {C:attention}2{} {C:green}Baby Bruits{}",
+						"{C:inactive}(Must have room)"
+					},
 				},
 			},
 			j_cbean_baby_bruit                          = {
@@ -6631,9 +6634,9 @@ return {
 			j_cbean_torchwood                           = {
 				name = "Torchwood",
 				text = {
-					"All {C:attention}Jokers{} to the left",
-					"of this has {C:attention}X1.5{}",
-					"values"
+					"All {C:attention}Jokers{} to the",
+					"left of this Joker",
+					"have {C:attention}X1.5{} values"
 				},
 			},
 
@@ -7712,15 +7715,15 @@ return {
 				name = "Jim Bill",
 				text = {
 					"{C:green}#2# in #3#{} chance for",
-					"each played {C:attention}Enhanced Card",
-					"to give {C:green}+J#1#{} when scored"
+					"{C:green}J#1#{} when played hand contains",
+					"a scoring {C:attention}Enhanced Card"
 				}
 			},
 			j_cbean_jbill_exchange              = {
 				name = "Currency Exchange",
 				text = {
 					"When {C:attention}Blind{} is selected,",
-					"{C:money}$5{} is exchanged for {C:green}J1"
+					"{C:money}$#2#{} is exchanged for {C:green}J#1#"
 				}
 			},
 			j_cbean_jbill_stare                 = {
