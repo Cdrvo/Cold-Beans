@@ -24,7 +24,7 @@ SMODS.Joker{
         }
     end,
     calculate = function(self, card, context) --for the future
-    --[[    if context.after then
+    if context.after then
             G.GAME.wgrop_stopsign_blindwasskipped = false
             card.ability.extra.percentage = 0
             G.GAME.wgrop_stopsign_blindwillbeskipped = false
@@ -50,34 +50,29 @@ SMODS.Joker{
                 card.ability.extra.percentage = 0
             end
         end
-        if context.setting_blind and card.ability.extra.percentage ~= 0 then
-            G.GAME.chips =  (G.GAME.blind.chips/100)*(card.ability.extra.percentage/2)
-            if G.GAME.chips >= G.GAME.blind.chips then           
+        if context.first_hand_drawn and card.ability.extra.percentage ~= 0 then
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "GO!", colour = G.C.GREEN})        
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
-                    delay = 0.3,
+                    delay = 0.5,
                     func = function()
-                        end_round()
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'before',
-                            delay = 0.3,
-                            func = function()
-                                G.FUNCS.draw_from_hand_to_discard() 
-                                return true
-                            end
-                        }))
-                        return true
+                        G.GAME.chips =  (G.GAME.blind.chips/100)*(card.ability.extra.percentage/2)
+                        card.ability.extra.percentage = 0
+                        if G.GAME.chips >= G.GAME.blind.chips then
+                            G.STATE = G.STATES.HAND_PLAYED
+                            G.STATE_COMPLETE = true
+                            end_round()
+                            --G.FUNCS.draw_from_hand_to_deck()
+                            return {
+                            }
+                        end
+                        
+                        --G.FUNCS.draw_from_hand_to_discard() 
                     end
                 }))
-                return {
-                    message = "GO!",
-                    colour = G.C.GREEN
-                }
-            end
-            card.ability.extra.percentage = 0
         end
-        if context.starting_shop then
-            G.FUNCS.draw_from_hand_to_discard()    
+        --[[if context.starting_shop then
+               
         end]]
     end,
 

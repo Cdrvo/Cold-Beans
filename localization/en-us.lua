@@ -7537,8 +7537,20 @@ return {
 			j_cbean_wgrop_stop_sign             = {
 				name = "Stop Sign",
 				text = {
-					"{C:inactive,s:0.75}Perhaps some things are better...{}",
-					"{C:inactive,s:0.95}Left Behind.{}"
+					{
+						"If first hand exceeds {C:attention}Blind{}",
+						"{C:attention}Requirement{}, this Joker gains",
+						"{C:attention,s:0.95}half{s:0.95} of {C:attention,s:0.95}Overscore{s:0.95} as {C:dark_edition,s:0.95}Percentage{}",
+						"{C:inactive,s:0.9}(Ex: (325/300 = 8%)/2 = 4%){}",
+					},
+					{
+						"When entering {C:attention}Blind{}, instantly",
+						"score stored {C:dark_edition}Percentage",
+						"of {C:attention}Blind's{} required {C:chips}Chips",
+						"{C:inactive}(Currently {C:dark_edition}#1#%{C:inactive})",
+						--"{C:inactive,s:0.75}Perhaps some things are better...{}",
+						--"{C:inactive,s:0.95}Left Behind{}"
+					},
 				}
 			},                             --jokers jbill pokers woah woah jokercards yo jokers yo jbill
 			j_cbean_jbill_who                   = { -- added by nteam
