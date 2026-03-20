@@ -12,10 +12,10 @@ SMODS.Joker{
     pos = {x = 0, y = 0},
     config = {
         extra = {
-            xchips = 3.5,
-            xmult = 2.5,
-            lastsuit = "uni",
-            lastwild = "mult"
+            xchips = 2.5,
+            xmult = 2,
+            lastsuit = "none",
+            lastmixed = "none"
         }
     },
 
@@ -29,47 +29,50 @@ SMODS.Joker{
     end,
 
     calculate = function(self, card, context)
-        if not (context.individual and context.cardarea == G.play) then return end
+        if context.individual and context.cardarea == G.play then
+            local scard = context.other_card
+            local extra = card.ability.extra
+            local is_light = (scard:is_suit("Hearts") or scard:is_suit("Diamonds"))
+            local is_dark  = (scard:is_suit("Spades") or scard:is_suit("Clubs"))
+            local is_mixed = is_light and is_dark
+            print(is_light, is_dark, is_mixed)
 
-        local scard = context.other_card
-        local extra = card.ability.extra
+            if is_mixed then
+                if extra.lastsuit == "mixed" then
+                    return { xchips = extra.xchips, xmult = extra.xmult}
+                elseif extra.lastsuit == "lightsuit" then
 
-        if SMODS.has_enhancement(scard, "m_stone") then
-            extra.lastsuit = "stoned"
-            return
-        end
+                    extra.lastsuit = "mixed"
+                    extra.lastmixed = "xchips"
+                    return { xchips = extra.xchips}
+                elseif extra.lastsuit == "darksuit" then
 
-        if SMODS.has_enhancement(scard, "m_wild") then
-            extra.lastsuit = "uni"
+                    extra.lastsuit = "mixed"
+                    extra.lastmixed = "xmult"
+                    return { xmult = extra.xmult}
 
-            if extra.lastwild == "mult" then
-                extra.lastwild = "chips"
-                return { xmult = extra.xmult }
-            else
-                extra.lastwild = "mult"
-                return { xchips = extra.xchips }
+                end
+                extra.lastsuit = "mixed"
+                return
             end
-        end
-
-        local is_light = (scard.base.suit == "Hearts" or scard.base.suit == "Diamonds")
-        local is_dark  = (scard.base.suit == "Spades" or scard.base.suit == "Clubs")
-
-        if is_light then
-            if extra.lastsuit == "darksuit" or extra.lastsuit == "uni" then
+            if is_light then
+                if extra.lastsuit == "darksuit" or extra.lastsuit == "mixed" then
+                    extra.lastsuit = "lightsuit"
+                    extra.lastmixed = 'xmult'
+                    return { xmult = extra.xmult }
+                end
                 extra.lastsuit = "lightsuit"
-                return { xmult = extra.xmult }
+                return
             end
-            extra.lastsuit = "lightsuit"
-            return
-        end
-
-        if is_dark then
-            if extra.lastsuit == "lightsuit" or extra.lastsuit == "uni" then
+            if is_dark then
+                if extra.lastsuit == "lightsuit" or extra.lastsuit == "mixed" then
+                    extra.lastsuit = "darksuit"
+                    extra.lastmixed = "xchips"
+                    return { xchips = extra.xchips }
+                end
                 extra.lastsuit = "darksuit"
-                return { xchips = extra.xchips }
+                return
             end
-            extra.lastsuit = "darksuit"
-            return
         end
     end,
     beans_credits = {
@@ -80,4 +83,3 @@ SMODS.Joker{
     code = "Tje.tsu",
     }
 }
-
