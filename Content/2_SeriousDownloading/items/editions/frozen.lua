@@ -15,7 +15,7 @@ function Card:click()
         end
     end
 
-    if self.edition and self.edition.type == "cbean_sd_frozen" and not ((next(SMODS.find_card('j_cbean_0chill_noelle')) and next(SMODS.find_card('j_cbean_0chill_thorn_ring'))) and not (self.area == G.hand and allfrozencards and #G.hand.highlighted == 0)) then
+    if self.edition and self.edition.type == "cbean_sd_frozen" and not self.debuff and not ((next(SMODS.find_card('j_cbean_0chill_noelle')) and next(SMODS.find_card('j_cbean_0chill_thorn_ring'))) and not (self.area == G.hand and allfrozencards and #G.hand.highlighted == 0)) then
         if self.area and self.area == G.deck and self.area.cards[1] == self then 
             G.FUNCS.deck_info()
         end
@@ -45,7 +45,7 @@ SMODS.Edition{
         }
     end,
     on_apply = function (card)
-        card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + 5
+        card.ability.perma_h_chips = (card.ability.perma_h_chips or 0) + 20
     end,
     calculate = function (self, card, context)
         if context.after then
