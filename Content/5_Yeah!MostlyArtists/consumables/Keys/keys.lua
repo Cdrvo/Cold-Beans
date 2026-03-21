@@ -1614,6 +1614,7 @@ SMODS.Consumable {
             }
         }
     end,
+    select_card = "consumeables", --Makes it always selectable from a pack
 
     atlas = 'yea_art_key_atlas',
     pos = { x = 7, y = 2 },
